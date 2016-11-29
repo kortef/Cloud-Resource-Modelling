@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated PropertyTypes -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.ugoe.cs.oco.tosca.types.presentation.TypesModelWizardID"
+            name="%_UI_TypesModelWizard_label"
+            class="de.ugoe.cs.oco.tosca.types.presentation.TypesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TypesModelFile.gif">
+         <description>%_UI_TypesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated PropertyTypes -->
+      <editor
+            id="de.ugoe.cs.oco.tosca.types.presentation.TypesEditorID"
+            name="%_UI_TypesEditor_label"
+            icon="icons/full/obj16/TypesModelFile.gif"
+            extensions="tosca"
+            class="de.ugoe.cs.oco.tosca.types.presentation.TypesEditor"
+            contributorClass="de.ugoe.cs.oco.tosca.types.presentation.TypesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

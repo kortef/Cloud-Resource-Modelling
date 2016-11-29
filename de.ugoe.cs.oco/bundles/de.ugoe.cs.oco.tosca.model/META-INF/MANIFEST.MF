@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: de.ugoe.cs.oco.tosca.model;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Activator: de.ugoe.cs.oco.tosca.model.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: 
+ de.ugoe.cs.oco.tosca,
+ de.ugoe.cs.oco.tosca.impl,
+ de.ugoe.cs.oco.tosca.util
+Bundle-ActivationPolicy: lazy

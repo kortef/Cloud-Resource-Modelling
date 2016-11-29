@@ -1,0 +1,3 @@
+mycompanytypes.myrelationships.AppDependency:
+  derived_from: tosca.relationships.DependsOn
+  valid_target_types: [ mycompanytypes.mycapabilities.SomeAppCapability ]

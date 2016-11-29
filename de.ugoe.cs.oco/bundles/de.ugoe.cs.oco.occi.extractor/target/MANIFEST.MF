@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: de.ugoe.cs.oco.occi.extractor
+Bundle-Name: Extractor
+Bundle-Version: 1.0.0.201610191225
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,de.ugoe.cs.oco
+ .thirdparty;bundle-version="1.0.0",org.eclipse.emf.common;bundle-vers
+ ion="2.11.1",org.occiware.clouddesigner.occi;bundle-version="0.1.0",o
+ rg.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0",
+ org.junit,org.eclipse.epsilon.common;bundle-version="1.3.0",org.eclip
+ se.epsilon.emf.dt;bundle-version="1.3.0",org.eclipse.epsilon.eol.engi
+ ne,org.eclipse.epsilon.emc.emf
+Bundle-ManifestVersion: 2
+Bundle-Activator: de.ugoe.cs.oco.occi.extractor.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

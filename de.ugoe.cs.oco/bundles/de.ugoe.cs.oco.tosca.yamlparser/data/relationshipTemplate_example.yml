@@ -1,0 +1,4 @@
+storage_attachment:
+  type: AttachesTo
+  properties:
+    location: /my_mount_point

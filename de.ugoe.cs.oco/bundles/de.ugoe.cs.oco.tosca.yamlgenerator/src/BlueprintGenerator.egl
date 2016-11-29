@@ -1,0 +1,219 @@
+tosca_definitions_version: cloudify_dsl_1_2
+[% 
+var ident = "";
+var gap = "  ";
+
+var scalinggroups = input!TGroupTemplate.all.select(g | g.type.toString() 
+		== "swe.simpaas.groups.ScalingGroup");
+		
+var scale = scalinggroups.properties.econtents.get(0).
+mixed.get(0).get(1).value
+.mixed.get(1).value.mixed.
+get(0).value;
+
+var member = scalinggroups.get(0).member;
+
+if (scale.contains("get_input")){
+	scale = getInputParValue(scale);
+}
+
+//scalinggroups.size.println();
+
+if (not input!TImport.allInstances.isEmpty){
+	out.println(ident + "imports:");
+	ident = ident + gap;
+	for (imp in input!TImport.allInstances){
+		out.println(ident + "- " + imp.location);
+	}
+	out.println();
+	ident = ident.substring(0, ident.length - 2);
+}
+
+var plan = input!TPlan.allInstances.at(0);
+
+/*if (plan.inputParameters.isDefined){
+	out.println(ident + "inputs:");
+	ident = ident + gap;
+	for (input in plan.inputParameters.inputParameter){
+		toString(input, ident, gap);
+	}
+	out.println();
+	ident = ident.substring(0, ident.length - 2);
+}*/
+
+if (not input!TNodeType.allInstances.isEmpty()){
+	out.println(ident + "node_types:");
+	ident = ident + gap;
+	for (type in input!TNodeType.allInstances){
+		toString(type, ident, gap);
+		out.println();
+	}
+	ident = ident.substring(0, ident.length - 2);
+}
+
+if (not input!TNodeTemplate.allInstances.isEmpty()){
+	out.println(ident + "node_templates:");
+	ident = ident + gap;
+	for (template in input!TNodeTemplate.allInstances){
+		if (member.includes(template.name)){
+			if (scale.asInteger > 0){
+				for (suffix in Sequence {1 .. scale.asInteger}){
+					toString(template, ident, gap, "_" + suffix.asString, member);
+				}
+			}
+		} else{
+			toString(template, ident, gap, "", null);
+			out.println();
+		}
+	}
+}
+
+operation toString(parameter: input!TNodeType, ident: String, gap: String){
+	out.println(ident + parameter.name + ":");
+	ident = ident + gap;
+	out.println(ident + "derived_from: " + parameter.derivedFrom.typeRef);
+	if (not (parameter.interfaces == null)){
+		out.println(ident + "interfaces:");
+		for (interf in parameter.interfaces.interface){
+			ident = ident + gap;
+			toString(interf, ident, gap, "", null);
+			ident = ident.substring(0, ident.length - 2);
+		}
+	}
+	ident = ident.substring(0, ident.length - 4);
+}
+
+operation toString(parameter: input!TNodeTemplate, ident: String, gap: String, suffix: String, members: OrderedSet){
+	out.println(ident + parameter.name + suffix + ":");
+	ident = ident + gap;
+	if (not (parameter.type == null)){
+		out.println(ident + "type: " + parameter.type);
+	}
+	if (not (parameter.properties == null)){
+		out.println(ident + "properties:");
+		ident = ident + gap;
+		toString(parameter.properties, ident, gap, suffix, members);
+		ident = ident.substring(0, ident.length - 2);
+	}
+	if (not (parameter.interfaces == null)){
+		out.println(ident + "interfaces:");
+		for (interf in parameter.interfaces.interface){
+			ident = ident + gap;
+			toString(interf, ident, gap, suffix, members);
+			ident = ident.substring(0, ident.length - 2);
+		}
+	}
+	
+	var relationships = input!TRelationshipTemplate.all.select(r | r.sourceElement.ref == parameter.name);
+	if (not (relationships.isEmpty())){
+		out.println(ident + "relationships:");
+		ident = ident + gap;
+		for (r in relationships){
+			out.println(ident + "- type: " + r.type);
+			if (not (members == null) and members.includes(r.targetElement.ref))
+				out.println(ident + "  target: " + r.targetElement.ref + suffix);
+			else
+				out.println(ident + "  target: " + r.targetElement.ref);
+		}
+	}
+}
+
+operation toString(parameter: input!PropertiesType, ident: String, gap: String, suffix: String, members: OrderedSet){
+	for (mixedcontent in parameter.econtents.mixed){
+		for (feature in mixedcontent){
+			if (not (feature.estructuralfeature.name == "text")){
+				out.println(ident + feature.estructuralfeature.name + ": ");
+				for (content in feature.value.mixed){
+					ident = ident + gap;
+					if (not (content.estructuralfeature.name == "text")){
+						out.print(ident + content.estructuralfeature.name + ": ");
+						for (content2 in content.value.mixed){
+							var value;
+							if (content2.value.contains("get_input"))
+								value = getInputParValue(content2.value);
+							else
+								value = content2.value;
+							// need to check if name matches group member name for scaling
+							if (not (members == null)){
+								for (member in members){
+									var parts = member.asString.split('\\.');
+									var name = parts.get(parts.size - 1);
+									if (value == name){
+										value = value + suffix;
+									}
+								}
+							}
+							out.println(value);
+						}
+						
+					}
+					ident = ident.substring(0, ident.length - 2);			
+				}
+			}
+		}	
+	}
+}
+
+operation toString(parameter: input!TInterface, ident: String, gap: String, suffix: String, members: OrderedSet){
+	out.println(ident + parameter.name + ":");
+	for (op in input!TOperation.all.select(op | op.econtainer == parameter)){
+		ident = ident + gap;
+		toString(op, ident, gap, suffix, members);
+		ident = ident.substring(0, ident.length - 2);
+	}
+}
+
+operation toString(parameter: input!TOperation, ident: String, gap: String, suffix: String, members: OrderedSet){
+	out.println(ident + parameter.name + ":");
+	ident = ident + gap;
+	if (not (parameter.implementation == null)){
+		out.println(ident + "implementation: " + parameter.implementation);
+	}
+	if (not (parameter.inputParameters == null)){
+		out.println(ident + "inputs:");
+		for (par in parameter.inputParameters.inputParameter){
+			ident = ident + gap;
+			if (par.value.contains("get_input")){
+				var value = getInputParValue(par.value);
+				out.println(ident + par.name + ": " + value);
+			}
+			else if (not (members == null ) and (par.value.contains("get_attribute") or par.value.contains("get_property"))){
+				var value = par.value;
+				for (member in members){
+					if (value.contains(member)){
+						value = value.replace(member, member + suffix);
+					}
+				}
+				out.println(ident + par.name + ": " + value);
+			}
+			else{
+				out.println(ident + par.name + ": " + par.value);
+			}
+			ident = ident.substring(0, ident.length - 2);
+		}
+	}
+}
+
+operation toString(parameter: input!TParameter, ident: String, gap: String){
+	out.println(ident + parameter.name + ":");
+	ident = ident + gap;
+	if (not (parameter.type == null)){
+		out.println(ident + "type: " +  parameter.type);
+	}
+	if (not (parameter.defaultValue == null)){
+		out.println(ident + "default: " + parameter.defaultValue);
+	}
+	if (not (parameter.value == null)){
+		out.println(ident + "value: " + parameter.value);
+	}
+}
+
+operation getInputParValue(request: String): String{
+	var requiredInputPar = request.split(" ").get(1);
+	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
+	var inputPar = input!TPlan.allInstances.get(0).
+		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
+	return inputPar.value;
+}
+
+%]

@@ -1,0 +1,9 @@
+cpus:
+  type: integer
+  description: Number of CPUs for the server.
+  constraints:
+  - valid_values: [ 1, 2, 4, 8 ]
+  
+server_ip:
+  description: The private IP address of the provisioned server.
+  value: { get_attribute: [ my_server, private_address ] }

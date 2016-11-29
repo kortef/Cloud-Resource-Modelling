@@ -1,0 +1,10 @@
+# Simple notation, no properties defined or augmented
+some_capability: mytypes.mycapabilities.MyCapabilityTypeName
+
+# Full notation, augmenting properties of the referenced capability type 
+some_capability02: 
+  type: mytypes.mycapabilities.MyCapabilityTypeName
+  properties:
+    limit: 
+      type: integer
+      default: 100

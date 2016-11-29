@@ -1,0 +1,4 @@
+my_compute_placement_policy:
+    type: tosca.policies.placement
+    description: Apply my placement policy to my application’s servers
+    targets: [ my_server_1, my_server_2 ]

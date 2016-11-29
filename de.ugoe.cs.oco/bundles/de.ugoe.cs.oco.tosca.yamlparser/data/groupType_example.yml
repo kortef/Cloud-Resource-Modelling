@@ -1,0 +1,3 @@
+mycompany.mytypes.groups.placement:
+  description: My company’s group type for placing nodes of type Compute
+  targets: [ tosca.nodes.Compute ]

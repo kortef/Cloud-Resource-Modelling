@@ -1,0 +1,9 @@
+start: scripts/start_server.sh
+  
+pre_configure_source:
+  implementation: 
+    primary: scripts/pre_configure_source.sh
+    dependencies:
+      - scripts/setup.sh
+      - binaries/library.rpm
+      - scripts/register.py

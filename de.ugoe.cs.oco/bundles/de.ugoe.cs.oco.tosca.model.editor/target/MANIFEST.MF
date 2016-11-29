@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: de.ugoe.cs.oco.tosca.model.editor;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;vi
+ sibility:=reexport,de.ugoe.cs.oco.tosca.model.edit;visibility:=reexpo
+ rt,org.eclipse.emf.ecore.xmi;visibility:=reexport,org.eclipse.emf.edi
+ t.ui;visibility:=reexport,org.eclipse.ui.ide;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: de.ugoe.cs.oco.tosca.presentation
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.201610191225
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: de.ugoe.cs.oco.tosca.presentation.TOSCAv1EditorPlugi
+ n$Implementation
+

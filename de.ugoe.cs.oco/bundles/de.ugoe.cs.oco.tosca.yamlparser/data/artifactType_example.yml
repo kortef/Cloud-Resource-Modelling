@@ -1,0 +1,5 @@
+my_artifact_type:
+  description: Java Archive artifact type
+  derived_from: tosca.artifact.Root
+  mime_type: application/java-archive
+  file_ext: [ jar ]

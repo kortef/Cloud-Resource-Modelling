@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.ugoe.cs.oco</groupId>
+    <artifactId>de.ugoe.cs.oco.bundles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <groupId>de.ugoe.cs.oco</groupId>
+  <artifactId>de.ugoe.cs.oco.thirdparty</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>bundle</packaging>
+  
+  <repositories>
+  <repository>
+   <id>autoquest</id>
+   <url>https://trex.informatik.uni-goettingen.de/nexus/content/repositories/autoquest-snapshots/</url>
+  </repository>
+  </repositories>
+
+  <dependencies>
+  	<dependency>
+          <groupId>de.ugoe.cs.oco</groupId>
+          <artifactId>de.ugoe.cs.oco.fragments</artifactId>
+          <version>1.0.0</version>
+	</dependency>
+	<dependency>
+    <groupId>org.rxtx</groupId>
+    <artifactId>rxtx</artifactId>
+    <version>2.1.7</version>
+</dependency>
+  	<dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.5</version>
+	</dependency>
+	<dependency>
+    <groupId>com.owlike</groupId>
+    <artifactId>genson</artifactId>
+    <version>1.2</version>
+   
+</dependency>
+	<dependency>
+    <groupId>javax.json</groupId>
+    <artifactId>javax.json-api</artifactId>
+    <version>1.0</version>
+</dependency>
+<dependency>
+    <groupId>org.jibx.config.osgi.wrapped</groupId>
+    <artifactId>org.jibx.config.osgi.wrapped.joda-time</artifactId>
+    <version>1.6.2</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>4.3.2.RELEASE</version>
+</dependency>
+ <dependency>
+    	 <groupId>com.sun.net.httpserver</groupId>
+    	 <artifactId>http</artifactId>
+    	 <version>20070405</version>
+    </dependency>
+	<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.6</version>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpasyncclient</artifactId>
+    <version>4.1.2</version>
+</dependency>
+    <dependency>
+      <groupId>com.esotericsoftware.yamlbeans</groupId>
+    	<artifactId>yamlbeans</artifactId>
+    	<version>1.09</version>
+    </dependency>
+    <dependency>
+      <groupId>de.ugoe.cs</groupId>
+      <artifactId>java-utils</artifactId>
+      <version>0.1.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    <groupId>cz.cesnet.cloud</groupId>
+    <artifactId>jocci-api</artifactId>
+    <version>0.1.1</version>
+    </dependency>
+	<dependency>
+    <groupId>cz.cesnet.cloud</groupId>
+    <artifactId>jocci-core</artifactId>
+    <version>0.1.1</version>
+	</dependency>
+	<dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk16</artifactId>
+            <version>1.46</version>
+    </dependency>
+    <dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bcpg-jdk16</artifactId>
+    <version>1.46</version>
+</dependency>
+    <dependency>
+    <groupId>com.caucho</groupId>
+    <artifactId>hessian</artifactId>
+    <version>4.0.38</version>
+</dependency>
+	<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.8.1</version>
+</dependency>
+<dependency>
+    <groupId>com.googlecode.protobuf-java-format</groupId>
+    <artifactId>protobuf-java-format</artifactId>
+    <version>1.4</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-smile</artifactId>
+    <version>2.8.1</version>
+</dependency>
+<dependency>
+    <groupId>com.rometools</groupId>
+    <artifactId>rome</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>com.rometools</groupId>
+    <artifactId>rome-utils</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>com.squareup.okhttp</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>2.7.5</version>
+</dependency>
+<dependency>
+    <groupId>com.squareup.okhttp3</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>3.4.1</version>
+</dependency>
+<dependency>
+    <groupId>com.squareup.okio</groupId>
+    <artifactId>okio</artifactId>
+    <version>1.9.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.github.jponge/lzma-java -->
+<dependency>
+    <groupId>com.github.jponge</groupId>
+    <artifactId>lzma-java</artifactId>
+    <version>1.3</version>
+</dependency>
+
+<dependency>
+    <groupId>net.morimekta.utils</groupId>
+    <artifactId>android-util</artifactId>
+    <version>0.3.4</version>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.groovy</groupId>
+    <artifactId>groovy</artifactId>
+    <version>1.8.6</version>
+</dependency>
+<dependency>
+    <groupId>antlr</groupId>
+    <artifactId>antlr</artifactId>
+    <version>2.7.7</version>
+</dependency>
+<dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-all</artifactId>
+    <version>4.1.4.Final</version>
+</dependency>
+<dependency>
+    <groupId>com.barchart.udt</groupId>
+    <artifactId>barchart-udt-bundle</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>com.google.protobuf.nano</groupId>
+    <artifactId>protobuf-javanano</artifactId>
+    <version>3.0.0-alpha-7</version>
+</dependency>
+<dependency>
+    <groupId>com.ning</groupId>
+    <artifactId>compress-lzf</artifactId>
+    <version>1.0.3</version>
+</dependency>
+<dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-transport-sctp</artifactId>
+    <version>4.1.4.Final</version>
+</dependency>
+<dependency>
+    <groupId>javax.portlet</groupId>
+    <artifactId>portlet-api</artifactId>
+    <version>2.0</version>
+</dependency>
+<dependency>
+<groupId>jline</groupId>
+  <artifactId>jline</artifactId>
+  <version>2.12</version>
+  </dependency>
+  <dependency>
+    <groupId>com.github.jponge</groupId>
+    <artifactId>lzma-java</artifactId>
+    <version>1.3</version>
+</dependency>
+<dependency>
+    <groupId>net.jpountz.lz4</groupId>
+    <artifactId>lz4</artifactId>
+    <version>1.3.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore-nio</artifactId>
+    <version>4.4.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.ivy</groupId>
+    <artifactId>ivy</artifactId>
+    <version>2.4.0</version>
+</dependency>
+<dependency>
+    <groupId>com.jcraft</groupId>
+    <artifactId>jsch.agentproxy.jsch</artifactId>
+    <version>0.0.9</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-vfs2</artifactId>
+    <version>2.1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-collections4</artifactId>
+    <version>4.1</version>
+</dependency>
+<dependency>
+    <groupId>commons-vfs</groupId>
+    <artifactId>commons-vfs</artifactId>
+    <version>20050307052300</version>
+</dependency>
+<dependency>
+    <groupId>jcifs</groupId>
+    <artifactId>jcifs</artifactId>
+    <version>1.3.17</version>
+</dependency>
+<dependency>
+    <groupId>commons-compress</groupId>
+    <artifactId>commons-compress</artifactId>
+    <version>20050911</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-core</artifactId>
+    <version>1.2.1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.jackrabbit</groupId>
+    <artifactId>jackrabbit-webdav</artifactId>
+    <version>2.13.1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.6.2</version>
+</dependency>
+<dependency>
+    <groupId>com.lmax</groupId>
+    <artifactId>disruptor</artifactId>
+    <version>3.3.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-csv</artifactId>
+    <version>1.4</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka_2.10</artifactId>
+    <version>0.10.0.0</version>
+
+</dependency>
+   <dependency>
+    <groupId>org.apache.kafka</groupId>
+    <artifactId>kafka-clients</artifactId>
+    <version>0.10.0.0</version>
+</dependency>
+<dependency>
+    <groupId>com.yammer.metrics</groupId>
+    <artifactId>metrics-core</artifactId>
+    <version>2.2.0</version>
+</dependency>
+<dependency>
+    <groupId>net.sf.jopt-simple</groupId>
+    <artifactId>jopt-simple</artifactId>
+    <version>5.0.2</version>
+</dependency>
+<dependency>
+    <groupId>slide</groupId>
+    <artifactId>webdavlib</artifactId>
+    <version>2.1M1</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.jetty.alpn</groupId>
+    <artifactId>alpn-api</artifactId>
+    <version>1.1.3.v20160715</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.jetty.npn</groupId>
+    <artifactId>npn-api</artifactId>
+    <version>8.1.2.v20120308</version>
+</dependency>
+<dependency>
+    <groupId>org.jboss.marshalling</groupId>
+    <artifactId>jboss-marshalling</artifactId>
+    <version>1.4.11.Final</version>
+</dependency>
+<dependency>
+    <groupId>org.jboss.modules</groupId>
+    <artifactId>jboss-modules</artifactId>
+    <version>1.5.2.Final</version>
+</dependency>
+<dependency>
+    <groupId>org.jdom</groupId>
+    <artifactId>jdom2</artifactId>
+    <version>2.0.6</version>
+</dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Embed-Dependency>
+              yamlbeans; java-utils; jocci-core; jocci-api; gson; genson; httpclient; 
+              http; bcprov-jdk16; javax.json-api;org.jibx.config.osgi.wrapped.joda-time; 
+              spring-web; hessian; jackson-dataformat-xml; protobuf-java-format; 
+              jackson-dataformat-smile; rome; rome-utils; okhttp; okhttp3; android-util; groovy; antlr;
+              netty-all; barchart-udt-bundle; protobuf-javanano; compress-lzf; netty-transport-sctp;
+              rxtx; portlet-api; jline; lzma-java; lz4; okio; httpasyncclient; httpcore-nio;
+              httpcore; ivy; jsch.agentproxy.jsch; commons-vfs2; commons-collections4; commons-vfs;
+              jcifs; commons-compress; hadoop-core; jackrabbit-webdav; log4j-core; disruptor; commons-csv;
+              kafka_2.10; metrics-core; jopt-simple; kafka-clients; webdavlib; bcpg-jdk16;
+              alpn-api; npn-api; jboss-marshalling; jboss-modules; jdom2
+              
+            </Embed-Dependency>
+            <_exportcontents>
+              com.esotericsoftware.yamlbeans.*;de.ugoe.cs.util.*;cz.cesnet.cloud.occi.*;org.apache.http.*;
+            </_exportcontents>
+            <Bundle-ClassPath>{maven-dependencies}</Bundle-ClassPath>
+            <Embed-Transitive>false</Embed-Transitive>
+            <Embed-Directory>jars</Embed-Directory>
+            <_failok>true</_failok>
+            <_nouses>true</_nouses>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <lifecycleMappings>
+                <lifecycleMapping>
+                  <packagingType>bundle</packagingType>
+                  <lifecycleMappingId>org.sonatype.tycho.m2e.wrapperBundle</lifecycleMappingId>
+                </lifecycleMapping>
+              </lifecycleMappings>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <versionRange>2.1.0</versionRange>
+                    <goals>
+                      <goal>bundle</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <configurator>
+                      <id>org.sonatype.tycho.m2e.wrapperBundle</id>
+                    </configurator>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <versionRange>2.1.0</versionRange>
+                    <goals>
+                      <goal>manifest</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+  </build>
+
+</project>

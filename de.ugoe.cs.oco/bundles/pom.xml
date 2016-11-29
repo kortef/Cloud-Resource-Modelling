@@ -1,0 +1,42 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.ugoe.cs.oco</groupId>
+    <artifactId>de.ugoe.cs.oco.bundles</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>de.ugoe.cs.oco</groupId>
+        <artifactId>de.ugoe.cs.oco.root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+    	<dependency>
+    		<groupId>de.ugoe.cs.oco</groupId>
+    		<artifactId>de.ugoe.cs.oco.thirdparty</artifactId>
+    		<version>1.0.0-SNAPSHOT</version>
+    	</dependency>
+    </dependencies>
+
+    <modules>
+        <module>de.ugoe.cs.oco.tosca.model</module>
+        <module>de.ugoe.cs.oco.tosca.model.edit</module>
+        <module>de.ugoe.cs.oco.tosca.model.editor</module>
+        <module>de.ugoe.cs.oco.tosca.modelext</module>
+        <module>de.ugoe.cs.oco.tosca.modelext.edit</module>
+        <module>de.ugoe.cs.oco.tosca.modelext.editor</module>
+        <module>de.ugoe.cs.oco.mappingdsl.model</module>
+        <module>de.ugoe.cs.oco.mappingdsl.model.edit</module>
+        <module>de.ugoe.cs.oco.mappingdsl.model.editor</module>
+        <module>de.ugoe.cs.oco.utils</module>
+        <module>de.ugoe.cs.oco.tosca.yamlgenerator</module>
+        <module>de.ugoe.cs.oco.cli</module>
+        <module>de.ugoe.cs.oco.evaluator</module>
+        <module>de.ugoe.cs.oco.tosca.instantiator</module>
+        <module>de.ugoe.cs.oco.occi.extractor</module>
+      <!--  <module>de.ugoe.cs.oco.tosca.yamlparser</module> 
+      		<module>de.ugoe.cs.oco.tosca2occi</module>
+      -->
+    </modules>
+</project>
+

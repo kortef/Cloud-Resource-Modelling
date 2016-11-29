@@ -1,0 +1,18 @@
+# Simple grammar
+TestRequirement: CapabilityType
+
+# Extended grammar
+TestRequirement01:
+  capability: CapabilityType
+  node: NodeType
+  relationship: RelationshipTypeName
+  occurences: [ 0, 1 ]
+
+# Extended grammar for declaring property definitions on the relationship's interfaces
+# TestRequirment02:
+#  capability: CapabilityType
+#  node: NodeType
+#  relationship:
+#    type: RelationshipType
+#    interfaces:
+#  occurences: [ 0, 1 ]

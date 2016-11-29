@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+package de.ugoe.cs.oco.occi.serializer;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.occiware.clouddesigner.occi.OCCIPackage;
+import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+
+import de.ugoe.cs.oco.occi.extractor.OCCIModel;
+
+/**
+ * @author fglaser
+ *
+ */
+public class OCCIModelSerializer {
+	public boolean serializeOCCIModel(OCCIModel model, Path path){
+		OCCIPackage.eINSTANCE.eClass();
+		
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("occie", new OCCIResourceFactoryImpl());
+		
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		Resource resource = resSet.createResource(URI.createURI(path.toString()));
+		
+		if (model.getExtensions() != null)
+			resource.getContents().addAll(model.getExtensions());
+		
+		if (model.getResources() != null)
+			resource.getContents().addAll(model.getResources());
+		
+		try {
+			resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+		
+	}
+}

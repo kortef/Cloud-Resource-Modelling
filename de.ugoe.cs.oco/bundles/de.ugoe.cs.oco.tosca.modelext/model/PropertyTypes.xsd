@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://swe.simpaas.tosca.de/PropertyTypes" xmlns:tns="http://swe.simpaas.tosca.de/PropertyTypes" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" elementFormDefault="qualified">
+	<import namespace="http://swe.simpaas.tosca.de/tosca"></import>
+	<complexType name="CloudifyAgentPropertiesType">
+   		<sequence>
+    		<element name="user" type="string"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="OpenStackServerPropertiesType">
+   		<sequence>
+    		<element name="image" type="string"></element>
+    		<element name="flavor" type="string"></element>
+    		<element name="name" type="string"></element>
+    	</sequence>
+    </complexType>
+     <complexType name="OpenStackVolumePropertiesType">
+   		<sequence>
+    		<element name="size" type="string"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="MPIHostPropertiesType">
+   		<sequence>
+    		<element name="cloudify_agent" type="tns:CloudifyAgentPropertiesType"></element>
+    		<element name="server" type="tns:OpenStackServerPropertiesType"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="VolumeHostPropertiesType">
+   		<sequence>
+    		<element name="volume" type="tns:OpenStackVolumePropertiesType"></element>
+    	</sequence>
+    </complexType>
+    <element name="CloudifyAgentProperties" type="tns:CloudifyAgentPropertiesType">
+    </element>
+    <element name="OpenStackProperties" type="tns:OpenStackServerPropertiesType">
+    </element>
+    <element name="OpenStackVolumeProperties" type="tns:OpenStackVolumePropertiesType">
+    </element>
+    <element name="MPIHostProperties" type="tns:MPIHostPropertiesType"></element>
+    <element name="VolumeHostPropertiesType" type="tns:VolumeHostPropertiesType"></element>
+
+    <element name="ScalingGroupProperties" type="tns:ScalingGroupPropertiesType"></element>
+
+	<complexType name="ScalingGroupPropertiesType">
+   		<sequence>
+    		<element name="scale" type="tns:ScalingPropertiesType"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="ScalingPropertiesType">
+    	<sequence>
+    		<element name="instances" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>
+
+  

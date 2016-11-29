@@ -1,0 +1,8 @@
+mycompany.mytypes.myapplication.MyFeature:
+  derived_from: tosca.capabilities.Root
+  description: a custom feature of my company’s application
+  properties:
+    my_feature_setting:
+      type: string
+    my_feature_value:
+      type: integer

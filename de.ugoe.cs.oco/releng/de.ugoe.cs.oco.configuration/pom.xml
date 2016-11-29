@@ -1,0 +1,86 @@
+<project>
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>de.ugoe.cs.oco</groupId>
+ <artifactId>de.ugoe.cs.oco.configuration</artifactId>
+ <version>1.0.0-SNAPSHOT</version>
+ <packaging>pom</packaging>
+
+ <properties>
+  <tycho.version>0.25.0</tycho.version>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <mars-repo.url>http://download.eclipse.org/releases/mars</mars-repo.url>
+ </properties>
+
+ <repositories>
+  <repository>
+   <id>mars</id>
+   <url>${mars-repo.url}</url>
+   <layout>p2</layout>
+  </repository>
+  
+  <repository>
+  	<id>orbit</id>
+  <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</url>
+  <layout>p2</layout>
+  </repository>
+  
+  <repository>
+  	<id>Epsilon</id>
+  <url>http://download.eclipse.org/epsilon/updates/</url>
+  <layout>p2</layout>
+  </repository>
+  
+  <repository>
+   <id>autoquest-3rdparty</id>
+   <url>https://trex.informatik.uni-goettingen.de/nexus/content/repositories/thirdparty/</url>
+  </repository>
+  </repositories>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.eclipse.tycho</groupId>
+    <artifactId>tycho-maven-plugin</artifactId>
+    <version>${tycho.version}</version>
+    <extensions>true</extensions>
+   </plugin>
+
+   <plugin>
+    <groupId>org.eclipse.tycho</groupId>
+    <artifactId>target-platform-configuration</artifactId>
+    <version>${tycho.version}</version>
+    <configuration>
+    <pomDependencies>consider</pomDependencies>
+     <environments>
+      <environment>
+       <os>linux</os>
+       <ws>gtk</ws>
+       <arch>x86</arch>
+      </environment>
+      <environment>
+       <os>linux</os>
+       <ws>gtk</ws>
+       <arch>x86_64</arch>
+      </environment>
+      <environment>
+       <os>win32</os>
+       <ws>win32</ws>
+       <arch>x86</arch>
+      </environment>
+      <environment>
+       <os>win32</os>
+       <ws>win32</ws>
+       <arch>x86_64</arch>
+      </environment>
+      <environment>
+       <os>macosx</os>
+       <ws>cocoa</ws>
+       <arch>x86_64</arch>
+      </environment>
+     </environments>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+</project>
+

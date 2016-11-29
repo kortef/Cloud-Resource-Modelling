@@ -1,0 +1,152 @@
+tosca_definitions_version: cloudify_dsl_1_2
+
+imports:
+  - cloudify_types: http://www.getcloudify.org/spec/cloudify/3.3/types.yaml
+  - openstack_plugin: http://www.getcloudify.org/spec/openstack-plugin/1.3.1/plugin.yaml
+  - ansible_plugin: http://user.informatik.uni-goettingen.de/~fglaser/cloudify-ansible-plugin/plugin.yaml
+
+inputs:
+  agent_user:
+    default: 'ubuntu'
+  key_file:
+    default: '/home/centos/.ssh/cloudify-agent-kp.pem'
+  roles_file:
+    description: >
+      The name of a zip file containing ansible roles
+    default: 'roles.zip'
+  flavor:
+    default: '3'
+  image:
+    default: '6fa2f3e9-a7d9-4fdf-bc92-3b7dc4c6e749'
+  size:
+    default: '250'
+  worker_instances:
+    default: '1'
+
+group_types:
+  swe.simpaas.groups.ScalingGroup:
+    properties:
+      instances:
+        type: integer
+
+node_types:
+  ansible.nodes.Application:
+    derived_from: cloudify.nodes.ApplicationModule
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+      
+  swe.simpaas.nodes.mpihost:
+    derived_from: cloudify.openstack.nodes.Server
+
+topology_template:
+  relationship_templates:
+    gatewayhosttoFloatingIP:
+      type: cloudify.openstack.server_connected_to_floating_ip
+      source: swe.simpaas.instances.gatewayhost
+      target: swe.simpaas.instances.floating_ip
+    gatewaycontainedingatewayhost:
+      type: cloudify.relationships.contained_in
+      source: swe.simpaas.instances.gateway
+      target: swe.simpaas.instances.gatewayhost
+    gatewaydependsovolume:
+      type: cloudify.relationships.depends_on
+      source: swe.simpaas.instances.gateway
+      target: swe.simpaas.instances.volume
+    mpiworkercontainedinmpihost:
+      type: cloudify.relationships.contained_in
+      source: swe.simpaas.instances.mpiworker
+      target: swe.simpaas.instances.mpihost
+    mpiworkerdependsongateway:
+      type: cloudify.relationships.depends_on
+      source: swe.simpaas.instances.mpiworker
+      target: swe.simpaas.instances.gateway
+    volumeattachedtogateway:
+      type: cloudify.openstack.volume_attached_to_server
+      source: swe.simpaas.instances.volume
+      target: swe.simpaas.instances.gatewayhost
+
+  node_templates:
+    swe.simpaas.instances.gatewayhost:
+      type: swe.simpaas.nodes.mpihost
+      properties:
+        cloudify_agent:
+          user: { get_input: agent_user }
+        server:
+          image: { get_input: image }
+          flavor: { get_input: flavor }
+          name: gateway
+        
+    swe.simpaas.instances.gateway:
+      type: ansible.nodes.Application
+      interfaces:
+        cloudify.interfaces.lifecycle:
+          configure:
+            implementation: ansible.ansible_plugin.tasks.configure
+            inputs:
+              user: { get_property: [ swe.simpaas.instances.gatewayhost, cloudify_agent, user ] }
+              keypair: { get_input: key_file }
+              roles: 
+                - common
+                - avahi
+                - nfsserver
+                - nfsclient              
+                - mpimaster
+                - openfoamuser
+                - ganglia
+              rolesfile: {  get_input: roles_file }
+              private_ip_address: { get_attribute: [swe.simpaas.instances.gatewayhost, ip] }
+          start:
+            implementation: ansible.ansible_plugin.tasks.ansible_playbook
+      
+        
+    swe.simpaas.instances.mpihost:
+      type: swe.simpaas.nodes.mpihost
+      properties:
+        cloudify_agent:
+          user: { get_input: agent_user }
+        server:
+          image: { get_input: image }
+          flavor: { get_input: flavor }
+          name: mpihost
+        
+    swe.simpaas.instances.mpiworker:
+      type: ansible.nodes.Application
+      interfaces:
+        cloudify.interfaces.lifecycle:
+          configure:
+            implementation: ansible.ansible_plugin.tasks.configure
+            inputs:
+              user: { get_property: [ swe.simpaas.instances.mpihost, cloudify_agent, user ] }
+              keypair: { get_input: key_file }
+              roles:
+                - common 
+                - avahi
+                - nfsclient
+                - mpiworker
+                - openfoam
+                - ganglia
+              rolesfile: {  get_input: roles_file }
+              private_ip_address: { get_attribute: [ swe.simpaas.instances.mpihost, ip ] }
+          start:
+            implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        
+    swe.simpaas.instances.volume:
+      type: cloudify.openstack.nodes.Volume
+      properties:
+         volume:
+           size: { get_input: size }
+  
+    swe.simpaas.instances.floating_ip:
+      type: cloudify.openstack.nodes.FloatingIP
+
+  groups:
+    swe.simpaas.instances.scaling_group:
+      type: swe.simpaas.groups.ScalingGroup
+      members: [ swe.simpaas.instances.mpihost, swe.simpaas.instances.mpiworker ]
+      properties:
+        scale:
+          instances: { get_input: worker_instances }

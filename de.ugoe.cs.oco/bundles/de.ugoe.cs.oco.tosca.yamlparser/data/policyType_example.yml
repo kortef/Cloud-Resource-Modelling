@@ -1,0 +1,3 @@
+mycompany.mytypes.policies.placement.Container.Linux:
+  description: My company’s placement policy for linux 
+  derived_from: tosca.policies.Root

@@ -1,0 +1,9 @@
+mycompany.mytypes.myinterfaces.MyConfigure:
+  description: My custom configure Interface Type
+  inputs:
+    mode:
+      type: string
+  pre_configure_service:
+    description: pre-configure operation for my service
+  post_configure_service:
+    description: post-configure operation for my service

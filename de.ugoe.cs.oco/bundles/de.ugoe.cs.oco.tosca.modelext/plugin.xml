@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PropertyTypes -->
+      <package
+            uri="http://swe.simpaas.tosca.de/PropertyTypes"
+            class="de.ugoe.cs.oco.tosca.types.TypesPackage"
+            genModel="model/PropertyTypes.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated PropertyTypes -->
+      <parser
+            type="tosca"
+            class="de.ugoe.cs.oco.tosca.types.util.TypesResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

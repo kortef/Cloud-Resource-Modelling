@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cli
+Bundle-SymbolicName: de.ugoe.cs.oco.cli
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.ugoe.cs.oco.cli.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0",
+ de.ugoe.cs.oco.tosca2occi;bundle-version="1.0.0",
+ de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy

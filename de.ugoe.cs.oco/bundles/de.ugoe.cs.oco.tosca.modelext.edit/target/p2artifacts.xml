@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='de.ugoe.cs.oco.tosca.modelext.edit' version='1.0.0.201610191225'>
+    <properties size='5'>
+      <property name='artifact.size' value='26063'/>
+      <property name='download.size' value='26063'/>
+      <property name='maven-groupId' value='de.ugoe.cs.oco'/>
+      <property name='maven-artifactId' value='de.ugoe.cs.oco.tosca.modelext.edit'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>

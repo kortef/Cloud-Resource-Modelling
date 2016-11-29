@@ -1,0 +1,2 @@
+- num_cpus: { in_range: [ 1, 4 ] }
+- mem_size: { greater_or_equal: 512 MB }

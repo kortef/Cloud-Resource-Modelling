@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ugoe.cs.oco.mappingdsl.model/src" editDirectory="/de.ugoe.cs.oco.mappingdsl.model.edit/src"
+    editorDirectory="/de.ugoe.cs.oco.mappingdsl.model.editor/src" modelPluginID="de.ugoe.cs.oco.mappingdsl.model"
+    modelName="Mapping" editPluginClass="de.ugoe.cs.oco.mappingdsl.model.mapping.provider.MappingEditPlugin"
+    editorPluginClass="de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/de.ugoe.cs.oco.mappingdsl.model.tests/src"
+    testSuiteClass="de.ugoe.cs.oco.mappingdsl.model.mapping.tests.MappingAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    editPluginID="de.ugoe.cs.oco.mappingdsl.model.edit" editorPluginID="de.ugoe.cs.oco.mappingdsl.model.editor"
+    language="" operationReflection="true" importOrganizing="true">
+  <foreignModel>mapping.ecore</foreignModel>
+  <genPackages prefix="Mapping" basePackage="de.ugoe.cs.oco.mappingdsl.model" disposableProviderFactory="true"
+      contentTypeIdentifier="" ecorePackage="mapping.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mapping.ecore#//ComparisonOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/LESS_EQUAL_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/GREATER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/GREATER_EQUAL_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/LESS_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ComparisonOperatorType/NOT_EQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mapping.ecore#//UnaryExpressionOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//UnaryExpressionOperatorType/MINUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//UnaryExpressionOperatorType/PLUS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mapping.ecore#//BinaryExpressionOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//BinaryExpressionOperatorType/MINUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//BinaryExpressionOperatorType/PLUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//BinaryExpressionOperatorType/DIVIDE"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//BinaryExpressionOperatorType/MULTIPLY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mapping.ecore#//ParameterUnitType">
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterUnitType/MB"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterUnitType/GB"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterUnitType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mapping.ecore#//ParameterValueType">
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterValueType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterValueType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="mapping.ecore#//ParameterValueType/INTEGER"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="mapping.ecore#//URI"/>
+    <genClasses ecoreClass="mapping.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Parameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Parameter/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Parameter/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//TargetParameter"/>
+    <genClasses ecoreClass="mapping.ecore#//SourceParameter"/>
+    <genClasses ecoreClass="mapping.ecore#//Extractor">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EAttribute mapping.ecore#//Extractor/recipe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Extractor/source"/>
+      <genOperations ecoreOperation="mapping.ecore#//Extractor/extract">
+        <genParameters ecoreParameter="mapping.ecore#//Extractor/extract/recipe"/>
+        <genParameters ecoreParameter="mapping.ecore#//Extractor/extract/source"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//Expression"/>
+    <genClasses ecoreClass="mapping.ecore#//UnaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//UnaryExpression/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//UnaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//BinaryExpression">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//BinaryExpression/part1"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//BinaryExpression/part2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//BinaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//Mapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//Mapping/targetParameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mapping.ecore#//Mapping/comperator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mapping.ecore#//Mapping/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//MappingModel">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//MappingModel/mapping"/>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//FileSizeExtractor"/>
+    <genClasses ecoreClass="mapping.ecore#//FileContentExtractor"/>
+    <genClasses ecoreClass="mapping.ecore#//FileNumLinesExtractor"/>
+    <genClasses ecoreClass="mapping.ecore#//FolderCountExtractor"/>
+    <genClasses ecoreClass="mapping.ecore#//FolderSizeExtractor"/>
+    <genClasses image="false" ecoreClass="mapping.ecore#//Mapper">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mapping.ecore#//Mapper/parameters"/>
+      <genOperations ecoreOperation="mapping.ecore#//Mapper/map">
+        <genParameters ecoreParameter="mapping.ecore#//Mapper/map/parameters"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="mapping.ecore#//FlavorMapper"/>
+    <genClasses ecoreClass="mapping.ecore#//CoreMapper"/>
+  </genPackages>
+</genmodel:GenModel>

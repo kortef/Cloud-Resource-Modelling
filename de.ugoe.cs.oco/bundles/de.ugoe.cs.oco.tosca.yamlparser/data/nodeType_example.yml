@@ -1,0 +1,19 @@
+my_company.my_types.my_app_node_type:
+  derived_from: tosca.nodes.SoftwareComponent
+  description: My company’s custom applicaton
+  properties:
+    my_app_password:
+      type: string
+      description: application password
+      constraints:
+        - min_length: 6
+        - max_length: 10
+  attributes:
+    my_app_port:
+      type: integer
+      description: application port number
+  requirements:
+    - some_database:
+        capability: EndPoint.Database
+        node: Database    
+        relationship: ConnectsTo

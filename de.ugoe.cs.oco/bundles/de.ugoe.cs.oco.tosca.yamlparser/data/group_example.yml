@@ -1,0 +1,4 @@
+my_app_placement_group:
+  type: tosca.groups.Root
+  description: My application’s logical component grouping for placement
+  targets: [ my_web_server, my_sql_database ]

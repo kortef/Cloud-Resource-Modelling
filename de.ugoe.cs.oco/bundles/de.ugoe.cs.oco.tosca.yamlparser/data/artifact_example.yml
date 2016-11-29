@@ -1,0 +1,6 @@
+test_artifact: 
+  description: Artifact Description
+  type: TestArtifactType
+  repository: TestRepository
+  deploy_path: TestPath
+  file: TestFile

@@ -1,0 +1,6 @@
+some_definition_file: path1/path2/some_defs.yaml
+another_definition_file:
+  file: path1/path2/file2.yaml
+  repository: my_service_catalog
+  namespace_uri: http://mycompany.com/tosca/1.0/platform
+  namespace_prefix: mycompany

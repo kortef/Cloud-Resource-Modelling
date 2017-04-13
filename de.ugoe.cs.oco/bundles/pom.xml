@@ -34,9 +34,8 @@
         <module>de.ugoe.cs.oco.evaluator</module>
         <module>de.ugoe.cs.oco.tosca.instantiator</module>
         <module>de.ugoe.cs.oco.occi.extractor</module>
-      <!--  <module>de.ugoe.cs.oco.tosca.yamlparser</module> 
-      		<module>de.ugoe.cs.oco.tosca2occi</module>
-      -->
+        <!-- <module>de.ugoe.cs.oco.tosca.yamlparser</module> --> 
+        <module>de.ugoe.cs.oco.tosca2occi</module>
     </modules>
 </project>
 

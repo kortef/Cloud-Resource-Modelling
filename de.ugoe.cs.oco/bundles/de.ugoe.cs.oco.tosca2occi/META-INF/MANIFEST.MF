@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.ui,
  de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0",
  de.ugoe.cs.oco.tosca.modelext;bundle-version="1.0.0",
  org.junit;bundle-version="4.12.0",
- org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0"
+ org.occiware.clouddesigner.occi.infrastructure;bundle-version="0.1.0",
+ de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

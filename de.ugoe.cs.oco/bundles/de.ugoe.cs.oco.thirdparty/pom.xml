@@ -79,7 +79,7 @@
             <Embed-Dependency>*
             </Embed-Dependency>
             <_exportcontents>
-              com.esotericsoftware.yamlbeans.*;de.ugoe.cs.util.*;cz.cesnet.cloud.occi.*;org.occiware.clouddesigner.*;
+              com.esotericsoftware.yamlbeans.*;de.ugoe.cs.util.*;de.ugoe.cs.util.console.*;cz.cesnet.cloud.occi.*;org.occiware.clouddesigner.*;
             </_exportcontents>
             <Bundle-ClassPath>{maven-dependencies}</Bundle-ClassPath>
             <Embed-Transitive>true</Embed-Transitive>

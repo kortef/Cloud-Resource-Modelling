@@ -37,6 +37,7 @@
         <!-- <module>de.ugoe.cs.oco.tosca.yamlparser</module> --> 
         <module>de.ugoe.cs.oco.tosca2occi</module>
         <module>de.swz.dist.batch.model</module>
+        <module>de.swz.dist.batch.generator</module>
     </modules>
 </project>
 

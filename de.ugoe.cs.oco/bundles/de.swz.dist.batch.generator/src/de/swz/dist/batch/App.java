@@ -17,9 +17,10 @@ public class App
         //j.createModule();
         try {
             j.execute();
+            System.out.println("result:" + j.getResult().toString());
         } catch (Exception e) {
         	e.printStackTrace();
         }
-        System.out.println(j.getResult());
+       
     }
 }

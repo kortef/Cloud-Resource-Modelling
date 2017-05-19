@@ -1,5 +1,5 @@
 [% //get root instance
-	var jobscript = amroc_testrun.allInstances.get(0);
+	var jobscript = jobscript!jobscript.allInstances.get(0);
 %]
 ### [% out.print(jobscript.filename); %] ###
 

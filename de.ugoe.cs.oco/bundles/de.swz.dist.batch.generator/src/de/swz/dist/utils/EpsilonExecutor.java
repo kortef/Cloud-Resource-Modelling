@@ -14,6 +14,7 @@
 
 package de.swz.dist.utils;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public abstract class EpsilonExecutor{
 	protected IEolExecutableModule module;
 	protected List<Variable> parameters = new ArrayList<Variable>();
 	
-	protected Object result;
+	protected Object result = null;
 	
 	public abstract IEolExecutableModule createModule();
 	
@@ -50,7 +51,7 @@ public abstract class EpsilonExecutor{
 		System.out.println("executing...");
 		
 		module = createModule();
-		module.parse(getSource());
+		module.parse(new File(getSource()));
 		
 		if (module.getParseProblems().size() > 0) {
 			System.err.println("Parse errors occured...");
@@ -69,7 +70,8 @@ public abstract class EpsilonExecutor{
 		}
 		
 		preProcess();
-		result = execute(module);
+		result = module.execute();
+				//execute(module);
 		postProcess();
 		
 		module.getContext().getModelRepository().dispose();

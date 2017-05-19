@@ -50,7 +50,7 @@ public class JobscriptGenerator extends EpsilonExecutor {
 	public URI getFileURI(String fileName) throws URISyntaxException {
 		//System.out.println("...getFileURI(" + fileName + ")");
 		URI uri = URI.create(fileName);
-		//System.out.println("-> " + uri.toString());
+		System.out.println("-> " + uri.toString());
 		return uri;
 	}
 

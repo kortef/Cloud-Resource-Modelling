@@ -1,0 +1,24 @@
+[% //get root instance
+	var j = jobscript!jobscript.allInstances.get(0);
+%]
+### [% out.print(j.filename); %] ###
+
+#!/bin/bash
+
+[% //include bsub arguments
+	for (bsub_arg in j.bsub_args) {
+		out.println("#BSUB -" + bsub_arg.key + " " + bsub_arg.value);
+	}
+%]
+
+[% //load modules
+	for (module in j.modules) {
+		out.println("module load " + module);
+	}
+%]
+
+[% //execute commands
+	for (cmd in j.commands) {
+		out.println(cmd);
+	}
+%]

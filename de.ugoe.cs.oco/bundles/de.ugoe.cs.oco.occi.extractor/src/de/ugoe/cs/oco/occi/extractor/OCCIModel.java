@@ -4,7 +4,6 @@ package de.ugoe.cs.oco.occi.extractor;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,7 +17,7 @@ import org.occiware.clouddesigner.occi.OCCIFactory;
 import org.occiware.clouddesigner.occi.Resource;
 
 /**
-*
+* Wrapper class to store OCCI Model elements at runtime.
 * @author nvertovec, fglaser
 */
 public class OCCIModel {

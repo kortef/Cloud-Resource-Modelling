@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.occiware.clouddesigner.occi.Category;
 import org.occiware.clouddesigner.occi.OCCIFactory;
 
 import cz.cesnet.cloud.occi.Model;
@@ -25,14 +24,21 @@ import cz.cesnet.cloud.occi.core.Link;
 import cz.cesnet.cloud.occi.core.Mixin;
 import cz.cesnet.cloud.occi.core.Resource;
 /**
+ * Class to that implements functionality for extracting OCCI models from
+ * OCCI server.
  * @author fglaser, nvertovec
- *
+ * 
  */
 public class OCCIModelExtractor {
 	private Client httpClient;
 	private OCCIModel occiModel;
 	private Set<String> extensionSchemas = new HashSet<String>();
-
+	
+	/**
+	 * Extracts OCCIModel from cloud specified with help httpClient object.
+	 * @param httpClient
+	 * @return OCCIModel
+	 */
 	public OCCIModel extractModel(Client httpClient){
 		this.httpClient = httpClient;
 		Model model = httpClient.getModel();

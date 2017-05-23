@@ -11,6 +11,7 @@ public class Runner {
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.cli");
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.tosca.yamlgenerator.commands");
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.tosca2occi.commands");
+		CommandExecuter.getInstance().addCommandPackage("de.swz.dist.batch.commands");
 		TextConsole console = new TextConsole(Level.ALL);
 		console.run();
 	}

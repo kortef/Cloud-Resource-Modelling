@@ -3,9 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Generator
 Bundle-SymbolicName: de.swz.dist.batch.generator
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.epsilon.common;bundle-version="1.3.0",
+Bundle-Activator: de.swz.dist.batch.Activator
+Require-Bundle: 
+ org.eclipse.ui;bundle-version="3.107.0",
+ org.eclipse.core.runtime;bundle-version="3.11.1",
+ org.eclipse.epsilon.common;bundle-version="1.3.0",
  org.eclipse.epsilon.egl.engine;bundle-version="1.3.0",
  org.eclipse.epsilon.eol.engine;bundle-version="1.3.0",
- org.eclipse.epsilon.emc.emf;bundle-version="1.3.0"
+ org.eclipse.epsilon.emc.emf;bundle-version="1.3.0",
+ de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

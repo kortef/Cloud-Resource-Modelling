@@ -1,2 +1,2 @@
-bundles/**bin
+bundles/**/bin
 bundles/**/target

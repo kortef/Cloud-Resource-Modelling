@@ -7,9 +7,9 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated TOSCA-v1.0 -->
+      <!-- @generated tosca -->
       <factory
-            uri="http://swe.simpaas.tosca.de/tosca"
+            uri="http://oco.cs.ugoe.de/tosca"
             class="de.ugoe.cs.oco.tosca.provider.ToscaItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

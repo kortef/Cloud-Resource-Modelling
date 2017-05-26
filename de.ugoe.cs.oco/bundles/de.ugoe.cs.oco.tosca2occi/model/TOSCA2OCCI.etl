@@ -1,0 +1,64 @@
+import "./configuration.etl";
+import "./operations/generalOperations.etl";
+import "./operations/actions.etl";
+import "./operations/attributes.etl";
+import "./operations/parents.etl";
+import "./operations/scheme.etl";
+import "./operations/extensions.etl";
+import "./operations/kinds.etl";
+import "./operations/links.etl";
+import "./operations/mixins.etl";
+import "./rules/NodeType2Kind.etl";
+import "./rules/RelationshipType2Kind.etl";
+//import "./rules/Capability2Mixin.etl";
+import "./rules/NodeTemplate2Resource.etl";
+
+
+
+pre {
+	"Starting ETL".println();
+	"Starting Transformation".println();
+	"\n".print();
+	var kind_Set = new Set; //Set containing all Kinds
+	var parentToBeAdded = new Map; //Key = Parent Type; Value = Child Kinds;
+	var linkToBeAdded = new Map; //Key = Target Resource; Value = Source Resource
+	var configuration = getConfiguration();
+	var propertyMapping = getPropertyMapping();
+	//createConfigurationExtensions();
+	//addKindsToConfiguredExtensions();
+	
+	createRootExtensions(); //Creates basic Extensions required for the transformation.
+	
+}
+post {
+	"\n".print();
+	for(each in parentToBeAdded.keySet()){
+		"Type ".print();
+		each.print();
+		" is not declared in your model!".println();
+	}
+	
+	// convert ports to network interfaces
+	var portKinds = OCCI!Kind.allInstances.selectOne(k | k.term == "tosca.nodes.network.Port");	
+	
+	if (not (portKinds == null)){
+		for (port in portKinds.entities){
+			var vm = port.links.selectOne(l | l.title.contains("bindsTo")).target;
+			var network = port.links.selectOne(l | l.title.contains("linksTo")).target;
+			var link = new OCCI!Link;
+			var mixin = Cloudconfig!Mixin.allInstances.selectOne(m | m.term == "ipnetworkinterface");
+			link.title = vm.title + "_" + "linksTo" + "_" + network.title;
+			//link.id = "linksTo" + network.title;
+			for (attribute in port.attributes){
+				var newAttribute = new OCCI!AttributeState;
+				newAttribute.name = attribute.name;
+				newAttribute.value = attribute.value;
+				link.attributes.add(newAttribute);
+			}
+		link.mixins.add(mixin);
+		link.target = network;
+		vm.links.add(link);
+		delete port;
+	}
+	}
+}

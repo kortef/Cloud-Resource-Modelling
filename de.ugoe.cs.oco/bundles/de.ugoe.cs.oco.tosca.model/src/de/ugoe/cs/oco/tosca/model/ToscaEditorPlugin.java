@@ -1,27 +1,25 @@
 /**
  */
-package de.ugoe.cs.oco.tosca.types.provider;
-
-import de.ugoe.cs.oco.tosca.provider.ToscaEditPlugin;
+package de.ugoe.cs.oco.tosca.model;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the PropertyTypes edit plugin.
+ * This is the central singleton for the Tosca model plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class PropertyTypesEditPlugin extends EMFPlugin {
+public final class ToscaEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final PropertyTypesEditPlugin INSTANCE = new PropertyTypesEditPlugin();
+	public static final ToscaEditorPlugin INSTANCE = new ToscaEditorPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -37,11 +35,8 @@ public final class PropertyTypesEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PropertyTypesEditPlugin() {
-		super
-		  (new ResourceLocator [] {
-		     ToscaEditPlugin.INSTANCE,
-		   });
+	public ToscaEditorPlugin() {
+		super(new ResourceLocator [] {});
 	}
 
 	/**

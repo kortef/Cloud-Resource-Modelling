@@ -1,0 +1,63 @@
+/* Operation: setParent
+Input: TNodeType
+Description: Sets parent of Kind corresponding to the derived from value of the Node/Relationship Type.
+			If the Type has no Parent, it is set to the Core entity type.
+More Detail: If the parent Kind is not created at that moment, a key value pair is created
+			Key = Node Type, Value = Kinds having this Node Type as parent. If the Node Type is finally created
+			the child kinds get their parent. */
+operation OCCI!Kind setParent(type : TOSCA!TNodeType) {
+	if(type.derivedFrom == null){
+		self.parent = Core!Kind.all.selectOne(element|element.term = "resource");
+	}
+	if(type.derivedFrom <> null){
+		self.parent = correspondingKind(type.derivedFrom.typeRef.toString()).println();
+		if(self.parent == null) { 
+			if(parentToBeAdded.containsKey(type.derivedFrom.typeRef.toString())){
+				parentToBeAdded.get(type.derivedFrom.typeRef.toString()).add(self);			
+			}
+			else{
+				var bag = new Bag;
+				bag.add(self);
+				parentToBeAdded.put(type.derivedFrom.typeRef.toString(), bag);		
+			}
+		}
+	}
+	if(parentToBeAdded.containsKey(type.name.toString())){	
+		for(kind in parentToBeAdded.get(type.name.toString())) {
+			kind.parent = self;
+		}
+		parentToBeAdded.remove(type.name.toString());
+	}
+}
+
+/* Operation: setParent
+Input: TRelationshipType
+Description: Sets parent of Kind corresponding to the derived from value of the Node/Relationship Type.
+			If the Type has no Parent, it is set to the Core entity type.
+More Detail: If the parent Kind is not created at that moment, a key value pair is created
+			Key = Node Type, Value = Kinds having this Node Type as parent. If the Node Type is finally created
+			the child kinds get their parent. */
+operation OCCI!Kind setParent(type : TOSCA!TRelationshipType) {
+	if(type.derivedFrom == null){
+		self.parent = Core!Kind.all.selectOne(element|element.term = "link");
+	}
+	if(type.derivedFrom <> null){
+		self.parent = correspondingKind(type.derivedFrom.typeRef.toString());
+		if(self.parent == null) { 
+			if(parentToBeAdded.containsKey(type.derivedFrom.typeRef.toString())){
+				parentToBeAdded.get(type.derivedFrom.typeRef.toString()).add(self);			
+			}
+			else{
+				var bag = new Bag;
+				bag.add(self);
+				parentToBeAdded.put(type.derivedFrom.typeRef.toString(), bag);		
+			}
+		}
+	}
+	if(parentToBeAdded.containsKey(type.name.toString())){	
+		for(kind in parentToBeAdded.get(type.name.toString())) {
+			kind.parent = self;
+		}
+		parentToBeAdded.remove(type.name.toString());
+	}
+}

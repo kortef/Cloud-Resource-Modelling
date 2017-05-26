@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:types="http://swe.simpaas.tosca.de/PropertyTypes">
+  <tosca:Import location="http://www.getcloudify.org/spec/cloudify/3.3/types.yaml" namespace="cloudify_types"/>
+  <tosca:Import location="http://www.getcloudify.org/spec/openstack-plugin/1.3.1/plugin.yaml" namespace="openstack_plugin"/>
+  <tosca:Import location="http://user.informatik.uni-goettingen.de/~fglaser/cloudify-ansible-plugin/plugin.yaml" namespace="ansible_plugin"/>
+  <tosca:NodeType name="ansible.nodes.Application">
+    <tosca:DerivedFrom typeRef="cloudify.nodes.ApplicationModule"/>
+    <tosca:Interfaces>
+      <tosca:Interface name="cloudify.interfaces.lifecycle">
+        <tosca:Operation name="start" implementation="ansible.ansible_plugin.tasks.ansible_playbook"/>
+        <tosca:Operation name="configure" implementation="ansible.ansible_plugin.tasks.configure"/>
+      </tosca:Interface>
+    </tosca:Interfaces>
+  </tosca:NodeType>
+  <tosca:NodeType name="swe.simpaas.nodes.mpihost">
+    <tosca:DerivedFrom typeRef="cloudify.openstack.nodes.Server"/>
+  </tosca:NodeType>
+  <tosca:ServiceTemplate>
+    <tosca:TopologyTemplate>
+      <tosca:NodeTemplate type="cloudify.openstack.nodes.FloatingIP" name="swe.simpaas.instances.floating_ip"/>
+      <tosca:NodeTemplate type="ansible.nodes.Application" name="swe.simpaas.instances.gateway">
+        <interfaces>
+          <tosca:Interface name="cloudify.interfaces.lifecycle">
+            <tosca:Operation name="start" implementation="ansible.ansible_plugin.tasks.ansible_playbook"/>
+            <tosca:Operation name="configure" implementation="ansible.ansible_plugin.tasks.configure">
+              <tosca:InputParameters>
+                <tosca:InputParameter name="rolesfile" value="{get_input: roles_file}"/>
+                <tosca:InputParameter name="roles" value="[common, avahi, nfsserver, nfsclient, mpimaster, openfoamuser, ganglia]"/>
+                <tosca:InputParameter name="keypair" value="{get_input: key_file}"/>
+                <tosca:InputParameter name="private_ip_address" value="{get_attribute: [swe.simpaas.instances.gatewayhost, ip]}"/>
+                <tosca:InputParameter name="user" value="{get_property: [swe.simpaas.instances.gatewayhost, cloudify_agent, user]}"/>
+              </tosca:InputParameters>
+            </tosca:Operation>
+          </tosca:Interface>
+        </interfaces>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate type="swe.simpaas.nodes.mpihost" name="swe.simpaas.instances.gatewayhost">
+        <tosca:Properties>
+          <types:MPIHostPropertiesType>
+            <types:cloudify_agent>
+              <types:user>{get_input: agent_user}</types:user>
+            </types:cloudify_agent>
+            <types:server>
+              <types:image>{get_input: image}</types:image>
+              <types:flavor>{get_input: flavor}</types:flavor>
+              <types:name>gateway</types:name>
+            </types:server>
+          </types:MPIHostPropertiesType>
+        </tosca:Properties>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate type="cloudify.openstack.nodes.Volume" name="swe.simpaas.instances.volume">
+        <tosca:Properties>
+          <types:VolumeHostPropertiesType>
+            <types:volume>
+              <types:size>{get_input: size}</types:size>
+            </types:volume>
+          </types:VolumeHostPropertiesType>
+        </tosca:Properties>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate type="swe.simpaas.nodes.mpihost" name="swe.simpaas.instances.mpihost">
+        <tosca:Properties>
+          <types:MPIHostPropertiesType>
+            <types:cloudify_agent>
+              <types:user>{get_input: agent_user}</types:user>
+            </types:cloudify_agent>
+            <types:server>
+              <types:image>{get_input: image}</types:image>
+              <types:flavor>{get_input: flavor}</types:flavor>
+              <types:name>mpihost</types:name>
+            </types:server>
+          </types:MPIHostPropertiesType>
+        </tosca:Properties>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate type="ansible.nodes.Application" name="swe.simpaas.instances.mpiworker">
+        <interfaces>
+          <tosca:Interface name="cloudify.interfaces.lifecycle">
+            <tosca:Operation name="start" implementation="ansible.ansible_plugin.tasks.ansible_playbook"/>
+            <tosca:Operation name="configure" implementation="ansible.ansible_plugin.tasks.configure">
+              <tosca:InputParameters>
+                <tosca:InputParameter name="rolesfile" value="{get_input: roles_file}"/>
+                <tosca:InputParameter name="roles" value="[common, avahi, nfsclient, mpiworker, openfoam, ganglia]"/>
+                <tosca:InputParameter name="keypair" value="{get_input: key_file}"/>
+                <tosca:InputParameter name="private_ip_address" value="{get_attribute: [swe.simpaas.instances.mpihost, ip]}"/>
+                <tosca:InputParameter name="user" value="{get_property: [swe.simpaas.instances.mpihost, cloudify_agent, user]}"/>
+              </tosca:InputParameters>
+            </tosca:Operation>
+          </tosca:Interface>
+        </interfaces>
+      </tosca:NodeTemplate>
+      <tosca:RelationshipTemplate type="cloudify.relationships.depends_on" name="gatewaydependsovolume">
+        <tosca:SourceElement ref="swe.simpaas.instances.gateway"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.volume"/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate type="cloudify.relationships.contained_in" name="mpiworkercontainedinmpihost">
+        <tosca:SourceElement ref="swe.simpaas.instances.mpiworker"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.mpihost"/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate type="cloudify.relationships.depends_on" name="mpiworkerdependsongateway">
+        <tosca:SourceElement ref="swe.simpaas.instances.mpiworker"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.gateway"/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate type="cloudify.openstack.volume_attached_to_server" name="volumeattachedtogateway">
+        <tosca:SourceElement ref="swe.simpaas.instances.volume"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.gatewayhost"/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate type="cloudify.relationships.contained_in" name="gatewaycontainedingatewayhost">
+        <tosca:SourceElement ref="swe.simpaas.instances.gateway"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.gatewayhost"/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate type="cloudify.openstack.server_connected_to_floating_ip" name="gatewayhosttoFloatingIP">
+        <tosca:SourceElement ref="swe.simpaas.instances.gatewayhost"/>
+        <tosca:TargetElement ref="swe.simpaas.instances.floating_ip"/>
+      </tosca:RelationshipTemplate>
+      <tosca:GroupTemplate type="swe.simpaas.groups.ScalingGroup" name="swe.simpaas.instances.scaling_group">
+        <tosca:Properties>
+          <types:ScalingGroupPropertiesType>
+            <types:scale>
+              <types:instances>{get_input: worker_instances}</types:instances>
+            </types:scale>
+          </types:ScalingGroupPropertiesType>
+        </tosca:Properties>
+        <tosca:Member>swe.simpaas.instances.mpihost</tosca:Member>
+        <tosca:Member>swe.simpaas.instances.mpiworker</tosca:Member>
+      </tosca:GroupTemplate>
+    </tosca:TopologyTemplate>
+    <tosca:Plans>
+      <tosca:Plan>
+        <tosca:InputParameters>
+          <tosca:InputParameter name="flavor" defaultValue="3"/>
+          <tosca:InputParameter name="agent_user" defaultValue="ubuntu"/>
+          <tosca:InputParameter name="image" defaultValue="6fa2f3e9-a7d9-4fdf-bc92-3b7dc4c6e749"/>
+          <tosca:InputParameter name="roles_file" defaultValue="roles.zip"/>
+          <tosca:InputParameter name="key_file" defaultValue="/home/centos/.ssh/cloudify-agent-kp.pem"/>
+          <tosca:InputParameter name="size" defaultValue="250"/>
+          <tosca:InputParameter name="worker_instances" defaultValue="1"/>
+        </tosca:InputParameters>
+      </tosca:Plan>
+    </tosca:Plans>
+  </tosca:ServiceTemplate>
+</tosca:Definitions>

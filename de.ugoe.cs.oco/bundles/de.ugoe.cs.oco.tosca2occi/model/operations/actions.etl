@@ -1,0 +1,49 @@
+/* Operation: setActions
+Input: NodeType
+Description: If the Node Type contains any interface, an Action is created for every
+Operation in that Interface.*/
+operation OCCI!Kind setActions(nodeType : TOSCA!TNodeType) {
+	if(nodeType.interfaces.isDefined()) {
+		for(interface in nodeType.interfaces.interface) {
+			self.actions += interface.createActions(self);
+		}
+	}
+}
+
+/* Operation: setActions
+Input: RelationshipType
+Description: If the Relationship Type contains any Source Interface, an Action is created for every
+Operation in that Interface.*/
+operation OCCI!Kind setActions(relationshipType : TOSCA!TRelationshipType) {
+	if(relationshipType.sourceInterfaces.isDefined()) {
+		for(interface in relationshipType.sourceInterfaces.interface) {
+			self.actions += interface.getActions(self);
+		}
+	}
+	if(relationshipType.targetInterfaces.isDefined()) {
+		for(interface in relationshipType.targetInterfaces.interface) {
+			//Also create Actions from Target Interfaces?
+			//self.actions += interface.getActions();
+		}
+	}
+}
+
+/* Operation: createActions
+Returns: Set of Actions
+Input: kind = Kind for which the Action is created (required for scheme);
+Description: Creates an Action for every Operation in the Interface and returns them as Set.*/
+operation TOSCA!TInterface createActions(kind : OCCI!Kind) : Set {
+	var action_Set = new OrderedSet;
+	for(operations in self.`operation`){
+				var action = new OCCI!Action;
+				action.scheme = kind.scheme.replace("#","")+ "/" + kind.term + "/action#";
+				action.title = operations.name;
+				action.term = operations.name;
+				if(operations.inputParameters.isDefined() and 
+				operations.inputParameters.inputParameter.isDefined()){
+					action.attributes = operations.inputParameters.inputParameter.createAttributes();
+				}
+				action_Set.add(action);
+			}
+	return action_Set;
+}

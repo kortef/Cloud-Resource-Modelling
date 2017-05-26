@@ -1,0 +1,46 @@
+/* Operation: setLinks
+Input:  nodeTemplate of resource to be created.
+Description: Creates for every relationship template that has the nodeTemplate as source a Link.
+Furthermore it fills out the target property of the links, which had the corresponding resource as target.
+(could be splitted)*/
+operation OCCI!Resource setLinks(nodeTemplate : TOSCA!TNodeTemplate) {
+	if(linkToBeAdded.containsKey(nodeTemplate.id)){	
+		for(link in linkToBeAdded.get(nodeTemplate.id)) {
+			link.target = self;
+		}
+		parentToBeAdded.remove(nodeTemplate.id);
+	}
+	for(relationshipTemplate in TOSCA!TRelationshipTemplate) {
+		if(nodeTemplate.id == relationshipTemplate.sourceElement.ref){
+			self.links += relationshipTemplate.createLink();
+		}
+	}	
+}
+	
+/* Operation: createLink
+Returns: A Set containing one link of the corresponding relationship Template.
+Description: Creates a link out of the corresponding relationship template. Furthermore if the target is not created
+at that moment, a key value pair for it is created in the linkToBeAdded Map, which is later on resolved in setLinks().*/
+operation TOSCA!TRelationshipTemplate createLink() : Set {
+	var link = new OCCI!Link;
+	link.id = self.id;
+	link.title = self.name;
+	link.assignKind(self);
+	for(resource in OCCI!Resource) {
+		if(self.targetElement.ref == resource.id) {
+			link.target	= resource;				
+		}
+	}
+	if(link.target == null){
+			if(linkToBeAdded.containsKey(self.targetElement.ref.toString())){
+				linkToBeAdded.get(self.targetElement.ref.toString()).add(link);	
+			}
+			else{
+				var bag = new Bag;
+				bag.add(link);
+				linkToBeAdded.put(self.targetElement.ref.toString(), bag);
+			}
+		}
+	return link.asSet();
+}
+

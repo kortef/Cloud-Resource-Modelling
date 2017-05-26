@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
  de.ugoe.cs.oco.tosca2occi;bundle-version="1.0.0",
  de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0",
  de.ugoe.cs.oco.tosca.yamlgenerator;bundle-version="1.0.0",
+ de.ugoe.cs.oco.tosca.yamlparser;bundle-version="1.0.0",
  de.swz.dist.batch.generator;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

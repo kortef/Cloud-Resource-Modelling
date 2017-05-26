@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-Activator: de.ugoe.cs.oco.tosca.model.Activator
+Bundle-Activator: de.ugoe.cs.oco.tosca.model.ToscaEditorPlugin$Implementation
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.runtime.compatibility;resolution:=optional;x-installation:=greedy,
@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.ugoe.cs.oco.tosca,
  de.ugoe.cs.oco.tosca.impl,
+ de.ugoe.cs.oco.tosca.model,
  de.ugoe.cs.oco.tosca.util
 Bundle-ActivationPolicy: lazy
-Plugin-Class: de.ugoe.cs.oco.tosca.Activator
+Plugin-Class: de.ugoe.cs.oco.tosca.model.Activator

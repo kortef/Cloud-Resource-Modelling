@@ -1,0 +1,16 @@
+import "./../operations/generalOperations.etl";
+
+//-----------------------------------------------//
+//--------NodeTemplate2Resource------------------//
+//-----------------------------------------------//
+rule NodeTemplate2Resource
+	transform nodeTemplate : TOSCA!TNodeTemplate
+	to resource : OCCI!Resource {
+	resource.id = nodeTemplate.id;	
+	resource.title = nodeTemplate.name;
+	resource.summary = nodeTemplate.getDescription();
+	resource.assignKind(nodeTemplate);
+	resource.setLinks(nodeTemplate);
+	resource.setAttributeStates(nodeTemplate);
+	resource.setMixins(nodeTemplate);
+}

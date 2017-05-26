@@ -19,9 +19,16 @@ import de.ugoe.cs.oco.occi.extractor.OCCIModel;
 
 /**
  * @author fglaser
- *
+ * Class that encapsulates functionailty to serialize a OCCIModel.
  */
 public class OCCIModelSerializer {
+	
+	/**
+	 * Serialize OCCIModel to file given by path.
+	 * @param model The OCCIModel to be serialized.
+	 * @param path The Output path to where the model should be written.
+	 * @return
+	 */
 	public boolean serializeOCCIModel(OCCIModel model, Path path){
 		OCCIPackage.eINSTANCE.eClass();
 		

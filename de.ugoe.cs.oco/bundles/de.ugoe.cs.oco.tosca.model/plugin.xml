@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated TOSCA-v1.0 -->
       <package
-            uri="http://swe.simpaas.tosca.de/tosca"
+            uri="http://oco.cs.ugoe.de/tosca"
             class="de.ugoe.cs.oco.tosca.ToscaPackage"
             genModel="model/TOSCA-v1.0.genmodel"/>
    </extension>

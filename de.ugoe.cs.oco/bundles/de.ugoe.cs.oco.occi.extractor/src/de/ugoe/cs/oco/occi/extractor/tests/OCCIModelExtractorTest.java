@@ -29,15 +29,15 @@ public class OCCIModelExtractorTest {
 	@Test
 	public void testExtractModel() {
 		try {
-			Client client =  new HTTPClient(URI.create("http://192.168.34.1:51245/occi1.1"), 
-					new BasicAuthentication("fglaser", "eCzA2015"), MediaType.TEXT_PLAIN, true);
+			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.1"), 
+					new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			
 			OCCIModel model = extractor.extractModel(client);
 			
 			OCCIModelSerializer serializer = new OCCIModelSerializer();
-			serializer.serializeOCCIModel(model, Paths.get("test.occie"));
+			serializer.serializeOCCIModel(model, Paths.get("test3.occie"));
 			
 		} catch (CommunicationException e) {
 			// TODO Auto-generated catch block

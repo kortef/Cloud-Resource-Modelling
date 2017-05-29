@@ -6,14 +6,14 @@ import java.net.URL;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.eclipse.epsilon.examples.standalone.EpsilonStandaloneExample;
+import org.eclipse.epsilon.examples.standalone.EpsilonExecutor;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.egl.EglTemplateFactory;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 
 
-public class jobscriptGenerator extends EpsilonStandaloneExample {
+public class jobscriptGenerator extends EpsilonExecutor {
 	String inputModelPath;
 	String inputMetamodelPath;
 	String templatePath;

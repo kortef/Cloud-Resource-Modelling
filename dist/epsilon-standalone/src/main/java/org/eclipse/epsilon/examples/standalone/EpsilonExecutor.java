@@ -29,7 +29,7 @@ import org.eclipse.epsilon.eol.execute.context.Variable;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 
-public abstract class EpsilonStandaloneExample {
+public abstract class EpsilonExecutor {
 	
 	protected IEolExecutableModule module;
 	protected List<Variable> parameters = new ArrayList<Variable>();
@@ -119,7 +119,7 @@ public abstract class EpsilonStandaloneExample {
 
 	protected URI getFileURI(String fileName) throws URISyntaxException {
 		System.out.println("getting URI for file " + fileName);
-		URI binUri = EpsilonStandaloneExample.class.
+		URI binUri = EpsilonExecutor.class.
 				getResource(fileName).toURI();
 		URI uri = null;
 		

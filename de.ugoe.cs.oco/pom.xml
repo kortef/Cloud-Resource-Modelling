@@ -10,7 +10,6 @@
    <version>1.0.0-SNAPSHOT</version>
   <relativePath>./releng/de.ugoe.cs.oco.configuration</relativePath>
  </parent>
-
  <modules>
  	<module>bundles</module>
  </modules>

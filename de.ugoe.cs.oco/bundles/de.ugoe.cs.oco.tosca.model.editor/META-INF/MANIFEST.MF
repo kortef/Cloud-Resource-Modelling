@@ -4,10 +4,10 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: de.ugoe.cs.oco.tosca.model.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: de.ugoe.cs.oco.tosca.presentation.TOSCAv1EditorPlugin$Implementation
+Bundle-Activator: de.ugoe.cs.oco.tosca.presentation.ToscaEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.ugoe.cs.oco.tosca.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,

@@ -198,7 +198,7 @@ public interface ToscaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://swe.simpaas.tosca.de/tosca";
+	String eNS_URI = "http://oco.cs.ugoe.de/tosca";
 
 	/**
 	 * The package namespace name.

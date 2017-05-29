@@ -65,7 +65,6 @@ public class TTopologyTemplateItemProvider extends TExtensibleElementsItemProvid
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP);
-			childrenFeatures.add(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE);
 		}
 		return childrenFeatures;
 	}
@@ -119,7 +118,6 @@ public class TTopologyTemplateItemProvider extends TExtensibleElementsItemProvid
 
 		switch (notification.getFeatureID(TTopologyTemplate.class)) {
 			case ToscaPackage.TTOPOLOGY_TEMPLATE__GROUP:
-			case ToscaPackage.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -150,11 +148,6 @@ public class TTopologyTemplateItemProvider extends TExtensibleElementsItemProvid
 				 FeatureMapUtil.createEntry
 					(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__RELATIONSHIP_TEMPLATE,
 					 ToscaFactory.eINSTANCE.createTRelationshipTemplate())));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE,
-				 ToscaFactory.eINSTANCE.createTGroupTemplate()));
 	}
 
 }

@@ -7,7 +7,7 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated TOSCA-v1.0 -->
+      <!-- @generated tosca -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
@@ -23,7 +23,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated TOSCA-v1.0 -->
+      <!-- @generated tosca -->
       <editor
             id="de.ugoe.cs.oco.tosca.presentation.ToscaEditorID"
             name="%_UI_ToscaEditor_label"

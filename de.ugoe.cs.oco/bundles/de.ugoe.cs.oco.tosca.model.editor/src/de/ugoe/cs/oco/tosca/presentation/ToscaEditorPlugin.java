@@ -9,19 +9,19 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the TOSCA-v1 editor plugin.
+ * This is the central singleton for the Tosca editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class TOSCAv1EditorPlugin extends EMFPlugin {
+public final class ToscaEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final TOSCAv1EditorPlugin INSTANCE = new TOSCAv1EditorPlugin();
+	public static final ToscaEditorPlugin INSTANCE = new ToscaEditorPlugin();
 	
 	/**
 	 * Keep track of the singleton.
@@ -37,7 +37,7 @@ public final class TOSCAv1EditorPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TOSCAv1EditorPlugin() {
+	public ToscaEditorPlugin() {
 		super
 			(new ResourceLocator [] {
 			});

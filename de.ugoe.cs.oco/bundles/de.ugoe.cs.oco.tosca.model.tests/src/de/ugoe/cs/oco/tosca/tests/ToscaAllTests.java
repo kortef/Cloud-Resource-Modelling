@@ -9,11 +9,11 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test suite for the '<em><b>TOSCA-v1</b></em>' model.
+ * A test suite for the '<em><b>Tosca</b></em>' model.
  * <!-- end-user-doc -->
  * @generated
  */
-public class TOSCAv1AllTests extends TestSuite {
+public class ToscaAllTests extends TestSuite {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -30,7 +30,7 @@ public class TOSCAv1AllTests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new TOSCAv1AllTests("TOSCA-v1 Tests");
+		TestSuite suite = new ToscaAllTests("Tosca Tests");
 		suite.addTest(ToscaTests.suite());
 		return suite;
 	}
@@ -40,8 +40,8 @@ public class TOSCAv1AllTests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TOSCAv1AllTests(String name) {
+	public ToscaAllTests(String name) {
 		super(name);
 	}
 
-} //TOSCAv1AllTests
+} //ToscaAllTests

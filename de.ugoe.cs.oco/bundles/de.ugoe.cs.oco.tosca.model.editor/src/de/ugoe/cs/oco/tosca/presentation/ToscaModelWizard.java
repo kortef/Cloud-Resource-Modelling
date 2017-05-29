@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
-
 import org.eclipse.emf.common.CommonPlugin;
-
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
@@ -30,14 +28,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -61,29 +57,20 @@ import org.eclipse.swt.widgets.Label;
 
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
-import de.ugoe.cs.oco.tosca.provider.TOSCAv1EditPlugin;
-
-
+import de.ugoe.cs.oco.tosca.provider.ToscaEditPlugin;
 import org.eclipse.core.runtime.Path;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
-
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -104,7 +91,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameExtensions").split("\\s*,\\s*")));
+		Collections.unmodifiableList(Arrays.asList(ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -113,7 +100,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS =
-		TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+		ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -180,8 +167,8 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(TOSCAv1EditorPlugin.INSTANCE.getImage("full/wizban/NewTosca")));
+		setWindowTitle(ToscaEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ToscaEditorPlugin.INSTANCE.getImage("full/wizban/NewTosca")));
 	}
 
 	/**
@@ -269,7 +256,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 							resource.save(options);
 						}
 						catch (Exception exception) {
-							TOSCAv1EditorPlugin.INSTANCE.log(exception);
+							ToscaEditorPlugin.INSTANCE.log(exception);
 						}
 						finally {
 							progressMonitor.done();
@@ -302,14 +289,14 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
 			}
 			catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), TOSCAv1EditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+				MessageDialog.openError(workbenchWindow.getShell(), ToscaEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 				return false;
 			}
 
 			return true;
 		}
 		catch (Exception exception) {
-			TOSCAv1EditorPlugin.INSTANCE.log(exception);
+			ToscaEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
 	}
@@ -343,7 +330,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
 					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(TOSCAv1EditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+					setErrorMessage(ToscaEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -405,8 +392,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
+			Composite composite = new Composite(parent, SWT.NONE); {
 				GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
@@ -421,7 +407,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+				containerLabel.setText(ToscaEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -447,7 +433,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+				encodingLabel.setText(ToscaEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -546,10 +532,10 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 		 */
 		protected String getLabel(String featureName) {
 			try {
-				return TOSCAv1EditPlugin.INSTANCE.getString("_UI_DocumentRoot_" + featureName + "_feature");
+				return ToscaEditPlugin.INSTANCE.getString("_UI_DocumentRoot_" + featureName + "_feature");
 			}
 			catch(MissingResourceException mre) {
-				TOSCAv1EditorPlugin.INSTANCE.log(mre);
+				ToscaEditorPlugin.INSTANCE.log(mre);
 			}
 			return featureName;
 		}
@@ -562,7 +548,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(ToscaEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -581,9 +567,9 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 		// Create a page, set the title, and the initial model file name.
 		//
 		newFileCreationPage = new ToscaModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_label"));
-		newFileCreationPage.setDescription(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_description"));
-		newFileCreationPage.setFileName(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setTitle(ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_label"));
+		newFileCreationPage.setDescription(ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_description"));
+		newFileCreationPage.setFileName(ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -609,7 +595,7 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameDefaultBase");
+					String defaultModelBaseFilename = ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
@@ -620,8 +606,8 @@ public class ToscaModelWizard extends Wizard implements INewWizard {
 			}
 		}
 		initialObjectCreationPage = new ToscaModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_label"));
-		initialObjectCreationPage.setDescription(TOSCAv1EditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage.setTitle(ToscaEditorPlugin.INSTANCE.getString("_UI_ToscaModelWizard_label"));
+		initialObjectCreationPage.setDescription(ToscaEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
 

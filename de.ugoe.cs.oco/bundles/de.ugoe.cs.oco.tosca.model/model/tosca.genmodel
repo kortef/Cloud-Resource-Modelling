@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ugoe.cs.oco.tosca.model/src" editDirectory="/de.ugoe.cs.oco.tosca.model.edit/src"
-    editorDirectory="/de.ugoe.cs.oco.tosca.model.editor/src" modelPluginID="de.ugoe.cs.oco.tosca.model"
-    templateDirectory="" modelName="TOSCA-v1" modelPluginClass="" editPluginClass="de.ugoe.cs.oco.tosca.provider.TOSCAv1EditPlugin"
-    editorPluginClass="de.ugoe.cs.oco.tosca.presentation.TOSCAv1EditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    testsDirectory="/de.ugoe.cs.oco.tosca.model.tests/src" testSuiteClass="de.ugoe.cs.oco.tosca.tests.TOSCAv1AllTests"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    providerRootExtendsClass="" editPluginID="de.ugoe.cs.oco.tosca.model.edit" editorPluginID="de.ugoe.cs.oco.tosca.model.editor"
-    testsPluginID="de.ugoe.cs.oco.tosca.model.tests" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
-    operationReflection="true" importOrganizing="true">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ugoe.cs.oco.tosca.model/src" modelPluginID="de.ugoe.cs.oco.tosca.model"
+    modelName="Tosca" modelPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    language="" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
+    interfaceNamePattern="" operationReflection="true" importOrganizing="true">
   <foreignModel>tosca.ecore</foreignModel>
   <genPackages prefix="Tosca" basePackage="de.ugoe.cs.oco" resource="XML" disposableProviderFactory="true"
-      extensibleProviderFactory="true" ecorePackage="tosca.ecore#/">
+      ecorePackage="tosca.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="tosca.ecore#//MaxInstancesTypeMember1">
       <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//MaxInstancesTypeMember1/unbounded"/>
     </genEnums>
@@ -460,7 +456,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//TTopologyTemplate/group"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tosca.ecore#//TTopologyTemplate/nodeTemplate"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tosca.ecore#//TTopologyTemplate/relationshipTemplate"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TTopologyTemplate/groupTemplate"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tosca.ecore#//TTopologyTemplate/groupTemplate"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TypesType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//TypesType/any"/>

@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -24,7 +23,6 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -85,11 +83,8 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
-
 import org.eclipse.ui.dialogs.SaveAsDialog;
-
 import org.eclipse.ui.ide.IGotoMarker;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
@@ -108,7 +103,6 @@ import org.eclipse.emf.common.command.CommandStackListener;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.ui.MarkerHelper;
 import org.eclipse.emf.common.ui.ViewerPane;
 
@@ -123,7 +117,6 @@ import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -148,15 +141,13 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import de.ugoe.cs.oco.tosca.provider.ToscaItemProviderAdapterFactory;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
 /**
@@ -530,7 +521,7 @@ public class ToscaEditor
 					}
 				}
 				catch (CoreException exception) {
-					TOSCAv1EditorPlugin.INSTANCE.log(exception);
+					ToscaEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -646,7 +637,7 @@ public class ToscaEditor
 					showTabs();
 				}
 				catch (PartInitException exception) {
-					TOSCAv1EditorPlugin.INSTANCE.log(exception);
+					ToscaEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -657,7 +648,7 @@ public class ToscaEditor
 						markerHelper.createMarkers(diagnostic);
 					}
 					catch (CoreException exception) {
-						TOSCAv1EditorPlugin.INSTANCE.log(exception);
+						ToscaEditorPlugin.INSTANCE.log(exception);
 					}
 				}
 			}
@@ -1523,7 +1514,7 @@ public class ToscaEditor
 		catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			TOSCAv1EditorPlugin.INSTANCE.log(exception);
+			ToscaEditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1727,7 +1718,7 @@ public class ToscaEditor
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return TOSCAv1EditorPlugin.INSTANCE.getString(key);
+		return ToscaEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1737,7 +1728,7 @@ public class ToscaEditor
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return TOSCAv1EditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return ToscaEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
 	}
 
 	/**

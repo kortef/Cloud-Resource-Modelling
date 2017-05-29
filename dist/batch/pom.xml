@@ -15,6 +15,13 @@
     <mainClass>de.swz.dist.batch.App</mainClass>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>autoquest</id>
+      <url>https://trex.informatik.uni-goettingen.de/nexus/content/repositories/autoquest-releases</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -26,6 +33,11 @@
     	<groupId>de.swz.dist</groupId>
     	<artifactId>epsilon-standalone</artifactId>
     	<version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.ugoe.cs</groupId>
+    	<artifactId>java-utils</artifactId>
+    	<version>0.2.1</version>
     </dependency>
   </dependencies>
 

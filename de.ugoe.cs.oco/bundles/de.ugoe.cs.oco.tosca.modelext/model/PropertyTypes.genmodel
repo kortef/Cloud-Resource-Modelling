@@ -6,7 +6,7 @@
     testsDirectory="/de.ugoe.cs.oco.tosca.modelext.tests/src" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.ugoe.cs.oco.tosca.modelext.edit"
     editorPluginID="de.ugoe.cs.oco.tosca.modelext.editor" testsPluginID="de.ugoe.cs.oco.tosca.modelext.tests"
-    language="" usedGenPackages="../../de.ugoe.cs.oco.tosca.model/model/TOSCA-v1.0.genmodel#//tosca ../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
+    language="" usedGenPackages="../../de.ugoe.cs.oco.tosca.model/model/tosca.genmodel#//tosca ../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
     operationReflection="true" importOrganizing="true">
   <foreignModel>types.ecore</foreignModel>
   <genPackages prefix="Types" basePackage="de.ugoe.cs.oco.tosca" resource="XML" disposableProviderFactory="true"

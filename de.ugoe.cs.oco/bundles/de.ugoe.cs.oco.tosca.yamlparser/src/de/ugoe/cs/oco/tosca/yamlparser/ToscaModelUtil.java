@@ -37,7 +37,10 @@ public class ToscaModelUtil {
 		for(Entry<String, ?> entry: map.entrySet()){
 			sb.append(entry.getKey());
 			sb.append(": ");
-			sb.append(entry.getValue());
+			if (entry.getValue() instanceof Map)
+				sb.append(ToscaModelUtil.buildStringFromMap((Map<String,?>)entry.getValue()));
+			else 
+				sb.append(entry.getValue());
 		}
 		sb.append("}");
 		

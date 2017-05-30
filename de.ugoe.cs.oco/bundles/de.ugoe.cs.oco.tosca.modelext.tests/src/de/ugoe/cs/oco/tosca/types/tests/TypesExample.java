@@ -3,6 +3,7 @@
 package de.ugoe.cs.oco.tosca.types.tests;
 
 import de.ugoe.cs.oco.tosca.types.CloudifyAgentPropertiesType;
+import de.ugoe.cs.oco.tosca.types.DocumentRoot;
 import de.ugoe.cs.oco.tosca.types.TypesFactory;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
@@ -60,8 +61,10 @@ public class TypesExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.tosca"));
+				DocumentRoot documentRoot = TypesFactory.eINSTANCE.createDocumentRoot();
 				CloudifyAgentPropertiesType root = TypesFactory.eINSTANCE.createCloudifyAgentPropertiesType();
-				resource.getContents().add(root);
+				documentRoot.setCloudifyAgentProperties(root);
+				resource.getContents().add(documentRoot);
 				resource.save(System.out, null);
 			}
 			catch (IOException exception) {

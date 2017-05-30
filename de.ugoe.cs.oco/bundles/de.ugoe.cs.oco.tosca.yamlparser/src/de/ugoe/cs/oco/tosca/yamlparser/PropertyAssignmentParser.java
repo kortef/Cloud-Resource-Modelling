@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.EAttributeImpl;
 import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -31,9 +33,12 @@ import de.ugoe.cs.oco.utils.StringFormater;
 public class PropertyAssignmentParser extends Parser{
 	private static Map<String, String> propertyClasses = new HashMap<String, String>();
 	static{
-		propertyClasses.put("swe.simpaas.nodes.mpihost", "createMPIHostPropertiesType");
+		propertyClasses.put("swe.simpaas.nodes.mpihost", "createHostPropertiesType");
 		propertyClasses.put("cloudify.openstack.nodes.Volume", "createVolumeHostPropertiesType");
 		propertyClasses.put("swe.simpaas.groups.ScalingGroup", "createScalingGroupPropertiesType");
+		propertyClasses.put("mongoscale.host", "createHostPropertiesType");
+		propertyClasses.put("cloudify.openstack.nodes.FloatingIP", "createOpenStackFloatingIPPropertiesType");
+		propertyClasses.put("cloudify.openstack.nodes.KeyPair", "createKeyPairPropertiesType");
 	}
 	
 	/* (non-Javadoc)
@@ -66,26 +71,37 @@ public class PropertyAssignmentParser extends Parser{
 			String propertyString = StringFormater.toCamelCase(entry.getKey());
 			Object propertyValue = entry.getValue();
 			LOGGER.info("Creating properties of category " + entry.getKey() + " using " + propertyString);
-			
-			Map<String, ?> innermap = (Map<String, ?>) propertyValue;
-
+			System.out.println(propertyValue.getClass());
 			EStructuralFeature feature = propertyObject.eClass().
 					getEStructuralFeature(propertyString);
-			
-			EReference reference = (EReference) feature;
-			EObject c = TypesFactory.eINSTANCE.create(reference.getEReferenceType());
-			propertyObject.eSet(feature, c);
-			
-			for (Entry<String, ?> innerentry: innermap.entrySet()){
-				EStructuralFeature innerfeature = c.eClass().getEStructuralFeature(innerentry.getKey());
-				Object innerValue = innerentry.getValue();
-				if (innerValue instanceof String){
-					c.eSet(innerfeature, innerentry.getValue());
+			if (feature instanceof EReference){
+				EReference reference = (EReference) feature;
+				EObject c = TypesFactory.eINSTANCE.create(reference.getEReferenceType());
+				propertyObject.eSet(feature, c);
+				Map<String, ?> innermap = (Map<String, ?>) propertyValue;
+				for (Entry<String, ?> innerentry: innermap.entrySet()){
+					EStructuralFeature innerfeature = c.eClass().getEStructuralFeature(StringFormater.toCamelCase(innerentry.getKey()));
+					LOGGER.info("Inner Entry with key" + innerentry.getKey() + " has value " + innerentry.getValue());
+					Object innerValue = innerentry.getValue();
+					if (innerValue instanceof String){
+						c.eSet(innerfeature, innerValue);
+					}
+					else if (innerValue instanceof Map){
+						c.eSet(innerfeature, ToscaModelUtil.buildStringFromMap((Map) innerValue));
+					}
 				}
-				else if (innerValue instanceof Map){
-					c.eSet(innerfeature, ToscaModelUtil.buildStringFromMap((Map) innerValue));
+			}
+			else{
+				EAttribute attribute = (EAttribute) feature;
+				Object attributeValue = entry.getValue();
+				if (attributeValue instanceof String){
+					propertyObject.eSet(feature, attributeValue);
 				}
-			}		
+				else if (attributeValue instanceof Map){
+					propertyObject.eSet(feature, ToscaModelUtil.buildStringFromMap((Map) attributeValue));
+				}
+
+			}
 		}
 		
 		EStructuralFeature props = extendedMetaData.demandFeature(

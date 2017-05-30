@@ -3,7 +3,7 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 
-import de.ugoe.cs.oco.tosca.types.OpenStackServerPropertiesType;
+import de.ugoe.cs.oco.tosca.types.KeyPairPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
 import java.util.Collection;
@@ -13,7 +13,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,19 +25,26 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.OpenStackServerPropertiesType} object.
+ * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.KeyPairPropertiesType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class KeyPairPropertiesTypeItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OpenStackServerPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
+	public KeyPairPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,27 +59,28 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addImagePropertyDescriptor(object);
-			addFlavorPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
+			addOpenstackConfigPropertyDescriptor(object);
+			addUseExternalResourcePropertyDescriptor(object);
+			addResourceIdPropertyDescriptor(object);
+			addPrivateKeyPathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Image feature.
+	 * This adds a property descriptor for the Openstack Config feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addImagePropertyDescriptor(Object object) {
+	protected void addOpenstackConfigPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OpenStackServerPropertiesType_image_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OpenStackServerPropertiesType_image_feature", "_UI_OpenStackServerPropertiesType_type"),
-				 TypesPackage.Literals.OPEN_STACK_SERVER_PROPERTIES_TYPE__IMAGE,
+				 getString("_UI_KeyPairPropertiesType_openstackConfig_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KeyPairPropertiesType_openstackConfig_feature", "_UI_KeyPairPropertiesType_type"),
+				 TypesPackage.Literals.KEY_PAIR_PROPERTIES_TYPE__OPENSTACK_CONFIG,
 				 true,
 				 false,
 				 false,
@@ -83,19 +90,19 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 	}
 
 	/**
-	 * This adds a property descriptor for the Flavor feature.
+	 * This adds a property descriptor for the Use External Resource feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFlavorPropertyDescriptor(Object object) {
+	protected void addUseExternalResourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OpenStackServerPropertiesType_flavor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OpenStackServerPropertiesType_flavor_feature", "_UI_OpenStackServerPropertiesType_type"),
-				 TypesPackage.Literals.OPEN_STACK_SERVER_PROPERTIES_TYPE__FLAVOR,
+				 getString("_UI_KeyPairPropertiesType_useExternalResource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KeyPairPropertiesType_useExternalResource_feature", "_UI_KeyPairPropertiesType_type"),
+				 TypesPackage.Literals.KEY_PAIR_PROPERTIES_TYPE__USE_EXTERNAL_RESOURCE,
 				 true,
 				 false,
 				 false,
@@ -105,19 +112,19 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Resource Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addResourceIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OpenStackServerPropertiesType_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OpenStackServerPropertiesType_name_feature", "_UI_OpenStackServerPropertiesType_type"),
-				 TypesPackage.Literals.OPEN_STACK_SERVER_PROPERTIES_TYPE__NAME,
+				 getString("_UI_KeyPairPropertiesType_resourceId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KeyPairPropertiesType_resourceId_feature", "_UI_KeyPairPropertiesType_type"),
+				 TypesPackage.Literals.KEY_PAIR_PROPERTIES_TYPE__RESOURCE_ID,
 				 true,
 				 false,
 				 false,
@@ -127,14 +134,36 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 	}
 
 	/**
-	 * This returns OpenStackServerPropertiesType.gif.
+	 * This adds a property descriptor for the Private Key Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPrivateKeyPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_KeyPairPropertiesType_privateKeyPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KeyPairPropertiesType_privateKeyPath_feature", "_UI_KeyPairPropertiesType_type"),
+				 TypesPackage.Literals.KEY_PAIR_PROPERTIES_TYPE__PRIVATE_KEY_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns KeyPairPropertiesType.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OpenStackServerPropertiesType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/KeyPairPropertiesType"));
 	}
 
 	/**
@@ -145,10 +174,10 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OpenStackServerPropertiesType)object).getName();
+		String label = ((KeyPairPropertiesType)object).getOpenstackConfig();
 		return label == null || label.length() == 0 ?
-			getString("_UI_OpenStackServerPropertiesType_type") :
-			getString("_UI_OpenStackServerPropertiesType_type") + " " + label;
+			getString("_UI_KeyPairPropertiesType_type") :
+			getString("_UI_KeyPairPropertiesType_type") + " " + label;
 	}
 	
 
@@ -163,10 +192,11 @@ public class OpenStackServerPropertiesTypeItemProvider extends ItemProviderAdapt
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(OpenStackServerPropertiesType.class)) {
-			case TypesPackage.OPEN_STACK_SERVER_PROPERTIES_TYPE__IMAGE:
-			case TypesPackage.OPEN_STACK_SERVER_PROPERTIES_TYPE__FLAVOR:
-			case TypesPackage.OPEN_STACK_SERVER_PROPERTIES_TYPE__NAME:
+		switch (notification.getFeatureID(KeyPairPropertiesType.class)) {
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE__OPENSTACK_CONFIG:
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE__USE_EXTERNAL_RESOURCE:
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE__RESOURCE_ID:
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE__PRIVATE_KEY_PATH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

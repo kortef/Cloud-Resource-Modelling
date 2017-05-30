@@ -37,7 +37,7 @@ public class TopologyTemplateParser extends Parser{
 				break;
 			case "node_templates":
 				List<TNodeTemplate> nodeTemplates = (List<TNodeTemplate>) new NodeTemplateParser().
-					parse((Map<String, ?>) entry.getValue());
+					parse((Map<String, ?>) entry.getValue(), topologyTemplate);
 				topologyTemplate.getNodeTemplate().addAll(nodeTemplates);
 				break;
 			case "relationship_templates":

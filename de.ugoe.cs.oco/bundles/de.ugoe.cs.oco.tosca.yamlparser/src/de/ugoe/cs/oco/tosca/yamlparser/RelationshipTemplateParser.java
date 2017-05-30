@@ -58,7 +58,34 @@ public class RelationshipTemplateParser extends Parser {
 
 	@Override
 	public Object parse(List<?> inputArray) throws ParseException {
-		return null;
+		List<TRelationshipTemplate> templates = new ArrayList<TRelationshipTemplate>();
+		for (Object entry: inputArray){
+			TRelationshipTemplate template = ToscaFactory.eINSTANCE.createTRelationshipTemplate();
+			Map<String, ?> innermap = (Map<String, ?>) entry;
+			for (Map.Entry<String, ?> innerentry: innermap.entrySet()){
+				String key = innerentry.getKey();
+				switch (key){
+				case "type":
+					template.setType(new QName((String) innerentry.getValue()));
+					break;
+				case "source":
+					SourceElementType source = ToscaFactory.eINSTANCE.createSourceElementType();
+					source.setRef((String) innerentry.getValue());
+					template.setSourceElement(source);
+					break;
+				case "target":
+					TargetElementType target = ToscaFactory.eINSTANCE.createTargetElementType();
+					target.setRef((String) innerentry.getValue());
+					template.setTargetElement(target);
+					break;
+				default:
+					throw new ParseException("Key " + key + " is unknown and can not be handled.");
+				}
+			}
+			
+			templates.add(template);
+		}
+		return templates;
 	}
 
 	/* (non-Javadoc)

@@ -76,6 +76,9 @@ import de.ugoe.cs.oco.tosca.types.provider.PropertyTypesEditPlugin;
 
 import org.eclipse.core.runtime.Path;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 
@@ -159,7 +162,7 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 	protected IWorkbench workbench;
 
 	/**
-	 * Caches the names of the types that can be created as the root object.
+	 * Caches the names of the features representing global elements.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -180,7 +183,7 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * Returns the names of the types that can be created as the root object.
+	 * Returns the names of the features representing global elements.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -188,11 +191,14 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : typesPackage.getEClassifiers()) {
-				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
-					if (!eClass.isAbstract()) {
-						initialObjectNames.add(eClass.getName());
+			for (EStructuralFeature eStructuralFeature : ExtendedMetaData.INSTANCE.getAllElements(ExtendedMetaData.INSTANCE.getDocumentRoot(typesPackage))) {
+				if (eStructuralFeature.isChangeable()) {
+					EClassifier eClassifier = eStructuralFeature.getEType();
+					if (eClassifier instanceof EClass) {
+						EClass eClass = (EClass)eClassifier;
+						if (!eClass.isAbstract()) {
+							initialObjectNames.add(eStructuralFeature.getName());
+						}
 					}
 				}
 			}
@@ -208,8 +214,10 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)typesPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EClass eClass = ExtendedMetaData.INSTANCE.getDocumentRoot(typesPackage);
+		EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(initialObjectCreationPage.getInitialObjectName());
 		EObject rootObject = typesFactory.create(eClass);
+		rootObject.eSet(eStructuralFeature, EcoreUtil.create((EClass)eStructuralFeature.getEType()));
 		return rootObject;
 	}
 
@@ -395,8 +403,7 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
+			Composite composite = new Composite(parent, SWT.NONE); {
 				GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
@@ -529,19 +536,19 @@ public class TypesModelWizard extends Wizard implements INewWizard {
 		}
 
 		/**
-		 * Returns the label for the specified type name.
+		 * Returns the label for the specified feature name.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected String getLabel(String typeName) {
+		protected String getLabel(String featureName) {
 			try {
-				return PropertyTypesEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+				return PropertyTypesEditPlugin.INSTANCE.getString("_UI_DocumentRoot_" + featureName + "_feature");
 			}
 			catch(MissingResourceException mre) {
 				PropertyTypesEditorPlugin.INSTANCE.log(mre);
 			}
-			return typeName;
+			return featureName;
 		}
 
 		/**

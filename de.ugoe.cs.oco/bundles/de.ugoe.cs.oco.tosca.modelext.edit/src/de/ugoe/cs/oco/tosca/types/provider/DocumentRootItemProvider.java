@@ -3,9 +3,9 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 
+import de.ugoe.cs.oco.tosca.types.DocumentRoot;
 import de.ugoe.cs.oco.tosca.types.TypesFactory;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
-import de.ugoe.cs.oco.tosca.types.VolumeHostPropertiesType;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,19 +27,26 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.VolumeHostPropertiesType} object.
+ * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.DocumentRoot} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DocumentRootItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VolumeHostPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
+	public DocumentRootItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -70,7 +77,15 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TypesPackage.Literals.VOLUME_HOST_PROPERTIES_TYPE__VOLUME);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__CLOUDIFY_AGENT_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__FLOATING_IP_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__KEY_PAIR_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__MPI_HOST_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_FLOATING_IP_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_VOLUME_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__SCALING_GROUP_PROPERTIES);
+			childrenFeatures.add(TypesPackage.Literals.DOCUMENT_ROOT__VOLUME_HOST_PROPERTIES_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -89,14 +104,14 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	}
 
 	/**
-	 * This returns VolumeHostPropertiesType.gif.
+	 * This returns DocumentRoot.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VolumeHostPropertiesType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DocumentRoot"));
 	}
 
 	/**
@@ -107,7 +122,7 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_VolumeHostPropertiesType_type");
+		return getString("_UI_DocumentRoot_type");
 	}
 	
 
@@ -122,8 +137,16 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VolumeHostPropertiesType.class)) {
-			case TypesPackage.VOLUME_HOST_PROPERTIES_TYPE__VOLUME:
+		switch (notification.getFeatureID(DocumentRoot.class)) {
+			case TypesPackage.DOCUMENT_ROOT__CLOUDIFY_AGENT_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__FLOATING_IP_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__KEY_PAIR_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__MPI_HOST_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__OPEN_STACK_FLOATING_IP_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__OPEN_STACK_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__OPEN_STACK_VOLUME_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__SCALING_GROUP_PROPERTIES:
+			case TypesPackage.DOCUMENT_ROOT__VOLUME_HOST_PROPERTIES_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -143,8 +166,48 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TypesPackage.Literals.VOLUME_HOST_PROPERTIES_TYPE__VOLUME,
+				(TypesPackage.Literals.DOCUMENT_ROOT__CLOUDIFY_AGENT_PROPERTIES,
+				 TypesFactory.eINSTANCE.createCloudifyAgentPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__FLOATING_IP_PROPERTIES,
+				 TypesFactory.eINSTANCE.createFloatingIPPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__KEY_PAIR_PROPERTIES,
+				 TypesFactory.eINSTANCE.createKeyPairPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__MPI_HOST_PROPERTIES,
+				 TypesFactory.eINSTANCE.createHostPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_FLOATING_IP_PROPERTIES,
+				 TypesFactory.eINSTANCE.createOpenStackFloatingIPPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_PROPERTIES,
+				 TypesFactory.eINSTANCE.createOpenStackServerPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_VOLUME_PROPERTIES,
 				 TypesFactory.eINSTANCE.createOpenStackVolumePropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__SCALING_GROUP_PROPERTIES,
+				 TypesFactory.eINSTANCE.createScalingGroupPropertiesType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TypesPackage.Literals.DOCUMENT_ROOT__VOLUME_HOST_PROPERTIES_TYPE,
+				 TypesFactory.eINSTANCE.createVolumeHostPropertiesType()));
 	}
 
 	/**

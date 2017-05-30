@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
-import de.ugoe.cs.oco.tosca.types.OpenStackVolumePropertiesType;
+import de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,44 +14,44 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Open Stack Volume Properties Type</b></em>'.
+ * An implementation of the model object '<em><b>Floating IP Properties Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.ugoe.cs.oco.tosca.types.impl.OpenStackVolumePropertiesTypeImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.types.impl.FloatingIPPropertiesTypeImpl#getFloatingNetworkName <em>Floating Network Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Container implements OpenStackVolumePropertiesType {
+public class FloatingIPPropertiesTypeImpl extends MinimalEObjectImpl.Container implements FloatingIPPropertiesType {
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The default value of the '{@link #getFloatingNetworkName() <em>Floating Network Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSize()
+	 * @see #getFloatingNetworkName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIZE_EDEFAULT = null;
+	protected static final String FLOATING_NETWORK_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The cached value of the '{@link #getFloatingNetworkName() <em>Floating Network Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSize()
+	 * @see #getFloatingNetworkName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String size = SIZE_EDEFAULT;
+	protected String floatingNetworkName = FLOATING_NETWORK_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OpenStackVolumePropertiesTypeImpl() {
+	protected FloatingIPPropertiesTypeImpl() {
 		super();
 	}
 
@@ -62,7 +62,7 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TypesPackage.Literals.OPEN_STACK_VOLUME_PROPERTIES_TYPE;
+		return TypesPackage.Literals.FLOATING_IP_PROPERTIES_TYPE;
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSize() {
-		return size;
+	public String getFloatingNetworkName() {
+		return floatingNetworkName;
 	}
 
 	/**
@@ -79,11 +79,11 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSize(String newSize) {
-		String oldSize = size;
-		size = newSize;
+	public void setFloatingNetworkName(String newFloatingNetworkName) {
+		String oldFloatingNetworkName = floatingNetworkName;
+		floatingNetworkName = newFloatingNetworkName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE__SIZE, oldSize, size));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME, oldFloatingNetworkName, floatingNetworkName));
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE__SIZE:
-				return getSize();
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME:
+				return getFloatingNetworkName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +108,8 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE__SIZE:
-				setSize((String)newValue);
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME:
+				setFloatingNetworkName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +123,8 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE__SIZE:
-				setSize(SIZE_EDEFAULT);
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME:
+				setFloatingNetworkName(FLOATING_NETWORK_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE__SIZE:
-				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME:
+				return FLOATING_NETWORK_NAME_EDEFAULT == null ? floatingNetworkName != null : !FLOATING_NETWORK_NAME_EDEFAULT.equals(floatingNetworkName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +154,10 @@ public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Contai
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (size: ");
-		result.append(size);
+		result.append(" (floatingNetworkName: ");
+		result.append(floatingNetworkName);
 		result.append(')');
 		return result.toString();
 	}
 
-} //OpenStackVolumePropertiesTypeImpl
+} //FloatingIPPropertiesTypeImpl

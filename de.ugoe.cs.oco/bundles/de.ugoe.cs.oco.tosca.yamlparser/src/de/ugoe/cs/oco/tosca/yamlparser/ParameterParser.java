@@ -4,6 +4,7 @@
 package de.ugoe.cs.oco.tosca.yamlparser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,7 +40,13 @@ public class ParameterParser extends Parser {
 					case "value":
 						break;
 					case "default":
-						parameter.setDefaultValue((String) innerentry.getValue());
+						String value = null;
+						if (innerentry.getValue() instanceof HashMap ){
+							value = ToscaModelUtil.buildStringFromMap((Map<String, ?>)innerentry.getValue());
+						} else 
+							value = (String) innerentry.getValue();
+						
+						parameter.setDefaultValue(value);
 						break;
 					case "description":
 						break;

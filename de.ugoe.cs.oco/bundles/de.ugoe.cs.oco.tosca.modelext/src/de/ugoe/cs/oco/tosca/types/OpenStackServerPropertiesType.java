@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types;
 
-import de.ugoe.cs.oco.tosca.PropertiesType;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import de.ugoe.cs.oco.tosca.PropertiesType;
  * @model extendedMetaData="name='OpenStackServerPropertiesType' kind='elementOnly'"
  * @generated
  */
-public interface OpenStackServerPropertiesType extends PropertiesType {
+public interface OpenStackServerPropertiesType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Image</b></em>' attribute.
 	 * <!-- begin-user-doc -->

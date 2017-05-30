@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types;
 
-import de.ugoe.cs.oco.tosca.PropertiesType;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import de.ugoe.cs.oco.tosca.PropertiesType;
  * @model extendedMetaData="name='ScalingGroupPropertiesType' kind='elementOnly'"
  * @generated
  */
-public interface ScalingGroupPropertiesType extends PropertiesType {
+public interface ScalingGroupPropertiesType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Scale</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

@@ -3,10 +3,7 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 
-import de.ugoe.cs.oco.tosca.provider.PropertiesTypeItemProvider;
-
-import de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType;
-import de.ugoe.cs.oco.tosca.types.TypesFactory;
+import de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
 import java.util.Collection;
@@ -17,25 +14,38 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType} object.
+ * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MPIHostPropertiesTypeItemProvider extends PropertiesTypeItemProvider {
+public class FloatingIPPropertiesTypeItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPIHostPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
+	public FloatingIPPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -50,50 +60,42 @@ public class MPIHostPropertiesTypeItemProvider extends PropertiesTypeItemProvide
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addFloatingNetworkNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Floating Network Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(TypesPackage.Literals.MPI_HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT);
-			childrenFeatures.add(TypesPackage.Literals.MPI_HOST_PROPERTIES_TYPE__SERVER);
-		}
-		return childrenFeatures;
+	protected void addFloatingNetworkNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FloatingIPPropertiesType_floatingNetworkName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FloatingIPPropertiesType_floatingNetworkName_feature", "_UI_FloatingIPPropertiesType_type"),
+				 TypesPackage.Literals.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns MPIHostPropertiesType.gif.
+	 * This returns FloatingIPPropertiesType.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MPIHostPropertiesType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FloatingIPPropertiesType"));
 	}
 
 	/**
@@ -104,7 +106,10 @@ public class MPIHostPropertiesTypeItemProvider extends PropertiesTypeItemProvide
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_MPIHostPropertiesType_type");
+		String label = ((FloatingIPPropertiesType)object).getFloatingNetworkName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_FloatingIPPropertiesType_type") :
+			getString("_UI_FloatingIPPropertiesType_type") + " " + label;
 	}
 	
 
@@ -119,10 +124,9 @@ public class MPIHostPropertiesTypeItemProvider extends PropertiesTypeItemProvide
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MPIHostPropertiesType.class)) {
-			case TypesPackage.MPI_HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT:
-			case TypesPackage.MPI_HOST_PROPERTIES_TYPE__SERVER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(FloatingIPPropertiesType.class)) {
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -138,16 +142,6 @@ public class MPIHostPropertiesTypeItemProvider extends PropertiesTypeItemProvide
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TypesPackage.Literals.MPI_HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT,
-				 TypesFactory.eINSTANCE.createCloudifyAgentPropertiesType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TypesPackage.Literals.MPI_HOST_PROPERTIES_TYPE__SERVER,
-				 TypesFactory.eINSTANCE.createOpenStackServerPropertiesType()));
 	}
 
 	/**

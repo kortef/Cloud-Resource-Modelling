@@ -3,9 +3,9 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 
+import de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesFactory;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
-import de.ugoe.cs.oco.tosca.types.VolumeHostPropertiesType;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,32 +14,39 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.VolumeHostPropertiesType} object.
+ * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class OpenStackFloatingIPPropertiesTypeItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VolumeHostPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
+	public OpenStackFloatingIPPropertiesTypeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,8 +61,31 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOpenstackConfigPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Openstack Config feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOpenstackConfigPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OpenStackFloatingIPPropertiesType_openstackConfig_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OpenStackFloatingIPPropertiesType_openstackConfig_feature", "_UI_OpenStackFloatingIPPropertiesType_type"),
+				 TypesPackage.Literals.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__OPENSTACK_CONFIG,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -70,7 +100,7 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TypesPackage.Literals.VOLUME_HOST_PROPERTIES_TYPE__VOLUME);
+			childrenFeatures.add(TypesPackage.Literals.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__FLOATINGIP);
 		}
 		return childrenFeatures;
 	}
@@ -89,14 +119,14 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	}
 
 	/**
-	 * This returns VolumeHostPropertiesType.gif.
+	 * This returns OpenStackFloatingIPPropertiesType.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VolumeHostPropertiesType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OpenStackFloatingIPPropertiesType"));
 	}
 
 	/**
@@ -107,7 +137,10 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_VolumeHostPropertiesType_type");
+		String label = ((OpenStackFloatingIPPropertiesType)object).getOpenstackConfig();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OpenStackFloatingIPPropertiesType_type") :
+			getString("_UI_OpenStackFloatingIPPropertiesType_type") + " " + label;
 	}
 	
 
@@ -122,8 +155,11 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VolumeHostPropertiesType.class)) {
-			case TypesPackage.VOLUME_HOST_PROPERTIES_TYPE__VOLUME:
+		switch (notification.getFeatureID(OpenStackFloatingIPPropertiesType.class)) {
+			case TypesPackage.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__OPENSTACK_CONFIG:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case TypesPackage.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__FLOATINGIP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -143,8 +179,8 @@ public class VolumeHostPropertiesTypeItemProvider extends ItemProviderAdapter im
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TypesPackage.Literals.VOLUME_HOST_PROPERTIES_TYPE__VOLUME,
-				 TypesFactory.eINSTANCE.createOpenStackVolumePropertiesType()));
+				(TypesPackage.Literals.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__FLOATINGIP,
+				 TypesFactory.eINSTANCE.createFloatingIPPropertiesType()));
 	}
 
 	/**

@@ -31,6 +31,7 @@ public class PropertyTypesAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new PropertyTypesAllTests("PropertyTypes Tests");
+		suite.addTest(TypesTests.suite());
 		return suite;
 	}
 

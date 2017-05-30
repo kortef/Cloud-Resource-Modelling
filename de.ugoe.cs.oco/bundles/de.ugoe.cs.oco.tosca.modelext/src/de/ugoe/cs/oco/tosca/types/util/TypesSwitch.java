@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.util;
 
-import de.ugoe.cs.oco.tosca.PropertiesType;
-
 import de.ugoe.cs.oco.tosca.types.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -71,49 +69,66 @@ public class TypesSwitch<T> extends Switch<T> {
 			case TypesPackage.CLOUDIFY_AGENT_PROPERTIES_TYPE: {
 				CloudifyAgentPropertiesType cloudifyAgentPropertiesType = (CloudifyAgentPropertiesType)theEObject;
 				T result = caseCloudifyAgentPropertiesType(cloudifyAgentPropertiesType);
-				if (result == null) result = casePropertiesType(cloudifyAgentPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TypesPackage.MPI_HOST_PROPERTIES_TYPE: {
-				MPIHostPropertiesType mpiHostPropertiesType = (MPIHostPropertiesType)theEObject;
-				T result = caseMPIHostPropertiesType(mpiHostPropertiesType);
-				if (result == null) result = casePropertiesType(mpiHostPropertiesType);
+			case TypesPackage.DOCUMENT_ROOT: {
+				DocumentRoot documentRoot = (DocumentRoot)theEObject;
+				T result = caseDocumentRoot(documentRoot);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE: {
+				FloatingIPPropertiesType floatingIPPropertiesType = (FloatingIPPropertiesType)theEObject;
+				T result = caseFloatingIPPropertiesType(floatingIPPropertiesType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.HOST_PROPERTIES_TYPE: {
+				HostPropertiesType hostPropertiesType = (HostPropertiesType)theEObject;
+				T result = caseHostPropertiesType(hostPropertiesType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE: {
+				KeyPairPropertiesType keyPairPropertiesType = (KeyPairPropertiesType)theEObject;
+				T result = caseKeyPairPropertiesType(keyPairPropertiesType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE: {
+				OpenStackFloatingIPPropertiesType openStackFloatingIPPropertiesType = (OpenStackFloatingIPPropertiesType)theEObject;
+				T result = caseOpenStackFloatingIPPropertiesType(openStackFloatingIPPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TypesPackage.OPEN_STACK_SERVER_PROPERTIES_TYPE: {
 				OpenStackServerPropertiesType openStackServerPropertiesType = (OpenStackServerPropertiesType)theEObject;
 				T result = caseOpenStackServerPropertiesType(openStackServerPropertiesType);
-				if (result == null) result = casePropertiesType(openStackServerPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE: {
 				OpenStackVolumePropertiesType openStackVolumePropertiesType = (OpenStackVolumePropertiesType)theEObject;
 				T result = caseOpenStackVolumePropertiesType(openStackVolumePropertiesType);
-				if (result == null) result = casePropertiesType(openStackVolumePropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TypesPackage.SCALING_GROUP_PROPERTIES_TYPE: {
 				ScalingGroupPropertiesType scalingGroupPropertiesType = (ScalingGroupPropertiesType)theEObject;
 				T result = caseScalingGroupPropertiesType(scalingGroupPropertiesType);
-				if (result == null) result = casePropertiesType(scalingGroupPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TypesPackage.SCALING_PROPERTIES_TYPE: {
 				ScalingPropertiesType scalingPropertiesType = (ScalingPropertiesType)theEObject;
 				T result = caseScalingPropertiesType(scalingPropertiesType);
-				if (result == null) result = casePropertiesType(scalingPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TypesPackage.VOLUME_HOST_PROPERTIES_TYPE: {
 				VolumeHostPropertiesType volumeHostPropertiesType = (VolumeHostPropertiesType)theEObject;
 				T result = caseVolumeHostPropertiesType(volumeHostPropertiesType);
-				if (result == null) result = casePropertiesType(volumeHostPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,17 +152,77 @@ public class TypesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>MPI Host Properties Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>MPI Host Properties Type</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Document Root</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMPIHostPropertiesType(MPIHostPropertiesType object) {
+	public T caseDocumentRoot(DocumentRoot object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Floating IP Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Floating IP Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFloatingIPPropertiesType(FloatingIPPropertiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Host Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Host Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHostPropertiesType(HostPropertiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Key Pair Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Key Pair Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseKeyPairPropertiesType(KeyPairPropertiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Open Stack Floating IP Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Open Stack Floating IP Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOpenStackFloatingIPPropertiesType(OpenStackFloatingIPPropertiesType object) {
 		return null;
 	}
 
@@ -223,21 +298,6 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVolumeHostPropertiesType(VolumeHostPropertiesType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Properties Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Properties Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePropertiesType(PropertiesType object) {
 		return null;
 	}
 

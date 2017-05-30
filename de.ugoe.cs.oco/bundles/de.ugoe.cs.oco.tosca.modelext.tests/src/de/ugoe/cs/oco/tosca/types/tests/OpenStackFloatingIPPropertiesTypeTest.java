@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.tests;
 
-import de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType;
+import de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesFactory;
 
 import junit.framework.TestCase;
@@ -11,19 +11,19 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>MPI Host Properties Type</b></em>'.
+ * A test case for the model object '<em><b>Open Stack Floating IP Properties Type</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class MPIHostPropertiesTypeTest extends TestCase {
+public class OpenStackFloatingIPPropertiesTypeTest extends TestCase {
 
 	/**
-	 * The fixture for this MPI Host Properties Type test case.
+	 * The fixture for this Open Stack Floating IP Properties Type test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MPIHostPropertiesType fixture = null;
+	protected OpenStackFloatingIPPropertiesType fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -31,36 +31,36 @@ public class MPIHostPropertiesTypeTest extends TestCase {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(MPIHostPropertiesTypeTest.class);
+		TestRunner.run(OpenStackFloatingIPPropertiesTypeTest.class);
 	}
 
 	/**
-	 * Constructs a new MPI Host Properties Type test case with the given name.
+	 * Constructs a new Open Stack Floating IP Properties Type test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPIHostPropertiesTypeTest(String name) {
+	public OpenStackFloatingIPPropertiesTypeTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Sets the fixture for this MPI Host Properties Type test case.
+	 * Sets the fixture for this Open Stack Floating IP Properties Type test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(MPIHostPropertiesType fixture) {
+	protected void setFixture(OpenStackFloatingIPPropertiesType fixture) {
 		this.fixture = fixture;
 	}
 
 	/**
-	 * Returns the fixture for this MPI Host Properties Type test case.
+	 * Returns the fixture for this Open Stack Floating IP Properties Type test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MPIHostPropertiesType getFixture() {
+	protected OpenStackFloatingIPPropertiesType getFixture() {
 		return fixture;
 	}
 
@@ -72,7 +72,7 @@ public class MPIHostPropertiesTypeTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(TypesFactory.eINSTANCE.createMPIHostPropertiesType());
+		setFixture(TypesFactory.eINSTANCE.createOpenStackFloatingIPPropertiesType());
 	}
 
 	/**
@@ -86,4 +86,4 @@ public class MPIHostPropertiesTypeTest extends TestCase {
 		setFixture(null);
 	}
 
-} //MPIHostPropertiesTypeTest
+} //OpenStackFloatingIPPropertiesTypeTest

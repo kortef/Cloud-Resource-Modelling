@@ -1,6 +1,6 @@
 package de.swz.dist.batch;
 
-import de.swz.dist.batch.jobscriptGenerator;
+import de.swz.dist.utils.EGLExecutor;
 import de.ugoe.cs.util.console.TextConsole;
 
 /**
@@ -13,7 +13,7 @@ public class App
     {
     	TextConsole t = new TextConsole();
     	t.outputMsg("Hello from de.ugoe.cs.util.console.TextConsole !\n");
-        jobscriptGenerator j = new jobscriptGenerator("amroc_testrun.model", "jobscript.ecore", "jobscript.egl");
+        EGLExecutor j = new EGLExecutor("amroc_testrun.model", "jobscript.ecore", "jobscript.egl", "jobscript");
         //j.createModule();
         try {
             j.execute();

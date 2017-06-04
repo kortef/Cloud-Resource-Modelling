@@ -1,5 +1,7 @@
 package de.swz.dist.utils;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +13,10 @@ import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 
 
 public class EGLExecutor extends EpsilonExecutor {
-	String inputModelPath;
-	String inputMetamodelPath;
-	String templatePath;
-	String modelName;
+	private String inputModelPath;
+	private String inputMetamodelPath;
+	private String modelName;
+	private URI templatePath;
 
 	public String getResult() {
 		return result.toString();
@@ -27,21 +29,28 @@ public class EGLExecutor extends EpsilonExecutor {
 	}
 
 	@Override
-	public String getSource() throws Exception {
+	public URI getSource() throws Exception {
 		return templatePath;
 	}
 
 	@Override
 	public List<IModel> getModels() throws Exception {
 		List<IModel> models = new ArrayList<IModel>();
-		models.add(createEmfModel(modelName, inputModelPath, inputMetamodelPath, true, false));
+		models.add(createEmfModelAllURI(modelName, inputModelPath, inputMetamodelPath, true, false));
 		return models;
 	}
 
-	public EGLExecutor(String inputModelPath, String inputMetamodelPath, String templatePath, String modelName) {
-		this.inputModelPath = inputModelPath;
-		this.inputMetamodelPath = inputMetamodelPath;
-		this.templatePath = templatePath;
+	public EGLExecutor(String modelName, URI inputModelPath, URI inputMetamodelPath, URI templatePath) {
 		this.modelName = modelName;
+		this.inputModelPath = inputModelPath.toString();
+		this.inputMetamodelPath = inputMetamodelPath.toString();
+		this.templatePath = templatePath;
+	}
+	
+	public EGLExecutor(String modelName, String inputModelPath, String inputMetamodelPath, String templatePath) throws URISyntaxException {
+		this.modelName = modelName;
+		this.inputModelPath = getURI(inputModelPath).toString();
+		this.inputMetamodelPath = getURI(inputMetamodelPath).toString();
+		this.templatePath = getURI(templatePath);
 	}
 }

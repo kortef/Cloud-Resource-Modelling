@@ -38,7 +38,7 @@ public abstract class EpsilonExecutor {
 	
 	public abstract IEolExecutableModule createModule();
 	
-	public abstract String getSource() throws Exception;
+	public abstract URI getSource() throws Exception;
 	
 	public abstract List<IModel> getModels() throws Exception;
 	
@@ -50,7 +50,7 @@ public abstract class EpsilonExecutor {
 		System.out.println("executing...");
 		
 		module = createModule();
-		module.parse(getFileURI(getSource()));
+		module.parse(getSource());
 		
 		if (module.getParseProblems().size() > 0) {
 			System.err.println("Parse errors occured...");
@@ -83,11 +83,13 @@ public abstract class EpsilonExecutor {
 			throws EolRuntimeException {
 		return module.execute();
 	}
-	
+
+	/*
 	protected EmfModel createEmfModel(String name, String model, 
 			String metamodel, boolean readOnLoad, boolean storeOnDisposal) 
 					throws EolModelLoadingException, URISyntaxException {
 		EmfModel emfModel = new EmfModel();
+
 		StringProperties properties = new StringProperties();
 		properties.put(EmfModel.PROPERTY_NAME, name);
 		properties.put(EmfModel.PROPERTY_FILE_BASED_METAMODEL_URI,
@@ -116,11 +118,27 @@ public abstract class EpsilonExecutor {
 		emfModel.load(properties, (IRelativePathResolver) null);
 		return emfModel;
 	}
+	*/
 
+	protected EmfModel createEmfModelAllURI(String name, String model, 
+			String metamodel, boolean readOnLoad, boolean storeOnDisposal) 
+					throws EolModelLoadingException, URISyntaxException {
+		EmfModel emfModel = new EmfModel();
+		StringProperties properties = new StringProperties();
+		properties.put(EmfModel.PROPERTY_NAME, name);
+		properties.put(EmfModel.PROPERTY_FILE_BASED_METAMODEL_URI, metamodel);
+		properties.put(EmfModel.PROPERTY_MODEL_URI, model);
+		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
+		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, 
+				storeOnDisposal + "");
+		emfModel.load(properties, (IRelativePathResolver) null);
+		return emfModel;
+	}
+
+	/*
 	protected URI getFileURI(String fileName) throws URISyntaxException {
-		System.out.println("getting URI for file " + fileName);
-		URI binUri = EpsilonExecutor.class.
-				getResource(fileName).toURI();
+		System.out.println("getting URI:\t" + fileName);
+		URI binUri = EpsilonExecutor.class.getClassLoader().getResource(fileName).toURI();
 		URI uri = null;
 		
 		if (binUri.toString().indexOf("bin") > -1) {
@@ -129,7 +147,15 @@ public abstract class EpsilonExecutor {
 		else {
 			uri = binUri;
 		}
-		
+
+		System.out.println("found URI:\t" + uri.toString());
+
 		return uri;
 	}
+	*/
+
+	protected URI getURI(String path) throws URISyntaxException {
+		return EpsilonExecutor.class.getClassLoader().getResource(path).toURI();
+	}
+
 }

@@ -36,7 +36,7 @@
       </tosca:NodeTemplate>
       <tosca:NodeTemplate type="swe.simpaas.nodes.mpihost" name="swe.simpaas.instances.gatewayhost">
         <tosca:Properties>
-          <types:MPIHostPropertiesType>
+          <types:HostPropertiesType>
             <types:cloudify_agent>
               <types:user>{get_input: agent_user}</types:user>
             </types:cloudify_agent>
@@ -45,7 +45,7 @@
               <types:flavor>{get_input: flavor}</types:flavor>
               <types:name>gateway</types:name>
             </types:server>
-          </types:MPIHostPropertiesType>
+          </types:HostPropertiesType>
         </tosca:Properties>
       </tosca:NodeTemplate>
       <tosca:NodeTemplate type="cloudify.openstack.nodes.Volume" name="swe.simpaas.instances.volume">
@@ -59,7 +59,7 @@
       </tosca:NodeTemplate>
       <tosca:NodeTemplate type="swe.simpaas.nodes.mpihost" name="swe.simpaas.instances.mpihost">
         <tosca:Properties>
-          <types:MPIHostPropertiesType>
+          <types:HostPropertiesType>
             <types:cloudify_agent>
               <types:user>{get_input: agent_user}</types:user>
             </types:cloudify_agent>
@@ -68,7 +68,7 @@
               <types:flavor>{get_input: flavor}</types:flavor>
               <types:name>mpihost</types:name>
             </types:server>
-          </types:MPIHostPropertiesType>
+          </types:HostPropertiesType>
         </tosca:Properties>
       </tosca:NodeTemplate>
       <tosca:NodeTemplate type="ansible.nodes.Application" name="swe.simpaas.instances.mpiworker">

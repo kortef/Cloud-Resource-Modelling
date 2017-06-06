@@ -71,6 +71,9 @@ public class ParameterParser extends Parser {
 				String valueString = ToscaModelUtil.buildStringFromList((List<?>)entry.getValue());
 				parameter.setValue(valueString);
 			}
+			else if (entry.getValue() instanceof String){
+				parameter.setValue((String) entry.getValue());
+			}
 			parameters.add(parameter);
 		}
 		return parameters;

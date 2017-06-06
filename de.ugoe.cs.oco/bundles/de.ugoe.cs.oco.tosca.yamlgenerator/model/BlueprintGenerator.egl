@@ -5,17 +5,22 @@ var gap = "  ";
 
 var scalinggroups = input!TGroupTemplate.all.select(g | g.type.toString() 
 		== "swe.simpaas.groups.ScalingGroup");
-		
-var scale = scalinggroups.properties.econtents.get(0).
-mixed.get(0).get(1).value
-.mixed.get(1).value.mixed.
-get(0).value;
 
-var member = scalinggroups.get(0).member;
+/*if (not (scalinggroups == null)){		
+	var scale = scalinggroups.properties.econtents.get(0).
+	mixed.get(0).get(1).value
+	.mixed.get(1).value.mixed.
+	get(0).value;
+	var member = scalinggroups.get(0).member;
+}
 
 if (scale.contains("get_input")){
 	scale = getInputParValue(scale);
-}
+}*/
+var scale = 3;
+var member: Set = new Set;
+member.add("dummy");
+
 
 //scalinggroups.size.println();
 

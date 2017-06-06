@@ -1029,8 +1029,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeType" upperBound="-1"
-        eType="#//TNodeType" volatile="true" transient="true" derived="true" containment="true"
-        resolveProxies="false">
+        eType="#//TNodeType" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="NodeType"/>

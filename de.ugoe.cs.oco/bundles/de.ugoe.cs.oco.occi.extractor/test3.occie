@@ -2,11 +2,18 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
   <occi:Extension name="template" scheme="http://schemas.openstack.org/template#">
     <mixins term="36637a26-fded-4635-b6c5-ec8ec0745eab" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.medium"/>
+    <mixins term="6a79f56a-8fb8-42d3-aec5-23f1dc0e70cd" scheme="http://schemas.openstack.org/template/os#" title="smartshark-namenode"/>
+    <mixins term="1fc4dd5e-5216-4764-a412-6f3d80bd3da0" scheme="http://schemas.openstack.org/template/os#" title="smartshark-slave2"/>
     <mixins term="5437eae8-7c47-4834-929c-a314de77d291" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 16.04 Server"/>
+    <mixins term="c546a456-f982-4589-92c3-b96eaae745dd" scheme="http://schemas.openstack.org/template/os#" title="ftrautsch-measurement"/>
+    <mixins term="e24e460f-247b-4291-9787-1368870e277d" scheme="http://schemas.openstack.org/template/os#" title="smartshark-slave1"/>
     <mixins term="e739cb33-4224-4829-8dcb-9b66a1b8ceb9" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.large"/>
     <mixins term="0" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.nano"/>
     <mixins term="8dd25971-1bbd-47db-9d49-2fef02fa0bc8" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.small"/>
+    <mixins term="e719ae1a-4af5-44a6-a4e9-19894b5f3166" scheme="http://schemas.openstack.org/template/os#" title="smartshark-resourcemanager"/>
     <mixins term="e7a211eb-d1dc-4e3a-8da6-f9daabdb81c8" scheme="http://schemas.openstack.org/template/os#" title="Centos 7"/>
+    <mixins term="adf63ddc-debe-4d7e-b899-b936e989439f" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 14.04 Server"/>
+    <mixins term="44cbbe25-86b3-4b5e-aa95-8deaa45b9d3a" scheme="http://schemas.openstack.org/template/os#" title="smartshark-webserver"/>
   </occi:Extension>
   <occi:Extension name="instance" scheme="http://schemas.openstack.org/instance#">
     <mixins term="public_key" scheme="http://schemas.openstack.org/instance/credentials#" title="Contextualization extension - public_key"/>
@@ -56,52 +63,192 @@
     <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="entity"/>
     <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="resource" parent="/7/@kinds[term='entity']"/>
   </occi:Extension>
-  <occi:Resource id="cad41133-0caf-483d-a42b-14417cbeffb9" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="active"/>
-    <attributes name="occi.compute.hostname" value="vm2"/>
-    <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm2"/>
-    <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="cad41133-0caf-483d-a42b-14417cbeffb9"/>
-    <links id="cad41133-0caf-483d-a42b-14417cbeffb9_192.68.0.8" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
-      <attributes name="occi.networkinterface.interface" value="eth0"/>
-      <attributes name="occi.networkinterface.mac" value="fa:16:3e:42:44:20"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/4621c393-4c95-4927-8a39-31ac838bded6"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/cad41133-0caf-483d-a42b-14417cbeffb9"/>
-      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="cad41133-0caf-483d-a42b-14417cbeffb9_192.68.0.8"/>
-      <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.68.0.8"/>
-    </links>
+  <occi:Resource id="16b8d4e0-02d6-4215-bcdb-df4828028ca3" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.40"/>
+    <attributes name="occi.ipreservation.used" value="true"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="16b8d4e0-02d6-4215-bcdb-df4828028ca3"/>
   </occi:Resource>
-  <occi:Resource id="e81b1586-783e-4b56-8ca9-7f88aee75361" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="active"/>
-    <attributes name="occi.compute.hostname" value="vm1"/>
-    <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm1"/>
-    <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="e81b1586-783e-4b56-8ca9-7f88aee75361"/>
-    <links id="e81b1586-783e-4b56-8ca9-7f88aee75361_192.68.0.9" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
-      <attributes name="occi.networkinterface.interface" value="eth0"/>
-      <attributes name="occi.networkinterface.mac" value="fa:16:3e:cc:8e:e6"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/4621c393-4c95-4927-8a39-31ac838bded6"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/e81b1586-783e-4b56-8ca9-7f88aee75361"/>
-      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="e81b1586-783e-4b56-8ca9-7f88aee75361_192.68.0.9"/>
-      <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.68.0.9"/>
-    </links>
-  </occi:Resource>
-  <occi:Resource id="6a033ddb-a2b6-4c5e-9e73-ec601b4f40cc" title="provider" kind="/4/@kinds[term='ipreservation']">
-    <attributes name="occi.ipreservation.address" value="192.168.35.21"/>
+  <occi:Resource id="c558fee6-0f23-4335-afba-e887df46815a" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.24"/>
     <attributes name="occi.ipreservation.used" value="false"/>
     <attributes name="occi.core.title" value="provider"/>
-    <attributes name="occi.core.id" value="6a033ddb-a2b6-4c5e-9e73-ec601b4f40cc"/>
+    <attributes name="occi.core.id" value="c558fee6-0f23-4335-afba-e887df46815a"/>
   </occi:Resource>
-  <occi:Resource id="d36ec77c-0d42-4d25-8ec2-569b557057aa" title="volume" kind="/4/@kinds[term='storage']">
-    <attributes name="occi.core.title" value="volume"/>
-    <attributes name="occi.core.id" value="d36ec77c-0d42-4d25-8ec2-569b557057aa"/>
+  <occi:Resource id="42a0fb07-f8c8-4796-99b0-d1150a6fafa8" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.19"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="42a0fb07-f8c8-4796-99b0-d1150a6fafa8"/>
+  </occi:Resource>
+  <occi:Resource id="f726c4c3-3e12-4a62-8150-131a7eba393b" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.36"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="f726c4c3-3e12-4a62-8150-131a7eba393b"/>
+  </occi:Resource>
+  <occi:Resource id="3790b916-e414-4ce0-b94b-4ba7f16ddfef" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.35"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="3790b916-e414-4ce0-b94b-4ba7f16ddfef"/>
+  </occi:Resource>
+  <occi:Resource id="c244ea92-1556-49dc-aca6-c169d1ccb20f" title="" kind="/4/@kinds[term='storage']">
+    <attributes name="occi.core.title" value=""/>
+    <attributes name="occi.core.id" value="c244ea92-1556-49dc-aca6-c169d1ccb20f"/>
     <attributes name="occi.storage.state" value="online"/>
-    <attributes name="occi.storage.size" value="100"/>
+    <attributes name="occi.storage.size" value="2"/>
+  </occi:Resource>
+  <occi:Resource id="79f2c001-edc1-4624-8b79-2b603e04b905" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.32"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="79f2c001-edc1-4624-8b79-2b603e04b905"/>
+  </occi:Resource>
+  <occi:Resource id="c088a12f-ff9a-4797-b162-68f15dc1caae" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.31"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="c088a12f-ff9a-4797-b162-68f15dc1caae"/>
+  </occi:Resource>
+  <occi:Resource id="392c0178-066c-4756-9ec6-037329fe8401" title="mongoscale-volume" kind="/4/@kinds[term='storage']">
+    <attributes name="occi.core.title" value="mongoscale-volume"/>
+    <attributes name="occi.core.id" value="392c0178-066c-4756-9ec6-037329fe8401"/>
+    <attributes name="occi.storage.state" value="online"/>
+    <attributes name="occi.storage.size" value="2"/>
+  </occi:Resource>
+  <occi:Resource id="a582a4fa-64c2-4537-a310-1a88cc939f77" title="cloudify-manager" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='e739cb33-4224-4829-8dcb-9b66a1b8ceb9'] /0/@mixins[term='e7a211eb-d1dc-4e3a-8da6-f9daabdb81c8']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="cloudify-manager"/>
+    <attributes name="occi.compute.memory" value="8192"/>
+    <attributes name="occi.core.title" value="cloudify-manager"/>
+    <attributes name="occi.compute.cores" value="4"/>
+    <attributes name="occi.core.id" value="a582a4fa-64c2-4537-a310-1a88cc939f77"/>
+    <links id="a582a4fa-64c2-4537-a310-1a88cc939f77_172.16.0.16" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:5c:42:54"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/6c4d5c72-dd48-4cca-8f8b-470a4ec52d2e"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/a582a4fa-64c2-4537-a310-1a88cc939f77"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="a582a4fa-64c2-4537-a310-1a88cc939f77_172.16.0.16"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="172.16.0.16"/>
+    </links>
+    <links id="a582a4fa-64c2-4537-a310-1a88cc939f77_192.168.35.40" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface'] /6/@mixins[term='provider']" target="/8">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:5c:42:54"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/ipreservation/16b8d4e0-02d6-4215-bcdb-df4828028ca3"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/a582a4fa-64c2-4537-a310-1a88cc939f77"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="a582a4fa-64c2-4537-a310-1a88cc939f77_192.168.35.40"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.168.35.40"/>
+    </links>
+  </occi:Resource>
+  <occi:Resource id="f2a1404f-7135-4543-8ad6-92f4ef44ad7c" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.11"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="f2a1404f-7135-4543-8ad6-92f4ef44ad7c"/>
+  </occi:Resource>
+  <occi:Resource id="33f75d7c-a216-49e2-b88b-6cd0a9bae467" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.27"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="33f75d7c-a216-49e2-b88b-6cd0a9bae467"/>
+  </occi:Resource>
+  <occi:Resource id="ef1fee99-fed4-47ce-9d3b-d20ad428543d" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.12"/>
+    <attributes name="occi.ipreservation.used" value="true"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="ef1fee99-fed4-47ce-9d3b-d20ad428543d"/>
+  </occi:Resource>
+  <occi:Resource id="fcbb30bf-b31a-47cc-a22e-f94cec558d1c" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.15"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="fcbb30bf-b31a-47cc-a22e-f94cec558d1c"/>
+  </occi:Resource>
+  <occi:Resource id="7c13690e-a9e9-47fb-a31b-8388974ab7ca" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.18"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="7c13690e-a9e9-47fb-a31b-8388974ab7ca"/>
+  </occi:Resource>
+  <occi:Resource id="ac8ff656-b954-4221-bbf0-438443a14ceb" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.38"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="ac8ff656-b954-4221-bbf0-438443a14ceb"/>
+  </occi:Resource>
+  <occi:Resource id="5c9c507f-7e2e-43f2-aaac-2f239a0feb73" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.25"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="5c9c507f-7e2e-43f2-aaac-2f239a0feb73"/>
+  </occi:Resource>
+  <occi:Resource id="8ca44cd2-7753-4865-9a59-53bed4dbe5b9" title="test" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="test"/>
+    <attributes name="occi.compute.memory" value="4096"/>
+    <attributes name="occi.core.title" value="test"/>
+    <attributes name="occi.compute.cores" value="2"/>
+    <attributes name="occi.core.id" value="8ca44cd2-7753-4865-9a59-53bed4dbe5b9"/>
+    <links id="8ca44cd2-7753-4865-9a59-53bed4dbe5b9_172.16.0.7" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:f4:a5:d5"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/6c4d5c72-dd48-4cca-8f8b-470a4ec52d2e"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/8ca44cd2-7753-4865-9a59-53bed4dbe5b9"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="8ca44cd2-7753-4865-9a59-53bed4dbe5b9_172.16.0.7"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="172.16.0.7"/>
+    </links>
+    <links id="8ca44cd2-7753-4865-9a59-53bed4dbe5b9_192.168.35.12" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface'] /6/@mixins[term='provider']" target="/20">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:f4:a5:d5"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/ipreservation/ef1fee99-fed4-47ce-9d3b-d20ad428543d"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/8ca44cd2-7753-4865-9a59-53bed4dbe5b9"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="8ca44cd2-7753-4865-9a59-53bed4dbe5b9_192.168.35.12"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.168.35.12"/>
+    </links>
+  </occi:Resource>
+  <occi:Resource id="cd91a859-83ca-4b66-a240-6f6243472986" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.22"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="cd91a859-83ca-4b66-a240-6f6243472986"/>
+  </occi:Resource>
+  <occi:Resource id="627d73a5-6e45-4049-ab25-eda7b6bbcfc5" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.29"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="627d73a5-6e45-4049-ab25-eda7b6bbcfc5"/>
+  </occi:Resource>
+  <occi:Resource id="ec6b2616-e606-4915-bd66-87a3e8fdad76" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.14"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="ec6b2616-e606-4915-bd66-87a3e8fdad76"/>
+  </occi:Resource>
+  <occi:Resource id="c4add52d-7478-4347-8a04-3aec04596959" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.3"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="c4add52d-7478-4347-8a04-3aec04596959"/>
+  </occi:Resource>
+  <occi:Resource id="36af70a2-bbe8-416e-b289-e82ed8036530" title="provider" kind="/4/@kinds[term='ipreservation']">
+    <attributes name="occi.ipreservation.address" value="192.168.35.28"/>
+    <attributes name="occi.ipreservation.used" value="false"/>
+    <attributes name="occi.core.title" value="provider"/>
+    <attributes name="occi.core.id" value="36af70a2-bbe8-416e-b289-e82ed8036530"/>
+  </occi:Resource>
+  <occi:Resource id="af84c3cf-167d-4375-a73f-e2c62a61e94a" title="" kind="/4/@kinds[term='storage']">
+    <attributes name="occi.core.title" value=""/>
+    <attributes name="occi.core.id" value="af84c3cf-167d-4375-a73f-e2c62a61e94a"/>
+    <attributes name="occi.storage.state" value="online"/>
+    <attributes name="occi.storage.size" value="1"/>
   </occi:Resource>
 </xmi:XMI>

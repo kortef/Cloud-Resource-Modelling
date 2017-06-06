@@ -30,7 +30,7 @@ public class OCCIModelExtractorTest {
 	public void testExtractModel() {
 		try {
 			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.1"), 
-					new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
+					new BasicAuthentication("fglaser", "eCzA2017"), MediaType.TEXT_PLAIN, true);
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			

@@ -7,7 +7,7 @@
     interfaceNamePattern="" operationReflection="true" importOrganizing="true">
   <foreignModel>tosca.ecore</foreignModel>
   <genPackages prefix="Tosca" basePackage="de.ugoe.cs.oco" resource="XML" disposableProviderFactory="true"
-      ecorePackage="tosca.ecore#/">
+      contentTypeIdentifier="" ecorePackage="tosca.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="tosca.ecore#//MaxInstancesTypeMember1">
       <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//MaxInstancesTypeMember1/unbounded"/>
     </genEnums>

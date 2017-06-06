@@ -5,7 +5,11 @@ package de.ugoe.cs.oco.tosca.types.impl;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import de.ugoe.cs.oco.tosca.types.CloudifyAgentPropertiesType;
-import de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType;
+import de.ugoe.cs.oco.tosca.types.DocumentRoot;
+import de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType;
+import de.ugoe.cs.oco.tosca.types.HostPropertiesType;
+import de.ugoe.cs.oco.tosca.types.KeyPairPropertiesType;
+import de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType;
 import de.ugoe.cs.oco.tosca.types.OpenStackServerPropertiesType;
 import de.ugoe.cs.oco.tosca.types.OpenStackVolumePropertiesType;
 import de.ugoe.cs.oco.tosca.types.ScalingGroupPropertiesType;
@@ -42,7 +46,35 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mpiHostPropertiesTypeEClass = null;
+	private EClass documentRootEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass floatingIPPropertiesTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hostPropertiesTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass keyPairPropertiesTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass openStackFloatingIPPropertiesTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,8 +199,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMPIHostPropertiesType() {
-		return mpiHostPropertiesTypeEClass;
+	public EClass getDocumentRoot() {
+		return documentRootEClass;
 	}
 
 	/**
@@ -176,8 +208,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMPIHostPropertiesType_CloudifyAgent() {
-		return (EReference)mpiHostPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDocumentRoot_Mixed() {
+		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -185,8 +217,242 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMPIHostPropertiesType_Server() {
-		return (EReference)mpiHostPropertiesTypeEClass.getEStructuralFeatures().get(1);
+	public EReference getDocumentRoot_XMLNSPrefixMap() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_XSISchemaLocation() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_CloudifyAgentProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_FloatingIPProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_KeyPairProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_MPIHostProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_OpenStackFloatingIPProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_OpenStackProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_OpenStackVolumeProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_ScalingGroupProperties() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDocumentRoot_VolumeHostPropertiesType() {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFloatingIPPropertiesType() {
+		return floatingIPPropertiesTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFloatingIPPropertiesType_FloatingNetworkName() {
+		return (EAttribute)floatingIPPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHostPropertiesType() {
+		return hostPropertiesTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHostPropertiesType_OpenstackConfig() {
+		return (EAttribute)hostPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHostPropertiesType_ManagementNetworkName() {
+		return (EAttribute)hostPropertiesTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHostPropertiesType_AgentConfig() {
+		return (EAttribute)hostPropertiesTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHostPropertiesType_CloudifyAgent() {
+		return (EReference)hostPropertiesTypeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHostPropertiesType_Server() {
+		return (EReference)hostPropertiesTypeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getKeyPairPropertiesType() {
+		return keyPairPropertiesTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyPairPropertiesType_OpenstackConfig() {
+		return (EAttribute)keyPairPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyPairPropertiesType_UseExternalResource() {
+		return (EAttribute)keyPairPropertiesTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyPairPropertiesType_ResourceId() {
+		return (EAttribute)keyPairPropertiesTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyPairPropertiesType_PrivateKeyPath() {
+		return (EAttribute)keyPairPropertiesTypeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOpenStackFloatingIPPropertiesType() {
+		return openStackFloatingIPPropertiesTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOpenStackFloatingIPPropertiesType_OpenstackConfig() {
+		return (EAttribute)openStackFloatingIPPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOpenStackFloatingIPPropertiesType_Floatingip() {
+		return (EReference)openStackFloatingIPPropertiesTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -328,9 +594,39 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		cloudifyAgentPropertiesTypeEClass = createEClass(CLOUDIFY_AGENT_PROPERTIES_TYPE);
 		createEAttribute(cloudifyAgentPropertiesTypeEClass, CLOUDIFY_AGENT_PROPERTIES_TYPE__USER);
 
-		mpiHostPropertiesTypeEClass = createEClass(MPI_HOST_PROPERTIES_TYPE);
-		createEReference(mpiHostPropertiesTypeEClass, MPI_HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT);
-		createEReference(mpiHostPropertiesTypeEClass, MPI_HOST_PROPERTIES_TYPE__SERVER);
+		documentRootEClass = createEClass(DOCUMENT_ROOT);
+		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__CLOUDIFY_AGENT_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__FLOATING_IP_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__KEY_PAIR_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__MPI_HOST_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__OPEN_STACK_FLOATING_IP_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__OPEN_STACK_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__OPEN_STACK_VOLUME_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__SCALING_GROUP_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__VOLUME_HOST_PROPERTIES_TYPE);
+
+		floatingIPPropertiesTypeEClass = createEClass(FLOATING_IP_PROPERTIES_TYPE);
+		createEAttribute(floatingIPPropertiesTypeEClass, FLOATING_IP_PROPERTIES_TYPE__FLOATING_NETWORK_NAME);
+
+		hostPropertiesTypeEClass = createEClass(HOST_PROPERTIES_TYPE);
+		createEAttribute(hostPropertiesTypeEClass, HOST_PROPERTIES_TYPE__OPENSTACK_CONFIG);
+		createEAttribute(hostPropertiesTypeEClass, HOST_PROPERTIES_TYPE__MANAGEMENT_NETWORK_NAME);
+		createEAttribute(hostPropertiesTypeEClass, HOST_PROPERTIES_TYPE__AGENT_CONFIG);
+		createEReference(hostPropertiesTypeEClass, HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT);
+		createEReference(hostPropertiesTypeEClass, HOST_PROPERTIES_TYPE__SERVER);
+
+		keyPairPropertiesTypeEClass = createEClass(KEY_PAIR_PROPERTIES_TYPE);
+		createEAttribute(keyPairPropertiesTypeEClass, KEY_PAIR_PROPERTIES_TYPE__OPENSTACK_CONFIG);
+		createEAttribute(keyPairPropertiesTypeEClass, KEY_PAIR_PROPERTIES_TYPE__USE_EXTERNAL_RESOURCE);
+		createEAttribute(keyPairPropertiesTypeEClass, KEY_PAIR_PROPERTIES_TYPE__RESOURCE_ID);
+		createEAttribute(keyPairPropertiesTypeEClass, KEY_PAIR_PROPERTIES_TYPE__PRIVATE_KEY_PATH);
+
+		openStackFloatingIPPropertiesTypeEClass = createEClass(OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE);
+		createEAttribute(openStackFloatingIPPropertiesTypeEClass, OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__OPENSTACK_CONFIG);
+		createEReference(openStackFloatingIPPropertiesTypeEClass, OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE__FLOATINGIP);
 
 		openStackServerPropertiesTypeEClass = createEClass(OPEN_STACK_SERVER_PROPERTIES_TYPE);
 		createEAttribute(openStackServerPropertiesTypeEClass, OPEN_STACK_SERVER_PROPERTIES_TYPE__IMAGE);
@@ -374,7 +670,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ToscaPackage theToscaPackage = (ToscaPackage)EPackage.Registry.INSTANCE.getEPackage(ToscaPackage.eNS_URI);
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 
 		// Create type parameters
@@ -382,21 +677,44 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		cloudifyAgentPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		mpiHostPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		openStackServerPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		openStackVolumePropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		scalingGroupPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		scalingPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
-		volumeHostPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(cloudifyAgentPropertiesTypeEClass, CloudifyAgentPropertiesType.class, "CloudifyAgentPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCloudifyAgentPropertiesType_User(), theXMLTypePackage.getString(), "user", null, 1, 1, CloudifyAgentPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mpiHostPropertiesTypeEClass, MPIHostPropertiesType.class, "MPIHostPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMPIHostPropertiesType_CloudifyAgent(), this.getCloudifyAgentPropertiesType(), null, "cloudifyAgent", null, 1, 1, MPIHostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMPIHostPropertiesType_Server(), this.getOpenStackServerPropertiesType(), null, "server", null, 1, 1, MPIHostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(documentRootEClass, DocumentRoot.class, "DocumentRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_XMLNSPrefixMap(), ecorePackage.getEStringToStringMapEntry(), null, "xMLNSPrefixMap", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_XSISchemaLocation(), ecorePackage.getEStringToStringMapEntry(), null, "xSISchemaLocation", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_CloudifyAgentProperties(), this.getCloudifyAgentPropertiesType(), null, "cloudifyAgentProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_FloatingIPProperties(), this.getFloatingIPPropertiesType(), null, "floatingIPProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_KeyPairProperties(), this.getKeyPairPropertiesType(), null, "keyPairProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_MPIHostProperties(), this.getHostPropertiesType(), null, "mPIHostProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_OpenStackFloatingIPProperties(), this.getOpenStackFloatingIPPropertiesType(), null, "openStackFloatingIPProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_OpenStackProperties(), this.getOpenStackServerPropertiesType(), null, "openStackProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_OpenStackVolumeProperties(), this.getOpenStackVolumePropertiesType(), null, "openStackVolumeProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_ScalingGroupProperties(), this.getScalingGroupPropertiesType(), null, "scalingGroupProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_VolumeHostPropertiesType(), this.getVolumeHostPropertiesType(), null, "volumeHostPropertiesType", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(floatingIPPropertiesTypeEClass, FloatingIPPropertiesType.class, "FloatingIPPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFloatingIPPropertiesType_FloatingNetworkName(), theXMLTypePackage.getString(), "floatingNetworkName", null, 1, 1, FloatingIPPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(hostPropertiesTypeEClass, HostPropertiesType.class, "HostPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHostPropertiesType_OpenstackConfig(), theXMLTypePackage.getString(), "openstackConfig", null, 1, 1, HostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHostPropertiesType_ManagementNetworkName(), theXMLTypePackage.getString(), "managementNetworkName", null, 1, 1, HostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHostPropertiesType_AgentConfig(), theXMLTypePackage.getString(), "agentConfig", null, 1, 1, HostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHostPropertiesType_CloudifyAgent(), this.getCloudifyAgentPropertiesType(), null, "cloudifyAgent", null, 1, 1, HostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHostPropertiesType_Server(), this.getOpenStackServerPropertiesType(), null, "server", null, 1, 1, HostPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(keyPairPropertiesTypeEClass, KeyPairPropertiesType.class, "KeyPairPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getKeyPairPropertiesType_OpenstackConfig(), theXMLTypePackage.getString(), "openstackConfig", null, 1, 1, KeyPairPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyPairPropertiesType_UseExternalResource(), theXMLTypePackage.getString(), "useExternalResource", null, 1, 1, KeyPairPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyPairPropertiesType_ResourceId(), theXMLTypePackage.getString(), "resourceId", null, 1, 1, KeyPairPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyPairPropertiesType_PrivateKeyPath(), theXMLTypePackage.getString(), "privateKeyPath", null, 1, 1, KeyPairPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(openStackFloatingIPPropertiesTypeEClass, OpenStackFloatingIPPropertiesType.class, "OpenStackFloatingIPPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOpenStackFloatingIPPropertiesType_OpenstackConfig(), theXMLTypePackage.getString(), "openstackConfig", null, 1, 1, OpenStackFloatingIPPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOpenStackFloatingIPPropertiesType_Floatingip(), this.getFloatingIPPropertiesType(), null, "floatingip", null, 1, 1, OpenStackFloatingIPPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(openStackServerPropertiesTypeEClass, OpenStackServerPropertiesType.class, "OpenStackServerPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOpenStackServerPropertiesType_Image(), theXMLTypePackage.getString(), "image", null, 1, 1, OpenStackServerPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -447,14 +765,153 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation
-		  (mpiHostPropertiesTypeEClass, 
+		  (documentRootEClass, 
 		   source, 
 		   new String[] {
-			 "name", "MPIHostPropertiesType",
+			 "name", "",
+			 "kind", "mixed"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_Mixed(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "name", ":mixed"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_XMLNSPrefixMap(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "xmlns:prefix"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_XSISchemaLocation(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "xsi:schemaLocation"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_CloudifyAgentProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "CloudifyAgentProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_FloatingIPProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "FloatingIPProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_KeyPairProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "KeyPairProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_MPIHostProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "MPIHostProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_OpenStackFloatingIPProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "OpenStackFloatingIPProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_OpenStackProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "OpenStackProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_OpenStackVolumeProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "OpenStackVolumeProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_ScalingGroupProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "ScalingGroupProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getDocumentRoot_VolumeHostPropertiesType(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "VolumeHostPropertiesType",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (floatingIPPropertiesTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "FloatingIPPropertiesType",
 			 "kind", "elementOnly"
 		   });	
 		addAnnotation
-		  (getMPIHostPropertiesType_CloudifyAgent(), 
+		  (getFloatingIPPropertiesType_FloatingNetworkName(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "floating_network_name",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (hostPropertiesTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "HostPropertiesType",
+			 "kind", "elementOnly"
+		   });	
+		addAnnotation
+		  (getHostPropertiesType_OpenstackConfig(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "openstack_config",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getHostPropertiesType_ManagementNetworkName(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "management_network_name",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getHostPropertiesType_AgentConfig(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "agent_config",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getHostPropertiesType_CloudifyAgent(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
@@ -462,11 +919,73 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation
-		  (getMPIHostPropertiesType_Server(), 
+		  (getHostPropertiesType_Server(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "server",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (keyPairPropertiesTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "KeyPairPropertiesType",
+			 "kind", "elementOnly"
+		   });	
+		addAnnotation
+		  (getKeyPairPropertiesType_OpenstackConfig(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "openstack_config",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getKeyPairPropertiesType_UseExternalResource(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "use_external_resource",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getKeyPairPropertiesType_ResourceId(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "resource_id",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getKeyPairPropertiesType_PrivateKeyPath(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "private_key_path",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (openStackFloatingIPPropertiesTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "OpenStackFloatingIPPropertiesType",
+			 "kind", "elementOnly"
+		   });	
+		addAnnotation
+		  (getOpenStackFloatingIPPropertiesType_OpenstackConfig(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "openstack_config",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getOpenStackFloatingIPPropertiesType_Floatingip(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "floatingip",
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation

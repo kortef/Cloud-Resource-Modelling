@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.provider;
 
-import de.ugoe.cs.oco.tosca.provider.TOSCAv1EditPlugin;
+import de.ugoe.cs.oco.tosca.provider.ToscaEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
 
@@ -40,7 +40,7 @@ public final class PropertyTypesEditPlugin extends EMFPlugin {
 	public PropertyTypesEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     TOSCAv1EditPlugin.INSTANCE,
+		     ToscaEditPlugin.INSTANCE,
 		   });
 	}
 

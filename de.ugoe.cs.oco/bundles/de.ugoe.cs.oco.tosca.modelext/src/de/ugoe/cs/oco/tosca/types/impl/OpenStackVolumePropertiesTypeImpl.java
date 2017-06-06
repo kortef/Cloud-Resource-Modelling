@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
-import de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl;
-
 import de.ugoe.cs.oco.tosca.types.OpenStackVolumePropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
@@ -12,6 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class OpenStackVolumePropertiesTypeImpl extends PropertiesTypeImpl implements OpenStackVolumePropertiesType {
+public class OpenStackVolumePropertiesTypeImpl extends MinimalEObjectImpl.Container implements OpenStackVolumePropertiesType {
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->

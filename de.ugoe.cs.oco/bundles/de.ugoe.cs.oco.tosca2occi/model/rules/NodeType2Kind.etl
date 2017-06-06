@@ -1,0 +1,20 @@
+import "./../operations/generalOperations.etl";
+
+//-----------------------------------------------//
+//---------------NodeType2Kind-------------------//
+//-----------------------------------------------//
+
+rule NodeType2Kind
+	transform nodeType : TOSCA!TNodeType
+	to kind : OCCI!Kind {	
+	guard: not configuration.containsKey(nodeType.name)	
+		kind.title = nodeType.name;
+		kind.term = nodeType.name;
+		kind.createScheme(nodeType);	
+		kind.setParent(nodeType);	
+		kind.setActions(nodeType);	
+		//kind.setAttributes(nodeType);
+		//Entities property filled automatically => No Code required.
+		kind.addToNodeTypeExtension(nodeType.targetNamespace);
+		kind_Set.add(kind);
+}

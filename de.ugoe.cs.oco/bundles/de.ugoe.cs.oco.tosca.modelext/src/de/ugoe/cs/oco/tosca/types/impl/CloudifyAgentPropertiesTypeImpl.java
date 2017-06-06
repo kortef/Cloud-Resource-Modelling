@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
-import de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl;
-
 import de.ugoe.cs.oco.tosca.types.CloudifyAgentPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 
@@ -12,6 +10,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CloudifyAgentPropertiesTypeImpl extends PropertiesTypeImpl implements CloudifyAgentPropertiesType {
+public class CloudifyAgentPropertiesTypeImpl extends MinimalEObjectImpl.Container implements CloudifyAgentPropertiesType {
 	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc -->

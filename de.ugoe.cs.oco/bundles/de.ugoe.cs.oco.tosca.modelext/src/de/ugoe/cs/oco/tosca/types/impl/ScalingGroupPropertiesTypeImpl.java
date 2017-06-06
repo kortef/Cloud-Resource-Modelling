@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
-import de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl;
-
 import de.ugoe.cs.oco.tosca.types.ScalingGroupPropertiesType;
 import de.ugoe.cs.oco.tosca.types.ScalingPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
@@ -15,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ScalingGroupPropertiesTypeImpl extends PropertiesTypeImpl implements ScalingGroupPropertiesType {
+public class ScalingGroupPropertiesTypeImpl extends MinimalEObjectImpl.Container implements ScalingGroupPropertiesType {
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' containment reference.
 	 * <!-- begin-user-doc -->

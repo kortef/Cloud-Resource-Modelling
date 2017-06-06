@@ -31,13 +31,49 @@ public interface TypesFactory extends EFactory {
 	CloudifyAgentPropertiesType createCloudifyAgentPropertiesType();
 
 	/**
-	 * Returns a new object of class '<em>MPI Host Properties Type</em>'.
+	 * Returns a new object of class '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>MPI Host Properties Type</em>'.
+	 * @return a new object of class '<em>Document Root</em>'.
 	 * @generated
 	 */
-	MPIHostPropertiesType createMPIHostPropertiesType();
+	DocumentRoot createDocumentRoot();
+
+	/**
+	 * Returns a new object of class '<em>Floating IP Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Floating IP Properties Type</em>'.
+	 * @generated
+	 */
+	FloatingIPPropertiesType createFloatingIPPropertiesType();
+
+	/**
+	 * Returns a new object of class '<em>Host Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Host Properties Type</em>'.
+	 * @generated
+	 */
+	HostPropertiesType createHostPropertiesType();
+
+	/**
+	 * Returns a new object of class '<em>Key Pair Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Key Pair Properties Type</em>'.
+	 * @generated
+	 */
+	KeyPairPropertiesType createKeyPairPropertiesType();
+
+	/**
+	 * Returns a new object of class '<em>Open Stack Floating IP Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Open Stack Floating IP Properties Type</em>'.
+	 * @generated
+	 */
+	OpenStackFloatingIPPropertiesType createOpenStackFloatingIPPropertiesType();
 
 	/**
 	 * Returns a new object of class '<em>Open Stack Server Properties Type</em>'.

@@ -57,7 +57,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case TypesPackage.CLOUDIFY_AGENT_PROPERTIES_TYPE: return createCloudifyAgentPropertiesType();
-			case TypesPackage.MPI_HOST_PROPERTIES_TYPE: return createMPIHostPropertiesType();
+			case TypesPackage.DOCUMENT_ROOT: return createDocumentRoot();
+			case TypesPackage.FLOATING_IP_PROPERTIES_TYPE: return createFloatingIPPropertiesType();
+			case TypesPackage.HOST_PROPERTIES_TYPE: return createHostPropertiesType();
+			case TypesPackage.KEY_PAIR_PROPERTIES_TYPE: return createKeyPairPropertiesType();
+			case TypesPackage.OPEN_STACK_FLOATING_IP_PROPERTIES_TYPE: return createOpenStackFloatingIPPropertiesType();
 			case TypesPackage.OPEN_STACK_SERVER_PROPERTIES_TYPE: return createOpenStackServerPropertiesType();
 			case TypesPackage.OPEN_STACK_VOLUME_PROPERTIES_TYPE: return createOpenStackVolumePropertiesType();
 			case TypesPackage.SCALING_GROUP_PROPERTIES_TYPE: return createScalingGroupPropertiesType();
@@ -83,9 +87,49 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MPIHostPropertiesType createMPIHostPropertiesType() {
-		MPIHostPropertiesTypeImpl mpiHostPropertiesType = new MPIHostPropertiesTypeImpl();
-		return mpiHostPropertiesType;
+	public DocumentRoot createDocumentRoot() {
+		DocumentRootImpl documentRoot = new DocumentRootImpl();
+		return documentRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FloatingIPPropertiesType createFloatingIPPropertiesType() {
+		FloatingIPPropertiesTypeImpl floatingIPPropertiesType = new FloatingIPPropertiesTypeImpl();
+		return floatingIPPropertiesType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HostPropertiesType createHostPropertiesType() {
+		HostPropertiesTypeImpl hostPropertiesType = new HostPropertiesTypeImpl();
+		return hostPropertiesType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KeyPairPropertiesType createKeyPairPropertiesType() {
+		KeyPairPropertiesTypeImpl keyPairPropertiesType = new KeyPairPropertiesTypeImpl();
+		return keyPairPropertiesType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OpenStackFloatingIPPropertiesType createOpenStackFloatingIPPropertiesType() {
+		OpenStackFloatingIPPropertiesTypeImpl openStackFloatingIPPropertiesType = new OpenStackFloatingIPPropertiesTypeImpl();
+		return openStackFloatingIPPropertiesType;
 	}
 
 	/**

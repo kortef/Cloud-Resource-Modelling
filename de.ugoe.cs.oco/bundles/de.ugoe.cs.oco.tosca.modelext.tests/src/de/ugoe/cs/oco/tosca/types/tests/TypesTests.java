@@ -31,6 +31,7 @@ public class TypesTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new TypesTests("types Tests");
+		suite.addTestSuite(DocumentRootTest.class);
 		return suite;
 	}
 

@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
-import de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl;
-
 import de.ugoe.cs.oco.tosca.types.OpenStackVolumePropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 import de.ugoe.cs.oco.tosca.types.VolumeHostPropertiesType;
@@ -15,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class VolumeHostPropertiesTypeImpl extends PropertiesTypeImpl implements VolumeHostPropertiesType {
+public class VolumeHostPropertiesTypeImpl extends MinimalEObjectImpl.Container implements VolumeHostPropertiesType {
 	/**
 	 * The cached value of the '{@link #getVolume() <em>Volume</em>}' containment reference.
 	 * <!-- begin-user-doc -->

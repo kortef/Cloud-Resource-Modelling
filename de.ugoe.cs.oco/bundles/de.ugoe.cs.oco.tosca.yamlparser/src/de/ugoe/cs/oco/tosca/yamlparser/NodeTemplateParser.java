@@ -14,12 +14,15 @@ import de.ugoe.cs.oco.tosca.CapabilitiesType;
 import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PropertiesType;
 import de.ugoe.cs.oco.tosca.RequirementsType;
+import de.ugoe.cs.oco.tosca.SourceElementType;
 import de.ugoe.cs.oco.tosca.TCapability;
 import de.ugoe.cs.oco.tosca.TDeploymentArtifact;
 import de.ugoe.cs.oco.tosca.TDeploymentArtifacts;
 import de.ugoe.cs.oco.tosca.TInterface;
 import de.ugoe.cs.oco.tosca.TNodeTemplate;
+import de.ugoe.cs.oco.tosca.TRelationshipTemplate;
 import de.ugoe.cs.oco.tosca.TRequirement;
+import de.ugoe.cs.oco.tosca.TTopologyTemplate;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 /**
@@ -32,8 +35,7 @@ public class NodeTemplateParser extends Parser{
 	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map, org.eclipse.emf.ecore.EObject)
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, TTopologyTemplate father) throws ParseException {
 		List<TNodeTemplate> resultList = new ArrayList<TNodeTemplate>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TNodeTemplate template = ToscaFactory.eINSTANCE.createTNodeTemplate();
@@ -86,7 +88,7 @@ public class NodeTemplateParser extends Parser{
 						break;
 					case "artifacts":
 						List<TDeploymentArtifact> artifactsList = (List<TDeploymentArtifact>)
-								new ArtifactParser().parse((Map<String, ?>)entry.getValue());
+								new ArtifactParser().parse((Map<String, ?>)innerentry.getValue());
 						TDeploymentArtifacts artifacts = ToscaFactory.eINSTANCE.createTDeploymentArtifacts();
 						artifacts.getDeploymentArtifact().addAll(artifactsList);
 						template.setDeploymentArtifacts(artifacts);
@@ -94,6 +96,18 @@ public class NodeTemplateParser extends Parser{
 					case "node_filter":
 						break;
 					case "copy":
+						break;
+					case "relationships":
+						// This is non-conformant to the standard but needed to parse Cloudify templates
+						LOGGER.warning("Read relationships inside NodeTemplates, which is non conformant to the standard.");
+						List<TRelationshipTemplate> relationshipList = (List<TRelationshipTemplate>)
+								new RelationshipTemplateParser().parse((List<Map<String, ?>>) innerentry.getValue());
+						for (TRelationshipTemplate relationship: relationshipList){
+							SourceElementType source = ToscaFactory.eINSTANCE.createSourceElementType();
+							source.setRef((String) template.getName());
+							relationship.setSourceElement(source);
+							father.getRelationshipTemplate().add(relationship);
+						}
 						break;
 					default:
 						LOGGER.warning("Unsupported key " + innerentry.getKey() + " read.");
@@ -106,6 +120,12 @@ public class NodeTemplateParser extends Parser{
 
 	@Override
 	public Object parse(List<?> inputArray) throws ParseException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object parse(Map<String, ?> inputMap) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}

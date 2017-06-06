@@ -19,4 +19,11 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <!-- @generated PropertyTypes -->
+      <extender
+            uri="http://oco.cs.ugoe.de/tosca"
+            class="de.ugoe.cs.oco.tosca.types.provider.TypesItemProviderAdapterFactory$ToscaChildCreationExtender"/>
+   </extension>
+
 </plugin>

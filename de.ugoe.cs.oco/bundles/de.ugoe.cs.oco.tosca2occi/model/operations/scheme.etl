@@ -1,0 +1,24 @@
+/* Operation: createScheme
+Input: Any TOSCA element
+Description: Creates Scheme for corresponding OCCI Element, based on the targetNamespace of a TOSCA element.*/
+operation Any createScheme(element : Any) {
+	if(self.hasProperty("scheme")) {
+		var scheme = new String;
+		if(element.hasProperty("targetNamespace") and element.targetNamespace <> null) {
+			scheme = element.targetNamespace;
+		}
+		else{
+			for(definition in TOSCA!TDefinitions) { 
+	 			scheme = definition.targetNamespace;
+	 		}
+		}
+		scheme += "/" + element.type().name + "#";
+		self.scheme = scheme;
+	}
+	else{
+		"OCCI Element: ".print();
+		element.first().print();
+		" does not possess a scheme.".println();
+	}
+}
+

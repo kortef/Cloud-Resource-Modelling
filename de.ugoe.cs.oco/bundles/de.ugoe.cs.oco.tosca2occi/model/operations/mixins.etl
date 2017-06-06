@@ -1,0 +1,15 @@
+import "../configuration.etl";
+
+operation OCCI!Resource setMixins(nodeTemplate : TOSCA!TNodeTemplate) {
+			var mappings = getMixinMappings();
+			for (mapping in mappings){
+				var mixinstring = self.findMixinName(mapping);
+				if (not (mixinstring == null)){
+					var mixin = Cloudconfig!Mixin.allInstances.selectOne(m | m.title.contains(mixinstring));
+					if (not (mixin == null)){
+						self.mixins.add(mixin);
+					}
+				}
+			}
+		
+}

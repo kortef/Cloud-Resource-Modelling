@@ -18,10 +18,32 @@
     		<element name="size" type="string"></element>
     	</sequence>
     </complexType>
-    <complexType name="MPIHostPropertiesType">
+     <complexType name="OpenStackFloatingIPPropertiesType">
    		<sequence>
+    		<element name="openstack_config" type="string"></element>
+    		<element name="floatingip" type="tns:FloatingIPPropertiesType"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="FloatingIPPropertiesType">
+    	<sequence>
+    		<element name= "floating_network_name" type="string"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="HostPropertiesType">
+   		<sequence>
+   			<element name="openstack_config" type="string"></element>
+   			<element name="management_network_name" type="string"></element>	
+   		    <element name="agent_config" type="string"></element>
     		<element name="cloudify_agent" type="tns:CloudifyAgentPropertiesType"></element>
     		<element name="server" type="tns:OpenStackServerPropertiesType"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="KeyPairPropertiesType">
+   		<sequence>
+   			<element name="openstack_config" type="string"></element>
+   			<element name="use_external_resource" type="string"></element>	
+   		    <element name="resource_id" type="string"></element>
+    		<element name="private_key_path" type="string"></element>
     	</sequence>
     </complexType>
     <complexType name="VolumeHostPropertiesType">
@@ -29,15 +51,17 @@
     		<element name="volume" type="tns:OpenStackVolumePropertiesType"></element>
     	</sequence>
     </complexType>
+    <element name="KeyPairProperties" type="tns:KeyPairPropertiesType"></element>
     <element name="CloudifyAgentProperties" type="tns:CloudifyAgentPropertiesType">
     </element>
     <element name="OpenStackProperties" type="tns:OpenStackServerPropertiesType">
     </element>
+    <element name="FloatingIPProperties" type="tns:FloatingIPPropertiesType"></element> 
     <element name="OpenStackVolumeProperties" type="tns:OpenStackVolumePropertiesType">
     </element>
-    <element name="MPIHostProperties" type="tns:MPIHostPropertiesType"></element>
+    <element name="MPIHostProperties" type="tns:HostPropertiesType"></element>
     <element name="VolumeHostPropertiesType" type="tns:VolumeHostPropertiesType"></element>
-
+	<element name="OpenStackFloatingIPProperties" type="tns:OpenStackFloatingIPPropertiesType"></element>
     <element name="ScalingGroupProperties" type="tns:ScalingGroupPropertiesType"></element>
 
 	<complexType name="ScalingGroupPropertiesType">

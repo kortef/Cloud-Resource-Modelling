@@ -1,0 +1,19 @@
+import "./../operations/generalOperations.etl";
+
+//-----------------------------------------------//
+//--------RelationshipType2Kind------------------//
+//-----------------------------------------------//
+rule RelationshipType2Kind
+	transform relationshipType : TOSCA!TRelationshipType
+	to kind : OCCI!Kind {
+	guard: not configuration.containsKey(relationshipType.name)
+	kind.title = relationshipType.name;	
+	kind.term = relationshipType.name;
+	kind.createScheme(relationshipType);
+	kind.setParent(relationshipType);
+	kind.setActions(relationshipType);
+	//kind.setAttributes(relationshipType);
+	//Entities property filled automatically => No Code required.
+	kind.addToRelationshipTypeExtension(relationshipType.targetNamespace);
+	kind_Set.add(kind);
+}

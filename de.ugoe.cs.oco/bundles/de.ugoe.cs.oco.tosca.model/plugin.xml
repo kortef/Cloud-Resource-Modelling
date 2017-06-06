@@ -11,7 +11,7 @@
       <package
             uri="http://oco.cs.ugoe.de/tosca"
             class="de.ugoe.cs.oco.tosca.ToscaPackage"
-            genModel="model/TOSCA-v1.0.genmodel"/>
+            genModel="model/tosca.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">

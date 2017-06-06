@@ -1,0 +1,61 @@
+//-----------------------------------------------//
+//------Operations-------------------------------//
+//-----------------------------------------------//
+
+/* Operation: correspondingKind
+Input: String
+Returns: Kind
+Description: Searches for a Kind term with the passed parameter "name". Therefore, first the self created Kinds checked,
+followed by Kinds given via the configuration file. */
+operation correspondingKind(name : String) : OCCI!Kind {
+	kind_Set.println();
+	if(kind_Set.selectOne(kind| kind.term.asString() == name) <> null){
+		return kind_Set.selectOne(kind| kind.term.asString() == name);
+	}
+	else{
+		name.println();
+		var configuredValues = configuration.keySet().selectOne(value| value == name);
+		return configuration.values().selectOne(kind| kind.term == configuredValues).println();
+	}
+}
+
+/*Operation: filterParameterType
+Description: Filters given TOSCA Attribute type to Boolean, String or Number, required for OCCI Attributes. */
+operation String filterType(){
+	if("String".isSubstringOf(self) or "string".isSubstringOf(self)){
+		return Core!EDataType.all.selectOne(element|element.name = "String");
+	}
+	if("Bool".isSubstringOf(self) or "bool".isSubstringOf(self)){
+		return Core!EDataType.all.selectOne(element|element.name = "Boolean");
+	}
+	if("Int".isSubstringOf(self) or "int".isSubstringOf(self) 
+	or "Float".isSubstringOf(self) or "float".isSubstringOf(self)
+	or "Double".isSubstringOf(self) or "double".isSubstringOf(self)
+	or "Num".isSubstringOf(self) or "num".isSubstringOf(self)){
+		return Core!EDataType.all.selectOne(element|element.name = "Number");
+	}
+}
+
+/* Operation: yesToBoolean
+Returns: Boolean
+Description: If Obj is a yes return true, else return false*/
+operation Any yesToBoolean() : Boolean{
+	if(self.toString() == "yes") {
+		return true;
+	}
+	else{
+		return false;
+	}
+}	
+	
+/* Operation: getDescription
+Returns: Description String
+Description: Extracts string of a description element and returns it.*/
+operation Any getDescription() : String{
+	if(self.documentation.isDefined()) {
+		//self.documentation.first().println();
+		for(each in self.documentation){
+			return each.mixed.first().asString().split("(:(text=))").second();
+		}
+	}
+}

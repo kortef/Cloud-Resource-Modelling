@@ -49,7 +49,7 @@ public class TOSCA2OCCITransformator {
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
 		// TODO: Remove path
-		File transformationFile = new File("/home/fglaser/workspace/TOSCA2OCCI/src/transformation/OCCI2TOSCA.etl");    
+		File transformationFile = new File("model/TOSCA2OCCI.etl");    
 		try {
 			module.parse(transformationFile);
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class TOSCA2OCCITransformator {
 		}
 
 		try {
-			String toscaURI = "http://swe.simpaas.tosca.de/tosca, http://swe.simpaas.tosca.de/PropertyTypes";
+			String toscaURI = "http://oco.cs.ugoe.de/tosca, http://swe.simpaas.tosca.de/PropertyTypes";
 			String path = toscaModelPath.getParent().toString() + "/";
 			IModel toscaModel = createEmfModel("TOSCA", 
 					path + toscaModelPath.getFileName().toString(),  

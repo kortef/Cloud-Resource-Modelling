@@ -18,6 +18,7 @@ import com.esotericsoftware.yamlbeans.YamlReader;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 import de.ugoe.cs.oco.tosca.yamlparser.TOSCAYamlTemplateParser;
 import de.ugoe.cs.util.console.Command;
 import de.ugoe.cs.util.console.Console;
@@ -75,7 +76,7 @@ public class CMDconvertTemplate2ecore implements Command {
 
 	    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
-	    m.put("tosca", new XMLResourceFactoryImpl());
+	    m.put("tosca", new ToscaResourceFactoryImpl());
 	    ResourceSet resSet = new ResourceSetImpl();
 	    
 	    fileName = filePath.getFileName().toString();

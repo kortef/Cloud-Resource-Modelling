@@ -2,8 +2,6 @@
  */
 package de.ugoe.cs.oco.tosca.types.util;
 
-import de.ugoe.cs.oco.tosca.PropertiesType;
-
 import de.ugoe.cs.oco.tosca.types.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -74,8 +72,24 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 				return createCloudifyAgentPropertiesTypeAdapter();
 			}
 			@Override
-			public Adapter caseMPIHostPropertiesType(MPIHostPropertiesType object) {
-				return createMPIHostPropertiesTypeAdapter();
+			public Adapter caseDocumentRoot(DocumentRoot object) {
+				return createDocumentRootAdapter();
+			}
+			@Override
+			public Adapter caseFloatingIPPropertiesType(FloatingIPPropertiesType object) {
+				return createFloatingIPPropertiesTypeAdapter();
+			}
+			@Override
+			public Adapter caseHostPropertiesType(HostPropertiesType object) {
+				return createHostPropertiesTypeAdapter();
+			}
+			@Override
+			public Adapter caseKeyPairPropertiesType(KeyPairPropertiesType object) {
+				return createKeyPairPropertiesTypeAdapter();
+			}
+			@Override
+			public Adapter caseOpenStackFloatingIPPropertiesType(OpenStackFloatingIPPropertiesType object) {
+				return createOpenStackFloatingIPPropertiesTypeAdapter();
 			}
 			@Override
 			public Adapter caseOpenStackServerPropertiesType(OpenStackServerPropertiesType object) {
@@ -96,10 +110,6 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVolumeHostPropertiesType(VolumeHostPropertiesType object) {
 				return createVolumeHostPropertiesTypeAdapter();
-			}
-			@Override
-			public Adapter casePropertiesType(PropertiesType object) {
-				return createPropertiesTypeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -136,16 +146,72 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType <em>MPI Host Properties Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.ugoe.cs.oco.tosca.types.MPIHostPropertiesType
+	 * @see de.ugoe.cs.oco.tosca.types.DocumentRoot
 	 * @generated
 	 */
-	public Adapter createMPIHostPropertiesTypeAdapter() {
+	public Adapter createDocumentRootAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType <em>Floating IP Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.types.FloatingIPPropertiesType
+	 * @generated
+	 */
+	public Adapter createFloatingIPPropertiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.HostPropertiesType <em>Host Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.types.HostPropertiesType
+	 * @generated
+	 */
+	public Adapter createHostPropertiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.KeyPairPropertiesType <em>Key Pair Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.types.KeyPairPropertiesType
+	 * @generated
+	 */
+	public Adapter createKeyPairPropertiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType <em>Open Stack Floating IP Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.types.OpenStackFloatingIPPropertiesType
+	 * @generated
+	 */
+	public Adapter createOpenStackFloatingIPPropertiesTypeAdapter() {
 		return null;
 	}
 
@@ -216,20 +282,6 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVolumeHostPropertiesTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.PropertiesType <em>Properties Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.ugoe.cs.oco.tosca.PropertiesType
-	 * @generated
-	 */
-	public Adapter createPropertiesTypeAdapter() {
 		return null;
 	}
 

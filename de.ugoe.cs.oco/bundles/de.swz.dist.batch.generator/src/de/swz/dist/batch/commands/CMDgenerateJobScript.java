@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-import de.swz.dist.batch.JobscriptGenerator;
+import de.swz.dist.utils.EGLExecutor;
 import de.ugoe.cs.util.console.Command;
 
 public class CMDgenerateJobScript implements Command{
@@ -50,8 +50,9 @@ public class CMDgenerateJobScript implements Command{
 		fileName = filePath.getFileName().toString();
 		
 		try{
-			String base = "/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.swz.dist.batch.model/model/";
-			JobscriptGenerator jg = new JobscriptGenerator(filePath.toString(), base + "batch.ecore", base + "jobscript.egl"); 		 
+			// String base = "/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.swz.dist.batch.model/model/";
+			String base = "model/";
+			EGLExecutor jg = new EGLExecutor("jobscript", filePath.toString(), base + "batch.ecore", base + "jobscript.egl"); 		 
 			jg.execute();
 			result = jg.getResult();
 		} catch (Exception e) {

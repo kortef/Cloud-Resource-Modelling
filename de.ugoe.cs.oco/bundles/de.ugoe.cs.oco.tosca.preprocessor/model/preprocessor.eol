@@ -1,0 +1,84 @@
+TNodeTemplate.allInstances().size.println();
+TGroupTemplate.allInstances().size.println();
+TEntityTemplate.allInstances().size.println();
+var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+var ecoreUtil = emfTool.ecoreUtil;
+
+var groups = TGroupTemplate.allInstances();
+
+for (g in groups ){
+	for (member in g.member){
+	    var candidates = groups.select(g | g.name == member);
+		if (not (candidates.isEmpty)){
+			for (candidate in candidates){
+				groups.remove(candidate);
+			}
+		}
+	}
+}
+
+// Currently works until nested depth of two
+for (g in groups){
+	g.getName.println();
+	g.getType.println();
+	var suffix = g.name.split("\\.").last();
+	// We assume there is only one element TDefinitions and one TopologyTemplate  
+	var topologyTemplate = input!TDefinitions.allInstances.get(0).getServiceTemplate.getTopologyTemplate.get(0);
+	
+	if (g.getType().toString() == "swe.simpaas.groups.ScalingGroup"){
+		// Clone relationships that involve members
+		var scale = g.properties.econtents.get(0).mixed.get(1).value.mixed.get(1).value.mixed.get(0).value;
+		var relations = input!TRelationshipTemplate.all.select(r | g.member.includes(r.sourceElement.ref) 
+			 	or g.member.includes(r.targetElement.ref));
+	    relations.println();
+	    for (relation in relations){
+	    	for (i in Sequence {1 .. scale.asInteger}) {
+	    		var targetCloneable = ecoreUtil.copy(relation);
+	    		topologyTemplate.getRelationshipTemplate.add(targetCloneable);
+	    		if (g.member.includes(relation.sourceElement.ref)){
+	    			targetCloneable.sourceElement.ref = relation.sourceElement.ref + "_" + suffix + "_" + i;
+	    		}
+	    		if (g.member.includes(relation.targetElement.ref)){
+	    			targetCloneable.targetElement.ref = relation.targetElement.ref + "_" + suffix + "_" + i;
+	    		}
+	    	}
+	    	ecoreUtil.`delete`(relation);
+	    }
+		
+		// Clone members
+		for (member in g.member){
+			 var orig = TEntityTemplate.allInstances.selectOne(t | t.name = member);
+			 for (i in Sequence {1 .. scale.asInteger}) {
+			 	("Cloning: " + member).println();
+    			var targetCloneable = ecoreUtil.copy(orig);
+    			if (orig.isTypeOf(TGroupTemplate)){
+    				topologyTemplate.getGroupTemplate().add(targetCloneable);
+    			}
+    			if (orig.isTypeOf(TNodeTemplate)){
+    				topologyTemplate.getNodeTemplate().add(targetCloneable);
+    				if (not (targetCloneable.getInterfaces == null)){
+						for (interface in targetCloneable.getInterfaces.interface){
+							for (op in interface.getOperation){
+								if (not (op.getInputParameters == null)){
+									for (parameter in op.getInputParameters.inputParameter){
+										("Parameter: " + parameter.value).println;
+										for (member in g.member){
+											member.println();
+											if (member.isSubstringOf(parameter.value)){
+												parameter.value = parameter.value.replace(member, member + "_" + suffix + "_" + i);
+											}
+										}
+									}
+								}
+							}
+						} 
+					}   				
+    			}
+    			targetCloneable.name = orig.name + "_" + suffix + "_" + i;	
+  			 }
+  			ecoreUtil.`delete`(orig);
+		}		
+	}
+	var test = ecoreUtil.`delete`(g);
+}
+

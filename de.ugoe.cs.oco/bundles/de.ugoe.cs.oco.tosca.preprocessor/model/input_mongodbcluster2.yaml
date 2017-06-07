@@ -1,0 +1,427 @@
+tosca_definitions_version: cloudify_dsl_1_2
+imports:
+  - http://www.getcloudify.org/spec/cloudify/4.0m10/types.yaml
+  - http://www.getcloudify.org/spec/fabric-plugin/1.4.2/plugin.yaml
+  - http://www.getcloudify.org/spec/openstack-plugin/2.0.1/plugin.yaml
+  - http://user.informatik.uni-goettingen.de/~fglaser/cloudify-ansible-plugin/plugin.yaml
+
+node_templates:
+  swe.simpaas.instances.floating_ip:
+    type: cloudify.openstack.nodes.FloatingIP
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      floatingip: 
+              
+        floating_network_name: provider
+
+            
+
+  mongoscale.apps.router:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, configserver]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.router, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.router
+
+  mongoscale.hosts.router:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: router
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_floating_ip
+        target: swe.simpaas.instances.floating_ip
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale-key:
+    type: cloudify.openstack.nodes.KeyPair
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      use_external_resource: false
+      resource_id: mongoscale_key
+      private_key_path: 
+  mongoscale.hosts.shard_replica_shard_1_1:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_1_2:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_1_3:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.apps.shard_replica_shard_1_1:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_1_1, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_1_1
+
+  mongoscale.apps.shard_replica_shard_1_2:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_1_2, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_1_2
+
+  mongoscale.apps.shard_replica_shard_1_3:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_1_3, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_1_3
+
+  mongoscale.hosts.shard_replica_shard_2_1:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_2_2:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_2_3:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.apps.shard_replica_shard_2_1:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_2_1, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_2_1
+
+  mongoscale.apps.shard_replica_shard_2_2:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_2_2, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_2_2
+
+  mongoscale.apps.shard_replica_shard_2_3:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_2_3, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_2_3
+
+  mongoscale.hosts.shard_replica_shard_3_1:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_3_2:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.hosts.shard_replica_shard_3_3:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+              
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+
+              
+        flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+              
+        name: sh1rep1
+
+            
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale.apps.shard_replica_shard_3_1:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_3_1, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_3_1
+
+  mongoscale.apps.shard_replica_shard_3_2:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_3_2, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_3_2
+
+  mongoscale.apps.shard_replica_shard_3_3:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_3_3, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_3_3
+
+hosts.shard_replica_shard_3_3
+
+.shard_replica_shard_3_3
+
+}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_3_3
+

@@ -2,24 +2,23 @@ tosca_definitions_version: cloudify_dsl_1_2
 [% 
 var ident = "";
 var gap = "  ";
-
 var scalinggroups = input!TGroupTemplate.all.select(g | g.type.toString() 
 		== "swe.simpaas.groups.ScalingGroup");
+input!TGroupTemplate.allInstances().size.println();
 
-/*if (not (scalinggroups == null)){		
-	var scale = scalinggroups.properties.econtents.get(0).
+var scale = "";
+var member = new Sequence;
+if (not (scalinggroups.size == 0)){		
+	scale = scalinggroups.properties.econtents.get(0).
 	mixed.get(0).get(1).value
 	.mixed.get(1).value.mixed.
 	get(0).value;
-	var member = scalinggroups.get(0).member;
+	member = scalinggroups.get(0).member;
 }
 
 if (scale.contains("get_input")){
 	scale = getInputParValue(scale);
-}*/
-var scale = 3;
-var member: Set = new Set;
-member.add("dummy");
+}
 
 
 //scalinggroups.size.println();
@@ -127,15 +126,17 @@ operation toString(parameter: input!PropertiesType, ident: String, gap: String, 
 	for (mixedcontent in parameter.econtents.mixed){
 		for (feature in mixedcontent){
 			if (not (feature.estructuralfeature.name == "text")){
-				out.println(ident + feature.estructuralfeature.name + ": ");
+				out.print(ident + feature.estructuralfeature.name + ": ");
 				for (content in feature.value.mixed){
 					ident = ident + gap;
 					if (not (content.estructuralfeature.name == "text")){
+						//out.println;
 						out.print(ident + content.estructuralfeature.name + ": ");
 						for (content2 in content.value.mixed){
-							var value;
-							if (content2.value.contains("get_input"))
+							var value = "";
+							if (content2.value.contains("get_input")){
 								value = getInputParValue(content2.value);
+							}
 							else
 								value = content2.value;
 							// need to check if name matches group member name for scaling
@@ -148,9 +149,14 @@ operation toString(parameter: input!PropertiesType, ident: String, gap: String, 
 									}
 								}
 							}
-							out.println(value);
+							if (value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|)+(\\s)*)*"))
+								out.println(value);
 						}
-						
+					}
+					else{
+						// TODO FIX this
+						if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|)+(\\s)*)*"))
+							out.println(content.value);
 					}
 					ident = ident.substring(0, ident.length - 2);			
 				}
@@ -216,6 +222,7 @@ operation toString(parameter: input!TParameter, ident: String, gap: String){
 operation getInputParValue(request: String): String{
 	var requiredInputPar = request.split(" ").get(1);
 	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
+	"Looking for parameter: " + requiredInputPar;
 	var inputPar = input!TPlan.allInstances.get(0).
 		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
 	return inputPar.value;

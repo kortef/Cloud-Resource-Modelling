@@ -11,10 +11,7 @@ node_templates:
     properties:
       openstack_config: {get_input: openstack_configuration}
       floatingip: 
-              
         floating_network_name: provider
-
-            
 
   mongoscale.apps.router:
     type: ansible.nodes.Application
@@ -41,16 +38,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: router
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_floating_ip
         target: swe.simpaas.instances.floating_ip
@@ -64,6 +54,7 @@ node_templates:
       use_external_resource: false
       resource_id: mongoscale_key
       private_key_path: 
+
   mongoscale.hosts.shard_replica_shard_1_1:
     type: mongoscale.host
     properties:
@@ -71,16 +62,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -92,16 +76,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -113,16 +90,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -188,16 +158,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -209,16 +172,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -230,16 +186,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -305,16 +254,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -326,16 +268,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -347,16 +282,9 @@ node_templates:
       management_network_name: mongodb-network
       agent_config: {get_input: agent_configuration}
       server: 
-              
         image: adf63ddc-debe-4d7e-b899-b936e989439f
-
-              
         flavor: 36637a26-fded-4635-b6c5-ec8ec0745eab
-
-              
         name: sh1rep1
-
-            
     relationships:
       - type: cloudify.openstack.server_connected_to_keypair
         target: mongoscale-key
@@ -415,11 +343,28 @@ node_templates:
       - type: cloudify.relationships.contained_in
         target: mongoscale.hosts.shard_replica_shard_3_3
 
-hosts.shard_replica_shard_3_3
+le.hosts.shard_replica_shard_3_3
 
-.shard_replica_shard_3_3
+ts.shard_replica_shard_3_3
 
-}
+ts.shard_replica_shard_3_3
+
+tionships.contained_in
+        target: mongoscale.hosts.shard_replica_shard_3_2
+
+  mongoscale.apps.shard_replica_shard_3_3:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard_replica_shard_3_3, ip]}
             user: ubuntu
     relationships:
       - type: cloudify.relationships.contained_in

@@ -1,4 +1,6 @@
-package de.ugoe.cs.oco.tosca.yamlgenerator.commands;
+package de.ugoe.cs.oco.tosca.preprocessor.commands;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,10 +9,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+import de.ugoe.cs.oco.tosca.preprocessor.Preprocessor;
 import de.ugoe.cs.util.console.Command;
-import de.ugoe.cs.oco.tosca.yamlgenerator.BlueprintGenerator;
 
-public class CMDconvert2blueprint implements Command {
+public class CMDexplodeGroups implements Command {
 
 	@Override
 	public void run(List<Object> parameters) {
@@ -43,27 +45,31 @@ public class CMDconvert2blueprint implements Command {
 					+ outputPath);
 		}
 		
+		Path oldPath = filePath;
+	    String templateName = filePath.getFileName().toString();
+		String templateNameWithoutExtn = templateName.substring(0, templateName.lastIndexOf('.'));
+
+	    filePath = Paths.get(outputPath.getParent().toString() + "/" 
+	    + templateNameWithoutExtn + "_exploded" + ".tosca");
+	    
+	    try {
+			Files.copy(oldPath, filePath, REPLACE_EXISTING);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		fileName = filePath.getFileName().toString();
 		
 		try{
-		result = new BlueprintGenerator().generate(filePath);		 
+			new Preprocessor().preprocess(filePath);		 
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String fileNameWithoutExtn = fileName.substring(0, fileName.lastIndexOf('.'));
-		Path output = Paths.get(outputPath.toString() 
-				+ fileSeparator 
-				+ fileNameWithoutExtn + ".yaml");
-		 
-		try {
-			Files.write(output, result.toString().getBytes(), StandardOpenOption.CREATE);
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public String help() {
-		return "convert2blueprint <path to ecore model> [<output directory>]";
+		return "explodeGroups <path to tosca model> [<output directory>]";
 	}
 }

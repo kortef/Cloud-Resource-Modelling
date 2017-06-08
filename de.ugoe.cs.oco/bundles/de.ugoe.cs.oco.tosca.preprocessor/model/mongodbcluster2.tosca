@@ -88,7 +88,7 @@
             <types:agent_config>{get_input: agent_configuration}</types:agent_config>
             <types:server>
               <types:image>adf63ddc-debe-4d7e-b899-b936e989439f</types:image>
-              <types:flavor>36637a26-fded-4635-b6c5-ec8ec0745eab</types:flavor>
+              <types:flavor>{get_input: vm_flavor}</types:flavor>
               <types:name>router</types:name>
             </types:server>
           </types:HostPropertiesType>
@@ -112,7 +112,7 @@
             <types:agent_config>{get_input: agent_configuration}</types:agent_config>
             <types:server>
               <types:image>adf63ddc-debe-4d7e-b899-b936e989439f</types:image>
-              <types:flavor>36637a26-fded-4635-b6c5-ec8ec0745eab</types:flavor>
+              <types:flavor>{get_input: vm_flavor}</types:flavor>
               <types:name>sh1rep1</types:name>
             </types:server>
           </types:HostPropertiesType>
@@ -122,7 +122,7 @@
         <tosca:Properties>
           <types:ScalingGroupPropertiesType>
             <types:scale>
-              <types:instances>3</types:instances>
+              <types:instances>{get_input: num_shards}</types:instances>
             </types:scale>
           </types:ScalingGroupPropertiesType>
         </tosca:Properties>
@@ -132,7 +132,7 @@
         <tosca:Properties>
           <types:ScalingGroupPropertiesType>
             <types:scale>
-              <types:instances>3</types:instances>
+              <types:instances>{get_input: num_replicas}</types:instances>
             </types:scale>
           </types:ScalingGroupPropertiesType>
         </tosca:Properties>
@@ -152,6 +152,10 @@
           <tosca:InputParameter defaultValue="RegionOne" name="region"/>
           <tosca:InputParameter defaultValue="{user: ubuntukey: ~/.ssh/mongoscale-key.peminstall_method: remote}" name="agent_configuration"/>
           <tosca:InputParameter defaultValue="mongoscale" name="keystone_tenant_name"/>
+          <tosca:InputParameter defaultValue="3" name="num_replicas"/>
+          <tosca:InputParameter defaultValue="2" name="num_shards"/>
+          <tosca:InputParameter defaultValue="36637a26-fded-4635-b6c5-ec8ec0745eab" name="vm_flavor"/>
+          
         </tosca:InputParameters>
       </tosca:Plan>
     </tosca:Plans>

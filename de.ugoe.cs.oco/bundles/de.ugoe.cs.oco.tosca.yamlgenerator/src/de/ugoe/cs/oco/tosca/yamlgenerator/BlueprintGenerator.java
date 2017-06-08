@@ -2,10 +2,12 @@ package de.ugoe.cs.oco.tosca.yamlgenerator;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
@@ -26,7 +28,7 @@ public class BlueprintGenerator {
 	protected final static Logger LOGGER = Logger.getLogger(BlueprintGenerator.class.getName());
 
 	
-	public static String generate(Path emfFilePath) throws Exception{
+	public String generate(Path emfFilePath) throws Exception{
 		ToscaPackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -34,11 +36,10 @@ public class BlueprintGenerator {
 	    m.put("tosca", new ToscaResourceFactoryImpl());
 		
 		IEolExecutableModule module = new EglTemplateFactoryModuleAdapter(new EglTemplateFactory());
-		Object result = null;		
-		// TODO: Remove path
-		File file = new File("/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.tosca.yamlgenerator/model/BlueprintGenerator.egl");
+		Object result = null;
+		URL eglCode = this.getClass().getResource("/de/ugoe/cs/oco/tosca/yamlgenerator/model/BlueprintGenerator.egl");
 		try {
-			module.parse(file);
+			module.parse(eglCode.toURI());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -3,22 +3,20 @@
  */
 package de.ugoe.cs.oco.tosca.preprocessor;
 
-import java.io.File;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
-
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
-import org.eclipse.epsilon.flock.FlockModule;
 
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
@@ -37,11 +35,10 @@ public class Preprocessor {
     m.put("tosca", new ToscaResourceFactoryImpl());
 	
     IEolExecutableModule module = new EolModule();
-	Object result = null;		
 	// TODO: Remove path
-	File file = new File("/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.tosca.preprocessor/model/preprocessor.eol");
+	URL eolCode = this.getClass().getResource("/de/ugoe/cs/oco/tosca/preprocessor/model/preprocessor.eol");
 	try{
-		module.parse(file);
+		module.parse(eolCode.toURI());
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
@@ -62,8 +59,6 @@ public class Preprocessor {
 				false);
 		
 		module.getContext().getModelRepository().addModel(inputModel);
-		System.out.println(inputModel);
-		result = module.execute();
 		inputModel.store();
 	} catch (Exception e) {
 		e.printStackTrace();

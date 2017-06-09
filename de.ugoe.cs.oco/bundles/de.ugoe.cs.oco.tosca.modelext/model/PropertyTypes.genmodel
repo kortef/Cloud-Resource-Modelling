@@ -10,14 +10,44 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>types.ecore</foreignModel>
   <genPackages prefix="Types" basePackage="de.ugoe.cs.oco.tosca" resource="XML" disposableProviderFactory="true"
-      childCreationExtenders="true" fileExtensions="tosca" ecorePackage="types.ecore#/"
-      publicationLocation="">
+      childCreationExtenders="true" contentTypeIdentifier="" fileExtensions="tosca"
+      ecorePackage="types.ecore#/" publicationLocation="">
     <genClasses ecoreClass="types.ecore#//CloudifyAgentPropertiesType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//CloudifyAgentPropertiesType/user"/>
     </genClasses>
-    <genClasses ecoreClass="types.ecore#//MPIHostPropertiesType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//MPIHostPropertiesType/cloudifyAgent"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//MPIHostPropertiesType/server"/>
+    <genClasses ecoreClass="types.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/cloudifyAgentProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/floatingIPProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/keyPairProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/mPIHostProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/openStackFloatingIPProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/openStackProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/openStackVolumeProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/scalingGroupProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//DocumentRoot/volumeHostPropertiesType"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//FloatingIPPropertiesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//FloatingIPPropertiesType/floatingNetworkName"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//HostPropertiesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//HostPropertiesType/openstackConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//HostPropertiesType/managementNetworkName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//HostPropertiesType/agentConfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//HostPropertiesType/cloudifyAgent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//HostPropertiesType/server"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//KeyPairPropertiesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//KeyPairPropertiesType/openstackConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//KeyPairPropertiesType/useExternalResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//KeyPairPropertiesType/resourceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//KeyPairPropertiesType/privateKeyPath"/>
+    </genClasses>
+    <genClasses ecoreClass="types.ecore#//OpenStackFloatingIPPropertiesType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//OpenStackFloatingIPPropertiesType/openstackConfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference types.ecore#//OpenStackFloatingIPPropertiesType/floatingip"/>
     </genClasses>
     <genClasses ecoreClass="types.ecore#//OpenStackServerPropertiesType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//OpenStackServerPropertiesType/image"/>

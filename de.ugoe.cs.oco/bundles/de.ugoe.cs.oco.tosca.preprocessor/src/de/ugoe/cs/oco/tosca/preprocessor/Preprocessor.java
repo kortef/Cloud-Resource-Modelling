@@ -20,6 +20,7 @@ import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
+import de.ugoe.cs.oco.tosca.types.util.TypesResourceFactoryImpl;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
@@ -33,10 +34,10 @@ public class Preprocessor {
 	Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
     Map<String, Object> m = reg.getExtensionToFactoryMap();
     m.put("tosca", new ToscaResourceFactoryImpl());
-	
+    
     IEolExecutableModule module = new EolModule();
-	// TODO: Remove path
 	URL eolCode = this.getClass().getResource("/de/ugoe/cs/oco/tosca/preprocessor/model/preprocessor.eol");
+	System.out.println(eolCode);
 	try{
 		module.parse(eolCode.toURI());
 	} catch (Exception e) {
@@ -59,6 +60,7 @@ public class Preprocessor {
 				false);
 		
 		module.getContext().getModelRepository().addModel(inputModel);
+		module.execute();
 		inputModel.store();
 	} catch (Exception e) {
 		e.printStackTrace();

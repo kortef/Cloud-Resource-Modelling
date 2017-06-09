@@ -49,7 +49,7 @@ public class CMDexplodeGroups implements Command {
 	    String templateName = filePath.getFileName().toString();
 		String templateNameWithoutExtn = templateName.substring(0, templateName.lastIndexOf('.'));
 
-	    filePath = Paths.get(outputPath.getParent().toString() + "/" 
+	    filePath = Paths.get(outputPath.toString() + "/" 
 	    + templateNameWithoutExtn + "_exploded" + ".tosca");
 	    
 	    try {

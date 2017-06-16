@@ -157,7 +157,7 @@ public interface TDefinitions extends TExtensibleElements {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node Type</em>' containment reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_NodeType()
-	 * @model containment="true" transient="true" derived="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='NodeType' namespace='##targetNamespace' group='#group:6'"
 	 * @generated
 	 */

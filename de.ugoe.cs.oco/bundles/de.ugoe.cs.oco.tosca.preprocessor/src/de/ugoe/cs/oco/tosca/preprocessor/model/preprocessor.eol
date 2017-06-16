@@ -118,7 +118,7 @@ operation getNewName(fullname: String, prefix: String, order: Integer): String{
 operation getInputParValue(request: String): String{
 	var requiredInputPar = request.split(" ").get(1);
 	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
-	("Looking for parameter: " + requiredInputPar).println();
+	//("Looking for parameter: " + requiredInputPar).println();
 	var inputPar = input!TPlan.allInstances.get(0).
 		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
 	return inputPar.value;

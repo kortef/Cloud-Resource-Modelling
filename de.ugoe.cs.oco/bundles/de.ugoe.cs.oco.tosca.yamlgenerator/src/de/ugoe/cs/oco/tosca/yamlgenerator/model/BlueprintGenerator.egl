@@ -4,8 +4,7 @@ var ident = "";
 var gap = "  ";
 var scalinggroups = input!TGroupTemplate.all.select(g | g.type.toString() 
 		== "swe.simpaas.groups.ScalingGroup");
-input!TGroupTemplate.allInstances().size.println();
-
+		
 var scale = "";
 var member = new Sequence;
 if (not (scalinggroups.size == 0)){		
@@ -145,7 +144,7 @@ operation toString(parameter: input!PropertiesType, ident: String, gap: String, 
 					}
 					else{
 						// Need to check for content of value, since we want to avoid to print whitespaces.
-						if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_)+(\\s)*)+"))
+						if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|\\~|\\.|\\/)+(\\s)*)+"))
 							out.print(content.value);
 					}
 					ident = ident.substring(0, ident.length - 2);
@@ -199,21 +198,21 @@ operation toString(parameter: input!TOperation, ident: String, gap: String, suff
 operation toString(parameter: input!TParameter, ident: String, gap: String){
 	out.println(ident + parameter.name + ":");
 	ident = ident + gap;
-	if (not (parameter.type == null)){
-		out.println(ident + "type: " +  parameter.type);
-	}
+	//if (not (parameter.type == null)){
+	//	out.println(ident + "type: " +  parameter.type);
+	//}
 	if (not (parameter.defaultValue == null)){
 		out.println(ident + "default: " + parameter.defaultValue);
 	}
-	if (not (parameter.value == null)){
-		out.println(ident + "value: " + parameter.value);
-	}
+	//if (not (parameter.value == null)){
+	//	out.println(ident + "value: " + parameter.value);
+	//}
 }
 
 operation getInputParValue(request: String): String{
 	var requiredInputPar = request.split(" ").get(1);
 	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
-	"Looking for parameter: " + requiredInputPar;
+	//"Looking for parameter: " + requiredInputPar;
 	var inputPar = input!TPlan.allInstances.get(0).
 		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
 	return inputPar.value;

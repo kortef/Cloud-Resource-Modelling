@@ -81,11 +81,11 @@ public class FlavorMapperImpl extends ExpressionImpl implements FlavorMapper {
 		int cores = Integer.parseInt(coresParam.getValue());
 		
 		if (cores < 2){
-			output.setValue("2");
+			output.setValue("8dd25971-1bbd-47db-9d49-2fef02fa0bc8");
 		} else if (cores == 2){
-			output.setValue("3");
+			output.setValue("36637a26-fded-4635-b6c5-ec8ec0745eab");
 		} else {
-			output.setValue("4");
+			output.setValue("e739cb33-4224-4829-8dcb-9b66a1b8ceb9");
 		}
 		return output;
 		

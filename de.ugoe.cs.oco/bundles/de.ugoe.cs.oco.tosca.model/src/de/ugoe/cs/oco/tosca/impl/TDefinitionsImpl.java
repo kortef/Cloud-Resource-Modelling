@@ -110,16 +110,6 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 	protected FeatureMap group;
 
 	/**
-	 * The cached value of the '{@link #getNodeType() <em>Node Type</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodeType()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TNodeType> nodeType;
-
-	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,10 +323,7 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 	 * @generated
 	 */
 	public EList<TNodeType> getNodeType() {
-		if (nodeType == null) {
-			nodeType = new EObjectContainmentEList<TNodeType>(TNodeType.class, this, ToscaPackage.TDEFINITIONS__NODE_TYPE);
-		}
-		return nodeType;
+		return getGroup().list(ToscaPackage.Literals.TDEFINITIONS__NODE_TYPE);
 	}
 
 	/**
@@ -761,7 +748,7 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 			case ToscaPackage.TDEFINITIONS__SERVICE_TEMPLATE:
 				return !getServiceTemplate().isEmpty();
 			case ToscaPackage.TDEFINITIONS__NODE_TYPE:
-				return nodeType != null && !nodeType.isEmpty();
+				return !getNodeType().isEmpty();
 			case ToscaPackage.TDEFINITIONS__NODE_TYPE_IMPLEMENTATION:
 				return !getNodeTypeImplementation().isEmpty();
 			case ToscaPackage.TDEFINITIONS__RELATIONSHIP_TYPE:

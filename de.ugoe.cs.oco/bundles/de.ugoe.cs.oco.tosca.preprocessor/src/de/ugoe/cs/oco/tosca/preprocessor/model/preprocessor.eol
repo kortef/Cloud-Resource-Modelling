@@ -1,0 +1,125 @@
+var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+var ecoreUtil = emfTool.ecoreUtil;
+
+var groups = TGroupTemplate.allInstances();
+
+// Start with top level groups
+for (g in groups ){
+	for (member in g.member){
+	    var candidates = groups.select(g | g.name == member);
+		if (not (candidates.isEmpty)){
+			for (candidate in candidates){
+				groups.remove(candidate);
+			}
+		}
+	}
+}
+
+// We assume there is only one element TDefinitions and one TopologyTemplate  
+var serviceTemplate = input!TDefinitions.allInstances.get(0).getServiceTemplate;
+var topologyTemplate = serviceTemplate.getTopologyTemplate.get(0);
+
+while (groups.size > 0){	
+	for (g in groups){
+		var suffix = g.name.split("\\.").last();		
+		if (g.getType().toString() == "swe.simpaas.groups.ScalingGroup"){
+			var scale = g.properties.econtents.get(0).mixed.get(1).value.mixed.get(1).value.mixed.get(0).value;
+			
+			// Clone relationships that involve members
+			if (scale.contains("get_input")){
+				scale = getInputParValue(scale);
+			}
+			var relations = input!TRelationshipTemplate.all.select(r | g.member.includes(r.sourceElement.ref) 
+				 	or g.member.includes(r.targetElement.ref));
+		    for (relation in relations){
+		    	for (i in Sequence {1 .. scale.asInteger}) {
+		    		var targetCloneable = ecoreUtil.copy(relation);
+		    		topologyTemplate.getRelationshipTemplate.add(targetCloneable);
+		    		if (g.member.includes(relation.sourceElement.ref)){
+		    			targetCloneable.sourceElement.ref = getNewName(relation.sourceElement.ref, suffix, i);
+		    		}
+		    		if (g.member.includes(relation.targetElement.ref)){
+		    			targetCloneable.targetElement.ref = getNewName(relation.targetElement.ref, suffix, i);
+		    		}
+		    	}
+		    	ecoreUtil.`delete`(relation);
+		    }
+			
+			// Clone members
+			for (member in g.member){
+				 var orig = TEntityTemplate.allInstances.selectOne(t | t.name == member);
+				 for (i in Sequence {1 .. scale.asInteger}) {
+	    			var targetCloneable = ecoreUtil.copy(orig);
+	    			if (orig.isTypeOf(TGroupTemplate)){
+	    				topologyTemplate.getGroupTemplate().add(targetCloneable);
+	    			}
+	    			if (orig.isTypeOf(TNodeTemplate)){
+	    				topologyTemplate.getNodeTemplate().add(targetCloneable);
+	    				if (not (targetCloneable.getInterfaces == null)){
+							for (interface in targetCloneable.getInterfaces.interface){
+								for (op in interface.getOperation){
+									if (not (op.getInputParameters == null)){
+										for (parameter in op.getInputParameters.inputParameter){
+											for (member in g.member){
+												if (member.isSubstringOf(parameter.value)){
+													parameter.value = parameter.value.replace(member, getNewName(member, suffix, i));
+												}
+											}
+										}
+									}
+								}
+							} 
+						}   				
+	    			}
+	    			targetCloneable.name = getNewName(orig.name, suffix, i);	
+	  			 }
+	  			ecoreUtil.`delete`(orig);
+			}		
+		}
+		var test = ecoreUtil.`delete`(g);
+	}
+	groups.removeAll(groups);
+	groups.addAll(topologyTemplate.getGroupTemplate());	
+}
+// Set hostnames according to NodeTemplate names 
+for (nodeTemplate in topologyTemplate.getNodeTemplate()){
+	if (nodeTemplate.type.toString() == "mongoscale.host"){
+		for (property in nodeTemplate.getProperties){
+			for (element in property.getAny){
+				if (element.getEstructuralFeature.getName() == "HostPropertiesType"){
+					var innerelements = element.getValue().getAny();
+					for (innerelement in innerelements){
+						if (innerelement.getEstructuralFeature.getName == "server"){
+							var innermostelements = innerelement.getValue().getAny();
+							for (innermostelement in innermostelements){
+								if (innermostelement.getEstructuralFeature.getName == "name"){
+									var newName = nodeTemplate.getName().split("\\.").last();
+									innermostelement.getValue.mixed.setValue(0, newName);
+									break;
+								}
+							}
+							break;							
+						}
+					}					
+					break;
+				}
+		    }
+		}
+	} 
+}
+
+
+operation getNewName(fullname: String, prefix: String, order: Integer): String{
+	var oldname = fullname.split("\\.").last();
+	var newname = prefix + order + oldname; 
+	return fullname.replace(oldname, newname);
+}
+
+operation getInputParValue(request: String): String{
+	var requiredInputPar = request.split(" ").get(1);
+	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
+	//("Looking for parameter: " + requiredInputPar).println();
+	var inputPar = input!TPlan.allInstances.get(0).
+		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
+	return inputPar.value;
+}

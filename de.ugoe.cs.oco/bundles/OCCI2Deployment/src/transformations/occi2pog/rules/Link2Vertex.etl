@@ -1,0 +1,10 @@
+//-----------------------------------------------//
+//------------------Link2Vertex------------------//
+//-----------------------------------------------//
+rule Link2Vertex
+	transform link : OCCI!Link
+	to vertex : POG!Vertex {
+	vertex.id = link.id;
+	vertex.title = link.kind.scheme;
+	graph.vertices.add(vertex);
+}

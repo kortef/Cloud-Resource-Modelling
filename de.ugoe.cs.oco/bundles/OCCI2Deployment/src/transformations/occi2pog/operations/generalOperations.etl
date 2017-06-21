@@ -1,0 +1,24 @@
+/* Operation: baseKind
+Description: Search for the root parent of the Kind passed. 
+To be in more Detail the previous parent before the root is examined,
+because all OCCI Kinds are inherited from link,resource or entity kind,
+which contain no valuable information.*/
+operation OCCI!Kind baseKind() : OCCI!Kind {
+	if(self.parent.scheme == "http://schemas.ogf.org/occi/core#"){
+		return self;
+	}
+	else{
+	 self.parent.baseKind();
+	}
+}
+/* Operation: compareTo
+Input:	Kind kind: Kind that is compared against.
+Description: Compares an OCCI Kind to another OCCI Kind
+based on the mandatory properties scheme and term.*/
+operation OCCI!Kind compareTo(kind : OCCI!Kind) : Boolean {
+	if(self.term.toString() == kind.term.toString()
+	and self.scheme.toString() == kind.scheme.toString()) {
+		return true;
+	}
+	return false;
+}

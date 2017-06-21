@@ -1,0 +1,10 @@
+//-----------------------------------------------//
+//--------------Resource2Vertex------------------//
+//-----------------------------------------------//
+rule Resource2Vertex
+	transform resource : OCCI!Resource
+	to vertex : POG!Vertex {
+	vertex.id = resource.id;
+	vertex.title = resource.title;
+	graph.vertices.add(vertex);
+}

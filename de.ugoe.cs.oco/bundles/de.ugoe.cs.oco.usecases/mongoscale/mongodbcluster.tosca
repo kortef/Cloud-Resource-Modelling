@@ -28,7 +28,7 @@
       </tosca:RelationshipTemplate>
       <tosca:RelationshipTemplate type="cloudify.openstack.server_connected_to_floating_ip">
         <tosca:SourceElement ref="mongoscale.hosts.router"/>
-        <tosca:TargetElement ref="swe.simpaas.instances.floating_ip"/>
+        <tosca:TargetElement ref="mongoscale.floating_ip"/>
       </tosca:RelationshipTemplate>
       <tosca:RelationshipTemplate type="cloudify.openstack.server_connected_to_keypair">
         <tosca:SourceElement ref="mongoscale.hosts.router"/>
@@ -38,7 +38,7 @@
         <tosca:SourceElement ref="mongoscale.hosts.shardhost"/>
         <tosca:TargetElement ref="mongoscale-key"/>
       </tosca:RelationshipTemplate>
-      <tosca:NodeTemplate type="cloudify.openstack.nodes.FloatingIP" name="swe.simpaas.instances.floating_ip">
+      <tosca:NodeTemplate type="cloudify.openstack.nodes.FloatingIP" name="mongoscale.floating_ip">
         <tosca:Properties>
           <types:OpenStackFloatingIPPropertiesType>
             <types:openstack_config>{get_input: openstack_configuration}</types:openstack_config>
@@ -157,7 +157,7 @@
           <tosca:InputParameter name="vm_flavor" defaultValue="36637a26-fded-4635-b6c5-ec8ec0745eab"/>
         </tosca:InputParameters>
         <tosca:OutputParameters>
-          <tosca:OutputParameter name="ip" type="" defaultValue="" value="{ get_attribute: [swe.simpaas.instances.floating_ip, floating_ip_address] }"/>
+          <tosca:OutputParameter name="ip" type="" defaultValue="" value="{ get_attribute: [mongoscale.floating_ip, floating_ip_address] }"/>
         </tosca:OutputParameters>
       </tosca:Plan>
     </tosca:Plans>

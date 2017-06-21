@@ -69,6 +69,21 @@ if (not input!TNodeTemplate.allInstances.isEmpty()){
 			out.println();
 		}
 	}
+	ident = ident.substring(0, ident.length - 2);
+}
+
+if (plan.outputParameters.isDefined){
+	out.println(ident + "outputs:");
+	ident = ident + gap;
+	out.println(ident + plan.getName + ":");
+	ident = ident + gap;
+	out.println(ident + "values:");
+	ident = ident + gap;
+	for (output in plan.outputParameters.outputParameter){
+		out.println(ident + output.name + ": " + output.value);
+	}
+	out.println();
+	ident = ident.substring(0, ident.length - 6);
 }
 
 operation toString(parameter: input!TNodeType, ident: String, gap: String){

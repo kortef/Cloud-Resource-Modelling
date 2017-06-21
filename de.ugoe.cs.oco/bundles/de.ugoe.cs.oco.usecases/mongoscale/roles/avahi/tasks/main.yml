@@ -1,0 +1,11 @@
+- name: Make sure Avahi daemon is installed
+  apt: name=avahi-daemon state=present
+
+- name: Copy Avahi configuration file to host
+  copy: src=avahi-daemon.conf dest=/etc/avahi/avahi-daemon.conf
+
+- name: Make sure libnss-mdns is installed
+  apt: name=libnss-mdns state=present
+
+- name: Ensure Avahi daemon is restartd
+  service: name=avahi-daemon state=restarted

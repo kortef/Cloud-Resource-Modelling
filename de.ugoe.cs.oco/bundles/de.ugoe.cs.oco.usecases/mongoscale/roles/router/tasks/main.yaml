@@ -1,0 +1,11 @@
+- name: Copy config to server
+  template: src=mongos.conf.j2 dest=/etc/mongos.conf owner=mongodb
+  sudo: yes
+  
+- name: Copy init script to server
+  template: src=mongos_init.j2 dest=/etc/init/mongos.conf owner=mongodb
+  sudo: yes
+
+- name: Start mongos daemon
+  service: name=mongos state=restarted
+  sudo: yes

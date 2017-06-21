@@ -1,0 +1,25 @@
+- name: Install Ganglia monitor
+  sudo: yes
+  apt: name=ganglia-monitor update_cache=yes state=present
+
+- name: Copy config
+  sudo: yes
+  copy: src=gmond.conf dest=/etc/ganglia/gmond.conf
+
+- name: Restart Ganglia monitor
+  sudo: yes
+  service: name=ganglia-monitor state=restarted
+
+- name: Copy NFS script to host
+  sudo: yes
+  copy: src=sendNFSSpace.sh dest=/home/ubuntu/sendNFSSpace.sh mode=777
+
+- name: Start NFS space monitoring
+  shell: screen -S test -d -m /home/ubuntu/sendNFSSpace.sh
+
+- name: Restart Ganglia monitor to ensure CPUs are correctly reported
+  sudo: yes
+  service: name=ganglia-monitor state=restarted
+
+
+

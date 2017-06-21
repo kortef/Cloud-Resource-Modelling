@@ -1,0 +1,128 @@
+tosca_definitions_version: cloudify_dsl_1_3
+imports:
+  - http://www.getcloudify.org/spec/cloudify/4.0m10/types.yaml
+  - http://www.getcloudify.org/spec/fabric-plugin/1.4.2/plugin.yaml
+  - http://www.getcloudify.org/spec/openstack-plugin/2.0.1/plugin.yaml
+  - http://user.informatik.uni-goettingen.de/~fglaser/cloudify-ansible-plugin/plugin.yaml
+
+inputs:
+  keystone_password:
+    default: eCzA2017
+  openstack_configuration:
+    default: {password: {get_input: keystone_password}, tenant_name: {get_input: keystone_tenant_name}, neutron_url: {get_input: neutron_url}, nova_url: {get_input: nova_url}, auth_url: {get_input: keystone_url}, region: {get_input: region}, username: {get_input: keystone_username}}
+  neutron_url:
+    default: http://controller:9696
+  nova_url:
+    default: http://controller:8774/v2.1/26cfd525f5634c98ac3bf99fe906fb71
+  keystone_username:
+    default: fglaser
+  keystone_url:
+    default: http://controller:35357/v3
+  region:
+    default: RegionOne
+  agent_configuration:
+    default: {user: ubuntu, key: ~/.ssh/mongoscale-key.pem, install_method: remote}
+  keystone_tenant_name:
+    default: mongoscale
+  num_replicas:
+    default: 3
+  num_shards:
+    default: 2
+  vm_flavor:
+    default: 36637a26-fded-4635-b6c5-ec8ec0745eab
+
+node_types:
+  mongoscale.host:
+    derived_from: cloudify.openstack.nodes.Server
+
+  ansible.nodes.Application:
+    derived_from: cloudify.nodes.ApplicationModule
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+
+node_templates:
+  swe.simpaas.instances.floating_ip:
+    type: cloudify.openstack.nodes.FloatingIP
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      floatingip: 
+        floating_network_name: provider
+
+  mongoscale.apps.shard:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, shard]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.shard, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.shard
+
+  mongoscale.apps.router:
+    type: ansible.nodes.Application
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        start:
+          implementation: ansible.ansible_plugin.tasks.ansible_playbook
+        configure:
+          implementation: ansible.ansible_plugin.tasks.configure
+          inputs:
+            rolesfile: roles.zip
+            roles: [common, avahi, configserver]
+            keypair: /root/.ssh/mongoscale-key.pem
+            private_ip_address: {get_attribute: [mongoscale.hosts.router, ip]}
+            user: ubuntu
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: mongoscale.hosts.router
+
+  mongoscale.hosts.router:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+        flavor: null
+        name: router
+    relationships:
+      - type: cloudify.openstack.server_connected_to_floating_ip
+        target: swe.simpaas.instances.floating_ip
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+
+  mongoscale-key:
+    type: cloudify.openstack.nodes.KeyPair
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      use_external_resource: false
+      resource_id: mongoscale_key
+      private_key_path: 
+
+  mongoscale.hosts.shard:
+    type: mongoscale.host
+    properties:
+      openstack_config: {get_input: openstack_configuration}
+      management_network_name: mongodb-network
+      agent_config: {get_input: agent_configuration}
+      server: 
+        image: adf63ddc-debe-4d7e-b899-b936e989439f
+        flavor: null
+        name: sh1rep1
+    relationships:
+      - type: cloudify.openstack.server_connected_to_keypair
+        target: mongoscale-key
+

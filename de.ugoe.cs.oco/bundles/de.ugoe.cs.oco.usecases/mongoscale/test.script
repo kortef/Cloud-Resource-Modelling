@@ -1,0 +1,4 @@
+instantiateModel mongodbcluster.tosca config1 mongodbcluster.mapping
+explodeGroups mongodbcluster_instantiated.tosca
+convert2blueprint mongodbcluster_instantiated_exploded.tosca
+exit

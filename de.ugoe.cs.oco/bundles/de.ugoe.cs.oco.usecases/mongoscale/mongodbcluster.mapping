@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mapping:MappingModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mapping="http://www.example.org/mapping">
+  <mapping>
+    <targetParameter
+        xsi:type="mapping:TargetParameter"
+        name="num_shards"
+        type="INTEGER"
+        unit="NONE"/>
+    <expression
+        xsi:type="mapping:UnaryExpression"
+        operator="PLUS">
+      <expression
+          xsi:type="mapping:FileContentExtractor"
+          recipe="num_shards = (\d*)#1"
+          source="configuration"/>
+    </expression>
+  </mapping>
+  <mapping>
+    <targetParameter
+        xsi:type="mapping:TargetParameter"
+        name="num_replicas"
+        type="INTEGER"
+        unit="NONE"/>
+    <expression
+        xsi:type="mapping:UnaryExpression"
+        operator="PLUS">
+      <expression
+          xsi:type="mapping:FileContentExtractor"
+          recipe="num_replicas = (\d*)#1"
+          source="configuration"/>
+    </expression>
+  </mapping>
+  <mapping>
+    <targetParameter
+        xsi:type="mapping:TargetParameter"
+        name="vm_flavor"
+        unit="NONE"/>
+    <expression
+        xsi:type="mapping:UnaryExpression"
+        operator="PLUS">
+      <expression
+          xsi:type="mapping:FlavorMapper"
+          parameters="//@mapping.3/@targetParameter"/>
+    </expression>
+  </mapping>
+  <mapping>
+    <targetParameter
+        xsi:type="mapping:SourceParameter"
+        name="cores"
+        type="INTEGER"
+        value="4"
+        unit="NONE"/>
+    <expression
+        xsi:type="mapping:UnaryExpression"
+        operator="PLUS">
+      <expression
+          xsi:type="mapping:FileContentExtractor"
+          recipe="cores = (\d*)#1"
+          source="configuration"/>
+    </expression>
+  </mapping>
+</mapping:MappingModel>

@@ -77,7 +77,7 @@ if (plan.outputParameters.isDefined){
 	ident = ident + gap;
 	out.println(ident + plan.getName + ":");
 	ident = ident + gap;
-	out.println(ident + "values:");
+	out.println(ident + "value:");
 	ident = ident + gap;
 	for (output in plan.outputParameters.outputParameter){
 		out.println(ident + output.name + ": " + output.value);

@@ -17,4 +17,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.epsilon.emc.emf
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: de.ugoe.cs.oco.occi.extractor
+Export-Package: de.ugoe.cs.oco.occi.extractor,
+ de.ugoe.cs.oco.occi.serializer

@@ -1,69 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2Z6-0EuREee6N4kWJfs0Yg" name="DeploymentPlan">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_2Yv6IUuREee6N4kWJfs0Yg" name="DeploymentWorkflow" node="_2Z8M8EuREee6N4kWJfs0Yg _2Z-pMEuREee6N4kWJfs0Yg _2Zv_sEuREee6N4kWJfs0Yg _2ZzDAEuREee6N4kWJfs0Yg _2am7UEuREee6N4kWJfs0Yg _2am7UUuREee6N4kWJfs0Yg _2am7UkuREee6N4kWJfs0Yg _2am7U0uREee6N4kWJfs0Yg _2am7VEuREee6N4kWJfs0Yg _2am7VUuREee6N4kWJfs0Yg _2aniYEuREee6N4kWJfs0Yg _2bN_UEuREee6N4kWJfs0Yg _2bS30EuREee6N4kWJfs0Yg _2bWiMEuREee6N4kWJfs0Yg _2bfsIEuREee6N4kWJfs0Yg _2bhhUEuREee6N4kWJfs0Yg">
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2acjQEuREee6N4kWJfs0Yg" target="_2Zv_sEuREee6N4kWJfs0Yg" source="_2Z8M8EuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2ae_gEuREee6N4kWJfs0Yg" target="_2Z-pMEuREee6N4kWJfs0Yg" source="_2ZzDAEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bDnQEuREee6N4kWJfs0Yg" target="_2am7UEuREee6N4kWJfs0Yg" source="_2Zv_sEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bE1YEuREee6N4kWJfs0Yg" target="_2am7UUuREee6N4kWJfs0Yg" source="_2Zv_sEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bGDgEuREee6N4kWJfs0Yg" target="_2am7UkuREee6N4kWJfs0Yg" source="_2Zv_sEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bHRoEuREee6N4kWJfs0Yg" target="_2am7U0uREee6N4kWJfs0Yg" source="_2Zv_sEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bPNcEuREee6N4kWJfs0Yg" target="_2bN_UEuREee6N4kWJfs0Yg" source="_2bhhUEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bQbkEuREee6N4kWJfs0Yg" target="_2bN_UEuREee6N4kWJfs0Yg" source="_2am7U0uREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bRCoEuREee6N4kWJfs0Yg" target="_2am7VUuREee6N4kWJfs0Yg" source="_2bN_UEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bUF8EuREee6N4kWJfs0Yg" target="_2bS30EuREee6N4kWJfs0Yg" source="_2am7UEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bUtAEuREee6N4kWJfs0Yg" target="_2bS30EuREee6N4kWJfs0Yg" source="_2bfsIEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bVUEEuREee6N4kWJfs0Yg" target="_2am7VEuREee6N4kWJfs0Yg" source="_2bS30EuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bXwUEuREee6N4kWJfs0Yg" target="_2bWiMEuREee6N4kWJfs0Yg" source="_2bhhUEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bY-cEuREee6N4kWJfs0Yg" target="_2bWiMEuREee6N4kWJfs0Yg" source="_2bfsIEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bZlgEuREee6N4kWJfs0Yg" target="_2aniYEuREee6N4kWJfs0Yg" source="_2bWiMEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bg6QEuREee6N4kWJfs0Yg" target="_2bfsIEuREee6N4kWJfs0Yg" source="_2am7UUuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bjWgEuREee6N4kWJfs0Yg" target="_2bhhUEuREee6N4kWJfs0Yg" source="_2am7UkuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bkkoEuREee6N4kWJfs0Yg" target="_2ZzDAEuREee6N4kWJfs0Yg" source="_2am7VEuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2blywEuREee6N4kWJfs0Yg" target="_2ZzDAEuREee6N4kWJfs0Yg" source="_2am7VUuREee6N4kWJfs0Yg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2bmZ0EuREee6N4kWJfs0Yg" target="_2ZzDAEuREee6N4kWJfs0Yg" source="_2aniYEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:InitialNode" xmi:id="_2Z8M8EuREee6N4kWJfs0Yg" name="initial" outgoing="_2acjQEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_2Z-pMEuREee6N4kWJfs0Yg" name="final" incoming="_2ae_gEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_2Zv_sEuREee6N4kWJfs0Yg" name="initialFork" incoming="_2acjQEuREee6N4kWJfs0Yg" outgoing="_2bDnQEuREee6N4kWJfs0Yg _2bE1YEuREee6N4kWJfs0Yg _2bGDgEuREee6N4kWJfs0Yg _2bHRoEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_2ZzDAEuREee6N4kWJfs0Yg" name="finalJoin" incoming="_2bkkoEuREee6N4kWJfs0Yg _2blywEuREee6N4kWJfs0Yg _2bmZ0EuREee6N4kWJfs0Yg" outgoing="_2ae_gEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7UEuREee6N4kWJfs0Yg" name="Provision vm1" incoming="_2bDnQEuREee6N4kWJfs0Yg" outgoing="_2bUF8EuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2awFQEuREee6N4kWJfs0Yg" name="vm1 id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a1k0EuREee6N4kWJfs0Yg" name="id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7UUuREee6N4kWJfs0Yg" name="Provision network" incoming="_2bE1YEuREee6N4kWJfs0Yg" outgoing="_2bg6QEuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2a3aAEuREee6N4kWJfs0Yg" name="network id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a4oIEuREee6N4kWJfs0Yg" name="id" value="93ad20f5-da5b-4efd-ab24-01b7207f7fdf"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7UkuREee6N4kWJfs0Yg" name="Provision vm2" incoming="_2bGDgEuREee6N4kWJfs0Yg" outgoing="_2bjWgEuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2a52QEuREee6N4kWJfs0Yg" name="vm2 id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a6dUEuREee6N4kWJfs0Yg" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7U0uREee6N4kWJfs0Yg" name="Provision volume" incoming="_2bHRoEuREee6N4kWJfs0Yg" outgoing="_2bQbkEuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2a7rcEuREee6N4kWJfs0Yg" name="volume id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a8SgEuREee6N4kWJfs0Yg" name="id" value="f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7VEuREee6N4kWJfs0Yg" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_2bVUEEuREee6N4kWJfs0Yg" outgoing="_2bkkoEuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2a9goEuREee6N4kWJfs0Yg" name="http://schemas.ogf.org/occi/infrastructure# id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a-HsEuREee6N4kWJfs0Yg" name="id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.2"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2am7VUuREee6N4kWJfs0Yg" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_2bRCoEuREee6N4kWJfs0Yg" outgoing="_2blywEuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2a_V0EuREee6N4kWJfs0Yg" name="http://schemas.ogf.org/occi/infrastructure# id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2a_84EuREee6N4kWJfs0Yg" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_2aniYEuREee6N4kWJfs0Yg" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_2bZlgEuREee6N4kWJfs0Yg" outgoing="_2bmZ0EuREee6N4kWJfs0Yg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_2bBLAEuREee6N4kWJfs0Yg" name="http://schemas.ogf.org/occi/infrastructure# id">
-        <value xmi:type="uml:LiteralString" xmi:id="_2bByEEuREee6N4kWJfs0Yg" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:JoinNode" xmi:id="_2bN_UEuREee6N4kWJfs0Yg" incoming="_2bPNcEuREee6N4kWJfs0Yg _2bQbkEuREee6N4kWJfs0Yg" outgoing="_2bRCoEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_2bS30EuREee6N4kWJfs0Yg" incoming="_2bUF8EuREee6N4kWJfs0Yg _2bUtAEuREee6N4kWJfs0Yg" outgoing="_2bVUEEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_2bWiMEuREee6N4kWJfs0Yg" incoming="_2bXwUEuREee6N4kWJfs0Yg _2bY-cEuREee6N4kWJfs0Yg" outgoing="_2bZlgEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_2bfsIEuREee6N4kWJfs0Yg" incoming="_2bg6QEuREee6N4kWJfs0Yg" outgoing="_2bY-cEuREee6N4kWJfs0Yg _2bUtAEuREee6N4kWJfs0Yg"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_2bhhUEuREee6N4kWJfs0Yg" incoming="_2bjWgEuREee6N4kWJfs0Yg" outgoing="_2bPNcEuREee6N4kWJfs0Yg _2bXwUEuREee6N4kWJfs0Yg"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_chNioFaNEeejJNrejVXeqg" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_cgaRYVaNEeejJNrejVXeqg" name="DeploymentWorkflow" node="_chOwwFaNEeejJNrejVXeqg _chP-4FaNEeejJNrejVXeqg _chGN4FaNEeejJNrejVXeqg _chIqIFaNEeejJNrejVXeqg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_chnLQFaNEeejJNrejVXeqg" target="_chGN4FaNEeejJNrejVXeqg" source="_chOwwFaNEeejJNrejVXeqg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_chpAcFaNEeejJNrejVXeqg" target="_chP-4FaNEeejJNrejVXeqg" source="_chIqIFaNEeejJNrejVXeqg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_chpngFaNEeejJNrejVXeqg" target="_chIqIFaNEeejJNrejVXeqg" source="_chGN4FaNEeejJNrejVXeqg"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_chOwwFaNEeejJNrejVXeqg" name="initial" outgoing="_chnLQFaNEeejJNrejVXeqg"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_chP-4FaNEeejJNrejVXeqg" name="final" incoming="_chpAcFaNEeejJNrejVXeqg"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_chGN4FaNEeejJNrejVXeqg" name="initialFork" incoming="_chnLQFaNEeejJNrejVXeqg" outgoing="_chpngFaNEeejJNrejVXeqg"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_chIqIFaNEeejJNrejVXeqg" name="finalJoin" incoming="_chpngFaNEeejJNrejVXeqg" outgoing="_chpAcFaNEeejJNrejVXeqg"/>
   </packagedElement>
 </uml:Model>

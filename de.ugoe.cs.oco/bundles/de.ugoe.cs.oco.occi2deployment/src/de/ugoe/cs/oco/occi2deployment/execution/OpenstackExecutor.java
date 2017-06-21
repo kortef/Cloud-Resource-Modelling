@@ -2,7 +2,11 @@ package de.ugoe.cs.oco.occi2deployment.execution;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Entity;
@@ -10,6 +14,10 @@ import org.occiware.clouddesigner.occi.Entity;
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class OpenstackExecutor extends AbsExecutor {	
 
@@ -90,7 +98,16 @@ public class OpenstackExecutor extends AbsExecutor {
 	}
 
 	private String extractIdFromOutput(String output) {
-		return output.substring(output.lastIndexOf("id")+6, output.lastIndexOf("\", \"name"));
+		JSONParser parser = new JSONParser();
+		try {
+			JSONObject json = (JSONObject) parser.parse(output);
+			return (String) ((JSONObject) json.get("network")).get("id");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return output.substring(output.lastIndexOf("id")+6, output.lastIndexOf("\", \"name"));
+		return null;
 	}
 
 	@Override

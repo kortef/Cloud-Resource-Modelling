@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/jocci-api-0.2.6.jar"/>
 	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/jocci-core-0.2.4.jar"/>
+	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

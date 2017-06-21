@@ -25,9 +25,9 @@ Require-Bundle: org.eclipse.ui,
  org.apache.log4j_1.2.17;bundle-version="1.2.17",
  org.slf4j.api_1.7.2;bundle-version="1.7.2",
  org.eclipse.emf.compare;bundle-version="3.3.1",
- de.ugoe.cs.oco.pcg.model,
- de.ugoe.cs.oco.thirdparty
+ de.ugoe.cs.oco.thirdparty,
+ de.ugoe.cs.oco.pcg.model;bundle-version="1.0.0",
+ de.ugoe.cs.oco.occi.extractor;bundle-version="1.0.0"
 Import-Package: com.google.common.net,
- cz.cesnet.cloud.occi.api,
- cz.cesnet.cloud.occi.api.exception,
- de.ugoe.cs.oco.occi.extractor
+ de.ugoe.cs.oco.occi.extractor,
+ de.ugoe.cs.oco.pog.impl

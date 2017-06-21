@@ -29,7 +29,7 @@ import cz.cesnet.cloud.occi.api.http.auth.BasicAuthentication;
 import cz.cesnet.cloud.occi.parser.MediaType;
 import de.ugoe.cs.oco.occi.extractor.OCCIModel;
 import de.ugoe.cs.oco.occi.extractor.OCCIModelExtractor;
-import de.ugoe.cs.oco.occi.extractor.OCCISerializer;
+import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
 import pcg.PcgPackage;

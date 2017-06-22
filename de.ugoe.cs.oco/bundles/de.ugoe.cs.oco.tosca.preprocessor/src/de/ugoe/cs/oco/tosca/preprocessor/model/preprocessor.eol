@@ -93,7 +93,7 @@ for (nodeTemplate in topologyTemplate.getNodeTemplate()){
 							var innermostelements = innerelement.getValue().getAny();
 							for (innermostelement in innermostelements){
 								if (innermostelement.getEstructuralFeature.getName == "name"){
-									var newName = nodeTemplate.getName().split("\\.").last();
+									var newName = nodeTemplate.getName().split("\\.").last() + ".local" ;
 									innermostelement.getValue.mixed.setValue(0, newName);
 									break;
 								}

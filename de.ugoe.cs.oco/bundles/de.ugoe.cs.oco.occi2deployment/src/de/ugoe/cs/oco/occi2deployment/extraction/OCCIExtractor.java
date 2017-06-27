@@ -1,15 +1,11 @@
 package de.ugoe.cs.oco.occi2deployment.extraction;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ValuePin;
-import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 
 /**Extractor used to extract information from a OCCI Topology.
@@ -17,9 +13,6 @@ import de.ugoe.cs.oco.occi2deployment.ModelUtility;
  *
  */
 public class OCCIExtractor implements Extractor {
-	/* (non-Javadoc)
-	 * @see de.ugoe.cs.oco.occi2deployment.extraction.Extractor#extractElement(org.eclipse.uml2.uml.ActivityNode)
-	 */
 	@Override
 	public Entity extractElement(ActivityNode activity, EList<EObject> model) {
 		String id = getInputIDOfElement(activity);

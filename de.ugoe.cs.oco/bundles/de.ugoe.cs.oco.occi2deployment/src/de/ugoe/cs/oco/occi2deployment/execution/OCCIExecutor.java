@@ -9,10 +9,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 
 /**Handles execution of OCCI Model Elements.
@@ -20,10 +18,12 @@ import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
  *
  */
 public class OCCIExecutor extends AbsExecutor{		
+	/**Creates an Executor to the OCCI API of the specified connection.
+	 * @param conn
+	 */
 	public OCCIExecutor(Connection conn) {
 		this.connection = conn;
 	}
-
 
 	/**Issues a cloud session token required for authorization.
 	 * @param user

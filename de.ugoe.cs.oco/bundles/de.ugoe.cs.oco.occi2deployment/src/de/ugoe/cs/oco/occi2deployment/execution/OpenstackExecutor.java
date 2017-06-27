@@ -2,30 +2,37 @@ package de.ugoe.cs.oco.occi2deployment.execution;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**An executor capable of performing requests to the Openstack API.
+ * Required due to incompability of the OOI implementation and network management.
+ * @author rockodell
+ *
+ */
 public class OpenstackExecutor extends AbsExecutor {	
 
-
+	/**Creates an executor for the Openstack API using the information in the passed Connection conn.
+	 * @param conn
+	 */
 	public OpenstackExecutor(Connection conn) {
 		this.connection = conn;
 	}
 
+	/**Creates a subnet for the network, whereby the attributes of the subnet
+	 * is stored in the element parameter.
+	 * @param id of the network the subnet is created for.
+	 * @param element
+	 */
 	private void createSubnet(String id, EObject element) {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/subnets",
 				"POST", true, "application/json", this.connection.getToken());
@@ -97,6 +104,10 @@ public class OpenstackExecutor extends AbsExecutor {
 		conn.disconnect();
 	}
 
+	/**Extracts the Id of the network from the output.
+	 * @param output
+	 * @return
+	 */
 	private String extractIdFromOutput(String output) {
 		JSONParser parser = new JSONParser();
 		try {
@@ -138,6 +149,11 @@ public class OpenstackExecutor extends AbsExecutor {
 		}
 	}
 
+	/**Deletes all ports from the passed element in the cloud in order to allow for a clean deletion
+	 * of the network entity. Should be moved to the deprovisioner class as soon as OOI network management
+	 * is possible.
+	 * @param element
+	 */
 	private void deleteAllPorts(EObject element) {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports?fields=id",
 				"GET", false, null, this.connection.getToken());
@@ -163,10 +179,20 @@ public class OpenstackExecutor extends AbsExecutor {
 		conn.disconnect();
 	}
 
+	/**Extracts and returns network ID from the output string. Should be changed so
+	 * that the output is treated as json object.
+	 * @param output
+	 * @return
+	 */
 	private String extractNwIdFromOutput(String output) {
 		return output.substring(output.lastIndexOf("id")+6, output.lastIndexOf("\"}"));
 	}
 
+	/**Extracts and returns port IDs from the output string. Should be changed so
+	 * that the output is treated as json object.
+	 * @param output
+	 * @return
+	 */
 	private List<String> extractPortIdsFromOutput(String output) {
 		List<String> ports = new ArrayList<String>();
 		while(output.contains("id")){

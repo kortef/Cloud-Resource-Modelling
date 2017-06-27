@@ -13,7 +13,6 @@ import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 
 /**Contains multiple methods required by every Executor
  * @author rockodell
@@ -166,6 +165,9 @@ public abstract class AbsExecutor implements Executor {
 		return entity.getId();
 	}
 	
+	/**Logs the respones of a request stored in the passed String output.
+	 * @param output
+	 */
 	protected void logResponseOfRequest(String output) {
 		log.debug("Rest response: "  +output);	
 	}
@@ -174,7 +176,6 @@ public abstract class AbsExecutor implements Executor {
 	public Connection getConn() {
 		return connection;
 	}
-
 
 	public void setConn(Connection conn) {
 		this.connection = conn;

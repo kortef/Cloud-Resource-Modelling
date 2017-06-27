@@ -9,6 +9,13 @@ import org.eclipse.emf.ecore.EObject;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.pog.Vertex;
 
+/**A comparator that compares two POG graphs with another
+ * in order to remove old elements. Not used atm, due to better
+ * implementation available. Maybe for use, when the PaaS 
+ * extension is available.
+ * @author rockodell
+ *
+ */
 public class POGComparator extends AbsComparator {
 	
 	public POGComparator(Path model1, Path model2) {

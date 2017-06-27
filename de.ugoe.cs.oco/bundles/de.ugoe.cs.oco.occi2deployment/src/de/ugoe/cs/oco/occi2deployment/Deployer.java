@@ -30,19 +30,26 @@ import de.ugoe.cs.oco.pog.Vertex;
 
 
 /**Handles and starts the initial deployment of an OCCI Model.
+ * runtimeModelPath = Path in which the extracted cloud model is saved.
+ * pog/provPath = Paths used to store the intermediate product of transformation steps.
  * @author rockodell
  *
  */
 public class Deployer{
 	static Logger log = Logger.getLogger(Deployer.class.getName());
-	
-	private static Path runtimeModelPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/runtime.occie");
 	private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
 	private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/ProvisioningPlanSkeleton.uml");
 	
+	/**Method used to start the deployment of the OCCI model stored in the occiPath in the project stored in
+	 * the Connection conn.
+	 * Hereby, the method extracts the runtime model (resources actually running on the cloud), in order
+	 * to evaluate, whether an initial deployment is required or an adaptation process is neccssary.
+	 * @param occiPath Storing the OCCI Model to be deployed.
+	 * @param conn Information required to establish a connection to the cloud service.
+	 */
 	public void deploy(Path occiPath, Connection conn){
-		//RuntimeModel sollte noch validiert werden.
-		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(runtimeModelPath);
+		//Modelle should be validated at this point
+		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn);
 		log.debug("Extracted Runtime Model: " + ModelUtility.getResources(runtimeModel));
 		
 		if(ModelUtility.getResources(runtimeModel).size() <= 1){
@@ -51,14 +58,19 @@ public class Deployer{
 		}
 		else{
 			log.info("Chosen: Adaptation Process");
-			//Vergleich mit sys oder runtimeModel?
+			//Adapt to runtime model, when extractor is up to date again
+			//Or check if runtime model equals sysmodel
 			this.adapt(conn.getSysModelPath(), occiPath, conn);
 		}
 		storeNewSysModel(occiPath, conn);
 	}
 
 	
-	public void initialDeploy(Connection conn, Path occiPath){
+	/**This method starts an deployment of the OCCI model stored in the occiPath ignoring runtime information.
+	 * @param conn Information required to establish a connection to the cloud service.
+	 * @param occiPath Storing the OCCI Model to be deployed.
+	 */
+	private void initialDeploy(Connection conn, Path occiPath){
 		EList<EObject> occiModel = ModelUtility.loadOCCI(occiPath);
 		//OCCI2POG
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
@@ -73,13 +85,21 @@ public class Deployer{
 		provisioner.provisionElements();
 	}
 	
-	public void adapt(Path oldModelPath, Path newModelPath, Connection conn){
+	/** This method starts an adaptation process to bring the cloud in the desired state stated in the newModelPath.
+	 * Hereby, the comparation process is started to examine Missing, New, Old and Adapted Elements.
+	 * The missing elements are deleted, then the adapted elements get adapated, followed by the creation
+	 * of a POG from the model, from which the oldElements get substracted in order to only reflect the 
+	 * creation of new Elements that should be provisioned on the cloud. Based on this manipulated POG
+	 * a ProvisioningPlan is generated and executed.
+	 * @param oldModelPath Model depicting the actual state of the system.
+	 * @param newModelPath Model depicting the state the project should be transfered to.
+	 * @param conn Information required to establish a connection to the cloud service.
+	 */
+	private void adapt(Path oldModelPath, Path newModelPath, Connection conn){
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
 		
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		System.out.println(oldModelPath);
-		System.out.println(ModelUtility.getResources(ModelUtility.loadOCCI(oldModelPath)));
 		Comparator comparator = ComparatorFactory.getComparator("Complex", oldModelPath, newModelPath);
 
 		//Deprovision Missing Elements
@@ -94,14 +114,24 @@ public class Deployer{
 		List<EObject> removeFromPOG = new BasicEList<EObject>();
 		removeFromPOG.addAll(comparator.getOldElements());
 		removeFromPOG.addAll(comparator.getAdaptedElements());
-		Model provisioningPlan = generateProvisioningPlan(oldModelPath, newModelPath, removeFromPOG);
+		Model provisioningPlan = generateProvisioningPlan(newModelPath, removeFromPOG);
 		
 		//Start provisioning
 		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, newModel);
 		provisioner.provisionElements();		
 	}
 	
-	private Model generateProvisioningPlan(Path oldModelPath, Path newModelPath, List<EObject> oldElements) {		
+	/**Method used to generate a provisioning plan for the Model stored in newModelPath. 
+	 * Hereby a POG is created from which the oldElements are substracted, followed by a transformation 
+	 * into the provisioning plan. (OldElements already exist on the Cloud and therefore must not be
+	 * created anymore, it follows that they are not allowed in the provisioning plan to be created and therefore
+	 * must be substracted. Furhtmore due to the fact that they already exist, every dependency typically depicted in
+	 * the POG is already resolved.)
+	 * @param newModelPath Model from which the provisioning plan is generated
+	 * @param oldElements
+	 * @return provisioningPlan to be executed by the provisioner.
+	 */
+	private Model generateProvisioningPlan(Path newModelPath, List<EObject> oldElements) {		
 		//Generate POGs
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
 		occiToPog.transform(newModelPath, pogPath);
@@ -148,6 +178,10 @@ public class Deployer{
 		return provisioningPlan;
 	}
 	
+	/**Stores the occiPath as new path for the sysModel of the Connection conn.
+	 * @param occiPath Path to the OCCI Model to be deployed.
+	 * @param conn Connection in which the occiPath represents the new sysModelPath.
+	 */
 	private void storeNewSysModel(Path occiPath, Connection conn) {
 		try {
 			Files.copy(occiPath, conn.getSysModelPath(), StandardCopyOption.REPLACE_EXISTING);

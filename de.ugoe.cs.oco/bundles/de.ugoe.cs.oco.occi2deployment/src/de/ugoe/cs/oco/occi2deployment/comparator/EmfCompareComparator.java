@@ -28,6 +28,11 @@ import com.google.common.base.Function;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 
+/**A comparator that utilizes the EmfCompare framework.
+ * Only works on Attribute level.
+ * @author rockodell
+ *
+ */
 public class EmfCompareComparator extends AbsComparator {
 	
 	public EmfCompareComparator(Path model1, Path model2) {

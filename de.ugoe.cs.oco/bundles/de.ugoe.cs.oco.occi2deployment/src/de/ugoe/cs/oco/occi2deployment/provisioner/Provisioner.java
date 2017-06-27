@@ -1,12 +1,5 @@
 package de.ugoe.cs.oco.occi2deployment.provisioner;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,18 +13,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.OCCIFactory;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
 import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
 import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
-import pcg.PcgFactory;
-import pcg.Resource;
-import pcg.Vertex;
+
 
 /**Responsible for processing the workflow of an UML activity diagram and perform
  * corresponding actions.
@@ -133,7 +122,7 @@ public class Provisioner implements Runnable {
 	}
 	
 	/**
-	 * Prints out that the final node is reached.
+	 * Serializes id swap list and deletes stubNW.
 	 */
 	private void performFinal() {
 		//DELETE STUBNET
@@ -151,7 +140,6 @@ public class Provisioner implements Runnable {
 	private void performAction() {
     	Extractor extractor = ExtractorFactory.getExtractor("OCCI");	
     	Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-    	String id = new String();
     	EObject extracted = extractor.extractElement(this.currentNode, this.occiModel);
 
     	if(((Entity) extracted).getKind().getTerm().equals("network")
@@ -168,35 +156,6 @@ public class Provisioner implements Runnable {
 
 	    performed.add(this.currentNode.getOutgoings().get(0));
 	    this.provisionNextNode();
-    	
-    	
-    	/*
-    	if(((Entity) extracted).getKind().getTerm().equals("network")
-    			&& !(((Entity) extracted).getKind().getTerm().equals("networkinterface"))){
-    		Executor openstack = ExecutorFactory.getExecutor("Openstack", this.connection);
-    		
-    		id = openstack.executePostOperation(extracted);
-    	}
-    	else{
-    		id = executor.executePostOperation(extracted);
-    	}
-    	if(id != null){
-	    	String[] swap = {((Entity) extracted).getId(), id};
-	    	if(((Entity) extracted).getTitle() == null){
-	    		log.debug("ID Swap: "+((Entity) extracted).getKind().getTerm() + " Model ID: " + ((Entity) extracted).getId() + " Actual ID: " + id);
-	    	}
-	    	else{
-	    		log.debug("ID Swap: "+((Entity) extracted).getTitle()+ " Model ID: " + ((Entity) extracted).getId() + " Actual ID: " + id);
-	    	}
-	    	connection.getIdSwapList().add(swap);
-	    	
-	    	//Change IDs in Model itself
-	    	//extractor.adjustID(((Entity) extracted).getId(), id);
-	    	executor.waitForActiveState(extracted);	      	
-	
-	    	performed.add(this.currentNode.getOutgoings().get(0));
-	    	this.provisionNextNode();
-    	}*/
 	}
 
 	/**For every outgoing Edge of the currentNode create a new Provisioner.

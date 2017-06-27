@@ -26,36 +26,11 @@ public abstract class AbsComparator implements Comparator {
 	EList<EObject> missingElements = new BasicEList<EObject>();
 	EList<EObject> adaptedElements = new BasicEList<EObject>();
 	
-	@Override
-	public EList<Match> getMatches() {
-		return this.matches;
-	}
-	
-	@Override
-	public EList<EObject> getNewElements() {
-		return newElements;
-	}
-
-	@Override
-	public EList<EObject> getOldElements() {
-		return oldElements;
-	}
-
-	@Override
-	public EList<EObject> getMissingElements() {
-		return missingElements;
-	}
-	
-	@Override
-	public EList<EObject> getAdaptedElements() {
-		return adaptedElements;
-	}
-	
 	/**Checks whether an Entity is adapted in the New model based on each Attr and its value in the
 	 * old and new element. Does not check for missing attributes.
 	 * @param oldObj
 	 * @param newObj
-	 * @return
+	 * @return boolean indicating, if the element is adapted or not.
 	 */
 	protected boolean checkIfAdapted(EObject oldObj, EObject newObj) {
 		for(EObject oldContent: oldObj.eContents()){
@@ -77,6 +52,9 @@ public abstract class AbsComparator implements Comparator {
 	}
 	
 	
+	/**Logs the element missing as Missing element
+	 * @param missing
+	 */
 	protected static void logMissing(EObject missing){
 		if(ModelUtility.checkIfEntityElement(missing)){
 			Entity entity = (Entity) missing;
@@ -89,6 +67,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Logs the element newElement as New element.
+	 * @param newElement
+	 */
 	protected static void logNew(EObject newElement){
 		if(ModelUtility.checkIfEntityElement(newElement)){
 			Entity entity = (Entity) newElement;
@@ -102,6 +83,9 @@ public abstract class AbsComparator implements Comparator {
 	}
 	
 	
+	/**Logs the element old as Old element.
+	 * @param old
+	 */
 	protected static void logOld(EObject old){
 		if(ModelUtility.checkIfEntityElement(old)){
 			Entity entity = (Entity) old;
@@ -114,6 +98,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Logs the element adapted as adapted element.
+	 * @param adapted
+	 */
 	protected static void logAdapted(EObject adapted){
 		if(ModelUtility.checkIfEntityElement(adapted)){
 			Entity entity = (Entity) adapted;
@@ -126,6 +113,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Logs the Matches of the comparator.
+	 * @param list
+	 */
 	protected static void logMatch(List<Match> list){
 		for(Match match: list){
 			if(match.getOldObj() == null){
@@ -140,6 +130,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Logs the Map of the fixpoint values from the simlarity flooding process.
+	 * @param map
+	 */
 	protected static void logMap(Map<String, List<Vertex>> map){
 		for(String key: map.keySet()){
 			String message = new String();
@@ -152,6 +145,12 @@ public abstract class AbsComparator implements Comparator {
 	}
 	
 	
+	/**Investigates Old and Adapted Elements from the matches list in order to add them
+	 * to the corresponding elements from the comparator.
+	 * @param newModel
+	 * @param oldModel
+	 * @param matches
+	 */
 	protected void investigateOldAndAdaptedEntities(EList<EObject> newModel, EList<EObject> oldModel, List<Match> matches) {
 		for(Match match: matches){
 			if(match.getOldObj() != null && match.getNewObj() != null){
@@ -284,5 +283,30 @@ public abstract class AbsComparator implements Comparator {
 				}
 			}
 		}	
+	}
+	
+	@Override
+	public EList<Match> getMatches() {
+		return this.matches;
+	}
+	
+	@Override
+	public EList<EObject> getNewElements() {
+		return newElements;
+	}
+
+	@Override
+	public EList<EObject> getOldElements() {
+		return oldElements;
+	}
+
+	@Override
+	public EList<EObject> getMissingElements() {
+		return missingElements;
+	}
+	
+	@Override
+	public EList<EObject> getAdaptedElements() {
+		return adaptedElements;
 	}
 }

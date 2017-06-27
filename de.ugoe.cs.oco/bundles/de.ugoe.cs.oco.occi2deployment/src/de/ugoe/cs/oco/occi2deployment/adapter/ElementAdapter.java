@@ -1,26 +1,16 @@
 package de.ugoe.cs.oco.occi2deployment.adapter;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Entity;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
-import de.ugoe.cs.oco.occi2deployment.execution.Executor;
-import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
-
+/**Handles the adaptation process for single elements.
+ * @author rockodell
+ *
+ */
 public class ElementAdapter {
 	static Logger log = Logger.getLogger(ElementAdapter.class.getName());
-	private Connection connection;
 	
 	public void adapt(EList<EObject> adaptedElements) {
 		for(EObject element: adaptedElements){

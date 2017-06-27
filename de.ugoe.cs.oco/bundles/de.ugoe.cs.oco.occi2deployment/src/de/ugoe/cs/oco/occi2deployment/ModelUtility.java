@@ -2,6 +2,7 @@ package de.ugoe.cs.oco.occi2deployment;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
@@ -93,6 +94,10 @@ public class ModelUtility {
 		return resource.getContents();
 	}
 	
+	/**Stores POG at the given Path path.
+	 * @param path Path in which the POG gets stored.
+	 * @param graph Toplevel element of the POG.
+	 */
 	public static void storePOG(Path path, Graph graph){
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -185,7 +190,7 @@ public class ModelUtility {
 	
 	/**Returns all of the models top level and nested Resources as EObject List.
 	 * SOLLTE VERBESSERT WERDEN!
-	 * @param model
+	 * @param model OCCI Model
 	 * @return EObject List containing all Entity elements contained in the model
 	 */
 	public static EList<org.occiware.clouddesigner.occi.Resource> getResources(EList<EObject> model) {
@@ -203,7 +208,7 @@ public class ModelUtility {
 	
 	/**Returns nested Entities in the Model.
 	 * @param model
-	 * @return
+	 * @return List of nested Entities of the OCCI Model.
 	 */
 	private static EList<EObject> getNestedEntities(EList<EObject> model) {
 		EList<EObject> entities = new BasicEList<EObject>();
@@ -246,18 +251,24 @@ public class ModelUtility {
 		}
 	}
 
-	public static EList<EObject> extractRuntimeModel(Path runtimeModelPath) {
+	/**Extracts the runtimeModel from the cloud using the passed Connection conn.
+	 * @param conn from which the runtime model should be extracted.
+	 * @return the extracted runtimeModel.
+	 */
+	public static EList<EObject> extractRuntimeModel(Connection conn) {
+		Path runtimeModelPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/runtime.occie");
 		try {
-			Client client =  new HTTPClient(java.net.URI.create("http://192.168.34.1:8787/occi1.1"), 
-					new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
+			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
+					new BasicAuthentication(conn.getUser(), conn.getPassword()), MediaType.TEXT_PLAIN, true);
+			//Client client =  new HTTPClient(java.net.URI.create("http://192.168.34.1:8787/occi1.1"), 
+					//new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			OCCIModel model = extractor.extractModel(client);
 			OCCIModelSerializer serializer = new OCCIModelSerializer();
 			serializer.serializeOCCIModel(model, runtimeModelPath);
-			EList<EObject> runningModel = ModelUtility.loadOCCI(runtimeModelPath);
-			System.out.println(ModelUtility.getResources(runningModel));
-			return runningModel;
+			EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimeModelPath);
+			return runtimeModel;
 		} catch (CommunicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,7 +2,6 @@ package de.ugoe.cs.oco.occi2deployment.transformation;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.models.IModel;

@@ -142,6 +142,11 @@ public class ComplexComparator extends AbsComparator {
 		}
 	}
 	
+	/**Creates Match out of the graph, the old and newModel.
+	 * @param graph
+	 * @param oldModel
+	 * @param newModel
+	 */
 	public void createMatch(Graph graph, EList<EObject> oldModel, EList<EObject> newModel) {
 		Map<String, List<Vertex>> map = createFixpointValueMap(graph);
 		createDirectMatching(map, oldModel, newModel);
@@ -185,6 +190,7 @@ public class ComplexComparator extends AbsComparator {
 		newMatching.addAll(newMatching(vertexMatch, newModel));
 		vertexMatch.addAll(missingMatching);
 		vertexMatch.addAll(newMatching);
+		//Evtl. als optional einstellen je nach ergebnissen.
 		checkNewAndMissingMatchesForSimilarities(vertexMatch, oldModel, newModel);
 		
 		for(Vertex vertex: vertexMatch){
@@ -205,6 +211,12 @@ public class ComplexComparator extends AbsComparator {
 		}
 	}
 	
+	/**After the similarity flooding algorithm, missing and new matches are investigated for similarities,
+	 * such as name, in order to match matching objects together.
+	 * @param match
+	 * @param oldModel
+	 * @param newModel
+	 */
 	private void checkNewAndMissingMatchesForSimilarities(List<Vertex> match, EList<EObject> oldModel, EList<EObject> newModel) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		List<Vertex> toAdd = new BasicEList<Vertex>();
@@ -222,8 +234,6 @@ public class ComplexComparator extends AbsComparator {
 				}
 			}
 		}
-		//System.out.println(toAdd);
-		//System.out.println(toRemove);
 		for(Vertex vertex: toRemove){
 			match.remove(vertex);
 		}
@@ -232,6 +242,14 @@ public class ComplexComparator extends AbsComparator {
 		}
 	}
 
+	/**Takes the vertices vertex and vertex2 and fuses them together.
+	 * Hereby the new Vertex has the first Resource from vertex and the second from
+	 * vertex2. It is assumed that vertex and vertex2 both have 1 null Resource, as it is only
+	 * used for the method checkNewAndMissingMatchesForSimilarities.
+	 * @param vertex
+	 * @param vertex2
+	 * @return
+	 */
 	private Vertex fuseVertices(Vertex vertex, Vertex vertex2) {
 		PcgFactory factory = PcgFactory.eINSTANCE;
 		Vertex fusedVertex = factory.createVertex();
@@ -248,7 +266,6 @@ public class ComplexComparator extends AbsComparator {
 		fusedVertex.getResources().add(0, oldResource);
 		fusedVertex.getResources().add(1, newResource);
 		
-		System.out.println(fusedVertex.getResources());
 		return fusedVertex;
 	}
 
@@ -317,6 +334,11 @@ public class ComplexComparator extends AbsComparator {
 		return missingMatching;
 	}
 
+	/**Checks, whether two Objects possess identical AttributeStates.
+	 * @param oldObj
+	 * @param newObj
+	 * @return
+	 */
 	private boolean checkIfEquivalent(EObject oldObj, EObject newObj) {
 		boolean equivalentElement = true;
 		for(EObject oldContent: oldObj.eContents()){
@@ -368,6 +390,9 @@ public class ComplexComparator extends AbsComparator {
 	}
 
 	
+	/**Removes keys with no values from the map of the similarity flooding algorithm.
+	 * @param map
+	 */
 	private void removeEmptyKeys(Map<String, List<Vertex>> map) {
 		List<String> toRemove = new ArrayList<String>();
 		for(String key: map.keySet()){
@@ -380,6 +405,10 @@ public class ComplexComparator extends AbsComparator {
 		}
 	}
 
+	/**Removes passed Vertex highest from the map of the similarity flooding algorithm.
+	 * @param highest
+	 * @param map
+	 */
 	private void removeEntires(Vertex highest, Map<String, List<Vertex>> map) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		for(List<Vertex> vertices: map.values()){
@@ -392,6 +421,10 @@ public class ComplexComparator extends AbsComparator {
 		}
 	}
 
+	/**Returns the highest fixpoint value of the whole map.
+	 * @param map
+	 * @return
+	 */
 	private Vertex getHighestFixpointValue(Map<String, List<Vertex>> map) {
 		Vertex maxVertex = null;
 		double max = 0.0;
@@ -405,6 +438,9 @@ public class ComplexComparator extends AbsComparator {
 		return maxVertex;
 	}
 
+	/**Sorts vertices in the passed list.
+	 * @param list
+	 */
 	private void sortVertices(List<Vertex> list) {
 		Collections.sort(list, (o1, o2) -> (o1.getFixpointValue()>o2.getFixpointValue() ? -1 : (o1==o2 ? 0 : 1)));
 	}

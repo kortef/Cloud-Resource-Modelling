@@ -1,22 +1,12 @@
 package de.ugoe.cs.oco.occi2deployment.deprovisioner;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Link;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
 
@@ -28,12 +18,16 @@ public class Deprovisioner {
 	static Logger log = Logger.getLogger(Deprovisioner.class.getName());
 	private Connection connection;
 	
+	/**Creates a deprovisioner instance for the specified Connection conn.
+	 * @param conn
+	 */
 	public Deprovisioner(Connection conn){
 		this.connection = conn;
 	}
 	
 	
-	/**Deprovisions every element on the cloud infrastructure that is defined as EObject in eList.
+	/**Deprovisions every element on the cloud infrastructure that is defined as EObject
+	 * in the passed eList.
 	 * @param eList
 	 */
 	public void deprovision(EList<EObject> eList){
@@ -76,12 +70,18 @@ public class Deprovisioner {
 		}	
 	}
 
+	/**Deprovisioning process for a single link instance.
+	 * @param link
+	 */
 	private void deprovisionLinkInstance(Entity link) {
 		log.info("Deprovision Link: " + link.getKind());
 		Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
 		executor.executeDeleteOperation(link);
 	}
 
+	/**Deprovisioning process for a single storage instance.
+	 * @param entity
+	 */
 	private void deprovisionStorageInstance(Entity entity) {
 		log.info("Deprovision Storage: " + entity.getTitle());
 		Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);

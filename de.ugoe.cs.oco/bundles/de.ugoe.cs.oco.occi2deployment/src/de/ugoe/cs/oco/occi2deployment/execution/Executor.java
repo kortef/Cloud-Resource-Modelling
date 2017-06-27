@@ -2,10 +2,6 @@ package de.ugoe.cs.oco.occi2deployment.execution;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Resource;
-
-import de.ugoe.cs.oco.occi2deployment.Connection;
 
 /**Interface for the communication to the cloud provider.
  * @author rockodell

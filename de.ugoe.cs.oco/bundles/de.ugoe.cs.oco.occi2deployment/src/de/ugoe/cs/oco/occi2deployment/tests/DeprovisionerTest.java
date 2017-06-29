@@ -1,31 +1,18 @@
 package de.ugoe.cs.oco.occi2deployment.tests;
 
-import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
-import cz.cesnet.cloud.occi.api.Client;
-import cz.cesnet.cloud.occi.api.exception.CommunicationException;
-import cz.cesnet.cloud.occi.api.http.HTTPClient;
-import cz.cesnet.cloud.occi.api.http.auth.BasicAuthentication;
-import cz.cesnet.cloud.occi.parser.MediaType;
-import de.ugoe.cs.oco.occi.extractor.OCCIModel;
-import de.ugoe.cs.oco.occi.extractor.OCCIModelExtractor;
-import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.Deployer;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
 import de.ugoe.cs.oco.occi2deployment.deprovisioner.Deprovisioner;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
-import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
 import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 

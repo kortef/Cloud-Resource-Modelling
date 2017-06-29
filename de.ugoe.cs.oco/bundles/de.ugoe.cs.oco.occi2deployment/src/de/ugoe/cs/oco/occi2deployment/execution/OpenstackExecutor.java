@@ -48,8 +48,18 @@ public class OpenstackExecutor extends AbsExecutor {
 		
 		if(connectionSuccessful(conn)){
 			log.debug("Rest resoibse: " + ((Entity) element).getTitle() + " " + getOutput(conn));
+			conn.disconnect();
 		}
-		conn.disconnect();
+		else{
+			try {
+				log.info("Subnet Creation Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				createSubnet(id, element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -77,8 +87,7 @@ public class OpenstackExecutor extends AbsExecutor {
 				+"\",\"admin_state_up\": true}}";
 		writeInput(conn, input);
 		
-		if(connectionSuccessful(conn)){
-			
+		if(connectionSuccessful(conn)){	
 			String id = extractIdFromOutput(getOutput(conn));
 			//TO BE IMPROVED
 			if(entity.getTitle().equals("stubNetwork")){
@@ -93,15 +102,26 @@ public class OpenstackExecutor extends AbsExecutor {
 		    	log.debug("ID Swap: "+entity.getTitle()+ " Model ID: " + entity.getId() + " Actual ID: " + id);
 		    }
 		    connection.getIdSwapList().add(swap);
+		    connection.serializeIdSwapList();
 			try {
 				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
+			conn.disconnect();
 			createSubnet(id, element);
 		}
-		conn.disconnect();
+		else{
+			try {
+				log.info("Network Creation Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				executePostOperation(element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**Extracts the Id of the network from the output.
@@ -138,9 +158,19 @@ public class OpenstackExecutor extends AbsExecutor {
 		
 		if(connectionSuccessful(conn)){
 			this.connection.idSwapListRemove(entity);
+			this.connection.serializeIdSwapList();
+			conn.disconnect();
 		}
-		conn.disconnect();
-
+		else{
+			try {
+				log.info("Network Deletion Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				executeDeleteOperation(element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {

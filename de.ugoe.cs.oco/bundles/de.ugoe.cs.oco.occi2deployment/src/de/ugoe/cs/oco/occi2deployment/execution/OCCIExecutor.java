@@ -44,8 +44,17 @@ public class OCCIExecutor extends AbsExecutor{
 		if(connectionSuccessful(conn)){
 			String token = extractToken(conn);
 			log.debug("Token Created: " + token);
-			conn.disconnect();
 			return token;
+		}
+		else{
+			try {
+				log.info("Token Creation Failed! Rerequest in 5s!");
+				Thread.sleep(5000);
+				createToken(user, password, project, address);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		}
 		return null;
 	}
@@ -73,7 +82,19 @@ public class OCCIExecutor extends AbsExecutor{
 		    else{
 		    	log.debug("ID Swap: "+entity.getTitle()+ " Model ID: " + entity.getId() + " Actual ID: " + id);
 		    }
+		    conn.disconnect();
 		    connection.getIdSwapList().add(swap);
+		    connection.serializeIdSwapList();
+		}
+		else{
+			try {
+				log.info("POST Failed: " + entity.getTitle() +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				executePostOperation(element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		conn.disconnect();
 	}
@@ -88,6 +109,18 @@ public class OCCIExecutor extends AbsExecutor{
 		
 		if(connectionSuccessful(conn)){
 			this.connection.idSwapListRemove(entity);
+			connection.serializeIdSwapList();
+			conn.disconnect();
+		}
+		else{
+			try {
+				log.info("DELETE Failed: " + entity.getTitle() +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				executePostOperation(element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		conn.disconnect();
 	}

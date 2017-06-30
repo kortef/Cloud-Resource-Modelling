@@ -40,7 +40,6 @@ public class OCCIExecutor extends AbsExecutor{
 						"{\"name\":\""+user+"\",\"domain\":{\"id\":\"default\"},\"password\":\""+password+"\"}}}," +
 						"\"scope\":{\"project\":{\"name\":\""+project+"\",\"domain\":{\"id\":\"default\"}}}}}";
 		writeInput(conn, input);
-		
 		if(connectionSuccessful(conn)){
 			String token = extractToken(conn);
 			log.debug("Token Created: " + token);
@@ -73,6 +72,7 @@ public class OCCIExecutor extends AbsExecutor{
 		if(entity.getKind().getTerm().contains("compute")){
 			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
 		}
+		log.debug("POST" + " "+ conn.getURL() + " " + conn.getRequestProperty("Category") + " " + conn.getRequestProperty("X-OCCI-Attribute"));
 		if(connectionSuccessful(conn)){
 			String id = extractIdFromOutput(getOutput(conn));
 		    String[] swap = {entity.getId(), id};
@@ -106,7 +106,7 @@ public class OCCIExecutor extends AbsExecutor{
 		String adaptedAddress = getEntityKindURI(entity);
 		adaptedAddress += getActualId(entity, connection.getIdSwapList());
 		HttpURLConnection conn = establishConnection(adaptedAddress, "DELETE", false, null, this.connection.getToken());
-		
+		log.debug("DELETE" + " "+ conn.getURL() + entity.getId());
 		if(connectionSuccessful(conn)){
 			this.connection.idSwapListRemove(entity);
 			connection.serializeIdSwapList();

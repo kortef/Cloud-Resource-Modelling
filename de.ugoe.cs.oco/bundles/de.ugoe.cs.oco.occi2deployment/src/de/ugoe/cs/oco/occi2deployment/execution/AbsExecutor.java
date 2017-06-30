@@ -44,12 +44,6 @@ public abstract class AbsExecutor implements Executor {
 			if(authToken != null){
 				conn.setRequestProperty("X-Auth-token", authToken);
 			}
-			if(method == null) {
-				log.debug("Rest request: " + "GET" + " "+ address);
-			}
-			else{
-				log.debug("Rest request: " + method + " "+ address);
-			}
 			return conn;
 			
 		} catch (MalformedURLException e) {

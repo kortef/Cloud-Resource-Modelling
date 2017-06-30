@@ -185,28 +185,79 @@ public class OpenstackExecutor extends AbsExecutor {
 	 * @param element
 	 */
 	private void deleteAllPorts(EObject element) {
+		for(String portId: getPorts(element)){
+			String networkId = getNwId(portId,0);
+			if(networkId != null){
+				if(networkId.equals(getActualId((Entity) element, connection.getIdSwapList())) 
+						|| networkId.equals(Provisioner.stubId)){
+					deletePort(portId);	
+				}
+			}
+		}
+	}
+	
+	private List<String> getPorts(EObject element) {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports?fields=id",
 				"GET", false, null, this.connection.getToken());
 		if(connectionSuccessful(conn)){
 			List<String> ports = extractPortIdsFromOutput(getOutput(conn));
-			for(String port: ports){
-				HttpURLConnection conn2 = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + port
-						+ "?fields=network_id", "GET", false, null, this.connection.getToken());
-				if(connectionSuccessful(conn2)){
-					String networkId =extractNwIdFromOutput(getOutput(conn2));
-					if(networkId.equals(getActualId((Entity) element, connection.getIdSwapList())) ||
-							networkId.equals(Provisioner.stubId)){
-						log.info("Delete Port Of:" + ((Entity) element).getTitle());
-						HttpURLConnection conn3 = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + port,
-								"DELETE", false, null, this.connection.getToken());
-						connectionSuccessful(conn3);
-						conn3.disconnect();
-					}
-				}
-				conn2.disconnect();
+			conn.disconnect();
+			return ports;
+		}
+		else{
+			try {
+				log.info("Port GET Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
+				Thread.sleep(1000);
+				getPorts(element);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		conn.disconnect();
+		return null;
+	}
+	
+	private String getNwId(String portId, int count) {
+		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + portId
+				+ "?fields=network_id", "GET", false, null, this.connection.getToken());
+		if(connectionSuccessful(conn)){
+			String output = getOutput(conn);
+			conn.disconnect();
+			return extractNwIdFromOutput(output);	
+		}
+		else{
+			if(count <5){
+				try {
+					count = count +1;
+					log.info("GET NW ID from Port Failed: " +"Rerequest in 5s! Tries left: " + (5-count));
+					Thread.sleep(5000);
+					getNwId(portId, count);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+	
+	private void deletePort(String portId){
+		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + portId,
+				"DELETE", false, null, this.connection.getToken());
+		if(connectionSuccessful(conn)){
+			log.info("Delete Port:" + portId);
+			conn.disconnect();
+		}
+		else{
+			try {
+				log.info("DELETE Port Failed: " +"Rerequest in 5s!");
+				Thread.sleep(5000);
+				deletePort(portId);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**Extracts and returns network ID from the output string. Should be changed so
@@ -217,6 +268,17 @@ public class OpenstackExecutor extends AbsExecutor {
 	private String extractNwIdFromOutput(String output) {
 		return output.substring(output.lastIndexOf("id")+6, output.lastIndexOf("\"}"));
 	}
+	/*
+	JSONParser parser = new JSONParser();
+	try {
+		JSONObject json = (JSONObject) parser.parse(output);
+		return (String) ((JSONObject) json.get("network")).get("id");
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	//return output.substring(output.lastIndexOf("id")+6, output.lastIndexOf("\", \"name"));
+	return null;*/
 
 	/**Extracts and returns port IDs from the output string. Should be changed so
 	 * that the output is treated as json object.

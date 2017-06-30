@@ -20,6 +20,7 @@ import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
+import de.ugoe.cs.oco.occi2deployment.comparator.Match;
 import de.ugoe.cs.oco.occi2deployment.deprovisioner.Deprovisioner;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
@@ -52,7 +53,7 @@ public class Deployer{
 		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn);
 		log.debug("Extracted Runtime Model: " + ModelUtility.getResources(runtimeModel));
 		
-		if(ModelUtility.getResources(runtimeModel).size() <= 1){
+		if(ModelUtility.getResources(runtimeModel).size() <= 2){
 			log.info("Chosen: Initial Deployment");
 			this.initialDeploy(conn, occiPath);
 		}
@@ -102,6 +103,8 @@ public class Deployer{
 		CachedResourceSet.getCache().clear();
 		Comparator comparator = ComparatorFactory.getComparator("Complex", oldModelPath, newModelPath);
 
+		updateIdsSwapList(comparator.getMatches(), conn);
+		
 		//Deprovision Missing Elements
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
 		deprovisioner.deprovision(comparator.getMissingElements());
@@ -121,6 +124,42 @@ public class Deployer{
 		provisioner.provisionElements();		
 	}
 	
+	private void updateIdsSwapList(EList<Match> matches, Connection conn) {
+		for(Match match: matches){
+			if(match.getOldObj() == null){
+				System.out.println("Mapped: " + "null" + " : " + match.getNewObj().getTitle());
+			}
+			else if(match.getNewObj() == null){
+				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + "null");
+			}
+			else if(match.getNewObj() != null && match.getOldObj() != null){
+				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + match.getNewObj().getTitle());
+			}
+		}
+		for(Match match: matches){
+			if(match.getOldObj()!=null && match.getNewObj()!=null){
+				System.out.println(match.getOldObj().getId()+ " "+ match.getNewObj().getId());
+				for(String[] ids: conn.getIdSwapList()){
+					if(ids[0].equals(match.getOldObj().getId())){
+						ids[0] = match.getNewObj().getId();
+					}
+				}
+			}
+		}
+		for(Match match: matches){
+			if(match.getOldObj() == null){
+				System.out.println("Mapped: " + "null" + " : " + match.getNewObj().getTitle());
+			}
+			else if(match.getNewObj() == null){
+				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + "null");
+			}
+			else if(match.getNewObj() != null && match.getOldObj() != null){
+				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + match.getNewObj().getTitle());
+			}
+		}
+	}
+
+
 	/**Method used to generate a provisioning plan for the Model stored in newModelPath. 
 	 * Hereby a POG is created from which the oldElements are substracted, followed by a transformation 
 	 * into the provisioning plan. (OldElements already exist on the Cloud and therefore must not be

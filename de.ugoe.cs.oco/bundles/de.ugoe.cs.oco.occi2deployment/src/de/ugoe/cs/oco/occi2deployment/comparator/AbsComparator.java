@@ -1,5 +1,6 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +50,116 @@ public abstract class AbsComparator implements Comparator {
 			}
 		}
 		return false;
+	}
+	
+	protected void createLinkMatch() {
+		List<Match> linkMatches = new ArrayList<Match>();
+		for(Match match: matches){
+			if(match.getOldObj() != null && match.getNewObj() != null){
+				EObject oldObj = match.getOldObj();
+				EObject newObj = match.getNewObj();
+				linkMatches.addAll(matchLinksOfObject(oldObj, newObj));
+			}
+			else if(match.getOldObj() == null){
+				for(EObject newLink: match.getNewObj().eContents()){
+					if(newLink.eClass().getName().equals("Link")){
+						Match newMatch = new Match(null, newLink);
+						linkMatches.add(newMatch);
+					}
+				}
+			}
+			else if(match.getNewObj() == null){
+				for(EObject oldLink: match.getOldObj().eContents()){
+					if(oldLink.eClass().getName().equals("Link")){
+						Match oldMatch = new Match(oldLink, null);
+						linkMatches.add(oldMatch);
+					}
+				}
+			}	
+		}
+		this.matches.addAll(linkMatches);
+	}
+	
+	private List<Match> matchLinksOfObject(EObject obj, EObject newObj) {
+		List<Match> toReturn = new ArrayList<Match>();
+		toReturn.addAll(extractEqualLinks(obj, newObj));
+		toReturn.addAll(extractNewLinks(obj, newObj));
+		toReturn.addAll(extractMissingLinks(obj, newObj));
+		return toReturn;
+	}
+		
+	private List<Match> extractEqualLinks(EObject obj, EObject newObj) {
+		List<Match> toReturn = new ArrayList<Match>();
+		for(EObject link: obj.eContents()){
+			if(link.eClass().getName().equals("Link")){
+				for(EObject link2: newObj.eContents()){
+					if(link2.eClass().getName().equals("Link")){
+						Link oldLink = (Link) link;
+						Link newLink = (Link) link2;
+						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
+						&& oldLink.getKind().getTerm().equals(newLink.getKind().getTerm())){
+							if(sameTarget(oldLink.getTarget(), newLink.getTarget(), matches)){
+								Match match = new Match(oldLink, newLink);
+								toReturn.add(match);
+							}
+						}	
+					}
+				}
+			}
+		}
+		return toReturn;
+	}	
+	
+	private List<Match> extractMissingLinks(EObject obj, EObject newObj) {
+		List<Match> toReturn = new ArrayList<Match>();
+		for(EObject link2: obj.eContents()){
+			if(link2.eClass().getName().equals("Link")){
+				Boolean missingElement = true;
+				for(EObject link: newObj.eContents()){
+					if(link.eClass().getName().equals("Link")){
+						Link oldLink = (Link) link2;
+						Link newLink = (Link) link;
+						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
+							&& oldLink.getKind().getTerm().equals(newLink.getKind().getTerm())){
+								if(sameTarget(oldLink.getTarget(), newLink.getTarget(), matches)){
+									missingElement = false;
+								}
+						}
+					}
+				}
+				if(missingElement){
+					Match match = new Match(((Link)link2),null);
+					toReturn.add(match);
+				}
+			}
+		}
+		return toReturn;
+	}
+
+	private List<Match> extractNewLinks(EObject obj, EObject newObj) {
+		List<Match> toReturn = new ArrayList<Match>();
+		for(EObject link2: newObj.eContents()){
+			if(link2.eClass().getName().equals("Link")){
+				Boolean newElement = true;
+				for(EObject link: obj.eContents()){
+					if(link.eClass().getName().equals("Link")){
+						Link oldLink = (Link) link;
+						Link newLink = (Link) link2;
+						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
+							&& oldLink.getKind().getTerm().equals(newLink.getKind().getTerm())){
+								if(sameTarget(oldLink.getTarget(), newLink.getTarget(), matches)){
+									newElement = false;
+								}
+						}
+					}
+				}
+				if(newElement){
+					Match match = new Match(null, ((Link)link2));
+					toReturn.add(match);
+				}
+			}
+		}
+		return toReturn;
 	}
 	
 	
@@ -119,13 +230,33 @@ public abstract class AbsComparator implements Comparator {
 	protected static void logMatch(List<Match> list){
 		for(Match match: list){
 			if(match.getOldObj() == null){
-				log.info("Mapped: " + "null" + " : " + match.getNewObj().getTitle());
+				if(match.getNewObj().eClass().getName().equals("Link")){
+					log.info("Mapped: " + "null" + " : " + ((Link)match.getNewObj()).getSource().getTitle()
+							+ "->"+ ((Link)match.getNewObj()).getTarget().getTitle());
+				}
+				else{
+					log.info("Mapped: " + "null" + " : " + ((Entity)match.getNewObj()).getTitle());
+				}
 			}
 			else if(match.getNewObj() == null){
-				log.info("Mapped: " + match.getOldObj().getTitle() + " : " + "null");
+				if(match.getOldObj().eClass().getName().equals("Link")){
+					log.info("Mapped: " + ((Link)match.getOldObj()).getSource().getTitle()
+							+ "->"+ ((Link)match.getOldObj()).getTarget().getTitle() + " : null");
+				}
+				else{
+					log.info("Mapped: " + ((Entity) match.getOldObj()).getTitle() + " : " + "null");
+				}
 			}
 			else if(match.getNewObj() != null && match.getOldObj() != null){
-				log.info("Mapped: " + match.getOldObj().getTitle() + " : " + match.getNewObj().getTitle());
+				if(match.getOldObj().eClass().getName().equals("Link") && match.getNewObj().eClass().getName().equals("Link")){
+					log.info("Mapped: " + ((Link)match.getOldObj()).getSource().getTitle()
+							+ "->"+ ((Link)match.getOldObj()).getTarget().getTitle() + " : " + 
+							((Link)match.getNewObj()).getSource().getTitle()
+							+ "->"+ ((Link)match.getNewObj()).getTarget().getTitle());
+				}
+				else{
+					log.info("Mapped: " + ((Entity)match.getOldObj()).getTitle() + " : " + ((Entity)match.getNewObj()).getTitle());
+				}
 			}
 		}
 	}
@@ -164,61 +295,6 @@ public abstract class AbsComparator implements Comparator {
 					oldElements.add(newObj);
 					logOld(newObj);
 				}
-				investigateContainedLinks(oldObj, newObj, matches);	
-			}
-		}
-	}
-	
-
-	/**Investigates Links contained in the object in the old and new model to investigate new adapted and missing Links.
-	 * @param obj
-	 * @param newObj
-	 * @param matches
-	 */
-	private void investigateContainedLinks(EObject obj, EObject newObj, List<Match> matches) {
-		for(EObject link: obj.eContents()){
-			if(link.eClass().getName().equals("Link")){
-				for(EObject link2: newObj.eContents()){
-					if(link2.eClass().getName().equals("Link")){
-						Link oldLink = (Link) link;
-						Link newLink = (Link) link2;
-						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
-						&& oldLink.getKind().getTerm().equals(newLink.getKind().getTerm())){
-							if(sameTarget(oldLink.getTarget(), newLink.getTarget(), matches)){
-								if(checkIfAdapted(oldLink, newLink) ||
-								oldLink.getMixins().equals(newLink.getMixins()) == false){
-									adaptedElements.add(link2);
-									logAdapted(link2);
-								}
-								else{
-									oldElements.add(link2);
-									logOld(link2);
-								}
-							}
-						}	
-					}
-				}
-			}
-		}
-		for(EObject link2: newObj.eContents()){
-			if(link2.eClass().getName().equals("Link")){
-				Boolean newElement = true;
-				for(EObject link: obj.eContents()){
-					if(link.eClass().getName().equals("Link")){
-						Link oldLink = (Link) link;
-						Link newLink = (Link) link2;
-						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
-							&& oldLink.getKind().getTerm().equals(newLink.getKind().getTerm())){
-								if(sameTarget(oldLink.getTarget(), newLink.getTarget(), matches)){
-									newElement = false;
-								}
-						}
-					}
-				}
-				if(newElement){
-					newElements.add(link2);
-					logNew(link2);
-				}
 			}
 		}
 	}
@@ -230,7 +306,7 @@ public abstract class AbsComparator implements Comparator {
 	 * @param matches
 	 * @return
 	 */
-	private boolean sameTarget(org.occiware.clouddesigner.occi.Resource target,
+	protected boolean sameTarget(org.occiware.clouddesigner.occi.Resource target,
 			org.occiware.clouddesigner.occi.Resource target2, List<Match> matches) {
 		for(Match match: matches){
 			if(match.getOldObj() != null && match.getNewObj() != null){
@@ -255,12 +331,6 @@ public abstract class AbsComparator implements Comparator {
 				EObject obj = match.getNewObj();
 				newElements.add(obj);
 				logNew(obj);
-				for(EObject link: obj.eContents()){	
-					if(link.eClass().getName().equals("Link")){
-						newElements.add(link);
-						logNew(link);
-					}
-				}
 			}
 		}
 	}
@@ -275,12 +345,6 @@ public abstract class AbsComparator implements Comparator {
 				EObject obj = match.getOldObj();
 				missingElements.add(obj);
 				logMissing(obj);
-				for(EObject link: obj.eContents()){	
-					if(link.eClass().getName().equals("Link")){
-						missingElements.add(link);
-						logMissing(link);
-					}
-				}
 			}
 		}	
 	}

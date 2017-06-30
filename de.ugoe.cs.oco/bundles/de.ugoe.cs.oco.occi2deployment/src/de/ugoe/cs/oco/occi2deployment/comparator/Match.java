@@ -1,14 +1,17 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
+import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Resource;
+
+import cz.cesnet.cloud.occi.core.Entity;
 
 /**An entity class storing information about two matching Objects.
  * @author rockodell
  *
  */
 public class Match {
-	Resource oldObj;
-	Resource newObj;
+	EObject oldObj;
+	EObject newObj;
 	
 	/**Default Constructor Creates an Empty Match.
 	 * 
@@ -20,25 +23,25 @@ public class Match {
 	 * @param oldObj
 	 * @param newObj
 	 */
-	public Match(Resource oldObj, Resource newObj){
+	public Match(EObject oldObj, EObject newObj){
 		this.oldObj = oldObj;
 		this.newObj = newObj;
 	}
 	
-	public void setOldObj(Resource oldObj){
+	public void setOldObj(EObject oldObj){
 		this.oldObj = oldObj;
 	}
 	
-	public void setNewObj(Resource newObj){
+	public void setNewObj(EObject newObj){
 		this.newObj = newObj;
 	}
 	
-	public Resource getOldObj(){
+	public EObject getOldObj(){
 		return this.oldObj;
 	}
 	
 	
-	public Resource getNewObj(){
+	public EObject getNewObj(){
 		return this.newObj;
 	}
 }

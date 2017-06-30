@@ -29,7 +29,9 @@ public class SimpleComparator extends AbsComparator {
 	 * @param newModel
 	 */
 	private void compare(EList<EObject> oldModel, EList<EObject> newModel) {
-		createMatch(oldModel, newModel);
+		createResourceMatch(oldModel, newModel);
+		createLinkMatch();
+		
 		logMatch(matches);
 		
 		//Fill new entities
@@ -44,7 +46,7 @@ public class SimpleComparator extends AbsComparator {
 	 * @param oldModel
 	 * @param newModel
 	 */
-	public void createMatch(EList<EObject> oldModel, EList<EObject> newModel) {
+	public void createResourceMatch(EList<EObject> oldModel, EList<EObject> newModel) {
 		matchOldAndNewElements(oldModel, newModel);
 		matchMissingElements(oldModel, newModel);
 	}

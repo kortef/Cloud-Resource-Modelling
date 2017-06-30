@@ -16,8 +16,7 @@ import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.uml2.uml.Model;
 import org.occiware.clouddesigner.occi.Entity;
 
-
-
+import cz.cesnet.cloud.occi.core.Link;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;
@@ -103,7 +102,7 @@ public class Deployer{
 		CachedResourceSet.getCache().clear();
 		Comparator comparator = ComparatorFactory.getComparator("Complex", oldModelPath, newModelPath);
 
-		updateIdsSwapList(comparator.getMatches(), conn);
+		updateIdsSwapList(comparator, conn);
 		
 		//Deprovision Missing Elements
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
@@ -124,39 +123,19 @@ public class Deployer{
 		provisioner.provisionElements();		
 	}
 	
-	private void updateIdsSwapList(EList<Match> matches, Connection conn) {
-		for(Match match: matches){
-			if(match.getOldObj() == null){
-				System.out.println("Mapped: " + "null" + " : " + match.getNewObj().getTitle());
-			}
-			else if(match.getNewObj() == null){
-				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + "null");
-			}
-			else if(match.getNewObj() != null && match.getOldObj() != null){
-				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + match.getNewObj().getTitle());
-			}
-		}
-		for(Match match: matches){
+	private void updateIdsSwapList(Comparator comparator, Connection conn) {
+		for(Match match: comparator.getMatches()){
 			if(match.getOldObj()!=null && match.getNewObj()!=null){
-				System.out.println(match.getOldObj().getId()+ " "+ match.getNewObj().getId());
+				Entity oldObj = (Entity) match.getOldObj();
+				Entity newObj = (Entity) match.getNewObj();
+				System.out.println(oldObj.getId()+ " "+ newObj.getId());
 				for(String[] ids: conn.getIdSwapList()){
-					if(ids[0].equals(match.getOldObj().getId())){
-						ids[0] = match.getNewObj().getId();
+					if(ids[0].equals(oldObj.getId())){
+						ids[0] = newObj.getId();
 					}
 				}
 			}
-		}
-		for(Match match: matches){
-			if(match.getOldObj() == null){
-				System.out.println("Mapped: " + "null" + " : " + match.getNewObj().getTitle());
-			}
-			else if(match.getNewObj() == null){
-				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + "null");
-			}
-			else if(match.getNewObj() != null && match.getOldObj() != null){
-				System.out.println("Mapped: " + match.getOldObj().getTitle() + " : " + match.getNewObj().getTitle());
-			}
-		}
+		}		
 	}
 
 

@@ -3,6 +3,7 @@ package de.ugoe.cs.oco.occi2deployment.comparator;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.Link;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
@@ -63,8 +65,10 @@ public class ComplexComparator extends AbsComparator {
 		//Calculate Fixpoint Values
 		performSimilarityFlooding(graph, 1000, 0.000000000000001);
 		
-		//Create map possibilities
-		createMatch(graph, oldModel, newModel);
+		//Create Matches
+		createResourceMatch(graph, oldModel, newModel);
+		createLinkMatch();
+		
 		logMatch(matches);
 	
 		//Fill new entities
@@ -74,7 +78,8 @@ public class ComplexComparator extends AbsComparator {
 		//Fill adapted/old entities
 		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
 	}
-	
+
+
 	/**Performs the similarity flooding algorithm on the given graph, until no change greater than eps
 	 * is found among all vertices or max_iterations times.
 	 * @param graph
@@ -147,7 +152,7 @@ public class ComplexComparator extends AbsComparator {
 	 * @param oldModel
 	 * @param newModel
 	 */
-	public void createMatch(Graph graph, EList<EObject> oldModel, EList<EObject> newModel) {
+	public void createResourceMatch(Graph graph, EList<EObject> oldModel, EList<EObject> newModel) {
 		Map<String, List<Vertex>> map = createFixpointValueMap(graph);
 		createDirectMatching(map, oldModel, newModel);
 	}

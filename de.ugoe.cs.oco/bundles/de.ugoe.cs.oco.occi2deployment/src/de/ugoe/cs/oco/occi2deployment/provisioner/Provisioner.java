@@ -1,6 +1,5 @@
 package de.ugoe.cs.oco.occi2deployment.provisioner;
 
-import java.net.HttpURLConnection;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -153,7 +152,7 @@ public class Provisioner implements Runnable {
     		executor.executeOperation("POST", extracted);
     	}
 
-	    executor.waitForActiveState(extracted);	      	
+	    waitForActiveState(extracted);	      	
 
 	    performed.add(this.currentNode.getOutgoings().get(0));
 	    this.provisionNextNode();
@@ -197,5 +196,43 @@ public class Provisioner implements Runnable {
 	@Override
 	public void run() {
 		this.provisionElements();
+	}
+	
+	public void waitForActiveState(EObject extracted) {
+		if(extracted.eClass().getName().equals("Resource")){
+			Entity entity = (Entity) extracted;
+			
+			if(entity.getKind().getTerm().contains("network")){
+				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
+				return;
+			}
+			Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
+			String output = executor.executeOperation("GET", entity);
+			if(outputShowsActiveState(output)){
+				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
+			}
+			else{
+				try {
+					log.debug("INACTIVE: " + ((Entity)extracted).getTitle());
+					Thread.sleep(5000);
+					waitForActiveState(extracted);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+			}
+		}
+	}
+	/**Checks whether the output string contains an active or online.
+	 * @param output
+	 * @return
+	 */
+	private boolean outputShowsActiveState(String output) {
+		if(output.contains("occi.network.state=\"active\"")
+				|| output.contains("occi.compute.state=\"active\"")
+				|| output.contains("occi.storage.state=\"online\"")){
+			return true;
+		}
+		return false;
 	}
 }

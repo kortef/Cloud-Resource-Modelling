@@ -35,22 +35,29 @@ public class OpenstackExecutor extends AbsExecutor {
 	}
 	
 	@Override
-	public void executeOperation(String operation, EObject element) {
+	public String executeOperation(String operation, EObject element) {
 		Boolean success = false;
+		String output = null;
 		int count = 0;
+		
 		while(success == false && count < maxTries){
 			if(operation.equals("POST")){
-				success = executePostOperation(element);
+				output = executePostOperation(element);
 			}
 			else if(operation.equals("PUT")){
-				success = executePutOperation(element);
+				output = executePutOperation(element);
 			}
 			else if(operation.equals("GET")){
-				//TODO
+				output = executeGetOperation(element);
 			}
 			else if(operation.equals("DELETE")){
-				success = executeDeleteOperation(element);
+				output = executeDeleteOperation(element);
 			}
+			
+			if(output != null){
+				success = true;
+			}
+			
 			if(success == false){
 				try{
 					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
@@ -63,8 +70,14 @@ public class OpenstackExecutor extends AbsExecutor {
 			count++;
 			}
 		}
+		return output;
 	}
 	
+	private String executeGetOperation(EObject element) {
+		// TODO Auto-generated method stub
+		return "TODO";
+	}
+
 	/**Creates a subnet for the network, whereby the attributes of the subnet
 	 * is stored in the element parameter.
 	 * @param id of the network the subnet is created for.
@@ -100,19 +113,13 @@ public class OpenstackExecutor extends AbsExecutor {
 	}
 
 	@Override
-	public void waitForActiveState(EObject extracted) {
-		// TODO Auto-generated method stub
-		log.info("Not Implemented Yet!");
-	}
-
-	@Override
 	public String createToken(String user, String password, String project, String authenticationAdress) {
 		// TODO Auto-generated method stub
 		log.info("Not Implemented Yet!");
 		return null;
 	}
 
-	public boolean executePostOperation(EObject element) {
+	private String executePostOperation(EObject element) {
 		Entity entity = (Entity) element;
 		log.info("Execute Request POST: " + entity.getTitle());
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/networks",
@@ -124,7 +131,8 @@ public class OpenstackExecutor extends AbsExecutor {
 		writeInput(conn, input);
 		
 		if(connectionSuccessful(conn)){	
-			String id = extractIdFromOutput(getOutput(conn));
+			String output = getOutput(conn);
+			String id = extractIdFromOutput(output);
 			//TO BE IMPROVED
 			if(entity.getTitle().equals("stubNetwork")){
 				Provisioner.stubId = id;
@@ -141,10 +149,10 @@ public class OpenstackExecutor extends AbsExecutor {
 			}		
 			conn.disconnect();
 			createSubnet(id, element);
-			return true;
+			return output;
 		}
 		else{
-			return false;
+			return null;
 		}
 	}
 
@@ -165,7 +173,7 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 
-	public boolean executeDeleteOperation(EObject element) {
+	private String executeDeleteOperation(EObject element) {
 		deleteAllPorts(element);
 		Entity entity = (Entity) element;
 		log.info("Execute Request DELETE: " + entity.getTitle());
@@ -180,13 +188,14 @@ public class OpenstackExecutor extends AbsExecutor {
 		}
 		
 		if(connectionSuccessful(conn)){
+			String output = getOutput(conn);
 			this.connection.idSwapListRemove(entity);
 			this.connection.serializeIdSwapList();
 			conn.disconnect();
-			return true;
+			return output;
 		}
 		else{
-			return false;
+			return null;
 		}
 	}
 
@@ -305,9 +314,9 @@ public class OpenstackExecutor extends AbsExecutor {
 		return ports;
 	}
 
-	public boolean executePutOperation(EObject entity) {
+	private String executePutOperation(EObject entity) {
 		// TODO Auto-generated method stub
-		return true;
+		return "TODO";
 	}
 }
 

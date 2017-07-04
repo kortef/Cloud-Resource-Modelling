@@ -17,7 +17,8 @@ import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
  * @author rockodell
  *
  */
-public class OCCIExecutor extends AbsExecutor{		
+public class OCCIExecutor extends AbsExecutor{
+	
 	/**Creates an Executor to the OCCI API of the specified connection.
 	 * @param conn
 	 */
@@ -32,22 +33,29 @@ public class OCCIExecutor extends AbsExecutor{
 	}
 
 	@Override
-	public void executeOperation(String operation, EObject element) {
+	public String executeOperation(String operation, EObject element) {
 		Boolean success = false;
+		String output = null;
 		int count = 0;
+		
 		while(success == false && count < maxTries){
 			if(operation.equals("POST")){
-				success = executePostOperation(element);
+				output = executePostOperation(element);
 			}
 			else if(operation.equals("PUT")){
-				success = executePutOperation(element);
+				output = executePutOperation(element);
 			}
 			else if(operation.equals("GET")){
-				System.out.println("TODO!");
+				output = executeGetOperation(element);
 			}
 			else if(operation.equals("DELETE")){
-				success = executeDeleteOperation(element);
+				output = executeDeleteOperation(element);
 			}
+			
+			if(output != null){
+				success = true;
+			}
+			
 			if(success == false){
 				try{
 					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
@@ -60,8 +68,25 @@ public class OCCIExecutor extends AbsExecutor{
 			count++;
 			}
 		}
+		return output;
 	}
 
+	public String executeGetOperation(EObject extracted) {
+		Entity entity = (Entity) extracted;
+		String adaptedAddress = getEntityKindURI(entity);
+		adaptedAddress += getActualId(((Entity) extracted), connection.getIdSwapList());
+		HttpURLConnection conn = establishConnection(adaptedAddress, null, false, null, this.connection.getToken());	
+			
+		if(connectionSuccessful(conn)){
+			String output = getOutput(conn);
+			return output;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	
 	/**Issues a cloud session token required for authorization.
 	 * @param user
 	 * @param password
@@ -95,7 +120,7 @@ public class OCCIExecutor extends AbsExecutor{
 		return null;
 	}
 
-	public boolean executePostOperation(EObject element) {
+	private String executePostOperation(EObject element) {
 		Entity entity = (Entity) element;	
 		String adaptedAddress = getEntityKindURI(entity);
 		HttpURLConnection conn = establishConnection(adaptedAddress, "POST", true, "text/occi", 
@@ -109,26 +134,21 @@ public class OCCIExecutor extends AbsExecutor{
 		log.debug("POST" + " "+ conn.getURL() + " " + conn.getRequestProperty("Category") + " " + conn.getRequestProperty("X-OCCI-Attribute"));
 		
 		if(connectionSuccessful(conn)){
-			String id = extractIdFromOutput(getOutput(conn));
+			String output = getOutput(conn);
+			String id = extractIdFromOutput(output);
 		    String[] swap = {entity.getId(), id};
-		    if(entity.getTitle() == null){
-		    	log.debug("ID Swap: "+entity.getKind().getTerm() + " Model ID: " + entity.getId() + " Actual ID: " + id);
-		    }
-		    else{
-		    	log.debug("ID Swap: "+entity.getTitle()+ " Model ID: " + entity.getId() + " Actual ID: " + id);
-		    }
 		    conn.disconnect();
 		    connection.getIdSwapList().add(swap);
 		    connection.serializeIdSwapList();
-		    return true;
+		    return output;
 		}
 		else{
 			conn.disconnect();
-			return false;
+			return null;
 		}
 	}
 	
-	public boolean executeDeleteOperation(EObject element) {
+	private String executeDeleteOperation(EObject element) {
 		Entity entity = (Entity) element;	
 		
 		String adaptedAddress = getEntityKindURI(entity);
@@ -136,49 +156,15 @@ public class OCCIExecutor extends AbsExecutor{
 		HttpURLConnection conn = establishConnection(adaptedAddress, "DELETE", false, null, this.connection.getToken());
 		log.debug("DELETE" + " "+ conn.getURL() + entity.getId());
 		if(connectionSuccessful(conn)){
+			String output = getOutput(conn);
 			this.connection.idSwapListRemove(entity);
 			connection.serializeIdSwapList();
 			conn.disconnect();
-			return true;
+			return output;
 		}
 		else{
 			conn.disconnect();
-			return false;
-		}
-	}
-	
-	public void waitForActiveState(EObject extracted) {
-		if(extracted.eClass().getName().equals("Resource")){
-			Entity entity = (Entity) extracted;
-			
-			String adaptedAddress = getEntityKindURI(entity);
-			if(adaptedAddress.contains("network")){
-				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
-				return;
-			}
-			adaptedAddress += getActualId(((Entity) extracted), connection.getIdSwapList());
-			
-			HttpURLConnection conn = establishConnection(adaptedAddress, null, false, null, this.connection.getToken());	
-			
-			if(connectionSuccessful(conn)){
-				String output = getOutput(conn);
-				
-				if(outputShowsActiveState(output)){
-					conn.disconnect();
-					log.info("ACTIVE: " + ((Entity)extracted).getTitle());
-				}	
-				else{
-					try {
-						log.debug("INACTIVE: " + ((Entity)extracted).getTitle());
-						conn.disconnect();
-						Thread.sleep(5000);
-						waitForActiveState(extracted);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}	
-				}
-			}
+			return null;
 		}
 	}
 	
@@ -247,25 +233,10 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 		return null;
 	}
-	
 
-	/**Checks whether the output string contains an active or online.
-	 * @param output
-	 * @return
-	 */
-	private boolean outputShowsActiveState(String output) {
-		if(output.contains("occi.network.state=\"active\"")
-				|| output.contains("occi.compute.state=\"active\"")
-				|| output.contains("occi.storage.state=\"online\"")){
-			return true;
-		}
-		return false;
-	}
-
-
-	public boolean executePutOperation(EObject element) {
+	public String executePutOperation(EObject element) {
 		// TODO Auto-generated catch block
-		return true;
+		return "TODO";
 	}
 }
 

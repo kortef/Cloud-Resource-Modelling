@@ -16,7 +16,6 @@ import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.uml2.uml.Model;
 import org.occiware.clouddesigner.occi.Entity;
 
-import cz.cesnet.cloud.occi.core.Link;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;

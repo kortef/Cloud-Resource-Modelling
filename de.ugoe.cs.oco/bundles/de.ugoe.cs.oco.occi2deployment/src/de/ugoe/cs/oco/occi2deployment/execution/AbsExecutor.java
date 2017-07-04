@@ -167,7 +167,6 @@ public abstract class AbsExecutor implements Executor {
 		log.debug("Rest response: "  +output);	
 	}
 
-
 	public Connection getConn() {
 		return connection;
 	}

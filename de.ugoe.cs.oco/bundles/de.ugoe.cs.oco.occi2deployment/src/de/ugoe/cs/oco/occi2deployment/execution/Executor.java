@@ -12,9 +12,7 @@ public interface Executor {
 	/**Handles the concrete execution to provision a cloud resource as specified in an EMF Object.
 	 * @param element containing the element to be provisioned.
 	 */
-	public void executeOperation(String operation, EObject element);
-
-	public void waitForActiveState(EObject extracted);
+	public String executeOperation(String operation, EObject element);
 
 	public String createToken(String user, String password, String project, String authenticationAdress);
 }

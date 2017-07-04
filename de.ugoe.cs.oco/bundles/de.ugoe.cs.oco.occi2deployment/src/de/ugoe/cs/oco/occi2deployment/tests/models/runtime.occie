@@ -63,54 +63,6 @@
     <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="entity"/>
     <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="resource" parent="/7/@kinds[term='entity']"/>
   </occi:Extension>
-  <occi:Resource id="70062120-7536-4133-b795-27a48a367ea8" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="active"/>
-    <attributes name="occi.compute.hostname" value="vm1"/>
-    <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm1"/>
-    <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="70062120-7536-4133-b795-27a48a367ea8"/>
-    <links id="70062120-7536-4133-b795-27a48a367ea8_192.68.0.6" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
-      <attributes name="occi.networkinterface.interface" value="eth0"/>
-      <attributes name="occi.networkinterface.mac" value="fa:16:3e:a0:08:88"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/b39644b9-11e5-4bd0-bb8c-869edb10b172"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/70062120-7536-4133-b795-27a48a367ea8"/>
-      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="70062120-7536-4133-b795-27a48a367ea8_192.68.0.6"/>
-      <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.68.0.6"/>
-    </links>
-  </occi:Resource>
-  <occi:Resource id="8d253a9d-9d04-4108-9ceb-529a5566ceae" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="active"/>
-    <attributes name="occi.compute.hostname" value="vm2"/>
-    <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm2"/>
-    <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="8d253a9d-9d04-4108-9ceb-529a5566ceae"/>
-    <links id="8d253a9d-9d04-4108-9ceb-529a5566ceae_d67cdbea-0a29-4b3c-855d-d6900f03d6c6" kind="/4/@kinds[term='storagelink']" target="/10">
-      <attributes name="occi.storagelink.deviceid" value="/dev/vdb"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/storage/d67cdbea-0a29-4b3c-855d-d6900f03d6c6"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/8d253a9d-9d04-4108-9ceb-529a5566ceae"/>
-      <attributes name="occi.core.id" value="8d253a9d-9d04-4108-9ceb-529a5566ceae_d67cdbea-0a29-4b3c-855d-d6900f03d6c6"/>
-    </links>
-    <links id="8d253a9d-9d04-4108-9ceb-529a5566ceae_192.68.0.12" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']">
-      <attributes name="occi.networkinterface.interface" value="eth0"/>
-      <attributes name="occi.networkinterface.mac" value="fa:16:3e:54:1b:6a"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/b39644b9-11e5-4bd0-bb8c-869edb10b172"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/8d253a9d-9d04-4108-9ceb-529a5566ceae"/>
-      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="8d253a9d-9d04-4108-9ceb-529a5566ceae_192.68.0.12"/>
-      <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.68.0.12"/>
-    </links>
-  </occi:Resource>
-  <occi:Resource id="d67cdbea-0a29-4b3c-855d-d6900f03d6c6" title="volume" kind="/4/@kinds[term='storage']">
-    <attributes name="occi.core.title" value="volume"/>
-    <attributes name="occi.core.id" value="d67cdbea-0a29-4b3c-855d-d6900f03d6c6"/>
-    <attributes name="occi.storage.state" value="online"/>
-    <attributes name="occi.storage.size" value="100"/>
-  </occi:Resource>
   <occi:Resource id="6a033ddb-a2b6-4c5e-9e73-ec601b4f40cc" title="provider" kind="/4/@kinds[term='ipreservation']">
     <attributes name="occi.ipreservation.address" value="192.168.35.21"/>
     <attributes name="occi.ipreservation.used" value="false"/>

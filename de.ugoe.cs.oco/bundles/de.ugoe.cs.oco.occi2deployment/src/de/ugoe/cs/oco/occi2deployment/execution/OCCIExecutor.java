@@ -23,6 +23,43 @@ public class OCCIExecutor extends AbsExecutor{
 	 */
 	public OCCIExecutor(Connection conn) {
 		this.connection = conn;
+		this.maxTries = 5;
+	}
+	
+	public OCCIExecutor(Connection conn, int maxTries){
+		this.connection = conn;
+		this.maxTries = maxTries;
+	}
+
+	@Override
+	public void executeOperation(String operation, EObject element) {
+		Boolean success = false;
+		int count = 0;
+		while(success == false && count < maxTries){
+			if(operation.equals("POST")){
+				success = executePostOperation(element);
+			}
+			else if(operation.equals("PUT")){
+				success = executePutOperation(element);
+			}
+			else if(operation.equals("GET")){
+				System.out.println("TODO!");
+			}
+			else if(operation.equals("DELETE")){
+				success = executeDeleteOperation(element);
+			}
+			if(success == false){
+				try{
+					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
+					Thread.sleep(5000);
+					executePostOperation(element);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			count++;
+			}
+		}
 	}
 
 	/**Issues a cloud session token required for authorization.
@@ -58,11 +95,8 @@ public class OCCIExecutor extends AbsExecutor{
 		return null;
 	}
 
-
-	@Override
-	public void executePostOperation(EObject element) {
+	public boolean executePostOperation(EObject element) {
 		Entity entity = (Entity) element;	
-
 		String adaptedAddress = getEntityKindURI(entity);
 		HttpURLConnection conn = establishConnection(adaptedAddress, "POST", true, "text/occi", 
 				this.connection.getToken());
@@ -73,6 +107,7 @@ public class OCCIExecutor extends AbsExecutor{
 			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
 		}
 		log.debug("POST" + " "+ conn.getURL() + " " + conn.getRequestProperty("Category") + " " + conn.getRequestProperty("X-OCCI-Attribute"));
+		
 		if(connectionSuccessful(conn)){
 			String id = extractIdFromOutput(getOutput(conn));
 		    String[] swap = {entity.getId(), id};
@@ -85,22 +120,15 @@ public class OCCIExecutor extends AbsExecutor{
 		    conn.disconnect();
 		    connection.getIdSwapList().add(swap);
 		    connection.serializeIdSwapList();
+		    return true;
 		}
 		else{
-			try {
-				log.info("POST Failed: " + entity.getTitle() +"Rerequest in 5s!");
-				Thread.sleep(5000);
-				executePostOperation(element);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			conn.disconnect();
+			return false;
 		}
-		conn.disconnect();
 	}
 	
-	@Override
-	public void executeDeleteOperation(EObject element) {
+	public boolean executeDeleteOperation(EObject element) {
 		Entity entity = (Entity) element;	
 		
 		String adaptedAddress = getEntityKindURI(entity);
@@ -111,21 +139,14 @@ public class OCCIExecutor extends AbsExecutor{
 			this.connection.idSwapListRemove(entity);
 			connection.serializeIdSwapList();
 			conn.disconnect();
+			return true;
 		}
 		else{
-			try {
-				log.info("DELETE Failed: " + entity.getTitle() +"Rerequest in 5s!");
-				Thread.sleep(5000);
-				executePostOperation(element);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			conn.disconnect();
+			return false;
 		}
-		conn.disconnect();
 	}
 	
-	@Override
 	public void waitForActiveState(EObject extracted) {
 		if(extracted.eClass().getName().equals("Resource")){
 			Entity entity = (Entity) extracted;
@@ -242,9 +263,9 @@ public class OCCIExecutor extends AbsExecutor{
 	}
 
 
-	@Override
-	public void executePutOperation(EObject element) {
-
+	public boolean executePutOperation(EObject element) {
+		// TODO Auto-generated catch block
+		return true;
 	}
 }
 

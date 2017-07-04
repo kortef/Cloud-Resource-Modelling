@@ -1,5 +1,6 @@
 package de.ugoe.cs.oco.occi2deployment.provisioner;
 
+import java.net.HttpURLConnection;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ public class Provisioner implements Runnable {
 		EList<EObject> stubNWModel = ModelUtility.loadOCCI(stubNWpath);
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
 		stubNw = stubNWModel.get(stubNWModel.size()-1);
-		executor.executePostOperation(stubNw);
+		executor.executeOperation("POST", stubNw);
 		this.provisionNextNode();
 	}
 	
@@ -127,7 +128,7 @@ public class Provisioner implements Runnable {
 	private void performFinal() {
 		//DELETE STUBNET
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
-		executor.executeDeleteOperation(stubNw);
+		executor.executeOperation("DELETE", stubNw);
 		connection.logIdSwapList();
 		connection.serializeIdSwapList();
 	}
@@ -146,10 +147,10 @@ public class Provisioner implements Runnable {
     			&& !(((Entity) extracted).getKind().getTerm().equals("networkinterface"))){
     		Executor openstack = ExecutorFactory.getExecutor("Openstack", this.connection);
     		
-    		openstack.executePostOperation(extracted);
+    		openstack.executeOperation("POST", extracted);
     	}
     	else{
-    		executor.executePostOperation(extracted);
+    		executor.executeOperation("POST", extracted);
     	}
 
 	    executor.waitForActiveState(extracted);	      	

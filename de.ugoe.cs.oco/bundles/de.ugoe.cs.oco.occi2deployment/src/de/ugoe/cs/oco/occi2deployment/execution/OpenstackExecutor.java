@@ -26,8 +26,45 @@ public class OpenstackExecutor extends AbsExecutor {
 	 */
 	public OpenstackExecutor(Connection conn) {
 		this.connection = conn;
+		this.maxTries = 5;
 	}
 
+	public OpenstackExecutor(Connection conn, int maxTries){
+		this.connection = conn;
+		this.maxTries = maxTries;
+	}
+	
+	@Override
+	public void executeOperation(String operation, EObject element) {
+		Boolean success = false;
+		int count = 0;
+		while(success == false && count < maxTries){
+			if(operation.equals("POST")){
+				success = executePostOperation(element);
+			}
+			else if(operation.equals("PUT")){
+				success = executePutOperation(element);
+			}
+			else if(operation.equals("GET")){
+				//TODO
+			}
+			else if(operation.equals("DELETE")){
+				success = executeDeleteOperation(element);
+			}
+			if(success == false){
+				try{
+					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
+					Thread.sleep(5000);
+					executePostOperation(element);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			count++;
+			}
+		}
+	}
+	
 	/**Creates a subnet for the network, whereby the attributes of the subnet
 	 * is stored in the element parameter.
 	 * @param id of the network the subnet is created for.
@@ -75,8 +112,7 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 
-	@Override
-	public void executePostOperation(EObject element) {
+	public boolean executePostOperation(EObject element) {
 		Entity entity = (Entity) element;
 		log.info("Execute Request POST: " + entity.getTitle());
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/networks",
@@ -95,12 +131,6 @@ public class OpenstackExecutor extends AbsExecutor {
 			}
 			//TO BE IMPROVED
 		    String[] swap = {entity.getId(), id};
-		    if(entity.getTitle() == null){
-		    	log.debug("ID Swap: "+entity.getKind().getTerm() + " Model ID: " + entity.getId() + " Actual ID: " + id);
-		    }
-		    else{
-		    	log.debug("ID Swap: "+entity.getTitle()+ " Model ID: " + entity.getId() + " Actual ID: " + id);
-		    }
 		    connection.getIdSwapList().add(swap);
 		    connection.serializeIdSwapList();
 			try {
@@ -111,16 +141,10 @@ public class OpenstackExecutor extends AbsExecutor {
 			}		
 			conn.disconnect();
 			createSubnet(id, element);
+			return true;
 		}
 		else{
-			try {
-				log.info("Network Creation Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
-				Thread.sleep(5000);
-				executePostOperation(element);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			return false;
 		}
 	}
 
@@ -141,8 +165,7 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 
-	@Override
-	public void executeDeleteOperation(EObject element) {
+	public boolean executeDeleteOperation(EObject element) {
 		deleteAllPorts(element);
 		Entity entity = (Entity) element;
 		log.info("Execute Request DELETE: " + entity.getTitle());
@@ -160,22 +183,10 @@ public class OpenstackExecutor extends AbsExecutor {
 			this.connection.idSwapListRemove(entity);
 			this.connection.serializeIdSwapList();
 			conn.disconnect();
+			return true;
 		}
 		else{
-			try {
-				log.info("Network Deletion Failed: " + ((Entity) element).getTitle() +"Rerequest in 5s!");
-				Thread.sleep(5000);
-				executeDeleteOperation(element);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -294,10 +305,9 @@ public class OpenstackExecutor extends AbsExecutor {
 		return ports;
 	}
 
-	@Override
-	public void executePutOperation(EObject entity) {
+	public boolean executePutOperation(EObject entity) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 }
 

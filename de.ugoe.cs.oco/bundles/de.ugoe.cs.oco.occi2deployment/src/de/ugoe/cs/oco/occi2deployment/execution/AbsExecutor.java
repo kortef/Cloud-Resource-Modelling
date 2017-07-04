@@ -20,6 +20,7 @@ import de.ugoe.cs.oco.occi2deployment.Connection;
  */
 public abstract class AbsExecutor implements Executor {
 	protected Connection connection;
+	protected Integer maxTries;
 	
 	/**Establish a HttpURLConnection to the given address using the given REST method, output, contentType and
 	 * authToken.

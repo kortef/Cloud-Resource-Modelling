@@ -22,6 +22,9 @@ public class ComparatorFactory {
 		if(criteria.equals("POG")){
 			return new POGComparator(model1, model2);
 		}
+		if(criteria.equals("Mixed")){
+			return new MixedComparator(model1, model2);
+		}
 		return null;
 	}	
 }

@@ -18,7 +18,7 @@ public class ComparatorTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String version = "Simple";
+		String version = "Mixed";
 		
 		System.out.println("Basic Example + NWVM:");
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
@@ -60,8 +60,8 @@ public class ComparatorTest {
 		CachedResourceSet.getCache().clear();
 		
 		System.out.println("Basic Example + NWVM Different Id:");
-		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
-		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM_DiffID.occie");
+		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
+		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM_DiffID.occie");
 		Comparator comparator7 = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
 		CachedResourceSet.getCache().clear();
 

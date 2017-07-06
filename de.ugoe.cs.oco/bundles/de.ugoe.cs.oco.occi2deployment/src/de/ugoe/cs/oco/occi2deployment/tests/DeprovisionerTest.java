@@ -7,7 +7,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-
+import de.ugoe.cs.oco.occi2deployment.Deployer;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
@@ -27,25 +27,15 @@ public class DeprovisionerTest {
 		Logger.getLogger(Connection.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
+		/*
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/empty.occie");
+		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
+		Deployer deployer = new Deployer();
+		deployer.deploy(occiPath,conn);
+		*/
+		
 		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
-		
-		/*
-		try {
-			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.1"), 
-					new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
-			
-			OCCIModelExtractor extractor = new OCCIModelExtractor();
-			OCCIModel model = extractor.extractModel(client);
-			OCCIModelSerializer serializer = new OCCIModelSerializer();
-			
-			serializer.serializeOCCIModel(model, oldOCCI);
-			EList<EObject> test = ModelUtility.loadOCCI(oldOCCI);
-			
-		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/empty.occie");
 

@@ -59,6 +59,7 @@ public class Connection {
 			idSwapList = Collections.synchronizedList(new ArrayList<String[]>());
 		}
 		this.sysModelPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/"+this.user+"_"+this.project+".occie");
+		
 		log.info("Connection created: "+ this.user +"_"+this.project);
 		this.logIdSwapList();
 	}
@@ -133,6 +134,17 @@ public class Connection {
 			}
 		}
 		this.idSwapList.removeAll(toRemove);
+	}
+	
+	public void idSwapListAdd(String[] swap) {
+		List<String[]> toRemove = new ArrayList<String[]>();
+		for(String[] str: this.idSwapList){
+			if(str[0].equals(swap[0])){
+				toRemove.add(str);
+			}
+		}
+		this.idSwapList.removeAll(toRemove);
+		this.idSwapList.add(swap);
 	}
 	
 	public List<String[]> getIdSwapList() {

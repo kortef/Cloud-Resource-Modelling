@@ -24,7 +24,7 @@ public class OCCIExecutor extends AbsExecutor{
 	 */
 	public OCCIExecutor(Connection conn) {
 		this.connection = conn;
-		this.maxTries = 5;
+		this.maxTries = 3;
 	}
 	
 	public OCCIExecutor(Connection conn, int maxTries){
@@ -57,20 +57,24 @@ public class OCCIExecutor extends AbsExecutor{
 			}
 			
 			if(success == false){
+				count++;
 				try{
-					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
+					log.info(operation + " Failed: " + ((Entity)element).getTitle() +" Rerequest in 5s!");
 					Thread.sleep(5000);
-					executePostOperation(element);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			count++;
 			}
 		}
 		return output;
 	}
 
+	public String executeOperation(String operation, EObject element, int time){
+		
+		return operation;	
+	}
+	
 	public String executeGetOperation(EObject extracted) {
 		Entity entity = (Entity) extracted;
 		String adaptedAddress = getEntityKindURI(entity);
@@ -131,14 +135,14 @@ public class OCCIExecutor extends AbsExecutor{
 		if(entity.getKind().getTerm().contains("compute")){
 			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
 		}
-		log.debug("POST" + " "+ conn.getURL() + " " + conn.getRequestProperty("Category") + " " + conn.getRequestProperty("X-OCCI-Attribute"));
+		log.debug("POST" + " "+ conn.getURL() + " Category: " + conn.getRequestProperty("Category") + " X-OCCI-Attribute:" + conn.getRequestProperty("X-OCCI-Attribute"));
 		
 		if(connectionSuccessful(conn)){
 			String output = getOutput(conn);
 			String id = extractIdFromOutput(output);
 		    String[] swap = {entity.getId(), id};
 		    conn.disconnect();
-		    connection.getIdSwapList().add(swap);
+		    connection.idSwapListAdd(swap);
 		    connection.serializeIdSwapList();
 		    return output;
 		}
@@ -181,6 +185,7 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 		return attributes.substring(0, attributes.lastIndexOf(","));
 	}
+	
 	
 	
 	/**Generates Category header for the HttpURLConnection.

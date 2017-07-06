@@ -60,9 +60,8 @@ public class OpenstackExecutor extends AbsExecutor {
 			
 			if(success == false){
 				try{
-					log.info(operation + "Failed: " + ((Entity)element).getTitle() +"Rerequest in 5s!");
+					log.info(operation + " Failed: " + ((Entity)element).getTitle() +" Rerequest in 5s!");
 					Thread.sleep(5000);
-					executePostOperation(element);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -139,7 +138,7 @@ public class OpenstackExecutor extends AbsExecutor {
 			}
 			//TO BE IMPROVED
 		    String[] swap = {entity.getId(), id};
-		    connection.getIdSwapList().add(swap);
+		    connection.idSwapListAdd(swap);
 		    connection.serializeIdSwapList();
 			try {
 				Thread.sleep(10000);

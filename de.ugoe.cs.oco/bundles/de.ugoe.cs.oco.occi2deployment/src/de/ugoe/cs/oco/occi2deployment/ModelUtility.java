@@ -255,13 +255,11 @@ public class ModelUtility {
 	 * @param conn from which the runtime model should be extracted.
 	 * @return the extracted runtimeModel.
 	 */
-	public static EList<EObject> extractRuntimeModel(Connection conn) {
-		Path runtimeModelPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/runtime.occie");
+	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath) {
+		Path runtimeModelPath = runtimePath;
 		try {
 			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
 					new BasicAuthentication(conn.getUser(), conn.getPassword()), MediaType.TEXT_PLAIN, true);
-			//Client client =  new HTTPClient(java.net.URI.create("http://192.168.34.1:8787/occi1.1"), 
-					//new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			OCCIModel model = extractor.extractModel(client);

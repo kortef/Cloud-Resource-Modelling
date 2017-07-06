@@ -151,7 +151,8 @@ public class Provisioner implements Runnable {
     	else{
     		executor.executeOperation("POST", extracted);
     	}
-
+    	
+    	//executor.executeOperation("POST", extracted);
 	    waitForActiveState(extracted);	      	
 
 	    performed.add(this.currentNode.getOutgoings().get(0));

@@ -2,18 +2,12 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
   <occi:Extension name="template" scheme="http://schemas.openstack.org/template#">
     <mixins term="36637a26-fded-4635-b6c5-ec8ec0745eab" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.medium"/>
-    <mixins term="6a79f56a-8fb8-42d3-aec5-23f1dc0e70cd" scheme="http://schemas.openstack.org/template/os#" title="smartshark-namenode"/>
-    <mixins term="1fc4dd5e-5216-4764-a412-6f3d80bd3da0" scheme="http://schemas.openstack.org/template/os#" title="smartshark-slave2"/>
     <mixins term="5437eae8-7c47-4834-929c-a314de77d291" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 16.04 Server"/>
-    <mixins term="c546a456-f982-4589-92c3-b96eaae745dd" scheme="http://schemas.openstack.org/template/os#" title="ftrautsch-measurement"/>
-    <mixins term="e24e460f-247b-4291-9787-1368870e277d" scheme="http://schemas.openstack.org/template/os#" title="smartshark-slave1"/>
     <mixins term="e739cb33-4224-4829-8dcb-9b66a1b8ceb9" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.large"/>
     <mixins term="0" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.nano"/>
     <mixins term="8dd25971-1bbd-47db-9d49-2fef02fa0bc8" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.small"/>
-    <mixins term="e719ae1a-4af5-44a6-a4e9-19894b5f3166" scheme="http://schemas.openstack.org/template/os#" title="smartshark-resourcemanager"/>
     <mixins term="e7a211eb-d1dc-4e3a-8da6-f9daabdb81c8" scheme="http://schemas.openstack.org/template/os#" title="Centos 7"/>
     <mixins term="adf63ddc-debe-4d7e-b899-b936e989439f" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 14.04 Server"/>
-    <mixins term="44cbbe25-86b3-4b5e-aa95-8deaa45b9d3a" scheme="http://schemas.openstack.org/template/os#" title="smartshark-webserver"/>
   </occi:Extension>
   <occi:Extension name="instance" scheme="http://schemas.openstack.org/instance#">
     <mixins term="public_key" scheme="http://schemas.openstack.org/instance/credentials#" title="Contextualization extension - public_key"/>
@@ -54,6 +48,7 @@
   </occi:Extension>
   <occi:Extension name="infrastructure" scheme="http://schemas.openstack.org/infrastructure#">
     <mixins term="neutron" scheme="http://schemas.openstack.org/infrastructure/network#" title="Network component"/>
+    <mixins term="osnetwork" scheme="http://schemas.openstack.org/infrastructure/network#" title="openstack network"/>
   </occi:Extension>
   <occi:Extension name="network" scheme="http://schemas.openstack.org/network#">
     <mixins term="provider" scheme="http://schemas.openstack.org/network/floatingippool#" title="provider"/>
@@ -63,10 +58,104 @@
     <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="entity"/>
     <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="resource" parent="/7/@kinds[term='entity']"/>
   </occi:Extension>
-  <occi:Resource id="6a033ddb-a2b6-4c5e-9e73-ec601b4f40cc" title="provider" kind="/4/@kinds[term='ipreservation']">
-    <attributes name="occi.ipreservation.address" value="192.168.35.21"/>
-    <attributes name="occi.ipreservation.used" value="false"/>
+  <occi:Resource id="PUBLIC" title="provider" kind="/4/@kinds[term='network']" mixins="/5/@mixins[term='osnetwork'] /4/@mixins[term='ipnetwork']">
+    <attributes name="occi.network.gateway" value="192.168.35.254"/>
+    <attributes name="occi.network.address" value="192.168.35.0/24"/>
+    <attributes name="org.openstack.network.ip_version" value="4"/>
     <attributes name="occi.core.title" value="provider"/>
-    <attributes name="occi.core.id" value="6a033ddb-a2b6-4c5e-9e73-ec601b4f40cc"/>
+    <attributes name="occi.core.id" value="PUBLIC"/>
+    <attributes name="occi.network.state" value="active"/>
+  </occi:Resource>
+  <occi:Resource id="ead93b47-8907-4626-90c6-d92580753adb" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="vm1"/>
+    <attributes name="occi.compute.memory" value="4096"/>
+    <attributes name="occi.core.title" value="vm1"/>
+    <attributes name="occi.compute.cores" value="2"/>
+    <attributes name="occi.core.id" value="ead93b47-8907-4626-90c6-d92580753adb"/>
+    <links id="ead93b47-8907-4626-90c6-d92580753adb_192.68.0.3" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']" target="/13">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:28:e9:e0"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/636090ea-32af-48b7-876d-43697e0c8786"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/ead93b47-8907-4626-90c6-d92580753adb"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="ead93b47-8907-4626-90c6-d92580753adb_192.68.0.3"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.3"/>
+    </links>
+    <links id="ead93b47-8907-4626-90c6-d92580753adb_192.68.0.9" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']" target="/10">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:c1:57:34"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/2b177569-a0cf-436d-8604-98ab89ccf137"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/ead93b47-8907-4626-90c6-d92580753adb"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="ead93b47-8907-4626-90c6-d92580753adb_192.68.0.9"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.9"/>
+    </links>
+  </occi:Resource>
+  <occi:Resource id="2b177569-a0cf-436d-8604-98ab89ccf137" title="network" kind="/4/@kinds[term='network']" mixins="/5/@mixins[term='osnetwork'] /4/@mixins[term='ipnetwork']">
+    <attributes name="occi.network.gateway" value="192.68.0.1"/>
+    <attributes name="occi.network.address" value="192.68.0.0/24"/>
+    <attributes name="org.openstack.network.ip_version" value="4"/>
+    <attributes name="occi.core.title" value="network"/>
+    <attributes name="occi.core.id" value="2b177569-a0cf-436d-8604-98ab89ccf137"/>
+    <attributes name="occi.network.state" value="active"/>
+  </occi:Resource>
+  <occi:Resource id="24842d37-df06-489e-bd17-14e754597c51" title="volume" kind="/4/@kinds[term='storage']">
+    <attributes name="occi.core.title" value="volume"/>
+    <attributes name="occi.core.id" value="24842d37-df06-489e-bd17-14e754597c51"/>
+    <attributes name="occi.storage.state" value="online"/>
+    <attributes name="occi.storage.size" value="100"/>
+  </occi:Resource>
+  <occi:Resource id="83cba64c-7611-403c-b2d1-6017a059759c" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="vm1"/>
+    <attributes name="occi.compute.memory" value="4096"/>
+    <attributes name="occi.core.title" value="vm1"/>
+    <attributes name="occi.compute.cores" value="2"/>
+    <attributes name="occi.core.id" value="83cba64c-7611-403c-b2d1-6017a059759c"/>
+    <links id="83cba64c-7611-403c-b2d1-6017a059759c_192.68.0.12" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']" target="/13">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:3a:67:7a"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/636090ea-32af-48b7-876d-43697e0c8786"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/83cba64c-7611-403c-b2d1-6017a059759c"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="83cba64c-7611-403c-b2d1-6017a059759c_192.68.0.12"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.12"/>
+    </links>
+  </occi:Resource>
+  <occi:Resource id="636090ea-32af-48b7-876d-43697e0c8786" title="network2" kind="/4/@kinds[term='network']" mixins="/5/@mixins[term='osnetwork'] /4/@mixins[term='ipnetwork']">
+    <attributes name="occi.network.gateway" value="192.68.0.1"/>
+    <attributes name="occi.network.address" value="192.68.0.0/24"/>
+    <attributes name="org.openstack.network.ip_version" value="4"/>
+    <attributes name="occi.core.title" value="network2"/>
+    <attributes name="occi.core.id" value="636090ea-32af-48b7-876d-43697e0c8786"/>
+    <attributes name="occi.network.state" value="active"/>
+  </occi:Resource>
+  <occi:Resource id="b00a5ff2-b838-41a7-90d8-ce035a537074" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="vm2"/>
+    <attributes name="occi.compute.memory" value="4096"/>
+    <attributes name="occi.core.title" value="vm2"/>
+    <attributes name="occi.compute.cores" value="2"/>
+    <attributes name="occi.core.id" value="b00a5ff2-b838-41a7-90d8-ce035a537074"/>
+    <links id="b00a5ff2-b838-41a7-90d8-ce035a537074_192.68.0.10" kind="/4/@kinds[term='networkinterface']" mixins="/4/@mixins[term='ipnetworkinterface']" target="/10">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:bc:db:72"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/2b177569-a0cf-436d-8604-98ab89ccf137"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/b00a5ff2-b838-41a7-90d8-ce035a537074"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="b00a5ff2-b838-41a7-90d8-ce035a537074_192.68.0.10"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.10"/>
+    </links>
+    <links id="b00a5ff2-b838-41a7-90d8-ce035a537074_24842d37-df06-489e-bd17-14e754597c51" kind="/4/@kinds[term='storagelink']" target="/11">
+      <attributes name="occi.storagelink.deviceid" value="/dev/vdb"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/storage/24842d37-df06-489e-bd17-14e754597c51"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/b00a5ff2-b838-41a7-90d8-ce035a537074"/>
+      <attributes name="occi.core.id" value="b00a5ff2-b838-41a7-90d8-ce035a537074_24842d37-df06-489e-bd17-14e754597c51"/>
+    </links>
   </occi:Resource>
 </xmi:XMI>

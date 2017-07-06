@@ -160,6 +160,15 @@ public abstract class AbsExecutor implements Executor {
 		return entity.getId();
 	}
 	
+	public String getActualId(String id, List<String[]> idSwapList) {
+		for (String[] swapID : idSwapList) {	    	
+			if(id.equals(swapID[0])){
+				return swapID[1];
+			}
+		}
+		return id;
+	}
+	
 	/**Logs the respones of a request stored in the passed String output.
 	 * @param output
 	 */

@@ -36,6 +36,7 @@ import de.ugoe.cs.oco.pog.Vertex;
  */
 public class Deployer{
 	static Logger log = Logger.getLogger(Deployer.class.getName());
+	private static Path runtimePath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/runtime.occie");
 	private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
 	private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/ProvisioningPlanSkeleton.uml");
 	
@@ -47,9 +48,8 @@ public class Deployer{
 	 * @param conn Information required to establish a connection to the cloud service.
 	 */
 	public void deploy(Path occiPath, Connection conn){
-		//Modelle should be validated at this point
-		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn);
-		log.debug("Extracted Runtime Model: " + ModelUtility.getResources(runtimeModel));
+		//Models should be validated at this point
+		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath);
 		
 		if(ModelUtility.getResources(runtimeModel).size() <= 2){
 			log.info("Chosen: Initial Deployment");
@@ -59,7 +59,7 @@ public class Deployer{
 			log.info("Chosen: Adaptation Process");
 			//Adapt to runtime model, when extractor is up to date again
 			//Or check if runtime model equals sysmodel
-			this.adapt(conn.getSysModelPath(), occiPath, conn);
+			this.adapt(runtimePath, occiPath, conn);
 		}
 		storeNewSysModel(occiPath, conn);
 	}
@@ -127,14 +127,18 @@ public class Deployer{
 			if(match.getOldObj()!=null && match.getNewObj()!=null){
 				Entity oldObj = (Entity) match.getOldObj();
 				Entity newObj = (Entity) match.getNewObj();
-				System.out.println(oldObj.getId()+ " "+ newObj.getId());
 				for(String[] ids: conn.getIdSwapList()){
-					if(ids[0].equals(oldObj.getId())){
+					if(ids[1].equals(oldObj.getId())){
+						System.out.println(ids[0] + " " + ids[1]);
 						ids[0] = newObj.getId();
+						System.out.println(ids[0] + " " + ids[1]);
+						System.out.println("");
+						break;
 					}
 				}
 			}
-		}		
+		}
+		conn.serializeIdSwapList();
 	}
 
 

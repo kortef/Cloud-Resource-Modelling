@@ -1,2 +1,93 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pcg:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pcg="http://swe.simpaas.pcg.de/pcg"/>
+<pcg:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pcg="http://swe.simpaas.pcg.de/pcg">
+  <vertices title="vm1, vm1" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="ead93b47-8907-4626-90c6-d92580753adb" title="vm1"/>
+    <resources id="tfzjhdrzij4rt65z45z" title="vm1"/>
+  </vertices>
+  <vertices title="network2, network" kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="636090ea-32af-48b7-876d-43697e0c8786" title="network2"/>
+    <resources id="liz&#xe4;ojfguvab" title="network"/>
+  </vertices>
+  <vertices title="network2, network2" kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="636090ea-32af-48b7-876d-43697e0c8786" title="network2"/>
+    <resources id="aezugkrgnipeasgobbnas" title="network2"/>
+  </vertices>
+  <vertices title="vm1, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="ead93b47-8907-4626-90c6-d92580753adb" title="vm1"/>
+    <resources id="stzkrtuzjhsdttttttttttttttttttrsdt" title="vm2"/>
+  </vertices>
+  <vertices title="vm1, vm11" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="ead93b47-8907-4626-90c6-d92580753adb" title="vm1"/>
+    <resources id="rhorntgoegn&#xfc;qargni&#xfc;" title="vm11"/>
+  </vertices>
+  <vertices title="network, network" kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="2b177569-a0cf-436d-8604-98ab89ccf137" title="network"/>
+    <resources id="liz&#xe4;ojfguvab" title="network"/>
+  </vertices>
+  <vertices title="network, network2" kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="2b177569-a0cf-436d-8604-98ab89ccf137" title="network"/>
+    <resources id="aezugkrgnipeasgobbnas" title="network2"/>
+  </vertices>
+  <vertices title="vm1, vm1" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="83cba64c-7611-403c-b2d1-6017a059759c" title="vm1"/>
+    <resources id="tfzjhdrzij4rt65z45z" title="vm1"/>
+  </vertices>
+  <vertices title="vm1, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="83cba64c-7611-403c-b2d1-6017a059759c" title="vm1"/>
+    <resources id="stzkrtuzjhsdttttttttttttttttttrsdt" title="vm2"/>
+  </vertices>
+  <vertices title="vm1, vm11" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="83cba64c-7611-403c-b2d1-6017a059759c" title="vm1"/>
+    <resources id="rhorntgoegn&#xfc;qargni&#xfc;" title="vm11"/>
+  </vertices>
+  <vertices title="vm2, vm1" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="b00a5ff2-b838-41a7-90d8-ce035a537074" title="vm2"/>
+    <resources id="tfzjhdrzij4rt65z45z" title="vm1"/>
+  </vertices>
+  <vertices title="vm2, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="b00a5ff2-b838-41a7-90d8-ce035a537074" title="vm2"/>
+    <resources id="stzkrtuzjhsdttttttttttttttttttrsdt" title="vm2"/>
+  </vertices>
+  <vertices title="vm2, vm11" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="b00a5ff2-b838-41a7-90d8-ce035a537074" title="vm2"/>
+    <resources id="rhorntgoegn&#xfc;qargni&#xfc;" title="vm11"/>
+  </vertices>
+  <vertices title="volume, volume" kind="http://schemas.ogf.org/occi/infrastructure#storage">
+    <resources id="24842d37-df06-489e-bd17-14e754597c51" title="volume"/>
+    <resources id="tjkxbtuo&#xfc;fbwa&#xfc;gb" title="volume"/>
+  </vertices>
+  <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.25"/>
+  <edges target="//@vertices.2" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.25"/>
+  <edges target="//@vertices.1" source="//@vertices.3" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.2" source="//@vertices.4" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.5" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.25"/>
+  <edges target="//@vertices.6" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.25"/>
+  <edges target="//@vertices.5" source="//@vertices.3" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.6" source="//@vertices.4" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.1" source="//@vertices.7" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.2" source="//@vertices.7" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.1" source="//@vertices.8" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
+  <edges target="//@vertices.2" source="//@vertices.9" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
+  <edges target="//@vertices.5" source="//@vertices.10" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.6" source="//@vertices.10" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="0.5"/>
+  <edges target="//@vertices.5" source="//@vertices.11" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
+  <edges target="//@vertices.6" source="//@vertices.12" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
+  <edges target="//@vertices.13" source="//@vertices.11" kind="http://schemas.ogf.org/occi/infrastructure#storagelink" weight="1.0"/>
+  <edges target="//@vertices.0" source="//@vertices.1" weight="0.25"/>
+  <edges target="//@vertices.0" source="//@vertices.2" weight="0.25"/>
+  <edges target="//@vertices.3" source="//@vertices.1" weight="0.25"/>
+  <edges target="//@vertices.4" source="//@vertices.2" weight="0.25"/>
+  <edges target="//@vertices.0" source="//@vertices.5" weight="0.25"/>
+  <edges target="//@vertices.0" source="//@vertices.6" weight="0.25"/>
+  <edges target="//@vertices.3" source="//@vertices.5" weight="0.25"/>
+  <edges target="//@vertices.4" source="//@vertices.6" weight="0.25"/>
+  <edges target="//@vertices.7" source="//@vertices.1" weight="0.25"/>
+  <edges target="//@vertices.7" source="//@vertices.2" weight="0.25"/>
+  <edges target="//@vertices.8" source="//@vertices.1" weight="0.25"/>
+  <edges target="//@vertices.9" source="//@vertices.2" weight="0.25"/>
+  <edges target="//@vertices.10" source="//@vertices.5" weight="0.25"/>
+  <edges target="//@vertices.10" source="//@vertices.6" weight="0.25"/>
+  <edges target="//@vertices.11" source="//@vertices.5" weight="0.25"/>
+  <edges target="//@vertices.12" source="//@vertices.6" weight="0.25"/>
+  <edges target="//@vertices.11" source="//@vertices.13" weight="1.0"/>
+</pcg:Graph>

@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog"/>
+<pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog">
+  <vertices title="http://schemas.ogf.org/occi/infrastructure#" id="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
+  <vertices title="http://schemas.ogf.org/occi/infrastructure#" id="20b452b2-6c6a-4c6a-be99-a03d492f70cc_93ad20f5-da5b-4efd-ab24-01b7207f7fdg_192.168.0.2"/>
+</pog:Graph>

@@ -2,10 +2,8 @@ package de.ugoe.cs.oco.occi2deployment;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -15,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
@@ -35,9 +32,7 @@ import de.ugoe.cs.oco.occi.extractor.OCCIModelExtractor;
 import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
-import pcg.Edge;
 import pcg.PcgPackage;
-import pcg.Vertex;
 
 /**Responsible for EMF Model Utility Operations.
  * @author rockodell

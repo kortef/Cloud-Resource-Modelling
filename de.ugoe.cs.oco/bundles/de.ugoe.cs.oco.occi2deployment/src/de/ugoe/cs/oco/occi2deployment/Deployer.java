@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -99,9 +100,9 @@ public class Deployer{
 		
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		Comparator comparator = ComparatorFactory.getComparator("Complex", oldModelPath, newModelPath);
-
-		updateIdsSwapList(comparator, conn);
+		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath);
+		
+		updateIdsSwapList(comparator, conn, oldModelPath);
 		
 		//Deprovision Missing Elements
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
@@ -122,22 +123,36 @@ public class Deployer{
 		provisioner.provisionElements();		
 	}
 	
-	private void updateIdsSwapList(Comparator comparator, Connection conn) {
+	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
 		for(Match match: comparator.getMatches()){
 			if(match.getOldObj()!=null && match.getNewObj()!=null){
 				Entity oldObj = (Entity) match.getOldObj();
 				Entity newObj = (Entity) match.getNewObj();
 				for(String[] ids: conn.getIdSwapList()){
 					if(ids[1].equals(oldObj.getId())){
-						System.out.println(ids[0] + " " + ids[1]);
 						ids[0] = newObj.getId();
-						System.out.println(ids[0] + " " + ids[1]);
-						System.out.println("");
 						break;
 					}
 				}
 			}
 		}
+		
+		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
+		List<String[]> toRemove = new ArrayList<String[]>();
+		for(String[] ids: conn.getIdSwapList()){
+			boolean exists = false;
+			for(EObject obj: ModelUtility.getEntities(oldModel)){
+				Entity entity = (Entity) obj;
+				if(entity.getId().equals(ids[1])){
+					exists = true;
+				}
+			}
+			if(exists == false){
+				toRemove.add(ids);
+			}
+		}
+		conn.getIdSwapList().removeAll(toRemove);	
+		conn.logIdSwapList();
 		conn.serializeIdSwapList();
 	}
 
@@ -170,18 +185,6 @@ public class Deployer{
 		for(Vertex vertex: toRemove){
 			EcoreUtil.delete(vertex);
 		}
-		
-		//UMBEDINGT VERBESSERN!!!!
-		/*
-		int allEdges = newPOGGraph.getEdges().size();
-		for(int i = 0 ; i<allEdges; i++){
-			for(Edge edge2: newPOGGraph.getEdges()){
-				if(edge2.getTarget() == null || edge2.getSource() == null){
-					EcoreUtil.delete(edge2);
-					break;
-				}
-			}
-		}*/
 		
 		List<Edge> toRemoveE = new BasicEList<Edge>();
 		for(Edge edge: newPOGGraph.getEdges()){

@@ -307,11 +307,11 @@ public abstract class AbsComparator implements Comparator {
 				EObject newObj = match.getNewObj();
 				if(checkIfAdapted(oldObj, newObj)){
 					adaptedElements.add(newObj);
-					logAdapted(newObj);
+					//logAdapted(newObj);
 				}
 				else{
 					oldElements.add(newObj);
-					logOld(newObj);
+					//logOld(newObj);
 				}
 			}
 		}
@@ -348,7 +348,7 @@ public abstract class AbsComparator implements Comparator {
 			if(match.getOldObj() == null){
 				EObject obj = match.getNewObj();
 				newElements.add(obj);
-				logNew(obj);
+				//logNew(obj);
 			}
 		}
 	}
@@ -362,7 +362,7 @@ public abstract class AbsComparator implements Comparator {
 			if(match.getNewObj() == null){
 				EObject obj = match.getOldObj();
 				missingElements.add(obj);
-				logMissing(obj);
+				//logMissing(obj);
 			}
 		}	
 	}

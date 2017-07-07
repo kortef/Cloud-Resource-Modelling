@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ZIf-AGJMEeeMAKJmpGwOtg" name="DeploymentPlan">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_ZHRO8WJMEeeMAKJmpGwOtg" name="DeploymentWorkflow" node="_ZIhzMGJMEeeMAKJmpGwOtg _ZIk2gGJMEeeMAKJmpGwOtg _ZIXbIGJMEeeMAKJmpGwOtg _ZIZ3YGJMEeeMAKJmpGwOtg">
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ZJGa8GJMEeeMAKJmpGwOtg" target="_ZIXbIGJMEeeMAKJmpGwOtg" source="_ZIhzMGJMEeeMAKJmpGwOtg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ZJI3MGJMEeeMAKJmpGwOtg" target="_ZIk2gGJMEeeMAKJmpGwOtg" source="_ZIZ3YGJMEeeMAKJmpGwOtg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ZJJeQGJMEeeMAKJmpGwOtg" target="_ZIZ3YGJMEeeMAKJmpGwOtg" source="_ZIXbIGJMEeeMAKJmpGwOtg"/>
-    <node xmi:type="uml:InitialNode" xmi:id="_ZIhzMGJMEeeMAKJmpGwOtg" name="initial" outgoing="_ZJGa8GJMEeeMAKJmpGwOtg"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_ZIk2gGJMEeeMAKJmpGwOtg" name="final" incoming="_ZJI3MGJMEeeMAKJmpGwOtg"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_ZIXbIGJMEeeMAKJmpGwOtg" name="initialFork" incoming="_ZJGa8GJMEeeMAKJmpGwOtg" outgoing="_ZJJeQGJMEeeMAKJmpGwOtg"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_ZIZ3YGJMEeeMAKJmpGwOtg" name="finalJoin" incoming="_ZJJeQGJMEeeMAKJmpGwOtg" outgoing="_ZJI3MGJMEeeMAKJmpGwOtg"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_SiRysGMiEeeoTtj9V78C1Q" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Sg-yMGMiEeeoTtj9V78C1Q" name="DeploymentWorkflow" node="_SiTA0GMiEeeoTtj9V78C1Q _SiU2AGMiEeeoTtj9V78C1Q _SiJ24GMiEeeoTtj9V78C1Q _SiMTIGMiEeeoTtj9V78C1Q _Si76AGMiEeeoTtj9V78C1Q _Si8hEGMiEeeoTtj9V78C1Q">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Si0lQGMiEeeoTtj9V78C1Q" target="_SiJ24GMiEeeoTtj9V78C1Q" source="_SiTA0GMiEeeoTtj9V78C1Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Si2acGMiEeeoTtj9V78C1Q" target="_SiU2AGMiEeeoTtj9V78C1Q" source="_SiMTIGMiEeeoTtj9V78C1Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SjQqIGMiEeeoTtj9V78C1Q" target="_Si76AGMiEeeoTtj9V78C1Q" source="_SiJ24GMiEeeoTtj9V78C1Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SjRRMGMiEeeoTtj9V78C1Q" target="_Si8hEGMiEeeoTtj9V78C1Q" source="_SiJ24GMiEeeoTtj9V78C1Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SjR4QGMiEeeoTtj9V78C1Q" target="_SiMTIGMiEeeoTtj9V78C1Q" source="_Si76AGMiEeeoTtj9V78C1Q"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SjTGYGMiEeeoTtj9V78C1Q" target="_SiMTIGMiEeeoTtj9V78C1Q" source="_Si8hEGMiEeeoTtj9V78C1Q"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_SiTA0GMiEeeoTtj9V78C1Q" name="initial" outgoing="_Si0lQGMiEeeoTtj9V78C1Q"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_SiU2AGMiEeeoTtj9V78C1Q" name="final" incoming="_Si2acGMiEeeoTtj9V78C1Q"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_SiJ24GMiEeeoTtj9V78C1Q" name="initialFork" incoming="_Si0lQGMiEeeoTtj9V78C1Q" outgoing="_SjQqIGMiEeeoTtj9V78C1Q _SjRRMGMiEeeoTtj9V78C1Q"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_SiMTIGMiEeeoTtj9V78C1Q" name="finalJoin" incoming="_SjR4QGMiEeeoTtj9V78C1Q _SjTGYGMiEeeoTtj9V78C1Q" outgoing="_Si2acGMiEeeoTtj9V78C1Q"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Si76AGMiEeeoTtj9V78C1Q" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_SjQqIGMiEeeoTtj9V78C1Q" outgoing="_SjR4QGMiEeeoTtj9V78C1Q">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_SjIHQGMiEeeoTtj9V78C1Q" name="http://schemas.ogf.org/occi/infrastructure# id">
+        <value xmi:type="uml:LiteralString" xmi:id="_SjON4GMiEeeoTtj9V78C1Q" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
+      </inputValue>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Si8hEGMiEeeoTtj9V78C1Q" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_SjRRMGMiEeeoTtj9V78C1Q" outgoing="_SjTGYGMiEeeoTtj9V78C1Q">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_SjPcAGMiEeeoTtj9V78C1Q" name="http://schemas.ogf.org/occi/infrastructure# id">
+        <value xmi:type="uml:LiteralString" xmi:id="_SjPcAWMiEeeoTtj9V78C1Q" name="id" value="20b452b2-6c6a-4c6a-be99-a03d492f70cc_93ad20f5-da5b-4efd-ab24-01b7207f7fdg_192.168.0.2"/>
+      </inputValue>
+    </node>
   </packagedElement>
 </uml:Model>

@@ -47,6 +47,7 @@ public class ComplexComparator extends AbsComparator {
 		pcgToIpg.transform(pcgPath, ipgPath);
 		
 		this.matches = generateMatches(ipgPath, oldModel, newModel);
+		logMatch(matches);
 	}
 	
 	EList<Match> generateMatches(Path ipgPath, EList<EObject> oldModel, EList<EObject> newModel) {

@@ -50,6 +50,7 @@ public class MixedComparator extends AbsComparator {
 		this.matches = complex.generateMatches(ipgPath, oldModel, newModel);
 		
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
+		logMatch(matches);
 	}
 	
 	private void adaptPCG(Path pcgPath, EList<EObject> oldElements) {

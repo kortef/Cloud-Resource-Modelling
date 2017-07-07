@@ -14,5 +14,5 @@ public interface Comparator {
 		public EList<EObject> getOldElements();
 		public EList<EObject> getMissingElements();
 		public EList<EObject> getAdaptedElements();
-		EList<Match> getMatches();
+		public EList<Match> getMatches();
 }

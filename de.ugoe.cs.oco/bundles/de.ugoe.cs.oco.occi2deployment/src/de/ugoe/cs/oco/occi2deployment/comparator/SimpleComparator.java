@@ -29,6 +29,7 @@ public class SimpleComparator extends AbsComparator {
 	public void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
 		matchOldAndNewElements(oldModel, newModel);
 		matchMissingElements(oldModel, newModel);
+		logMatch(matches);
 	}
 
 	/**Searches for missing elements in the newModel. And matches the 

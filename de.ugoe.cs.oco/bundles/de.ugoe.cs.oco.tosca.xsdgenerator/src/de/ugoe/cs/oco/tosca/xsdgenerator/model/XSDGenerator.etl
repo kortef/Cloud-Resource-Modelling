@@ -1,0 +1,8 @@
+rule TNodeType2XSDElement
+	transform nodeType: TOSCA!TNodeType
+	to xsdelement: XSD!XSDComplexTypeDefinition{
+
+}
+
+
+

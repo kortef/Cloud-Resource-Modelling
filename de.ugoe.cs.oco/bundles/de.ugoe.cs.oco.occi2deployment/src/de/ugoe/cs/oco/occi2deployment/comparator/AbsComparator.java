@@ -1,5 +1,6 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +22,28 @@ import pcg.Vertex;
  */
 public abstract class AbsComparator implements Comparator {
 	
+	abstract void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel);
 	EList<Match> matches = new BasicEList<Match>();
 	EList<EObject> newElements = new BasicEList<EObject>();
 	EList<EObject> oldElements = new BasicEList<EObject>();
 	EList<EObject> missingElements = new BasicEList<EObject>();
 	EList<EObject> adaptedElements = new BasicEList<EObject>();
+	
+	//template method
+	public final void compare(Path oldModelPath, Path newModelPath){
+		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
+		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
+		
+		createResourceMatch(oldModelPath, oldModel, newModelPath, newModel);
+		createLinkMatch();
+		
+		investigateNewEntities(newModel, matches);
+		//Fill missing entities
+		investigateMissingEntities(oldModel, matches);
+		//Fill adapted/old entities
+		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
+	}
+	
 	
 	/**Checks whether an Entity is adapted in the New model based on each Attr and its value in the
 	 * old and new element. Does not check for missing attributes.

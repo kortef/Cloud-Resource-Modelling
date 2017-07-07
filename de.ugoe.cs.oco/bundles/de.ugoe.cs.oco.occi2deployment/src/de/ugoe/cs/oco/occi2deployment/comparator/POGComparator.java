@@ -42,4 +42,10 @@ public class POGComparator extends AbsComparator {
 			}
 		}
 	}
+
+	@Override
+	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
+		// TODO Auto-generated method stub
+		
+	}
 }

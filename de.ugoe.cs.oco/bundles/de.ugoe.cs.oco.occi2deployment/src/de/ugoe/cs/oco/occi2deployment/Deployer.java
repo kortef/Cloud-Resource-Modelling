@@ -172,6 +172,7 @@ public class Deployer{
 		}
 		
 		//UMBEDINGT VERBESSERN!!!!
+		/*
 		int allEdges = newPOGGraph.getEdges().size();
 		for(int i = 0 ; i<allEdges; i++){
 			for(Edge edge2: newPOGGraph.getEdges()){
@@ -180,6 +181,16 @@ public class Deployer{
 					break;
 				}
 			}
+		}*/
+		
+		List<Edge> toRemoveE = new BasicEList<Edge>();
+		for(Edge edge: newPOGGraph.getEdges()){
+			if(edge.getTarget() == null || edge.getSource() == null){
+				toRemoveE.add(edge);
+			}
+		}
+		for(Edge edge: toRemoveE){
+			EcoreUtil.delete(edge);
 		}
 		
 		ModelUtility.storePOG(pogPath, newPOGGraph);

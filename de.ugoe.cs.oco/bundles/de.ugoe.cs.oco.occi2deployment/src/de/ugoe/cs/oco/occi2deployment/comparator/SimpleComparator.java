@@ -19,34 +19,14 @@ public class SimpleComparator extends AbsComparator {
 	 * @param model2
 	 */
 	public SimpleComparator(Path model1, Path model2) {
-		EList<EObject> oldModel = ModelUtility.loadOCCI(model1);
-		EList<EObject> newModel = ModelUtility.loadOCCI(model2);
-		compare(oldModel, newModel);
-	}
-
-	/**Fills the attribute new, missing, old and adapted entities of the comparator.
-	 * @param oldModel
-	 * @param newModel
-	 */
-	private void compare(EList<EObject> oldModel, EList<EObject> newModel) {
-		createResourceMatch(oldModel, newModel);
-		createLinkMatch();
-		
-		logMatch(matches);
-		
-		//Fill new entities
-		investigateNewEntities(newModel, matches);
-		//Fill missing entities
-		investigateMissingEntities(oldModel, matches);
-		//Fill adapted/old entities
-		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
+		compare(model1, model2);
 	}
 	
 	/**Fills the match of the comparator.
 	 * @param oldModel
 	 * @param newModel
 	 */
-	public void createResourceMatch(EList<EObject> oldModel, EList<EObject> newModel) {
+	public void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
 		matchOldAndNewElements(oldModel, newModel);
 		matchMissingElements(oldModel, newModel);
 	}

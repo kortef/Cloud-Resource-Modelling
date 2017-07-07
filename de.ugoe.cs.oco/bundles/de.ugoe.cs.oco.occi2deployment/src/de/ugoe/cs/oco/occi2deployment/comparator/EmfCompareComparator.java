@@ -3,6 +3,7 @@ package de.ugoe.cs.oco.occi2deployment.comparator;
 import java.nio.file.Path;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.compare.Comparison;
 import org.eclipse.emf.compare.EMFCompare;
 import org.eclipse.emf.compare.Match;
@@ -49,7 +50,7 @@ public class EmfCompareComparator extends AbsComparator {
 		}
 	};
 	
-	public void compare(Path model1, Path model2) {
+	public void compare(Path model1, Path model2, Path model3) {
 		ResourceSet resourceSet1 = ModelUtility.loadOCCIinResourceSet(model1);
 		ResourceSet resourceSet2 = ModelUtility.loadOCCIinResourceSet(model2);
 		
@@ -205,5 +206,11 @@ public class EmfCompareComparator extends AbsComparator {
 				}
 			}
 		}
+	}
+
+	@Override
+	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
+		// TODO Auto-generated method stub
+		
 	}
 }

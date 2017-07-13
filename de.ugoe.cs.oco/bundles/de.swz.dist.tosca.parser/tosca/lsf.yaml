@@ -1,0 +1,175 @@
+# de.swz.dist.tosca
+# TOSCA types
+
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+node_types:
+  tosca.nodes.Root:
+    description: >
+      The TOSCA root node all other TOSCA base node types derive from.
+    attributes:
+      tosca_id:
+        type: string
+      tosca_name:
+        type: string
+      state:
+        type: string
+    capabilities:
+      feature:
+        type: tosca.capabilities.Node
+    requirements:
+      - dependency:
+          capability: tosca.capabilities.Node
+          node: tosca.nodes.Root
+          relationship: tosca.relationships.DependsOn
+          occurrences: [ 0, UNBOUNDED ]
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+  tosca.nodes.Compute:
+    derived_from: tosca.nodes.Root
+    attributes:
+      hostname:
+        type: string
+    requirements:
+      - group:
+          capability: tosca.capabilities.Group
+          node: tosca.nodes.Group
+          relationship: tosca.relationships.InGroup
+          occurrences: [ 0, UNBOUNDED ]
+      - queue:
+          capability: tosca.capabilities.Queue
+          node: tosca.nodes.Queue
+          relationship: tosca.relationships.InQueue
+          occurrences: [ 0, UNBOUNDED ]
+  tosca.nodes.HostGroup:
+    derived_from: tosca.nodes.Root
+    attributes:
+      hostname:
+        type: string
+    capabilities:
+      hosts:
+        type: tosca.capabilities.Host
+        valid_source_types: [ tosca.nodes.Compute]
+  tosca.nodes.Queue:
+    derived_from: tosca.nodes.Root
+    attributes:
+      hostname:
+        type: string
+    capabilities:
+      hosts:
+        type: tosca.capabilities.Host
+        valid_source_types: [ tosca.nodes.Compute]
+      hostgroups:
+        type: tosca.capabilities.HostGroup
+        valid_source_types: [ tosca.nodes.HostGroup]
+  tosca.nodes.Library:
+    attributes:
+      software_id:
+        type: string
+      version:
+        type: string
+    capabilities:
+      application_dependency:
+        type: tosca.capabilities.SoftwareComponent
+        valid_source_types: [ tosca.nodes.Application]
+    requirements:
+      - host:
+          capability: tosca.capabilities.Library
+          node: tosca.nodes.Compute
+          relationship: tosca.relationships.InstalledOn
+          occurrences: [ 0, UNBOUNDED ]
+  tosca.nodes.Application:
+    derived_from: tosca.nodes.Root
+    attributes:
+      name:
+        type: string
+
+relationship_types:
+  tosca.relationships.Root:
+    description: >
+      The TOSCA root Relationship Type all other TOSCA base Relationship Types
+      derive from.
+    attributes:
+      tosca_id:
+        type: string
+      tosca_name:
+        type: string
+    interfaces:
+      Configure:
+        type: tosca.interfaces.relationship.Configure
+  tosca.relationships.DependsOn:
+    derived_from: tosca.relationships.Root
+  tosca.relationships.InstalledOn:
+    derived_from: tosca.relationships.Root
+    valid_target_types: [ tosca.nodes.Compute ]
+  tosca.relationships.InGroup:
+    derived_from: tosca.relationships.Root
+    valid_target_types: [ tosca.nodes.HostGroup ]
+  tosca.relationships.InQueue:
+    derived_from: tosca.relationships.Root
+    valid_target_types: [ tosca.nodes.Queue ]
+
+  tosca.capabilities.Node:
+    derived_from: tosca.capabilities.Root
+  tosca.capabilities.Compute:
+    derived_from: tosca.capabilities.Root
+    properties:
+      num_cpus:
+        required: false
+        type: integer
+        constraints:
+          - greater_or_equal: 1
+      memory:
+        required: false
+        type: integer
+        constraints:
+          - greater_or_equal: 1
+  tosca.capabilities.SoftwareComponent:
+    derived_from: tosca.capabilities.Root
+  tosca.capabilities.Library:
+    derived_from: tosca.capabilities.Root
+  tosca.capabilities.Host:
+    derived_from: tosca.capabilities.Root
+  tosca.capabilities.HostGroup:
+    derived_from: tosca.capabilities.Root
+
+interface_types:
+  tosca.interfaces.node.lifecycle.Standard:
+    create:
+      description: Standard lifecycle create operation.
+    configure:
+      description: Standard lifecycle configure operation.
+    start:
+      description: Standard lifecycle start operation.
+    stop:
+      description: Standard lifecycle stop operation.
+    delete:
+      description: Standard lifecycle delete operation.
+  tosca.interfaces.relationship.Configure:
+    pre_configure_source:
+      description: Operation to pre-configure the source endpoint.
+    pre_configure_target:
+      description: Operation to pre-configure the target endpoint.
+    post_configure_source:
+      description: Operation to post-configure the source endpoint.
+    post_configure_target:
+      description: Operation to post-configure the target endpoint.
+    add_target:
+      description: Operation to add a target node.
+    remove_target:
+      description: Operation to remove a target node.
+    add_source: >
+      description: Operation to notify the target node of a source node which
+      is now available via a relationship.
+      description:
+    target_changed: >
+      description: Operation to notify source some property or attribute of the
+      target changed
+
+group_types:
+  tosca.groups.Root:
+    description: The TOSCA Group Type all other TOSCA Group Types derive from
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard

@@ -58,7 +58,10 @@ public abstract class AbsComparator implements Comparator {
 					if(newContent.eClass().getName().equals("AttributeState")){
 						AttributeState oldAttr = (AttributeState) oldContent;
 						AttributeState newAttr = (AttributeState) newContent;
-						if(oldAttr.getName().equals(newAttr.getName())){
+						if(oldAttr.getName().equals(newAttr.getName()) 
+								&& oldAttr.getName().contains("core.source") == false
+								&& oldAttr.getName().contains("core.target") == false
+								&& oldAttr.getName().contains("core.id") == false){
 							if(oldAttr.getValue().equals(newAttr.getValue()) == false){
 								return true;
 							}
@@ -307,7 +310,7 @@ public abstract class AbsComparator implements Comparator {
 				EObject newObj = match.getNewObj();
 				if(checkIfAdapted(oldObj, newObj)){
 					adaptedElements.add(newObj);
-					//logAdapted(newObj);
+					logAdapted(newObj);
 				}
 				else{
 					oldElements.add(newObj);

@@ -76,7 +76,7 @@ public class Deprovisioner {
 	private void deprovisionLinkInstance(Entity link) {
 		log.info("Deprovision Link: " + link.getKind());
 		Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-		executor.executeOperation("DELETE", link);
+		executor.executeOperation("DELETE", link, null);
 	}
 
 	/**Deprovisioning process for a single storage instance.
@@ -85,7 +85,7 @@ public class Deprovisioner {
 	private void deprovisionStorageInstance(Entity entity) {
 		log.info("Deprovision Storage: " + entity.getTitle());
 		Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-		executor.executeOperation("DELETE", entity);	
+		executor.executeOperation("DELETE", entity, null);	
 	}
 
 	/**Deprovisions a NetworkInstance.
@@ -94,7 +94,7 @@ public class Deprovisioner {
 	private void deprovisionNetworkInstance(Entity entity) {
 		log.info("Deprovision Network: " + entity.getTitle());
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
-		executor.executeOperation("DELETE", entity);
+		executor.executeOperation("DELETE", entity, null);
 	}
 
 	/**Deprovisions a ComputeInstance
@@ -103,6 +103,6 @@ public class Deprovisioner {
 	private void deprovisionComputeInstance(Entity entity) {
 		log.info("Deprovision Compute: " + entity.getTitle());
 		Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-		executor.executeOperation("DELETE", entity);	
+		executor.executeOperation("DELETE", entity, null);	
 	}
 }

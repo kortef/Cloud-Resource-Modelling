@@ -82,8 +82,6 @@ public class Provisioner implements Runnable {
         	this.performFinal();
         }
 	}
-	
-	
 
 	/**
 	 * Performs provisionElements on next Node.
@@ -93,7 +91,7 @@ public class Provisioner implements Runnable {
 		EList<EObject> stubNWModel = ModelUtility.loadOCCI(stubNWpath);
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
 		stubNw = stubNWModel.get(stubNWModel.size()-1);
-		executor.executeOperation("POST", stubNw);
+		executor.executeOperation("POST", stubNw, null);
 		this.provisionNextNode();
 	}
 	
@@ -127,7 +125,7 @@ public class Provisioner implements Runnable {
 	private void performFinal() {
 		//DELETE STUBNET
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
-		executor.executeOperation("DELETE", stubNw);
+		executor.executeOperation("DELETE", stubNw, null);
 		connection.logIdSwapList();
 		connection.serializeIdSwapList();
 	}
@@ -146,10 +144,10 @@ public class Provisioner implements Runnable {
     			&& !(((Entity) extracted).getKind().getTerm().equals("networkinterface"))){
     		Executor openstack = ExecutorFactory.getExecutor("Openstack", this.connection);
     		
-    		openstack.executeOperation("POST", extracted);
+    		openstack.executeOperation("POST", extracted, null);
     	}
     	else{
-    		executor.executeOperation("POST", extracted);
+    		executor.executeOperation("POST", extracted, null);
     	}
     	
     	//executor.executeOperation("POST", extracted);
@@ -208,7 +206,7 @@ public class Provisioner implements Runnable {
 				return;
 			}
 			Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-			String output = executor.executeOperation("GET", entity);
+			String output = executor.executeOperation("GET", entity, null);
 			if(outputShowsActiveState(output)){
 				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
 			}

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
+import org.occiware.clouddesigner.occi.infrastructure.Network;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
@@ -26,7 +28,7 @@ public class OpenstackExecutor extends AbsExecutor {
 	 */
 	public OpenstackExecutor(Connection conn) {
 		this.connection = conn;
-		this.maxTries = 5;
+		this.maxTries = 2;
 	}
 
 	public OpenstackExecutor(Connection conn, int maxTries){
@@ -35,7 +37,7 @@ public class OpenstackExecutor extends AbsExecutor {
 	}
 	
 	@Override
-	public String executeOperation(String operation, EObject element) {
+	public String executeOperation(String operation, EObject element, EObject action) {
 		Boolean success = false;
 		String output = null;
 		int count = 0;
@@ -86,12 +88,17 @@ public class OpenstackExecutor extends AbsExecutor {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/subnets",
 				"POST", true, "application/json", this.connection.getToken());
 
+		Entity network = (Entity) element;
+		
+		String address = getAttribute("occi.network.address", network); 
+		
 		String input =	"{\"subnet\": "
 				+ "{\"name\": \"" +((Entity) element).getTitle()+" subnet\","
 				+ "\"network_id\": \"" + id
 				+"\",\"ip_version\": 4,"
-				+ "\"cidr\": \"192.68.0.0/24\","
+				+ "\"cidr\": \""+address+"\","
 				+ "\"dns_nameservers\": [\"8.8.8.8\"]}}";
+		//+ "\"cidr\": \"192.68.0.0/24\","
 		
 		writeInput(conn, input);
 		
@@ -109,6 +116,15 @@ public class OpenstackExecutor extends AbsExecutor {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private String getAttribute(String string, Entity network) {
+		for(AttributeState attr: network.getAttributes()){
+			if(attr.getName().equals(string)){
+				return attr.getValue();
+			}
+		}
+		return "192.168.0.0/24";
 	}
 
 	@Override

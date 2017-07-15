@@ -24,6 +24,7 @@ public class ComparatorTest {
 		System.out.println("Basic Example + NWVM:");
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
+		/*
 		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
@@ -64,6 +65,12 @@ public class ComparatorTest {
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM_DiffID.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		CachedResourceSet.getCache().clear();
+		*/
+		System.out.println("TOTest:");
+		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/toTest.occie");
+		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
+		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
 		CachedResourceSet.getCache().clear();
 
 	}

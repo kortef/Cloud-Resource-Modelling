@@ -17,6 +17,7 @@ import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.uml2.uml.Model;
 import org.occiware.clouddesigner.occi.Entity;
 
+import de.ugoe.cs.oco.occi2deployment.adapter.ElementAdapter;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;
@@ -108,19 +109,21 @@ public class Deployer{
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
 		deprovisioner.deprovision(comparator.getMissingElements());
 		
-		//Adapt adapted elements
-		//ElementAdapter adapter = new ElementAdapter();
-		//adapter.adapt(comparator.getAdaptedElements());
-		
 		//Create Provisioning Plan
 		List<EObject> removeFromPOG = new BasicEList<EObject>();
 		removeFromPOG.addAll(comparator.getOldElements());
 		removeFromPOG.addAll(comparator.getAdaptedElements());
 		Model provisioningPlan = generateProvisioningPlan(newModelPath, removeFromPOG);
 		
+		//Adapt adapted elements
+		ElementAdapter adapter = new ElementAdapter(conn);
+		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
+		
 		//Start provisioning
 		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, newModel);
-		provisioner.provisionElements();		
+		provisioner.provisionElements();	
+		
+		
 	}
 	
 	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.occiware.clouddesigner.occi.Action;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Mixin;
@@ -33,13 +34,13 @@ public class OCCIExecutor extends AbsExecutor{
 	}
 
 	@Override
-	public String executeOperation(String operation, EObject element) {
+	public String executeOperation(String operation, EObject element, EObject action) {
 		Boolean success = false;
 		String output = null;
 		int count = 0;
 		
 		while(success == false && count < maxTries){
-			if(operation.equals("POST")){
+			if(operation.equals("POST") && action == null){
 				output = executePostOperation(element);
 			}
 			else if(operation.equals("PUT")){
@@ -50,6 +51,9 @@ public class OCCIExecutor extends AbsExecutor{
 			}
 			else if(operation.equals("DELETE")){
 				output = executeDeleteOperation(element);
+			}
+			else if(operation.equals("POST") && action != null){
+				output = executeActionOperation(element, action);
 			}
 			
 			if(output != null){
@@ -70,11 +74,38 @@ public class OCCIExecutor extends AbsExecutor{
 		return output;
 	}
 
-	public String executeOperation(String operation, EObject element, int time){
+	private String executeActionOperation(EObject element, EObject eAction) {
+		Entity entity = (Entity) element;	
+		Action action = (Action) eAction;
+		String adaptedAddress = getEntityKindURI(entity);
+		adaptedAddress += getActualId(entity, connection.getIdSwapList());
+		adaptedAddress += "?action=";
+		adaptedAddress += action.getTerm();
+		HttpURLConnection conn = establishConnection(adaptedAddress, "POST", true, "text/occi", 
+				this.connection.getToken());
 		
-		return operation;	
+		conn.setRequestProperty("Category", generateCategoryHeader(action));
+		
+		log.debug("POST" + " "+ conn.getURL() + " Category: " + conn.getRequestProperty("Category"));
+		
+		if(connectionSuccessful(conn)){
+			String output = getOutput(conn);
+		    return output;
+		}
+		else{
+			conn.disconnect();
+			return null;
+		}
 	}
 	
+	private String generateCategoryHeader(Action action) {
+		String category = new String();
+		category = 	action.getTerm() +"; "+
+								"scheme=\"" +action.getScheme() +"\"; "+ 
+							"class=\"action\"";
+		return category;
+	}
+
 	public String executeGetOperation(EObject extracted) {
 		Entity entity = (Entity) extracted;
 		String adaptedAddress = getEntityKindURI(entity);

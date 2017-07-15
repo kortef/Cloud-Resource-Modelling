@@ -18,7 +18,7 @@ import pcg.Resource;
 import pcg.Vertex;
 
 
-/**Complex Comparator implements the similiarity flooding algorithm combined with the EMF Compare
+/**Complex Comparator implements the similiarity flooding algorithm
  * results as intial weighting.
  * @author rockodell
  *

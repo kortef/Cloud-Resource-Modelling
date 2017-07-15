@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_SiRysGMiEeeoTtj9V78C1Q" name="DeploymentPlan">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_Sg-yMGMiEeeoTtj9V78C1Q" name="DeploymentWorkflow" node="_SiTA0GMiEeeoTtj9V78C1Q _SiU2AGMiEeeoTtj9V78C1Q _SiJ24GMiEeeoTtj9V78C1Q _SiMTIGMiEeeoTtj9V78C1Q _Si76AGMiEeeoTtj9V78C1Q _Si8hEGMiEeeoTtj9V78C1Q">
-    <edge xmi:type="uml:ControlFlow" xmi:id="_Si0lQGMiEeeoTtj9V78C1Q" target="_SiJ24GMiEeeoTtj9V78C1Q" source="_SiTA0GMiEeeoTtj9V78C1Q"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_Si2acGMiEeeoTtj9V78C1Q" target="_SiU2AGMiEeeoTtj9V78C1Q" source="_SiMTIGMiEeeoTtj9V78C1Q"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_SjQqIGMiEeeoTtj9V78C1Q" target="_Si76AGMiEeeoTtj9V78C1Q" source="_SiJ24GMiEeeoTtj9V78C1Q"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_SjRRMGMiEeeoTtj9V78C1Q" target="_Si8hEGMiEeeoTtj9V78C1Q" source="_SiJ24GMiEeeoTtj9V78C1Q"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_SjR4QGMiEeeoTtj9V78C1Q" target="_SiMTIGMiEeeoTtj9V78C1Q" source="_Si76AGMiEeeoTtj9V78C1Q"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_SjTGYGMiEeeoTtj9V78C1Q" target="_SiMTIGMiEeeoTtj9V78C1Q" source="_Si8hEGMiEeeoTtj9V78C1Q"/>
-    <node xmi:type="uml:InitialNode" xmi:id="_SiTA0GMiEeeoTtj9V78C1Q" name="initial" outgoing="_Si0lQGMiEeeoTtj9V78C1Q"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_SiU2AGMiEeeoTtj9V78C1Q" name="final" incoming="_Si2acGMiEeeoTtj9V78C1Q"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_SiJ24GMiEeeoTtj9V78C1Q" name="initialFork" incoming="_Si0lQGMiEeeoTtj9V78C1Q" outgoing="_SjQqIGMiEeeoTtj9V78C1Q _SjRRMGMiEeeoTtj9V78C1Q"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_SiMTIGMiEeeoTtj9V78C1Q" name="finalJoin" incoming="_SjR4QGMiEeeoTtj9V78C1Q _SjTGYGMiEeeoTtj9V78C1Q" outgoing="_Si2acGMiEeeoTtj9V78C1Q"/>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_Si76AGMiEeeoTtj9V78C1Q" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_SjQqIGMiEeeoTtj9V78C1Q" outgoing="_SjR4QGMiEeeoTtj9V78C1Q">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_SjIHQGMiEeeoTtj9V78C1Q" name="http://schemas.ogf.org/occi/infrastructure# id">
-        <value xmi:type="uml:LiteralString" xmi:id="_SjON4GMiEeeoTtj9V78C1Q" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
-      </inputValue>
-    </node>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_Si8hEGMiEeeoTtj9V78C1Q" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_SjRRMGMiEeeoTtj9V78C1Q" outgoing="_SjTGYGMiEeeoTtj9V78C1Q">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_SjPcAGMiEeeoTtj9V78C1Q" name="http://schemas.ogf.org/occi/infrastructure# id">
-        <value xmi:type="uml:LiteralString" xmi:id="_SjPcAWMiEeeoTtj9V78C1Q" name="id" value="20b452b2-6c6a-4c6a-be99-a03d492f70cc_93ad20f5-da5b-4efd-ab24-01b7207f7fdg_192.168.0.2"/>
-      </inputValue>
-    </node>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_QtFwYGl9EeeH0dnscig_OA" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_QrrbIGl9EeeH0dnscig_OA" name="DeploymentWorkflow" node="_QtHlkGl9EeeH0dnscig_OA _QtKo4Gl9EeeH0dnscig_OA _Qs5jIGl9EeeH0dnscig_OA _Qs9NgGl9EeeH0dnscig_OA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Qtv3sGl9EeeH0dnscig_OA" target="_Qs5jIGl9EeeH0dnscig_OA" source="_QtHlkGl9EeeH0dnscig_OA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QtyT8Gl9EeeH0dnscig_OA" target="_QtKo4Gl9EeeH0dnscig_OA" source="_Qs9NgGl9EeeH0dnscig_OA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QtziEGl9EeeH0dnscig_OA" target="_Qs9NgGl9EeeH0dnscig_OA" source="_Qs5jIGl9EeeH0dnscig_OA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_QtHlkGl9EeeH0dnscig_OA" name="initial" outgoing="_Qtv3sGl9EeeH0dnscig_OA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_QtKo4Gl9EeeH0dnscig_OA" name="final" incoming="_QtyT8Gl9EeeH0dnscig_OA"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_Qs5jIGl9EeeH0dnscig_OA" name="initialFork" incoming="_Qtv3sGl9EeeH0dnscig_OA" outgoing="_QtziEGl9EeeH0dnscig_OA"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_Qs9NgGl9EeeH0dnscig_OA" name="finalJoin" incoming="_QtziEGl9EeeH0dnscig_OA" outgoing="_QtyT8Gl9EeeH0dnscig_OA"/>
   </packagedElement>
 </uml:Model>

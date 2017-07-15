@@ -61,9 +61,9 @@
   <occi:Resource id="20b452b2-6c6a-4c6a-be99-a03d492f70ca" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
     <attributes name="occi.compute.state" value="active"/>
     <attributes name="occi.compute.hostname" value="vm1"/>
-    <attributes name="occi.compute.memory" value="2048"/>
+    <attributes name="occi.compute.memory" value="4096"/>
     <attributes name="occi.core.title" value="vm1"/>
-    <attributes name="occi.compute.cores" value="1"/>
+    <attributes name="occi.compute.cores" value="2"/>
     <attributes name="occi.core.id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca"/>
     <links id="20b452b2-6c6a-4c6a-be99-a03d492f70ca_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.2" kind="/4/@kinds[term='networkinterface']" target="/9">
       <attributes name="occi.networkinterface.interface" value="eth0"/>
@@ -73,7 +73,7 @@
       <attributes name="occi.networkinterface.allocation" value="dynamic"/>
       <attributes name="occi.core.id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.2"/>
       <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.168.0.14"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.14"/>
       <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
     </links>
   </occi:Resource>
@@ -81,7 +81,7 @@
     <attributes name="occi.core.title" value="network"/>
     <attributes name="occi.core.id" value="93ad20f5-da5b-4efd-ab24-01b7207f7fdf"/>
     <attributes name="occi.network.state" value="active"/>
-    <attributes name="occi.network.address" value="15.0.0.0/24"/>
+    <attributes name="occi.network.address" value="192.68.0.0/24"/>
   </occi:Resource>
   <occi:Resource id="3208c9c6-5f14-4a5e-806e-b6859e77f73b" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
     <attributes name="occi.compute.state" value="active"/>
@@ -104,7 +104,7 @@
       <attributes name="occi.networkinterface.allocation" value="dynamic"/>
       <attributes name="occi.core.id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
       <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.address" value="192.168.0.15"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.15"/>
       <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
     </links>
   </occi:Resource>

@@ -37,7 +37,7 @@ public class DeprovisionerTest {
 		
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/empty.occie");
 
-		Comparator comparator = ComparatorFactory.getComparator("Complex", conn.getSysModelPath(), newOCCI);
+		Comparator comparator = ComparatorFactory.getComparator("Complex", conn.getSysModelPath(), newOCCI, conn);
 		System.out.println(ModelUtility.getResources(ModelUtility.loadOCCI(conn.getSysModelPath())));
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
 		deprovisioner.deprovision(comparator.getMissingElements());

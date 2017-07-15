@@ -1,10 +1,13 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.Resource;
 
+import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 
 /**A simple comparator that compares two Models, by matching elements
@@ -17,11 +20,13 @@ public class SimpleComparator extends AbsComparator {
 	/**Creates a comparator instance based on the models passed as model1 and model2.
 	 * @param model1
 	 * @param model2
+	 * @param conn 
 	 */
-	public SimpleComparator(Path model1, Path model2) {
+	public SimpleComparator(Path model1, Path model2, Connection conn) {
+		this.connection = conn;
 		compare(model1, model2);
 	}
-	
+
 	/**Fills the match of the comparator.
 	 * @param oldModel
 	 * @param newModel
@@ -29,7 +34,6 @@ public class SimpleComparator extends AbsComparator {
 	public void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
 		matchOldAndNewElements(oldModel, newModel);
 		matchMissingElements(oldModel, newModel);
-		logMatch(matches);
 	}
 
 	/**Searches for missing elements in the newModel. And matches the 
@@ -42,7 +46,8 @@ public class SimpleComparator extends AbsComparator {
 		for(Resource resourceFromOld: ModelUtility.getResources(oldModel)){
 				missingElement = true;
 				for(Resource resourceFromNew: ModelUtility.getResources(newModel)){
-					if(resourceFromOld.getId().equals(resourceFromNew.getId())){
+					String unactual = getUnActualId(resourceFromOld.getId(), this.connection);
+					if(unactual.equals(resourceFromNew.getId())){
 						missingElement = false;
 					}
 				}
@@ -64,7 +69,8 @@ public class SimpleComparator extends AbsComparator {
 		for(Resource resourceFromNew: ModelUtility.getResources(newModel)){
 			newElement = true;
 				for(Resource resourceFromOld: ModelUtility.getResources(oldModel)){
-					if(resourceFromOld.getId().equals(resourceFromNew.getId())){
+					String unactual = getUnActualId(resourceFromOld.getId(), this.connection);
+					if(unactual.equals(resourceFromNew.getId())){
 						newElement = false;
 						Match match = new Match(resourceFromOld, resourceFromNew);
 						matches.add(match);	
@@ -76,4 +82,16 @@ public class SimpleComparator extends AbsComparator {
 				}
 			}
 		}
+	
+	private String getUnActualId(String id, Connection connection) {
+		if(connection != null){
+			for (String[] swapID : connection.getIdSwapList()) {	    	
+				if(id.equals(swapID[1])){
+					return swapID[0];
+				}
+			}
+			return id;
+		}
+		return id;
+	}
 }

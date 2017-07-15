@@ -70,7 +70,7 @@ public class ComparatorTest {
 		System.out.println("TOTest:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/toTest.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
-		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 
 	}

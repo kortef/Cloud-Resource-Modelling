@@ -12,6 +12,7 @@ import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Link;
 
+import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import pcg.Vertex;
 
@@ -23,6 +24,7 @@ import pcg.Vertex;
 public abstract class AbsComparator implements Comparator {
 	
 	abstract void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel);
+	protected Connection connection;
 	EList<Match> matches = new BasicEList<Match>();
 	EList<EObject> newElements = new BasicEList<EObject>();
 	EList<EObject> oldElements = new BasicEList<EObject>();
@@ -36,6 +38,7 @@ public abstract class AbsComparator implements Comparator {
 		
 		createResourceMatch(oldModelPath, oldModel, newModelPath, newModel);
 		createLinkMatch();
+		logMatch(matches);
 		
 		investigateNewEntities(newModel, matches);
 		//Fill missing entities
@@ -248,7 +251,8 @@ public abstract class AbsComparator implements Comparator {
 	/**Logs the Matches of the comparator.
 	 * @param list
 	 */
-	protected static void logMatch(List<Match> list){
+	protected void logMatch(List<Match> list){
+		log.info("Comparator: " + this.getClass().getSimpleName());
 		for(Match match: list){
 			if(match.getOldObj() == null){
 				if(match.getNewObj().eClass().getName().equals("Link")){

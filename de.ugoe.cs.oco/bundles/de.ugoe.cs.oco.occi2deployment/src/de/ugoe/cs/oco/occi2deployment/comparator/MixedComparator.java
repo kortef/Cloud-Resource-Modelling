@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 
+import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
@@ -27,14 +28,16 @@ public class MixedComparator extends AbsComparator {
 	/**Constructor executing the compare method to fill the ELists of the Object.
 	 * @param oldModelPath
 	 * @param newModelPath
+	 * @param conn 
 	 */
-	public MixedComparator(Path oldModelPath, Path newModelPath) {
+	public MixedComparator(Path oldModelPath, Path newModelPath, Connection conn) {
+		this.connection = conn;
 		compare(oldModelPath, newModelPath);
 	}
 
 	@Override
 	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {		
-		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath);
+		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, this.connection);
 		
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
 		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
@@ -50,7 +53,6 @@ public class MixedComparator extends AbsComparator {
 		this.matches = complex.generateMatches(ipgPath, oldModel, newModel);
 		
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
-		logMatch(matches);
 	}
 	
 	private void adaptPCG(Path pcgPath, EList<EObject> oldElements) {

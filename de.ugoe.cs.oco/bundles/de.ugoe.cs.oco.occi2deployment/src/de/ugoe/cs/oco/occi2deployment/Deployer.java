@@ -99,9 +99,11 @@ public class Deployer{
 	private void adapt(Path oldModelPath, Path newModelPath, Connection conn){
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
 		
+		cleanIdSwapList(conn, oldModelPath);
+		
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath);
+		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath, conn);
 		
 		updateIdsSwapList(comparator, conn, oldModelPath);
 		
@@ -126,20 +128,8 @@ public class Deployer{
 		
 	}
 	
-	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
-		for(Match match: comparator.getMatches()){
-			if(match.getOldObj()!=null && match.getNewObj()!=null){
-				Entity oldObj = (Entity) match.getOldObj();
-				Entity newObj = (Entity) match.getNewObj();
-				for(String[] ids: conn.getIdSwapList()){
-					if(ids[1].equals(oldObj.getId())){
-						ids[0] = newObj.getId();
-						break;
-					}
-				}
-			}
-		}
-		
+	private void cleanIdSwapList(Connection conn, Path oldModelPath) {
+		log.debug("Clean: IdSwapList");
 		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
 		List<String[]> toRemove = new ArrayList<String[]>();
 		for(String[] ids: conn.getIdSwapList()){
@@ -155,6 +145,23 @@ public class Deployer{
 			}
 		}
 		conn.getIdSwapList().removeAll(toRemove);	
+	}
+
+
+	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
+		log.debug("Update: IdSwapList");
+		for(Match match: comparator.getMatches()){
+			if(match.getOldObj()!=null && match.getNewObj()!=null){
+				Entity oldObj = (Entity) match.getOldObj();
+				Entity newObj = (Entity) match.getNewObj();
+				for(String[] ids: conn.getIdSwapList()){
+					if(ids[1].equals(oldObj.getId())){
+						ids[0] = newObj.getId();
+						break;
+					}
+				}
+			}
+		}
 		conn.logIdSwapList();
 		conn.serializeIdSwapList();
 	}

@@ -1,6 +1,9 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
+import java.util.List;
+
+import de.ugoe.cs.oco.occi2deployment.Connection;
 
 public class ComparatorFactory {
 	/**Returns a comparator instance.
@@ -9,9 +12,9 @@ public class ComparatorFactory {
 	 * @param model2
 	 * @return
 	 */
-	public static Comparator getComparator(String criteria, Path model1, Path model2){
+	public static Comparator getComparator(String criteria, Path model1, Path model2, Connection conn){
 		if(criteria.equals("Simple")){
-			return new SimpleComparator(model1, model2);
+			return new SimpleComparator(model1, model2, conn);
 		}
 		if(criteria.equals("Emf")){
 			return new EmfCompareComparator(model1, model2);
@@ -23,7 +26,7 @@ public class ComparatorFactory {
 			return new POGComparator(model1, model2);
 		}
 		if(criteria.equals("Mixed")){
-			return new MixedComparator(model1, model2);
+			return new MixedComparator(model1, model2, conn);
 		}
 		return null;
 	}	

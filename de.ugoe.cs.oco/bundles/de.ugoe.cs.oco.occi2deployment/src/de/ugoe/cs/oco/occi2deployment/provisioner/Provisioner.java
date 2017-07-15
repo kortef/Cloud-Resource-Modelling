@@ -107,7 +107,6 @@ public class Provisioner implements Runnable {
 					e.printStackTrace();
 				}
 			}
-			log.info("IT WORKED!");
 		}
 	}
 	

@@ -73,7 +73,7 @@
     <attributes name="occi.network.state" value="active"/>
   </occi:Resource>
   <occi:Resource id="a428dcee-840d-4299-804a-c4ba71b848f0" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="inactive"/>
+    <attributes name="occi.compute.state" value="active"/>
     <attributes name="occi.compute.hostname" value="vm1"/>
     <attributes name="occi.compute.memory" value="4096"/>
     <attributes name="occi.core.title" value="vm1"/>
@@ -91,7 +91,7 @@
     </links>
   </occi:Resource>
   <occi:Resource id="ef7a3726-1069-4559-a08d-e13a5630ccb9" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="inactive"/>
+    <attributes name="occi.compute.state" value="active"/>
     <attributes name="occi.compute.hostname" value="vm2"/>
     <attributes name="occi.compute.memory" value="4096"/>
     <attributes name="occi.core.title" value="vm2"/>

@@ -115,13 +115,13 @@ public class Deployer{
 		removeFromPOG.addAll(comparator.getAdaptedElements());
 		Model provisioningPlan = generateProvisioningPlan(newModelPath, removeFromPOG);
 		
-		//Adapt adapted elements
-		ElementAdapter adapter = new ElementAdapter(conn);
-		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
-		
 		//Start provisioning
 		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, newModel);
 		provisioner.provisionElements();	
+		
+		//Adapt adapted elements
+		ElementAdapter adapter = new ElementAdapter(conn);
+		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		
 	}

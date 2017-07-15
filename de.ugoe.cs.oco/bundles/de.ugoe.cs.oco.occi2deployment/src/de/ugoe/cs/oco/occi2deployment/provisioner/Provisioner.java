@@ -33,6 +33,9 @@ public class Provisioner implements Runnable {
 	private EList<EObject> occiModel;
 	private ActivityNode currentNode;
 	
+	private final static Object lock = new Object();
+	private static boolean done;
+	
 	public static String stubId;
 	private static EObject stubNw;
 	private static volatile List<ActivityEdge> performed = Collections.synchronizedList(new ArrayList<ActivityEdge>());
@@ -86,13 +89,26 @@ public class Provisioner implements Runnable {
 	/**
 	 * Performs provisionElements on next Node.
 	 */
-	private void performInitial() {		
+	private void performInitial() {
+		done = false;
 		Path stubNWpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/stubNW.occie");
 		EList<EObject> stubNWModel = ModelUtility.loadOCCI(stubNWpath);
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
 		stubNw = stubNWModel.get(stubNWModel.size()-1);
 		executor.executeOperation("POST", stubNw, null);
 		this.provisionNextNode();
+		
+		synchronized(lock){
+			while(done == false){
+				try {
+					lock.wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			log.info("IT WORKED!");
+		}
 	}
 	
 	/**
@@ -128,6 +144,12 @@ public class Provisioner implements Runnable {
 		executor.executeOperation("DELETE", stubNw, null);
 		connection.logIdSwapList();
 		connection.serializeIdSwapList();
+		
+		synchronized(lock){
+		    //set ready flag to true (so isReady returns true)
+		    done = true;
+		    lock.notifyAll();
+		}
 	}
 
 	/**

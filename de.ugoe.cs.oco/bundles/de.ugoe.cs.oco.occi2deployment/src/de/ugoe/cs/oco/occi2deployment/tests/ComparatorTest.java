@@ -24,54 +24,61 @@ public class ComparatorTest {
 		System.out.println("Basic Example + NWVM:");
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
-		/*
-		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		
+		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
 		System.out.println("Basic Example + VM:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+VM.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
 		System.out.println("Empty:");
 		Path oldOCCI2 = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		Path newOCCI2 = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/empty.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI2, newOCCI2);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI2, newOCCI2, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
 		System.out.println("Basic Example - VM:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample-VM.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		
 		System.out.println("Basic Example Without Link:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExampleWithoutLink.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		
 		System.out.println("Without Link to Basic Example:");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExampleWithoutLink.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		
 		System.out.println("Basic Example + NWVM Different Id:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM_DiffID.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
-		*/
+		
 		System.out.println("TOTest:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/toTest.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
-		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
+		
+		/*
+		System.out.println("B2:");
+		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample2.occie");
+		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample2.occie");
+		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
+		CachedResourceSet.getCache().clear();*/
 
 	}
 }

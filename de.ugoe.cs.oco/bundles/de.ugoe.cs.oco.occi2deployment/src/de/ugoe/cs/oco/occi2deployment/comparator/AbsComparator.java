@@ -64,7 +64,8 @@ public abstract class AbsComparator implements Comparator {
 						if(oldAttr.getName().equals(newAttr.getName()) 
 								&& oldAttr.getName().contains("core.source") == false
 								&& oldAttr.getName().contains("core.target") == false
-								&& oldAttr.getName().contains("core.id") == false){
+								&& oldAttr.getName().contains("core.id") == false
+								){
 							if(oldAttr.getValue().equals(newAttr.getValue()) == false){
 								return true;
 							}
@@ -75,6 +76,7 @@ public abstract class AbsComparator implements Comparator {
 		}
 		return false;
 	}
+	
 	
 	protected void createLinkMatch() {
 		List<Match> linkMatches = new ArrayList<Match>();
@@ -300,6 +302,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	protected static void logVertex(Vertex highest) {
+		System.out.println(((pcg.Resource)highest.getResources().get(0)).getTitle() + " : " + ((pcg.Resource)highest.getResources().get(1)).getTitle());
+	}
 	
 	/**Investigates Old and Adapted Elements from the matches list in order to add them
 	 * to the corresponding elements from the comparator.

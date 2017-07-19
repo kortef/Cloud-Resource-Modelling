@@ -10,10 +10,15 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
+import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
+import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
 import pcg.Edge;
 import pcg.Graph;
+import pcg.PcgFactory;
+import pcg.Resource;
 import pcg.Vertex;
 
 public class SimilarityFlooding {
@@ -102,7 +107,7 @@ public class SimilarityFlooding {
 	 * @param graph
 	 * @return
 	 */
-	public Map<String, List<Vertex>> createFixpointValueMap(Graph graph) {
+	private Map<String, List<Vertex>> createFixpointValueMap(Graph graph) {
 		Map<String, List<Vertex>> map = new HashMap<String, List<Vertex>>();
 		for(Vertex vertex: graph.getVertices()){
 			if(map.containsKey(vertex.getResources().get(0).getId())){
@@ -120,7 +125,7 @@ public class SimilarityFlooding {
 	/**Removes keys with no values from the map of the similarity flooding algorithm.
 	 * @param map
 	 */
-	public static void removeEmptyKeys(Map<String, List<Vertex>> map) {
+	protected static void removeEmptyKeys(Map<String, List<Vertex>> map) {
 		List<String> toRemove = new ArrayList<String>();
 		for(String key: map.keySet()){
 			if(map.get(key).isEmpty()){
@@ -136,7 +141,7 @@ public class SimilarityFlooding {
 	 * @param highest
 	 * @param map
 	 */
-	public static void removeEntires(Vertex highest, Map<String, List<Vertex>> map) {
+	protected static void removeEntires(Vertex highest, Map<String, List<Vertex>> map) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		for(List<Vertex> vertices: map.values()){
 			for(Vertex vertex: vertices){
@@ -146,29 +151,5 @@ public class SimilarityFlooding {
 			}
 			vertices.removeAll(toRemove);
 		}
-	}
-
-	/**Returns the highest fixpoint value of the whole map.
-	 * @param map
-	 * @return
-	 */
-	public static Vertex getHighestFixpointValue(Map<String, List<Vertex>> map) {
-		Vertex maxVertex = null;
-		double max = 0.0;
-		for(List<Vertex> vertices: map.values()){
-			sortVertices(vertices);
-			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
-				maxVertex=vertices.get(0);
-				max = vertices.get(0).getFixpointValue();
-			}
-		}
-		return maxVertex;
-	}
-
-	/**Sorts vertices in the passed list.
-	 * @param list
-	 */
-	private static void sortVertices(List<Vertex> list) {
-		Collections.sort(list, (o1, o2) -> (o1.getFixpointValue()>o2.getFixpointValue() ? -1 : (o1==o2 ? 0 : 1)));
-	}
+	}	
 }

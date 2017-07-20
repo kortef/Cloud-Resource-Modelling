@@ -48,31 +48,35 @@ public class ComparatorTest {
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample-VM.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
+		System.out.println("");
 		
 		System.out.println("Basic Example Without Link:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExampleWithoutLink.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
+		System.out.println("");
 		
 		System.out.println("Without Link to Basic Example:");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExampleWithoutLink.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
+		System.out.println("");
 		
 		System.out.println("Basic Example + NWVM Different Id:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM_DiffID.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
+		System.out.println("");
 		
 		System.out.println("TOTest:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/toTest.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
-		
+		System.out.println("");
 		/*
 		System.out.println("B2:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample2.occie");

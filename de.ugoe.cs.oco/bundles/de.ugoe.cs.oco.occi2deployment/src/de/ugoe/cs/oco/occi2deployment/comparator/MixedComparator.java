@@ -47,18 +47,14 @@ public class MixedComparator extends AbsComplexComparator {
 		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
 		occiToPcg.transform(oldModelPath, newModelPath, pcgPath);
 		
-		//adaptPCG(pcgPath, simple.getOldElements());
+		adaptPCG(pcgPath, simple.getOldElements());
 		
 		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
 		pcgToIpg.transform(pcgPath, ipgPath);
 		
-		//ComplexComparator complex = new ComplexComparator();
-		
 		Map<String, List<Vertex>> map = calculateFixpointValueMap(ipgPath);
 		this.matches = this.createMatch(map, oldModel, newModel);
-		
-		//this.matches = complex.generateMatches(ipgPath, oldModel, newModel);
 		
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
 	}
@@ -134,12 +130,6 @@ public class MixedComparator extends AbsComplexComparator {
 	private boolean checkIfEquivalent(EObject oldObj, EObject newObj) {
 		Entity oldRes = (Resource) oldObj;
 		Entity newRes = (Resource) newObj;
-		System.out.println(oldRes.getTitle());
-		System.out.println(newRes.getTitle());
-		System.out.println(oldRes.getKind());
-		System.out.println(newRes.getKind());
-		System.out.println(oldRes.getMixins());
-		System.out.println(newRes.getMixins());
 		if(oldRes.getTitle().equals(newRes.getTitle())
 				&& oldRes.getKind().getTerm().equals(newRes.getKind().getTerm())
 				&&oldRes.getKind().getScheme().equals(newRes.getKind().getScheme())

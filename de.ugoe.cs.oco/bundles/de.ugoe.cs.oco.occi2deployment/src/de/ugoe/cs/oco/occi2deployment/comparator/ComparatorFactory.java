@@ -16,9 +16,6 @@ public class ComparatorFactory {
 		if(criteria.equals("Simple")){
 			return new SimpleComparator(model1, model2, conn);
 		}
-		if(criteria.equals("Emf")){
-			return new EmfCompareComparator(model1, model2);
-		}
 		if(criteria.equals("Complex")){
 			return new ComplexComparator(model1, model2);
 		}

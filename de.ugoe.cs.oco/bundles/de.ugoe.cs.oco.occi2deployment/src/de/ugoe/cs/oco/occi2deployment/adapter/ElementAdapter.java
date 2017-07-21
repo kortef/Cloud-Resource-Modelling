@@ -7,10 +7,13 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+
 import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.Attribute;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
+//import org.occiware.clouddesigner.occi.Action;
+//import org.occiware.clouddesigner.occi.AttributeState;
+//import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;

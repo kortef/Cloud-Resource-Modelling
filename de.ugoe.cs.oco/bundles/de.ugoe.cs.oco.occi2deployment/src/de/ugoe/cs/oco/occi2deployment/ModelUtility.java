@@ -18,6 +18,11 @@ import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
+//import org.occiware.clouddesigner.occi.Entity;
+//import org.occiware.clouddesigner.occi.OCCIPackage;
+//import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+
+
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
@@ -56,7 +61,7 @@ public class ModelUtility {
        
         URI fileURI = URI.createURI(path.toString());
         Resource resource = resSet.getResource(fileURI, true);
-               
+
 		return resource.getContents();	
 	}
 	

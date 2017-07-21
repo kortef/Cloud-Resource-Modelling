@@ -7,7 +7,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.infrastructure.Network;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;

@@ -6,5 +6,7 @@
 	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/jocci-api-0.2.6.jar"/>
 	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/jocci-core-0.2.4.jar"/>
 	<classpathentry kind="lib" path="/de.ugoe.cs.oco.thirdparty/libs/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/media/rockodell/57A8D28D137F9BAA/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.thirdparty/libs/org.occiware.clouddesigner.occi.infrastructure_0.1.0.201605302242.jar"/>
+	<classpathentry kind="lib" path="/media/rockodell/57A8D28D137F9BAA/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.thirdparty/libs/org.occiware.clouddesigner.occi_0.1.0.201605302242.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

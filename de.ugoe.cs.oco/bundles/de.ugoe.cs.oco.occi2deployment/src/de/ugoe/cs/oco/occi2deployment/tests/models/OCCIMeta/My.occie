@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <resources id="urn:uuid:cc098578-1139-4d36-a684-2ddcd438960a">
+    <kind href="configmanagement.occie#//@kinds[term='managedcomponent']"/>
+    <attributes name="occi.core.id" value="urn:uuid:cc098578-1139-4d36-a684-2ddcd438960a"/>
+  </resources>
+  <resources id="urn:uuid:0727ba93-b45f-48a9-9bf4-7862f12a8746">
+    <attributes name="occi.core.id" value="urn:uuid:0727ba93-b45f-48a9-9bf4-7862f12a8746"/>
+  </resources>
+</occi:Configuration>

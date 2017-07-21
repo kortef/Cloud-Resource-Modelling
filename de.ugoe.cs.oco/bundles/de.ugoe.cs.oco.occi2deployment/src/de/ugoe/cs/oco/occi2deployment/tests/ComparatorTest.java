@@ -71,18 +71,11 @@ public class ComparatorTest {
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
-		System.out.println("TOTest:");
+		System.out.println("BasicExample+NWVM -> TOTest:");
 		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/toTest.occie");
 		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample+NWVM.occie");
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
-		/*
-		System.out.println("B2:");
-		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample2.occie");
-		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample2.occie");
-		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
-		CachedResourceSet.getCache().clear();*/
-
 	}
 }

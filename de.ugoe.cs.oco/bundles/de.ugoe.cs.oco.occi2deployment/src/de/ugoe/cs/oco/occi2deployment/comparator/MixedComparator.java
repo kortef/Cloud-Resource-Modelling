@@ -130,6 +130,8 @@ public class MixedComparator extends AbsComplexComparator {
 	private boolean checkIfEquivalent(EObject oldObj, EObject newObj) {
 		Entity oldRes = (Resource) oldObj;
 		Entity newRes = (Resource) newObj;
+		System.out.println(oldRes.getKind());
+		System.out.println(oldRes.getKind().getTerm());
 		if(oldRes.getTitle().equals(newRes.getTitle())
 				&& oldRes.getKind().getTerm().equals(newRes.getKind().getTerm())
 				&&oldRes.getKind().getScheme().equals(newRes.getKind().getScheme())

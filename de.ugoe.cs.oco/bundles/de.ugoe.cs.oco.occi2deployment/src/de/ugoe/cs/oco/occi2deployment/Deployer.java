@@ -72,6 +72,8 @@ public class Deployer{
 	 * @param occiPath Storing the OCCI Model to be deployed.
 	 */
 	private void initialDeploy(Connection conn, Path occiPath){
+		log.debug("Clean Id Swap List");
+		conn.getIdSwapList().clear();
 		EList<EObject> occiModel = ModelUtility.loadOCCI(occiPath);
 		//OCCI2POG
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");

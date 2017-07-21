@@ -23,6 +23,7 @@ import org.occiware.clouddesigner.occi.Entity;
 
 
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
+import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 /**
  * @author rockodell
  *An entity class that stores information about a specifc user and its connection to the cloud server.
@@ -129,9 +130,19 @@ public class Connection {
 	 */
 	public void idSwapListRemove(Entity entity) {
 		List<String[]> toRemove = new ArrayList<String[]>();
-		for(String[] str: this.idSwapList){
-			if(str[0].equals(entity.getId())){
-				toRemove.add(str);
+		if(entity.getId().equals(((Entity)Provisioner.stubNw).getId())){
+			for(String[] str: this.idSwapList){
+				if(str[0].equals(entity.getId())){
+					log.debug("KILL: " +  str[0] + " : " + str[1]);
+					toRemove.add(str);
+				}
+			}
+		}
+		else{	
+			for(String[] str: this.idSwapList){
+				if(str[1].equals(entity.getId())){
+					toRemove.add(str);
+				}
 			}
 		}
 		this.idSwapList.removeAll(toRemove);

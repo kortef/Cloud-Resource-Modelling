@@ -189,7 +189,6 @@ public class MixedComparator extends AbsComplexComparator {
 
 	@Override
 	Vertex getSuitableFixpointValue(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
-		System.out.println("MIXED!");
 		Vertex maxVertex = null;
 		double max = 0.0;
 		for(List<Vertex> vertices: map.values()){

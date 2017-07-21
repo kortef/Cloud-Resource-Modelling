@@ -37,7 +37,7 @@ public class Provisioner implements Runnable {
 	private static boolean done;
 	
 	public static String stubId;
-	private static EObject stubNw;
+	public static EObject stubNw;
 	private static volatile List<ActivityEdge> performed = Collections.synchronizedList(new ArrayList<ActivityEdge>());
 	
 	/**Creates Provisioner object with the ActivityNode being its current position.

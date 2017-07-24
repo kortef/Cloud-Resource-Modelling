@@ -79,22 +79,22 @@ public class CoreMapperImpl extends ExpressionImpl implements CoreMapper {
 		output.setName("cores");
 		switch (flavorParam.getValue()){
 		case "1":
-			output.setValue("1");
+			output.setValue("Standard_A1");
 			break;
 		case "2":
-			output.setValue("1");
+			output.setValue("Standard_A2");
 			break;
 		case "3":
-			output.setValue("2");
+			output.setValue("Standard_A3");
 			break;
 		case "4":
-			output.setValue("4");
+			output.setValue("Standard_A4");
 			break;
 		case "5":
-			output.setValue("8");
+			output.setValue("Standard_A6");
 			break;
 		default:
-			output.setValue("1");
+			output.setValue("Standard_A1");
 		}
 		
 		return output;

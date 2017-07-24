@@ -136,39 +136,42 @@ operation toString(parameter: input!TNodeTemplate, ident: String, gap: String, s
 	}
 }
 
-// Only works until a parameter depth of two
 operation toString(parameter: input!PropertiesType, ident: String, gap: String, suffix: String, members: OrderedSet){
 	for (mixedcontent in parameter.econtents.mixed){
 		for (feature in mixedcontent){
 			if (not (feature.estructuralfeature.name == "text")){
 				out.print(ident + feature.estructuralfeature.name + ": ");
-				for (content in feature.value.mixed){
-					ident = ident + gap;
-					if (not (content.estructuralfeature.name == "text")){
-						out.println();
-						out.print(ident + content.estructuralfeature.name + ": ");
-						for (content2 in content.value.mixed){
-							var value = "";
-							if (content2.value.contains("get_input")){
-								value = getInputParValue(content2.value);
-							}
-							else
-								value = content2.value;
-							out.print(value);
-						}
-					}
-					else{
-						// Need to check for content of value, since we want to avoid to print whitespaces.
-						if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|\\~|\\.|\\/)+(\\s)*)+"))
-							out.print(content.value);
-					}
-					ident = ident.substring(0, ident.length - 2);
-				}
+				printMixedContent(feature.value.mixed, ident, gap);
 				out.println;
 			}
 		}	
 	}
 }
+
+
+operation printMixedContent(parameter: List, ident: String, gap:String){
+	for (content in parameter){
+		ident = ident + gap;
+		if (not (content.estructuralfeature.name == "text")){
+			out.println();
+			out.print(ident + content.estructuralfeature.name + ": ");
+			printMixedContent(content.value.mixed, ident, gap);
+		}
+		else{
+		    if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|\\~|\\.|\\/)+(\\s)*)+")){
+		    	var value = "";
+				if (content.value.contains("get_input")){
+					value = getInputParValue(content.value);
+				}
+				else
+					value = content.value;
+				out.print(value);
+			}
+		}
+		ident = ident.substring(0, ident.length - 2);
+	}
+}
+
 
 operation toString(parameter: input!TInterface, ident: String, gap: String, suffix: String, members: OrderedSet){
 	out.println(ident + parameter.name + ":");
@@ -227,7 +230,7 @@ operation toString(parameter: input!TParameter, ident: String, gap: String){
 operation getInputParValue(request: String): String{
 	var requiredInputPar = request.split(" ").get(1);
 	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
-	//"Looking for parameter: " + requiredInputPar;
+	("Looking for parameter: " + requiredInputPar).println();
 	var inputPar = input!TPlan.allInstances.get(0).
 		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
 	return inputPar.value;

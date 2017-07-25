@@ -158,13 +158,14 @@ operation printMixedContent(parameter: List, ident: String, gap:String){
 			printMixedContent(content.value.mixed, ident, gap);
 		}
 		else{
-		    if (content.value.matches("(([A-Za-z:]|[0-9]|\\{|\\}|\\-|_|\\~|\\.|\\/)+(\\s)*)+")){
+		    //if (content.value.matches('(([A-Za-z:]|[0-9]|\\[|\\]|\\{|\\}|\\-|_|\\~|\\.|\\/)+(\\s)*)+')){
+		    if (not content.value.matches('(\\s)*')){
 		    	var value = "";
 				if (content.value.contains("get_input")){
 					value = getInputParValue(content.value);
 				}
 				else
-					value = content.value;
+					value = content.value.replace("\t", "");
 				out.print(value);
 			}
 		}
@@ -230,7 +231,7 @@ operation toString(parameter: input!TParameter, ident: String, gap: String){
 operation getInputParValue(request: String): String{
 	var requiredInputPar = request.split(" ").get(1);
 	requiredInputPar = requiredInputPar.substring(0, requiredInputPar.length - 1);
-	("Looking for parameter: " + requiredInputPar).println();
+	//("Looking for parameter: " + requiredInputPar).println();
 	var inputPar = input!TPlan.allInstances.get(0).
 		inputParameters.inputParameter.selectOne(p | p.name == requiredInputPar);
 	return inputPar.value;

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Mixin;
@@ -47,7 +48,7 @@ public class MixedComparator extends AbsComplexComparator {
 		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
 		occiToPcg.transform(oldModelPath, newModelPath, pcgPath);
 		
-		adaptPCG(pcgPath, simple.getOldElements());
+		adaptPCG(pcgPath, simple.getOldElements(), simple.getAdaptedElements());
 		
 		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
@@ -59,11 +60,15 @@ public class MixedComparator extends AbsComplexComparator {
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
 	}
 	
-	private void adaptPCG(Path pcgPath, EList<EObject> oldElements) {
+	private void adaptPCG(Path pcgPath, EList<EObject> oldElements, EList<EObject> adaptedElements) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
+		System.out.println(pcgGraph.eContents());
 		deleteOldElementsFromGraph(pcgGraph, oldElements);
+		deleteOldElementsFromGraph(pcgGraph, adaptedElements);
+		System.out.println(pcgGraph.eContents());
 		ModelUtility.storePCG(pcgPath, pcgGraph);
+		CachedResourceSet.getCache().clear();
 	}
 
 	private void deleteOldElementsFromGraph(Graph pcgGraph, EList<EObject> oldElements) {

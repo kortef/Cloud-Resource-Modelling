@@ -59,14 +59,12 @@ public class MixedComparator extends AbsComplexComparator {
 		
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
 	}
-	
+
 	private void adaptPCG(Path pcgPath, EList<EObject> oldElements, EList<EObject> adaptedElements) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
-		System.out.println(pcgGraph.eContents());
 		deleteOldElementsFromGraph(pcgGraph, oldElements);
 		deleteOldElementsFromGraph(pcgGraph, adaptedElements);
-		System.out.println(pcgGraph.eContents());
 		ModelUtility.storePCG(pcgPath, pcgGraph);
 		CachedResourceSet.getCache().clear();
 	}
@@ -76,7 +74,11 @@ public class MixedComparator extends AbsComplexComparator {
 		for(Vertex vertex: pcgGraph.getVertices()){
 			for(EObject old: oldElements){
 				if(vertex.getResources().get(0).getId().equals(((Entity) old).getId())
-						&& vertex.getResources().get(1).getId().equals(((Entity) old).getId()) == false){
+						&& vertex.getResources().get(1).getId().equals(((Entity) old).getId())){
+					
+				}	
+				else if(vertex.getResources().get(0).getId().equals(((Entity) old).getId())
+						|| vertex.getResources().get(1).getId().equals(((Entity) old).getId())){
 					toRemove.add(vertex);
 				}
 			}
@@ -198,6 +200,7 @@ public class MixedComparator extends AbsComplexComparator {
 		double max = 0.0;
 		for(List<Vertex> vertices: map.values()){
 			sortVertices(vertices);
+			logList(vertices);
 			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
 				if(multipleMaxValuesExist(vertices)){
 					maxVertex=getMostFittingVertice(vertices, oldModel, newModel);

@@ -63,13 +63,13 @@ public class MixedComparator extends AbsComplexComparator {
 	private void adaptPCG(Path pcgPath, EList<EObject> oldElements, EList<EObject> adaptedElements) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
-		deleteOldElementsFromGraph(pcgGraph, oldElements);
-		deleteOldElementsFromGraph(pcgGraph, adaptedElements);
+		deleteWrongElementsFromGraph(pcgGraph, oldElements);
+		deleteWrongElementsFromGraph(pcgGraph, adaptedElements);
 		ModelUtility.storePCG(pcgPath, pcgGraph);
 		CachedResourceSet.getCache().clear();
 	}
 
-	private void deleteOldElementsFromGraph(Graph pcgGraph, EList<EObject> oldElements) {
+	private void deleteWrongElementsFromGraph(Graph pcgGraph, EList<EObject> oldElements) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		for(Vertex vertex: pcgGraph.getVertices()){
 			for(EObject old: oldElements){
@@ -79,6 +79,16 @@ public class MixedComparator extends AbsComplexComparator {
 				}	
 				else if(vertex.getResources().get(0).getId().equals(((Entity) old).getId())
 						|| vertex.getResources().get(1).getId().equals(((Entity) old).getId())){
+					EList<Edge> incEdges = new BasicEList<Edge>();
+					for(Edge edge: pcgGraph.getEdges()){
+						if(edge.getTarget() == vertex){
+							incEdges.add(edge);
+						}
+					}
+					for(Edge incEdge: incEdges){
+						incEdge.setTarget(correctVertex(pcgGraph.getVertices(), ((Entity) old).getId()));
+					}
+					
 					toRemove.add(vertex);
 				}
 			}
@@ -97,6 +107,16 @@ public class MixedComparator extends AbsComplexComparator {
 			EcoreUtil.delete(edge);
 		}
 	}
+
+	private Vertex correctVertex(EList<Vertex> vertices, String id) {
+		for(Vertex vertex: vertices){
+			if(vertex.getResources().get(0).getId().equals(id) && vertex.getResources().get(1).getId().equals(id)){
+				return vertex;
+			}
+		}
+		return null;
+	}
+
 
 	/**After the similarity flooding algorithm, missing and new matches are investigated for similarities,
 	 * such as name, in order to match matching objects together.
@@ -137,8 +157,6 @@ public class MixedComparator extends AbsComplexComparator {
 	private boolean checkIfEquivalent(EObject oldObj, EObject newObj) {
 		Entity oldRes = (Resource) oldObj;
 		Entity newRes = (Resource) newObj;
-		System.out.println(oldRes.getKind());
-		System.out.println(oldRes.getKind().getTerm());
 		if(oldRes.getTitle().equals(newRes.getTitle())
 				&& oldRes.getKind().getTerm().equals(newRes.getKind().getTerm())
 				&&oldRes.getKind().getScheme().equals(newRes.getKind().getScheme())
@@ -200,7 +218,6 @@ public class MixedComparator extends AbsComplexComparator {
 		double max = 0.0;
 		for(List<Vertex> vertices: map.values()){
 			sortVertices(vertices);
-			logList(vertices);
 			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
 				if(multipleMaxValuesExist(vertices)){
 					maxVertex=getMostFittingVertice(vertices, oldModel, newModel);

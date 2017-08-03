@@ -54,9 +54,11 @@ public class SimilarityFlooding {
 				for(Edge edge: graph.getEdges()){
 					if(edge.getTarget() == vertex){
 						incEdges.add(edge);
+						//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
 					}
 					if(edge.getSource() == vertex){
 						outEdges.add(edge);
+						//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
 					}
 				}
 				//Calculate Fixpint Value
@@ -91,6 +93,7 @@ public class SimilarityFlooding {
 							somethingChanged = true;
 						}
 						vertex.setFixpointValue(vertex.getNextFixpointValue());
+						System.out.println(vertex.getTitle() + " " + vertex.getFixpointValue());
 					}
 				}
 			}
@@ -98,6 +101,7 @@ public class SimilarityFlooding {
 			if(somethingChanged == false){
 				stop = true;
 			}
+			System.out.println("");
 		}
 	}
 	

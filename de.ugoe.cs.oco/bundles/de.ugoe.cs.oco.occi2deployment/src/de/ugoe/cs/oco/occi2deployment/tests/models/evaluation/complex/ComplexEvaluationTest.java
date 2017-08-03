@@ -19,7 +19,7 @@ public class ComplexEvaluationTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String version = "Mixed";
+		String version = "Complex";
 		
 		
 		System.out.println("Different Ids");
@@ -56,6 +56,7 @@ public class ComplexEvaluationTest {
 		comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
+		
 		
 		if(version.equals("Mixed")){
 			System.out.println("Storage Reattachement, VM0 ID equivalent");

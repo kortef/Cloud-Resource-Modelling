@@ -19,7 +19,7 @@ public class ComplexEvaluationTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String version = "Complex";
+		String version = "Mixed";
 		
 		
 		System.out.println("Different Ids");
@@ -69,6 +69,13 @@ public class ComplexEvaluationTest {
 			System.out.println("Storage Reattachement, VM1 ID equivalent");
 			oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/evaluation/complex/sourceStorageReattachement.occie");
 			newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/evaluation/complex/targetStorageReattachementVM1SameID.occie");
+			comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
+			CachedResourceSet.getCache().clear();
+			System.out.println("");
+			
+			System.out.println("Split into Subgraphs, NW0 equals NW1");
+			oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/evaluation/complex/sourceSplitIntoSubgraphs.occie");
+			newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/evaluation/complex/targetSplitIntoSubgraphsNW0equalsNW1.occie");
 			comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 			CachedResourceSet.getCache().clear();
 			System.out.println("");

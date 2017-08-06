@@ -58,60 +58,77 @@
     <kinds term="entity" scheme="http://schemas.ogf.org/occi/core#" title="entity"/>
     <kinds term="resource" scheme="http://schemas.ogf.org/occi/core#" title="resource" parent="/7/@kinds[term='entity']"/>
   </occi:Extension>
-  <occi:Resource id="yfrzjsrthsrthsrthrs" title="vm2" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="inactive"/>
-    <attributes name="occi.compute.hostname" value="vm0"/>
+  <occi:Resource id="20b452b2-6c6a-4c6a-be99-a03d492f70ca" title="vm1" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="vm1"/>
     <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm2"/>
+    <attributes name="occi.core.title" value="vm1"/>
     <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="yfrzjsrthsrthsrthrs"/>
-    <links id="yfrzjsrthsrthsrthrs_ergiobaegorbearg_192.168.0.2" kind="/4/@kinds[term='networkinterface']" target="/9">
+    <attributes name="occi.core.id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca"/>
+    <links id="20b452b2-6c6a-4c6a-be99-a03d492f70ca_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.2" kind="/4/@kinds[term='networkinterface']" target="/9">
       <attributes name="occi.networkinterface.interface" value="eth0"/>
       <attributes name="occi.networkinterface.mac" value="fa:16:3e:d1:9b:db"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/ergiobaegorbearg"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/yfrzjsrthsrthsrthrs"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/93ad20f5-da5b-4efd-ab24-01b7207f7fdf"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/20b452b2-6c6a-4c6a-be99-a03d492f70ca"/>
       <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="yfrzjsrthsrthsrthrs_ergiobaegorbearg_192.168.0.2"/>
+      <attributes name="occi.core.id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.2"/>
       <attributes name="occi.networkinterface.state" value="active"/>
       <attributes name="occi.networkinterface.address" value="192.68.0.14"/>
       <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
     </links>
-  </occi:Resource>
-  <occi:Resource id="ergiobaegorbearg" title="nw1" kind="/4/@kinds[term='network']" mixins="/4/@mixins[term='ipnetwork']">
-    <attributes name="occi.core.title" value="nw0"/>
-    <attributes name="occi.core.id" value="ergiobaegorbearg"/>
-    <attributes name="occi.network.state" value="active"/>
-    <attributes name="occi.network.address" value="192.68.0.0/24"/>
-  </occi:Resource>
-  <occi:Resource id="srkztzdusaht" title="vm3" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
-    <attributes name="occi.compute.state" value="active"/>
-    <attributes name="occi.compute.hostname" value="vm1"/>
-    <attributes name="occi.compute.memory" value="4096"/>
-    <attributes name="occi.core.title" value="vm3"/>
-    <attributes name="occi.compute.cores" value="2"/>
-    <attributes name="occi.core.id" value="srkztzdusaht"/>
-    <links id="srkztzdusaht_asrntjsrhtaergareg" kind="/4/@kinds[term='storagelink']" target="/11">
-      <attributes name="occi.storagelink.deviceid" value="/dev/vdb"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/storage/asrntjsrhtaergareg"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/srkztzdusaht"/>
-      <attributes name="occi.core.id" value="srkztzdusaht_asrntjsrhtaergareg"/>
-    </links>
-    <links id="srkztzdusaht_ergiobaegorbearg_192.168.0.4" kind="/4/@kinds[term='networkinterface']" target="/9">
+    <links id="20b452b2-6c6a-4c6a-be99-a03d492f70ca2_93ad20f5-da5b-4efd-ab24-01b7207f7fdf1_192.168.0.2" kind="/4/@kinds[term='networkinterface']" target="/12">
       <attributes name="occi.networkinterface.interface" value="eth0"/>
-      <attributes name="occi.networkinterface.mac" value="fa:16:3e:2e:39:ee"/>
-      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/ergiobaegorbearg"/>
-      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/srkztzdusaht"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:d1:9b:db"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/93ad20f5-da5b-4efd-ab24-01b7207f7fdf1"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/20b452b2-6c6a-4c6a-be99-a03d492f70ca2"/>
       <attributes name="occi.networkinterface.allocation" value="dynamic"/>
-      <attributes name="occi.core.id" value="srkztzdusaht_ergiobaegorbearg_192.168.0.4"/>
+      <attributes name="occi.core.id" value="20b452b2-6c6a-4c6a-be99-a03d492f70ca2_93ad20f5-da5b-4efd-ab24-01b7207f7fdf1_192.168.0.2"/>
       <attributes name="occi.networkinterface.state" value="active"/>
       <attributes name="occi.networkinterface.address" value="192.68.0.15"/>
       <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
     </links>
   </occi:Resource>
-  <occi:Resource id="asrntjsrhtaergareg" title="stor1" kind="/4/@kinds[term='storage']">
+  <occi:Resource id="93ad20f5-da5b-4efd-ab24-01b7207f7fdf" title="nw0" kind="/4/@kinds[term='network']" mixins="/4/@mixins[term='ipnetwork']">
+    <attributes name="occi.core.title" value="nw0"/>
+    <attributes name="occi.core.id" value="93ad20f5-da5b-4efd-ab24-01b7207f7fdf"/>
+    <attributes name="occi.network.state" value="active"/>
+    <attributes name="occi.network.address" value="192.68.0.0/24"/>
+  </occi:Resource>
+  <occi:Resource id="3208c9c6-5f14-4a5e-806e-b6859e77f73b" title="vm0" kind="/4/@kinds[term='compute']" mixins="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab'] /0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']">
+    <attributes name="occi.compute.state" value="active"/>
+    <attributes name="occi.compute.hostname" value="vm0"/>
+    <attributes name="occi.compute.memory" value="4096"/>
+    <attributes name="occi.core.title" value="vm0"/>
+    <attributes name="occi.compute.cores" value="2"/>
+    <attributes name="occi.core.id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b"/>
+    <links id="3208c9c6-5f14-4a5e-806e-b6859e77f73b_f23a7ee4-623f-440c-814e-8f33bc2d4bff" kind="/4/@kinds[term='storagelink']" target="/11">
+      <attributes name="occi.storagelink.deviceid" value="/dev/vdb"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/storage/f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/3208c9c6-5f14-4a5e-806e-b6859e77f73b"/>
+      <attributes name="occi.core.id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+    </links>
+    <links id="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4" kind="/4/@kinds[term='networkinterface']" target="/9">
+      <attributes name="occi.networkinterface.interface" value="eth0"/>
+      <attributes name="occi.networkinterface.mac" value="fa:16:3e:2e:39:ee"/>
+      <attributes name="occi.core.target" value="http://192.168.34.1:8787/occi1.1/network/93ad20f5-da5b-4efd-ab24-01b7207f7fdf"/>
+      <attributes name="occi.core.source" value="http://192.168.34.1:8787/occi1.1/compute/3208c9c6-5f14-4a5e-806e-b6859e77f73b"/>
+      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
+      <attributes name="occi.core.id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_93ad20f5-da5b-4efd-ab24-01b7207f7fdf_192.168.0.4"/>
+      <attributes name="occi.networkinterface.state" value="active"/>
+      <attributes name="occi.networkinterface.address" value="192.68.0.15"/>
+      <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
+    </links>
+  </occi:Resource>
+  <occi:Resource id="f23a7ee4-623f-440c-814e-8f33bc2d4bff" title="stor0" kind="/4/@kinds[term='storage']">
     <attributes name="occi.core.title" value="stor0"/>
-    <attributes name="occi.core.id" value="asrntjsrhtaergareg"/>
+    <attributes name="occi.core.id" value="f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
     <attributes name="occi.storage.state" value="online"/>
     <attributes name="occi.storage.size" value="100"/>
+  </occi:Resource>
+  <occi:Resource id="93ad20f5-da5b-4efd-ab24-01b7207f7fdf1" title="nw1" kind="/4/@kinds[term='network']" mixins="/4/@mixins[term='ipnetwork']">
+    <attributes name="occi.core.title" value="nw1"/>
+    <attributes name="occi.core.id" value="93ad20f5-da5b-4efd-ab24-01b7207f7fdf1"/>
+    <attributes name="occi.network.state" value="active"/>
+    <attributes name="occi.network.address" value="192.68.0.0/24"/>
   </occi:Resource>
 </xmi:XMI>

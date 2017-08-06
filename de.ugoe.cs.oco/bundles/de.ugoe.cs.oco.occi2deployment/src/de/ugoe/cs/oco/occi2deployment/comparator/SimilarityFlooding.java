@@ -26,10 +26,8 @@ public class SimilarityFlooding {
 	public Map<String, List<Vertex>> generateFixpointValueMap(Path ipgPath) {
 		//Load IPG graph
 		EList<EObject> ipg = ModelUtility.loadPCG(ipgPath);
-		Graph ipgGraph =(Graph)ipg.get(0);
-				
-		performSimilarityFlooding(ipgGraph, 1000, 0.000000000000001);
-				
+		Graph ipgGraph =(Graph)ipg.get(0);		
+		performSimilarityFlooding(ipgGraph, 1000, 0.0000000000000000000001);			
 		//Create Matches
 		return createFixpointValueMap(ipgGraph);
 	}
@@ -45,29 +43,8 @@ public class SimilarityFlooding {
 		for(int i = 0; (i< maxIterations) && (stop ==false); i++){
 			boolean somethingChanged = false;
 			for(Vertex vertex: graph.getVertices()){
-				//Initial Fixpoint Value
-				double nextFixVal = vertex.getFixpointValue();
-				
-				//Get Incoming/Outgoing Edges
-				EList<Edge> incEdges = new BasicEList<Edge>();
-				EList<Edge> outEdges = new BasicEList<Edge>();
-				for(Edge edge: graph.getEdges()){
-					if(edge.getTarget() == vertex){
-						incEdges.add(edge);
-						//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
-					}
-					if(edge.getSource() == vertex){
-						outEdges.add(edge);
-						//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
-					}
-				}
-				//Calculate Fixpint Value
-				for(Edge incEdge: incEdges){
-					nextFixVal += incEdge.getSource().getFixpointValue() * incEdge.getWeight();
-				}
-				for(Edge outEdge: outEdges){
-					nextFixVal += outEdge.getTarget().getFixpointValue() * outEdge.getWeight();
-				}
+				double nextFixVal = calculateFixpointValue(vertex, graph);
+				//getOutEdges(vertex, graph);
 				
 				Boolean exist = false;
 				for(String[] normValue: normValues) {
@@ -84,6 +61,7 @@ public class SimilarityFlooding {
 				}
 				vertex.setNextFixpointValue(nextFixVal);
 			}
+			
 			//Normalize
 			for(Vertex vertex: graph.getVertices()){
 				for(String[] normVal: normValues){
@@ -93,7 +71,7 @@ public class SimilarityFlooding {
 							somethingChanged = true;
 						}
 						vertex.setFixpointValue(vertex.getNextFixpointValue());
-						System.out.println(vertex.getTitle() + " " + vertex.getFixpointValue());
+						//System.out.println(vertex.getTitle() + " " + vertex.getFixpointValue());
 					}
 				}
 			}
@@ -101,11 +79,57 @@ public class SimilarityFlooding {
 			if(somethingChanged == false){
 				stop = true;
 			}
-			System.out.println("");
+			//System.out.println("");
 		}
 	}
 	
 	
+	private double calculateFixpointValue(Vertex vertex, Graph graph) {
+		double nextFixVal = vertex.getFixpointValue();
+		//System.out.print(vertex.getTitle() + " : " + nextFixVal + "+ ");
+		EList<Edge> incEdges = getIncEdges(vertex, graph);
+		for(Edge incEdge: getIncEdges(vertex, graph)){
+			//System.out.print(incEdge.getSource().getFixpointValue()+ "*" + incEdge.getWeight());
+			nextFixVal += incEdge.getSource().getFixpointValue() * incEdge.getWeight();
+			//System.out.print(" + ");
+		}
+		
+		//ERZIELT BESSERE ERGEBNISSE: WEIL SO AUCH DIE ANZAHL AN KANTEN VOM SOURCE ZU TARGET MODEL ERKANNT WERDEN. UND SOMIT BESSER
+		//NEUE ENTITIES ERKANNT WERDEN KÖNNEN
+		//for(Edge outEdge: getOutEdges(vertex, graph)){
+			//System.out.print(outEdge.getSource().getFixpointValue()+ "*" + outEdge.getWeight());
+			//nextFixVal += (outEdge.getTarget().getFixpointValue() * outEdge.getWeight());
+			//System.out.print(" + ");
+		//}
+		//System.out.println("inc: "+ incEdges.size() + " out: " + outEdges.size());
+		//System.out.println(vertex.getTitle()+ " : " + nextFixVal);
+		//System.out.println();
+		return nextFixVal;
+	}
+
+	private EList<Edge> getOutEdges(Vertex vertex, Graph graph) {
+		EList<Edge> outEdges = new BasicEList<Edge>();
+		for(Edge edge: graph.getEdges()){
+			if(edge.getSource() == vertex){
+				outEdges.add(edge);
+				//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
+			}	
+		}	
+		return outEdges;
+	}
+
+	private EList<Edge> getIncEdges(Vertex vertex, Graph graph) {
+		EList<Edge> incEdges = new BasicEList<Edge>();
+		for(Edge edge: graph.getEdges()){
+			if(edge.getTarget() == vertex){
+				incEdges.add(edge);
+				//System.out.println("Edge: " + edge.getSource().getTitle() + " -> " + edge.getTarget().getTitle() +" : "+  edge.getWeight());
+			}		
+		}	
+		return incEdges;
+	}
+		
+
 	/**Creates a Map containing the ids of the oldModels Resources as Key and their values as the all possible
 	 * combination of Vertices and their fixpoint values calculated by the similarity flooding algorithm.
 	 * @param graph

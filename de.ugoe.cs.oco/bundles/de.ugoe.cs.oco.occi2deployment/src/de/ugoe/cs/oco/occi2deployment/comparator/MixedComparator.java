@@ -22,6 +22,7 @@ import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
 import pcg.*;
+import pcg.impl.PcgFactoryImpl;
 
 
 /**Complex Comparator implements the similiarity flooding algorithm combined with the EMF Compare
@@ -48,7 +49,7 @@ public class MixedComparator extends AbsComplexComparator {
 		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
 		occiToPcg.transform(oldModelPath, newModelPath, pcgPath);
 		
-		adaptPCG(pcgPath, simple.getOldElements(), simple.getAdaptedElements());
+		adaptPCG(pcgPath, simple);
 		
 		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
@@ -60,39 +61,69 @@ public class MixedComparator extends AbsComplexComparator {
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
 	}
 
-	private void adaptPCG(Path pcgPath, EList<EObject> oldElements, EList<EObject> adaptedElements) {
+	private void adaptPCG(Path pcgPath, Comparator comp) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
-		deleteWrongElementsFromGraph(pcgGraph, oldElements);
-		deleteWrongElementsFromGraph(pcgGraph, adaptedElements);
+		adjustElementsInGraph(pcgGraph, comp.getOldElements(), comp.getMatches());
+		adjustElementsInGraph(pcgGraph, comp.getAdaptedElements(), comp.getMatches());
 		ModelUtility.storePCG(pcgPath, pcgGraph);
 		CachedResourceSet.getCache().clear();
 	}
 
-	private void deleteWrongElementsFromGraph(Graph pcgGraph, EList<EObject> oldElements) {
+	private void adjustElementsInGraph(Graph pcgGraph, EList<EObject> oldElements, EList<Match> matches) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
-		for(Vertex vertex: pcgGraph.getVertices()){
-			for(EObject old: oldElements){
-				if(vertex.getResources().get(0).getId().equals(((Entity) old).getId())
-						&& vertex.getResources().get(1).getId().equals(((Entity) old).getId())){
-					
-				}	
-				else if(vertex.getResources().get(0).getId().equals(((Entity) old).getId())
-						|| vertex.getResources().get(1).getId().equals(((Entity) old).getId())){
-					EList<Edge> incEdges = new BasicEList<Edge>();
-					for(Edge edge: pcgGraph.getEdges()){
-						if(edge.getTarget() == vertex){
-							incEdges.add(edge);
+		List<Vertex> toAdd = new BasicEList<Vertex>();
+		for(EObject old: oldElements){
+			if(old.eClass().getName().equals("Resource")){
+				Resource res = (Resource) old;
+				boolean missing = true;
+				for(Vertex vertex: pcgGraph.getVertices()){	
+					if(vertex.getResources().get(0).getId().equals(res.getId())
+							&& vertex.getResources().get(1).getId().equals(res.getId())){
+						missing = false;
+					}	
+					else if(vertex.getResources().get(0).getId().equals(res.getId())
+							|| vertex.getResources().get(1).getId().equals(res.getId())){
+						EList<Edge> incEdges = new BasicEList<Edge>();
+						for(Edge edge: pcgGraph.getEdges()){
+							if(edge.getTarget() == vertex){
+								incEdges.add(edge);
+							}
 						}
+						for(Edge incEdge: incEdges){
+							//TO BE CHECKED
+							if(edgeAlreadyExists(pcgGraph, incEdge.getSource(), correctVertex(pcgGraph.getVertices(), ((Entity) old).getId())) == false){
+								incEdge.setTarget(correctVertex(pcgGraph.getVertices(), ((Entity) old).getId()));
+							}
+						}
+						
+						toRemove.add(vertex);
 					}
-					for(Edge incEdge: incEdges){
-						incEdge.setTarget(correctVertex(pcgGraph.getVertices(), ((Entity) old).getId()));
-					}
+				}
+				if(missing == true){
+					Vertex vertex = new PcgFactoryImpl().createVertex();
+					Match match = getMatchFor(res, matches);
+					pcg.Resource oldResource = new PcgFactoryImpl().createResource();
+					oldResource.setId(((Resource)match.getOldObj()).getId());
+					oldResource.setTitle(((Resource)match.getOldObj()).getTitle());
 					
-					toRemove.add(vertex);
+					pcg.Resource newResource = new PcgFactoryImpl().createResource();
+					newResource.setId(((Resource)match.getNewObj()).getId());
+					newResource.setTitle(((Resource)match.getNewObj()).getTitle());
+					
+					vertex.setFixpointValue(1);
+					vertex.setKind(res.getKind().getScheme() + res.getKind().getTerm());
+					vertex.setTitle(res.getTitle());
+					vertex.getResources().add(oldResource);
+					vertex.getResources().add(newResource);
+					toAdd.add(vertex);
 				}
 			}
 		}
+		for(Vertex vertex: toAdd){
+			pcgGraph.getVertices().add(vertex);
+		}
+		
 		for(Vertex vertex: toRemove){
 			EcoreUtil.delete(vertex);
 		}
@@ -106,6 +137,31 @@ public class MixedComparator extends AbsComplexComparator {
 		for(Edge edge: toRemoveE){
 			EcoreUtil.delete(edge);
 		}
+	}
+
+	private boolean edgeAlreadyExists(Graph pcgGraph, Vertex srcVertex, Vertex tarVertex) {
+		EList<Edge> outEdges = new BasicEList<Edge>();
+		for(Edge edge: pcgGraph.getEdges()){
+			if(edge.getSource() == srcVertex){
+				outEdges.add(edge);
+			}
+		}
+		for(Edge outEdge: outEdges){
+			if(outEdge.getTarget() == tarVertex){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private Match getMatchFor(Resource res, EList<Match> matches) {
+		for(Match match: matches){
+			if(res.getId().equals(((Resource) match.getOldObj()).getId())){
+				System.out.println(match.getOldObj()+ " : " + match.getNewObj());
+				return match;
+			}
+		}
+		return null;
 	}
 
 	private Vertex correctVertex(EList<Vertex> vertices, String id) {
@@ -211,7 +267,39 @@ public class MixedComparator extends AbsComplexComparator {
 			return true;
 		}
 	}
-
+	
+	//ZU TESTEN
+	@Override
+	Vertex getSuitableFixpointValue(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
+		Vertex maxVertex = null;
+		double max = 0.0;
+		for(List<Vertex> vertices: map.values()){
+			sortVertices(vertices);
+			logList(vertices);
+		}
+		System.out.println("");
+		for(List<Vertex> vertices: map.values()){
+			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
+				if(multipleMaxValuesExist(vertices)){
+					maxVertex=getMostFittingVertice(vertices, oldModel, newModel);
+					max = vertices.get(0).getFixpointValue();
+				}
+				else{
+					maxVertex=vertices.get(0);	
+					max = vertices.get(0).getFixpointValue();
+				}
+			}
+		}
+		System.out.println("First Pick: " + maxVertex.getTitle());
+		List<Vertex> possibleSources = getPossibleSources(maxVertex.getResources().get(1), map);
+		sortVertices(possibleSources);
+		logList(possibleSources);
+		maxVertex=getMostFittingVertice(possibleSources, oldModel, newModel);
+		System.out.println("Second Pick: " + maxVertex.getTitle()); 
+		return maxVertex;
+	}
+	
+	/*
 	@Override
 	Vertex getSuitableFixpointValue(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
 		Vertex maxVertex = null;
@@ -230,8 +318,20 @@ public class MixedComparator extends AbsComplexComparator {
 			}
 		}
 		return maxVertex;
-	}
+	}*/
 	
+	private List<Vertex> getPossibleSources(pcg.Resource resource, Map<String, List<Vertex>> map) {
+		List <Vertex> possibleSources = new BasicEList<Vertex>();
+		for(List<Vertex> vertices: map.values()){
+			for(Vertex ver: vertices){
+				if(ver.getResources().get(1).getId().equals(resource.getId())){
+					possibleSources.add(ver);
+				}
+			}
+		}
+		return possibleSources;
+	}
+
 	private static Vertex getMostFittingVertice(List<Vertex> vertices, EList<EObject> oldModel, EList<EObject> newModel) {
 		int bestFit = 0;
 		int nextFit = 1;

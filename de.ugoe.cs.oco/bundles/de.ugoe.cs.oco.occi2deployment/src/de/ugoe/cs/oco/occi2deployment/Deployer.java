@@ -105,13 +105,17 @@ public class Deployer{
 		
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath, conn);
+		Comparator comparator = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, conn);
 		
 		updateIdsSwapList(comparator, conn, oldModelPath);
 		
 		//Deprovision Missing Elements
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
 		deprovisioner.deprovision(comparator.getMissingElements());
+		
+		//Adapt adapted elements
+		ElementAdapter adapter = new ElementAdapter(conn);
+		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		//Create Provisioning Plan
 		List<EObject> removeFromPOG = new BasicEList<EObject>();
@@ -121,13 +125,7 @@ public class Deployer{
 		
 		//Start provisioning
 		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, newModel);
-		provisioner.provisionElements();	
-		
-		//Adapt adapted elements
-		ElementAdapter adapter = new ElementAdapter(conn);
-		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
-		
-		
+		provisioner.provisionElements();		
 	}
 	
 	private void cleanIdSwapList(Connection conn, Path oldModelPath) {

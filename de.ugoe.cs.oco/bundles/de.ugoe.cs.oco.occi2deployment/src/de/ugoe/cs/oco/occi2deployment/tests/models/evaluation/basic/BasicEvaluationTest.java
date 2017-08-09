@@ -19,7 +19,7 @@ public class BasicEvaluationTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String strategy = "Mixed";
+		String strategy = "Complex";
 		String version = "2";
 		String source = "+VM_Stor";
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/evaluation/basic"+version+"/"+source+".occie");

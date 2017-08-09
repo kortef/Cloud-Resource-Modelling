@@ -156,9 +156,14 @@ public class MixedComparator extends AbsComplexComparator {
 
 	private Match getMatchFor(Resource res, EList<Match> matches) {
 		for(Match match: matches){
-			if(res.getId().equals(((Resource) match.getOldObj()).getId())){
-				System.out.println(match.getOldObj()+ " : " + match.getNewObj());
-				return match;
+			if(match.getNewObj() != null && match.getOldObj()!= null){
+				System.out.println(match.getOldObj().eClass().getName());
+				if(match.getOldObj().eClass().getName().equals("Resource")){
+					if(res.getId().equals(((Resource) match.getOldObj()).getId())){
+						System.out.println(match.getOldObj()+ " : " + match.getNewObj());
+						return match;
+					}
+				}
 			}
 		}
 		return null;
@@ -290,13 +295,20 @@ public class MixedComparator extends AbsComplexComparator {
 				}
 			}
 		}
-		System.out.println("First Pick: " + maxVertex.getTitle());
-		List<Vertex> possibleSources = getPossibleSources(maxVertex.getResources().get(1), map);
-		sortVertices(possibleSources);
-		logList(possibleSources);
-		maxVertex=getMostFittingVertice(possibleSources, oldModel, newModel);
-		System.out.println("Second Pick: " + maxVertex.getTitle()); 
-		return maxVertex;
+		if(maxVertex != null) {
+			System.out.println("First Pick: " + maxVertex.getTitle());
+			List<Vertex> possibleSources = getPossibleSources(maxVertex.getResources().get(1), map);
+			sortVertices(possibleSources);
+			logList(possibleSources);
+			maxVertex=getMostFittingVertice(possibleSources, oldModel, newModel);
+			System.out.println("Second Pick: " + maxVertex.getTitle()); 
+			System.out.println("");
+			return maxVertex;
+		}
+		else{
+			System.out.println("NO VERTEX LEFT!");
+			return null;
+		}
 	}
 	
 	/*

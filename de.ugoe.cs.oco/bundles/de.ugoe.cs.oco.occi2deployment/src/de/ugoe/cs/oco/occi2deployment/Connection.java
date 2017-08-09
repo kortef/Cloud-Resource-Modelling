@@ -130,7 +130,7 @@ public class Connection {
 	 */
 	public void idSwapListRemove(Entity entity) {
 		List<String[]> toRemove = new ArrayList<String[]>();
-		if(entity.getId().equals(((Entity)Provisioner.stubNw).getId())){
+		if(Provisioner.stubNw == null || entity.getId().equals(((Entity)Provisioner.stubNw).getId())){
 			for(String[] str: this.idSwapList){
 				if(str[0].equals(entity.getId())){
 					log.debug("KILL: " +  str[0] + " : " + str[1]);

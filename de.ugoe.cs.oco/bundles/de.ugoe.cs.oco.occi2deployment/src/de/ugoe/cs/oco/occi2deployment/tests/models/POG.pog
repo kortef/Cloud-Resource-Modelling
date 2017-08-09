@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog"/>
+<pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog">
+  <vertices title="stor0" id="f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+  <vertices title="http://schemas.ogf.org/occi/infrastructure#" id="3208c9c6-5f14-4a5e-806e-b6859e77f73b_f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+  <edges source="//@vertices.0" target="//@vertices.1"/>
+</pog:Graph>

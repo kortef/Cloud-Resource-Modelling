@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_B91aYG4iEee4OPcgmM7nvQ" name="DeploymentPlan">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_B7ppEW4iEee4OPcgmM7nvQ" name="DeploymentWorkflow" node="_B93PkG4iEee4OPcgmM7nvQ _B95r0G4iEee4OPcgmM7nvQ _B9liwG4iEee4OPcgmM7nvQ _B9rpYG4iEee4OPcgmM7nvQ">
-    <edge xmi:type="uml:ControlFlow" xmi:id="_B-jzIG4iEee4OPcgmM7nvQ" target="_B9liwG4iEee4OPcgmM7nvQ" source="_B93PkG4iEee4OPcgmM7nvQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_B-mPYG4iEee4OPcgmM7nvQ" target="_B95r0G4iEee4OPcgmM7nvQ" source="_B9rpYG4iEee4OPcgmM7nvQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_B-ndgG4iEee4OPcgmM7nvQ" target="_B9rpYG4iEee4OPcgmM7nvQ" source="_B9liwG4iEee4OPcgmM7nvQ"/>
-    <node xmi:type="uml:InitialNode" xmi:id="_B93PkG4iEee4OPcgmM7nvQ" name="initial" outgoing="_B-jzIG4iEee4OPcgmM7nvQ"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_B95r0G4iEee4OPcgmM7nvQ" name="final" incoming="_B-mPYG4iEee4OPcgmM7nvQ"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_B9liwG4iEee4OPcgmM7nvQ" name="initialFork" incoming="_B-jzIG4iEee4OPcgmM7nvQ" outgoing="_B-ndgG4iEee4OPcgmM7nvQ"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_B9rpYG4iEee4OPcgmM7nvQ" name="finalJoin" incoming="_B-ndgG4iEee4OPcgmM7nvQ" outgoing="_B-mPYG4iEee4OPcgmM7nvQ"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_KtSjYH0AEeeWgMsOyFRDxg" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_KrmhUX0AEeeWgMsOyFRDxg" name="DeploymentWorkflow" node="_KtVmsH0AEeeWgMsOyFRDxg _KtYC8H0AEeeWgMsOyFRDxg _KtFIAH0AEeeWgMsOyFRDxg _KtILUH0AEeeWgMsOyFRDxg _KuYvkH0AEeeWgMsOyFRDxg _KuZWoH0AEeeWgMsOyFRDxg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KuGbsH0AEeeWgMsOyFRDxg" target="_KtFIAH0AEeeWgMsOyFRDxg" source="_KtVmsH0AEeeWgMsOyFRDxg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KuJfAH0AEeeWgMsOyFRDxg" target="_KtYC8H0AEeeWgMsOyFRDxg" source="_KtILUH0AEeeWgMsOyFRDxg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Ku_MgH0AEeeWgMsOyFRDxg" target="_KuYvkH0AEeeWgMsOyFRDxg" source="_KtFIAH0AEeeWgMsOyFRDxg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KvFTIH0AEeeWgMsOyFRDxg" target="_KuZWoH0AEeeWgMsOyFRDxg" source="_KuYvkH0AEeeWgMsOyFRDxg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KvMA0H0AEeeWgMsOyFRDxg" target="_KtILUH0AEeeWgMsOyFRDxg" source="_KuZWoH0AEeeWgMsOyFRDxg"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_KtVmsH0AEeeWgMsOyFRDxg" name="initial" outgoing="_KuGbsH0AEeeWgMsOyFRDxg"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_KtYC8H0AEeeWgMsOyFRDxg" name="final" incoming="_KuJfAH0AEeeWgMsOyFRDxg"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_KtFIAH0AEeeWgMsOyFRDxg" name="initialFork" incoming="_KuGbsH0AEeeWgMsOyFRDxg" outgoing="_Ku_MgH0AEeeWgMsOyFRDxg"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_KtILUH0AEeeWgMsOyFRDxg" name="finalJoin" incoming="_KvMA0H0AEeeWgMsOyFRDxg" outgoing="_KuJfAH0AEeeWgMsOyFRDxg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_KuYvkH0AEeeWgMsOyFRDxg" name="Provision stor0" incoming="_Ku_MgH0AEeeWgMsOyFRDxg" outgoing="_KvFTIH0AEeeWgMsOyFRDxg">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_Kus4oH0AEeeWgMsOyFRDxg" name="stor0 id">
+        <value xmi:type="uml:LiteralString" xmi:id="_Ku3QsH0AEeeWgMsOyFRDxg" name="id" value="f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+      </inputValue>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_KuZWoH0AEeeWgMsOyFRDxg" name="Provision http://schemas.ogf.org/occi/infrastructure#" incoming="_KvFTIH0AEeeWgMsOyFRDxg" outgoing="_KvMA0H0AEeeWgMsOyFRDxg">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_Ku5s8H0AEeeWgMsOyFRDxg" name="http://schemas.ogf.org/occi/infrastructure# id">
+        <value xmi:type="uml:LiteralString" xmi:id="_Ku67EH0AEeeWgMsOyFRDxg" name="id" value="3208c9c6-5f14-4a5e-806e-b6859e77f73b_f23a7ee4-623f-440c-814e-8f33bc2d4bff"/>
+      </inputValue>
+    </node>
   </packagedElement>
 </uml:Model>

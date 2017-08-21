@@ -64,26 +64,27 @@ public class MixedComparator extends AbsComplexComparator {
 	private void adaptPCG(Path pcgPath, Comparator comp) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
-		adjustElementsInGraph(pcgGraph, comp.getOldElements(), comp.getMatches());
-		adjustElementsInGraph(pcgGraph, comp.getAdaptedElements(), comp.getMatches());
+		adjustElementsInGraph(pcgGraph, comp.getMatches());
 		ModelUtility.storePCG(pcgPath, pcgGraph);
 		CachedResourceSet.getCache().clear();
 	}
 
-	private void adjustElementsInGraph(Graph pcgGraph, EList<EObject> oldElements, EList<Match> matches) {
+	private void adjustElementsInGraph(Graph pcgGraph,  EList<Match> matches) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		List<Vertex> toAdd = new BasicEList<Vertex>();
-		for(EObject old: oldElements){
-			if(old.eClass().getName().equals("Resource")){
-				Resource res = (Resource) old;
+		for(Match match: matches){
+			if(match.getOldObj() != null && match.getNewObj() != null && match.getOldObj().eClass().getName().equals("Resource")){
+				Resource oldRes = (Resource) match.getOldObj();
+				Resource newRes = (Resource) match.getNewObj();
 				boolean missing = true;
 				for(Vertex vertex: pcgGraph.getVertices()){	
-					if(vertex.getResources().get(0).getId().equals(res.getId())
-							&& vertex.getResources().get(1).getId().equals(res.getId())){
+					if(vertex.getResources().get(0).getId().equals(oldRes.getId())
+							&& vertex.getResources().get(1).getId().equals(newRes.getId())){
 						missing = false;
 					}	
-					else if(vertex.getResources().get(0).getId().equals(res.getId())
-							|| vertex.getResources().get(1).getId().equals(res.getId())){
+					else if(vertex.getResources().get(0).getId().equals(oldRes.getId())
+							|| vertex.getResources().get(1).getId().equals(newRes.getId())){
+						/*
 						EList<Edge> incEdges = new BasicEList<Edge>();
 						for(Edge edge: pcgGraph.getEdges()){
 							if(edge.getTarget() == vertex){
@@ -95,28 +96,13 @@ public class MixedComparator extends AbsComplexComparator {
 							if(edgeAlreadyExists(pcgGraph, incEdge.getSource(), correctVertex(pcgGraph.getVertices(), ((Entity) old).getId())) == false){
 								incEdge.setTarget(correctVertex(pcgGraph.getVertices(), ((Entity) old).getId()));
 							}
-						}
-						
+						}*/
+						System.out.println("DELETE: " + vertex.getTitle());
 						toRemove.add(vertex);
 					}
 				}
 				if(missing == true){
-					Vertex vertex = new PcgFactoryImpl().createVertex();
-					Match match = getMatchFor(res, matches);
-					pcg.Resource oldResource = new PcgFactoryImpl().createResource();
-					oldResource.setId(((Resource)match.getOldObj()).getId());
-					oldResource.setTitle(((Resource)match.getOldObj()).getTitle());
-					
-					pcg.Resource newResource = new PcgFactoryImpl().createResource();
-					newResource.setId(((Resource)match.getNewObj()).getId());
-					newResource.setTitle(((Resource)match.getNewObj()).getTitle());
-					
-					vertex.setFixpointValue(1);
-					vertex.setKind(res.getKind().getScheme() + res.getKind().getTerm());
-					vertex.setTitle(res.getTitle());
-					vertex.getResources().add(oldResource);
-					vertex.getResources().add(newResource);
-					toAdd.add(vertex);
+					toAdd.add(createMissingVertex(oldRes, matches));
 				}
 			}
 		}
@@ -137,6 +123,26 @@ public class MixedComparator extends AbsComplexComparator {
 		for(Edge edge: toRemoveE){
 			EcoreUtil.delete(edge);
 		}
+	}
+	
+	
+	private Vertex createMissingVertex(Resource oldRes, EList<Match> matches) {
+		Vertex vertex = new PcgFactoryImpl().createVertex();
+		Match missingMatch = getMatchFor(oldRes, matches);
+		pcg.Resource oldResource = new PcgFactoryImpl().createResource();
+		oldResource.setId(((Resource)missingMatch.getOldObj()).getId());
+		oldResource.setTitle(((Resource)missingMatch.getOldObj()).getTitle());
+		
+		pcg.Resource newResource = new PcgFactoryImpl().createResource();
+		newResource.setId(((Resource)missingMatch.getNewObj()).getId());
+		newResource.setTitle(((Resource)missingMatch.getNewObj()).getTitle());
+		
+		vertex.setFixpointValue(1);
+		vertex.setKind(oldRes.getKind().getScheme() + oldRes.getKind().getTerm());
+		vertex.setTitle(oldRes.getTitle() + ", " + ((Resource) missingMatch.getNewObj()).getTitle());
+		vertex.getResources().add(oldResource);
+		vertex.getResources().add(newResource);
+		return vertex;
 	}
 
 	private boolean edgeAlreadyExists(Graph pcgGraph, Vertex srcVertex, Vertex tarVertex) {

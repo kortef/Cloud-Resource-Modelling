@@ -69,35 +69,23 @@
     <resources id="20b452b2-6c6a-4c6a-be99-a03d492f70ca3" title="vm3"/>
   </vertices>
   <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.2" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.3" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.4" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.5" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.7" source="//@vertices.6" kind="http://schemas.ogf.org/occi/infrastructure#storagelink" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.8" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.6" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.9" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.10" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.11" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.12" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.13" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.14" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
   <edges target="//@vertices.1" source="//@vertices.15" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.1" source="//@vertices.16" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface" weight="1.0"/>
-  <edges target="//@vertices.0" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.2" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.3" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.4" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.5" source="//@vertices.1" weight="0.06666666666666667"/>
+  <edges target="//@vertices.0" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.3" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.4" source="//@vertices.1" weight="0.1111111111111111"/>
   <edges target="//@vertices.6" source="//@vertices.7" weight="1.0"/>
-  <edges target="//@vertices.8" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.6" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.9" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.10" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.11" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.12" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.13" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.14" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.15" source="//@vertices.1" weight="0.06666666666666667"/>
-  <edges target="//@vertices.16" source="//@vertices.1" weight="0.06666666666666667"/>
+  <edges target="//@vertices.8" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.9" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.10" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.12" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.14" source="//@vertices.1" weight="0.1111111111111111"/>
+  <edges target="//@vertices.15" source="//@vertices.1" weight="0.1111111111111111"/>
 </pcg:Graph>

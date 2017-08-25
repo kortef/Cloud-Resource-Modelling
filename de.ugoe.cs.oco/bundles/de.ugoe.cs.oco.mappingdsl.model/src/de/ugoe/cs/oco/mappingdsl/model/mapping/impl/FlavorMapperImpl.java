@@ -81,11 +81,11 @@ public class FlavorMapperImpl extends ExpressionImpl implements FlavorMapper {
 		int cores = Integer.parseInt(coresParam.getValue());
 		
 		if (cores < 2){
-			output.setValue("Standard_A1");
+			output.setValue("Standard_A1_v2");
 		} else if (cores == 2){
-			output.setValue("Standard_A2");	
+			output.setValue("Standard_A2_v2");	
 		} else {
-			output.setValue("Standard_A3");
+			output.setValue("Standard_A3_v2");
 		}
 		return output;
 		

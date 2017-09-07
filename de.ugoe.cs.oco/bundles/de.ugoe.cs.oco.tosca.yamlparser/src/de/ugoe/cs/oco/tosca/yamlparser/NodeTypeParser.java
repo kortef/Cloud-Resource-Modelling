@@ -7,13 +7,29 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
+import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
+import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDFactory;
+import org.eclipse.xsd.XSDPackage;
+import org.eclipse.xsd.XSDSchema;
 
+import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.InterfacesType;
+import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.TInterface;
 import de.ugoe.cs.oco.tosca.TNodeType;
+import de.ugoe.cs.oco.tosca.TServiceTemplate;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
+import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.TypesType;
 
 /**
  * @author fglaser
@@ -22,7 +38,7 @@ import de.ugoe.cs.oco.tosca.ToscaFactory;
 public class NodeTypeParser extends Parser {
 	
 	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		List<TNodeType> resultList = new ArrayList<>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TNodeType type = ToscaFactory.eINSTANCE.createTNodeType();
@@ -40,14 +56,20 @@ public class NodeTypeParser extends Parser {
 					case "description":
 						break;
 					case "properties":
+						LOGGER.info("Found Property definition.");
+						XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
+								innerentry.getValue(), type);
+						
 						break;
 					case "requirements":
 						break;
 					case "capabilities":
 						break;
+					case "attributes":
+						break;
 					case "interfaces":
 						List<TInterface> interfaceList = (List<TInterface>) 
-						new InterfaceParser().parse((Map<String, ?>) innerentry.getValue());
+						new InterfaceParser().parse((Map<String, ?>) innerentry.getValue(), null);
 						InterfacesType interfacesType = ToscaFactory.eINSTANCE.createInterfacesType();
 						interfacesType.getInterface().addAll(interfaceList);
 						type.setInterfaces(interfacesType);	

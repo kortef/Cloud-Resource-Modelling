@@ -19,3 +19,4 @@ Require-Bundle: org.eclipse.emf;bundle-version="2.6.0",
  de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0",
  org.junit,
  org.eclipse.xsd.source;bundle-version="2.11.0"
+Import-Package: de.ugoe.cs.oco.tosca.yamlparser

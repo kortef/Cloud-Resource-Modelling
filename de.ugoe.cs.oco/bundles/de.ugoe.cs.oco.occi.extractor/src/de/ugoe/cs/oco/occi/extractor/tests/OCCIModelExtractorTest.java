@@ -29,7 +29,7 @@ public class OCCIModelExtractorTest {
 	@Test
 	public void testExtractModel() {
 		try {
-			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.1"), 
+			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.2"), 
 					new BasicAuthentication("fglaser", "eCzA2017"), MediaType.TEXT_PLAIN, true);
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();

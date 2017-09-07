@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.InputParametersType1;
@@ -35,8 +37,10 @@ public class TOSCAYamlTemplateParser extends Parser {
 	private TServiceTemplate serviceTemplate = null;
 
 	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		DocumentRoot root = ToscaFactory.eINSTANCE.createDocumentRoot();
+		root.getXMLNSPrefixMap().put("xs", "http://www.w3.org/2001/XMLSchema");
+		
 		DefinitionsType definitions = ToscaFactory.eINSTANCE.createDefinitionsType();
 		root.setDefinitions(definitions);
 		
@@ -49,7 +53,7 @@ public class TOSCAYamlTemplateParser extends Parser {
 				TPlan defaultPlan = ToscaFactory.eINSTANCE.createTPlan();
 				InputParametersType1 parameterType = ToscaFactory.eINSTANCE.createInputParametersType1();
 				List<TParameter> parameters = (List<TParameter>)
-						new ParameterParser().parse((Map<String, ?>) entry.getValue());
+						new ParameterParser().parse((Map<String, ?>) entry.getValue(), null);
 				parameterType.getInputParameter().addAll(parameters);
 				defaultPlan.setInputParameters(parameterType);
 				TPlans plans = serviceTemplate.getPlans();
@@ -84,7 +88,7 @@ public class TOSCAYamlTemplateParser extends Parser {
 				break;
 			case "capability_types":
 				List<TCapabilityType> capabilityTypes = (List<TCapabilityType>)
-					new CapabilityTypeParser().parse((Map<String, ?>)entry.getValue());
+					new CapabilityTypeParser().parse((Map<String, ?>)entry.getValue(), null);
 				root.getDefinitions().getCapabilityType().addAll(capabilityTypes);
 				break;
 			case "interface_types":
@@ -92,27 +96,27 @@ public class TOSCAYamlTemplateParser extends Parser {
 				break;
 			case "relationship_types":
 				List<TRelationshipType> relationshipTypes = (List<TRelationshipType>)
-					new RelationshipTypeParser().parse((Map<String, ?>)entry.getValue());
+					new RelationshipTypeParser().parse((Map<String, ?>)entry.getValue(), null);
 				root.getDefinitions().getRelationshipType().addAll(relationshipTypes);
 				break;
 			case "node_types":
 				List<TNodeType> types = (List<TNodeType>) 
-						new NodeTypeParser().parse((Map<String, ?>)entry.getValue());
+						new NodeTypeParser().parse((Map<String, ?>)entry.getValue(), definitions);
 				root.getDefinitions().getNodeType().addAll(types);
 				break;
 			case "group_types":
 				List<TGroupType> groups = (List<TGroupType>)
-					new GroupTypeParser().parse((Map<String, ?>)entry.getValue());
+					new GroupTypeParser().parse((Map<String, ?>)entry.getValue(), null);
 				root.getDefinitions().getGroupType().addAll(groups);
 				break;
 			case "policy_types":
 				List<TPolicyType> policyTypes = (List<TPolicyType>)
-						new PolicyTypeParser().parse((Map<String, ?>)entry.getValue());
+						new PolicyTypeParser().parse((Map<String, ?>)entry.getValue(), null);
 				root.getDefinitions().getPolicyType().addAll(policyTypes);
 				break;		
 			case "topology_template":
 				TTopologyTemplate template = (TTopologyTemplate)
-					new TopologyTemplateParser().parse((Map<String, ?>)entry.getValue());
+					new TopologyTemplateParser().parse((Map<String, ?>)entry.getValue(), null);
 				TServiceTemplate st = this.getServiceTemplate();
 				st.setTopologyTemplate(template);
 				root.getDefinitions().getServiceTemplate().add(st);

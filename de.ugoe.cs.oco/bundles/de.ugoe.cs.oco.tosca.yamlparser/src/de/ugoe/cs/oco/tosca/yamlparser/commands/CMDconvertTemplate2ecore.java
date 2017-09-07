@@ -65,7 +65,7 @@ public class CMDconvertTemplate2ecore implements Command {
 			YamlReader yamlreader = new YamlReader(reader);
 			Object object = yamlreader.read();
 			Map<String, ?> map = (Map<String, ?>) object;
-			template = (DocumentRoot) parser.parse(map);
+			template = (DocumentRoot) parser.parse(map, null);
 		} catch (IOException e) {
 			Console.printerrln("Could not parse " + filePath + ": " + e.getMessage());
 			e.printStackTrace();

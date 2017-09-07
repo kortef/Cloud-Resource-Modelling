@@ -7,4 +7,5 @@ Bundle-Name: de.ugoe.cs.oco.thirdparty
 Bundle-SymbolicName: de.ugoe.cs.oco.thirdparty
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
+Export-Package: com.esotericsoftware.yamlbeans
 

@@ -33,7 +33,7 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 	@Test
 	public void testParse() throws ParseException {
 		ToscaPackage.eINSTANCE.eClass();
-		DocumentRoot rootElement = (DocumentRoot) new TOSCAYamlTemplateParser().parse(testmap);
+		DocumentRoot rootElement = (DocumentRoot) new TOSCAYamlTemplateParser().parse(testmap, null);
 		
 	    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -41,7 +41,7 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 	    ResourceSet resSet = new ResourceSetImpl();
 	    
 	    Resource resource = resSet.createResource(URI
-	        .createURI("../data/openfoamcluster.tosca"));
+	        .createURI("data/serviceTemplateExample.tosca"));
 	    
 	    resource.getContents().add(rootElement);
 	    
@@ -54,6 +54,6 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 	}
 	
 	protected String getFileToParse(){
-		return "data/openfoamcluster.yaml";
+		return "data/serviceTemplate_example_withPropertyDefs.yml";
 	}
 }

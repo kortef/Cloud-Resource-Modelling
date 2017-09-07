@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 
 public class DummyParser extends Parser {
 	@Override
-	public EObject parse(Map<String, ?> inputMap) throws ParseException {
+	public EObject parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		Logger.getLogger(this.getClass().getName()).warning("Ignoring entries since parser is undefined.");
 		return null;
 	}

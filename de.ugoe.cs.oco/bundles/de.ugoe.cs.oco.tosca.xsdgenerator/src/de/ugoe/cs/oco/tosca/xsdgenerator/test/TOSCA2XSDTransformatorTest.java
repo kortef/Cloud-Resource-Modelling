@@ -12,7 +12,7 @@ public class TOSCA2XSDTransformatorTest {
 
 	@Test
 	public final void testTransform() throws Exception {
-		new TOSCA2XSDTransformator().transform(Paths.get("data/mongodbcluster.tosca"), Paths.get("data/output.xsd"));
+		new TOSCA2XSDTransformator().transform(Paths.get("data/property_example.yml"), Paths.get("data/output.xsd"));
 	}
 
 }

@@ -24,7 +24,7 @@ public class ImportParser extends Parser{
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object parse(Map<String, ?> input) throws ParseException {
+	public Object parse(Map<String, ?> input, EObject containingObject) throws ParseException {
 		//ServiceTemplate template = (ServiceTemplate) model;
 		Map<String, ?> map = (Map<String, ?>) input;
 		List<TImport> imports = new ArrayList<TImport>();
@@ -68,7 +68,7 @@ public class ImportParser extends Parser{
 	public List<TImport> parse(List<?> input) throws ParseException {
 		List<TImport> imports = new ArrayList<TImport>();
 		for (Object object: input){
-			imports.addAll((List<TImport>)this.parse((Map<String, ?>) object));
+			imports.addAll((List<TImport>)this.parse((Map<String, ?>) object, null));
 		}
 		return imports;
 	}

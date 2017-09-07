@@ -26,7 +26,7 @@ public class OperationParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TOperation> parse(Map<String, ?> input) throws ParseException {
+	public List<TOperation> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
 		Map<String, ?> map = (Map<String, ?>) input;
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		List<TOperation> operations = new ArrayList<TOperation>();
@@ -50,7 +50,7 @@ public class OperationParser extends Parser {
 					case "inputs":
 						InputParametersType parametertypes = ToscaFactory.eINSTANCE.createInputParametersType();
 						List<TParameter> parameters = 
-								new ParameterParser().parse((Map<String,?>) innerentry.getValue());
+								new ParameterParser().parse((Map<String,?>) innerentry.getValue(), null);
 						parametertypes.getInputParameter().addAll(parameters);
 						operation.setInputParameters(parametertypes);
 						break;

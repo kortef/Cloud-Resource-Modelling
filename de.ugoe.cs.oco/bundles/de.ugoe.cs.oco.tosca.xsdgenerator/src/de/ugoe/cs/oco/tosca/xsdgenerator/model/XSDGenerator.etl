@@ -1,7 +1,22 @@
+pre{
+	var schema = new XSD!XSDSchema;
+	schema.setSchemaForSchemaQNamePrefix("xs");
+	schema.targetNamespace = "http://www.test.com/test";
+	schema.getQNamePrefixToNamespaceMap.put("xs", "http://www.w3.org/2001/XMLSchema");
+	
+}
+
+
 rule TNodeType2XSDElement
 	transform nodeType: TOSCA!TNodeType
 	to xsdelement: XSD!XSDComplexTypeDefinition{
+		("Creating Properties XSD for Type " + nodeType.name).println;
+		 
+		xsdelement.name = nodeType.name + "PropertyTypes";
+}
 
+post{
+	schema.contents.addAll(XSD!XSDComplexTypeDefinition.allInstances);	
 }
 
 

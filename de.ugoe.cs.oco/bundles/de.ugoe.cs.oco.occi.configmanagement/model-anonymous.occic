@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configmanagement="http://oco.cs.ugoe.de/occi/configmanagement/ecore" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:platform="http://schemas.ogf.org/occi/platform/ecore">
+  <use href="http://schemas.ogf.org/occi/core#/"/>
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <use href="http://schemas.ogf.org/occi/platform#/"/>
+  <use href="http://oco.cs.ugoe.de/occi/configmanagement#/"/>
+  <resources xsi:type="platform:Component" id="0c420762-6529-4ccf-86f4-c64ff1663a98" title="managedcomponent" location="/configmanagement/managedcomponent/" summary="a application component">
+    <kind href="http://schemas.ogf.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="0c420762-6529-4ccf-86f4-c64ff1663a98"/>
+    <attributes name="occi.core.title" value="managedcomponent"/>
+    <attributes name="occi.core.summary" value="a application component"/>
+    <attributes name="occi.component.state" value="active"/>
+    <attributes name="occi.component.state.message" value=""/>
+  </resources>
+  <resources xsi:type="configmanagement:Managedcomponent" id="e88bfece-4d4e-4634-98d8-b580079f9b64" title="managedcomponent" location="/configmanagement/managedcomponent22/" summary="a application component">
+    <kind href="http://oco.cs.ugoe.de/occi/configmanagement#//@kinds[term='managedcomponent']"/>
+    <attributes name="occi.core.id" value="e88bfece-4d4e-4634-98d8-b580079f9b64"/>
+    <attributes name="occi.core.title" value="managedcomponent"/>
+    <attributes name="occi.core.summary" value="a application component"/>
+    <attributes name="occi.component.state" value="active"/>
+    <attributes name="occi.component.state.message" value=""/>
+  </resources>
+</occi:Configuration>

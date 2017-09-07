@@ -28,7 +28,7 @@ public class PolicyTypeParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TPolicyType> parse(Map<String, ?> input) throws ParseException {
+	public List<TPolicyType> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
 		List<TPolicyType> policyTypes = new ArrayList<TPolicyType>();
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		//ToscaUtilFactory utilfactory = ToscaUtilFactory.eINSTANCE;

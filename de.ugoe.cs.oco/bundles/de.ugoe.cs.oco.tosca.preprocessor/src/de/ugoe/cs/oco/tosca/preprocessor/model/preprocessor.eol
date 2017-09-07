@@ -97,8 +97,13 @@ for (nodeTemplate in topologyTemplate.getNodeTemplate()){
 									innermostelement.getValue.mixed.setValue(0, newName);
 									break;
 								}
-							}
-							break;							
+							}							
+						}
+						// Added for Azure Config
+						if (innerelement.getEstructuralFeature.getName == "name"){
+						 	var newName = nodeTemplate.getName().split("\\.").last() + ".local" ;
+						 	innerelement.getValue.mixed.setValue(0, newName);
+							break;
 						}
 					}					
 					break;

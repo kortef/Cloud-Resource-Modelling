@@ -8,7 +8,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.xml.namespace.QName;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDCompositor;
+import org.eclipse.xsd.XSDElementDeclaration;
+import org.eclipse.xsd.XSDFactory;
+import org.eclipse.xsd.XSDModelGroup;
+import org.eclipse.xsd.XSDParticle;
+import org.eclipse.xsd.XSDSchema;
+import org.eclipse.xsd.XSDSimpleTypeDefinition;
+
+import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
+import de.ugoe.cs.oco.tosca.PropertiesType;
+import de.ugoe.cs.oco.tosca.TNodeType;
+import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 /**
  * @author fglaser
@@ -20,56 +37,30 @@ public class PropertyParser extends Parser {
 //	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map, org.eclipse.emf.ecore.EObject)
 //	 */
 //	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Property> parse(Map<String, ?> input, EObject model) throws ParseException {
-//		//ServiceTemplate template = (ServiceTemplate) model;
-//		List<Property> properties = new ArrayList<Property>();
-//		Map<String, ? > map = (Map<String, ?>) input;
-//		ToscaFactory factory = ToscaFactory.eINSTANCE;
-//		
-//		for (Entry<String, ?> entry: map.entrySet()){
-//			Property property = factory.createProperty();
-//			property.setName(entry.getKey());
-//			
-//			if (entry.getValue() instanceof Map<?,?>){
-//				String content;
-//				Map<String, ?> innermap = (Map<String, ?>) entry.getValue();
-//				if ((content = (String) innermap.get("type")) != null){
-//					property.setType(content);
-//				}
-//				if ((content = (String) innermap.get("description")) != null){
-//					Description description = factory.createDescription();
-//					description.setValue(content);
-//					property.setDescription(description);
-//				}
-//				if ((content = (String) innermap.get("required")) != null){
-//					property.setRequired(Boolean.parseBoolean(content));
-//				}
-//				if ((content = (String) innermap.get("default")) != null){
-//					property.setDefault(content);
-//				}
-//				if ((content = (String) innermap.get("status")) != null){
-//					property.setStatus(PropertyStatus.get(content));
-//				}
-//	
-//				if (innermap.containsKey("entry_schema")){
-//					// TODO: Implement
-//					//property.setEntrySchema(content);
-//				}
-//				if (innermap.containsKey("constraints")){
-//					ArrayList<?> constraintList = (ArrayList<?>) innermap.get("constraints");
-//					List<ConstraintClause> contraints = (List<ConstraintClause>) 
-//							new ConstraintClauseParser().parse(constraintList, template);
-//					
-//					property.getConstraints().addAll(contraints);
-//				}
-//			}
-//			properties.add(property);
-//		}
-//		
-//		return properties;
-//		
-//	}
+	
+	public XSDComplexTypeDefinition parse(Map<String, ?> input, TNodeType nodeType) throws ParseException {
+		
+		XSDComplexTypeDefinition propertiesType = XSDFactory.eINSTANCE.createXSDComplexTypeDefinition();
+		propertiesType.setName(nodeType.getName() + "Properties");
+		XSDParticle content = XSDFactory.eINSTANCE.createXSDParticle();
+		propertiesType.setContent(content);
+		XSDModelGroup modelGroup = XSDFactory.eINSTANCE.createXSDModelGroup();
+		
+		// set Compositor to sequence
+		modelGroup.setCompositor(XSDCompositor.SEQUENCE_LITERAL);
+		content.setContent(modelGroup);
+		
+		for (Entry<String, ?> entry: input.entrySet()){
+			XSDParticle wrapperParticle = XSDFactory.eINSTANCE.createXSDParticle();
+			XSDElementDeclaration elementDeclaration = XSDFactory.eINSTANCE.createXSDElementDeclaration();
+			wrapperParticle.setContent(elementDeclaration);
+			elementDeclaration.setName(entry.getKey());
+			
+			modelGroup.getContents().add(wrapperParticle);
+		}
+		
+		return propertiesType;
+	}
 //
 //	/* (non-Javadoc)
 //	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.List, org.eclipse.emf.ecore.EObject)
@@ -84,16 +75,16 @@ public class PropertyParser extends Parser {
 //		return properties;
 //	}
 
-	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Object parse(List<?> inputArray) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+@Override
+public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.ugoe.cs.oco.tosca.CapabilitiesType;
 import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PropertiesType;
@@ -59,28 +61,28 @@ public class NodeTemplateParser extends Parser{
 						Map<String, Map<String,?>> propertyMap = new HashMap<String, Map<String,?>>();
 						propertyMap.put(template.getType().toString(), (Map<String, ?>) innerentry.getValue());
 						PropertiesType propertiesType = (PropertiesType)
-								new PropertyAssignmentParser().parse(propertyMap);
+								new PropertyAssignmentParser().parse(propertyMap, null);
 						template.setProperties(propertiesType);;
 						break;
 					case "attributes":
 						break;
 					case "requirements":
 						List<TRequirement> requirementList = (List<TRequirement>) 
-								new RequirementParser().parse((Map<String, ?>) innerentry.getValue());
+								new RequirementParser().parse((Map<String, ?>) innerentry.getValue(), null);
 						RequirementsType requirements = ToscaFactory.eINSTANCE.createRequirementsType();
 						requirements.getRequirement().addAll(requirementList);
 						template.setRequirements(requirements);
 						break;
 					case "capabilities":
 						List<TCapability> capabilitesList = (List<TCapability>)
-								new CapabilityParser().parse((Map<String, ?>) innerentry.getValue());
+								new CapabilityParser().parse((Map<String, ?>) innerentry.getValue(), null);
 						CapabilitiesType capabilites = ToscaFactory.eINSTANCE.createCapabilitiesType();
 						capabilites.getCapability().addAll(capabilitesList);
 						template.setCapabilities(capabilites);
 						break;
 					case "interfaces":
 						List<TInterface> interfaceList = (List<TInterface>) 
-								new InterfaceParser().parse((Map<String, ?>) innerentry.getValue());
+								new InterfaceParser().parse((Map<String, ?>) innerentry.getValue(), null);
 						InterfacesType interfacesType = ToscaFactory.eINSTANCE.createInterfacesType();
 						interfacesType.getInterface().addAll(interfaceList);
 						template.setInterfaces(interfacesType);
@@ -88,7 +90,7 @@ public class NodeTemplateParser extends Parser{
 						break;
 					case "artifacts":
 						List<TDeploymentArtifact> artifactsList = (List<TDeploymentArtifact>)
-								new ArtifactParser().parse((Map<String, ?>)innerentry.getValue());
+								new ArtifactParser().parse((Map<String, ?>)innerentry.getValue(), null);
 						TDeploymentArtifacts artifacts = ToscaFactory.eINSTANCE.createTDeploymentArtifacts();
 						artifacts.getDeploymentArtifact().addAll(artifactsList);
 						template.setDeploymentArtifacts(artifacts);
@@ -125,7 +127,7 @@ public class NodeTemplateParser extends Parser{
 	}
 
 	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}

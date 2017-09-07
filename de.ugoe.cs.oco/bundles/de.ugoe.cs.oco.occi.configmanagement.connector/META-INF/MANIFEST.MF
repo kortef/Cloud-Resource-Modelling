@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.ugoe.cs.oco.occi.configmanagement.connector
+Bundle-SymbolicName: de.ugoe.cs.oco.occi.configmanagement.connector;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .,
+ lib/commons-io-2.5.jar
+Bundle-Vendor: OCCIware
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.slf4j.api,
+ org.eclipse.cmf.occi.core,
+ de.ugoe.cs.oco.occi.configmanagement,
+ org.junit
+Export-Package: de.ugoe.cs.oco.occi.configmanagement.connector

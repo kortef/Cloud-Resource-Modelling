@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="de.ugoe.cs.oco.occi.configmanagement.design.Activator"
+               id="de.ugoe.cs.oco.occi.configmanagement.design"
+	       name="configmanagement">
+    </component>
+  </extension>
+   <!-- Popup menu for creating a configmanagement configuration file. -->
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.cmf.occi.core.category.ID"
+            name="OCCI Studio"/>
+      <wizard
+            category="org.eclipse.cmf.occi.core.occi-studio.category.ID"
+            class="de.ugoe.cs.oco.occi.configmanagement.design.wizard.NewConfigurationWizard"
+            icon="platform:/plugin/org.eclipse.cmf.occi.core.edit/icons/full/obj16/Configuration.gif"
+            id="de.ugoe.cs.oco.occi.configmanagement.design.wizard.NewConfigurationWizard"
+            name="configmanagement Configuration File"/>
+   </extension>
+</plugin>

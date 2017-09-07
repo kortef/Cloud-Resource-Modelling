@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="/de.ugoe.cs.oco.occi.configmanagement"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/fglaser/occiware2/workspace/de.ugoe.cs.oco.occi.configmanagement.connector/lib/commons-io-2.5-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

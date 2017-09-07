@@ -25,7 +25,7 @@ public class ParameterParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TParameter> parse(Map<String, ?> input) throws ParseException {
+	public List<TParameter> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
 		List<TParameter> parameters = new ArrayList<TParameter>();
 		for (Map.Entry<String, ?> entry: input.entrySet()){
 			TParameter parameter = ToscaFactory.eINSTANCE.createTParameter();

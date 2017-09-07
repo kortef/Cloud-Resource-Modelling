@@ -29,7 +29,7 @@ public class CapabilityTypeParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TCapabilityType> parse(Map<String, ?> input) throws ParseException {
+	public List<TCapabilityType> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		List<TCapabilityType> capabilityTypes = new ArrayList<TCapabilityType>();
 		// ToscaUtilFactory utilfactory = ToscaUtilFactory.eINSTANCE;

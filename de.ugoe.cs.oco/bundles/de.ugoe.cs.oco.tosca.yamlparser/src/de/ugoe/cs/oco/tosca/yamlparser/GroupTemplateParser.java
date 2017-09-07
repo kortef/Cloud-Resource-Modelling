@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 
 import de.ugoe.cs.oco.tosca.PropertiesType;
@@ -23,7 +24,7 @@ public class GroupTemplateParser extends Parser {
 	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map)
 	 */
 	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		List<TGroupTemplate> groupTemplates = new ArrayList<TGroupTemplate>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TGroupTemplate groupTemplate = ToscaFactory.eINSTANCE.createTGroupTemplate();
@@ -40,7 +41,7 @@ public class GroupTemplateParser extends Parser {
 					Map<String, Map<String,?>> propertyMap = new HashMap<String, Map<String,?>>();
 					propertyMap.put(groupTemplate.getType().toString(), (Map<String, ?>) innerentry.getValue());
 					PropertiesType propertiesType = (PropertiesType)
-							new PropertyAssignmentParser().parse(propertyMap);
+							new PropertyAssignmentParser().parse(propertyMap, null);
 					groupTemplate.setProperties(propertiesType);
 					break;
 				case "members":

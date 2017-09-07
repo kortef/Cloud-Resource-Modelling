@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 public class RequirementParser extends Parser {
 
 	@Override
-	public Object parse(Map<String, ?> inputMap) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}

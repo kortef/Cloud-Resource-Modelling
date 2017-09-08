@@ -129,44 +129,6 @@ public class RoleattachmentImpl extends LinkImpl implements Roleattachment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean targetConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
-		/**
-		 *
-		 * inv targetConstraint:
-		 *   let severity : Integer[1] = 'Roleattachment::targetConstraint'.getSeverity()
-		 *   in
-		 *     if severity <= 0
-		 *     then true
-		 *     else
-		 *       let
-		 *         result : occi::Boolean[1] = self.target.oclIsKindOf(infrastructure::Compute)
-		 *       in
-		 *         'Roleattachment::targetConstraint'.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
-		 *     endif
-		 */
-		final /*@NonInvalid*/ Executor executor = PivotUtilInternal.getExecutor(this);
-		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
-		final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, ConfigmanagementTables.STR_Roleattachment_c_c_targetConstraint);
-		final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, ConfigmanagementTables.INT_0).booleanValue();
-		/*@NonInvalid*/ boolean symbol_0;
-		if (le) {
-			symbol_0 = ValueUtil.TRUE_VALUE;
-		}
-		else {
-			final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_infrastructure_c_c_Compute = idResolver.getClass(ConfigmanagementTables.CLSSid_Compute, null);
-			final /*@NonInvalid*/ Resource target = this.getTarget();
-			final /*@NonInvalid*/ boolean result = OclAnyOclIsKindOfOperation.INSTANCE.evaluate(executor, target, TYP_infrastructure_c_c_Compute).booleanValue();
-			final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ConfigmanagementTables.STR_Roleattachment_c_c_targetConstraint, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, ConfigmanagementTables.INT_0).booleanValue();
-			symbol_0 = logDiagnostic;
-		}
-		return Boolean.TRUE == symbol_0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -218,21 +180,6 @@ public class RoleattachmentImpl extends LinkImpl implements Roleattachment {
 				return OCCI_ANSIBLE_USER_EDEFAULT == null ? occiAnsibleUser != null : !OCCI_ANSIBLE_USER_EDEFAULT.equals(occiAnsibleUser);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case ConfigmanagementPackage.ROLEATTACHMENT___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return targetConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

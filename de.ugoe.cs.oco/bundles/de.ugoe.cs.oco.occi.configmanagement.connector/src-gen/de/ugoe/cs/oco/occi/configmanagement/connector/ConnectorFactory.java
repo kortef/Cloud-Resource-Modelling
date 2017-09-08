@@ -10,7 +10,7 @@
  * - Philippe Merle <philippe.merle@inria.fr>
  * - Faiez Zalila <faiez.zalila@inria.fr>
  *
- * Generated at Thu Sep 07 11:19:52 CEST 2017 from platform:/resource/de.ugoe.cs.oco.occi.configmanagement/model/configmanagement.occie by org.eclipse.cmf.occi.core.gen.connector
+ * Generated at Fri Sep 08 15:39:06 CEST 2017 from platform:/resource/de.ugoe.cs.oco.occi.configmanagement/model/configmanagement.occie by org.eclipse.cmf.occi.core.gen.connector
  */
 package de.ugoe.cs.oco.occi.configmanagement.connector;
 
@@ -25,7 +25,7 @@ public class ConnectorFactory extends de.ugoe.cs.oco.occi.configmanagement.impl.
 	 * EFactory method for OCCI kind:
 	 * - scheme: http://oco.cs.ugoe.de/occi/configmanagement#
 	 * - term: ansiblerole
-	 * - title: ManagedComponent
+	 * - title: AnsibleRole
 	 */
 	@Override
 	public de.ugoe.cs.oco.occi.configmanagement.Ansiblerole createAnsiblerole() {
@@ -41,6 +41,28 @@ public class ConnectorFactory extends de.ugoe.cs.oco.occi.configmanagement.impl.
 	@Override
 	public de.ugoe.cs.oco.occi.configmanagement.Roleattachment createRoleattachment() {
 		return new RoleattachmentConnector();
+	}
+
+	/**
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://oco.cs.ugoe.de/occi/configmanagement#
+	 * - term: managedcomponent
+	 * - title: ManagedComponent
+	 */
+	@Override
+	public de.ugoe.cs.oco.occi.configmanagement.Managedcomponent createManagedcomponent() {
+		return new ManagedcomponentConnector();
+	}
+
+	/**
+	 * EFactory method for OCCI kind:
+	 * - scheme: http://oco.cs.ugoe.de/occi/configmanagement#
+	 * - term: componenthosting
+	 * - title: 
+	 */
+	@Override
+	public de.ugoe.cs.oco.occi.configmanagement.Componenthosting createComponenthosting() {
+		return new ComponenthostingConnector();
 	}
 
 }

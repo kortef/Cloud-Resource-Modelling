@@ -92,6 +92,14 @@ public class ConfigmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createRoleattachmentAdapter();
 			}
 			@Override
+			public Adapter caseManagedcomponent(Managedcomponent object) {
+				return createManagedcomponentAdapter();
+			}
+			@Override
+			public Adapter caseComponenthosting(Componenthosting object) {
+				return createComponenthostingAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -100,12 +108,12 @@ public class ConfigmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createResourceAdapter();
 			}
 			@Override
-			public Adapter caseComponent(Component object) {
-				return createComponentAdapter();
-			}
-			@Override
 			public Adapter caseLink(Link object) {
 				return createLinkAdapter();
+			}
+			@Override
+			public Adapter caseComponent(Component object) {
+				return createComponentAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -152,6 +160,34 @@ public class ConfigmanagementAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRoleattachmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent <em>Managedcomponent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Managedcomponent
+	 * @generated
+	 */
+	public Adapter createManagedcomponentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.occi.configmanagement.Componenthosting <em>Componenthosting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Componenthosting
+	 * @generated
+	 */
+	public Adapter createComponenthostingAdapter() {
 		return null;
 	}
 

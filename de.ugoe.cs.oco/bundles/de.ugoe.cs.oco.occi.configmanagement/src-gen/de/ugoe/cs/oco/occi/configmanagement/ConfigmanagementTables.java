@@ -24,7 +24,6 @@ package de.ugoe.cs.oco.occi.configmanagement;
 import de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables;
 import org.eclipse.cmf.occi.core.OCCITables;
 import org.eclipse.cmf.occi.platform.PlatformTables;
-import org.eclipse.ocl.pivot.TemplateParameters;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorEnumeration;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorEnumerationLiteral;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorPackage;
@@ -35,7 +34,6 @@ import org.eclipse.ocl.pivot.internal.library.executor.ExecutorOperation;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorProperty;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorStandardLibrary;
 import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
-import org.eclipse.ocl.pivot.utilities.TypeUtil;
 
 /**
  * ConfigmanagementTables provides the dispatch tables for the configmanagement for use by the OCL dispatcher.
@@ -68,12 +66,12 @@ public class ConfigmanagementTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/core/ecore", "occi", org.eclipse.cmf.occi.core.OCCIPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure_s_ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/infrastructure/ecore", null, org.eclipse.cmf.occi.infrastructure.InfrastructurePackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Class = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_$metamodel$.getClassId("Class", 0);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Componenthosting = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_occi_s_configmanagement_s_ecore.getClassId("Componenthosting", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Compute = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure_s_ecore.getClassId("Compute", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Resource = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_core_s_ecore.getClassId("Resource", 0);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Roleattachment = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_occi_s_configmanagement_s_ecore.getClassId("Roleattachment", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_InstallationState = de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_occi_s_configmanagement_s_ecore.getEnumerationId("InstallationState");
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue INT_0 = org.eclipse.ocl.pivot.utilities.ValueUtil.integerValueOf("0");
-	public static final /*@NonInvalid*/ java.lang.String STR_Roleattachment_c_c_targetConstraint = "Roleattachment::targetConstraint";
+	public static final /*@NonInvalid*/ java.lang.String STR_Componenthosting_c_c_targetConstraint = "Componenthosting::targetConstraint";
 
 	/**
 	 *	The type parameters for templated types and operations.
@@ -104,12 +102,16 @@ public class ConfigmanagementTables
 		}
 
 		public static final /*@NonNull*/ EcoreExecutorType _Ansiblerole = new EcoreExecutorType(ConfigmanagementPackage.Literals.ANSIBLEROLE, PACKAGE, 0);
+		public static final /*@NonNull*/ EcoreExecutorType _Componenthosting = new EcoreExecutorType(ConfigmanagementPackage.Literals.COMPONENTHOSTING, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorEnumeration _InstallationState = new EcoreExecutorEnumeration(ConfigmanagementPackage.Literals.INSTALLATION_STATE, PACKAGE, 0);
+		public static final /*@NonNull*/ EcoreExecutorType _Managedcomponent = new EcoreExecutorType(ConfigmanagementPackage.Literals.MANAGEDCOMPONENT, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _Roleattachment = new EcoreExecutorType(ConfigmanagementPackage.Literals.ROLEATTACHMENT, PACKAGE, 0);
 
 		private static final /*@NonNull*/ EcoreExecutorType /*@NonNull*/ [] types = {
 			_Ansiblerole,
+			_Componenthosting,
 			_InstallationState,
+			_Managedcomponent,
 			_Roleattachment
 		};
 
@@ -137,17 +139,29 @@ public class ConfigmanagementTables
 		}
 
 		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__Ansiblerole = new ExecutorFragment(Types._Ansiblerole, ConfigmanagementTables.Types._Ansiblerole);
-		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__Component = new ExecutorFragment(Types._Ansiblerole, PlatformTables.Types._Component);
 		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__Entity = new ExecutorFragment(Types._Ansiblerole, OCCITables.Types._Entity);
 		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__OclAny = new ExecutorFragment(Types._Ansiblerole, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__OclElement = new ExecutorFragment(Types._Ansiblerole, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _Ansiblerole__Resource = new ExecutorFragment(Types._Ansiblerole, OCCITables.Types._Resource);
+
+		private static final /*@NonNull*/ ExecutorFragment _Componenthosting__Componenthosting = new ExecutorFragment(Types._Componenthosting, ConfigmanagementTables.Types._Componenthosting);
+		private static final /*@NonNull*/ ExecutorFragment _Componenthosting__Entity = new ExecutorFragment(Types._Componenthosting, OCCITables.Types._Entity);
+		private static final /*@NonNull*/ ExecutorFragment _Componenthosting__Link = new ExecutorFragment(Types._Componenthosting, OCCITables.Types._Link);
+		private static final /*@NonNull*/ ExecutorFragment _Componenthosting__OclAny = new ExecutorFragment(Types._Componenthosting, OCLstdlibTables.Types._OclAny);
+		private static final /*@NonNull*/ ExecutorFragment _Componenthosting__OclElement = new ExecutorFragment(Types._Componenthosting, OCLstdlibTables.Types._OclElement);
 
 		private static final /*@NonNull*/ ExecutorFragment _InstallationState__InstallationState = new ExecutorFragment(Types._InstallationState, ConfigmanagementTables.Types._InstallationState);
 		private static final /*@NonNull*/ ExecutorFragment _InstallationState__OclAny = new ExecutorFragment(Types._InstallationState, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _InstallationState__OclElement = new ExecutorFragment(Types._InstallationState, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _InstallationState__OclEnumeration = new ExecutorFragment(Types._InstallationState, OCLstdlibTables.Types._OclEnumeration);
 		private static final /*@NonNull*/ ExecutorFragment _InstallationState__OclType = new ExecutorFragment(Types._InstallationState, OCLstdlibTables.Types._OclType);
+
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__Component = new ExecutorFragment(Types._Managedcomponent, PlatformTables.Types._Component);
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__Entity = new ExecutorFragment(Types._Managedcomponent, OCCITables.Types._Entity);
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__Managedcomponent = new ExecutorFragment(Types._Managedcomponent, ConfigmanagementTables.Types._Managedcomponent);
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__OclAny = new ExecutorFragment(Types._Managedcomponent, OCLstdlibTables.Types._OclAny);
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__OclElement = new ExecutorFragment(Types._Managedcomponent, OCLstdlibTables.Types._OclElement);
+		private static final /*@NonNull*/ ExecutorFragment _Managedcomponent__Resource = new ExecutorFragment(Types._Managedcomponent, OCCITables.Types._Resource);
 
 		private static final /*@NonNull*/ ExecutorFragment _Roleattachment__Entity = new ExecutorFragment(Types._Roleattachment, OCCITables.Types._Entity);
 		private static final /*@NonNull*/ ExecutorFragment _Roleattachment__Link = new ExecutorFragment(Types._Roleattachment, OCCITables.Types._Link);
@@ -202,11 +216,6 @@ public class ConfigmanagementTables
 			Parameters.init();
 		}
 
-		public static final /*@NonNull*/ ExecutorOperation _Ansiblerole__attachrole = new ExecutorOperation("attachrole", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Ansiblerole,
-			0, TemplateParameters.EMPTY_LIST, null);
-		public static final /*@NonNull*/ ExecutorOperation _Ansiblerole__detachrole = new ExecutorOperation("detachrole", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Ansiblerole,
-			1, TemplateParameters.EMPTY_LIST, null);
-
 		static {
 			Init.initEnd();
 		}
@@ -230,9 +239,10 @@ public class ConfigmanagementTables
 			Operations.init();
 		}
 
-		public static final /*@NonNull*/ ExecutorProperty _Ansiblerole__occiAnsibleInstallationstate = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE, Types._Ansiblerole, 0);
-		public static final /*@NonNull*/ ExecutorProperty _Ansiblerole__occiAnsibleInstallationstateMessage = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE, Types._Ansiblerole, 1);
-		public static final /*@NonNull*/ ExecutorProperty _Ansiblerole__occiAnsibleRolename = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME, Types._Ansiblerole, 2);
+		public static final /*@NonNull*/ ExecutorProperty _Ansiblerole__occiAnsibleRolename = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME, Types._Ansiblerole, 0);
+
+		public static final /*@NonNull*/ ExecutorProperty _Managedcomponent__occiComponentInstallationstate = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE, Types._Managedcomponent, 0);
+		public static final /*@NonNull*/ ExecutorProperty _Managedcomponent__occiComponentInstallationstateMessage = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE_MESSAGE, Types._Managedcomponent, 1);
 
 		public static final /*@NonNull*/ ExecutorProperty _Roleattachment__occiAnsibleUser = new EcoreExecutorProperty(ConfigmanagementPackage.Literals.ROLEATTACHMENT__OCCI_ANSIBLE_USER, Types._Roleattachment, 0);
 		static {
@@ -260,10 +270,19 @@ public class ConfigmanagementTables
 			Fragments._Ansiblerole__OclElement /* 1 */,
 			Fragments._Ansiblerole__Entity /* 2 */,
 			Fragments._Ansiblerole__Resource /* 3 */,
-			Fragments._Ansiblerole__Component /* 4 */,
-			Fragments._Ansiblerole__Ansiblerole /* 5 */
+			Fragments._Ansiblerole__Ansiblerole /* 4 */
 		};
-		private static final int /*@NonNull*/ [] __Ansiblerole = { 1,1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Ansiblerole = { 1,1,1,1,1 };
+
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Componenthosting =
+		{
+			Fragments._Componenthosting__OclAny /* 0 */,
+			Fragments._Componenthosting__OclElement /* 1 */,
+			Fragments._Componenthosting__Entity /* 2 */,
+			Fragments._Componenthosting__Link /* 3 */,
+			Fragments._Componenthosting__Componenthosting /* 4 */
+		};
+		private static final int /*@NonNull*/ [] __Componenthosting = { 1,1,1,1,1 };
 
 		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _InstallationState =
 		{
@@ -274,6 +293,17 @@ public class ConfigmanagementTables
 			Fragments._InstallationState__InstallationState /* 4 */
 		};
 		private static final int /*@NonNull*/ [] __InstallationState = { 1,1,1,1,1 };
+
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Managedcomponent =
+		{
+			Fragments._Managedcomponent__OclAny /* 0 */,
+			Fragments._Managedcomponent__OclElement /* 1 */,
+			Fragments._Managedcomponent__Entity /* 2 */,
+			Fragments._Managedcomponent__Resource /* 3 */,
+			Fragments._Managedcomponent__Component /* 4 */,
+			Fragments._Managedcomponent__Managedcomponent /* 5 */
+		};
+		private static final int /*@NonNull*/ [] __Managedcomponent = { 1,1,1,1,1,1 };
 
 		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _Roleattachment =
 		{
@@ -290,7 +320,9 @@ public class ConfigmanagementTables
 		 */
 		static {
 			Types._Ansiblerole.initFragments(_Ansiblerole, __Ansiblerole);
+			Types._Componenthosting.initFragments(_Componenthosting, __Componenthosting);
 			Types._InstallationState.initFragments(_InstallationState, __InstallationState);
+			Types._Managedcomponent.initFragments(_Managedcomponent, __Managedcomponent);
 			Types._Roleattachment.initFragments(_Roleattachment, __Roleattachment);
 
 			Init.initEnd();
@@ -311,16 +343,7 @@ public class ConfigmanagementTables
 			TypeFragments.init();
 		}
 
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Ansiblerole__Ansiblerole = {
-			ConfigmanagementTables.Operations._Ansiblerole__attachrole /* attachrole() */,
-			ConfigmanagementTables.Operations._Ansiblerole__detachrole /* detachrole() */
-		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Ansiblerole__Component = {
-			PlatformTables.Operations._Component__start /* start() */,
-			PlatformTables.Operations._Component__start /* start() */,
-			PlatformTables.Operations._Component__stop /* stop() */,
-			PlatformTables.Operations._Component__stop /* stop() */
-		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Ansiblerole__Ansiblerole = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Ansiblerole__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
@@ -359,6 +382,45 @@ public class ConfigmanagementTables
 		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Ansiblerole__Resource = {};
 
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Componenthosting__Componenthosting = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Componenthosting__Entity = {
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Componenthosting__Link = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Componenthosting__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Componenthosting__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _InstallationState__InstallationState = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _InstallationState__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
@@ -392,6 +454,51 @@ public class ConfigmanagementTables
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _InstallationState__OclType = {
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
+
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__Managedcomponent = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__Component = {
+			PlatformTables.Operations._Component__start /* start() */,
+			PlatformTables.Operations._Component__start /* start() */,
+			PlatformTables.Operations._Component__stop /* stop() */,
+			PlatformTables.Operations._Component__stop /* stop() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__Entity = {
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiDelete /* occiDelete() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiRetrieve /* occiRetrieve() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
+			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Managedcomponent__Resource = {};
 
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Roleattachment__Roleattachment = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Roleattachment__Entity = {
@@ -437,17 +544,29 @@ public class ConfigmanagementTables
 		 */
 		static {
 			Fragments._Ansiblerole__Ansiblerole.initOperations(_Ansiblerole__Ansiblerole);
-			Fragments._Ansiblerole__Component.initOperations(_Ansiblerole__Component);
 			Fragments._Ansiblerole__Entity.initOperations(_Ansiblerole__Entity);
 			Fragments._Ansiblerole__OclAny.initOperations(_Ansiblerole__OclAny);
 			Fragments._Ansiblerole__OclElement.initOperations(_Ansiblerole__OclElement);
 			Fragments._Ansiblerole__Resource.initOperations(_Ansiblerole__Resource);
+
+			Fragments._Componenthosting__Componenthosting.initOperations(_Componenthosting__Componenthosting);
+			Fragments._Componenthosting__Entity.initOperations(_Componenthosting__Entity);
+			Fragments._Componenthosting__Link.initOperations(_Componenthosting__Link);
+			Fragments._Componenthosting__OclAny.initOperations(_Componenthosting__OclAny);
+			Fragments._Componenthosting__OclElement.initOperations(_Componenthosting__OclElement);
 
 			Fragments._InstallationState__InstallationState.initOperations(_InstallationState__InstallationState);
 			Fragments._InstallationState__OclAny.initOperations(_InstallationState__OclAny);
 			Fragments._InstallationState__OclElement.initOperations(_InstallationState__OclElement);
 			Fragments._InstallationState__OclEnumeration.initOperations(_InstallationState__OclEnumeration);
 			Fragments._InstallationState__OclType.initOperations(_InstallationState__OclType);
+
+			Fragments._Managedcomponent__Component.initOperations(_Managedcomponent__Component);
+			Fragments._Managedcomponent__Entity.initOperations(_Managedcomponent__Entity);
+			Fragments._Managedcomponent__Managedcomponent.initOperations(_Managedcomponent__Managedcomponent);
+			Fragments._Managedcomponent__OclAny.initOperations(_Managedcomponent__OclAny);
+			Fragments._Managedcomponent__OclElement.initOperations(_Managedcomponent__OclElement);
+			Fragments._Managedcomponent__Resource.initOperations(_Managedcomponent__Resource);
 
 			Fragments._Roleattachment__Entity.initOperations(_Roleattachment__Entity);
 			Fragments._Roleattachment__Link.initOperations(_Roleattachment__Link);
@@ -474,12 +593,17 @@ public class ConfigmanagementTables
 		}
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Ansiblerole = {
-			ConfigmanagementTables.Properties._Ansiblerole__occiAnsibleInstallationstate,
-			ConfigmanagementTables.Properties._Ansiblerole__occiAnsibleInstallationstateMessage,
 			ConfigmanagementTables.Properties._Ansiblerole__occiAnsibleRolename
 		};
 
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Componenthosting = {};
+
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _InstallationState = {};
+
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Managedcomponent = {
+			ConfigmanagementTables.Properties._Managedcomponent__occiComponentInstallationstate,
+			ConfigmanagementTables.Properties._Managedcomponent__occiComponentInstallationstateMessage
+		};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _Roleattachment = {
 			ConfigmanagementTables.Properties._Roleattachment__occiAnsibleUser
@@ -490,7 +614,9 @@ public class ConfigmanagementTables
 		 */
 		static {
 			Fragments._Ansiblerole__Ansiblerole.initProperties(_Ansiblerole);
+			Fragments._Componenthosting__Componenthosting.initProperties(_Componenthosting);
 			Fragments._InstallationState__InstallationState.initProperties(_InstallationState);
+			Fragments._Managedcomponent__Managedcomponent.initProperties(_Managedcomponent);
 			Fragments._Roleattachment__Roleattachment.initProperties(_Roleattachment);
 
 			Init.initEnd();

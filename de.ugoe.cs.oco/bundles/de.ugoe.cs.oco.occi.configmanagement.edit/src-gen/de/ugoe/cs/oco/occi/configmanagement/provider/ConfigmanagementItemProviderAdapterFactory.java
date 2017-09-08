@@ -128,6 +128,52 @@ public class ConfigmanagementItemProviderAdapterFactory extends Configmanagement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ManagedcomponentItemProvider managedcomponentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createManagedcomponentAdapter() {
+		if (managedcomponentItemProvider == null) {
+			managedcomponentItemProvider = new ManagedcomponentItemProvider(this);
+		}
+
+		return managedcomponentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.occi.configmanagement.Componenthosting} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponenthostingItemProvider componenthostingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.occi.configmanagement.Componenthosting}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComponenthostingAdapter() {
+		if (componenthostingItemProvider == null) {
+			componenthostingItemProvider = new ComponenthostingItemProvider(this);
+		}
+
+		return componenthostingItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,6 +274,8 @@ public class ConfigmanagementItemProviderAdapterFactory extends Configmanagement
 	public void dispose() {
 		if (ansibleroleItemProvider != null) ansibleroleItemProvider.dispose();
 		if (roleattachmentItemProvider != null) roleattachmentItemProvider.dispose();
+		if (managedcomponentItemProvider != null) managedcomponentItemProvider.dispose();
+		if (componenthostingItemProvider != null) componenthostingItemProvider.dispose();
 	}
 
 }

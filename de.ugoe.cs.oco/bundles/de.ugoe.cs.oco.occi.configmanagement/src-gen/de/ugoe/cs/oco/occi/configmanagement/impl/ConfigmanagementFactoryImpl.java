@@ -69,6 +69,8 @@ public class ConfigmanagementFactoryImpl extends EFactoryImpl implements Configm
 		switch (eClass.getClassifierID()) {
 			case ConfigmanagementPackage.ANSIBLEROLE: return createAnsiblerole();
 			case ConfigmanagementPackage.ROLEATTACHMENT: return createRoleattachment();
+			case ConfigmanagementPackage.MANAGEDCOMPONENT: return createManagedcomponent();
+			case ConfigmanagementPackage.COMPONENTHOSTING: return createComponenthosting();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -122,6 +124,26 @@ public class ConfigmanagementFactoryImpl extends EFactoryImpl implements Configm
 	public Roleattachment createRoleattachment() {
 		RoleattachmentImpl roleattachment = new RoleattachmentImpl();
 		return roleattachment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Managedcomponent createManagedcomponent() {
+		ManagedcomponentImpl managedcomponent = new ManagedcomponentImpl();
+		return managedcomponent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Componenthosting createComponenthosting() {
+		ComponenthostingImpl componenthosting = new ComponenthostingImpl();
+		return componenthosting;
 	}
 
 	/**

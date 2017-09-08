@@ -88,7 +88,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__ID = PlatformPackage.COMPONENT__ID;
+	int ANSIBLEROLE__ID = OCCIPackage.RESOURCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -97,7 +97,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__TITLE = PlatformPackage.COMPONENT__TITLE;
+	int ANSIBLEROLE__TITLE = OCCIPackage.RESOURCE__TITLE;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -106,7 +106,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__KIND = PlatformPackage.COMPONENT__KIND;
+	int ANSIBLEROLE__KIND = OCCIPackage.RESOURCE__KIND;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -115,7 +115,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__LOCATION = PlatformPackage.COMPONENT__LOCATION;
+	int ANSIBLEROLE__LOCATION = OCCIPackage.RESOURCE__LOCATION;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -124,7 +124,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__ATTRIBUTES = PlatformPackage.COMPONENT__ATTRIBUTES;
+	int ANSIBLEROLE__ATTRIBUTES = OCCIPackage.RESOURCE__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
@@ -133,7 +133,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__MIXINS = PlatformPackage.COMPONENT__MIXINS;
+	int ANSIBLEROLE__MIXINS = OCCIPackage.RESOURCE__MIXINS;
 
 	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -142,7 +142,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__PARTS = PlatformPackage.COMPONENT__PARTS;
+	int ANSIBLEROLE__PARTS = OCCIPackage.RESOURCE__PARTS;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -151,7 +151,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__SUMMARY = PlatformPackage.COMPONENT__SUMMARY;
+	int ANSIBLEROLE__SUMMARY = OCCIPackage.RESOURCE__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
@@ -160,7 +160,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__LINKS = PlatformPackage.COMPONENT__LINKS;
+	int ANSIBLEROLE__LINKS = OCCIPackage.RESOURCE__LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Rlinks</b></em>' reference list.
@@ -169,43 +169,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__RLINKS = PlatformPackage.COMPONENT__RLINKS;
-
-	/**
-	 * The feature id for the '<em><b>Occi Component State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE__OCCI_COMPONENT_STATE = PlatformPackage.COMPONENT__OCCI_COMPONENT_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Occi Component State Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE__OCCI_COMPONENT_STATE_MESSAGE = PlatformPackage.COMPONENT__OCCI_COMPONENT_STATE_MESSAGE;
-
-	/**
-	 * The feature id for the '<em><b>Occi Ansible Installationstate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE = PlatformPackage.COMPONENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Occi Ansible Installationstate Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE = PlatformPackage.COMPONENT_FEATURE_COUNT + 1;
+	int ANSIBLEROLE__RLINKS = OCCIPackage.RESOURCE__RLINKS;
 
 	/**
 	 * The feature id for the '<em><b>Occi Ansible Rolename</b></em>' attribute.
@@ -214,7 +178,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME = PlatformPackage.COMPONENT_FEATURE_COUNT + 2;
+	int ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME = OCCIPackage.RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ansiblerole</em>' class.
@@ -223,7 +187,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE_FEATURE_COUNT = PlatformPackage.COMPONENT_FEATURE_COUNT + 3;
+	int ANSIBLEROLE_FEATURE_COUNT = OCCIPackage.RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -232,7 +196,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE___OCCI_CREATE = PlatformPackage.COMPONENT___OCCI_CREATE;
+	int ANSIBLEROLE___OCCI_CREATE = OCCIPackage.RESOURCE___OCCI_CREATE;
 
 	/**
 	 * The operation id for the '<em>Occi Retrieve</em>' operation.
@@ -241,7 +205,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE___OCCI_RETRIEVE = PlatformPackage.COMPONENT___OCCI_RETRIEVE;
+	int ANSIBLEROLE___OCCI_RETRIEVE = OCCIPackage.RESOURCE___OCCI_RETRIEVE;
 
 	/**
 	 * The operation id for the '<em>Occi Update</em>' operation.
@@ -250,7 +214,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE___OCCI_UPDATE = PlatformPackage.COMPONENT___OCCI_UPDATE;
+	int ANSIBLEROLE___OCCI_UPDATE = OCCIPackage.RESOURCE___OCCI_UPDATE;
 
 	/**
 	 * The operation id for the '<em>Occi Delete</em>' operation.
@@ -259,43 +223,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE___OCCI_DELETE = PlatformPackage.COMPONENT___OCCI_DELETE;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE___START = PlatformPackage.COMPONENT___START;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE___STOP = PlatformPackage.COMPONENT___STOP;
-
-	/**
-	 * The operation id for the '<em>Attachrole</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE___ATTACHROLE = PlatformPackage.COMPONENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Detachrole</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSIBLEROLE___DETACHROLE = PlatformPackage.COMPONENT_OPERATION_COUNT + 1;
+	int ANSIBLEROLE___OCCI_DELETE = OCCIPackage.RESOURCE___OCCI_DELETE;
 
 	/**
 	 * The number of operations of the '<em>Ansiblerole</em>' class.
@@ -304,7 +232,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANSIBLEROLE_OPERATION_COUNT = PlatformPackage.COMPONENT_OPERATION_COUNT + 2;
+	int ANSIBLEROLE_OPERATION_COUNT = OCCIPackage.RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.RoleattachmentImpl <em>Roleattachment</em>}' class.
@@ -452,22 +380,375 @@ public interface ConfigmanagementPackage extends EPackage {
 	int ROLEATTACHMENT___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
 
 	/**
-	 * The operation id for the '<em>Target Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLEATTACHMENT___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Roleattachment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLEATTACHMENT_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 1;
+	int ROLEATTACHMENT_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.ManagedcomponentImpl <em>Managedcomponent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ManagedcomponentImpl
+	 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ConfigmanagementPackageImpl#getManagedcomponent()
+	 * @generated
+	 */
+	int MANAGEDCOMPONENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__ID = PlatformPackage.COMPONENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__TITLE = PlatformPackage.COMPONENT__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__KIND = PlatformPackage.COMPONENT__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__LOCATION = PlatformPackage.COMPONENT__LOCATION;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__ATTRIBUTES = PlatformPackage.COMPONENT__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__MIXINS = PlatformPackage.COMPONENT__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__PARTS = PlatformPackage.COMPONENT__PARTS;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__SUMMARY = PlatformPackage.COMPONENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__LINKS = PlatformPackage.COMPONENT__LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Rlinks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__RLINKS = PlatformPackage.COMPONENT__RLINKS;
+
+	/**
+	 * The feature id for the '<em><b>Occi Component State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__OCCI_COMPONENT_STATE = PlatformPackage.COMPONENT__OCCI_COMPONENT_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Occi Component State Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__OCCI_COMPONENT_STATE_MESSAGE = PlatformPackage.COMPONENT__OCCI_COMPONENT_STATE_MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Occi Component Installationstate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE = PlatformPackage.COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Occi Component Installationstate Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE_MESSAGE = PlatformPackage.COMPONENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Managedcomponent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT_FEATURE_COUNT = PlatformPackage.COMPONENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___OCCI_CREATE = PlatformPackage.COMPONENT___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___OCCI_RETRIEVE = PlatformPackage.COMPONENT___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___OCCI_UPDATE = PlatformPackage.COMPONENT___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___OCCI_DELETE = PlatformPackage.COMPONENT___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___START = PlatformPackage.COMPONENT___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT___STOP = PlatformPackage.COMPONENT___STOP;
+
+	/**
+	 * The number of operations of the '<em>Managedcomponent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGEDCOMPONENT_OPERATION_COUNT = PlatformPackage.COMPONENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.ComponenthostingImpl <em>Componenthosting</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ComponenthostingImpl
+	 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ConfigmanagementPackageImpl#getComponenthosting()
+	 * @generated
+	 */
+	int COMPONENTHOSTING = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__ID = OCCIPackage.LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__TITLE = OCCIPackage.LINK__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__KIND = OCCIPackage.LINK__KIND;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__LOCATION = OCCIPackage.LINK__LOCATION;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__ATTRIBUTES = OCCIPackage.LINK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Mixins</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__MIXINS = OCCIPackage.LINK__MIXINS;
+
+	/**
+	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__PARTS = OCCIPackage.LINK__PARTS;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__SOURCE = OCCIPackage.LINK__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING__TARGET = OCCIPackage.LINK__TARGET;
+
+	/**
+	 * The number of structural features of the '<em>Componenthosting</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING_FEATURE_COUNT = OCCIPackage.LINK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Occi Create</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING___OCCI_CREATE = OCCIPackage.LINK___OCCI_CREATE;
+
+	/**
+	 * The operation id for the '<em>Occi Retrieve</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING___OCCI_RETRIEVE = OCCIPackage.LINK___OCCI_RETRIEVE;
+
+	/**
+	 * The operation id for the '<em>Occi Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING___OCCI_UPDATE = OCCIPackage.LINK___OCCI_UPDATE;
+
+	/**
+	 * The operation id for the '<em>Occi Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING___OCCI_DELETE = OCCIPackage.LINK___OCCI_DELETE;
+
+	/**
+	 * The operation id for the '<em>Target Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = OCCIPackage.LINK_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Componenthosting</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENTHOSTING_OPERATION_COUNT = OCCIPackage.LINK_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.occi.configmanagement.InstallationState <em>Installation State</em>}' enum.
@@ -477,7 +758,7 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ConfigmanagementPackageImpl#getInstallationState()
 	 * @generated
 	 */
-	int INSTALLATION_STATE = 2;
+	int INSTALLATION_STATE = 4;
 
 
 	/**
@@ -491,28 +772,6 @@ public interface ConfigmanagementPackage extends EPackage {
 	EClass getAnsiblerole();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#getOcciAnsibleInstallationstate <em>Occi Ansible Installationstate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Occi Ansible Installationstate</em>'.
-	 * @see de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#getOcciAnsibleInstallationstate()
-	 * @see #getAnsiblerole()
-	 * @generated
-	 */
-	EAttribute getAnsiblerole_OcciAnsibleInstallationstate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#getOcciAnsibleInstallationstateMessage <em>Occi Ansible Installationstate Message</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Occi Ansible Installationstate Message</em>'.
-	 * @see de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#getOcciAnsibleInstallationstateMessage()
-	 * @see #getAnsiblerole()
-	 * @generated
-	 */
-	EAttribute getAnsiblerole_OcciAnsibleInstallationstateMessage();
-
-	/**
 	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#getOcciAnsibleRolename <em>Occi Ansible Rolename</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -522,26 +781,6 @@ public interface ConfigmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnsiblerole_OcciAnsibleRolename();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#attachrole() <em>Attachrole</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Attachrole</em>' operation.
-	 * @see de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#attachrole()
-	 * @generated
-	 */
-	EOperation getAnsiblerole__Attachrole();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#detachrole() <em>Detachrole</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Detachrole</em>' operation.
-	 * @see de.ugoe.cs.oco.occi.configmanagement.Ansiblerole#detachrole()
-	 * @generated
-	 */
-	EOperation getAnsiblerole__Detachrole();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.occi.configmanagement.Roleattachment <em>Roleattachment</em>}'.
@@ -565,14 +804,56 @@ public interface ConfigmanagementPackage extends EPackage {
 	EAttribute getRoleattachment_OcciAnsibleUser();
 
 	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.occi.configmanagement.Roleattachment#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent <em>Managedcomponent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Managedcomponent</em>'.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Managedcomponent
+	 * @generated
+	 */
+	EClass getManagedcomponent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent#getOcciComponentInstallationstate <em>Occi Component Installationstate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occi Component Installationstate</em>'.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Managedcomponent#getOcciComponentInstallationstate()
+	 * @see #getManagedcomponent()
+	 * @generated
+	 */
+	EAttribute getManagedcomponent_OcciComponentInstallationstate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.occi.configmanagement.Managedcomponent#getOcciComponentInstallationstateMessage <em>Occi Component Installationstate Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occi Component Installationstate Message</em>'.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Managedcomponent#getOcciComponentInstallationstateMessage()
+	 * @see #getManagedcomponent()
+	 * @generated
+	 */
+	EAttribute getManagedcomponent_OcciComponentInstallationstateMessage();
+
+	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.occi.configmanagement.Componenthosting <em>Componenthosting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Componenthosting</em>'.
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Componenthosting
+	 * @generated
+	 */
+	EClass getComponenthosting();
+
+	/**
+	 * Returns the meta object for the '{@link de.ugoe.cs.oco.occi.configmanagement.Componenthosting#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Target Constraint</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Target Constraint</em>' operation.
-	 * @see de.ugoe.cs.oco.occi.configmanagement.Roleattachment#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see de.ugoe.cs.oco.occi.configmanagement.Componenthosting#targetConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	EOperation getRoleattachment__TargetConstraint__DiagnosticChain_Map();
+	EOperation getComponenthosting__TargetConstraint__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.occi.configmanagement.InstallationState <em>Installation State</em>}'.
@@ -618,44 +899,12 @@ public interface ConfigmanagementPackage extends EPackage {
 		EClass ANSIBLEROLE = eINSTANCE.getAnsiblerole();
 
 		/**
-		 * The meta object literal for the '<em><b>Occi Ansible Installationstate</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE = eINSTANCE.getAnsiblerole_OcciAnsibleInstallationstate();
-
-		/**
-		 * The meta object literal for the '<em><b>Occi Ansible Installationstate Message</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE = eINSTANCE.getAnsiblerole_OcciAnsibleInstallationstateMessage();
-
-		/**
 		 * The meta object literal for the '<em><b>Occi Ansible Rolename</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME = eINSTANCE.getAnsiblerole_OcciAnsibleRolename();
-
-		/**
-		 * The meta object literal for the '<em><b>Attachrole</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ANSIBLEROLE___ATTACHROLE = eINSTANCE.getAnsiblerole__Attachrole();
-
-		/**
-		 * The meta object literal for the '<em><b>Detachrole</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ANSIBLEROLE___DETACHROLE = eINSTANCE.getAnsiblerole__Detachrole();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.RoleattachmentImpl <em>Roleattachment</em>}' class.
@@ -676,12 +925,48 @@ public interface ConfigmanagementPackage extends EPackage {
 		EAttribute ROLEATTACHMENT__OCCI_ANSIBLE_USER = eINSTANCE.getRoleattachment_OcciAnsibleUser();
 
 		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.ManagedcomponentImpl <em>Managedcomponent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ManagedcomponentImpl
+		 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ConfigmanagementPackageImpl#getManagedcomponent()
+		 * @generated
+		 */
+		EClass MANAGEDCOMPONENT = eINSTANCE.getManagedcomponent();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Component Installationstate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE = eINSTANCE.getManagedcomponent_OcciComponentInstallationstate();
+
+		/**
+		 * The meta object literal for the '<em><b>Occi Component Installationstate Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE_MESSAGE = eINSTANCE.getManagedcomponent_OcciComponentInstallationstateMessage();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.occi.configmanagement.impl.ComponenthostingImpl <em>Componenthosting</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ComponenthostingImpl
+		 * @see de.ugoe.cs.oco.occi.configmanagement.impl.ConfigmanagementPackageImpl#getComponenthosting()
+		 * @generated
+		 */
+		EClass COMPONENTHOSTING = eINSTANCE.getComponenthosting();
+
+		/**
 		 * The meta object literal for the '<em><b>Target Constraint</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ROLEATTACHMENT___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getRoleattachment__TargetConstraint__DiagnosticChain_Map();
+		EOperation COMPONENTHOSTING___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getComponenthosting__TargetConstraint__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.occi.configmanagement.InstallationState <em>Installation State</em>}' enum.

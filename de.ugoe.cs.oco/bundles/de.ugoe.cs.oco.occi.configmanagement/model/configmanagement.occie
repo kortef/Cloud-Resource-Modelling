@@ -3,22 +3,26 @@
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <import href="http://schemas.ogf.org/occi/platform#/"/>
-  <kinds name="AnsibleRole" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="ManagedComponent">
-    <attributes name="occi.ansible.installationstate" mutable="true" type="//@types.0"/>
-    <attributes name="occi.ansible.installationstate.message" mutable="true">
-      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
+  <kinds name="AnsibleRole" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="AnsibleRole">
     <attributes name="occi.ansible.rolename" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <actions name="attachrole" scheme="http://oco.cs.ugoe.de/occi/configmanagement/ansiblerole/action#" title="attachRole"/>
-    <actions name="detachrole" scheme="http://oco.cs.ugoe.de/occi/configmanagement/ansiblerole/action#" title="detachRole"/>
-    <parent href="http://schemas.ogf.org/occi/platform#//@kinds[term='component']"/>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
   <kinds name="RoleAttachment" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="RoleAttachment" source="//@kinds[term='ansiblerole']">
     <attributes name="occi.ansible.user" mutable="true" required="true" default="">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
+  </kinds>
+  <kinds name="ManagedComponent" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="ManagedComponent">
+    <attributes name="occi.component.installationstate" mutable="true" default="uninstalled" type="//@types.0"/>
+    <attributes name="occi.component.installationstate.message" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <parent href="http://schemas.ogf.org/occi/platform#//@kinds[term='component']"/>
+  </kinds>
+  <kinds name="ComponentHosting" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" source="//@kinds[term='managedcomponent']">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
     <target href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>

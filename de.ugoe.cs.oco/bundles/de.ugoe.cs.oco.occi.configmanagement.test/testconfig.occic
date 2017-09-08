@@ -6,19 +6,23 @@
     <kind href="http://oco.cs.ugoe.de/occi/configmanagement#//@kinds[term='ansiblerole']"/>
     <attributes name="occi.core.id" value="urn:uuid:68a5140f-c825-4149-beab-fad4bc87e3d1"/>
     <attributes name="occi.core.title" value="testrole"/>
-    <attributes name="occi.ansible.installationstate" value="uninstalled"/>
-    <attributes name="occi.ansible.installationstate.message" value=""/>
     <attributes name="occi.ansible.rolename" value="test"/>
-    <links id="urn:uuid:c0992092-8da2-4b46-9478-ad6391d56652" title="attachment" location="/test/attachment" target="//@resources.1">
+    <attributes name="occi.core.summary" value=""/>
+    <links id="urn:uuid:c0992092-8da2-4b46-9478-ad6391d56652" title="attachment" location="/test/attachment" target="//@resources.3">
       <kind href="http://oco.cs.ugoe.de/occi/configmanagement#//@kinds[term='roleattachment']"/>
       <attributes name="occi.core.id" value="urn:uuid:c0992092-8da2-4b46-9478-ad6391d56652"/>
       <attributes name="occi.core.title" value="attachment"/>
+      <attributes name="occi.ansible.user" value="ubuntu"/>
     </links>
   </resources>
-  <resources id="urn:uuid:c4b09d4f-9f60-4804-a2f3-335230a752f0" title="vm1" location="/compute/vm1" rlinks="//@resources.0/@links.0">
+  <resources id="urn:uuid:c4b09d4f-9f60-4804-a2f3-335230a752f0" title="vm1" location="/compute/vm1" rlinks="//@resources.3/@links.0">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <attributes name="occi.core.id" value="urn:uuid:c4b09d4f-9f60-4804-a2f3-335230a752f0"/>
     <attributes name="occi.core.title" value="vm1"/>
+    <parts>
+      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ssh_key']"/>
+      <attributes name="occi.credentials.keyname" value="mongoscale.pem"/>
+    </parts>
     <links id="urn:uuid:cc3942c6-be31-47cc-bb1c-5ac2efa94109" title="networklink" location="/networkinterface/networklink" target="//@resources.2">
       <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
       <attributes name="occi.core.id" value="urn:uuid:cc3942c6-be31-47cc-bb1c-5ac2efa94109"/>
@@ -35,5 +39,15 @@
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
     <attributes name="occi.core.id" value="urn:uuid:47bdab51-6851-43c3-8b5f-986ae64b5ba7"/>
     <attributes name="occi.core.title" value="network"/>
+  </resources>
+  <resources id="urn:uuid:33f24000-10a0-409c-8a22-0b58c70b3f3b" title="testcomponent" rlinks="//@resources.0/@links.0">
+    <kind href="http://oco.cs.ugoe.de/occi/configmanagement#//@kinds[term='managedcomponent']"/>
+    <attributes name="occi.core.id" value="urn:uuid:33f24000-10a0-409c-8a22-0b58c70b3f3b"/>
+    <attributes name="occi.core.title" value="testcomponent"/>
+    <links id="urn:uuid:1bdaf8af-5d3e-4f4f-a889-0200c0f52207" title="link1" target="//@resources.1">
+      <kind href="http://oco.cs.ugoe.de/occi/configmanagement#//@kinds[term='componenthosting']"/>
+      <attributes name="occi.core.id" value="urn:uuid:1bdaf8af-5d3e-4f4f-a889-0200c0f52207"/>
+      <attributes name="occi.core.title" value="link1"/>
+    </links>
   </resources>
 </occi:Configuration>

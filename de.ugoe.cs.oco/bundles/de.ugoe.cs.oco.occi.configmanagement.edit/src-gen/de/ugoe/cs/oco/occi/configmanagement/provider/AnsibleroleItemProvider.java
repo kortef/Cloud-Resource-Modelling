@@ -22,8 +22,10 @@ import java.util.List;
 
 import org.eclipse.cmf.occi.core.OCCIPackage;
 
+import org.eclipse.cmf.occi.core.provider.ResourceItemProvider;
 import org.eclipse.cmf.occi.infrastructure.InfrastructureFactory;
 
+import org.eclipse.cmf.occi.platform.PlatformFactory;
 import org.eclipse.cmf.occi.platform.provider.ComponentItemProvider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -42,7 +44,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AnsibleroleItemProvider extends ComponentItemProvider {
+public class AnsibleroleItemProvider extends ResourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -64,55 +66,9 @@ public class AnsibleroleItemProvider extends ComponentItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOcciAnsibleInstallationstatePropertyDescriptor(object);
-			addOcciAnsibleInstallationstateMessagePropertyDescriptor(object);
 			addOcciAnsibleRolenamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Occi Ansible Installationstate feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOcciAnsibleInstallationstatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Ansiblerole_occiAnsibleInstallationstate_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Ansiblerole_occiAnsibleInstallationstate_feature", "_UI_Ansiblerole_type"),
-				 ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Occi Ansible Installationstate Message feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOcciAnsibleInstallationstateMessagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Ansiblerole_occiAnsibleInstallationstateMessage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Ansiblerole_occiAnsibleInstallationstateMessage_feature", "_UI_Ansiblerole_type"),
-				 ConfigmanagementPackage.Literals.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -175,8 +131,6 @@ public class AnsibleroleItemProvider extends ComponentItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Ansiblerole.class)) {
-			case ConfigmanagementPackage.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE:
-			case ConfigmanagementPackage.ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE:
 			case ConfigmanagementPackage.ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -227,8 +181,33 @@ public class AnsibleroleItemProvider extends ComponentItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+				(OCCIPackage.Literals.ENTITY__PARTS,
+				 PlatformFactory.eINSTANCE.createApp_tpl()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.ENTITY__PARTS,
+				 PlatformFactory.eINSTANCE.createRes_tpl()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.ENTITY__PARTS,
+				 PlatformFactory.eINSTANCE.createDatabase()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.ENTITY__PARTS,
+				 PlatformFactory.eINSTANCE.createDatabaselink()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 ConfigmanagementFactory.eINSTANCE.createRoleattachment()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.RESOURCE__LINKS,
+				 ConfigmanagementFactory.eINSTANCE.createComponenthosting()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -239,6 +218,11 @@ public class AnsibleroleItemProvider extends ComponentItemProvider {
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 InfrastructureFactory.eINSTANCE.createNetworkinterface()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OCCIPackage.Literals.RESOURCE__LINKS,
+				 PlatformFactory.eINSTANCE.createComponentlink()));
 	}
 
 	/**

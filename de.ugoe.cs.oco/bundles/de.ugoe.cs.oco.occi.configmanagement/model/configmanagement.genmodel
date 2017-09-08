@@ -18,26 +18,26 @@
     <genClasses>
       <ecoreClass href="configmanagement.ecore#//Ansiblerole"/>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Ansiblerole/occiAnsibleInstallationstate"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Ansiblerole/occiAnsibleInstallationstateMessage"/>
-      </genFeatures>
-      <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Ansiblerole/occiAnsibleRolename"/>
       </genFeatures>
-      <genOperations>
-        <ecoreOperation href="configmanagement.ecore#//Ansiblerole/attachrole"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="configmanagement.ecore#//Ansiblerole/detachrole"/>
-      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="configmanagement.ecore#//Roleattachment"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Roleattachment/occiAnsibleUser"/>
       </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="configmanagement.ecore#//Managedcomponent"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Managedcomponent/occiComponentInstallationstate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="configmanagement.ecore#//Managedcomponent/occiComponentInstallationstateMessage"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="configmanagement.ecore#//Componenthosting"/>
     </genClasses>
   </genPackages>
   <usedGenPackages href="platform:/plugin/org.eclipse.cmf.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>

@@ -50,6 +50,24 @@ public interface ConfigmanagementFactory extends EFactory {
 	Roleattachment createRoleattachment();
 
 	/**
+	 * Returns a new object of class '<em>Managedcomponent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Managedcomponent</em>'.
+	 * @generated
+	 */
+	Managedcomponent createManagedcomponent();
+
+	/**
+	 * Returns a new object of class '<em>Componenthosting</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Componenthosting</em>'.
+	 * @generated
+	 */
+	Componenthosting createComponenthosting();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

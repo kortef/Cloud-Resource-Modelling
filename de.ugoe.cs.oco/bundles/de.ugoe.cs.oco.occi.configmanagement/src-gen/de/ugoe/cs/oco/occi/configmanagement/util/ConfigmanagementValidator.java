@@ -52,12 +52,12 @@ public class ConfigmanagementValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "de.ugoe.cs.oco.occi.configmanagement";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Roleattachment'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Target Constraint' of 'Componenthosting'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ROLEATTACHMENT__TARGET_CONSTRAINT = 1;
+	public static final int COMPONENTHOSTING__TARGET_CONSTRAINT = 1;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -118,6 +118,10 @@ public class ConfigmanagementValidator extends EObjectValidator {
 				return validateAnsiblerole((Ansiblerole)value, diagnostics, context);
 			case ConfigmanagementPackage.ROLEATTACHMENT:
 				return validateRoleattachment((Roleattachment)value, diagnostics, context);
+			case ConfigmanagementPackage.MANAGEDCOMPONENT:
+				return validateManagedcomponent((Managedcomponent)value, diagnostics, context);
+			case ConfigmanagementPackage.COMPONENTHOSTING:
+				return validateComponenthosting((Componenthosting)value, diagnostics, context);
 			case ConfigmanagementPackage.INSTALLATION_STATE:
 				return validateInstallationState((InstallationState)value, diagnostics, context);
 			default:
@@ -168,18 +172,64 @@ public class ConfigmanagementValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(roleattachment, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(roleattachment, diagnostics, context);
 		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(roleattachment, diagnostics, context);
-		if (result || diagnostics != null) result &= validateRoleattachment_targetConstraint(roleattachment, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the targetConstraint constraint of '<em>Roleattachment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRoleattachment_targetConstraint(Roleattachment roleattachment, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return roleattachment.targetConstraint(diagnostics, context);
+	public boolean validateManagedcomponent(Managedcomponent managedcomponent, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(managedcomponent, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(managedcomponent, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateResource_ResourceKindIsInParent(managedcomponent, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateComponenthosting(Componenthosting componenthosting, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(componenthosting, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_IdUnique(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_AttributesNameUnique(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateEntity_KindCompatibleWithOneAppliesOfEachMixin(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_LinkKindIsInParent(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_sourceReferenceInvariant(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= occiValidator.validateLink_targetReferenceInvariant(componenthosting, diagnostics, context);
+		if (result || diagnostics != null) result &= validateComponenthosting_targetConstraint(componenthosting, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the targetConstraint constraint of '<em>Componenthosting</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateComponenthosting_targetConstraint(Componenthosting componenthosting, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return componenthosting.targetConstraint(diagnostics, context);
 	}
 
 	/**

@@ -13,9 +13,11 @@
 package de.ugoe.cs.oco.occi.configmanagement.impl;
 
 import de.ugoe.cs.oco.occi.configmanagement.Ansiblerole;
+import de.ugoe.cs.oco.occi.configmanagement.Componenthosting;
 import de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementFactory;
 import de.ugoe.cs.oco.occi.configmanagement.ConfigmanagementPackage;
 import de.ugoe.cs.oco.occi.configmanagement.InstallationState;
+import de.ugoe.cs.oco.occi.configmanagement.Managedcomponent;
 import de.ugoe.cs.oco.occi.configmanagement.Roleattachment;
 
 import de.ugoe.cs.oco.occi.configmanagement.util.ConfigmanagementValidator;
@@ -56,6 +58,20 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 	 * @generated
 	 */
 	private EClass roleattachmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass managedcomponentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass componenthostingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,44 +169,8 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAnsiblerole_OcciAnsibleInstallationstate() {
-		return (EAttribute)ansibleroleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnsiblerole_OcciAnsibleInstallationstateMessage() {
-		return (EAttribute)ansibleroleEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getAnsiblerole_OcciAnsibleRolename() {
-		return (EAttribute)ansibleroleEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAnsiblerole__Attachrole() {
-		return ansibleroleEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAnsiblerole__Detachrole() {
-		return ansibleroleEClass.getEOperations().get(1);
+		return (EAttribute)ansibleroleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -216,8 +196,44 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getRoleattachment__TargetConstraint__DiagnosticChain_Map() {
-		return roleattachmentEClass.getEOperations().get(0);
+	public EClass getManagedcomponent() {
+		return managedcomponentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getManagedcomponent_OcciComponentInstallationstate() {
+		return (EAttribute)managedcomponentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getManagedcomponent_OcciComponentInstallationstateMessage() {
+		return (EAttribute)managedcomponentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getComponenthosting() {
+		return componenthostingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getComponenthosting__TargetConstraint__DiagnosticChain_Map() {
+		return componenthostingEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -258,15 +274,17 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 
 		// Create classes and their features
 		ansibleroleEClass = createEClass(ANSIBLEROLE);
-		createEAttribute(ansibleroleEClass, ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE);
-		createEAttribute(ansibleroleEClass, ANSIBLEROLE__OCCI_ANSIBLE_INSTALLATIONSTATE_MESSAGE);
 		createEAttribute(ansibleroleEClass, ANSIBLEROLE__OCCI_ANSIBLE_ROLENAME);
-		createEOperation(ansibleroleEClass, ANSIBLEROLE___ATTACHROLE);
-		createEOperation(ansibleroleEClass, ANSIBLEROLE___DETACHROLE);
 
 		roleattachmentEClass = createEClass(ROLEATTACHMENT);
 		createEAttribute(roleattachmentEClass, ROLEATTACHMENT__OCCI_ANSIBLE_USER);
-		createEOperation(roleattachmentEClass, ROLEATTACHMENT___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+
+		managedcomponentEClass = createEClass(MANAGEDCOMPONENT);
+		createEAttribute(managedcomponentEClass, MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE);
+		createEAttribute(managedcomponentEClass, MANAGEDCOMPONENT__OCCI_COMPONENT_INSTALLATIONSTATE_MESSAGE);
+
+		componenthostingEClass = createEClass(COMPONENTHOSTING);
+		createEOperation(componenthostingEClass, COMPONENTHOSTING___TARGET_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
 
 		// Create enums
 		installationStateEEnum = createEEnum(INSTALLATION_STATE);
@@ -296,31 +314,33 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		PlatformPackage thePlatformPackage = (PlatformPackage)EPackage.Registry.INSTANCE.getEPackage(PlatformPackage.eNS_URI);
 		OCCIPackage theOCCIPackage = (OCCIPackage)EPackage.Registry.INSTANCE.getEPackage(OCCIPackage.eNS_URI);
+		PlatformPackage thePlatformPackage = (PlatformPackage)EPackage.Registry.INSTANCE.getEPackage(PlatformPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		ansibleroleEClass.getESuperTypes().add(thePlatformPackage.getComponent());
+		ansibleroleEClass.getESuperTypes().add(theOCCIPackage.getResource());
 		roleattachmentEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		managedcomponentEClass.getESuperTypes().add(thePlatformPackage.getComponent());
+		componenthostingEClass.getESuperTypes().add(theOCCIPackage.getLink());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ansibleroleEClass, Ansiblerole.class, "Ansiblerole", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnsiblerole_OcciAnsibleInstallationstate(), this.getInstallationState(), "occiAnsibleInstallationstate", null, 0, 1, Ansiblerole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnsiblerole_OcciAnsibleInstallationstateMessage(), theOCCIPackage.getString(), "occiAnsibleInstallationstateMessage", null, 0, 1, Ansiblerole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnsiblerole_OcciAnsibleRolename(), theOCCIPackage.getString(), "occiAnsibleRolename", null, 0, 1, Ansiblerole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAnsiblerole__Attachrole(), null, "attachrole", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getAnsiblerole__Detachrole(), null, "detachrole", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(roleattachmentEClass, Roleattachment.class, "Roleattachment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRoleattachment_OcciAnsibleUser(), theOCCIPackage.getString(), "occiAnsibleUser", null, 1, 1, Roleattachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getRoleattachment__TargetConstraint__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "targetConstraint", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(managedcomponentEClass, Managedcomponent.class, "Managedcomponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getManagedcomponent_OcciComponentInstallationstate(), this.getInstallationState(), "occiComponentInstallationstate", "uninstalled", 0, 1, Managedcomponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManagedcomponent_OcciComponentInstallationstateMessage(), theOCCIPackage.getString(), "occiComponentInstallationstateMessage", null, 0, 1, Managedcomponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(componenthostingEClass, Componenthosting.class, "Componenthosting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = initEOperation(getComponenthosting__TargetConstraint__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "targetConstraint", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
@@ -356,7 +376,7 @@ public class ConfigmanagementPackageImpl extends EPackageImpl implements Configm
 		   new String[] {
 		   });	
 		addAnnotation
-		  (roleattachmentEClass, 
+		  (componenthostingEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "targetConstraint"

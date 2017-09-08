@@ -85,7 +85,6 @@ public class ConfigmanagementSwitch<T> extends Switch<T> {
 			case ConfigmanagementPackage.ANSIBLEROLE: {
 				Ansiblerole ansiblerole = (Ansiblerole)theEObject;
 				T result = caseAnsiblerole(ansiblerole);
-				if (result == null) result = caseComponent(ansiblerole);
 				if (result == null) result = caseResource(ansiblerole);
 				if (result == null) result = caseEntity(ansiblerole);
 				if (result == null) result = defaultCase(theEObject);
@@ -96,6 +95,23 @@ public class ConfigmanagementSwitch<T> extends Switch<T> {
 				T result = caseRoleattachment(roleattachment);
 				if (result == null) result = caseLink(roleattachment);
 				if (result == null) result = caseEntity(roleattachment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigmanagementPackage.MANAGEDCOMPONENT: {
+				Managedcomponent managedcomponent = (Managedcomponent)theEObject;
+				T result = caseManagedcomponent(managedcomponent);
+				if (result == null) result = caseComponent(managedcomponent);
+				if (result == null) result = caseResource(managedcomponent);
+				if (result == null) result = caseEntity(managedcomponent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigmanagementPackage.COMPONENTHOSTING: {
+				Componenthosting componenthosting = (Componenthosting)theEObject;
+				T result = caseComponenthosting(componenthosting);
+				if (result == null) result = caseLink(componenthosting);
+				if (result == null) result = caseEntity(componenthosting);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -130,6 +146,36 @@ public class ConfigmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRoleattachment(Roleattachment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Managedcomponent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Managedcomponent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseManagedcomponent(Managedcomponent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Componenthosting</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Componenthosting</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponenthosting(Componenthosting object) {
 		return null;
 	}
 

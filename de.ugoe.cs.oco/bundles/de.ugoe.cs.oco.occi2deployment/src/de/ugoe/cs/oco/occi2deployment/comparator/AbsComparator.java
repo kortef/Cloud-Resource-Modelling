@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.occiware.clouddesigner.occi.AttributeState;
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Link;
+import org.occiware.clouddesigner.occi.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
@@ -54,56 +55,84 @@ public abstract class AbsComparator implements Comparator {
 	 * @param newObj
 	 * @return boolean indicating, if the element is adapted or not.
 	 */
-	protected boolean checkIfAdapted(EObject oldObj, EObject newObj) {
-		for(EObject oldContent: oldObj.eContents()){
-			if(oldContent.eClass().getName().equals("AttributeState")){
-				for(EObject newContent: newObj.eContents()){
-					if(newContent.eClass().getName().equals("AttributeState")){
-						AttributeState oldAttr = (AttributeState) oldContent;
-						AttributeState newAttr = (AttributeState) newContent;
-						if(oldAttr.getName().equals(newAttr.getName()) 
-								&& oldAttr.getName().contains("core.source") == false
-								&& oldAttr.getName().contains("core.target") == false
-								&& oldAttr.getName().contains("core.id") == false
-								){
-							if(oldAttr.getValue().equals(newAttr.getValue()) == false){
-								return true;
-							}
-						}
+	protected boolean checkIfAdapted(EObject src, EObject tar) {
+		for(AttributeState srcAttr: extractAttr(src)){
+			for(AttributeState tarAttr: extractAttr(tar)){
+				if(srcAttr.getName().equals(tarAttr.getName()) 
+				&& inBlacklist(srcAttr.getName()) == false){
+					if(srcAttr.getValue().equals(tarAttr.getValue()) == false){
+						return true;
 					}
 				}
 			}
 		}
 		return false;
 	}
-	
+
+	private boolean inBlacklist(String string) {
+		if(string.contains("core.source")
+		|| string.contains("core.target")
+		|| string.contains("core.id")){
+			return true;
+		}
+		else{
+		return false;
+		}
+	}
+
+
+	private EList<AttributeState> extractAttr(EObject obj) {
+		if(obj.eClass().getName().equals("Resource")){
+			Resource res = (Resource) obj;
+			return res.getAttributes();
+		}
+		else if(obj.eClass().getName().equals("Link")){
+			Link link = (Link) obj;
+			return link.getAttributes();
+		}
+		else{
+			return new BasicEList<AttributeState>();
+		}
+	}
 	
 	protected void createLinkMatch() {
 		List<Match> linkMatches = new ArrayList<Match>();
-		for(Match match: matches){
-			if(match.getOldObj() != null && match.getNewObj() != null){
-				EObject oldObj = match.getOldObj();
-				EObject newObj = match.getNewObj();
-				linkMatches.addAll(matchLinksOfObject(oldObj, newObj));
+		for(Match match: this.matches){
+			if(match.getSrc() != null && match.getTar() != null){
+				linkMatches.addAll(matchLinksOfObject(match.getSrc(), match.getTar()));
 			}
-			else if(match.getOldObj() == null){
-				for(EObject newLink: match.getNewObj().eContents()){
-					if(newLink.eClass().getName().equals("Link")){
-						Match newMatch = new Match(null, newLink);
-						linkMatches.add(newMatch);
-					}
+			else if(match.getSrc() == null){
+				for(EObject link: extractLinks(match.getTar())){
+					linkMatches.add(new Match(null, link));
 				}
 			}
-			else if(match.getNewObj() == null){
-				for(EObject oldLink: match.getOldObj().eContents()){
-					if(oldLink.eClass().getName().equals("Link")){
-						Match oldMatch = new Match(oldLink, null);
-						linkMatches.add(oldMatch);
-					}
+			else if(match.getTar() == null){
+				for(EObject link: extractLinks(match.getSrc())){
+						linkMatches.add(new Match(link, null));
 				}
 			}	
 		}
 		this.matches.addAll(linkMatches);
+	}
+		
+	private EList<Link> extractLinks(EObject obj) {
+		if(obj.eClass().getName().equals("Resource")){
+			Resource res = (Resource) obj;
+				return res.getLinks();
+		}
+		else{
+			return new BasicEList<Link>();
+		}	
+	}
+	
+	protected List<Match> extractDirectResourceMatch(List<Match> matches) {
+		List<Match> directResourceMatches = new BasicEList<Match>();
+		for(Match match: matches){
+			if(match.getSrc() != null && match.getTar() != null && match.getSrc().eClass().getName().equals("Resource")){
+				directResourceMatches.add(match);
+			}
+		}
+		return directResourceMatches;	
 	}
 	
 	private List<Match> matchLinksOfObject(EObject obj, EObject newObj) {
@@ -256,33 +285,33 @@ public abstract class AbsComparator implements Comparator {
 	protected void logMatch(List<Match> list){
 		log.info("Comparator: " + this.getClass().getSimpleName());
 		for(Match match: list){
-			if(match.getOldObj() == null){
-				if(match.getNewObj().eClass().getName().equals("Link")){
-					log.info("Mapped: " + "null" + " : " + ((Link)match.getNewObj()).getSource().getTitle()
-							+ "->"+ ((Link)match.getNewObj()).getTarget().getTitle());
+			if(match.getSrc() == null){
+				if(match.getTar().eClass().getName().equals("Link")){
+					log.info("Mapped: " + "null" + " : " + ((Link)match.getTar()).getSource().getTitle()
+							+ "->"+ ((Link)match.getTar()).getTarget().getTitle());
 				}
 				else{
-					log.info("Mapped: " + "null" + " : " + ((Entity)match.getNewObj()).getTitle());
+					log.info("Mapped: " + "null" + " : " + ((Entity)match.getTar()).getTitle());
 				}
 			}
-			else if(match.getNewObj() == null){
-				if(match.getOldObj().eClass().getName().equals("Link")){
-					log.info("Mapped: " + ((Link)match.getOldObj()).getSource().getTitle()
-							+ "->"+ ((Link)match.getOldObj()).getTarget().getTitle() + " : null");
+			else if(match.getTar() == null){
+				if(match.getSrc().eClass().getName().equals("Link")){
+					log.info("Mapped: " + ((Link)match.getSrc()).getSource().getTitle()
+							+ "->"+ ((Link)match.getSrc()).getTarget().getTitle() + " : null");
 				}
 				else{
-					log.info("Mapped: " + ((Entity) match.getOldObj()).getTitle() + " : " + "null");
+					log.info("Mapped: " + ((Entity) match.getSrc()).getTitle() + " : " + "null");
 				}
 			}
-			else if(match.getNewObj() != null && match.getOldObj() != null){
-				if(match.getOldObj().eClass().getName().equals("Link") && match.getNewObj().eClass().getName().equals("Link")){
-					log.info("Mapped: " + ((Link)match.getOldObj()).getSource().getTitle()
-							+ "->"+ ((Link)match.getOldObj()).getTarget().getTitle() + " : " + 
-							((Link)match.getNewObj()).getSource().getTitle()
-							+ "->"+ ((Link)match.getNewObj()).getTarget().getTitle());
+			else if(match.getTar() != null && match.getSrc() != null){
+				if(match.getSrc().eClass().getName().equals("Link") && match.getTar().eClass().getName().equals("Link")){
+					log.info("Mapped: " + ((Link)match.getSrc()).getSource().getTitle()
+							+ "->"+ ((Link)match.getSrc()).getTarget().getTitle() + " : " + 
+							((Link)match.getTar()).getSource().getTitle()
+							+ "->"+ ((Link)match.getTar()).getTarget().getTitle());
 				}
 				else{
-					log.info("Mapped: " + ((Entity)match.getOldObj()).getTitle() + " : " + ((Entity)match.getNewObj()).getTitle());
+					log.info("Mapped: " + ((Entity)match.getSrc()).getTitle() + " : " + ((Entity)match.getTar()).getTitle());
 				}
 			}
 		}
@@ -314,9 +343,9 @@ public abstract class AbsComparator implements Comparator {
 	 */
 	protected void investigateOldAndAdaptedEntities(EList<EObject> newModel, EList<EObject> oldModel, List<Match> matches) {
 		for(Match match: matches){
-			if(match.getOldObj() != null && match.getNewObj() != null){
-				EObject oldObj = match.getOldObj();
-				EObject newObj = match.getNewObj();
+			if(match.getSrc() != null && match.getTar() != null){
+				EObject oldObj = match.getSrc();
+				EObject newObj = match.getTar();
 				if(checkIfAdapted(oldObj, newObj)){
 					adaptedElements.add(newObj);
 					logAdapted(newObj);
@@ -339,8 +368,8 @@ public abstract class AbsComparator implements Comparator {
 	protected boolean sameTarget(org.occiware.clouddesigner.occi.Resource target,
 			org.occiware.clouddesigner.occi.Resource target2, List<Match> matches) {
 		for(Match match: matches){
-			if(match.getOldObj() != null && match.getNewObj() != null){
-				if(((Entity) match.getOldObj()).getId().equals(target.getId()) && ((Entity) match.getNewObj()).getId().equals(target2.getId())){
+			if(match.getSrc() != null && match.getTar() != null){
+				if(((Entity) match.getSrc()).getId().equals(target.getId()) && ((Entity) match.getTar()).getId().equals(target2.getId())){
 					return true;
 				}
 			}
@@ -357,8 +386,8 @@ public abstract class AbsComparator implements Comparator {
 	 */
 	protected void investigateNewEntities(EList<EObject> newModel, List<Match> list) {
 		for(Match match: list){
-			if(match.getOldObj() == null){
-				EObject obj = match.getNewObj();
+			if(match.getSrc() == null){
+				EObject obj = match.getTar();
 				newElements.add(obj);
 				//logNew(obj);
 			}
@@ -371,8 +400,8 @@ public abstract class AbsComparator implements Comparator {
 	 */
 	protected void investigateMissingEntities(EList<EObject> oldModel, List<Match> list) {
 		for(Match match: list){
-			if(match.getNewObj() == null){
-				EObject obj = match.getOldObj();
+			if(match.getTar() == null){
+				EObject obj = match.getSrc();
 				missingElements.add(obj);
 				//logMissing(obj);
 			}

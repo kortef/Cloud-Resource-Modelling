@@ -40,49 +40,57 @@ public class SimilarityFlooding {
 	private void performSimilarityFlooding(Graph graph, int maxIterations, double eps) {
 		List<String[]> normValues = new ArrayList<String[]>();
 		boolean stop = false;
-		for(int i = 0; (i< maxIterations) && (stop ==false); i++){
-			boolean somethingChanged = false;
+		for(int i = 0; (i< maxIterations) && (stop == false); i++){
 			for(Vertex vertex: graph.getVertices()){
 				double nextFixVal = calculateFixpointValue(vertex, graph);
-				//getOutEdges(vertex, graph);
-				
-				Boolean exist = false;
-				for(String[] normValue: normValues) {
-					if(normValue[0].equals(vertex.getKind())){
-						exist = true;
-						if(nextFixVal > Double.parseDouble(normValue[1])){
-							normValue[1] = String.valueOf(nextFixVal);
-						}
-					}
-				}
-				if(exist == false){
-					String[] newNormVal = {vertex.getKind(), String.valueOf(nextFixVal)};
-					normValues.add(newNormVal);
-				}
 				vertex.setNextFixpointValue(nextFixVal);
+				updateNormValues(vertex, normValues);
 			}
-			
-			//Normalize
-			for(Vertex vertex: graph.getVertices()){
-				for(String[] normVal: normValues){
-					if(normVal[0].equals(vertex.getKind())){
-						vertex.setNextFixpointValue(vertex.getNextFixpointValue()/Double.parseDouble(normVal[1]));
-						if(vertex.getFixpointValue() - vertex.getNextFixpointValue() > eps){
-							somethingChanged = true;
-						}
-						vertex.setFixpointValue(vertex.getNextFixpointValue());
-						//System.out.println(vertex.getTitle() + " " + vertex.getFixpointValue());
-					}
-				}
-			}
+			stop = normalizeValues(graph, normValues, eps);
 			normValues.clear();
-			if(somethingChanged == false){
-				stop = true;
-			}
-			//System.out.println("");
 		}
 	}
-	
+
+	private boolean normalizeValues(Graph graph,  List<String[]> normValues, double eps) {
+		boolean somethingChanged = false;
+		for(Vertex vertex: graph.getVertices()){
+			for(String[] normVal: normValues){
+				if(normVal[0].equals(vertex.getKind())){
+					vertex.setNextFixpointValue(vertex.getNextFixpointValue()/Double.parseDouble(normVal[1]));
+					if(vertex.getFixpointValue() - vertex.getNextFixpointValue() > eps){
+						somethingChanged = true;
+					}
+					vertex.setFixpointValue(vertex.getNextFixpointValue());
+					//System.out.println(vertex.getTitle() + " " + vertex.getFixpointValue());
+				}
+			}
+		}
+		if(somethingChanged == false){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+
+
+
+	private void updateNormValues(Vertex vertex, List<String[]> normValues) {
+		Boolean exist = false;
+		for(String[] normValue: normValues) {
+			if(normValue[0].equals(vertex.getKind())){
+				exist = true;
+				if(vertex.getNextFixpointValue() > Double.parseDouble(normValue[1])){
+					normValue[1] = String.valueOf(vertex.getNextFixpointValue());
+				}
+			}
+		}
+		if(exist == false){
+			String[] newNormVal = {vertex.getKind(), String.valueOf(vertex.getNextFixpointValue())};
+			normValues.add(newNormVal);
+		}	
+	}
 	
 	private double calculateFixpointValue(Vertex vertex, Graph graph) {
 		double nextFixVal = vertex.getFixpointValue();

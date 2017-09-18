@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  */
 public class Match {
-	private EObject oldObj;
-	private EObject newObj;
+	private EObject src;
+	private EObject tar;
 	
 	/**Default Constructor Creates an Empty Match.
 	 * 
@@ -20,26 +20,26 @@ public class Match {
 	 * @param oldObj
 	 * @param newObj
 	 */
-	public Match(EObject oldObj, EObject newObj){
-		this.oldObj = oldObj;
-		this.newObj = newObj;
+	public Match(EObject src, EObject tar){
+		this.src = src;
+		this.tar = tar;
 	}
 	
-	public void setOldObj(EObject oldObj){
-		this.oldObj = oldObj;
+	public void setOldObj(EObject src){
+		this.src = src;
 	}
 	
-	public void setNewObj(EObject newObj){
-		this.newObj = newObj;
+	public void setNewObj(EObject tar){
+		this.tar = tar;
 	}
 	
-	public EObject getOldObj(){
-		return this.oldObj;
+	public EObject getSrc(){
+		return this.src;
 	}
 	
 	
-	public EObject getNewObj(){
-		return this.newObj;
+	public EObject getTar(){
+		return this.tar;
 	}
 }
 

@@ -1,28 +1,28 @@
 pre {
-	"Starting OCCI2PCG Transformation...".println();
 	var graph = new PCG!Graph();
-	for(oldResource in oldOCCI!Resource){
-		for(oldLink in oldResource.links){
-			for(newResource in newOCCI!Resource){
-				for(newLink in newResource.links){
-					if(newLink.kind.term == oldLink.kind.term and newLink.kind.scheme == oldLink.kind.scheme){	
-						createVertex(oldResource, newResource);
-						if(not(vertexExists(oldLink.target.id, newLink.target.id))){
-							createVertex(oldLink.target, newLink.target);	
+	for(srcRes in srcOCCI!Resource){
+		for(srcLink in srcRes.links){
+			for(tarRes in tarOCCI!Resource){
+				for(tarLink in tarRes.links){
+					if(tarLink.kind.term == srcLink.kind.term 
+					and tarLink.kind.scheme == srcLink.kind.scheme){	
+						createVertex(srcRes, tarRes);
+						if(not(vertexExists(srcLink.target.id, tarLink.target.id))){
+							createVertex(srcLink.target, tarLink.target);	
 						}
-						createEdge(getVertex(oldResource.id, newResource.id), getVertex(oldLink.target.id, newLink.target.id), oldLink.kind);	
+						createEdge(srcLink.kind, getVertex(srcRes.id, tarRes.id),
+							getVertex(srcLink.target.id, tarLink.target.id));	
 					}
 				}
 			}
 		}
-	}
-	
+	}	
 }
 post {
  	"Transformation Process was Successfull".println();
 }
 
-operation createEdge(sourceVertex: PCG!Vertex, targetVertex: PCG!Vertex, kind: oldOCCI!Kind){
+operation createEdge(kind: oldOCCI!Kind, sourceVertex: PCG!Vertex, targetVertex: PCG!Vertex){
 	var edge = new PCG!Edge();
 	edge.source = sourceVertex;
 	edge.target = targetVertex;

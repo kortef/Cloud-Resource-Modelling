@@ -146,9 +146,9 @@ public class ElementAdapter {
 	private EObject getCounterpart(EObject element, EList<Match> matches) {
 		Entity entity = (Entity) element;
 		for(Match match: matches){
-			if(match.getNewObj() != null && match.getOldObj() != null){
-				if(entity.getId().equals(((Entity)match.getNewObj()).getId())){
-					return match.getOldObj();
+			if(match.getTar() != null && match.getSrc() != null){
+				if(entity.getId().equals(((Entity)match.getTar()).getId())){
+					return match.getSrc();
 				}
 			}
 		}

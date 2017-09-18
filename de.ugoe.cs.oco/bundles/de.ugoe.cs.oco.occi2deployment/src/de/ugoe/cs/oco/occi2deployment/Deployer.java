@@ -151,9 +151,9 @@ public class Deployer{
 	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
 		log.debug("Update: IdSwapList");
 		for(Match match: comparator.getMatches()){
-			if(match.getOldObj()!=null && match.getNewObj()!=null){
-				Entity oldObj = (Entity) match.getOldObj();
-				Entity newObj = (Entity) match.getNewObj();
+			if(match.getSrc()!=null && match.getTar()!=null){
+				Entity oldObj = (Entity) match.getSrc();
+				Entity newObj = (Entity) match.getTar();
 				for(String[] ids: conn.getIdSwapList()){
 					if(ids[1].equals(oldObj.getId())){
 						ids[0] = newObj.getId();

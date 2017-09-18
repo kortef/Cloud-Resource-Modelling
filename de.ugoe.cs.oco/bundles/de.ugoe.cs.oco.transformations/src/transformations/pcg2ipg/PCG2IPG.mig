@@ -3,14 +3,10 @@ pre {
 }
 post {
 	for(vertex in IPG!Vertex){
-		//vertex.println();
 		for(edge in vertex.getOutgoingEdges()){
 			edge.weight = 1.0d/vertex.getOutgoingEdges().getEdgesOfKind(edge.kind).size();
-			//edge.weight = 1.0d/vertex.getOutgoingEdges().size();
-			//edge.println();
 		}
 	}
- 	"Migration Process was Successfull".println();
 }
 //-------------------------------------//
 //---------MigrateEdges--------//

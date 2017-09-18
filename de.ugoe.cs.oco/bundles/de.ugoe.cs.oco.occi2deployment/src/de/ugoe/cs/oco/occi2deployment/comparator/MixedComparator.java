@@ -72,38 +72,22 @@ public class MixedComparator extends AbsComplexComparator {
 	private void adjustElementsInGraph(Graph pcgGraph,  EList<Match> matches) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		List<Vertex> toAdd = new BasicEList<Vertex>();
-		for(Match match: matches){
-			if(match.getOldObj() != null && match.getNewObj() != null && match.getOldObj().eClass().getName().equals("Resource")){
-				Resource oldRes = (Resource) match.getOldObj();
-				Resource newRes = (Resource) match.getNewObj();
-				boolean missing = true;
-				for(Vertex vertex: pcgGraph.getVertices()){	
-					if(vertex.getResources().get(0).getId().equals(oldRes.getId())
-							&& vertex.getResources().get(1).getId().equals(newRes.getId())){
-						missing = false;
-					}	
-					else if(vertex.getResources().get(0).getId().equals(oldRes.getId())
-							|| vertex.getResources().get(1).getId().equals(newRes.getId())){
-						/*
-						EList<Edge> incEdges = new BasicEList<Edge>();
-						for(Edge edge: pcgGraph.getEdges()){
-							if(edge.getTarget() == vertex){
-								incEdges.add(edge);
-							}
-						}
-						for(Edge incEdge: incEdges){
-							//TO BE CHECKED
-							if(edgeAlreadyExists(pcgGraph, incEdge.getSource(), correctVertex(pcgGraph.getVertices(), ((Entity) old).getId())) == false){
-								incEdge.setTarget(correctVertex(pcgGraph.getVertices(), ((Entity) old).getId()));
-							}
-						}*/
-						System.out.println("DELETE: " + vertex.getTitle());
-						toRemove.add(vertex);
-					}
+		for(Match match: extractDirectResourceMatch(matches)){
+			Resource srcRes = (Resource) match.getSrc();
+			Resource tarRes = (Resource) match.getTar();
+			boolean missing = true;
+			for(Vertex vertex: pcgGraph.getVertices()){	
+				if(vertex.getResources().get(0).getId().equals(srcRes.getId())
+				&& vertex.getResources().get(1).getId().equals(tarRes.getId())){
+					missing = false;
+				}	
+				else if(vertex.getResources().get(0).getId().equals(srcRes.getId())
+				|| vertex.getResources().get(1).getId().equals(tarRes.getId())){
+					toRemove.add(vertex);
 				}
-				if(missing == true){
-					toAdd.add(createMissingVertex(oldRes, matches));
-				}
+			}
+			if(missing == true){
+				toAdd.add(createMissingVertex(srcRes, matches));
 			}
 		}
 		for(Vertex vertex: toAdd){
@@ -125,21 +109,20 @@ public class MixedComparator extends AbsComplexComparator {
 		}
 	}
 	
-	
 	private Vertex createMissingVertex(Resource oldRes, EList<Match> matches) {
 		Vertex vertex = new PcgFactoryImpl().createVertex();
 		Match missingMatch = getMatchFor(oldRes, matches);
 		pcg.Resource oldResource = new PcgFactoryImpl().createResource();
-		oldResource.setId(((Resource)missingMatch.getOldObj()).getId());
-		oldResource.setTitle(((Resource)missingMatch.getOldObj()).getTitle());
+		oldResource.setId(((Resource)missingMatch.getSrc()).getId());
+		oldResource.setTitle(((Resource)missingMatch.getSrc()).getTitle());
 		
 		pcg.Resource newResource = new PcgFactoryImpl().createResource();
-		newResource.setId(((Resource)missingMatch.getNewObj()).getId());
-		newResource.setTitle(((Resource)missingMatch.getNewObj()).getTitle());
+		newResource.setId(((Resource)missingMatch.getTar()).getId());
+		newResource.setTitle(((Resource)missingMatch.getTar()).getTitle());
 		
 		vertex.setFixpointValue(1);
 		vertex.setKind(oldRes.getKind().getScheme() + oldRes.getKind().getTerm());
-		vertex.setTitle(oldRes.getTitle() + ", " + ((Resource) missingMatch.getNewObj()).getTitle());
+		vertex.setTitle(oldRes.getTitle() + ", " + ((Resource) missingMatch.getTar()).getTitle());
 		vertex.getResources().add(oldResource);
 		vertex.getResources().add(newResource);
 		return vertex;
@@ -162,11 +145,11 @@ public class MixedComparator extends AbsComplexComparator {
 
 	private Match getMatchFor(Resource res, EList<Match> matches) {
 		for(Match match: matches){
-			if(match.getNewObj() != null && match.getOldObj()!= null){
-				System.out.println(match.getOldObj().eClass().getName());
-				if(match.getOldObj().eClass().getName().equals("Resource")){
-					if(res.getId().equals(((Resource) match.getOldObj()).getId())){
-						System.out.println(match.getOldObj()+ " : " + match.getNewObj());
+			if(match.getTar() != null && match.getSrc()!= null){
+				System.out.println(match.getSrc().eClass().getName());
+				if(match.getSrc().eClass().getName().equals("Resource")){
+					if(res.getId().equals(((Resource) match.getSrc()).getId())){
+						System.out.println(match.getSrc()+ " : " + match.getTar());
 						return match;
 					}
 				}
@@ -195,11 +178,11 @@ public class MixedComparator extends AbsComplexComparator {
 		EList<Match> toRemove = new BasicEList<Match>();
 		EList<Match> toAdd = new BasicEList<Match>();
 		for(Match match: matches){
-			if(match.getNewObj() == null){
+			if(match.getTar() == null){
 				for(Match match2: matches){
-					if(match2.getOldObj() == null){
-						if(checkIfEquivalent(match.getOldObj(),match2.getNewObj())){
-							Match fusedMatch = new Match(match.getOldObj(), match2.getNewObj());
+					if(match2.getSrc() == null){
+						if(checkIfEquivalent(match.getSrc(),match2.getTar())){
+							Match fusedMatch = new Match(match.getSrc(), match2.getTar());
 							toAdd.add(fusedMatch);
 							toRemove.add(match);
 							toRemove.add(match2);
@@ -279,7 +262,6 @@ public class MixedComparator extends AbsComplexComparator {
 		}
 	}
 	
-	//ZU TESTEN
 	@Override
 	Vertex getSuitableFixpointValue(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
 		Vertex maxVertex = null;
@@ -292,7 +274,9 @@ public class MixedComparator extends AbsComplexComparator {
 		for(List<Vertex> vertices: map.values()){
 			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
 				if(multipleMaxValuesExist(vertices)){
-					maxVertex=getMostFittingVertice(vertices, oldModel, newModel);
+					List<Vertex> prunedVertexList = pruneVertices(vertices);
+					//maxVertex=getMostFittingVertice(vertices, oldModel, newModel);
+					maxVertex=getMostFittingVertice(prunedVertexList, oldModel, newModel);
 					max = vertices.get(0).getFixpointValue();
 				}
 				else{
@@ -317,27 +301,16 @@ public class MixedComparator extends AbsComplexComparator {
 		}
 	}
 	
-	/*
-	@Override
-	Vertex getSuitableFixpointValue(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
-		Vertex maxVertex = null;
-		double max = 0.0;
-		for(List<Vertex> vertices: map.values()){
-			sortVertices(vertices);
-			if(vertices.isEmpty() == false && vertices.get(0).getFixpointValue() > max){
-				if(multipleMaxValuesExist(vertices)){
-					maxVertex=getMostFittingVertice(vertices, oldModel, newModel);
-					max = vertices.get(0).getFixpointValue();
-				}
-				else{
-					maxVertex=vertices.get(0);	
-					max = vertices.get(0).getFixpointValue();
-				}
+	private List<Vertex> pruneVertices(List<Vertex> vertices) {
+		List<Vertex> prunedVertexList = new BasicEList<Vertex>();
+		for(Vertex ver: vertices){
+			if(ver.getFixpointValue() == vertices.get(0).getFixpointValue()){
+				prunedVertexList.add(ver);
 			}
 		}
-		return maxVertex;
-	}*/
-	
+		return prunedVertexList;
+	}
+
 	private List<Vertex> getPossibleSources(pcg.Resource resource, Map<String, List<Vertex>> map) {
 		List <Vertex> possibleSources = new BasicEList<Vertex>();
 		for(List<Vertex> vertices: map.values()){
@@ -352,6 +325,15 @@ public class MixedComparator extends AbsComplexComparator {
 
 	private static Vertex getMostFittingVertice(List<Vertex> vertices, EList<EObject> oldModel, EList<EObject> newModel) {
 		int bestFit = 0;
+		for(int i=1; i < vertices.size(); i++){
+			bestFit = compareVertices(vertices.get(bestFit), vertices.get(i), oldModel, newModel);
+		}
+		return vertices.get(bestFit);
+	}
+	
+	/*
+	private static Vertex getMostFittingVertice(List<Vertex> vertices, EList<EObject> oldModel, EList<EObject> newModel) {
+		int bestFit = 0;
 		int nextFit = 1;
 		Vertex maxVertex;
 		while(nextFit < vertices.size() &&
@@ -363,14 +345,14 @@ public class MixedComparator extends AbsComplexComparator {
 			nextFit++;
 		}
 		return vertices.get(bestFit);
-	}
+	}*/
 
-	private static Vertex compareVertices(Vertex vertex, Vertex vertex2, EList<EObject> oldModel, EList<EObject> newModel) {
+	private static Integer compareVertices(Vertex vertex, Vertex vertex2, EList<EObject> oldModel, EList<EObject> newModel) {
 		if(vertexFit(vertex, oldModel, newModel) > vertexFit(vertex2, oldModel, newModel)){
-			return vertex;
+			return 0;
 		}
 		else{
-			return vertex2;
+			return 1;
 		}		
 	}
 

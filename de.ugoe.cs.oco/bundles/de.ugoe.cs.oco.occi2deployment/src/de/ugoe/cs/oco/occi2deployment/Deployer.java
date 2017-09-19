@@ -115,7 +115,7 @@ public class Deployer{
 		
 		//Adapt adapted elements
 		ElementAdapter adapter = new ElementAdapter(conn);
-		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
+		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		//Create Provisioning Plan
 		List<EObject> removeFromPOG = new BasicEList<EObject>();

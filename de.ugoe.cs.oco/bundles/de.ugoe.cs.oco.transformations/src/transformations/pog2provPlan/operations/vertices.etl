@@ -3,7 +3,7 @@ import "./generalOperations.etl";
 /*Operation: provisionableVertices
 Description: Returns a Set of all vertices that are not provisioned yet, but can now
 be provisioned. */
-operation provisionableVertices(){
+operation provisionableVertexes(){
 	var provisionable = new Set;
 	for(vertex in notProvisioned){
 		var requiredVertices = vertex.requiredVertices();
@@ -16,7 +16,7 @@ operation provisionableVertices(){
 
 /*Operation: requiredVertices
 Description: A set is returned containing all vertices required to provision the vertex the operation is called on.*/
-operation POG!Vertex requiredVertices() : Set {
+operation POG!Vertex requiredVertexes() : Set {
 	var requiredVertices = new Set;
 	for(edge in POG!Edge){
 		if(edge.target == self){

@@ -37,20 +37,16 @@ public class ElementAdapter {
 	}
 	
 	
-	public void adapt(EList<EObject> adaptedElements, EList<Match> match) {
-		for(EObject element: adaptedElements){
+	public void update(EList<EObject> updatedElements, EList<Match> match) {
+		for(EObject element: updatedElements){
 			EObject counterpart = getCounterpart(element, match);
 			EList<AttributeState[]> differences = new BasicEList<AttributeState[]>();
 			differences = investigateDifferences(element, counterpart);
-			log.info(((Entity) element).getTitle());
-			logDifferences(differences);
 			if(canBeHandledByActions(differences)){
-				log.debug("Action Update: " + element);
 				performActions(element, differences);
 			}
 			else{
-				log.debug("PUT Update: " + element);
-				performPut(element);
+				performPut(element); //stub
 			}
 		}	
 	}

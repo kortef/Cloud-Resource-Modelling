@@ -18,12 +18,12 @@ Description: Until every Vertex is "provisioned", all vertices now able to be pr
 are linked via a controll flow. */
 operation linkRemainingActions(){
 	while(notProvisioned.isEmpty() == false){	
-		for(vertex in provisionableVertices()){
-			var reqVertices = vertex.requiredVertices();
-			if(reqVertices.size() > 1) {
+		for(vertex in provisionableVertexes()){
+			var reqVertexes = vertex.requiredVertexes();
+			if(reqVertexes.size() > 1) {
 				var join = new UML!JoinNode;
 				activity.ownedNode.add(join);
-				reqVertices.joinIn(join);
+				reqVertexes.joinIn(join);
 				var cFlow = new UML!ControlFlow;
 				cFlow.source = join;
 				cFlow.target = vertex.equivalent();
@@ -31,7 +31,7 @@ operation linkRemainingActions(){
 				join.outgoing.add(cFlow);
 			}
 			else{
-				cFlow(reqVertices.first().equivalent(), vertex.equivalent(), activity);
+				cFlow(reqVertexes.first().equivalent(), vertex.equivalent(), activity);
 			}
 			notProvisioned.remove(vertex);
 		}

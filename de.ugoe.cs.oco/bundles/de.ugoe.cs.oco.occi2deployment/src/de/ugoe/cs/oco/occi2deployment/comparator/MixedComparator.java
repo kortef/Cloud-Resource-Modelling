@@ -276,7 +276,7 @@ public class MixedComparator extends AbsComplexComparator {
 				if(multipleMaxValuesExist(vertices)){
 					List<Vertex> prunedVertexList = pruneVertices(vertices);
 					//maxVertex=getMostFittingVertice(vertices, oldModel, newModel);
-					maxVertex=getMostFittingVertice(prunedVertexList, oldModel, newModel);
+					maxVertex=mostFittingVertex(prunedVertexList, oldModel, newModel);
 					max = vertices.get(0).getFixpointValue();
 				}
 				else{
@@ -290,7 +290,7 @@ public class MixedComparator extends AbsComplexComparator {
 			List<Vertex> possibleSources = getPossibleSources(maxVertex.getResources().get(1), map);
 			sortVertices(possibleSources);
 			logList(possibleSources);
-			maxVertex=getMostFittingVertice(possibleSources, oldModel, newModel);
+			maxVertex=mostFittingVertex(possibleSources, oldModel, newModel);
 			System.out.println("Second Pick: " + maxVertex.getTitle()); 
 			System.out.println("");
 			return maxVertex;
@@ -323,12 +323,16 @@ public class MixedComparator extends AbsComplexComparator {
 		return possibleSources;
 	}
 
-	private static Vertex getMostFittingVertice(List<Vertex> vertices, EList<EObject> oldModel, EList<EObject> newModel) {
-		int bestFit = 0;
-		for(int i=1; i < vertices.size(); i++){
-			bestFit = compareVertices(vertices.get(bestFit), vertices.get(i), oldModel, newModel);
+	
+	private static Vertex mostFittingVertex(List<Vertex> vertexes, EList<EObject> srcM, EList<EObject> tarM) {
+		int bestFit = 0; Vertex maxVer;
+		for(int i=1; i < vertexes.size(); i++){
+			maxVer = compVertexes(vertexes.get(bestFit), vertexes.get(i), srcM, tarM);
+			if(vertexes.get(i).equals(maxVer)){
+				bestFit = i;
+			}
 		}
-		return vertices.get(bestFit);
+		return vertexes.get(bestFit);
 	}
 	
 	/*
@@ -347,12 +351,12 @@ public class MixedComparator extends AbsComplexComparator {
 		return vertices.get(bestFit);
 	}*/
 
-	private static Integer compareVertices(Vertex vertex, Vertex vertex2, EList<EObject> oldModel, EList<EObject> newModel) {
+	private static Vertex compVertexes(Vertex vertex, Vertex vertex2, EList<EObject> oldModel, EList<EObject> newModel) {
 		if(vertexFit(vertex, oldModel, newModel) > vertexFit(vertex2, oldModel, newModel)){
-			return 0;
+			return vertex;
 		}
 		else{
-			return 1;
+			return vertex2;
 		}		
 	}
 

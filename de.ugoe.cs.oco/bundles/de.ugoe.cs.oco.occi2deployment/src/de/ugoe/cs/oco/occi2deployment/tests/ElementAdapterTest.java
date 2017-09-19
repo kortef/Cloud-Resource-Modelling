@@ -38,7 +38,7 @@ public class ElementAdapterTest {
 		
 		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
 		ElementAdapter adapter = new ElementAdapter(conn);
-		adapter.adapt(comparator.getAdaptedElements(), comparator.getMatches());
+		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		
 
 	}

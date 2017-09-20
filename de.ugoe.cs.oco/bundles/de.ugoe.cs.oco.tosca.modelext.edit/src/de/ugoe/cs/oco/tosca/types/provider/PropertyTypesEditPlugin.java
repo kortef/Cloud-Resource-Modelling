@@ -3,7 +3,6 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 import de.ugoe.cs.oco.tosca.provider.ToscaEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;

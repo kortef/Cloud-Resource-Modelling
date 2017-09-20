@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.impl;
 
+import de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl;
 import de.ugoe.cs.oco.tosca.types.CloudifyAgentPropertiesType;
 import de.ugoe.cs.oco.tosca.types.HostPropertiesType;
 import de.ugoe.cs.oco.tosca.types.OpenStackServerPropertiesType;
@@ -14,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class HostPropertiesTypeImpl extends MinimalEObjectImpl.Container implements HostPropertiesType {
+public class HostPropertiesTypeImpl extends PropertiesTypeImpl implements HostPropertiesType {
 	/**
 	 * The default value of the '{@link #getOpenstackConfig() <em>Openstack Config</em>}' attribute.
 	 * <!-- begin-user-doc -->

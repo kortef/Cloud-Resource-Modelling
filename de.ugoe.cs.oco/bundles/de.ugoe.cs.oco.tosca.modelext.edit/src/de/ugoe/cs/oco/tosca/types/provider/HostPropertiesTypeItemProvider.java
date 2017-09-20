@@ -3,6 +3,8 @@
 package de.ugoe.cs.oco.tosca.types.provider;
 
 
+import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.provider.PropertiesTypeItemProvider;
 import de.ugoe.cs.oco.tosca.types.HostPropertiesType;
 import de.ugoe.cs.oco.tosca.types.TypesFactory;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
@@ -17,15 +19,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -35,13 +32,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class HostPropertiesTypeItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends PropertiesTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -228,6 +219,69 @@ public class HostPropertiesTypeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__CLOUDIFY_AGENT_PROPERTIES,
+					 TypesFactory.eINSTANCE.createCloudifyAgentPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__FLOATING_IP_PROPERTIES,
+					 TypesFactory.eINSTANCE.createFloatingIPPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__KEY_PAIR_PROPERTIES,
+					 TypesFactory.eINSTANCE.createKeyPairPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__MPI_HOST_PROPERTIES,
+					 TypesFactory.eINSTANCE.createHostPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_FLOATING_IP_PROPERTIES,
+					 TypesFactory.eINSTANCE.createOpenStackFloatingIPPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_PROPERTIES,
+					 TypesFactory.eINSTANCE.createOpenStackServerPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__OPEN_STACK_VOLUME_PROPERTIES,
+					 TypesFactory.eINSTANCE.createOpenStackVolumePropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__SCALING_GROUP_PROPERTIES,
+					 TypesFactory.eINSTANCE.createScalingGroupPropertiesType())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.PROPERTIES_TYPE__ANY,
+				 FeatureMapUtil.createEntry
+					(TypesPackage.Literals.DOCUMENT_ROOT__VOLUME_HOST_PROPERTIES_TYPE,
+					 TypesFactory.eINSTANCE.createVolumeHostPropertiesType())));
 
 		newChildDescriptors.add
 			(createChildParameter

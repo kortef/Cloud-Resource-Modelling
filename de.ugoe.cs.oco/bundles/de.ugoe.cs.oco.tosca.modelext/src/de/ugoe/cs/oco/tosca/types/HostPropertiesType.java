@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types;
 
-import org.eclipse.emf.ecore.EObject;
+import de.ugoe.cs.oco.tosca.PropertiesType;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='HostPropertiesType' kind='elementOnly'"
  * @generated
  */
-public interface HostPropertiesType extends EObject {
+public interface HostPropertiesType extends PropertiesType {
 	/**
 	 * Returns the value of the '<em><b>Openstack Config</b></em>' attribute.
 	 * <!-- begin-user-doc -->

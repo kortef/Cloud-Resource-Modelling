@@ -4,13 +4,13 @@
     editorDirectory="/de.ugoe.cs.oco.tosca.modelext.editor/src" modelPluginID="de.ugoe.cs.oco.tosca.modelext"
     redirection="" modelName="PropertyTypes" modelPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     testsDirectory="/de.ugoe.cs.oco.tosca.modelext.tests/src" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="de.ugoe.cs.oco.tosca.modelext.edit"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="de.ugoe.cs.oco.tosca.modelext.edit"
     editorPluginID="de.ugoe.cs.oco.tosca.modelext.editor" testsPluginID="de.ugoe.cs.oco.tosca.modelext.tests"
     language="" usedGenPackages="../../de.ugoe.cs.oco.tosca.model/model/tosca.genmodel#//tosca ../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
     operationReflection="true" importOrganizing="true">
   <foreignModel>types.ecore</foreignModel>
   <genPackages prefix="Types" basePackage="de.ugoe.cs.oco.tosca" resource="XML" disposableProviderFactory="true"
-      childCreationExtenders="true" contentTypeIdentifier="" fileExtensions="tosca"
+      childCreationExtenders="true" contentTypeIdentifier="" fileExtensions="toscaext"
       ecorePackage="types.ecore#/" publicationLocation="">
     <genClasses ecoreClass="types.ecore#//CloudifyAgentPropertiesType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute types.ecore#//CloudifyAgentPropertiesType/user"/>

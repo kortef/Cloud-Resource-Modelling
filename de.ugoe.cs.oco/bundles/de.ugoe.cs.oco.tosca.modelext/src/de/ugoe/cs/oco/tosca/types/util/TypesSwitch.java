@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.util;
 
+import de.ugoe.cs.oco.tosca.PropertiesType;
 import de.ugoe.cs.oco.tosca.types.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -87,6 +88,7 @@ public class TypesSwitch<T> extends Switch<T> {
 			case TypesPackage.HOST_PROPERTIES_TYPE: {
 				HostPropertiesType hostPropertiesType = (HostPropertiesType)theEObject;
 				T result = caseHostPropertiesType(hostPropertiesType);
+				if (result == null) result = casePropertiesType(hostPropertiesType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -298,6 +300,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVolumeHostPropertiesType(VolumeHostPropertiesType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePropertiesType(PropertiesType object) {
 		return null;
 	}
 

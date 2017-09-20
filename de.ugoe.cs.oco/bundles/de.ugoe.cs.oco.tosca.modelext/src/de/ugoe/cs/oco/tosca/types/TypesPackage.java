@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types;
 
+import de.ugoe.cs.oco.tosca.ToscaPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -277,13 +278,22 @@ public interface TypesPackage extends EPackage {
 	int HOST_PROPERTIES_TYPE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_PROPERTIES_TYPE__ANY = ToscaPackage.PROPERTIES_TYPE__ANY;
+
+	/**
 	 * The feature id for the '<em><b>Openstack Config</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE__OPENSTACK_CONFIG = 0;
+	int HOST_PROPERTIES_TYPE__OPENSTACK_CONFIG = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Management Network Name</b></em>' attribute.
@@ -292,7 +302,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE__MANAGEMENT_NETWORK_NAME = 1;
+	int HOST_PROPERTIES_TYPE__MANAGEMENT_NETWORK_NAME = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Agent Config</b></em>' attribute.
@@ -301,7 +311,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE__AGENT_CONFIG = 2;
+	int HOST_PROPERTIES_TYPE__AGENT_CONFIG = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Cloudify Agent</b></em>' containment reference.
@@ -310,7 +320,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT = 3;
+	int HOST_PROPERTIES_TYPE__CLOUDIFY_AGENT = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Server</b></em>' containment reference.
@@ -319,7 +329,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE__SERVER = 4;
+	int HOST_PROPERTIES_TYPE__SERVER = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Host Properties Type</em>' class.
@@ -328,7 +338,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE_FEATURE_COUNT = 5;
+	int HOST_PROPERTIES_TYPE_FEATURE_COUNT = ToscaPackage.PROPERTIES_TYPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Host Properties Type</em>' class.
@@ -337,7 +347,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_PROPERTIES_TYPE_OPERATION_COUNT = 0;
+	int HOST_PROPERTIES_TYPE_OPERATION_COUNT = ToscaPackage.PROPERTIES_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.types.impl.KeyPairPropertiesTypeImpl <em>Key Pair Properties Type</em>}' class.

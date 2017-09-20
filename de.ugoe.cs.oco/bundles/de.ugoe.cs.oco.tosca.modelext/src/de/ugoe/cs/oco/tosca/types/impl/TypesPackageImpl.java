@@ -671,12 +671,14 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		ToscaPackage theToscaPackage = (ToscaPackage)EPackage.Registry.INSTANCE.getEPackage(ToscaPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		hostPropertiesTypeEClass.getESuperTypes().add(theToscaPackage.getPropertiesType());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(cloudifyAgentPropertiesTypeEClass, CloudifyAgentPropertiesType.class, "CloudifyAgentPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

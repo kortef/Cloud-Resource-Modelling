@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.types.util;
 
+import de.ugoe.cs.oco.tosca.PropertiesType;
 import de.ugoe.cs.oco.tosca.types.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -110,6 +111,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseVolumeHostPropertiesType(VolumeHostPropertiesType object) {
 				return createVolumeHostPropertiesTypeAdapter();
+			}
+			@Override
+			public Adapter casePropertiesType(PropertiesType object) {
+				return createPropertiesTypeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -282,6 +287,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVolumeHostPropertiesTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.PropertiesType <em>Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.PropertiesType
+	 * @generated
+	 */
+	public Adapter createPropertiesTypeAdapter() {
 		return null;
 	}
 

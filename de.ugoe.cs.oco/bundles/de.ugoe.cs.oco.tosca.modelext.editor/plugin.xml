@@ -28,7 +28,7 @@
             id="de.ugoe.cs.oco.tosca.types.presentation.TypesEditorID"
             name="%_UI_TypesEditor_label"
             icon="icons/full/obj16/TypesModelFile.gif"
-            extensions="tosca"
+            extensions="toscaext"
             class="de.ugoe.cs.oco.tosca.types.presentation.TypesEditor"
             contributorClass="de.ugoe.cs.oco.tosca.types.presentation.TypesActionBarContributor">
       </editor>

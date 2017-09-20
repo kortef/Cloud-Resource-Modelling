@@ -60,7 +60,7 @@ public class TypesExample {
 		if (args.length == 0) {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.tosca"));
+				Resource resource = resourceSet.createResource(URI.createURI("http:///My.toscaext"));
 				DocumentRoot documentRoot = TypesFactory.eINSTANCE.createDocumentRoot();
 				CloudifyAgentPropertiesType root = TypesFactory.eINSTANCE.createCloudifyAgentPropertiesType();
 				documentRoot.setCloudifyAgentProperties(root);

@@ -17,7 +17,7 @@
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated PropertyTypes -->
       <parser
-            type="tosca"
+            type="toscaext"
             class="de.ugoe.cs.oco.tosca.types.util.TypesResourceFactoryImpl"/>
    </extension>
 

@@ -17,12 +17,19 @@ public class CMDconvert2xsd implements Command {
 		Path filePath = null;
 		String fileName = "";
 		String fileSeparator = System.getProperty("file.separator");
+		String targetNamespace = null;
 				
 		try {
 			filePath = Paths.get((String) parameters.get(0));
 			
+			// check if outputPath has been specified
 			if (parameters.size() >= 2){
 				outputPath = Paths.get((String) parameters.get(1));
+			}
+			
+			//check if targetNamespace has been specified
+			if (parameters.size() >= 3){
+				targetNamespace = (String) parameters.get(2);
 			}
 		}
 		catch (Exception e){
@@ -49,7 +56,7 @@ public class CMDconvert2xsd implements Command {
 		
 		
 		try{
-			result = new TOSCA2XSDTransformator().transform(filePath, output);
+			result = new TOSCA2XSDTransformator().transform(filePath, output, targetNamespace);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

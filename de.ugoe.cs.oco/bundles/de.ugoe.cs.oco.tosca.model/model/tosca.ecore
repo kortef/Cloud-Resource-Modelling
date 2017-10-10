@@ -2388,7 +2388,7 @@
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##other"/>
         <details key="name" value=":0"/>
-        <details key="processing" value="lax"/>
+        <details key="processing" value="strict"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

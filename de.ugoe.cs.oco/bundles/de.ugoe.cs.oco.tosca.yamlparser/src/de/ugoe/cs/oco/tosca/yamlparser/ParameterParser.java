@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.TParameter;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
@@ -25,7 +23,7 @@ public class ParameterParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TParameter> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public List<TParameter> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		List<TParameter> parameters = new ArrayList<TParameter>();
 		for (Map.Entry<String, ?> entry: input.entrySet()){
 			TParameter parameter = ToscaFactory.eINSTANCE.createTParameter();

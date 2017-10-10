@@ -7812,7 +7812,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 			 "kind", "elementWildcard",
 			 "wildcards", "##other",
 			 "name", ":0",
-			 "processing", "lax"
+			 "processing", "strict"
 		   });	
 		addAnnotation
 		  (upperBoundTypeEDataType, 

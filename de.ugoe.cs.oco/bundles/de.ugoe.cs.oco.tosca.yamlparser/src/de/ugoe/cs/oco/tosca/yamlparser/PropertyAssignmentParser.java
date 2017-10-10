@@ -46,7 +46,7 @@ public class PropertyAssignmentParser extends Parser{
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		TypesFactory typesFactory = TypesFactory.eINSTANCE;
 		Entry<String, ?> propertyEntry = input.entrySet().iterator().next();

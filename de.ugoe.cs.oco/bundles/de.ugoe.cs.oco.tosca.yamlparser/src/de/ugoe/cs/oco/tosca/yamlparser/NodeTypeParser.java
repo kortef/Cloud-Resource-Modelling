@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -38,12 +37,14 @@ import de.ugoe.cs.oco.tosca.TypesType;
 public class NodeTypeParser extends Parser {
 	
 	@Override
-	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
+		TOSCAYamlTemplateParser parser = (TOSCAYamlTemplateParser) containingParser;
 		List<TNodeType> resultList = new ArrayList<>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TNodeType type = ToscaFactory.eINSTANCE.createTNodeType();
 			type.setName(entry.getKey());
-			for (Map.Entry<String, ?> innerentry: ((Map<String, ?>)entry.getValue()).entrySet()){
+			LOGGER.info("Parsing NodeType " + type.getName() + ".");
+			for (Map.Entry<String, ?> innerentry: ((Map<String, ?>) entry.getValue()).entrySet()){
 				String key = innerentry.getKey();
 				switch (key){
 					case "derived_from":
@@ -56,10 +57,11 @@ public class NodeTypeParser extends Parser {
 					case "description":
 						break;
 					case "properties":
-						LOGGER.info("Found Property definition.");
+						LOGGER.info("Found Property definition.");	
+						XSDSchema schema = parser.getPropertyTypesSchema();
 						XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
-								innerentry.getValue(), type);
-						
+								innerentry.getValue(), schema);	
+						propertiesDefinitionXSD.setName(type.getName() + "Properties");
 						break;
 					case "requirements":
 						break;
@@ -75,6 +77,10 @@ public class NodeTypeParser extends Parser {
 						type.setInterfaces(interfacesType);	
 						break;
 					case "artifacts":
+						break;
+					case "abstract":
+						break;
+					case "metadata":
 						break;
 					default:
 						throw new ParseException("Unsupported key " + innerentry.getKey() + " read.");

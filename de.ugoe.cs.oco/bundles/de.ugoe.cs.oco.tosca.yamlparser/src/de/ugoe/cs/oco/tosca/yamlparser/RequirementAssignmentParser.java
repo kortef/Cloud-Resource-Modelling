@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * @author fglaser
@@ -99,7 +97,7 @@ public class RequirementAssignmentParser extends Parser {
 	}
 
 @Override
-public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
 	// TODO Auto-generated method stub
 	return null;
 }

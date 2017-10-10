@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  de.ugoe.cs.oco.tosca.modelext;bundle-version="1.0.0",
  de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0",
  de.ugoe.cs.oco.evaluator;bundle-version="1.0.0",
- de.ugoe.cs.oco.utils;bundle-version="1.0.0"
+ de.ugoe.cs.oco.utils;bundle-version="1.0.0",
+ org.eclipse.xsd
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: de.ugoe.cs.oco.tosca.yamlparser

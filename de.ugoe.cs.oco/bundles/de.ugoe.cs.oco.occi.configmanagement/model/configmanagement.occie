@@ -9,7 +9,7 @@
     </attributes>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='resource']"/>
   </kinds>
-  <kinds name="RoleAttachment" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="RoleAttachment" source="//@kinds[term='ansiblerole']">
+  <kinds name="RoleAttachment" scheme="http://oco.cs.ugoe.de/occi/configmanagement#" title="RoleAttachment" source="//@kinds[term='ansiblerole']" target="//@kinds[term='managedcomponent']">
     <attributes name="occi.ansible.user" mutable="true" required="true" default="">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>

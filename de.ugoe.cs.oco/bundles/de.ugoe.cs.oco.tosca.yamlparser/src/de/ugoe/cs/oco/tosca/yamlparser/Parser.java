@@ -16,7 +16,7 @@ public abstract class Parser {
 	protected static Map<String, Class> parserMap;
 	protected EObject current;
 
-	public abstract Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException;
+	public abstract Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException;
 	
 	public abstract Object parse(List<?> inputArray) throws ParseException;
 }

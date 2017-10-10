@@ -35,7 +35,7 @@ public interface TypesType extends EObject {
 	 * @return the value of the '<em>Any</em>' attribute list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTypesType_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
-	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
+	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='strict'"
 	 * @generated
 	 */
 	FeatureMap getAny();

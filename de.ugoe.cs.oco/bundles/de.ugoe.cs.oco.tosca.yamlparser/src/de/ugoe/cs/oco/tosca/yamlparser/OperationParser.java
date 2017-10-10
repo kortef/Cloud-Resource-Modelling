@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.InputParametersType;
 import de.ugoe.cs.oco.tosca.TOperation;
 import de.ugoe.cs.oco.tosca.TParameter;
@@ -26,7 +24,7 @@ public class OperationParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TOperation> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public List<TOperation> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		Map<String, ?> map = (Map<String, ?>) input;
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		List<TOperation> operations = new ArrayList<TOperation>();

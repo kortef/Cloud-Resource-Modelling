@@ -6,8 +6,6 @@ package de.ugoe.cs.oco.tosca.yamlparser;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.TGroupTemplate;
 import de.ugoe.cs.oco.tosca.TNodeTemplate;
 import de.ugoe.cs.oco.tosca.TPolicyTemplate;
@@ -26,7 +24,7 @@ public class TopologyTemplateParser extends Parser{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public TTopologyTemplate parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public TTopologyTemplate parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		TTopologyTemplate topologyTemplate = factory.createTTopologyTemplate();
 		for (Map.Entry<String, ?> entry: input.entrySet()){

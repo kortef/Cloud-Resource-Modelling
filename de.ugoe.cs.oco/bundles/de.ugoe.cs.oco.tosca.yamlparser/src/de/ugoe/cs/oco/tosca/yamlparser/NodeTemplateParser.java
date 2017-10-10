@@ -10,8 +10,6 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.CapabilitiesType;
 import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PropertiesType;
@@ -127,7 +125,7 @@ public class NodeTemplateParser extends Parser{
 	}
 
 	@Override
-	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}

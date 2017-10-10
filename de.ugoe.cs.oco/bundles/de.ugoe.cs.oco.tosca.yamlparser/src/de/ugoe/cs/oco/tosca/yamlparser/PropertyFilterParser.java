@@ -3,8 +3,6 @@ package de.ugoe.cs.oco.tosca.yamlparser;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
-
 
 public class PropertyFilterParser extends Parser {
 
@@ -37,7 +35,7 @@ public class PropertyFilterParser extends Parser {
 //	}
 
 	@Override
-	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
 	}

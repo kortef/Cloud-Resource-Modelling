@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 
 import de.ugoe.cs.oco.tosca.SourceElementType;
@@ -22,7 +21,7 @@ import de.ugoe.cs.oco.tosca.ToscaFactory;
 public class RelationshipTemplateParser extends Parser {
 
 	@Override
-	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
 		List<TRelationshipTemplate> templates = new ArrayList<TRelationshipTemplate>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TRelationshipTemplate template = ToscaFactory.eINSTANCE.createTRelationshipTemplate();

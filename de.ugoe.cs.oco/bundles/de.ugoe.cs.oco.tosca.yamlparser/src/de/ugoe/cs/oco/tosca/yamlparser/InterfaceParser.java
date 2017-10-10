@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import de.ugoe.cs.oco.tosca.TInterface;
 import de.ugoe.cs.oco.tosca.TOperation;
@@ -24,7 +23,7 @@ import de.ugoe.cs.oco.tosca.ToscaFactory;
 public class InterfaceParser extends Parser {
 
 	@Override
-	public Object parse(Map<String, ?> inputMap, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
 		List<TInterface> resultList = new ArrayList<TInterface>();
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			TInterface interf = ToscaFactory.eINSTANCE.createTInterface();

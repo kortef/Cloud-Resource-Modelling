@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
@@ -29,7 +28,7 @@ public class CapabilityTypeParser extends Parser {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TCapabilityType> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public List<TCapabilityType> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		List<TCapabilityType> capabilityTypes = new ArrayList<TCapabilityType>();
 		// ToscaUtilFactory utilfactory = ToscaUtilFactory.eINSTANCE;

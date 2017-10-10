@@ -10,8 +10,6 @@ import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.TArtifactType;
@@ -28,7 +26,7 @@ public class ArtifactTypeParser extends Parser {
 	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map, org.eclipse.emf.ecore.EObject)
 	 */
 	@Override
-	public List<TArtifactType> parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public List<TArtifactType> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		Map<String, ?> map = (Map<String, ?>) input;
 		List<TArtifactType> artifactTypes = new ArrayList<TArtifactType>();
 		ToscaFactory factory = ToscaFactory.eINSTANCE;

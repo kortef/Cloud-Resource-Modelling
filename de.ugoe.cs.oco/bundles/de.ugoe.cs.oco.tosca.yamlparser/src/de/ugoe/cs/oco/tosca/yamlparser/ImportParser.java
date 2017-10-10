@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
@@ -24,7 +22,7 @@ public class ImportParser extends Parser{
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object parse(Map<String, ?> input, EObject containingObject) throws ParseException {
+	public Object parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		//ServiceTemplate template = (ServiceTemplate) model;
 		Map<String, ?> map = (Map<String, ?>) input;
 		List<TImport> imports = new ArrayList<TImport>();

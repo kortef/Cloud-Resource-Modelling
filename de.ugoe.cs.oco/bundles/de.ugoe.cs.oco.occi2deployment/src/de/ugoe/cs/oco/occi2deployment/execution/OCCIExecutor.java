@@ -21,6 +21,7 @@ import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
 public class OCCIExecutor extends AbsExecutor{
 	
 	/**Creates an Executor to the OCCI API of the specified connection.
+	 * Sets maxTries to 3.
 	 * @param conn
 	 */
 	public OCCIExecutor(Connection conn) {
@@ -28,6 +29,12 @@ public class OCCIExecutor extends AbsExecutor{
 		this.maxTries = 3;
 	}
 	
+	/**Creates Executor to the OCCI API of the specified connection.
+	 * maxTries is hereby the maximum amount of retries for a request.
+	 * Should be at least 2 to handle connection issues.
+	 * @param conn
+	 * @param maxTries
+	 */
 	public OCCIExecutor(Connection conn, int maxTries){
 		this.connection = conn;
 		this.maxTries = maxTries;
@@ -74,6 +81,11 @@ public class OCCIExecutor extends AbsExecutor{
 		return output;
 	}
 
+	/**Performs a POST(Action) request on the EObject element with the Action stored in EObject eAction.
+	 * @param element
+	 * @param eAction
+	 * @return
+	 */
 	private String executeActionOperation(EObject element, EObject eAction) {
 		Entity entity = (Entity) element;	
 		Action action = (Action) eAction;
@@ -98,6 +110,10 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 	}
 	
+	/**Returns generated Category header for the passed action.
+	 * @param action
+	 * @return
+	 */
 	private String generateCategoryHeader(Action action) {
 		String category = new String();
 		category = 	action.getTerm() +"; "+
@@ -106,6 +122,10 @@ public class OCCIExecutor extends AbsExecutor{
 		return category;
 	}
 
+	/**Returns output of GET request for the passed Entity EObject extracted.
+	 * @param extracted
+	 * @return
+	 */
 	public String executeGetOperation(EObject extracted) {
 		Entity entity = (Entity) extracted;
 		String adaptedAddress = getEntityKindURI(entity);
@@ -155,6 +175,10 @@ public class OCCIExecutor extends AbsExecutor{
 		return null;
 	}
 
+	/**Performs POST request to provision the Resource described by the EObject element.
+	 * @param element
+	 * @return
+	 */
 	private String executePostOperation(EObject element) {
 		Entity entity = (Entity) element;	
 		String adaptedAddress = getEntityKindURI(entity);
@@ -183,6 +207,10 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 	}
 	
+	/**Performs DELETE request to deprovision Resource described by the EObject element.
+	 * @param element
+	 * @return
+	 */
 	private String executeDeleteOperation(EObject element) {
 		Entity entity = (Entity) element;	
 		
@@ -270,6 +298,11 @@ public class OCCIExecutor extends AbsExecutor{
 		return null;
 	}
 
+	/**Executes PUT requested based on the Resource described in the EObject element.
+	 * Currently a stub due to missing implementation of OOI.
+	 * @param element
+	 * @return
+	 */
 	public String executePutOperation(EObject element) {
 		// TODO Auto-generated catch block
 		return "TODO";

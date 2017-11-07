@@ -218,6 +218,10 @@ public class Provisioner implements Runnable {
 		this.provisionElements();
 	}
 	
+	/**Waits until EObject extracted is ready for further processing. For example,
+	 * this function pauses one control flow until the Resource extracted is in state active.
+	 * @param extracted
+	 */
 	public void waitForActiveState(EObject extracted) {
 		if(extracted.eClass().getName().equals("Resource")){
 			Entity entity = (Entity) extracted;

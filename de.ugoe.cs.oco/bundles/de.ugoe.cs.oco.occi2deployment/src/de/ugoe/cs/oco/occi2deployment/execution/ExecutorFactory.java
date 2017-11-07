@@ -2,6 +2,10 @@ package de.ugoe.cs.oco.occi2deployment.execution;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 
+/**Factory class for executor objects.
+ * @author rockodell
+ *
+ */
 public class ExecutorFactory {
 	/**Returns Executor instance.
 	 * @param criteria Accepts: "OCCI","Openstack".

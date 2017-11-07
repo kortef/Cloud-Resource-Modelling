@@ -3,16 +3,12 @@ package de.ugoe.cs.oco.occi2deployment.tests;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.adapter.AttributeAction;
 import de.ugoe.cs.oco.occi2deployment.adapter.ElementAdapter;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
@@ -21,7 +17,6 @@ import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 
 public class ElementAdapterTest {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Logger.getLogger(ElementAdapter.class.getName()).setLevel(Level.DEBUG);
 		Logger.getLogger(Executor.class.getName()).setLevel(Level.DEBUG);

@@ -176,10 +176,16 @@ public abstract class AbsExecutor implements Executor {
 		log.debug("Rest response: "  +output);	
 	}
 
+	/** Returns connection of the Executor object.
+	 * @return connection
+	 */
 	public Connection getConn() {
 		return connection;
 	}
 
+	/**Sets connection of the Executor object.
+	 * @param conn
+	 */
 	public void setConn(Connection conn) {
 		this.connection = conn;
 	}

@@ -17,6 +17,8 @@ import org.json.simple.parser.ParseException;
 
 /**An executor capable of performing requests to the Openstack API.
  * Required due to incompability of the OOI implementation and network management.
+ * Currently only used as workaround for the management of network entities, as OOI does not provide
+ * a proper implementation. Thus, some information is hardcoded in this class and requires rework!
  * @author rockodell
  *
  */
@@ -30,6 +32,12 @@ public class OpenstackExecutor extends AbsExecutor {
 		this.maxTries = 2;
 	}
 
+	/**Creates an executor for the Openstack API using the information in the passed Connection conn.
+	 * maxTries hereby represents the amount of times a request is resend if a failure occures.
+	 * Should be at least 2 to handle network issues.
+	 * @param conn
+	 * @param maxTries
+	 */
 	public OpenstackExecutor(Connection conn, int maxTries){
 		this.connection = conn;
 		this.maxTries = maxTries;
@@ -117,6 +125,11 @@ public class OpenstackExecutor extends AbsExecutor {
 		}
 	}
 
+	/**Returns value of the attribute from the Entity having the name described in the String string.
+	 * @param string
+	 * @param network
+	 * @return
+	 */
 	private String getAttribute(String string, Entity network) {
 		for(AttributeState attr: network.getAttributes()){
 			if(attr.getName().equals(string)){
@@ -132,7 +145,12 @@ public class OpenstackExecutor extends AbsExecutor {
 		log.info("Not Implemented Yet!");
 		return null;
 	}
-
+	
+	
+	/**Performs POST request to provision the Resource described by the EObject element.
+	 * @param element
+	 * @return
+	 */
 	private String executePostOperation(EObject element) {
 		Entity entity = (Entity) element;
 		log.info("Execute Request POST: " + entity.getTitle());
@@ -187,6 +205,10 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 
+	/**Performs DELETE request to deprovision Resource described by the EObject element.
+	 * @param element
+	 * @return
+	 */
 	private String executeDeleteOperation(EObject element) {
 		deleteAllPorts(element);
 		Entity entity = (Entity) element;
@@ -230,6 +252,10 @@ public class OpenstackExecutor extends AbsExecutor {
 		}
 	}
 	
+	/**Returns all ports of the passed element.
+	 * @param element
+	 * @return
+	 */
 	private List<String> getPorts(EObject element) {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports?fields=id",
 				"GET", false, null, this.connection.getToken());
@@ -251,6 +277,11 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 	
+	/**Returns id of the network id for the given portId.
+	 * @param portId
+	 * @param count
+	 * @return
+	 */
 	private String getNwId(String portId, int count) {
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + portId
 				+ "?fields=network_id", "GET", false, null, this.connection.getToken());
@@ -275,6 +306,9 @@ public class OpenstackExecutor extends AbsExecutor {
 		return null;
 	}
 	
+	/**Performs deprovisioning request for the passed portId.
+	 * @param portId
+	 */
 	private void deletePort(String portId){
 		HttpURLConnection conn = establishConnection("http://192.168.34.1:9696/v2.0/ports/" + portId,
 				"DELETE", false, null, this.connection.getToken());
@@ -328,6 +362,11 @@ public class OpenstackExecutor extends AbsExecutor {
 		return ports;
 	}
 
+	/**Performs Put operation on passed entity.
+	 * Currently a stub.
+	 * @param entity
+	 * @return
+	 */
 	private String executePutOperation(EObject entity) {
 		// TODO Auto-generated method stub
 		return "TODO";

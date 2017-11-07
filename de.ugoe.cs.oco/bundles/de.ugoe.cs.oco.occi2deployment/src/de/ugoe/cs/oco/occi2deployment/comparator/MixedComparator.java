@@ -17,8 +17,6 @@ import org.occiware.clouddesigner.occi.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
-import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
-import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
 import pcg.*;
@@ -61,6 +59,10 @@ public class MixedComparator extends AbsComplexComparator {
 		checkNewAndMissingMatchesForSimilarities(this.matches, oldModel, newModel);
 	}
 
+	/**Adapts the PCG according the results of the passed Comparator comp.
+	 * @param pcgPath
+	 * @param comp
+	 */
 	private void adaptPCG(Path pcgPath, Comparator comp) {
 		EList<EObject> pcg = ModelUtility.loadPCG(pcgPath);
 		Graph pcgGraph = (Graph) pcg.get(0);
@@ -69,6 +71,10 @@ public class MixedComparator extends AbsComplexComparator {
 		CachedResourceSet.getCache().clear();
 	}
 
+	/**Removes all Vertices from the PCG addressing a Resource conntained in matches.
+	 * @param pcgGraph
+	 * @param matches
+	 */
 	private void adjustElementsInGraph(Graph pcgGraph,  EList<Match> matches) {
 		List<Vertex> toRemove = new BasicEList<Vertex>();
 		List<Vertex> toAdd = new BasicEList<Vertex>();
@@ -109,6 +115,14 @@ public class MixedComparator extends AbsComplexComparator {
 		}
 	}
 	
+	/**Creates Vertexes for already matched Resources missing in the PCG.
+	 * Required for Resources having no connections or totaly different connections.
+	 * Currently the fixpoint value of such vertexes is calculated each iteration too and thus
+	 * is reduced in each step. Could be refactored so that the fixpoint value stays at 1.
+	 * @param oldRes
+	 * @param matches
+	 * @return
+	 */
 	private Vertex createMissingVertex(Resource oldRes, EList<Match> matches) {
 		Vertex vertex = new PcgFactoryImpl().createVertex();
 		Match missingMatch = getMatchFor(oldRes, matches);
@@ -128,6 +142,13 @@ public class MixedComparator extends AbsComplexComparator {
 		return vertex;
 	}
 
+	/**Checks whether an Edge between two Map pairs (Vertexes) exists in the PCG.
+	 * @param pcgGraph
+	 * @param srcVertex
+	 * @param tarVertex
+	 * @return
+	 */
+	@SuppressWarnings("unused")
 	private boolean edgeAlreadyExists(Graph pcgGraph, Vertex srcVertex, Vertex tarVertex) {
 		EList<Edge> outEdges = new BasicEList<Edge>();
 		for(Edge edge: pcgGraph.getEdges()){
@@ -143,6 +164,11 @@ public class MixedComparator extends AbsComplexComparator {
 		return false;
 	}
 
+	/**Returns the corresponding source Match for the Resource res.
+	 * @param res
+	 * @param matches
+	 * @return
+	 */
 	private Match getMatchFor(Resource res, EList<Match> matches) {
 		for(Match match: matches){
 			if(match.getTar() != null && match.getSrc()!= null){
@@ -158,6 +184,12 @@ public class MixedComparator extends AbsComplexComparator {
 		return null;
 	}
 
+	/**Returns Vertex describing a Map pair with two Resources having the same id as the passed String id.
+	 * @param vertices
+	 * @param id
+	 * @return
+	 */
+	@SuppressWarnings("unused")
 	private Vertex correctVertex(EList<Vertex> vertices, String id) {
 		for(Vertex vertex: vertices){
 			if(vertex.getResources().get(0).getId().equals(id) && vertex.getResources().get(1).getId().equals(id)){
@@ -241,6 +273,12 @@ public class MixedComparator extends AbsComplexComparator {
 		*/
 	}
 
+	/**Checks whether two Entities are equivalent according to their Mixins.
+	 * As soon as one difference is found they are not equivalent and false is returned.
+	 * @param oldRes
+	 * @param newRes
+	 * @return
+	 */
 	private boolean compareMixins(Entity oldRes, Entity newRes) {
 		if(oldRes.getMixins().size() != newRes.getMixins().size()){
 			return false;
@@ -301,6 +339,11 @@ public class MixedComparator extends AbsComplexComparator {
 		}
 	}
 	
+	/**Removes all Vertexes from the List of Vertexes having a fixpoint value != the vertex on position 0.
+	 * As the List of Vertexes is sort beforehand all vertexes having a fixpoint value < max are removed.
+	 * @param vertices
+	 * @return
+	 */
 	private List<Vertex> pruneVertices(List<Vertex> vertices) {
 		List<Vertex> prunedVertexList = new BasicEList<Vertex>();
 		for(Vertex ver: vertices){
@@ -311,6 +354,11 @@ public class MixedComparator extends AbsComplexComparator {
 		return prunedVertexList;
 	}
 
+	/**Returns List of possible source Resources for the passed target Resource according.
+	 * @param resource
+	 * @param map
+	 * @return
+	 */
 	private List<Vertex> getPossibleSources(pcg.Resource resource, Map<String, List<Vertex>> map) {
 		List <Vertex> possibleSources = new BasicEList<Vertex>();
 		for(List<Vertex> vertices: map.values()){
@@ -324,6 +372,12 @@ public class MixedComparator extends AbsComplexComparator {
 	}
 
 	
+	/**Returns most fitting vertex (map pair) from the list based on their attributes.
+	 * @param vertexes
+	 * @param srcM
+	 * @param tarM
+	 * @return
+	 */
 	private static Vertex mostFittingVertex(List<Vertex> vertexes, EList<EObject> srcM, EList<EObject> tarM) {
 		int bestFit = 0; Vertex maxVer;
 		for(int i=1; i < vertexes.size(); i++){
@@ -335,22 +389,14 @@ public class MixedComparator extends AbsComplexComparator {
 		return vertexes.get(bestFit);
 	}
 	
-	/*
-	private static Vertex getMostFittingVertice(List<Vertex> vertices, EList<EObject> oldModel, EList<EObject> newModel) {
-		int bestFit = 0;
-		int nextFit = 1;
-		Vertex maxVertex;
-		while(nextFit < vertices.size() &&
-				vertices.get(bestFit).getFixpointValue() == vertices.get(nextFit).getFixpointValue()){
-			maxVertex = compareVertices(vertices.get(bestFit), vertices.get(nextFit), oldModel, newModel);
-			if(vertices.get(nextFit).equals(maxVertex)){
-				bestFit = nextFit;
-			}
-			nextFit++;
-		}
-		return vertices.get(bestFit);
-	}*/
 
+	/**Compares two vertexes on the Attribute level and returns the more fitting one.
+	 * @param vertex
+	 * @param vertex2
+	 * @param oldModel
+	 * @param newModel
+	 * @return
+	 */
 	private static Vertex compVertexes(Vertex vertex, Vertex vertex2, EList<EObject> oldModel, EList<EObject> newModel) {
 		if(vertexFit(vertex, oldModel, newModel) > vertexFit(vertex2, oldModel, newModel)){
 			return vertex;
@@ -360,6 +406,13 @@ public class MixedComparator extends AbsComplexComparator {
 		}		
 	}
 
+	/**Counts the amount of equivalent AttributeStates of the vertexes.
+	 * Could be changed so that weights for the different Attributes are considered.
+	 * @param vertex
+	 * @param oldModel
+	 * @param newModel
+	 * @return
+	 */
 	private static int vertexFit(Vertex vertex, EList<EObject> oldModel, EList<EObject> newModel) {
 		int count = 0;
 		EObject oldOcciResource;
@@ -385,6 +438,10 @@ public class MixedComparator extends AbsComplexComparator {
 		return count;
 	}
 
+	/**Checks whether multiple MaxValues in a List of Vertexes exist.
+	 * @param vertices
+	 * @return
+	 */
 	private static boolean multipleMaxValuesExist(List<Vertex> vertices) {
 		if(vertices.size() > 1 && vertices.get(0).getFixpointValue() == vertices.get(1).getFixpointValue()){		
 			return true;

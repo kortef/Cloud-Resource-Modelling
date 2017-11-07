@@ -2,19 +2,14 @@ package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
-import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
-import pcg.PcgFactory;
-import pcg.Resource;
 import pcg.Vertex;
 
 
@@ -32,6 +27,9 @@ public class ComplexComparator extends AbsComplexComparator {
 		compare(oldModelPath, newModelPath);
 	}
 
+	/**Empty Constructor
+	 * 
+	 */
 	public ComplexComparator() {
 		// TODO Auto-generated constructor stub
 	}
@@ -49,6 +47,13 @@ public class ComplexComparator extends AbsComplexComparator {
 		this.matches = generateMatches(ipgPath, oldModel, newModel);
 	}
 	
+	/**Returns generated matches from the ipgPath.
+	 * Therefore, this method triggers the calculation of the fixpoint values from the IPG.
+	 * @param ipgPath
+	 * @param oldModel
+	 * @param newModel
+	 * @return
+	 */
 	EList<Match> generateMatches(Path ipgPath, EList<EObject> oldModel, EList<EObject> newModel) {
 		Map<String, List<Vertex>> map = calculateFixpointValueMap(ipgPath);
 		return createMatch(map, oldModel, newModel);

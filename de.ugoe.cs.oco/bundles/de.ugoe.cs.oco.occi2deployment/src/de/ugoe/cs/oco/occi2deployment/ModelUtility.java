@@ -221,7 +221,6 @@ public class ModelUtility {
 	}
 	
 	/**Returns all of the models top level and nested Resources as EObject List.
-	 * SOLLTE VERBESSERT WERDEN!
 	 * @param model OCCI Model
 	 * @return EObject List containing all Entity elements contained in the model
 	 */

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
-/**Comparator interface defining methods to recieve comparisson results.
+/**Comparator interface defining methods to receive comparison results.
  * @author rockodell
  *
  */

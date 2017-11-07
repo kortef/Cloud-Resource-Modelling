@@ -148,6 +148,9 @@ public class Connection {
 		this.idSwapList.removeAll(toRemove);
 	}
 	
+	/**Adds an idSwap to the IdSwapList of the Connection.
+	 * @param entity
+	 */
 	public void idSwapListAdd(String[] swap) {
 		List<String[]> toRemove = new ArrayList<String[]>();
 		for(String[] str: this.idSwapList){
@@ -159,66 +162,114 @@ public class Connection {
 		this.idSwapList.add(swap);
 	}
 	
+	/**Returns idSwapList.
+	 * @return idSwapList
+	 */
 	public List<String[]> getIdSwapList() {
 		return idSwapList;
 	}
 
+	/**Sets idSwapList of Connection to the passed idSwapList.
+	 * @param idSwapList
+	 */
 	public void setIdSwapList(List<String[]> idSwapList) {
 		this.idSwapList = idSwapList;
 	}
 
+	/**Returns path of the model supposed to be running in the cloud.
+	 * @return sysModelPath
+	 */
 	public Path getSysModelPath() {
 		return sysModelPath;
 	}
 
+	/**Sets path to the model supposed to be running in the cloud.
+	 * @param sysModel
+	 */
 	public void setSysModelPath(Path sysModel) {
 		this.sysModelPath = sysModel;
 	}
 
+	/**Returns user of the Connection.
+	 * @return user
+	 */
 	public String getUser() {
 		return user;
 	}
 
+	/**Sets user in the Connection
+	 * @param user
+	 */
 	public void setUser(String user) {
 		this.user = user;
 	}
 
+	/**Returns generated Session Token.
+	 * @return token
+	 */
 	public String getToken() {
 		return token;
 	}
 
+	/**Sets Token for the Session to be used.
+	 * @param token
+	 */
 	public void setToken(String token) {
 		this.token = token;
 	}
 
+	/**Returns Project/Tenant of the Connection.
+	 * @return project
+	 */
 	public String getProject() {
 		return project;
 	}
 
+	/**Sets Project/Tenant to orchestrate.
+	 * @param project
+	 */
 	public void setProject(String project) {
 		this.project = project;
 	}
 
+	/**Returns access point of the cloud.
+	 * @return adress
+	 */
 	public String getAdress() {
 		return adress;
 	}
 
+	/**Sets address/access point of the cloud.
+	 * @param adress
+	 */
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
 
+	/**Returns authentication server address of the cloud.
+	 * @return authenticationAdress
+	 */
 	public String getAuthenticationAdress() {
 		return authenticationAdress;
 	}
 
+	/**Sets address to the authentication server of the cloud.
+	 * @param authenticationAdress
+	 */
 	public void setAuthenticationAdress(String authenticationAdress) {
 		this.authenticationAdress = authenticationAdress;
 	}
 
+	/**Get stored password for the connection.
+	 * @return password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**Sets password for the connection.
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}

@@ -29,6 +29,10 @@ public class ElementAdapter {
 	private Connection connection;
 	public static List<String> actionList = new ArrayList<String>();
 	
+	/**Constructor. Currently hardcoding the attributes that can be handled the updating process.
+	 * (occi.compute.state; occi.network.state; occi.storage.state)
+	 * @param conn
+	 */
 	public ElementAdapter(Connection conn){
 		this.connection = conn;
 		ElementAdapter.actionList.add("occi.compute.state");
@@ -37,6 +41,10 @@ public class ElementAdapter {
 	}
 	
 	
+	/**Main update procedure. Performs adjusting operations for each element in updatedElements)
+	 * @param updatedElements
+	 * @param match
+	 */
 	public void update(EList<EObject> updatedElements, EList<Match> match) {
 		for(EObject element: updatedElements){
 			EObject counterpart = getCounterpart(element, match);
@@ -51,6 +59,10 @@ public class ElementAdapter {
 		}	
 	}
 
+	/**Logs the differences passed.
+	 * @param differences
+	 */
+	@SuppressWarnings("unused")
 	private void logDifferences(EList<AttributeState[]> differences) {
 		for(AttributeState[] arr: differences){
 			log.info("Change: (" + arr[0].getName() +": " + arr[0].getValue() + ") to (" + arr[1].getName() +": " + arr[1].getValue() +")");
@@ -58,11 +70,18 @@ public class ElementAdapter {
 		
 	}
 
+	/**Currently a stub, as OOI does not provide an implementation for Put operations.
+	 * @param element
+	 */
 	private void performPut(EObject element) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**Performs required Actions to address all evaluated differences.
+	 * @param element
+	 * @param differences
+	 */
 	private void performActions(EObject element, EList<AttributeState[]> differences) {
 		for(AttributeState[] diff: differences){
 			Action correctAction = investigateCorrectAction(element, diff);
@@ -78,6 +97,12 @@ public class ElementAdapter {
 		
 	}
 
+	/**Returns required action to address difference.
+	 * Currently hardcoded for start and stop.
+	 * @param element
+	 * @param diff
+	 * @return
+	 */
 	private Action investigateCorrectAction(EObject element, AttributeState[] diff) {
 		Entity entity = (Entity) element;
 		if(diff[0].getValue().equals("inactive") && diff[1].getValue().equals("active")){
@@ -90,6 +115,12 @@ public class ElementAdapter {
 	}
 
 
+	/**Returns action of having the passed String as Term.
+	 * If no corresponding Action is found, null is returned.
+	 * @param string
+	 * @param actions
+	 * @return
+	 */
 	private Action getAction(String string, EList<Action> actions) {
 		for(Action action: actions){
 			if(action.getTerm().equals(string)){
@@ -100,6 +131,10 @@ public class ElementAdapter {
 	}
 
 
+	/**Evaluates whether the calculated differences of an Entity can be handled by actions only.
+	 * @param differences
+	 * @return true (can be handled by actions) false (otherwise)
+	 */
 	private boolean canBeHandledByActions(EList<AttributeState[]> differences) {
 		for(AttributeState[] arr: differences){
 			boolean canBeHandled = false;
@@ -115,6 +150,13 @@ public class ElementAdapter {
 		return true;
 	}
 
+	/**Investigates differences between the element and its counterpart on the Attribute level (AttributeState).
+	 * Currently a Blacklist of attributes to be ignored is hardcoded in this function.
+	 * Counterpart represents the old state of the resource in the match.
+	 * @param element
+	 * @param counterpart
+	 * @return
+	 */
 	private EList<AttributeState[]> investigateDifferences(EObject element, EObject counterpart) {
 		EList<AttributeState[]> differences = new BasicEList<AttributeState[]>();
 		for(EObject oldContent: counterpart.eContents()){
@@ -139,6 +181,11 @@ public class ElementAdapter {
 		return differences;
 	}
 
+	/**Returns the source of the match (the old version of the matched resource)
+	 * @param element
+	 * @param matches
+	 * @return
+	 */
 	private EObject getCounterpart(EObject element, EList<Match> matches) {
 		Entity entity = (Entity) element;
 		for(Match match: matches){

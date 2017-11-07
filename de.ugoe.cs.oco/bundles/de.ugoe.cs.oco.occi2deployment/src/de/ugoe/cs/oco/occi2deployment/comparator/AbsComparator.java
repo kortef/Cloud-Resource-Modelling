@@ -33,6 +33,11 @@ public abstract class AbsComparator implements Comparator {
 	EList<EObject> adaptedElements = new BasicEList<EObject>();
 	
 	//template method
+	/**Standard compare procedure: First a Resource Match is created depending on the kind of Comparator instantiated(Template pattern). 
+	 * Based on this Resource match, a Link match is created, followed by a marking procedure filling the Comparator Objects lists.
+	 * @param oldModelPath
+	 * @param newModelPath
+	 */
 	public final void compare(Path oldModelPath, Path newModelPath){
 		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
@@ -69,6 +74,11 @@ public abstract class AbsComparator implements Comparator {
 		return false;
 	}
 
+	/**Checks whether the passed String string corresponds to an Attribute contained within the Blacklist.
+	 * Currently the Blacklist is hardcoded.
+	 * @param string
+	 * @return
+	 */
 	private boolean inBlacklist(String string) {
 		if(string.contains("core.source")
 		|| string.contains("core.target")
@@ -76,11 +86,15 @@ public abstract class AbsComparator implements Comparator {
 			return true;
 		}
 		else{
-		return false;
+			return false;
 		}
 	}
 
-
+	/**Returns attributes of a passed object, whereby the obj should either be a Resource or Link.
+	 * The passed obj could be changed to Entity.
+	 * @param obj
+	 * @return
+	 */
 	private EList<AttributeState> extractAttr(EObject obj) {
 		if(obj.eClass().getName().equals("Resource")){
 			Resource res = (Resource) obj;
@@ -95,6 +109,13 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Standard procedure creating the Link match.
+	 * Each match of the comparator (at this point holding only Resource maches) is checked, 
+	 * whether a direct match or a non direct match is found. If a direct match is found, the Links
+	 * of the matched Resources are compared. Otherwise, on a non direct match, either each Link
+	 * of the Resource is added on the Src or Tar side of the matching table indicating its deletion
+	 * or creation.
+	 */
 	protected void createLinkMatch() {
 		List<Match> linkMatches = new ArrayList<Match>();
 		for(Match match: this.matches){
@@ -115,6 +136,11 @@ public abstract class AbsComparator implements Comparator {
 		this.matches.addAll(linkMatches);
 	}
 		
+	/**Returns a List of Links contained within the Resource.
+	 * The passed Object obj could be changed to Resource.
+	 * @param obj
+	 * @return
+	 */
 	private EList<Link> extractLinks(EObject obj) {
 		if(obj.eClass().getName().equals("Resource")){
 			Resource res = (Resource) obj;
@@ -125,6 +151,10 @@ public abstract class AbsComparator implements Comparator {
 		}	
 	}
 	
+	/**Returns all direct matches of Resources of passed match List matches.
+	 * @param matches
+	 * @return
+	 */
 	protected List<Match> extractDirectResourceMatch(List<Match> matches) {
 		List<Match> directResourceMatches = new BasicEList<Match>();
 		for(Match match: matches){
@@ -135,6 +165,13 @@ public abstract class AbsComparator implements Comparator {
 		return directResourceMatches;	
 	}
 	
+	/**Matches Links of the old Resource (obj) and the new Resource (newObj).
+	 * Here, equal, new, and missing Links are investigated.
+	 * Parameters could be changed to Resource.
+	 * @param obj
+	 * @param newObj
+	 * @return
+	 */
 	private List<Match> matchLinksOfObject(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		toReturn.addAll(extractEqualLinks(obj, newObj));
@@ -143,6 +180,12 @@ public abstract class AbsComparator implements Comparator {
 		return toReturn;
 	}
 		
+	/**Returns a List of Links having the same Scheme, Term and Target of the passed Resources (obj, newObj).
+	 * Hereby, it is checked whether they possess the same target according to the calculated Resource match.
+	 * @param obj
+	 * @param newObj
+	 * @return
+	 */
 	private List<Match> extractEqualLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link: obj.eContents()){
@@ -165,6 +208,11 @@ public abstract class AbsComparator implements Comparator {
 		return toReturn;
 	}	
 	
+	/**Returns missing Matches for Links of the passed objects. (Matches indicating a deletion)
+	 * @param obj
+	 * @param newObj
+	 * @return
+	 */
 	private List<Match> extractMissingLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link2: obj.eContents()){
@@ -191,6 +239,11 @@ public abstract class AbsComparator implements Comparator {
 		return toReturn;
 	}
 
+	/**Returns new Matches for Links of the passed objects. (Matches indicating a creation)
+	 * @param obj
+	 * @param newObj
+	 * @return
+	 */
 	private List<Match> extractNewLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link2: newObj.eContents()){
@@ -331,6 +384,9 @@ public abstract class AbsComparator implements Comparator {
 		}
 	}
 	
+	/**Logs the passed Vertex.
+	 * @param highest
+	 */
 	protected static void logVertex(Vertex highest) {
 		System.out.println(((pcg.Resource)highest.getResources().get(0)).getTitle() + " : " + ((pcg.Resource)highest.getResources().get(1)).getTitle());
 	}

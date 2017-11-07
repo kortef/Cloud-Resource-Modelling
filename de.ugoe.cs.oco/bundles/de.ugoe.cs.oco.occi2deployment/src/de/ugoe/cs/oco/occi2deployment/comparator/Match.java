@@ -25,19 +25,30 @@ public class Match {
 		this.tar = tar;
 	}
 	
+	/**Sets the src of the Match.
+	 * @param src
+	 */
 	public void setOldObj(EObject src){
 		this.src = src;
 	}
 	
+	/**Sets the tar of the Match.
+	 * @param tar
+	 */
 	public void setNewObj(EObject tar){
 		this.tar = tar;
 	}
 	
+	/**Returns the src of the Match.
+	 * @return
+	 */
 	public EObject getSrc(){
 		return this.src;
 	}
 	
-	
+	/**Returns the tar of the Match.
+	 * @return
+	 */
 	public EObject getTar(){
 		return this.tar;
 	}

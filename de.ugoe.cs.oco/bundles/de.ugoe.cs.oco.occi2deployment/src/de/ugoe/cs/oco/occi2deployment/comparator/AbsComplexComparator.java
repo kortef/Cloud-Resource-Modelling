@@ -24,12 +24,11 @@ public abstract class AbsComplexComparator extends AbsComparator {
 		return flood.generateFixpointValueMap(ipgPath);
 	}
 	
-	/**Creates a direct Matching based on the calculated fixpoints of the similarity flooding algorithm.
+	/**Creates a direct Matching based on the results of the similarity flooding algorithm.
 	 * @param map
 	 * @param oldModel
 	 * @param newModel
 	 * @return 
-	 * @return
 	 */
 	protected EList<Match> createMatch(Map<String, List<Vertex>> map, EList<EObject> oldModel, EList<EObject> newModel) {
 		List<Vertex> directMatch = new BasicEList<Vertex>();
@@ -45,6 +44,12 @@ public abstract class AbsComplexComparator extends AbsComparator {
 		return convertVerticesToMatch(directMatch, oldModel, newModel);
 	}
 
+	/**Returns List of Matches created from the List of Vertexes (directMatch) passed.
+	 * @param directMatch
+	 * @param oldModel
+	 * @param newModel
+	 * @return
+	 */
 	private EList<Match> convertVerticesToMatch(List<Vertex> directMatch, EList<EObject> oldModel, EList<EObject> newModel) {
 		EList<Match> toReturn = new BasicEList<Match>();
 		for(Vertex vertex: directMatch){
@@ -172,6 +177,9 @@ public abstract class AbsComplexComparator extends AbsComparator {
 	}
 	
 
+	/**Logs list vertices displaying the titles of the map pair and is fixpoint value.
+	 * @param vertices
+	 */
 	protected void logList(List<Vertex> vertices) {
 		String output = new String();
 		for(Vertex vert: vertices){

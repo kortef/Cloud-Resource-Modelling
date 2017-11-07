@@ -1,12 +1,12 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
-import java.util.List;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 
 public class ComparatorFactory {
-	/**Returns a comparator instance.
+	/**Returns a comparator instance. Comparing model1 (sourceModel) with model2(targetModel).
+	 * A connection has to be passed due to the requirements of a idSwapList for the Simple/Mixed comparison approach.
 	 * @param criteria accepts "Simple","Emf","Complex","POG".
 	 * @param model1
 	 * @param model2

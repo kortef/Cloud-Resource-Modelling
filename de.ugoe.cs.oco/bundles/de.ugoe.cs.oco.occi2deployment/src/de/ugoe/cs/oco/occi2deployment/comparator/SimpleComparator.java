@@ -1,7 +1,6 @@
 package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
-import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -83,6 +82,11 @@ public class SimpleComparator extends AbsComparator {
 			}
 		}
 	
+	/**Returns model id of the passed String runtime id.
+	 * @param id
+	 * @param connection
+	 * @return
+	 */
 	private String getUnActualId(String id, Connection connection) {
 		if(connection != null){
 			for (String[] swapID : connection.getIdSwapList()) {	    	

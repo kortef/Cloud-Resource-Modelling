@@ -2,7 +2,6 @@ package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,25 +9,27 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
-import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
-import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
 import pcg.Edge;
 import pcg.Graph;
-import pcg.PcgFactory;
-import pcg.Resource;
 import pcg.Vertex;
 
+/**Class handling the calculation of fixpoint values from ipg paths.
+ * @author rockodell
+ *
+ */
 public class SimilarityFlooding {
 	
+	/**Generates and returns fixpoint value map from passed ipg path.
+	 * @param ipgPath
+	 * @return
+	 */
 	public Map<String, List<Vertex>> generateFixpointValueMap(Path ipgPath) {
 		//Load IPG graph
 		EList<EObject> ipg = ModelUtility.loadPCG(ipgPath);
 		Graph ipgGraph =(Graph)ipg.get(0);		
 		performSimilarityFlooding(ipgGraph, 1000, 0.0000000000000000000001);			
-		//Create Matches
 		return createFixpointValueMap(ipgGraph);
 	}
 	
@@ -51,6 +52,12 @@ public class SimilarityFlooding {
 		}
 	}
 
+	/**Fixpoint value normalization.
+	 * @param graph
+	 * @param normValues
+	 * @param eps
+	 * @return
+	 */
 	private boolean normalizeValues(Graph graph,  List<String[]> normValues, double eps) {
 		boolean somethingChanged = false;
 		for(Vertex vertex: graph.getVertices()){
@@ -76,6 +83,10 @@ public class SimilarityFlooding {
 
 
 
+	/**Updates norm values according to highest calculated one for each Kind.
+	 * @param vertex
+	 * @param normValues
+	 */
 	private void updateNormValues(Vertex vertex, List<String[]> normValues) {
 		Boolean exist = false;
 		for(String[] normValue: normValues) {
@@ -92,29 +103,29 @@ public class SimilarityFlooding {
 		}	
 	}
 	
+	/**Calculates fixpoint values for passed vertex. Depends on the incoming edges, their weight
+	 * and the fixpoint value of the source.
+	 * @param vertex
+	 * @param graph
+	 * @return
+	 */
 	private double calculateFixpointValue(Vertex vertex, Graph graph) {
 		double nextFixVal = vertex.getFixpointValue();
 		//System.out.print(vertex.getTitle() + " : " + nextFixVal + "+ ");
-		EList<Edge> incEdges = getIncEdges(vertex, graph);
 		for(Edge incEdge: getIncEdges(vertex, graph)){
 			//System.out.print(incEdge.getSource().getFixpointValue()+ "*" + incEdge.getWeight());
 			nextFixVal += incEdge.getSource().getFixpointValue() * incEdge.getWeight();
 			//System.out.print(" + ");
 		}
-		
-		//ERZIELT BESSERE ERGEBNISSE: WEIL SO AUCH DIE ANZAHL AN KANTEN VOM SOURCE ZU TARGET MODEL ERKANNT WERDEN. UND SOMIT BESSER
-		//NEUE ENTITIES ERKANNT WERDEN KÖNNEN
-		//for(Edge outEdge: getOutEdges(vertex, graph)){
-			//System.out.print(outEdge.getSource().getFixpointValue()+ "*" + outEdge.getWeight());
-			//nextFixVal += (outEdge.getTarget().getFixpointValue() * outEdge.getWeight());
-			//System.out.print(" + ");
-		//}
-		//System.out.println("inc: "+ incEdges.size() + " out: " + outEdges.size());
-		//System.out.println(vertex.getTitle()+ " : " + nextFixVal);
-		//System.out.println();
 		return nextFixVal;
 	}
 
+	/**Returns outgoing edges of the vertex in the graph.
+	 * @param vertex
+	 * @param graph
+	 * @return
+	 */
+	@SuppressWarnings("unused")
 	private EList<Edge> getOutEdges(Vertex vertex, Graph graph) {
 		EList<Edge> outEdges = new BasicEList<Edge>();
 		for(Edge edge: graph.getEdges()){
@@ -126,6 +137,11 @@ public class SimilarityFlooding {
 		return outEdges;
 	}
 
+	/**Returns incoming edges of the vertex in the graph.
+	 * @param vertex
+	 * @param graph
+	 * @return
+	 */
 	private EList<Edge> getIncEdges(Vertex vertex, Graph graph) {
 		EList<Edge> incEdges = new BasicEList<Edge>();
 		for(Edge edge: graph.getEdges()){

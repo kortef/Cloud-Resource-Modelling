@@ -67,7 +67,7 @@ public class Deployer{
 	}
 
 	
-	/**This method starts an deployment of the OCCI model stored in the occiPath ignoring runtime information.
+	/**This method starts an initial deployment of the OCCI model stored in the occiPath ignoring runtime information.
 	 * @param conn Information required to establish a connection to the cloud service.
 	 * @param occiPath Storing the OCCI Model to be deployed.
 	 */
@@ -128,6 +128,11 @@ public class Deployer{
 		provisioner.provisionElements();		
 	}
 	
+	/**Removes entries of non existing cloud ids from the idSwapList of the Connection conn.
+	 * Keeps idSwapList consistent with ids of existing cloud resources.
+	 * @param conn
+	 * @param oldModelPath
+	 */
 	private void cleanIdSwapList(Connection conn, Path oldModelPath) {
 		log.debug("Clean: IdSwapList");
 		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
@@ -148,6 +153,11 @@ public class Deployer{
 	}
 
 
+	/**Updates idSwapList according to the comparator results. So that the correct cloud id, according to the matched resources, is addressed.
+	 * @param comparator
+	 * @param conn
+	 * @param oldModelPath
+	 */
 	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
 		log.debug("Update: IdSwapList");
 		for(Match match: comparator.getMatches()){
@@ -168,10 +178,10 @@ public class Deployer{
 
 
 	/**Method used to generate a provisioning plan for the Model stored in newModelPath. 
-	 * Hereby a POG is created from which the oldElements are substracted, followed by a transformation 
+	 * Hereby a POG is created from which the oldElements are subtracted, followed by a transformation 
 	 * into the provisioning plan. (OldElements already exist on the Cloud and therefore must not be
 	 * created anymore, it follows that they are not allowed in the provisioning plan to be created and therefore
-	 * must be substracted. Furhtmore due to the fact that they already exist, every dependency typically depicted in
+	 * must be subtracted. Furthermore, due to the fact that they already exist, every dependency typically depicted in
 	 * the POG is already resolved.)
 	 * @param newModelPath Model from which the provisioning plan is generated
 	 * @param oldElements

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca">
+  <GroupType name="HPCClusterGType"/>
+  <GroupType name="HPCQueueGType"/>
+  <GroupType name="HPCNodeGroupGType"/>
+  <tosca:RelationshipType name="SubmitsToQueueRType"/>
+  <tosca:NodeType name="HPCNodeNType">
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition name="HostCDef"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+</tosca:Definitions>

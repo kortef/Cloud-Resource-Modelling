@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca" id="amroc_definition" targetNamespace="http://dist.swz.de/amroctypes">
+  <tosca:CapabilityType name="MPIClusterCType"/>
+  <tosca:CapabilityType name="HostCType"/>
+  <tosca:CapabilityType name="PackageCType"/>
+  <tosca:RequirementType name="MPIClusterRType" requiredCapabilityType="MPIClusterCType"/>
+  <tosca:RequirementType name="HostRType" requiredCapabilityType="HostCType"/>
+  <tosca:RequirementType name="PackageRType" requiredCapabilityType="PackageCType"/>
+  <tosca:NodeType name="AMROCNType">
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="MPIClusterRDef" requirementType="MPIClusterRType"/>
+      <tosca:RequirementDefinition name="HostRDef" requirementType="HostRType"/>
+      <tosca:RequirementDefinition name="PackageRDef" requirementType="PackageRType"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:ArtifactType name="AnsibleRoleAType"/>
+  <tosca:RelationshipType name="RunsOnMPIClusterRType" targetNamespace=""/>
+  <tosca:RelationshipType name="DependsOnPackageRType"/>
+</tosca:Definitions>

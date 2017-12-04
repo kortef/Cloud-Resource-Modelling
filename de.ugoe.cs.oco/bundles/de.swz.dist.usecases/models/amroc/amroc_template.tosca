@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca" id="amroc_template" name="AMROC Definition" targetNamespace="http://dist.swz.de/amroctemplate">
+  <tosca:Import importType="" location="" namespace=""/>
+  <tosca:ServiceTemplate id="service_template" name="AMROCSTemplate" targetNamespace="http://dist.swz.de/amroc">
+    <tosca:TopologyTemplate>
+      <tosca:documentation source="">Model of the AMROC Software</tosca:documentation>
+      <tosca:NodeTemplate id="amroc_node" type="swz.nodes.amroc" name="AMROCNTemplate">
+        <tosca:Requirements>
+          <tosca:Requirement id="hostRequirement" type="HostRType" name="host"/>
+          <tosca:Requirement id="mpiRequirement" type="MPIClusterRType" name="mpi"/>
+          <tosca:Requirement type="PackageRType" name="mpipackage"/>
+        </tosca:Requirements>
+        <tosca:DeploymentArtifacts>
+          <tosca:DeploymentArtifact artifactRef="swz.artifacttemplates.AMROC" artifactType="AnsibleRoleAType" name="AMROCDeploymentCode"/>
+        </tosca:DeploymentArtifacts>
+      </tosca:NodeTemplate>
+    </tosca:TopologyTemplate>
+  </tosca:ServiceTemplate>
+  <tosca:ArtifactTemplate id="amrocartifact" type="AnsibleRoleAType" name="AMROCCode"/>
+</tosca:Definitions>

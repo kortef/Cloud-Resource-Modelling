@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca">
+  <tosca:ServiceTemplate>
+    <tosca:TopologyTemplate>
+      <tosca:NodeTemplate name="dge001">
+        <tosca:Capabilities>
+          <tosca:Capability type="HostCType" name="host"/>
+        </tosca:Capabilities>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate name="dge015">
+        <tosca:Capabilities>
+          <tosca:Capability type="HostCType" name="host"/>
+        </tosca:Capabilities>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate name="gwdd001">
+        <tosca:Capabilities>
+          <tosca:Capability type="HostCType" name="host"/>
+        </tosca:Capabilities>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate name="gwdd168">
+        <tosca:Capabilities>
+          <tosca:Capability type="HostCType" name="host"/>
+        </tosca:Capabilities>
+      </tosca:NodeTemplate>
+      <tosca:GroupTemplate type="HPCClusterGType" name="GWDGScientificComputeCluster">
+        <tosca:Member>gpu</tosca:Member>
+        <tosca:Member>mpi</tosca:Member>
+      </tosca:GroupTemplate>
+      <tosca:GroupTemplate name="gpu">
+        <tosca:Member>gpuDlt</tosca:Member>
+      </tosca:GroupTemplate>
+      <tosca:GroupTemplate name="gpuDlt"/>
+      <tosca:GroupTemplate name="mpi">
+        <tosca:Member>mpi2</tosca:Member>
+      </tosca:GroupTemplate>
+      <tosca:GroupTemplate name="mpi2"/>
+    </tosca:TopologyTemplate>
+  </tosca:ServiceTemplate>
+</tosca:Definitions>

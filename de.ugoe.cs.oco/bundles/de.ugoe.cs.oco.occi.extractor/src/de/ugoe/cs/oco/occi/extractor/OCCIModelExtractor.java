@@ -4,6 +4,7 @@
 package de.ugoe.cs.oco.occi.extractor;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,7 +12,10 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.occiware.clouddesigner.occi.OCCIFactory;
+import org.eclipse.cmf.occi.core.OCCIFactory;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.cmf.occi.core.*;
 
 import cz.cesnet.cloud.occi.Model;
 import cz.cesnet.cloud.occi.api.Client;
@@ -59,15 +63,15 @@ public class OCCIModelExtractor {
     	return occiModel;
     }
 
-	private org.occiware.clouddesigner.occi.Action convert(Action action){
+	private org.eclipse.cmf.occi.core.Action convert(Action action){
     	return toAction(action);
     }
     
-    private org.occiware.clouddesigner.occi.Mixin convert(Mixin mixin){
+    private org.eclipse.cmf.occi.core.Mixin convert(Mixin mixin){
     	return toMixin(mixin);
     }
     
-    private org.occiware.clouddesigner.occi.Kind convert(Kind kind){
+    private org.eclipse.cmf.occi.core.Kind convert(Kind kind){
     	return toKind(kind);
     }
     
@@ -93,21 +97,27 @@ public class OCCIModelExtractor {
 	 * takes all the attributes from the api-type action and puts into the occi model type action
 	 * @return
 	 */
-	private org.occiware.clouddesigner.occi.Action toAction(Action action){
-		org.occiware.clouddesigner.occi.Action newAction = OCCIFactory.eINSTANCE.createAction();
+	private org.eclipse.cmf.occi.core.Action toAction(Action action){
+		org.eclipse.cmf.occi.core.Action newAction = OCCIFactory.eINSTANCE.createAction();
 		occiModel.addAction(newAction);
+		
+		
+		//newAction.setName(action.getTitle());
+		//newAction.setTitle(action.getTerm());
+		
+		newAction.setName(action.getTerm());
 		newAction.setTitle(action.getTitle());
 		newAction.setScheme(action.getScheme().toString());
-		newAction.setTerm(action.getTerm());
+		
 		
 		String[] parts = newAction.getScheme().split("/");
 		String term = parts[parts.length - 2];
 		System.out.println("Term: " + term);
-		org.occiware.clouddesigner.occi.Mixin mixin = occiModel.getMixinBySchemeAndTerm("", term);
+		org.eclipse.cmf.occi.core.Mixin mixin = occiModel.getMixinBySchemeAndTerm("", term);
 		if (mixin != null)
 			mixin.getActions().add(newAction);
 		
-		org.occiware.clouddesigner.occi.Kind kind = occiModel.getKindBySchemeAndTerm("", term);
+		org.eclipse.cmf.occi.core.Kind kind = occiModel.getKindBySchemeAndTerm("", term);
 		if (kind != null)
 			kind.getActions().add(newAction);
 		
@@ -119,8 +129,8 @@ public class OCCIModelExtractor {
 	 * does the same as toAction, but returns a Set instead
 	 * @return
 	 */
-	private Set<org.occiware.clouddesigner.occi.Action> toAction(Set<Action> actions){
-		Set<org.occiware.clouddesigner.occi.Action> newAction = new HashSet<org.occiware.clouddesigner.occi.Action>();
+	private Set<org.eclipse.cmf.occi.core.Action> toAction(Set<Action> actions){
+		Set<org.eclipse.cmf.occi.core.Action> newAction = new HashSet<org.eclipse.cmf.occi.core.Action>();
 		Iterator<cz.cesnet.cloud.occi.core.Action> action_iterator = actions.iterator();
 		while(action_iterator.hasNext()){
 			newAction.add(toAction(action_iterator.next()));
@@ -135,11 +145,14 @@ public class OCCIModelExtractor {
 	 * @return 
 	 */
 	private OCCIModel mixin(Model model, OCCIModel occi) {
+
 		//LOGGER.debug("Length of Set Mixin: "+ model.getMixins().size());
 		Iterator<cz.cesnet.cloud.occi.core.Mixin> mixin_iterator = model.getMixins().iterator();
 		cz.cesnet.cloud.occi.core.Mixin mixin;
 		while(mixin_iterator.hasNext()){
 			mixin = mixin_iterator.next();
+
+			System.out.println("Mixin: " + mixin.getTerm());
 			toMixin(mixin);
 		}
 		return occi;
@@ -150,16 +163,19 @@ public class OCCIModelExtractor {
 	 * takes all the attributes from the api-type mixin and puts into the occi model type mixin
 	 * @return
 	 */
-	private org.occiware.clouddesigner.occi.Mixin toMixin(Mixin mixin){
-		org.occiware.clouddesigner.occi.Mixin newMixin = occiModel.getMixin(mixin.getTitle());
+	private org.eclipse.cmf.occi.core.Mixin toMixin(Mixin mixin){
+		org.eclipse.cmf.occi.core.Mixin newMixin = occiModel.getMixin(mixin.getTitle());
 		
 		if (newMixin == null){
 			newMixin = OCCIFactory.eINSTANCE.createMixin();
 		}
 		
+		newMixin.setName(mixin.getTerm());
 		newMixin.setTitle(mixin.getTitle());
 		newMixin.setScheme(mixin.getScheme().toString()); //may not work
-		newMixin.setTerm(mixin.getTerm());
+		
+		
+		//Es werden keine Attribute zurueckgegeben
 		for (Attribute attribute: mixin.getAttributes()){
 			System.out.println("Found mixin.");
 			newMixin.getAttributes().add(toAttribute(attribute));
@@ -190,9 +206,9 @@ public class OCCIModelExtractor {
 	 * takes all the attributes from the api-type kind and puts into the occi model type kind
 	 * @return
 	 */
-	private org.occiware.clouddesigner.occi.Kind toKind(Kind kind){
+	private org.eclipse.cmf.occi.core.Kind toKind(Kind kind){
 		System.out.println("Called toKind with " + kind.getTerm());
-		org.occiware.clouddesigner.occi.Kind newKind = occiModel.getKind(kind.getTitle());
+		org.eclipse.cmf.occi.core.Kind newKind = occiModel.getKind(kind.getTitle());
 		
 		if (newKind == null){
 			newKind = OCCIFactory.eINSTANCE.createKind();
@@ -205,9 +221,10 @@ public class OCCIModelExtractor {
 			newKind.setParent(toKind(kind.getParentKind()));
 		}
 		
+		
+		newKind.setName(kind.getTerm());
 		newKind.setScheme(kind.getScheme().toString());
 		extensionSchemas.add(kind.getScheme().toString());
-		newKind.setTerm(kind.getTerm());
 		
 		if(toAttribute(kind.getAttributes()) != null){
 			newKind.getAttributes().addAll(toAttribute(kind.getAttributes()));
@@ -226,7 +243,7 @@ public class OCCIModelExtractor {
 	private OCCIModel entity(Model model, OCCIModel occi) {
 		List<Link> links = 
 				new LinkedList<Link>();
-		for (org.occiware.clouddesigner.occi.Kind kind: occi.getKinds()){
+		for (org.eclipse.cmf.occi.core.Kind kind: occi.getKinds()){
 			try {
 				System.out.println("Looking for kind: " + kind.getTerm());
 				List<URI> entityURIs = httpClient.list(kind.getTerm());
@@ -248,8 +265,8 @@ public class OCCIModelExtractor {
 		return occi;
 	}
 	
-	private org.occiware.clouddesigner.occi.Entity toEntity(Entity entity) {
-		org.occiware.clouddesigner.occi.Entity newEntity = null;
+	private org.eclipse.cmf.occi.core.Entity toEntity(Entity entity) {
+		org.eclipse.cmf.occi.core.Entity newEntity = null;
 		
 		if (entity instanceof Link){
 			newEntity = toLink((Link)entity);
@@ -261,29 +278,52 @@ public class OCCIModelExtractor {
 		newEntity.setKind(occiModel.getKindBySchemeAndTerm("", entity.getKind().getTerm()));
 		newEntity.setId(entity.getId());
 		for (Entry<Attribute, String> entry: entity.getAttributes().entrySet()){
-			org.occiware.clouddesigner.occi.AttributeState state = OCCIFactory.eINSTANCE.createAttributeState();
+			org.eclipse.cmf.occi.core.AttributeState state = OCCIFactory.eINSTANCE.createAttributeState();
 			state.setName(entry.getKey().getName());
 			state.setValue(entry.getValue());
 			newEntity.getAttributes().add(state);
 		}
+		
+		//Add Mixins
 		for (Mixin mixin: entity.getMixins()){
-			newEntity.getMixins().add(toMixin(mixin));
+			//Erstellen von Mixin falls noch nicht vorher vorhanden (Bsp. osnetwork)
+			if(occiModel.getMixin(mixin.getTitle()) == null) {
+				toMixin(mixin);
+			}
+			
+			//Create MixinBase
+			org.eclipse.cmf.occi.core.MixinBase mixinBase = OCCIFactory.eINSTANCE.createMixinBase();
+			mixinBase.setMixin(occiModel.getMixin(mixin.getTitle()));
+			mixinBase.setEntity(newEntity);
+			
+			//Filter Attributes of Mixin
+			/*
+			EList<org.eclipse.cmf.occi.core.AttributeState> toAdd = new BasicEList<org.eclipse.cmf.occi.core.AttributeState>();
+			org.eclipse.cmf.occi.core.Mixin actMixin = mixinBase.getMixin();
+			for(AttributeState entAttr: newEntity.getAttributes()) {
+				for(org.eclipse.cmf.occi.core.Attribute mixAttr: actMixin.getAttributes()) {
+					System.out.println("EntAttr: " + entAttr);
+					System.out.println("MixAttr: " + mixAttr);
+				}
+				//toAdd.add(st);
+			}
+			mixinBase.getAttributes().addAll(toAdd);*/
 		}
 		return newEntity;
 	}
 	
-	private org.occiware.clouddesigner.occi.Link toLink(Link link){
-		org.occiware.clouddesigner.occi.Link newLink = OCCIFactory.eINSTANCE.createLink();
+	private org.eclipse.cmf.occi.core.Link toLink(Link link){
+		org.eclipse.cmf.occi.core.Link newLink = OCCIFactory.eINSTANCE.createLink();
 		try {
 			Entity target = httpClient.describe(URI.create(link.getTarget())).get(0);
-			newLink.setTarget((org.occiware.clouddesigner.occi.Resource) 
+			newLink.setTarget((org.eclipse.cmf.occi.core.Resource) 
 					occiModel.getResourceById(target.getId()));
 			
 		} catch (CommunicationException e) {
 		}
 		try {
 			Entity source = httpClient.describe(URI.create(link.getSource())).get(0);
-			org.occiware.clouddesigner.occi.Resource occiSource = (org.occiware.clouddesigner.occi.Resource) 
+			org.eclipse.cmf.occi.core.Resource occiSource = (org.eclipse.cmf.occi.core.Resource) 
 					occiModel.getResourceById(source.getId());
 			occiSource.getLinks().add(newLink);
 			newLink.setSource(occiSource);
@@ -298,8 +338,8 @@ public class OCCIModelExtractor {
 		return newLink;
 	}
 	
-	private org.occiware.clouddesigner.occi.Resource toResource(Resource resource){
-		org.occiware.clouddesigner.occi.Resource newResource = OCCIFactory.eINSTANCE.createResource();
+	private org.eclipse.cmf.occi.core.Resource toResource(Resource resource){
+		org.eclipse.cmf.occi.core.Resource newResource = OCCIFactory.eINSTANCE.createResource();
 		occiModel.addResource(newResource);
 		return newResource;
 	}
@@ -309,8 +349,8 @@ public class OCCIModelExtractor {
 	 * takes all the attributes from the api-type attribute and puts into the occi model type attribute
 	 * @return
 	 */
-	private org.occiware.clouddesigner.occi.Attribute toAttribute(Attribute attribute){
-		org.occiware.clouddesigner.occi.Attribute newAttribute = OCCIFactory.eINSTANCE.createAttribute();
+	private org.eclipse.cmf.occi.core.Attribute toAttribute(Attribute attribute){
+		org.eclipse.cmf.occi.core.Attribute newAttribute = OCCIFactory.eINSTANCE.createAttribute();
 		newAttribute.setName(attribute.getName());
 		newAttribute.setRequired(attribute.isRequired());
 		newAttribute.setMutable(!attribute.isImmutable());
@@ -327,8 +367,8 @@ public class OCCIModelExtractor {
 	 * does the same as toAttribute, but returns a Set instead
 	 * @return
 	 */
-	private Set<org.occiware.clouddesigner.occi.Attribute> toAttribute(Set<Attribute> attributes){
-		Set<org.occiware.clouddesigner.occi.Attribute> newAttribute = new HashSet<org.occiware.clouddesigner.occi.Attribute>();
+	private Set<org.eclipse.cmf.occi.core.Attribute> toAttribute(Set<Attribute> attributes){
+		Set<org.eclipse.cmf.occi.core.Attribute> newAttribute = new HashSet<org.eclipse.cmf.occi.core.Attribute>();
 		Iterator<cz.cesnet.cloud.occi.core.Attribute> attribute_iterator = attributes.iterator();
 		while(attribute_iterator.hasNext()){
 			newAttribute.add(toAttribute(attribute_iterator.next()));

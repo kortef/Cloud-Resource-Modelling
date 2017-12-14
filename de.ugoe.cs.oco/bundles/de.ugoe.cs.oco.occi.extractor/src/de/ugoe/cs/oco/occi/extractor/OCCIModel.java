@@ -7,14 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.Category;
-import org.occiware.clouddesigner.occi.Extension;
-import org.occiware.clouddesigner.occi.Kind;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Mixin;
-import org.occiware.clouddesigner.occi.OCCIFactory;
-import org.occiware.clouddesigner.occi.Resource;
+import org.eclipse.cmf.occi.core.*;
+
 
 /**
 * Wrapper class to store OCCI Model elements at runtime.

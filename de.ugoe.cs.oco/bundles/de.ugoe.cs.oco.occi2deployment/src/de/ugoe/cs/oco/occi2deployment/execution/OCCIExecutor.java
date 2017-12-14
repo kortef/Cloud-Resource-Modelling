@@ -6,10 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Mixin;
+import org.eclipse.cmf.occi.core.Action;
+import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Mixin;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;

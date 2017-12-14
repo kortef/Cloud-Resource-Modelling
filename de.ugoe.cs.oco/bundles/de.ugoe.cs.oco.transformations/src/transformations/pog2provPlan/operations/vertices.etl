@@ -6,7 +6,7 @@ be provisioned. */
 operation provisionableVertexes(){
 	var provisionable = new Set;
 	for(vertex in notProvisioned){
-		var requiredVertices = vertex.requiredVertices();
+		var requiredVertices = vertex.requiredVertexes();
 		if(vertex.isProvisionable(requiredVertices)){
 			provisionable.add(vertex);
 		}

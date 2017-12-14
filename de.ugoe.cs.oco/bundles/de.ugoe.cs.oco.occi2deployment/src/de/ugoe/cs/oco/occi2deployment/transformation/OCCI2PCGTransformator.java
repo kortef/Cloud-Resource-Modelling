@@ -10,8 +10,8 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
 import pcg.PcgPackage;
 import pcg.impl.PcgFactoryImpl;
@@ -36,7 +36,7 @@ public class OCCI2PCGTransformator extends AbsTransformator {
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
 		// TODO: Remove path
-		File transformationFile = new File("/home/rockodell/Projects/Models@RuntimePraktikum/Implementierung/OCCI2Deployment/src/transformations/occi2pcg/OCCI2PCG.etl");    
+		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pcg/OCCI2PCG.etl");    
 		try {
 			module.parse(transformationFile);
 		} catch (Exception e) {

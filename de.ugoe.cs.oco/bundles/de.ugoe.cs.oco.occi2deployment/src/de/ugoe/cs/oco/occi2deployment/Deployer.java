@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.uml2.uml.Model;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.adapter.ElementAdapter;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;

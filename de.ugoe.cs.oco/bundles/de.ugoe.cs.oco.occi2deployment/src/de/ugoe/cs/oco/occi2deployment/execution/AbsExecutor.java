@@ -9,8 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 

@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
 
 
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;

@@ -8,10 +8,10 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.Link;
-import org.occiware.clouddesigner.occi.Resource;
+import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Link;
+import org.eclipse.cmf.occi.core.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
@@ -421,8 +421,8 @@ public abstract class AbsComparator implements Comparator {
 	 * @param matches
 	 * @return
 	 */
-	protected boolean sameTarget(org.occiware.clouddesigner.occi.Resource target,
-			org.occiware.clouddesigner.occi.Resource target2, List<Match> matches) {
+	protected boolean sameTarget(org.eclipse.cmf.occi.core.Resource target,
+			org.eclipse.cmf.occi.core.Resource target2, List<Match> matches) {
 		for(Match match: matches){
 			if(match.getSrc() != null && match.getTar() != null){
 				if(((Entity) match.getSrc()).getId().equals(target.getId()) && ((Entity) match.getTar()).getId().equals(target2.getId())){

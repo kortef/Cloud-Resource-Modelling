@@ -4,7 +4,7 @@ import java.nio.file.Path;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Resource;
+import org.eclipse.cmf.occi.core.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;

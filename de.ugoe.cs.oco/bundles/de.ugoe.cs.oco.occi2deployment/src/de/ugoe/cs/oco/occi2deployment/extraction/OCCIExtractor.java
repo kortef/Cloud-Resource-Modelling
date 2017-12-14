@@ -4,7 +4,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ValuePin;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 

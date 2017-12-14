@@ -23,9 +23,9 @@ import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
 //import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
 
 
-import org.occiware.clouddesigner.occi.Entity;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
 import cz.cesnet.cloud.occi.api.Client;
 import cz.cesnet.cloud.occi.api.exception.CommunicationException;
@@ -224,14 +224,14 @@ public class ModelUtility {
 	 * @param model OCCI Model
 	 * @return EObject List containing all Entity elements contained in the model
 	 */
-	public static EList<org.occiware.clouddesigner.occi.Resource> getResources(EList<EObject> model) {
+	public static EList<org.eclipse.cmf.occi.core.Resource> getResources(EList<EObject> model) {
 		EList<EObject> entities = new BasicEList<EObject>();
-		EList<org.occiware.clouddesigner.occi.Resource> resources = new BasicEList<org.occiware.clouddesigner.occi.Resource>();
+		EList<org.eclipse.cmf.occi.core.Resource> resources = new BasicEList<org.eclipse.cmf.occi.core.Resource>();
 		entities.addAll(getTopLevelEntities(model));
 		entities.addAll(getNestedEntities(model));
 		for(EObject entity: entities){
 			if(entity.eClass().getName().equals("Resource")){
-				resources.add((org.occiware.clouddesigner.occi.Resource)entity);
+				resources.add((org.eclipse.cmf.occi.core.Resource)entity);
 			}
 		}
 		return resources;

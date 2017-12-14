@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
@@ -214,7 +214,7 @@ public class OpenstackExecutor extends AbsExecutor {
 		Entity entity = (Entity) element;
 		log.info("Execute Request DELETE: " + entity.getTitle());
 		HttpURLConnection conn;
-		if(entity.getTitle().equals("stubNetwork")){
+		if(entity.getTitle().equals("stubNetwork") && entity.getId().equals(Provisioner.stubId)){
 			conn = establishConnection("http://192.168.34.1:9696/v2.0/networks/" + Provisioner.stubId,
 					"DELETE", false, null, this.connection.getToken());
 		}

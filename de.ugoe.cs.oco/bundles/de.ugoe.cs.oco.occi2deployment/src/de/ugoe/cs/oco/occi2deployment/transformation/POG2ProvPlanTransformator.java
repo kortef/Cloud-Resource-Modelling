@@ -36,7 +36,7 @@ public class POG2ProvPlanTransformator extends AbsTransformator{
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
 		// TODO: Remove path
-		File transformationFile = new File("/home/rockodell/Projects/Models@RuntimePraktikum/Implementierung/OCCI2Deployment/src/transformations/pog2provPlan/POG2ProvPlan.etl");    
+		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pog2provPlan/POG2ProvPlan.etl");    
 		try {
 			module.parse(transformationFile);
 		} catch (Exception e) {

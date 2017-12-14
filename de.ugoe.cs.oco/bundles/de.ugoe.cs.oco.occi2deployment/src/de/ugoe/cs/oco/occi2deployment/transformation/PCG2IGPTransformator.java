@@ -16,7 +16,7 @@ public class PCG2IGPTransformator extends AbsTransformator {
 		FlockModule module2 = new FlockModule();
 		Object result2 = null;		
 		// TODO: Remove path
-		File transformationFile2 = new File("/home/rockodell/Projects/Models@RuntimePraktikum/Implementierung/OCCI2Deployment/src/transformations/pcg2ipg/PCG2IPG.mig");    
+		File transformationFile2 = new File("../de.ugoe.cs.oco.transformations/src/transformations/pcg2ipg/PCG2IPG.mig");    
 		try {
 			module2.parse(transformationFile2);
 		} catch (Exception e) {

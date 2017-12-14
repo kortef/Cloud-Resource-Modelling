@@ -8,9 +8,9 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
-import org.occiware.clouddesigner.occi.Action;
-import org.occiware.clouddesigner.occi.AttributeState;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Action;
+import org.eclipse.cmf.occi.core.AttributeState;
 //import org.occiware.clouddesigner.occi.Action;
 //import org.occiware.clouddesigner.occi.AttributeState;
 //import org.occiware.clouddesigner.occi.Entity;

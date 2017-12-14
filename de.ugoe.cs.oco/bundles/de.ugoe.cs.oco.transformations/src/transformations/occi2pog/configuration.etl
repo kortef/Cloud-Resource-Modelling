@@ -21,7 +21,7 @@ Input:	String term: Term of the Kind,
 Description: Simple creation of a Kind Instance.*/
 operation Kind(term : String, scheme : String, title : String) : OCCI!Kind{
 	var kind = new OCCI!Kind;
-	kind.term = term;
+	kind.name = term;
 	kind.title = title;
 	kind.scheme = scheme;
 	

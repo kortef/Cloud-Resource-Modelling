@@ -12,7 +12,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Kind;
+import org.eclipse.cmf.occi.core.Mixin;
+import org.eclipse.cmf.occi.core.MixinBase;
+import org.eclipse.cmf.occi.core.OCCIFactory;
+import org.eclipse.cmf.occi.core.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
@@ -91,10 +96,39 @@ public class Provisioner implements Runnable {
 	 */
 	private void performInitial() {
 		done = false;
+		
+		Kind networkKind = OCCIFactory.eINSTANCE.createKind();
+		networkKind.setScheme("http://schemas.ogf.org/occi/infrastructure#");
+		networkKind.setName("network");
+		networkKind.setTitle("network resource");
+		
+		
+		Mixin networkMixin = OCCIFactory.eINSTANCE.createMixin();
+		networkMixin.setName("ipnetwork");
+		networkMixin.setScheme("http://schemas.ogf.org/occi/infrastructure/network#");
+		networkMixin.setTitle("IP Networking Mixin");
+		
+		Resource stubNW = OCCIFactory.eINSTANCE.createResource();
+		stubNW.setTitle("stubNetwork");
+		stubNW.setKind(networkKind);
+		
+		MixinBase networkMixinBase = OCCIFactory.eINSTANCE.createMixinBase();
+		networkMixinBase.setEntity(stubNW);
+		networkMixinBase.setMixin(networkMixin);
+		
+		System.out.println(stubNW);
+		System.out.println(stubNW.getKind());
+		System.out.println(stubNW.getMixins());
+		
+		stubNw = stubNW;
+		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
+		
+		
+		/*
 		Path stubNWpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/stubNW.occie");
 		EList<EObject> stubNWModel = ModelUtility.loadOCCI(stubNWpath);
-		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
-		stubNw = stubNWModel.get(stubNWModel.size()-1);
+		stubNw = stubNWModel.get(stubNWModel.size()-1);*/
+		
 		executor.executeOperation("POST", stubNw, null);
 		this.provisionNextNode();
 		

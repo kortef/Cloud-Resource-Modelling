@@ -9,9 +9,9 @@ import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
 import de.ugoe.cs.oco.pog.PogPackage;
 import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
@@ -38,7 +38,7 @@ public class OCCI2POGTransformator extends AbsTransformator{
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
 		// TODO: Remove path
-		File transformationFile = new File("/home/rockodell/Projects/Models@RuntimePraktikum/Implementierung/OCCI2Deployment/src/transformations/occi2pog/OCCI2POG.etl");    
+		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");    
 		try {
 			module.parse(transformationFile);
 		} catch (Exception e) {

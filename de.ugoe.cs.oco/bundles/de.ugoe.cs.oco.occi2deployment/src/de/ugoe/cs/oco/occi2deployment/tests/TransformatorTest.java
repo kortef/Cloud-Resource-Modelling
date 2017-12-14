@@ -15,7 +15,7 @@ public class TransformatorTest {
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
-		Path inputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/basicExample.occie");
+		Path inputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
 		Path outputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
 		occiToPog.transform(inputpath, outputpath);
 

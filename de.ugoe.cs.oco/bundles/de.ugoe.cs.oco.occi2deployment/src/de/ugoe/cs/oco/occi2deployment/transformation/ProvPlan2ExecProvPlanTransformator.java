@@ -10,9 +10,9 @@ import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.flock.FlockModule;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
 /**Class implementing the ProvPlan2ExecProvPlan transformation.
  * @author rockodell
@@ -38,7 +38,7 @@ public class ProvPlan2ExecProvPlanTransformator extends AbsTransformator {
 		FlockModule module = new FlockModule();
 		Object result = null;		
 		// TODO: Remove path
-		File transformationFile = new File("/home/rockodell/Projects/Models@RuntimePraktikum/Implementierung/OCCI2Deployment/src/transformations/provPlan2execProvPlan/provPlan2execProvPlan.mig");    
+		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/provPlan2execProvPlan/provPlan2execProvPlan.mig");    
 		try {
 			module.parse(transformationFile);
 		} catch (Exception e) {

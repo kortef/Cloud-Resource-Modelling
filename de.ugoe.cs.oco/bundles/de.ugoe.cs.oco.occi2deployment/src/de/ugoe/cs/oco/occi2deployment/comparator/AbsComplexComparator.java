@@ -8,7 +8,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.occiware.clouddesigner.occi.Entity;
+import org.eclipse.cmf.occi.core.Entity;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import pcg.PcgFactory;
@@ -166,9 +166,9 @@ public abstract class AbsComplexComparator extends AbsComparator {
 	 * @param model
 	 * @return
 	 */
-	protected static org.occiware.clouddesigner.occi.Resource getEquivalentResource(String id, EList<EObject> model) {
+	protected static org.eclipse.cmf.occi.core.Resource getEquivalentResource(String id, EList<EObject> model) {
 		for(EObject obj: ModelUtility.getResources(model)){
-			org.occiware.clouddesigner.occi.Resource res = (org.occiware.clouddesigner.occi.Resource) obj;
+			org.eclipse.cmf.occi.core.Resource res = (org.eclipse.cmf.occi.core.Resource) obj;
 			if(res.getId().equals(id)){
 				return res;
 			}

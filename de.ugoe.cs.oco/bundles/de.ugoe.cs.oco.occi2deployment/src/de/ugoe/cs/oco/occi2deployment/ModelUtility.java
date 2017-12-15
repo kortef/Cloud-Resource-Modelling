@@ -21,8 +21,7 @@ import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
 //import org.occiware.clouddesigner.occi.Entity;
 //import org.occiware.clouddesigner.occi.OCCIPackage;
 //import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
-
-
+import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
@@ -46,7 +45,7 @@ import pcg.PcgPackage;
 @SuppressWarnings("restriction")
 public class ModelUtility {
 
-	/**Loads an OCCI Model as a List of EObjects.
+	/**Loads EObjects contained within the Configuration of the OCCI Model. If no Configuration is available every EObject of the model is loaded.
 	 * @param path to the OCCI Model
 	 * @return OCCI Model as List of EObjects
 	 */
@@ -61,7 +60,15 @@ public class ModelUtility {
        
         URI fileURI = URI.createURI(path.toString());
         Resource resource = resSet.getResource(fileURI, true);
-
+        
+        for(EObject obj: resource.getContents()) {
+        	if(obj instanceof Configuration) {
+        		System.out.println(((Configuration)obj).eContents());
+        		return ((Configuration)obj).eContents();
+        	}
+        }
+       
+        
 		return resource.getContents();	
 	}
 	

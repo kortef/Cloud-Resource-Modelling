@@ -46,6 +46,9 @@ public class OCCIModelSerializer {
 		if (model.getResources() != null)
 			resource.getContents().addAll(model.getResources());
 		
+		if (model.getConfiguration() != null)
+			resource.getContents().add(model.getConfiguration());
+		
 		try {
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {

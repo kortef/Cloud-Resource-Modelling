@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.cmf.occi.core.*;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 
 
 /**
@@ -16,9 +18,11 @@ import org.eclipse.cmf.occi.core.*;
 */
 public class OCCIModel {
 	private Map<String, Extension> extensions = new HashMap<String, Extension>();
+	private Configuration configuration = OCCIFactory.eINSTANCE.createConfiguration();
 	private Set<Action> actions = new HashSet<Action>();
 	private Set<Resource> resources = new HashSet<Resource>();
 	private Set<Link> links = new HashSet<Link>();
+	
 	
 	public Collection<Extension> getExtensions(){
 		return extensions.values();
@@ -257,6 +261,58 @@ public class OCCIModel {
 				return mixin;
 		}
 		return null;
+	}
+
+	public Configuration getConfiguration() {
+		return configuration;
+	}
+
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
+	}
+
+	public void fillConfiguration() {
+		this.configuration.setDescription("Extracted Runtime Model");
+		
+		
+		//Setup Use
+		for(Resource res: this.getResources()) {
+			for(Mixin mix: res.getMixins()) {
+				System.out.println(mix.eContainer());
+				this.configuration.getUse().add((Extension) mix.eContainer());
+			}
+			this.configuration.getUse().add((Extension) res.getKind().eContainer());
+		}
+		
+		
+		
+		this.configuration.getResources().addAll(this.getResources());
+		this.getResources().clear();
+		
+		
+		
+		/*
+		for(Extension ext : this.getExtensions()) {
+			for(Mixin mixin: ext.getMixins()) {
+				System.out.println(mixin.getEntities());
+				if(mixin.getEntities().isEmpty() == false) {
+					System.out.println(this.configuration.getUse());
+					this.configuration.getUse().add(ext);
+					System.out.println(this.configuration.getUse());
+				}
+			}
+			for(Kind kind: ext.getKinds()) {
+				if(kind.getEntities().isEmpty() == false) {
+					this.configuration.getUse().add(ext);
+				}
+			}
+		}*/
+		
+		//Fill with Resources
+		System.out.println("Model:");
+		System.out.println(this.getResources());
+		System.out.println(this.configuration.getResources());
+		
 	}
     
 }

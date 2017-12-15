@@ -9,7 +9,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Mixin;
+import org.eclipse.cmf.occi.core.OcciCoreConstants;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
@@ -242,6 +244,17 @@ public class OCCIExecutor extends AbsExecutor{
 			String adaptedValue = attributeIdSwap(state);
 			attributes += state.getName()+"=\""+ adaptedValue +"\", ";
 		}
+		
+		if(entity.eClass().getName().equals("Link")) {
+			System.out.println("SSSSSS");
+			Link link = (Link) entity;
+			String actualSourceId = getActualId(link.getSource(), this.connection.getIdSwapList());
+			attributes += "occi.core.source=\""+this.connection.getAdress()+"/"+ link.getSource().getKind().getTerm()+"/"+ actualSourceId +"\", ";
+			
+			String actualTargetId = getActualId(link.getTarget(), this.connection.getIdSwapList());
+			attributes += "occi.core.target=\""+this.connection.getAdress()+"/"+ link.getTarget().getKind().getTerm()+"/"+ actualTargetId +"\", ";
+		}
+		
 		return attributes.substring(0, attributes.lastIndexOf(","));
 	}
 	

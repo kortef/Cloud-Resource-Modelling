@@ -4,7 +4,6 @@
 package de.ugoe.cs.oco.occi.extractor;
 
 import java.net.URI;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,9 +12,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.cmf.occi.core.OCCIFactory;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.cmf.occi.core.*;
 
 import cz.cesnet.cloud.occi.Model;
 import cz.cesnet.cloud.occi.api.Client;
@@ -60,6 +56,8 @@ public class OCCIModelExtractor {
     	occiModel = kind(model, occiModel);
     	occiModel = action(model, occiModel);
     	occiModel = entity(model, occiModel);
+    	occiModel.fillConfiguration();
+    	occiModel.getConfiguration().setLocation(httpClient.getEndpoint().toString());
     	return occiModel;
     }
 

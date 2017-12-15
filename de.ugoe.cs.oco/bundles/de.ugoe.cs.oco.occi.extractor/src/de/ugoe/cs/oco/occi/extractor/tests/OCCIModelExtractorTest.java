@@ -6,8 +6,6 @@ package de.ugoe.cs.oco.occi.extractor.tests;
 import java.net.URI;
 import java.nio.file.Paths;
 
-import org.junit.Test;
-
 import cz.cesnet.cloud.occi.api.Client;
 import cz.cesnet.cloud.occi.api.exception.CommunicationException;
 import cz.cesnet.cloud.occi.api.http.HTTPClient;

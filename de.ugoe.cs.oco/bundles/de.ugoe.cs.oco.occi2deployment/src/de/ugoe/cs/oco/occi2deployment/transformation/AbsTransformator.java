@@ -33,6 +33,7 @@ public abstract class AbsTransformator implements Transformator {
 		if (metauri != null){
 			properties.put(EmfModel.PROPERTY_METAMODEL_URI, metauri);
 		}
+		
 		properties.put(EmfModel.PROPERTY_EXPAND, "true");
 		properties.put(EmfModel.PROPERTY_NAME, name);
 		properties.put(EmfModel.PROPERTY_MODEL_URI, uri);

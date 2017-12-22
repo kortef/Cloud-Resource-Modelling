@@ -50,16 +50,21 @@ public class OCCI2PCGTransformator extends AbsTransformator {
 		}
 
 		try {
+			
+			
+			
+			
 			String occiURI = "http://schemas.ogf.org/occi/core/ecore";
 			String path = oldModelPath.getParent().toString() + "/";
-			IModel oldOCCI = createEmfModel("oldOCCI",
+			IModel oldOCCI = createEmfModel("srcOCCI",
 					path + oldModelPath.getFileName().toString(),
 					occiURI,
 					true,
 					false);
 			
+			
 			path = newModelPath.getParent().toString() + "/";
-			IModel newOCCI = createEmfModel("newOCCI",
+			IModel newOCCI = createEmfModel("tarOCCI",
 					path + newModelPath.getFileName().toString(),
 					occiURI,
 					true,

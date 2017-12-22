@@ -42,6 +42,11 @@ public abstract class AbsComparator implements Comparator {
 		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
 		
+		
+		for(Resource res: ModelUtility.getResources(newModel)) {
+			System.out.println(res.getKind().getTerm());
+		}
+		
 		createResourceMatch(oldModelPath, oldModel, newModelPath, newModel);
 		createLinkMatch();
 		logMatch(matches);

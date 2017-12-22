@@ -1,11 +1,23 @@
 pre {
 	var graph = new PCG!Graph();
 	for(srcRes in srcOCCI!Resource){
+		"SRC: ".println();
+		srcRes.println();
+		srcRes.kind.println();
 		for(srcLink in srcRes.links){
 			for(tarRes in tarOCCI!Resource){
+			"TAR: ".println();
+			tarRes.println();
+			tarRes.kind.println();
 				for(tarLink in tarRes.links){
+				"TarLINK: ".println();
+				tarLink.println();
+				tarLink.kind.println();
+				tarLink.kind.term.println();
+				tarLink.kind.scheme.println();
 					if(tarLink.kind.term == srcLink.kind.term 
 					and tarLink.kind.scheme == srcLink.kind.scheme){	
+					"Intitiate Vertex creation".println();
 						createVertex(srcRes, tarRes);
 						if(not(vertexExists(srcLink.target.id, tarLink.target.id))){
 							createVertex(srcLink.target, tarLink.target);	
@@ -22,7 +34,7 @@ post {
  	"Transformation Process was Successfull".println();
 }
 
-operation createEdge(kind: oldOCCI!Kind, sourceVertex: PCG!Vertex, targetVertex: PCG!Vertex){
+operation createEdge(kind: srcOCCI!Kind, sourceVertex: PCG!Vertex, targetVertex: PCG!Vertex){
 	var edge = new PCG!Edge();
 	edge.source = sourceVertex;
 	edge.target = targetVertex;
@@ -47,7 +59,7 @@ operation getEdge(sourceVertex, targetVertex) : PCG!Edge {
 
 }
 
-operation PCG!Vertex addResources(oldResource : oldOCCI!Resource, newResource : newOCCI!Resource){
+operation PCG!Vertex addResources(oldResource : srcOCCI!Resource, newResource : tarOCCI!Resource){
 	var pcgResource = new PCG!Resource();
 	pcgResource.id = oldResource.id;
 	pcgResource.title = oldResource.title;
@@ -58,7 +70,7 @@ operation PCG!Vertex addResources(oldResource : oldOCCI!Resource, newResource : 
 	self.resources.add(pcgResource2);
 }
 
-operation createVertex(oldResource : oldOCCI!Resource, newResource : newOCCI!Resource) {
+operation createVertex(oldResource : srcOCCI!Resource, newResource : tarOCCI!Resource) {
 	if(not(vertexExists(oldResource.id, newResource.id))){
 		var vertex = new PCG!Vertex();
 		vertex.addResources(oldResource, newResource);

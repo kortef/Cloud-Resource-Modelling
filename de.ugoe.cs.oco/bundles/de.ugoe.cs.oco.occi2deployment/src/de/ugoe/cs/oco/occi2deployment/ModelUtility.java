@@ -1,28 +1,48 @@
 package de.ugoe.cs.oco.occi2deployment;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelFactoryImpl;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.EReferenceImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.ProxyCrossReferencer;
+import org.eclipse.emf.ecore.util.EcoreUtil.UnresolvedProxyCrossReferencer;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
 import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
-//import org.occiware.clouddesigner.occi.Entity;
-//import org.occiware.clouddesigner.occi.OCCIPackage;
-//import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+
 import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
@@ -45,6 +65,48 @@ import pcg.PcgPackage;
 @SuppressWarnings("restriction")
 public class ModelUtility {
 
+	public static EList<EObject> loadOCCI (Path configuration, List<Path> extensions) {
+		OCCIPackage.eINSTANCE.eClass();
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("occie", new OCCIResourceFactoryImpl());
+		
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		for(Path path: extensions) {
+			String filePath = new File(path.toString()).getAbsolutePath();
+			Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
+			if(extResource.getContents().get(0) instanceof Extension) {
+				 Extension ext = (Extension) extResource.getContents().get(0);
+			     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
+			     extResource.setURI(realURI);
+			}
+			resSet.getResources().add(extResource);
+		}
+		
+		String file = new File(configuration.toString()).getAbsolutePath();
+	       //URI fileURI = URI.createURI(path.toString());
+	       URI fileURI = URI.createFileURI(file);
+	       Resource resource = resSet.getResource(fileURI, true);
+		
+		
+		
+		EcorePlugin.ExtensionProcessor.process(null);
+		EcoreUtil.resolveAll(resSet);
+        for(EObject obj: resource.getContents()) {
+        	if(obj instanceof Configuration) {
+        		return ((Configuration)obj).eContents();
+        	}
+        }
+       
+        
+		return resource.getContents();
+	}
+	
+	
+	
+	
 	/**Loads EObjects contained within the Configuration of the OCCI Model. If no Configuration is available every EObject of the model is loaded.
 	 * @param path to the OCCI Model
 	 * @return OCCI Model as List of EObjects
@@ -56,20 +118,28 @@ public class ModelUtility {
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("occie", new OCCIResourceFactoryImpl());
 		
-        ResourceSet resSet = new ResourceSetImpl();
+       ResourceSet resSet = new ResourceSetImpl();
        
-        URI fileURI = URI.createURI(path.toString());
-        Resource resource = resSet.getResource(fileURI, true);
-        
+       String file = new File(path.toString()).getAbsolutePath();
+       URI fileURI = URI.createFileURI(file);
+       Resource resource = resSet.getResource(fileURI, true);
+
+       resSet.getResources().add(resource);
+       
+       EcorePlugin.ExtensionProcessor.process(null);
         for(EObject obj: resource.getContents()) {
         	if(obj instanceof Configuration) {
-        		System.out.println(((Configuration)obj).eContents());
+        		for(Extension ext : ((Configuration) obj).getUse()){
+        			System.out.println(((InternalEObject)ext).eProxyURI());
+        			System.out.println(ext.getKinds());
+        			
+        		}
         		return ((Configuration)obj).eContents();
         	}
         }
        
         
-		return resource.getContents();	
+		return resource.getContents();
 	}
 	
 	/**Loads OCCI Model as Resource Set (required for EMFCompare).

@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.cmf.occi.core;bundle-version="1.0.0",
  org.eclipse.cmf.occi.infrastructure;bundle-version="1.0.0",
  com.google.guava;bundle-version="21.0.0",
- com.google.guava_18.0;bundle-version="18.0.0"
+ com.google.guava_18.0;bundle-version="18.0.0",
+ org.eclipse.cmf.occi.platform;bundle-version="1.0.0"
 Import-Package: com.google.common.net,
  de.ugoe.cs.oco.occi.extractor,
  de.ugoe.cs.oco.pog.impl

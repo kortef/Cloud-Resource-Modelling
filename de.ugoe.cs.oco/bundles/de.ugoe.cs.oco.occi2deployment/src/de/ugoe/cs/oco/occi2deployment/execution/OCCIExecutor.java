@@ -246,7 +246,6 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 		
 		if(entity.eClass().getName().equals("Link")) {
-			System.out.println("SSSSSS");
 			Link link = (Link) entity;
 			String actualSourceId = getActualId(link.getSource(), this.connection.getIdSwapList());
 			attributes += "occi.core.source=\""+this.connection.getAdress()+"/"+ link.getSource().getKind().getTerm()+"/"+ actualSourceId +"\", ";

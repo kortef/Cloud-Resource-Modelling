@@ -105,7 +105,7 @@ public class Deployer{
 		
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		Comparator comparator = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, conn);
+		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath, conn);
 		
 		updateIdsSwapList(comparator, conn, oldModelPath);
 		

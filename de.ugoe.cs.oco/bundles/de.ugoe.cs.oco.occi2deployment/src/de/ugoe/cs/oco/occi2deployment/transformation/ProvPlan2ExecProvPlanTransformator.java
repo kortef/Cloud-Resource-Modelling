@@ -96,4 +96,16 @@ public class ProvPlan2ExecProvPlanTransformator extends AbsTransformator {
 		System.out.println("TODO: Request User for third Path");
 		return null;
 	}
+
+	@Override
+	public String transform(Resource inputModel, Path outputModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String transform(Resource sourceModel, Resource targetModel, Path outputPath) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

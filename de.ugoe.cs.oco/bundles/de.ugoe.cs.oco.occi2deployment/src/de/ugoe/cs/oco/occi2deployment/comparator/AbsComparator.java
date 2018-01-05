@@ -25,6 +25,7 @@ import pcg.Vertex;
 public abstract class AbsComparator implements Comparator {
 	
 	abstract void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel);
+	abstract void createResourceMatch(org.eclipse.emf.ecore.resource.Resource oldModelResource, org.eclipse.emf.ecore.resource.Resource newModelResource);
 	protected Connection connection;
 	EList<Match> matches = new BasicEList<Match>();
 	EList<EObject> newElements = new BasicEList<EObject>();
@@ -43,10 +44,6 @@ public abstract class AbsComparator implements Comparator {
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
 		
 		
-		for(Resource res: ModelUtility.getResources(newModel)) {
-			System.out.println(res.getKind().getTerm());
-		}
-		
 		createResourceMatch(oldModelPath, oldModel, newModelPath, newModel);
 		createLinkMatch();
 		logMatch(matches);
@@ -56,6 +53,22 @@ public abstract class AbsComparator implements Comparator {
 		investigateMissingEntities(oldModel, matches);
 		//Fill adapted/old entities
 		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
+	}
+	
+	public final void compare(org.eclipse.emf.ecore.resource.Resource oldModelResource, org.eclipse.emf.ecore.resource.Resource newModelResource) {
+		EList<EObject> oldModel = ModelUtility.getOCCIConfigurationContents(oldModelResource);
+		EList<EObject> newModel = ModelUtility.getOCCIConfigurationContents(newModelResource);
+		
+		createResourceMatch(oldModelResource,newModelResource);
+		createLinkMatch();
+		logMatch(matches);
+		
+		investigateNewEntities(newModel, matches);
+		//Fill missing entities
+		investigateMissingEntities(oldModel, matches);
+		//Fill adapted/old entities
+		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
+		
 	}
 	
 	

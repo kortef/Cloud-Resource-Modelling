@@ -26,6 +26,19 @@ public class SimpleComparator extends AbsComparator {
 		compare(model1, model2);
 	}
 
+	public SimpleComparator(org.eclipse.emf.ecore.resource.Resource model1,
+			org.eclipse.emf.ecore.resource.Resource model2, Connection conn) {
+		this.connection = conn;
+		compare(model1, model2);
+	}
+	
+	@Override
+	void createResourceMatch(org.eclipse.emf.ecore.resource.Resource oldModelResource,
+			org.eclipse.emf.ecore.resource.Resource newModelResource) {
+		matchOldAndNewElements(ModelUtility.getOCCIConfigurationContents(oldModelResource), ModelUtility.getOCCIConfigurationContents(newModelResource));
+		matchMissingElements(ModelUtility.getOCCIConfigurationContents(oldModelResource), ModelUtility.getOCCIConfigurationContents(newModelResource));
+	}
+
 	/**Fills the match of the comparator.
 	 * @param oldModel
 	 * @param newModel

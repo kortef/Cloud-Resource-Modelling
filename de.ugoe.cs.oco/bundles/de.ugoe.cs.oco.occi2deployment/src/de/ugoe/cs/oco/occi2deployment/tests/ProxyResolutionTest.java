@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
+import org.eclipse.epsilon.emc.emf.EmfModel;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
@@ -37,7 +38,10 @@ public class ProxyResolutionTest {
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster2.occie");
 
 		
+		
+		
 		EList<EObject> newModel = ModelUtility.loadOCCI(newOCCI, extensions);
+		org.eclipse.emf.ecore.resource.Resource resource = ModelUtility.loadOCCIResource(newOCCI, extensions);
 		EList<Resource> res = ModelUtility.getResources(newModel);
 		
 		System.out.println("");
@@ -45,5 +49,12 @@ public class ProxyResolutionTest {
 		for(Resource r : res) {
 			System.out.println(r.getKind().getScheme());
 		}
+		System.out.println("");
+		
+		Comparator comparator = ComparatorFactory.getComparator("Mixed", resource, resource, null);
+		CachedResourceSet.getCache().clear();
+		System.out.println("");
+		
+		
 	}
 }

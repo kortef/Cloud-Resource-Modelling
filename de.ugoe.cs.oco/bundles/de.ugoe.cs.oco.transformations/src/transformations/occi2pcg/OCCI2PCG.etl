@@ -1,23 +1,12 @@
 pre {
+"OCCI2PCG Tranformation Start...".println();
 	var graph = new PCG!Graph();
 	for(srcRes in srcOCCI!Resource){
-		"SRC: ".println();
-		srcRes.println();
-		srcRes.kind.println();
 		for(srcLink in srcRes.links){
 			for(tarRes in tarOCCI!Resource){
-			"TAR: ".println();
-			tarRes.println();
-			tarRes.kind.println();
 				for(tarLink in tarRes.links){
-				"TarLINK: ".println();
-				tarLink.println();
-				tarLink.kind.println();
-				tarLink.kind.term.println();
-				tarLink.kind.scheme.println();
 					if(tarLink.kind.term == srcLink.kind.term 
 					and tarLink.kind.scheme == srcLink.kind.scheme){	
-					"Intitiate Vertex creation".println();
 						createVertex(srcRes, tarRes);
 						if(not(vertexExists(srcLink.target.id, tarLink.target.id))){
 							createVertex(srcLink.target, tarLink.target);	

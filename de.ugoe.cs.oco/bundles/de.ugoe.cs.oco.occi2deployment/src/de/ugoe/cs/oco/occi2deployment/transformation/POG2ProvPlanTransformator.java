@@ -4,6 +4,9 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Map;
 
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
@@ -19,12 +22,10 @@ import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
  * @author rockodell
  *
  */
-@SuppressWarnings("restriction")
 public class POG2ProvPlanTransformator extends AbsTransformator{
-	/* (non-Javadoc)
-	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path)
-	 */
-	public String transform(Path pogModelPath, Path umlModelPath){
+	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");
+	
+	private void factorySetup() {
 		PogPackage.eINSTANCE.eClass();
 		UMLPackage.eINSTANCE.eClass();
 	
@@ -32,23 +33,14 @@ public class POG2ProvPlanTransformator extends AbsTransformator{
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("pog2", new PogFactoryImpl());
 		m.put("uml", new UMLResourceFactoryImpl());
-		
-		IEolExecutableModule module = new EtlModule();
-		Object result = null;		
-		// TODO: Remove path
-		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pog2provPlan/POG2ProvPlan.etl");    
-		try {
-			module.parse(transformationFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (module.getParseProblems().size() > 0) {
-			System.err.println("Parse errors occured...");
-			for (ParseProblem problem : module.getParseProblems()) {
-				System.err.println(problem.toString());
-			}   
-		}
-
+	}
+	
+	/* (non-Javadoc)
+	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path)
+	 */
+	public String transform(Path pogModelPath, Path umlModelPath){
+		factorySetup();
+		IEolExecutableModule module = etlModuleSetup(etlFile);
 		try {
 			String pogURI = "http://swe.simpaas.pog.de/pog";
 			String path = pogModelPath.getParent().toString() + "/";
@@ -70,19 +62,32 @@ public class POG2ProvPlanTransformator extends AbsTransformator{
 			module.getContext().getModelRepository().addModel(umlModel);
 			module.getContext().getModelRepository().addModel(pogModel);
 			
-			result = module.execute();
+			Object result = module.execute();
 			umlModel.store();
+			return result.toString();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result.toString();
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path, java.nio.file.Path)
 	 */
 	public String transform(Path inputPath, Path outputPath, Path additionalPath) {
-		return transform(inputPath, outputPath, null);
+		return transform(inputPath, outputPath);
+	}
+
+	@Override
+	public String transform(Resource inputModel, Path outputModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String transform(Resource sourceModel, Resource targetModel, Path outputPath) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

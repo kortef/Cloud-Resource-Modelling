@@ -7,7 +7,9 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 
+import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
 import pcg.Vertex;
@@ -34,6 +36,11 @@ public class ComplexComparator extends AbsComplexComparator {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ComplexComparator(Resource oldModel, Resource newModel) {
+		compare(oldModel, newModel);
+	}
+
+
 	@Override
 	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
@@ -46,6 +53,21 @@ public class ComplexComparator extends AbsComplexComparator {
 		
 		this.matches = generateMatches(ipgPath, oldModel, newModel);
 	}
+	
+
+	@Override
+	void createResourceMatch(Resource oldModelResource, Resource newModelResource) {
+		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
+		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
+		occiToPcg.transform(oldModelResource, newModelResource, pcgPath);
+				
+		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
+		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
+		pcgToIpg.transform(pcgPath, ipgPath);
+		
+		this.matches = generateMatches(ipgPath, ModelUtility.getOCCIConfigurationContents(oldModelResource), ModelUtility.getOCCIConfigurationContents(newModelResource));
+	}
+	
 	
 	/**Returns generated matches from the ipgPath.
 	 * Therefore, this method triggers the calculation of the fixpoint values from the IPG.
@@ -75,6 +97,8 @@ public class ComplexComparator extends AbsComplexComparator {
 				max = vertices.get(0).getFixpointValue();
 			}
 		}
+		System.out.println("MaxVertex:" + maxVertex);
+		System.out.println();
 		return maxVertex;
 	}
 }

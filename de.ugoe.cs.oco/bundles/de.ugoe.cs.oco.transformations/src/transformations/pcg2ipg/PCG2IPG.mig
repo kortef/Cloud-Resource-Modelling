@@ -2,6 +2,7 @@ pre {
 	"Starting PCG2IPG Migration...".println();
 }
 post {
+	"Migration Process was Successfull".println();
 	for(vertex in IPG!Vertex){
 		for(edge in vertex.getOutgoingEdges()){
 			edge.weight = 1.0d/vertex.getOutgoingEdges().getEdgesOfKind(edge.kind).size();

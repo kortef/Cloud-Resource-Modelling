@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.ProxyCrossReferencer;
 import org.eclipse.emf.ecore.util.EcoreUtil.UnresolvedProxyCrossReferencer;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
+import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -99,12 +99,44 @@ public class ModelUtility {
         		return ((Configuration)obj).eContents();
         	}
         }
-       
         
 		return resource.getContents();
 	}
 	
-	
+	public static Resource loadOCCIResource (Path configuration, List<Path> extensions) {
+		OCCIPackage.eINSTANCE.eClass();
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("occie", new OCCIResourceFactoryImpl());
+		
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		if(extensions != null) {
+			for(Path path: extensions) {
+				String filePath = new File(path.toString()).getAbsolutePath();
+				Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
+				if(extResource.getContents().get(0) instanceof Extension) {
+					 Extension ext = (Extension) extResource.getContents().get(0);
+				     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
+				     extResource.setURI(realURI);
+				}
+				resSet.getResources().add(extResource);
+			}
+		}
+		
+		String file = new File(configuration.toString()).getAbsolutePath();
+	       //URI fileURI = URI.createURI(path.toString());
+	       URI fileURI = URI.createFileURI(file);
+	       Resource resource = resSet.getResource(fileURI, true);
+		
+		
+		
+		EcorePlugin.ExtensionProcessor.process(null);
+		EcoreUtil.resolveAll(resSet);
+        
+		return resource;
+	}
 	
 	
 	/**Loads EObjects contained within the Configuration of the OCCI Model. If no Configuration is available every EObject of the model is loaded.
@@ -129,11 +161,6 @@ public class ModelUtility {
        EcorePlugin.ExtensionProcessor.process(null);
         for(EObject obj: resource.getContents()) {
         	if(obj instanceof Configuration) {
-        		for(Extension ext : ((Configuration) obj).getUse()){
-        			System.out.println(((InternalEObject)ext).eProxyURI());
-        			System.out.println(ext.getKinds());
-        			
-        		}
         		return ((Configuration)obj).eContents();
         	}
         }
@@ -141,6 +168,16 @@ public class ModelUtility {
         
 		return resource.getContents();
 	}
+	
+	public static EList<EObject> getOCCIConfigurationContents(Resource resource) {
+		for(EObject obj: resource.getContents()) {
+        	if(obj instanceof Configuration) {
+        		return ((Configuration)obj).eContents();
+        	}
+        }
+		return null;
+	}
+	
 	
 	/**Loads OCCI Model as Resource Set (required for EMFCompare).
 	 * @param path to the OCCI Model
@@ -193,6 +230,35 @@ public class ModelUtility {
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
 		resource.getContents().add(graph);
+
+		// now save the content.
+		try {
+			resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**Stores OCCI model at the given Path path.
+	 * @param path Path in which the OCCI Model gets stored.
+	 * @param model Model in terms of EObjects.
+	 */
+	public static void storeOCCI(Path path, EList<EObject> model){
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("pog", new XMIResourceFactoryImpl());
+
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+
+		// create a resource
+		URI fileURI = URI.createURI(path.toString());
+		Resource resource = resSet.createResource(fileURI);
+		// Get the first model element and cast it to the right type, in my
+		// example everything is hierarchical included in this first node
+		resource.getContents().addAll(model);
 
 		// now save the content.
 		try {

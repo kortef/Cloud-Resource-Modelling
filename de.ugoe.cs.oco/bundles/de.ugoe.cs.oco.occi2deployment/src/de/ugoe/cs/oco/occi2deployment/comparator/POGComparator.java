@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.pog.Vertex;
@@ -22,6 +23,10 @@ public class POGComparator extends AbsComparator {
 		EList<EObject> oldModel = ModelUtility.loadPOG(model1);
 		EList<EObject> newModel = ModelUtility.loadPOG(model2);
 		compare(oldModel, newModel);
+	}
+
+	public POGComparator(Resource model1, Resource model2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	private void compare(EList<EObject> oldModel, EList<EObject> newModel) {
@@ -45,6 +50,12 @@ public class POGComparator extends AbsComparator {
 
 	@Override
 	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void createResourceMatch(Resource oldModelResource, Resource newModelResource) {
 		// TODO Auto-generated method stub
 		
 	}

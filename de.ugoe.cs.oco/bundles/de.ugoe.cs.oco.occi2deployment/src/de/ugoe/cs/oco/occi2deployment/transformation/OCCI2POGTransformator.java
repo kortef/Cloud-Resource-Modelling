@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
+import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
@@ -22,10 +23,9 @@ import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
  *
  */
 public class OCCI2POGTransformator extends AbsTransformator{
-	/* (non-Javadoc)
-	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path)
-	 */
-	public String transform(Path occiModelPath, Path pogModelPath){
+	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");
+	
+	private void factorySetup() {
 		OCCIPackage.eINSTANCE.eClass();
 		PogPackage.eINSTANCE.eClass();
 		InfrastructurePackage.eINSTANCE.eClass();
@@ -34,23 +34,15 @@ public class OCCI2POGTransformator extends AbsTransformator{
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("pog2", new PogFactoryImpl());
 		m.put("occie", new OCCIResourceFactoryImpl());
+	}
+	
+	/* (non-Javadoc)
+	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path)
+	 */
+	public String transform(Path occiModelPath, Path pogModelPath){
+		factorySetup();
 		
-		IEolExecutableModule module = new EtlModule();
-		Object result = null;		
-		// TODO: Remove path
-		File transformationFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");    
-		try {
-			module.parse(transformationFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (module.getParseProblems().size() > 0) {
-			System.err.println("Parse errors occured...");
-			for (ParseProblem problem : module.getParseProblems()) {
-				System.err.println(problem.toString());
-			}   
-		}
-
+		IEolExecutableModule module = etlModuleSetup(etlFile);
 		try {
 			String occiURI = "http://schemas.ogf.org/occi/core/ecore";
 			String path = occiModelPath.getParent().toString() + "/";
@@ -71,19 +63,54 @@ public class OCCI2POGTransformator extends AbsTransformator{
 			module.getContext().getModelRepository().addModel(pogModel);
 			module.getContext().getModelRepository().addModel(occiModel);
 			
-			result = module.execute();
+			Object result = module.execute();
 			pogModel.store();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result.toString();
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see de.ugoe.cs.oco.occi2deployment.transformation.Transformator#transform(java.nio.file.Path, java.nio.file.Path, java.nio.file.Path)
 	 */
 	public String transform(Path inputPath, Path outputPath, Path additionalPath) {
-		return transform(inputPath, outputPath, null);
+		return transform(inputPath, outputPath);
+	}
+
+	@Override
+	public String transform(Resource inputModel, Path outputPath) {
+		factorySetup();
+		IEolExecutableModule module = etlModuleSetup(etlFile);
+
+		try {
+			InMemoryEmfModel occiModel = new InMemoryEmfModel("OCCI", inputModel, OCCIPackage.eINSTANCE);
+			occiModel.getAliases().add("OCCI");
+			
+			String pogURI = "http://swe.simpaas.pog.de/pog";
+			String path = outputPath.getParent().toString() + "/";
+			IModel pogModel = createEmfModel("POG", 
+					path + outputPath.getFileName().toString(),  
+					pogURI,
+					false, 
+					true);
+			
+			module.getContext().getModelRepository().addModel(pogModel);
+			module.getContext().getModelRepository().addModel(occiModel);
+			
+			Object result = module.execute();
+			pogModel.store();
+			return result.toString();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String transform(Resource sourceModel, Resource targetModel, Path outputPath) {
+		return transform(sourceModel, outputPath);
 	}
 }

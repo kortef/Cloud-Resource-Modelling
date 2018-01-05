@@ -39,6 +39,34 @@ public class MixedComparator extends AbsComplexComparator {
 		compare(oldModelPath, newModelPath);
 	}
 
+	public MixedComparator(org.eclipse.emf.ecore.resource.Resource model1,
+			org.eclipse.emf.ecore.resource.Resource model2, Connection conn) {
+		this.connection = conn;
+		compare(model1, model2);
+	}
+
+	
+	@Override
+	void createResourceMatch(org.eclipse.emf.ecore.resource.Resource oldModelResource,
+			org.eclipse.emf.ecore.resource.Resource newModelResource) {
+		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelResource, newModelResource, this.connection);
+		
+		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
+		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
+		occiToPcg.transform(oldModelResource, newModelResource, pcgPath);
+		
+		adaptPCG(pcgPath, simple);
+		
+		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
+		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
+		pcgToIpg.transform(pcgPath, ipgPath);
+		
+		Map<String, List<Vertex>> map = calculateFixpointValueMap(ipgPath);
+		this.matches = this.createMatch(map, ModelUtility.getOCCIConfigurationContents(oldModelResource), ModelUtility.getOCCIConfigurationContents(newModelResource));
+		
+		checkNewAndMissingMatchesForSimilarities(this.matches, ModelUtility.getOCCIConfigurationContents(oldModelResource), ModelUtility.getOCCIConfigurationContents(newModelResource));
+	}
+	
 	@Override
 	void createResourceMatch(Path oldModelPath, EList<EObject> oldModel, Path newModelPath, EList<EObject> newModel) {		
 		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, this.connection);
@@ -172,10 +200,8 @@ public class MixedComparator extends AbsComplexComparator {
 	private Match getMatchFor(Resource res, EList<Match> matches) {
 		for(Match match: matches){
 			if(match.getTar() != null && match.getSrc()!= null){
-				System.out.println(match.getSrc().eClass().getName());
 				if(match.getSrc().eClass().getName().equals("Resource")){
 					if(res.getId().equals(((Resource) match.getSrc()).getId())){
-						System.out.println(match.getSrc()+ " : " + match.getTar());
 						return match;
 					}
 				}

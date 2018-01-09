@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
  *
  */
 public class POG2ProvPlanTransformator extends AbsTransformator{
-	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");
+	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pog2provPlan/POG2ProvPlan.etl");
 	
 	private void factorySetup() {
 		PogPackage.eINSTANCE.eClass();

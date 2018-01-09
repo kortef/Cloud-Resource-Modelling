@@ -1,74 +1,32 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pcg:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pcg="http://swe.simpaas.pcg.de/pcg">
-  <vertices title="lamp, lamp" kind="http://schemas.modmacao.org/occi/platform#application">
-    <resources id="urn:uuid:ed0973fb-f6f2-4f76-84b1-2dccfbb0abf7" title="lamp"/>
-    <resources id="urn:uuid:ed0973fb-f6f2-4f76-84b1-2dccfbb0abf7" title="lamp"/>
-  </vertices>
-  <vertices title="apache, apache" kind="http://schemas.modmacao.org/occi/platform#component">
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13675" title="apache"/>
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13675" title="apache"/>
-  </vertices>
-  <vertices title="mysql, mysql" kind="http://schemas.modmacao.org/occi/platform#component">
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13677" title="mysql"/>
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13677" title="mysql"/>
-  </vertices>
-  <vertices title="tomcat1, tomcat1" kind="http://schemas.modmacao.org/occi/platform#component">
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13679" title="tomcat1"/>
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13679" title="tomcat1"/>
-  </vertices>
-  <vertices title="tomcat2, tomcat2" kind="http://schemas.modmacao.org/occi/platform#component">
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13678" title="tomcat2"/>
-    <resources id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13678" title="tomcat2"/>
-  </vertices>
-  <vertices title="vm1, vm1" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2592" title="vm1"/>
+  <vertices title="vm2, vm1" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
     <resources id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2592" title="vm1"/>
   </vertices>
-  <vertices title="vm3, vm3" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="urn:uuid:24706888-533b-460c-9177-daafcf44d6e6" title="vm3"/>
-    <resources id="urn:uuid:24706888-533b-460c-9177-daafcf44d6e6" title="vm3"/>
-  </vertices>
-  <vertices title="vm5, vm5" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="urn:uuid:29713f47-76b0-464b-9c0f-a02c4197b9e2" title="vm5"/>
-    <resources id="urn:uuid:29713f47-76b0-464b-9c0f-a02c4197b9e2" title="vm5"/>
-  </vertices>
-  <vertices title=", " kind="http://schemas.ogf.org/occi/infrastructure#network">
-    <resources id="urn:uuid:2d566092-7adc-4c11-acd5-eac9be9b131c" title=""/>
+  <vertices title="stubNetwork, " kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="urn:uuid:14bdc609-0f2d-4db7-b5b0-08d73e884f3f" title="stubNetwork"/>
     <resources id="urn:uuid:2d566092-7adc-4c11-acd5-eac9be9b131c" title=""/>
   </vertices>
   <vertices title="vm2, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2593" title="vm2"/>
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
     <resources id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2593" title="vm2"/>
   </vertices>
-  <vertices title="vm4, vm4" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="urn:uuid:e991175d-d19c-4fb6-a9dc-4106312b32b2" title="vm4"/>
+  <vertices title="vm2, vm3" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
+    <resources id="urn:uuid:24706888-533b-460c-9177-daafcf44d6e6" title="vm3"/>
+  </vertices>
+  <vertices title="vm2, vm4" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
     <resources id="urn:uuid:e991175d-d19c-4fb6-a9dc-4106312b32b2" title="vm4"/>
   </vertices>
-  <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.2" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.4" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.0" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.5" source="//@vertices.1" kind="http://schemas.modmacao.org/placement#placementlink"/>
-  <edges target="//@vertices.3" source="//@vertices.1" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.1" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.4" source="//@vertices.1" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.1" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.3" source="//@vertices.1" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.2" source="//@vertices.4" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.6" source="//@vertices.4" kind="http://schemas.modmacao.org/placement#placementlink"/>
-  <edges target="//@vertices.7" source="//@vertices.2" kind="http://schemas.modmacao.org/placement#placementlink"/>
-  <edges target="//@vertices.8" source="//@vertices.5" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
-  <edges target="//@vertices.2" source="//@vertices.3" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.2" source="//@vertices.3" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.9" source="//@vertices.3" kind="http://schemas.modmacao.org/placement#placementlink"/>
-  <edges target="//@vertices.8" source="//@vertices.9" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
-  <edges target="//@vertices.8" source="//@vertices.6" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
-  <edges target="//@vertices.8" source="//@vertices.10" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
-  <edges target="//@vertices.8" source="//@vertices.7" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
-  <edges target="//@vertices.2" source="//@vertices.3" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.2" source="//@vertices.3" kind="http://schemas.modmacao.org/occi/platform#componentlink"/>
-  <edges target="//@vertices.10" source="//@vertices.3" kind="http://schemas.modmacao.org/placement#placementlink"/>
+  <vertices title="vm2, vm5" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
+    <resources id="urn:uuid:29713f47-76b0-464b-9c0f-a02c4197b9e2" title="vm5"/>
+  </vertices>
+  <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
+  <edges target="//@vertices.1" source="//@vertices.2" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
+  <edges target="//@vertices.1" source="//@vertices.3" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
+  <edges target="//@vertices.1" source="//@vertices.4" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
+  <edges target="//@vertices.1" source="//@vertices.5" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
 </pcg:Graph>

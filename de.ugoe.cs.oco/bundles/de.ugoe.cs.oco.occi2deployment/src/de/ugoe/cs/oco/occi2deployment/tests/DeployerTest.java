@@ -2,6 +2,8 @@ package de.ugoe.cs.oco.occi2deployment.tests;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
@@ -29,10 +31,16 @@ public class DeployerTest {
 		Logger.getLogger(Connection.class.getName()).setLevel(Level.DEBUG);
 		Logger.getLogger(ElementAdapter.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
-
-		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
+		
+		
+		List<Path> extensions = new ArrayList<Path>();
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/platform.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
+		
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster.occic");
 		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
 		Deployer deployer = new Deployer();
-		deployer.deploy(occiPath,conn);
+		deployer.deploy(occiPath, extensions, conn);
 	}
 }

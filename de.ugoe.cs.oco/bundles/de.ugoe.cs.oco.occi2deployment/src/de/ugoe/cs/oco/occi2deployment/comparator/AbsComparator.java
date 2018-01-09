@@ -39,7 +39,7 @@ public abstract class AbsComparator implements Comparator {
 	 * @param oldModelPath
 	 * @param newModelPath
 	 */
-	public final void compare(Path oldModelPath, Path newModelPath){
+	protected final void compare(Path oldModelPath, Path newModelPath){
 		EList<EObject> oldModel = ModelUtility.loadOCCI(oldModelPath);
 		EList<EObject> newModel = ModelUtility.loadOCCI(newModelPath);
 		
@@ -55,7 +55,7 @@ public abstract class AbsComparator implements Comparator {
 		investigateOldAndAdaptedEntities(newModel, oldModel, matches);
 	}
 	
-	public final void compare(org.eclipse.emf.ecore.resource.Resource oldModelResource, org.eclipse.emf.ecore.resource.Resource newModelResource) {
+	protected final void compare(org.eclipse.emf.ecore.resource.Resource oldModelResource, org.eclipse.emf.ecore.resource.Resource newModelResource) {
 		EList<EObject> oldModel = ModelUtility.getOCCIConfigurationContents(oldModelResource);
 		EList<EObject> newModel = ModelUtility.getOCCIConfigurationContents(newModelResource);
 		

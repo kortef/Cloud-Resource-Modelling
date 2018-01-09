@@ -109,6 +109,7 @@ public class ModelUtility {
 		
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		

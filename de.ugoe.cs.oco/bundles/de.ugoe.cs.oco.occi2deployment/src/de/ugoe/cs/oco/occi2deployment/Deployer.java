@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.uml2.uml.Model;
@@ -65,8 +66,27 @@ public class Deployer{
 		}
 		storeNewSysModel(occiPath, conn);
 	}
-
 	
+	public void deploy(Path occiPath, List<Path> extensions, Connection conn) {
+		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath);
+		org.eclipse.emf.ecore.resource.Resource runtimeModelResource = ModelUtility.loadOCCIResource(runtimePath, null);
+		org.eclipse.emf.ecore.resource.Resource targetModel = ModelUtility.loadOCCIResource(occiPath, extensions);
+		
+		
+		if(ModelUtility.getResources(runtimeModel).size() <= 2){
+			log.info("Chosen: Initial Deployment");
+			this.initialDeploy(conn, occiPath);
+		}
+		else{
+			log.info("Chosen: Adaptation Process");
+			//Adapt to runtime model, when extractor is up to date again
+			//Or check if runtime model equals sysmodel
+			this.adapt(runtimeModelResource, targetModel, conn);
+		}
+		storeNewSysModel(occiPath, conn);
+		
+	}
+
 	/**This method starts an initial deployment of the OCCI model stored in the occiPath ignoring runtime information.
 	 * @param conn Information required to establish a connection to the cloud service.
 	 * @param occiPath Storing the OCCI Model to be deployed.
@@ -107,7 +127,7 @@ public class Deployer{
 		CachedResourceSet.getCache().clear();
 		Comparator comparator = ComparatorFactory.getComparator("Mixed", oldModelPath, newModelPath, conn);
 		
-		updateIdsSwapList(comparator, conn, oldModelPath);
+		updateIdsSwapList(comparator, conn);
 		
 		//Deprovision Missing Elements
 		Deprovisioner deprovisioner = new Deprovisioner(conn);
@@ -127,6 +147,39 @@ public class Deployer{
 		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, newModel);
 		provisioner.provisionElements();		
 	}
+	
+	private void adapt(org.eclipse.emf.ecore.resource.Resource runtimeModelResource, org.eclipse.emf.ecore.resource.Resource targetModelResource, Connection conn) {
+		EList<EObject> targetModel = ModelUtility.getOCCIConfigurationContents(targetModelResource);
+		EList<EObject> runtimeModel = ModelUtility.getOCCIConfigurationContents(runtimeModelResource);
+		
+		cleanIdSwapList(conn, runtimeModel);
+		
+		//Compare Models
+		CachedResourceSet.getCache().clear();
+		Comparator comparator = ComparatorFactory.getComparator("Mixed", runtimeModelResource, targetModelResource, conn);
+		
+		updateIdsSwapList(comparator, conn);
+		
+		//Deprovision Missing Elements
+		Deprovisioner deprovisioner = new Deprovisioner(conn);
+		deprovisioner.deprovision(comparator.getMissingElements());
+		
+		//Adapt adapted elements
+		ElementAdapter adapter = new ElementAdapter(conn);
+		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
+		
+		//Create Provisioning Plan
+		List<EObject> removeFromPOG = new BasicEList<EObject>();
+		removeFromPOG.addAll(comparator.getOldElements());
+		removeFromPOG.addAll(comparator.getAdaptedElements());
+		Model provisioningPlan = generateProvisioningPlan(targetModelResource, removeFromPOG);
+		
+		//Start provisioning
+		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, targetModel);
+		provisioner.provisionElements();		
+	}
+	
+	
 	
 	/**Removes entries of non existing cloud ids from the idSwapList of the Connection conn.
 	 * Keeps idSwapList consistent with ids of existing cloud resources.
@@ -151,6 +204,24 @@ public class Deployer{
 		}
 		conn.getIdSwapList().removeAll(toRemove);	
 	}
+	
+	private void cleanIdSwapList(Connection conn, EList<EObject> oldModel) {
+		log.debug("Clean: IdSwapList");
+		List<String[]> toRemove = new ArrayList<String[]>();
+		for(String[] ids: conn.getIdSwapList()){
+			boolean exists = false;
+			for(EObject obj: ModelUtility.getEntities(oldModel)){
+				Entity entity = (Entity) obj;
+				if(entity.getId().equals(ids[1])){
+					exists = true;
+				}
+			}
+			if(exists == false){
+				toRemove.add(ids);
+			}
+		}
+		conn.getIdSwapList().removeAll(toRemove);	
+	}
 
 
 	/**Updates idSwapList according to the comparator results. So that the correct cloud id, according to the matched resources, is addressed.
@@ -158,7 +229,7 @@ public class Deployer{
 	 * @param conn
 	 * @param oldModelPath
 	 */
-	private void updateIdsSwapList(Comparator comparator, Connection conn, Path oldModelPath) {
+	private void updateIdsSwapList(Comparator comparator, Connection conn) {
 		log.debug("Update: IdSwapList");
 		for(Match match: comparator.getMatches()){
 			if(match.getSrc()!=null && match.getTar()!=null){
@@ -187,6 +258,52 @@ public class Deployer{
 	 * @param oldElements
 	 * @return provisioningPlan to be executed by the provisioner.
 	 */
+	private Model generateProvisioningPlan(org.eclipse.emf.ecore.resource.Resource targetModelResource, List<EObject> oldElements) {		
+		//Generate POGs
+		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
+		occiToPog.transform(targetModelResource, pogPath);
+		EList<EObject> newPOG = ModelUtility.loadPOG(pogPath);
+		Graph newPOGGraph = (Graph) newPOG.get(0);
+		
+		List<Vertex> toRemove = new BasicEList<Vertex>();
+		for(Vertex vertex: newPOGGraph.getVertices()){
+			for(EObject old: oldElements){
+				if(((Entity) old).getId().equals(vertex.getId())){
+					toRemove.add(vertex);
+				}
+			}
+		}
+		for(Vertex vertex: toRemove){
+			EcoreUtil.delete(vertex);
+		}
+		
+		List<Edge> toRemoveE = new BasicEList<Edge>();
+		for(Edge edge: newPOGGraph.getEdges()){
+			if(edge.getTarget() == null || edge.getSource() == null){
+				toRemoveE.add(edge);
+			}
+		}
+		for(Edge edge: toRemoveE){
+			EcoreUtil.delete(edge);
+		}
+		
+		ModelUtility.storePOG(pogPath, newPOGGraph);
+
+		newPOG = ModelUtility.loadPOG(pogPath);
+		newPOGGraph = (Graph) newPOG.get(0);
+		
+		//Clear Resource Cache
+		CachedResourceSet.getCache().clear();
+		
+		//Generate provisioning plan
+		Transformator pogToProvPlan = TransformatorFactory.getTransformator("POG2ProvPlan");
+		pogToProvPlan.transform(pogPath, provPlanPath);
+		
+		
+		Model provisioningPlan = ModelUtility.loadUML(provPlanPath);
+		return provisioningPlan;
+	}
+	
 	private Model generateProvisioningPlan(Path newModelPath, List<EObject> oldElements) {		
 		//Generate POGs
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");

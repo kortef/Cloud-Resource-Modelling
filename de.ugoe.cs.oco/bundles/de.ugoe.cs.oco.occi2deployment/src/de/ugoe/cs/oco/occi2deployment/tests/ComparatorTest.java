@@ -24,14 +24,14 @@ public class ComparatorTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String version = "Mixed";
+		String version = "Complex";
 		
 		List<Path> extensions = new ArrayList<Path>();
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/platform.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
 		
-		
+		/*
 		System.out.println("test2 -> test2:");
 		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
 		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
@@ -39,17 +39,18 @@ public class ComparatorTest {
 		Comparator comparator = ComparatorFactory.getComparator(version, oldOCCI, newOCCI, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
-		
+		*/
 		
 		System.out.println("test2 -> LAMP:");
-		oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
-		newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster2.occie");
+		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
+		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster.occic");
 		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(oldOCCI, null);	
 		org.eclipse.emf.ecore.resource.Resource newModelResource = ModelUtility.loadOCCIResource(newOCCI, extensions);	
-		comparator = ComparatorFactory.getComparator(version, oldModelResource, newModelResource, null);
+		Comparator comparator = ComparatorFactory.getComparator(version, oldModelResource, newModelResource, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
+		/*
 		System.out.println("LAMP ->test2:");
 		comparator = ComparatorFactory.getComparator(version, newModelResource, oldModelResource, null);
 		CachedResourceSet.getCache().clear();
@@ -59,6 +60,7 @@ public class ComparatorTest {
 		comparator = ComparatorFactory.getComparator(version, newModelResource, newModelResource, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
+		*/
 		
 		/*
 		System.out.println("Basic Example + NWVM:");

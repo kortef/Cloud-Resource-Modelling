@@ -2,6 +2,7 @@
 Description: Configuration Set to map OCCI Kinds to their corresponding dependency resolution.*/
 operation getDependsOnConfiguration() : Set {
 	var configuration = new Set;
+	configuration.add(Kind("placementlink", "http://schemas.modmacao.org/placement#", "placement link"));
 	return configuration;
 }
 /* Operation: getUseConfiguration
@@ -11,6 +12,7 @@ operation getUseConfiguration() : Set {
 	configuration.add(Kind("componentlink", "http://schemas.ogf.org/occi/platform#", "component link resource"));
 	configuration.add(Kind("networkinterface", "http://schemas.ogf.org/occi/infrastructure#", "network link resource"));
 	configuration.add(Kind("storagelink", "http://schemas.ogf.org/occi/infrastructure#", "storage link resource"));
+	configuration.add(Kind("componentlink", "http://schemas.modmacao.org/occi/platform#", "component link"));
 	return configuration;
 }
 

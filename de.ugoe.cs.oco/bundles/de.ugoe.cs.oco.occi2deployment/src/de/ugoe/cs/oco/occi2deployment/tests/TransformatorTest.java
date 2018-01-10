@@ -23,7 +23,7 @@ public class TransformatorTest {
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
 		
-		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster.occic");
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-clusterPaaS.occic");
 		org.eclipse.emf.ecore.resource.Resource occi = ModelUtility.loadOCCIResource(occiPath, extensions);
 		
 		

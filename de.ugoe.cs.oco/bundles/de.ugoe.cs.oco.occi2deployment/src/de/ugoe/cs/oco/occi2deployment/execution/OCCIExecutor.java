@@ -11,6 +11,7 @@ import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Mixin;
+import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.OcciCoreConstants;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
@@ -188,10 +189,12 @@ public class OCCIExecutor extends AbsExecutor{
 				this.connection.getToken());
 		conn.setRequestProperty("Category", generateCategoryHeader(entity));
 		conn.setRequestProperty("X-OCCI-Attribute", generateAttributeHeader(entity));
+		conn.setRequestProperty("Accept", "text/occi");
 		
 		if(entity.getKind().getTerm().contains("compute")){
 			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
 		}
+		log.debug("TEST" + " " + conn.getRequestProperty("Content-Type"));
 		log.debug("POST" + " "+ conn.getURL() + " Category: " + conn.getRequestProperty("Category") + " X-OCCI-Attribute:" + conn.getRequestProperty("X-OCCI-Attribute"));
 		
 		if(connectionSuccessful(conn)){
@@ -219,7 +222,7 @@ public class OCCIExecutor extends AbsExecutor{
 		String adaptedAddress = getEntityKindURI(entity);
 		adaptedAddress += getActualId(entity, connection.getIdSwapList());
 		HttpURLConnection conn = establishConnection(adaptedAddress, "DELETE", false, null, this.connection.getToken());
-		log.debug("DELETE" + " "+ conn.getURL() + entity.getId());
+		log.debug("DELETE" + " "+ conn.getURL());
 		if(connectionSuccessful(conn)){
 			String output = getOutput(conn);
 			this.connection.idSwapListRemove(entity);
@@ -254,6 +257,13 @@ public class OCCIExecutor extends AbsExecutor{
 			attributes += "occi.core.target=\""+this.connection.getAdress()+"/"+ link.getTarget().getKind().getTerm()+"/"+ actualTargetId +"\", ";
 		}
 		
+		for(MixinBase base: entity.getParts()) {
+			for(AttributeState baseState: base.getAttributes()) {
+				String adaptedValue = attributeIdSwap(baseState);
+				attributes += baseState.getName()+"=\""+ adaptedValue +"\", ";
+			}
+		}
+		
 		return attributes.substring(0, attributes.lastIndexOf(","));
 	}
 	
@@ -265,21 +275,17 @@ public class OCCIExecutor extends AbsExecutor{
 	 */
 	private String generateCategoryHeader(Entity entity) {
 		String category = new String();
-		if(entity.getKind().getTerm().contains("network") && entity.getClass().equals("Link")){
-			category = 	"networklink" +"; "+
+		category = 	entity.getKind().getTerm() +"; "+
 					"scheme=\"" +entity.getKind().getScheme() +"\"; "+ 
 					"class=\"kind\"";
-		}
-		else{
-			category = 	entity.getKind().getTerm() +"; "+
-								"scheme=\"" +entity.getKind().getScheme() +"\"; "+ 
-								"class=\"kind\"";
-		}
-		
-		for(Mixin mixin: entity.getMixins()){
-			category += ", " + mixin.getTerm() +"; "+
-						"scheme=\"" + mixin.getScheme()+ "\"; "+
-						"class=\"mixin\"";
+
+		//Currently Necessary as OOI doesnt accept the networkinterface mixin
+		if(entity.getKind().getTerm().equals("networkinterface") == false){
+			for(Mixin mixin: entity.getMixins()){
+				category += ", " + mixin.getTerm() +"; "+
+							"scheme=\"" + mixin.getScheme()+ "\"; "+
+							"class=\"mixin\"";
+			}
 		}
 		return category;
 	}

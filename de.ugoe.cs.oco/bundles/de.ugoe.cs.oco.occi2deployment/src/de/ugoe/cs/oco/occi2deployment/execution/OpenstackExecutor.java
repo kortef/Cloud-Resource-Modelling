@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.MixinBase;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
@@ -136,7 +137,15 @@ public class OpenstackExecutor extends AbsExecutor {
 				return attr.getValue();
 			}
 		}
-		return "192.168.0.0/24";
+		for(MixinBase part: network.getParts()) {
+			for(AttributeState baseAttr: part.getAttributes()) {
+				if(baseAttr.getName().equals(string)){
+					return baseAttr.getValue();
+				}
+			}
+		}
+		
+		return "";
 	}
 
 	@Override

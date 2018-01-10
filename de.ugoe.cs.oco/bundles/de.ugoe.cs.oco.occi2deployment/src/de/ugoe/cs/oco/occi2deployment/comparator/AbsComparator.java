@@ -218,7 +218,8 @@ public abstract class AbsComparator implements Comparator {
 								Match match = new Match(oldLink, newLink);
 								toReturn.add(match);
 							}
-						}	
+						}
+						
 					}
 				}
 			}
@@ -441,9 +442,14 @@ public abstract class AbsComparator implements Comparator {
 	 */
 	protected boolean sameTarget(org.eclipse.cmf.occi.core.Resource target,
 			org.eclipse.cmf.occi.core.Resource target2, List<Match> matches) {
+		if(target == null || target2 == null) {
+			return false;
+		}
 		for(Match match: matches){
 			if(match.getSrc() != null && match.getTar() != null){
-				if(((Entity) match.getSrc()).getId().equals(target.getId()) && ((Entity) match.getTar()).getId().equals(target2.getId())){
+				Entity matchSrcEntity = (Entity) match.getSrc(); 
+				Entity matchTarEntity = (Entity) match.getTar(); 
+				if(matchSrcEntity.getId().equals(target.getId()) && matchTarEntity.getId().equals(target2.getId())){
 					return true;
 				}
 			}

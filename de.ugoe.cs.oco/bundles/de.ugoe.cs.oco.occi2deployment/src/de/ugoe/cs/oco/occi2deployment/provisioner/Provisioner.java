@@ -1,7 +1,5 @@
 package de.ugoe.cs.oco.occi2deployment.provisioner;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -12,15 +10,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.Mixin;
 import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.Resource;
+import org.eclipse.cmf.occi.infrastructure.Compute;
+import org.eclipse.cmf.occi.infrastructure.Network;
+import org.eclipse.cmf.occi.infrastructure.Storage;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
 import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
@@ -116,9 +117,14 @@ public class Provisioner implements Runnable {
 		networkMixinBase.setEntity(stubNW);
 		networkMixinBase.setMixin(networkMixin);
 		
-		System.out.println(stubNW);
-		System.out.println(stubNW.getKind());
-		System.out.println(stubNW.getMixins());
+		AttributeState address = OCCIFactory.eINSTANCE.createAttributeState();
+		address.setName("occi.network.address");
+		address.setValue("192.168.0.0/24");
+		networkMixinBase.getAttributes().add(address);
+		AttributeState gateway = OCCIFactory.eINSTANCE.createAttributeState();
+		gateway.setName("occi.network.gateway");
+		gateway.setValue("192.168.0.1");
+		networkMixinBase.getAttributes().add(gateway);
 		
 		stubNw = stubNW;
 		Executor executor = ExecutorFactory.getExecutor("Openstack", this.connection);
@@ -206,8 +212,8 @@ public class Provisioner implements Runnable {
     	}
     	
     	//executor.executeOperation("POST", extracted);
-	    waitForActiveState(extracted);	      	
-
+    	waitForActiveState(extracted);	      	
+    	
 	    performed.add(this.currentNode.getOutgoings().get(0));
 	    this.provisionNextNode();
 	}
@@ -264,20 +270,22 @@ public class Provisioner implements Runnable {
 				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
 				return;
 			}
-			Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
-			String output = executor.executeOperation("GET", entity, null);
-			if(outputShowsActiveState(output)){
-				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
-			}
-			else{
-				try {
-					log.debug("INACTIVE: " + ((Entity)extracted).getTitle());
-					Thread.sleep(5000);
-					waitForActiveState(extracted);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
+			else if(entity.getKind().getTerm().contains("compute")) {
+				Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
+				String output = executor.executeOperation("GET", entity, null);
+				if(outputShowsActiveState(output)){
+					log.info("ACTIVE: " + ((Entity)extracted).getTitle());
+				}
+				else{
+					try {
+						log.debug("INACTIVE: " + ((Entity)extracted).getTitle());
+						Thread.sleep(5000);
+						waitForActiveState(extracted);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
+				}
 			}
 		}
 	}

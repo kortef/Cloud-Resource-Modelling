@@ -25,11 +25,11 @@ public class DeployerTest {
 		Logger.getLogger(Executor.class.getName()).setLevel(Level.DEBUG);
 		Logger.getLogger(Extractor.class.getName()).setLevel(Level.DEBUG);
 		Logger.getLogger(Provisioner.class.getName()).setLevel(Level.DEBUG);
-		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
-		Logger.getLogger(Deprovisioner.class.getName()).setLevel(Level.DEBUG);
+		Logger.getLogger(Comparator.class.getName()).setLevel(Level.INFO);
+		Logger.getLogger(Deprovisioner.class.getName()).setLevel(Level.INFO);
 		Logger.getLogger(Deployer.class.getName()).setLevel(Level.DEBUG);
 		Logger.getLogger(Connection.class.getName()).setLevel(Level.DEBUG);
-		Logger.getLogger(ElementAdapter.class.getName()).setLevel(Level.DEBUG);
+		Logger.getLogger(ElementAdapter.class.getName()).setLevel(Level.INFO);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
 		
@@ -37,10 +37,17 @@ public class DeployerTest {
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/platform.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/private.occie"));
 		
-		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster.occic");
-		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-clusterWithOwn.occic");
+		occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
+		//Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
+		
+		
 		Deployer deployer = new Deployer();
-		deployer.deploy(occiPath, extensions, conn);
+		//deployer.deploy(occiPath, extensions, conn);
+		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.35.22", "http://192.168.34.1:35357/v3/auth/tokens");
+		deployer.initialDeploy(conn, occiPath, extensions);
+		
 	}
 }

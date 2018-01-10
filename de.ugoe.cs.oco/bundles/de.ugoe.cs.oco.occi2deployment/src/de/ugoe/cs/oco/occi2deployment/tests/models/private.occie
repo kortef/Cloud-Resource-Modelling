@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="private" scheme="http://schemas.openstack.org/template#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <mixins name="36637a26-fded-4635-b6c5-ec8ec0745eab" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.medium">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="60ab5827-e8cd-44f3-a33a-ee2fb989f7a7" scheme="http://schemas.openstack.org/template/os#" title="Sahara_Spark1.6_Ubuntu">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="cc5d21d7-fc0e-451d-884b-aba0efac9c33" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m8">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="9961ccdf-2ee2-42d1-ac6d-b45318212cad" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m10">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="32ef77d0-5d26-46f5-9ea3-f805a7a05af6" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m4">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="2a665c12-e4c5-41fe-b16e-2aec31c799eb" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m2">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="5437eae8-7c47-4834-929c-a314de77d291" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 16.04 Server">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="e739cb33-4224-4829-8dcb-9b66a1b8ceb9" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.large">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="d1f5a7a6-0fbe-4146-87fe-1e9441462833" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m6">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="41598b12-2d7d-4ffe-b3c1-0f52e68fa1ea" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m1">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="0" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.nano">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="8dd25971-1bbd-47db-9d49-2fef02fa0bc8" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.small">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="e7a211eb-d1dc-4e3a-8da6-f9daabdb81c8" scheme="http://schemas.openstack.org/template/os#" title="Centos 7">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+  <mixins name="adf63ddc-debe-4d7e-b899-b936e989439f" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 14.04 Server">
+    <applies href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+  </mixins>
+</occi:Extension>

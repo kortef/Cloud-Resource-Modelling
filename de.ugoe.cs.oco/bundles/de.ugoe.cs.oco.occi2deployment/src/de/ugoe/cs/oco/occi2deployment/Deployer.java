@@ -55,7 +55,7 @@ public class Deployer{
 		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath);
 		
 		if(ModelUtility.getResources(runtimeModel).size() <= 2){
-			log.info("Chosen: Initial Deployment");
+			log.info("Chosen: Initial Deployment, Amount of Resources in Runtimemodel: " + ModelUtility.getResources(runtimeModel).size());
 			this.initialDeploy(conn, occiPath);
 		}
 		else{
@@ -74,8 +74,8 @@ public class Deployer{
 		
 		
 		if(ModelUtility.getResources(runtimeModel).size() <= 2){
-			log.info("Chosen: Initial Deployment");
-			this.initialDeploy(conn, occiPath);
+			log.info("Chosen: Initial Deployment, Amount of Resources in Runtimemodel: " + ModelUtility.getResources(runtimeModel).size());
+			this.initialDeploy(conn, occiPath, extensions);
 		}
 		else{
 			log.info("Chosen: Adaptation Process");
@@ -94,10 +94,30 @@ public class Deployer{
 	private void initialDeploy(Connection conn, Path occiPath){
 		log.debug("Clean Id Swap List");
 		conn.getIdSwapList().clear();
+		conn.serializeIdSwapList();
 		EList<EObject> occiModel = ModelUtility.loadOCCI(occiPath);
 		//OCCI2POG
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
 		occiToPog.transform(occiPath, pogPath);
+		//POG2ProvPlan
+		Transformator pogToProvPlan = TransformatorFactory.getTransformator("POG2ProvPlan");
+		pogToProvPlan.transform(pogPath, provPlanPath);
+		//LoadProvPlan
+		Model provisioningPlan = ModelUtility.loadUML(provPlanPath);	
+		//START PROVISIONING
+		Provisioner provisioner = new Provisioner(new ModelUtility().findInitialNode(provisioningPlan), conn, occiModel);
+		provisioner.provisionElements();
+	}
+	
+	public void initialDeploy(Connection conn, Path occiPath, List<Path> extensions){
+		log.debug("Clean Id Swap List");
+		conn.getIdSwapList().clear();
+		conn.serializeIdSwapList();
+		org.eclipse.emf.ecore.resource.Resource occiModelResource = ModelUtility.loadOCCIResource(occiPath, extensions);
+		EList<EObject> occiModel = ModelUtility.getOCCIConfigurationContents(occiModelResource);
+		//OCCI2POG
+		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
+		occiToPog.transform(occiModelResource, pogPath);
 		//POG2ProvPlan
 		Transformator pogToProvPlan = TransformatorFactory.getTransformator("POG2ProvPlan");
 		pogToProvPlan.transform(pogPath, provPlanPath);

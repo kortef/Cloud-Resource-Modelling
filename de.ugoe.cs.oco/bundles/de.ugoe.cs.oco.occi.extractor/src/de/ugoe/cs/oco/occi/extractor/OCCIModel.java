@@ -273,7 +273,7 @@ public class OCCIModel {
 
 	public void fillConfiguration() {
 		this.configuration.setDescription("Extracted Runtime Model");
-		
+		System.out.println("Resources: " + this.getResources());
 		
 		//Setup Use
 		for(Resource res: this.getResources()) {
@@ -288,8 +288,6 @@ public class OCCIModel {
 		
 		this.configuration.getResources().addAll(this.getResources());
 		this.getResources().clear();
-		
-		
 		
 		/*
 		for(Extension ext : this.getExtensions()) {
@@ -307,11 +305,7 @@ public class OCCIModel {
 				}
 			}
 		}*/
-		
-		//Fill with Resources
-		System.out.println("Model:");
-		System.out.println(this.getResources());
-		System.out.println(this.configuration.getResources());
+
 		
 	}
     

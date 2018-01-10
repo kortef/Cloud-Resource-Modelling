@@ -130,6 +130,7 @@ public class Connection {
 	 */
 	public void idSwapListRemove(Entity entity) {
 		List<String[]> toRemove = new ArrayList<String[]>();
+		/*
 		if(Provisioner.stubNw == null || entity.getId().equals(((Entity)Provisioner.stubNw).getId())){
 			for(String[] str: this.idSwapList){
 				if(str[0].equals(entity.getId())){
@@ -138,13 +139,14 @@ public class Connection {
 				}
 			}
 		}
-		else{	
+		else{*/	
 			for(String[] str: this.idSwapList){
-				if(str[1].equals(entity.getId())){
+				if(str[0].equals(entity.getId()) || str[1].equals(entity.getId()) ){
+					log.debug("KILL: " +  str[0] + " : " + str[1]);
 					toRemove.add(str);
 				}
 			}
-		}
+		//}
 		this.idSwapList.removeAll(toRemove);
 	}
 	

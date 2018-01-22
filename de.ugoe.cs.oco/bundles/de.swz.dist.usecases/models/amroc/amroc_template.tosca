@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca" id="amroc_template" name="AMROC Definition" targetNamespace="http://dist.swz.de/amroctemplate">
-  <tosca:Import importType="" location="" namespace=""/>
+<tosca:Definitions xmlns:amroctypes="http://dist.swz.de/amroctypes" xmlns:prop="http://dist.swz.de/amrocpropertytypes" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="amroc_template" name="AMROC Definition" targetNamespace="http://dist.swz.de/amroctemplate">
+  <xi:include href="amroc_types.tosca" parse="xml"/>
+  <tosca:CapabilityType name="MPIClusterCType"/>
+  <tosca:CapabilityType name="PackageCType"/>
+  <tosca:RequirementType name="HostRType" requiredCapabilityType="HostCType"/>
+  <tosca:RequirementType name="PackageRType" requiredCapabilityType="PackageCType"/>
+  <tosca:NodeType name="AMROCNType">
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="MPIClusterRDef" requirementType="MPIClusterRType"/>
+      <tosca:RequirementDefinition name="HostRDef" requirementType="HostRType"/>
+      <tosca:RequirementDefinition name="PackageRDef" requirementType="PackageRType"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:ArtifactType name="AnsibleRoleAType"/>
+  <tosca:RelationshipType name="RunsOnMPIClusterRType" targetNamespace=""/>
+  <tosca:RelationshipType name="DependsOnPackageRType"/>
   <tosca:ServiceTemplate id="service_template" name="AMROCSTemplate" targetNamespace="http://dist.swz.de/amroc">
     <tosca:TopologyTemplate>
       <tosca:documentation source="">Model of the AMROC Software</tosca:documentation>
-      <tosca:NodeTemplate id="amroc_node" type="swz.nodes.amroc" name="AMROCNTemplate">
+      <tosca:NodeTemplate id="amroc_node" type="AMROCNType" name="AMROCNTemplate">
         <tosca:Requirements>
-          <tosca:Requirement id="hostRequirement" type="HostRType" name="host"/>
-          <tosca:Requirement id="mpiRequirement" type="MPIClusterRType" name="mpi"/>
-          <tosca:Requirement type="PackageRType" name="mpipackage"/>
+          <tosca:Requirement id="hostRequirement" type="HostRType" name="host">
+            <tosca:Properties>
+              <prop:hostProperties>
+                <cores>20</cores>
+                <ram>64396</ram>
+              </prop:hostProperties>
+            </tosca:Properties>
+          </tosca:Requirement>
+          <tosca:Requirement id="mpiRequirement" type="MPIClusterRType" name="mpi">
+            <tosca:Properties>
+              <prop:mpiProperties>
+                <nodes>4</nodes>
+                <mpi-version>mpi-3.1</mpi-version>
+              </prop:mpiProperties>
+            </tosca:Properties>
+          </tosca:Requirement>
+          <tosca:Requirement id="packageRequirement" type="PackageRType" name="mpipackage">
+            <tosca:Properties>
+              <prop:PackageProperties>
+                <version>2017 Update 2</version>
+                <name>Intel MPI Library</name>
+              </prop:PackageProperties>
+            </tosca:Properties>
+          </tosca:Requirement>
         </tosca:Requirements>
         <tosca:DeploymentArtifacts>
           <tosca:DeploymentArtifact artifactRef="swz.artifacttemplates.AMROC" artifactType="AnsibleRoleAType" name="AMROCDeploymentCode"/>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca">
+  <tosca:ServiceTemplate>
+    <tosca:TopologyTemplate>
+      <tosca:RelationshipTemplate>
+        <tosca:SourceElement ref="mpi"/>
+        <tosca:TargetElement/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate>
+        <tosca:SourceElement ref="host"/>
+        <tosca:TargetElement ref=""/>
+      </tosca:RelationshipTemplate>
+      <tosca:RelationshipTemplate>
+        <tosca:SourceElement ref="mpipackage"/>
+        <tosca:TargetElement/>
+      </tosca:RelationshipTemplate>
+    </tosca:TopologyTemplate>
+  </tosca:ServiceTemplate>
+</tosca:Definitions>

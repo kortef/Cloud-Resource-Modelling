@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tosca:Definitions xmlns:tosca="http://oco.cs.ugoe.de/tosca">
+<tosca:Definitions xmlns:property="http://dist.swz.de/amrocpropertytypes" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <tosca:ServiceTemplate>
     <tosca:TopologyTemplate>
-      <tosca:NodeTemplate name="dge001">
-        <tosca:Capabilities>
-          <tosca:Capability type="HostCType" name="host"/>
-        </tosca:Capabilities>
-      </tosca:NodeTemplate>
-      <tosca:NodeTemplate name="dge015">
-        <tosca:Capabilities>
-          <tosca:Capability type="HostCType" name="host"/>
-        </tosca:Capabilities>
-      </tosca:NodeTemplate>
-      <tosca:NodeTemplate name="gwdd001">
-        <tosca:Capabilities>
-          <tosca:Capability type="HostCType" name="host"/>
-        </tosca:Capabilities>
-      </tosca:NodeTemplate>
-      <tosca:NodeTemplate name="gwdd168">
-        <tosca:Capabilities>
-          <tosca:Capability type="HostCType" name="host"/>
-        </tosca:Capabilities>
-      </tosca:NodeTemplate>
+      <tosca:NodeTemplate name="dge001"/>
+      <tosca:NodeTemplate name="dge015"/>
+      <tosca:NodeTemplate name="gwdd001"/>
+      <tosca:NodeTemplate name="gwdd168"/>
       <tosca:GroupTemplate type="HPCClusterGType" name="GWDGScientificComputeCluster">
+        <capabilities>
+          <tosca:Capability type="PackageCType">
+            <tosca:Properties>
+              <property:PackageProperties>
+                <version>2017 Update 2</version>
+                <name>Intel MPI Library</name>
+              </property:PackageProperties>
+            </tosca:Properties>
+          </tosca:Capability>
+        </capabilities>
         <tosca:Member>gpu</tosca:Member>
         <tosca:Member>mpi</tosca:Member>
       </tosca:GroupTemplate>
@@ -31,6 +25,24 @@
       </tosca:GroupTemplate>
       <tosca:GroupTemplate name="gpuDlt"/>
       <tosca:GroupTemplate name="mpi">
+        <capabilities>
+          <tosca:Capability type="HostCType" name="">
+            <tosca:Properties>
+              <property:hostProperties>
+                <cores>20</cores>
+                <ram>64396</ram>
+              </property:hostProperties>
+            </tosca:Properties>
+          </tosca:Capability>
+          <tosca:Capability type="MPIClusterCType">
+            <tosca:Properties>
+              <property:mpiProperties>
+                <nodes>4</nodes>
+                <mpi-version>mpi-3.1</mpi-version>
+              </property:mpiProperties>
+            </tosca:Properties>
+          </tosca:Capability>
+        </capabilities>
         <tosca:Member>mpi2</tosca:Member>
       </tosca:GroupTemplate>
       <tosca:GroupTemplate name="mpi2"/>

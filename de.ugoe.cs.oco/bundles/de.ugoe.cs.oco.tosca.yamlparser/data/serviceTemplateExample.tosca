@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tosca:Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="xs test">
+  <tosca:NodeType name="tosca.nodes.HostGroup">
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="swz.dist.capabilities.Host" name="hosts"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Root">
+    <tosca:documentation source="The TOSCA root node all other TOSCA base node types derive from."/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="dependency"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Node" name="feature"/>
+    </tosca:CapabilityDefinitions>
+    <tosca:Interfaces>
+      <tosca:Interface name="Standard">
+        <tosca:Operation name="type"/>
+      </tosca:Interface>
+    </tosca:Interfaces>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Queue">
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="swz.dist.capabilities.HostGroup" name="hostgroups"/>
+      <tosca:CapabilityDefinition capabilityType="swz.dist.capabilities.Host" name="hosts"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="swz.dist.nodes.Library">
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="host"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="swz.dist.capabilities.SoftwareComponent" name="application_dependency"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="swz.dist.nodes.Compute">
+    <tosca:documentation source="The compute node in an HPC cluster."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="group"/>
+      <tosca:RequirementDefinition name="queue"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:CapabilityType name="tosca.capabilities.Node">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Compute">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.ComputePropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Library">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.HostGroup">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Host">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:RelationshipType name="tosca.relationships.Root"/>
+  <tosca:RelationshipType name="tosca.relationships.InQueue">
+    <tosca:ValidTarget typeRef="swz.dist.nodes.Queue"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.InGroup">
+    <tosca:ValidTarget typeRef="swz.dist.nodes.HostGroup"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.InstalledOn">
+    <tosca:ValidTarget typeRef="swz.dist.nodes.Compute"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.DependsOn"/>
+</tosca:Definitions>

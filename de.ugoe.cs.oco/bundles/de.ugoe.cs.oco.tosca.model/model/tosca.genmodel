@@ -468,10 +468,15 @@
     <genClasses ecoreClass="tosca.ecore#//ValidTargetType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//ValidTargetType/typeRef"/>
     </genClasses>
-    <genClasses ecoreClass="tosca.ecore#//TGroupType"/>
+    <genClasses ecoreClass="tosca.ecore#//TGroupType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/requirementDefinitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/capabilityDefinitions"/>
+    </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TGroupTemplate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/member"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupTemplate/requirements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupTemplate/capabilities"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

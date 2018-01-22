@@ -16,6 +16,7 @@ import junit.textui.TestRunner;
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.TTopologyTemplate#getNodeTemplate() <em>Node Template</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TTopologyTemplate#getRelationshipTemplate() <em>Relationship Template</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TTopologyTemplate#getGroupTemplate() <em>Group Template</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -95,6 +96,19 @@ public class TTopologyTemplateTest extends TExtensibleElementsTest {
 	 * @generated
 	 */
 	public void testGetRelationshipTemplate() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TTopologyTemplate#getGroupTemplate() <em>Group Template</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TTopologyTemplate#getGroupTemplate()
+	 * @generated
+	 */
+	public void testGetGroupTemplate() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

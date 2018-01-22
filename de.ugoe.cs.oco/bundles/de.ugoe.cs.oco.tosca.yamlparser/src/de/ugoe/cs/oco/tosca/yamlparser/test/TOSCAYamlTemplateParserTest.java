@@ -52,7 +52,7 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 		XSDPackage.eINSTANCE.eClass();
 		TOSCAYamlTemplateParser parser = new TOSCAYamlTemplateParser();
 		
-		parser.setTargetNamespace("http://de.ugoe.cs.oco.test/test");
+		parser.setTargetNamespace("http://dist.swz.de/lsf");
 		
 		DocumentRoot rootElement = (DocumentRoot) parser.parse(testmap, null);
 		rootElement.getXSISchemaLocation().put("xs", "test");
@@ -69,10 +69,10 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 		resSet.getPackageRegistry().put(XSDPackage.eINSTANCE.getNsURI(), XSDPackage.eINSTANCE);
 					    
 	    XMLResource resource = (XMLResource) resSet.createResource(URI
-	        .createURI("data/serviceTemplateExample.tosca"));
+	        .createURI("swz-testdata/lsf.tosca"));
 	    
 	    Resource xsd = resSet.createResource(URI
-	    		.createURI("data/serviceTemplateExample.xsd"));
+	    		.createURI("swz-testdata/lsfPropertyDefinitions.xsd"));
 	    	    
 	    resource.getContents().add(rootElement);
 	    xsd.getContents().add(parser.getPropertyTypesSchema());
@@ -103,6 +103,6 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 	}
 	
 	protected String getFileToParse(){
-		return "data/normative-types.yml";
+		return "swz-testdata/lsf.yml";
 	}
 }

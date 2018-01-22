@@ -10,6 +10,9 @@ import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDSchema;
+
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.TArtifactType;
@@ -27,54 +30,47 @@ public class ArtifactTypeParser extends Parser {
 	 */
 	@Override
 	public List<TArtifactType> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
+		TOSCAYamlTemplateParser parser = (TOSCAYamlTemplateParser) containingParser;
 		Map<String, ?> map = (Map<String, ?>) input;
 		List<TArtifactType> artifactTypes = new ArrayList<TArtifactType>();
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
-		//ToscaUtilFactory utilfactory = ToscaUtilFactory.eINSTANCE;
-		String content; 
 		for (Entry<String, ?> entry: map.entrySet()){
 			TArtifactType artifactType = factory.createTArtifactType();
 			artifactType.setName(entry.getKey());
-			if (entry.getValue() instanceof Map<?, ?>){
-				Map<String, ?> innermap = (Map<String, ?>) entry.getValue();
-				if ((content = (String) innermap.get("decription")) != null){
-					TDocumentation documentation = factory.createTDocumentation();
-					documentation.setSource(content);;
-					artifactType.getDocumentation().add(documentation);
-				}
-				if ((content = (String) innermap.get("derived_from")) != null){
-					QName name = new QName(content);
-					DerivedFromType2 type = factory.createDerivedFromType2();
-					type.setTypeRef(name);
-					artifactType.setDerivedFrom(type);
-				}
+			LOGGER.info("Parsing ArtifactType " + artifactType.getName() + ".");
+			
+			for (Map.Entry<String, ?> innerentry: ((Map<String, ?>) entry.getValue()).entrySet()){
+				String key = innerentry.getKey();
 				
-				if ((content = (String) innermap.get("version")) != null){
-					// TODO add version parsing
+				switch(key){
+					case "description":
+						TDocumentation documentation = factory.createTDocumentation();
+						documentation.setSource((String)innerentry.getValue());;
+						artifactType.getDocumentation().add(documentation);
+						break;
+					case "derived_from":
+						QName name = new QName((String) innerentry.getValue());
+						DerivedFromType2 type = factory.createDerivedFromType2();
+						type.setTypeRef(name);
+						artifactType.setDerivedFrom(type);
+						break;
+					case "version":
+						break;
+					case "file_ext":
+						break;
+					case "mime_type":
+						break;
+					case "properties":
+						LOGGER.info("Found Property definition.");	
+						XSDSchema schema = parser.getPropertyTypesSchema();
+						XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
+								innerentry.getValue(), schema);	
+						propertiesDefinitionXSD.setName(artifactType.getName() + "PropertiesType");
+						PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
+						propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+						artifactType.setPropertiesDefinition(propertiesDefinitionType);
+						break;	
 				}
-
-//				if (innermap.containsKey("file_ext")){
-//					if (! (innermap.get("file_ext") instanceof List<?>)){
-//						throw new ParseException("Expected definition of file_ext to be a List.");
-//					}
-//					List<String> extensions = (List<String>) innermap.get("file_ext");
-//					artifactType.getFileExt().addAll(extensions);
-//				}
-				
-//				if ((content = (String) innermap.get("mime_type")) != null){
-//					artifactType.setMimeType(content);
-//				}
-				
-				Object object = innermap.get("properties");
-				if (object != null){
-					if (!(object instanceof List<?>)){
-						throw new ParseException("Expected property definition to be a list.");
-					}
-					PropertiesDefinitionType properties = null;
-					// TODO: TOSCA2 implement
-					artifactType.setPropertiesDefinition(properties);
-				}
-				
 				
 			}
 			artifactTypes.add(artifactType);

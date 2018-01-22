@@ -47,6 +47,8 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 
 			addNamePropertyDescriptor(object);
 			addMemberPropertyDescriptor(object);
+			addRequirementsPropertyDescriptor(object);
+			addCapabilitiesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,6 +93,50 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Requirements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequirementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupTemplate_requirements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_requirements_feature", "_UI_TGroupTemplate_type"),
+				 ToscaPackage.Literals.TGROUP_TEMPLATE__REQUIREMENTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Capabilities feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCapabilitiesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupTemplate_capabilities_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_capabilities_feature", "_UI_TGroupTemplate_type"),
+				 ToscaPackage.Literals.TGROUP_TEMPLATE__CAPABILITIES,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

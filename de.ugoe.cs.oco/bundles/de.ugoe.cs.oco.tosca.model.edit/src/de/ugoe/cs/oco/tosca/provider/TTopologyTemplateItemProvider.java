@@ -148,6 +148,13 @@ public class TTopologyTemplateItemProvider extends TExtensibleElementsItemProvid
 				 FeatureMapUtil.createEntry
 					(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__RELATIONSHIP_TEMPLATE,
 					 ToscaFactory.eINSTANCE.createTRelationshipTemplate())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP,
+				 FeatureMapUtil.createEntry
+					(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE,
+					 ToscaFactory.eINSTANCE.createTGroupTemplate())));
 	}
 
 }

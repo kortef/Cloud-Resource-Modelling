@@ -88,7 +88,7 @@ public interface TTopologyTemplate extends TExtensibleElements {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Group Template</em>' containment reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTopologyTemplate_GroupTemplate()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="name='GroupTemplate' namespace='##targetNamespace' kind='element' group='#group:3'"
 	 * @generated
 	 */

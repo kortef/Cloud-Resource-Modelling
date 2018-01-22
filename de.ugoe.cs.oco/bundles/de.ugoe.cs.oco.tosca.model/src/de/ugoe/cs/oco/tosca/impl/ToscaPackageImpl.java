@@ -4096,6 +4096,24 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTGroupType_RequirementDefinitions() {
+		return (EReference)tGroupTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTGroupType_CapabilityDefinitions() {
+		return (EReference)tGroupTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTGroupTemplate() {
 		return tGroupTemplateEClass;
 	}
@@ -4116,6 +4134,24 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 */
 	public EAttribute getTGroupTemplate_Member() {
 		return (EAttribute)tGroupTemplateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTGroupTemplate_Requirements() {
+		return (EReference)tGroupTemplateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTGroupTemplate_Capabilities() {
+		return (EReference)tGroupTemplateEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4721,10 +4757,14 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createEAttribute(validTargetTypeEClass, VALID_TARGET_TYPE__TYPE_REF);
 
 		tGroupTypeEClass = createEClass(TGROUP_TYPE);
+		createEReference(tGroupTypeEClass, TGROUP_TYPE__REQUIREMENT_DEFINITIONS);
+		createEReference(tGroupTypeEClass, TGROUP_TYPE__CAPABILITY_DEFINITIONS);
 
 		tGroupTemplateEClass = createEClass(TGROUP_TEMPLATE);
 		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__NAME);
 		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__MEMBER);
+		createEReference(tGroupTemplateEClass, TGROUP_TEMPLATE__REQUIREMENTS);
+		createEReference(tGroupTemplateEClass, TGROUP_TEMPLATE__CAPABILITIES);
 
 		// Create enums
 		maxInstancesTypeMember1EEnum = createEEnum(MAX_INSTANCES_TYPE_MEMBER1);
@@ -5242,7 +5282,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getTTopologyTemplate_Group(), ecorePackage.getEFeatureMapEntry(), "group", null, 0, -1, TTopologyTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTTopologyTemplate_NodeTemplate(), this.getTNodeTemplate(), null, "nodeTemplate", null, 0, -1, TTopologyTemplate.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getTTopologyTemplate_RelationshipTemplate(), this.getTRelationshipTemplate(), null, "relationshipTemplate", null, 0, -1, TTopologyTemplate.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getTTopologyTemplate_GroupTemplate(), this.getTGroupTemplate(), null, "groupTemplate", null, 0, -1, TTopologyTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTTopologyTemplate_GroupTemplate(), this.getTGroupTemplate(), null, "groupTemplate", null, 0, -1, TTopologyTemplate.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(typesTypeEClass, TypesType.class, "TypesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypesType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, TypesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5254,10 +5294,14 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getValidTargetType_TypeRef(), theXMLTypePackage.getQName(), "typeRef", null, 1, 1, ValidTargetType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tGroupTypeEClass, TGroupType.class, "TGroupType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTGroupType_RequirementDefinitions(), this.getRequirementDefinitionsType(), null, "requirementDefinitions", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTGroupType_CapabilityDefinitions(), this.getCapabilityDefinitionsType(), null, "capabilityDefinitions", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tGroupTemplateEClass, TGroupTemplate.class, "TGroupTemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTGroupTemplate_Name(), ecorePackage.getEString(), "name", null, 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTGroupTemplate_Member(), ecorePackage.getEString(), "member", null, 0, -1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTGroupTemplate_Requirements(), this.getRequirementsType(), null, "requirements", null, 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTGroupTemplate_Capabilities(), this.getCapabilitiesType(), null, "capabilities", null, 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(maxInstancesTypeMember1EEnum, MaxInstancesTypeMember1.class, "MaxInstancesTypeMember1");

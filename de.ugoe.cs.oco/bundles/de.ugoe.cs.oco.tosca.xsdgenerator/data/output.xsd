@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.test.com/property_example">
+  <xs:complexType name="Properties">
+    <xs:sequence>
+      <xs:element name="greater_or_equal">
+        <xs:annotation>
+          <xs:documentation>Number of (actual or virtual) CPUs associated with the Compute node.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="greater_than">
+        <xs:annotation>
+          <xs:documentation>Number of (actual or virtual) CPUs associated with the Compute node.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minExclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element default="1" minOccurs="1" name="valid_values">
+        <xs:annotation>
+          <xs:documentation>Number of CPUs requested for a software node instance.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="less_than">
+        <xs:annotation>
+          <xs:documentation>Number of (actual or virtual) CPUs associated with the Compute node.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element fixed="PUBLIC" name="network_name" type="xs:string"/>
+      <xs:element name="in_range">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="2"/>
+            <xs:maxInclusive value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="less_or_equal">
+        <xs:annotation>
+          <xs:documentation>Number of (actual or virtual) CPUs associated with the Compute node.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxInclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

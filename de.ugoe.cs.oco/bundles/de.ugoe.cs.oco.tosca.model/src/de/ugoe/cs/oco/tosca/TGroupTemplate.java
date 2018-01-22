@@ -15,6 +15,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getName <em>Name</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMember <em>Member</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements <em>Requirements</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate()
@@ -63,5 +65,57 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @generated
 	 */
 	EList<String> getMember();
+
+	/**
+	 * Returns the value of the '<em><b>Requirements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Requirements</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Requirements</em>' containment reference.
+	 * @see #setRequirements(RequirementsType)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Requirements()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RequirementsType getRequirements();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements <em>Requirements</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Requirements</em>' containment reference.
+	 * @see #getRequirements()
+	 * @generated
+	 */
+	void setRequirements(RequirementsType value);
+
+	/**
+	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Capabilities</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Capabilities</em>' containment reference.
+	 * @see #setCapabilities(CapabilitiesType)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Capabilities()
+	 * @model containment="true"
+	 * @generated
+	 */
+	CapabilitiesType getCapabilities();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities <em>Capabilities</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Capabilities</em>' containment reference.
+	 * @see #getCapabilities()
+	 * @generated
+	 */
+	void setCapabilities(CapabilitiesType value);
 
 } // TGroupTemplate

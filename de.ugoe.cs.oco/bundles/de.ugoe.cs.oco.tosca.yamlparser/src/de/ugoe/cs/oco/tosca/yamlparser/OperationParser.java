@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import de.ugoe.cs.oco.tosca.InputParametersType;
+import de.ugoe.cs.oco.tosca.TDocumentation;
 import de.ugoe.cs.oco.tosca.TOperation;
 import de.ugoe.cs.oco.tosca.TParameter;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
@@ -41,6 +42,9 @@ public class OperationParser extends Parser {
 					String key = innerentry.getKey();
 					switch(key){
 					case "description":
+						TDocumentation documentation = ToscaFactory.eINSTANCE.createTDocumentation();
+						documentation.setSource((String) innerentry.getValue());;
+						operation.getDocumentation().add(documentation);
 						break;
 					case "implementation":
 						operation.setImplementation((String) innerentry.getValue());

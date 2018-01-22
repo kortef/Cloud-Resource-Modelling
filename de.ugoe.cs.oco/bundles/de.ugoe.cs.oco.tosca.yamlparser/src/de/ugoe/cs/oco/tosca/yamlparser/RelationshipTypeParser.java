@@ -3,8 +3,18 @@
  */
 package de.ugoe.cs.oco.tosca.yamlparser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.eclipse.emf.ecore.xml.type.internal.QName;
+import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDSchema;
+
+import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
+import de.ugoe.cs.oco.tosca.TRelationshipType;
+import de.ugoe.cs.oco.tosca.ToscaFactory;
+import de.ugoe.cs.oco.tosca.ValidTargetType;
 
 /**
  * @author fglaser
@@ -97,12 +107,42 @@ public class RelationshipTypeParser extends Parser {
 
 	@Override
 	public Object parse(Map<String, ?> inputMap, Parser containingParser) throws ParseException {
-		// TODO Auto-generated method stub
-		return null;
+		TOSCAYamlTemplateParser parser = (TOSCAYamlTemplateParser) containingParser;
+		List<TRelationshipType> resultList = new ArrayList<>();
+		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
+			TRelationshipType type = ToscaFactory.eINSTANCE.createTRelationshipType();
+			type.setName(entry.getKey());
+			LOGGER.info("Parsing RelationshipType " + type.getName() + ".");
+			for (Map.Entry<String, ?> innerentry: ((Map<String, ?>) entry.getValue()).entrySet()){
+				String key = innerentry.getKey();
+				switch (key){
+				case "properties":
+					LOGGER.info("Found Property definition.");	
+					XSDSchema schema = parser.getPropertyTypesSchema();
+					XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
+							innerentry.getValue(), schema);	
+					propertiesDefinitionXSD.setName(type.getName() + "PropertiesType");
+					PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
+					propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+					type.setPropertiesDefinition(propertiesDefinitionType);
+					break;
+				
+				case "valid_target_types":
+					ValidTargetType validTargetType = ToscaFactory.eINSTANCE.createValidTargetType();
+					// in TOSCA XSD only one valid TargetType is allowed, so we extract the first in the list
+					validTargetType.setTypeRef(new QName(((List<String>) innerentry.getValue()).get(0)));
+					type.setValidTarget(validTargetType);
+					
+				}	
+			}
+			resultList.add(type);
+		}
+		return resultList;
 	}
 
 	@Override
 	public Object parse(List<?> inputArray) throws ParseException {
+		
 		// TODO Auto-generated method stub
 		return null;
 	}

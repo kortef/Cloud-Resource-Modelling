@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.xml.type.internal.QName;
+import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
@@ -24,62 +26,54 @@ import de.ugoe.cs.oco.tosca.ToscaFactory;
 public class CapabilityTypeParser extends Parser {
 
 	/* (non-Javadoc)
-	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map, org.eclipse.emf.ecore.EObject)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TCapabilityType> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
+		TOSCAYamlTemplateParser parser = (TOSCAYamlTemplateParser) containingParser;
 		ToscaFactory factory = ToscaFactory.eINSTANCE;
 		List<TCapabilityType> capabilityTypes = new ArrayList<TCapabilityType>();
-		// ToscaUtilFactory utilfactory = ToscaUtilFactory.eINSTANCE;
-		//ServiceTemplate template = (ServiceTemplate) model;
-		String content;
 		for (Entry<String, ?> entry: input.entrySet()){
 			TCapabilityType capabilityType = factory.createTCapabilityType();
 			capabilityType.setName(entry.getKey());
-						
-			if (entry.getValue() instanceof Map<?, ?>){
-				Map<String, ?> innermap = (Map<String, ?>) entry.getValue();
-				if ((content = (String) innermap.get("derived_from")) != null){
-					DerivedFromType2 type = factory.createDerivedFromType2();
-					type.setTypeRef(new QName(content));
-					capabilityType.setDerivedFrom(type);
-				}
-				
-				if ((content = (String) innermap.get("description")) != null){
-					TDocumentation documentation = factory.createTDocumentation();
-					documentation.setSource(content);;
-					capabilityType.getDocumentation().add(documentation);
-				}
-				
-				if (innermap.containsKey("properties")){
-					PropertiesDefinitionType properties = factory.createPropertiesDefinitionType();
-//					List<PropertyType> properties = new PropertyParser().parse(
-//							(Map<String, ?> ) innermap.get("properties"), 
-//							template);
-					capabilityType.setPropertiesDefinition(properties);
-				}
-//				if (innermap.containsKey("attributes")){
-//					List<Attribute> attributes = new AttributeParser().parse(
-//							(Map<String, ?>) innermap.get("attributes"),
-//							template);
-//					capabilityType.getAttributes().addAll(attributes);
-//				}
-				
-				if (innermap.containsKey("valid_source_types")){
-					if (! (innermap.get("valid_source_types") instanceof List<?>)){
-						throw new ParseException("Valid_source_types is not of type list.");
-					}
-					List<String> sourceTypes = (List<String>) innermap.get("valid_source_types");
-					
-					// TODO: whwere are valid source types stored?
-					//capabilityType.getValidSourceTypes().addAll(sourceTypes);
-				}	
-			}
-			else{
-				throw new ParseException("Unexpected data type read while parsing Capability.");
-			}
 			
+			LOGGER.info("Parsing CapabilityType " + capabilityType.getName() + ".");
+			
+			for (Map.Entry<String, ?> innerentry: ((Map<String, ?>) entry.getValue()).entrySet()){
+				String key = innerentry.getKey();
+				switch (key){
+					case "derived_from":
+						DerivedFromType2 type = factory.createDerivedFromType2();
+						type.setTypeRef(new QName((String) innerentry.getValue()));
+						capabilityType.setDerivedFrom(type);
+						break;
+					case "description":
+						TDocumentation documentation = factory.createTDocumentation();
+						documentation.setSource((String) innerentry.getValue());;
+						capabilityType.getDocumentation().add(documentation);
+					    break;
+					case "properties":
+						LOGGER.info("Found Property definition.");	
+						XSDSchema schema = parser.getPropertyTypesSchema();
+						XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
+								innerentry.getValue(), schema);	
+						propertiesDefinitionXSD.setName(capabilityType.getName() + "PropertiesType");
+						PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
+						propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+						capabilityType.setPropertiesDefinition(propertiesDefinitionType);
+						break;
+					case "attributes":
+						break;
+					case "valid_source_types":
+						// List<String> sourceTypes = (List<String>) innerentry.getValue();
+						
+						// TODO: whwere are valid source types stored?
+						//capabilityType.getValidSourceTypes().addAll(sourceTypes);
+						break;
+					default:
+						throw new ParseException("Unsupported key " + innerentry.getKey() + " read.");			
+				}
+			}
 			capabilityTypes.add(capabilityType);
 		}
 		

@@ -58,7 +58,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 				TPlan defaultPlan = ToscaFactory.eINSTANCE.createTPlan();
 				InputParametersType1 parameterType = ToscaFactory.eINSTANCE.createInputParametersType1();
 				List<TParameter> parameters = (List<TParameter>)
-						new ParameterParser().parse((Map<String, ?>) entry.getValue(), null);
+						new ParameterParser().parse((Map<String, ?>) entry.getValue(), this);
 				parameterType.getInputParameter().addAll(parameters);
 				defaultPlan.setInputParameters(parameterType);
 				TPlans plans = serviceTemplate.getPlans();
@@ -85,7 +85,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 				break;
 			case "artifact_types":
 				List<TArtifactType> artifactTypes = (List<TArtifactType>)
-					new ArtifactTypeParser().parse((Map<String, ?>)entry.getValue(), null);
+					new ArtifactTypeParser().parse((Map<String, ?>)entry.getValue(), this);
 				root.getDefinitions().getArtifactType().addAll(artifactTypes);
 				break;
 			case "data_types":
@@ -93,7 +93,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 				break;
 			case "capability_types":
 				List<TCapabilityType> capabilityTypes = (List<TCapabilityType>)
-					new CapabilityTypeParser().parse((Map<String, ?>)entry.getValue(), null);
+					new CapabilityTypeParser().parse((Map<String, ?>)entry.getValue(), this);
 				root.getDefinitions().getCapabilityType().addAll(capabilityTypes);
 				break;
 			case "interface_types":
@@ -101,8 +101,8 @@ public class TOSCAYamlTemplateParser extends Parser{
 				break;
 			case "relationship_types":
 				List<TRelationshipType> relationshipTypes = (List<TRelationshipType>)
-					new RelationshipTypeParser().parse((Map<String, ?>) entry.getValue(), null);
-				//root.getDefinitions().getRelationshipType().addAll(relationshipTypes);
+					new RelationshipTypeParser().parse((Map<String, ?>) entry.getValue(), this);
+				root.getDefinitions().getRelationshipType().addAll(relationshipTypes);
 				break;
 			case "node_types":
 				List<TNodeType> types = (List<TNodeType>) 

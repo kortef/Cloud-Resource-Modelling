@@ -5,12 +5,14 @@ package de.ugoe.cs.oco.tosca.provider;
 
 import de.ugoe.cs.oco.tosca.TGroupType;
 
+import de.ugoe.cs.oco.tosca.ToscaPackage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -41,8 +43,54 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRequirementDefinitionsPropertyDescriptor(object);
+			addCapabilityDefinitionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Requirement Definitions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequirementDefinitionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupType_requirementDefinitions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_requirementDefinitions_feature", "_UI_TGroupType_type"),
+				 ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Capability Definitions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCapabilityDefinitionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupType_capabilityDefinitions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_capabilityDefinitions_feature", "_UI_TGroupType_type"),
+				 ToscaPackage.Literals.TGROUP_TYPE__CAPABILITY_DEFINITIONS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

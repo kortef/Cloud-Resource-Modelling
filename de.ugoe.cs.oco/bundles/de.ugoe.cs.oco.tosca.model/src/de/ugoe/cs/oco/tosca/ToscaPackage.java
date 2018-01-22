@@ -6924,13 +6924,31 @@ public interface ToscaPackage extends EPackage {
 	int TGROUP_TYPE__TARGET_NAMESPACE = TENTITY_TYPE__TARGET_NAMESPACE;
 
 	/**
+	 * The feature id for the '<em><b>Requirement Definitions</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__REQUIREMENT_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Capability Definitions</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__CAPABILITY_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>TGroup Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 0;
+	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>TGroup Type</em>' class.
@@ -7033,13 +7051,31 @@ public interface ToscaPackage extends EPackage {
 	int TGROUP_TEMPLATE__MEMBER = TENTITY_TEMPLATE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__REQUIREMENTS = TENTITY_TEMPLATE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__CAPABILITIES = TENTITY_TEMPLATE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>TGroup Template</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TGROUP_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 2;
+	int TGROUP_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>TGroup Template</em>' class.
@@ -10841,6 +10877,28 @@ public interface ToscaPackage extends EPackage {
 	EClass getTGroupType();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions <em>Requirement Definitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requirement Definitions</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_RequirementDefinitions();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions <em>Capability Definitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Capability Definitions</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_CapabilityDefinitions();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupTemplate <em>TGroup Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10871,6 +10929,28 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTGroupTemplate_Member();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements <em>Requirements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Requirements</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_Requirements();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capabilities</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_Capabilities();
 
 	/**
 	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1</em>}'.
@@ -13990,6 +14070,22 @@ public interface ToscaPackage extends EPackage {
 		EClass TGROUP_TYPE = eINSTANCE.getTGroupType();
 
 		/**
+		 * The meta object literal for the '<em><b>Requirement Definitions</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__REQUIREMENT_DEFINITIONS = eINSTANCE.getTGroupType_RequirementDefinitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability Definitions</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__CAPABILITY_DEFINITIONS = eINSTANCE.getTGroupType_CapabilityDefinitions();
+
+		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl <em>TGroup Template</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14014,6 +14110,22 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TGROUP_TEMPLATE__MEMBER = eINSTANCE.getTGroupTemplate_Member();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirements</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__REQUIREMENTS = eINSTANCE.getTGroupTemplate_Requirements();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__CAPABILITIES = eINSTANCE.getTGroupTemplate_Capabilities();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1</em>}' enum.

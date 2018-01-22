@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -48,16 +47,6 @@ public class TTopologyTemplateImpl extends TExtensibleElementsImpl implements TT
 	 * @ordered
 	 */
 	protected FeatureMap group;
-
-	/**
-	 * The cached value of the '{@link #getGroupTemplate() <em>Group Template</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroupTemplate()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TGroupTemplate> groupTemplate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,10 +103,7 @@ public class TTopologyTemplateImpl extends TExtensibleElementsImpl implements TT
 	 * @generated
 	 */
 	public EList<TGroupTemplate> getGroupTemplate() {
-		if (groupTemplate == null) {
-			groupTemplate = new EObjectContainmentEList<TGroupTemplate>(TGroupTemplate.class, this, ToscaPackage.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE);
-		}
-		return groupTemplate;
+		return getGroup().list(ToscaPackage.Literals.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE);
 	}
 
 	/**
@@ -228,7 +214,7 @@ public class TTopologyTemplateImpl extends TExtensibleElementsImpl implements TT
 			case ToscaPackage.TTOPOLOGY_TEMPLATE__RELATIONSHIP_TEMPLATE:
 				return !getRelationshipTemplate().isEmpty();
 			case ToscaPackage.TTOPOLOGY_TEMPLATE__GROUP_TEMPLATE:
-				return groupTemplate != null && !groupTemplate.isEmpty();
+				return !getGroupTemplate().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

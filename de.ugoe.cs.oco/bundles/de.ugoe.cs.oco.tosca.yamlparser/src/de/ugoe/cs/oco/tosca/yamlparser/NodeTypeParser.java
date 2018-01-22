@@ -19,12 +19,18 @@ import org.eclipse.xsd.XSDFactory;
 import org.eclipse.xsd.XSDPackage;
 import org.eclipse.xsd.XSDSchema;
 
+import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType;
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
+import de.ugoe.cs.oco.tosca.RequirementDefinitionsType;
+import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
+import de.ugoe.cs.oco.tosca.TDocumentation;
 import de.ugoe.cs.oco.tosca.TInterface;
 import de.ugoe.cs.oco.tosca.TNodeType;
+import de.ugoe.cs.oco.tosca.TRequirement;
+import de.ugoe.cs.oco.tosca.TRequirementDefinition;
 import de.ugoe.cs.oco.tosca.TServiceTemplate;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
@@ -55,17 +61,35 @@ public class NodeTypeParser extends Parser {
 					case "version":
 						break;
 					case "description":
+						TDocumentation documentation = ToscaFactory.eINSTANCE.createTDocumentation();
+						documentation.setSource((String) innerentry.getValue());;
+						type.getDocumentation().add(documentation);
 						break;
 					case "properties":
 						LOGGER.info("Found Property definition.");	
 						XSDSchema schema = parser.getPropertyTypesSchema();
 						XSDComplexTypeDefinition propertiesDefinitionXSD =  new PropertyParser().parse((Map<String, ?>) 
 								innerentry.getValue(), schema);	
-						propertiesDefinitionXSD.setName(type.getName() + "Properties");
+						propertiesDefinitionXSD.setName(type.getName() + "PropertiesType");
+						PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
+						propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+						type.setPropertiesDefinition(propertiesDefinitionType);
 						break;
 					case "requirements":
+						RequirementDefinitionsType requirementDefinition = ToscaFactory.eINSTANCE.createRequirementDefinitionsType();
+						List<TRequirementDefinition> requirements = (List<TRequirementDefinition>) new RequirementDefinitionParser().parse(
+								(List<String>) innerentry.getValue());
+						
+						requirementDefinition.getRequirementDefinition().addAll(requirements);
+						type.setRequirementDefinitions(requirementDefinition);
 						break;
 					case "capabilities":
+						CapabilityDefinitionsType capabilityDefinition = ToscaFactory.eINSTANCE.createCapabilityDefinitionsType();
+						List<TCapabilityDefinition> capabilities = (List<TCapabilityDefinition>) new CapabilityDefinitionParser().parse(
+								(Map<String, ?>) innerentry.getValue(), null);
+						
+						capabilityDefinition.getCapabilityDefinition().addAll(capabilities);
+						type.setCapabilityDefinitions(capabilityDefinition);
 						break;
 					case "attributes":
 						break;

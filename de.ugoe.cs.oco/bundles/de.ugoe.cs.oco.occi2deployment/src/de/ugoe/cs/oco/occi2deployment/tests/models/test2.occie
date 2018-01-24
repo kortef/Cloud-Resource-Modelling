@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <occi:Extension name="template" scheme="http://schemas.openstack.org/template#">
+    <mixins name="36637a26-fded-4635-b6c5-ec8ec0745eab" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.medium"/>
+    <mixins name="60ab5827-e8cd-44f3-a33a-ee2fb989f7a7" scheme="http://schemas.openstack.org/template/os#" title="Sahara_Spark1.6_Ubuntu"/>
+    <mixins name="cc5d21d7-fc0e-451d-884b-aba0efac9c33" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m8"/>
+    <mixins name="9961ccdf-2ee2-42d1-ac6d-b45318212cad" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m10"/>
+    <mixins name="32ef77d0-5d26-46f5-9ea3-f805a7a05af6" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m4"/>
+    <mixins name="2a665c12-e4c5-41fe-b16e-2aec31c799eb" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m2"/>
+    <mixins name="5437eae8-7c47-4834-929c-a314de77d291" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 16.04 Server"/>
+    <mixins name="e739cb33-4224-4829-8dcb-9b66a1b8ceb9" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.large"/>
+    <mixins name="d1f5a7a6-0fbe-4146-87fe-1e9441462833" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m6"/>
+    <mixins name="41598b12-2d7d-4ffe-b3c1-0f52e68fa1ea" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: mongoscale_m1"/>
+    <mixins name="0" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.nano"/>
+    <mixins name="8dd25971-1bbd-47db-9d49-2fef02fa0bc8" scheme="http://schemas.openstack.org/template/resource#" title="Flavor: m1.small"/>
+    <mixins name="e7a211eb-d1dc-4e3a-8da6-f9daabdb81c8" scheme="http://schemas.openstack.org/template/os#" title="Centos 7"/>
+    <mixins name="adf63ddc-debe-4d7e-b899-b936e989439f" scheme="http://schemas.openstack.org/template/os#" title="Ubuntu 14.04 Server"/>
+  </occi:Extension>
+  <occi:Extension name="instance" scheme="http://schemas.openstack.org/instance#">
+    <mixins name="public_key" scheme="http://schemas.openstack.org/instance/credentials#" title="Contextualization extension - public_key"/>
+  </occi:Extension>
+  <occi:Extension name="occi" scheme="http://schemas.ogf.org/occi#">
+    <mixins name="resource_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OCCI Resource Template"/>
+    <mixins name="os_tpl" scheme="http://schemas.ogf.org/occi/infrastructure#" title="OCCI OS Template"/>
+  </occi:Extension>
+  <occi:Extension name="compute" scheme="http://schemas.openstack.org/compute#">
+    <mixins name="user_data" scheme="http://schemas.openstack.org/compute/instance#" title="Contextualization extension - user_data"/>
+  </occi:Extension>
+  <occi:Extension name="infrastructure" scheme="http://schemas.ogf.org/occi/infrastructure#">
+    <kinds name="storage" scheme="http://schemas.ogf.org/occi/infrastructure#" title="storage resource" parent="/7/@kinds[term='resource']">
+      <actions name="snapshot" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="snapshot storage instance"/>
+      <actions name="online" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="online storage instance"/>
+      <actions name="resize" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="resize storage instance"/>
+      <actions name="backup" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="backup storage instance"/>
+      <actions name="offline" scheme="http://schemas.ogf.org/occi/infrastructure/storage/action#" title="offline storage instance"/>
+    </kinds>
+    <kinds name="network" scheme="http://schemas.ogf.org/occi/infrastructure#" title="network resource" parent="/7/@kinds[term='resource']">
+      <actions name="down" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="down network instance"/>
+      <actions name="up" scheme="http://schemas.ogf.org/occi/infrastructure/network/action#" title="up network instance"/>
+    </kinds>
+    <kinds name="ipreservation" scheme="http://schemas.ogf.org/occi/infrastructure#" title="IPReservation" parent="/4/@kinds[term='network']"/>
+    <kinds name="storagelink" scheme="http://schemas.ogf.org/occi/infrastructure#" title="storage link resource" parent="/7/@kinds[term='link']" source="/4/@kinds[term='compute']" target="/4/@kinds[term='storage']"/>
+    <kinds name="compute" scheme="http://schemas.ogf.org/occi/infrastructure#" title="compute resource" parent="/7/@kinds[term='resource']">
+      <actions name="start" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="start compute instance"/>
+      <actions name="restart" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="restart compute instance"/>
+      <actions name="suspend" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="suspend compute instance"/>
+      <actions name="stop" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="stop compute instance"/>
+      <actions name="save" scheme="http://schemas.ogf.org/occi/infrastructure/compute/action#" title="save compute instance"/>
+    </kinds>
+    <kinds name="networkinterface" scheme="http://schemas.ogf.org/occi/infrastructure#" title="network link resource" parent="/7/@kinds[term='link']" source="/4/@kinds[term='compute']" target="/4/@kinds[term='network']"/>
+    <mixins name="ssh_key" scheme="http://schemas.ogf.org/occi/infrastructure/credentials#" title="Credentials mixin"/>
+    <mixins name="ipnetwork" scheme="http://schemas.ogf.org/occi/infrastructure/network#" title="IP Networking Mixin"/>
+    <mixins name="user_data" scheme="http://schemas.ogf.org/occi/infrastructure/compute#" title="Contextualization mixin"/>
+    <mixins name="ipnetworkinterface" scheme="http://schemas.ogf.org/occi/infrastructure/networkinterface#" title="IP Network interface Mixin"/>
+  </occi:Extension>
+  <occi:Extension name="infrastructure" scheme="http://schemas.openstack.org/infrastructure#">
+    <mixins name="neutron" scheme="http://schemas.openstack.org/infrastructure/network#" title="Network component"/>
+    <mixins name="osnetwork" scheme="http://schemas.openstack.org/infrastructure/network#" title="openstack network"/>
+  </occi:Extension>
+  <occi:Extension name="network" scheme="http://schemas.openstack.org/network#">
+    <mixins name="provider" scheme="http://schemas.openstack.org/network/floatingippool#" title="provider"/>
+  </occi:Extension>
+  <occi:Extension scheme="http://schemas.ogf.org/occi/core#">
+    <kinds name="link" scheme="http://schemas.ogf.org/occi/core#" title="link"/>
+    <kinds name="entity" scheme="http://schemas.ogf.org/occi/core#" title="entity"/>
+    <kinds name="resource" scheme="http://schemas.ogf.org/occi/core#" title="resource" parent="/7/@kinds[term='entity']"/>
+  </occi:Extension>
+  <occi:Configuration description="Extracted Runtime Model" location="http://192.168.34.1:8787/occi1.1OCCIBasicAuthentication" use="/0 /4 /5">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2" kind="/4/@kinds[term='compute']">
+      <attributes name="occi.compute.state" value="active"/>
+      <attributes name="occi.compute.hostname" value="vm2"/>
+      <attributes name="occi.compute.memory" value="4096"/>
+      <attributes name="occi.core.title" value="vm2"/>
+      <attributes name="occi.compute.cores" value="2"/>
+      <attributes name="occi.core.id" value="2e6a73d0-faaa-476a-bd25-ca461dd166ce"/>
+      <parts mixin="/0/@mixins[term='36637a26-fded-4635-b6c5-ec8ec0745eab']"/>
+      <parts mixin="/0/@mixins[term='5437eae8-7c47-4834-929c-a314de77d291']"/>
+      <links id="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af" title="link1" kind="/4/@kinds[term='networkinterface']" location="" target="/8/@resources.1">
+        <attributes name="occi.core.id" value="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af"/>
+        <attributes name="occi.core.title" value="link1"/>
+        <attributes name="occi.networkinterface.interface" value="eth0"/>
+        <attributes name="occi.networkinterface.mac" value="fa:16:3e:2e:39:ee"/>
+        <attributes name="occi.networkinterface.state" value="active"/>
+        <attributes name="occi.networkinterface.address" value="192.168.0.15"/>
+        <attributes name="occi.networkinterface.gateway" value="192.168.34.1"/>
+      </links>
+      <links id="urn:uuid:aca8dfc2-c1c3-403e-a54e-29ec83055462" title="storageLink" kind="/4/@kinds[term='storagelink']" target="/8/@resources.2">
+        <attributes name="occi.core.id" value="urn:uuid:aca8dfc2-c1c3-403e-a54e-29ec83055462"/>
+      </links>
+    </resources>
+    <resources id="urn:uuid:14bdc609-0f2d-4db7-b5b0-08d73e884f3f" title="network" kind="/4/@kinds[term='network']" rlinks="/8/@resources.0/@links.0">
+      <attributes name="occi.network.gateway" value="192.168.0.1"/>
+      <attributes name="occi.network.address" value="192.168.0.0/24"/>
+      <attributes name="org.openstack.network.ipversion" value="4"/>
+      <attributes name="occi.core.title" value="stubNetwork"/>
+      <attributes name="occi.core.id" value="14bdc609-0f2d-4db7-b5b0-08d73e884f3f"/>
+      <attributes name="occi.network.state" value="active"/>
+      <parts mixin="/5/@mixins[term='osnetwork']"/>
+      <parts mixin="/4/@mixins[term='ipnetwork']"/>
+    </resources>
+    <resources id="urn:uuid:45c6eda3-fe11-4e83-98e5-54077888efe4" title="volume" kind="/4/@kinds[term='storage']" rlinks="/8/@resources.0/@links.1">
+      <attributes name="occi.core.title" value="volume"/>
+      <attributes name="occi.core.id" value="45c6eda3-fe11-4e83-98e5-54077888efe4"/>
+      <attributes name="occi.storage.state" value="online"/>
+      <attributes name="occi.storage.size" value="100"/>
+    </resources>
+  </occi:Configuration>
+</xmi:XMI>

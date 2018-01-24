@@ -1,0 +1,36 @@
+//-----------------------------------------------//
+//------------------Link2Vertex------------------//
+//-----------------------------------------------//
+rule Link2Vertex
+	transform link : OCCI!Link
+	to vertex : POG!Vertex {
+	vertex.id = link.id;
+	
+	if(link.title <> ""){
+		vertex.title = link.title;
+	}
+	else{
+		vertex.title = link.kind.term;
+	}
+	
+	vertex.title += " ";
+
+	
+	if(link.source.title <> "") {
+		vertex.title += link.source.title;
+	}
+	else {
+		vertex.title += link.source.kind.term;
+	}
+	
+	vertex.title += " -> ";
+	
+	if(link.target.title <> "") {
+		vertex.title += link.target.title;
+	}
+	else{
+		vertex.title += link.target.kind.term;
+	}
+
+	graph.vertices.add(vertex);
+}

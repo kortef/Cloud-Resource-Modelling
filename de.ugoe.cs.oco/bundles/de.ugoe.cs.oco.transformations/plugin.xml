@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PCG -->
+      <package
+            uri="http://swe.simpaas.pcg.de/pcg"
+            class="pcg.PcgPackage"
+            genModel="src/models/metaModels/PCG.genmodel"/>
+   </extension>
+
+</plugin>

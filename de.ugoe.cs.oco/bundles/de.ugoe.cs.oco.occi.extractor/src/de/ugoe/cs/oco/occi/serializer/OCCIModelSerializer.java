@@ -12,8 +12,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
 import de.ugoe.cs.oco.occi.extractor.OCCIModel;
 
@@ -46,13 +46,15 @@ public class OCCIModelSerializer {
 		if (model.getResources() != null)
 			resource.getContents().addAll(model.getResources());
 		
+		if (model.getConfiguration() != null)
+			resource.getContents().add(model.getConfiguration());
+		
 		try {
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return true;
 		
 	}

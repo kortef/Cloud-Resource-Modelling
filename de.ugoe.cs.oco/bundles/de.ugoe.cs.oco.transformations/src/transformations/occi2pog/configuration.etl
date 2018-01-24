@@ -1,0 +1,31 @@
+/* Operation: getDependsOnConfiguration
+Description: Configuration Set to map OCCI Kinds to their corresponding dependency resolution.*/
+operation getDependsOnConfiguration() : Set {
+	var configuration = new Set;
+	configuration.add(Kind("placementlink", "http://schemas.modmacao.org/placement#", "placement link"));
+	return configuration;
+}
+/* Operation: getUseConfiguration
+Description: Configuration Set to map OCCI Kinds to their corresponding dependency resolution.*/
+operation getUseConfiguration() : Set {
+	var configuration = new Set;
+	configuration.add(Kind("componentlink", "http://schemas.ogf.org/occi/platform#", "component link resource"));
+	configuration.add(Kind("networkinterface", "http://schemas.ogf.org/occi/infrastructure#", "network link resource"));
+	configuration.add(Kind("storagelink", "http://schemas.ogf.org/occi/infrastructure#", "storage link resource"));
+	configuration.add(Kind("componentlink", "http://schemas.modmacao.org/occi/platform#", "component link"));
+	return configuration;
+}
+
+/* Operation: Kind
+Input:	String term: Term of the Kind,
+		String scheme: Scheme of the Kind,
+		String title: Title of the Kind.
+Description: Simple creation of a Kind Instance.*/
+operation Kind(term : String, scheme : String, title : String) : OCCI!Kind{
+	var kind = new OCCI!Kind;
+	kind.name = term;
+	kind.title = title;
+	kind.scheme = scheme;
+	
+	return kind;
+}

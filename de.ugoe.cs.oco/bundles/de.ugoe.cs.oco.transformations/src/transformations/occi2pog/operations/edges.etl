@@ -1,0 +1,30 @@
+/* Operation: createEdges
+Description: For every Link in the OCCI Model, the baseKind of the Links Kind is checked.
+Depending on the configuration file either a use or depends on relationship is associated to the Kind.
+Thereupon, Edges are created in the POG linking corresponding Vertices.*/
+
+operation createEdges() {
+	for(link in OCCI!Link){
+		var linkBaseKind = new String;
+		if(dependsOnDependencies.exists(kind | kind.compareTo(link.kind.baseKind()))){
+			Edge(link.target.equivalent(), link.equivalent(), graph);
+			Edge(link.equivalent(), link.source.equivalent(), graph);
+		}
+		if(useDependencies.exists(kind | kind.compareTo(link.kind.baseKind()))){
+			Edge(link.target.equivalent(), link.equivalent(), graph);
+			Edge(link.source.equivalent(), link.equivalent(), graph);
+		}
+	}
+}
+
+/* Operation: Edge
+Input:	Vertex source: Source of the Edge,
+		Vertex target: Target of the Edge,
+		Graph graph: Graph the Edge is contained in.
+Description: Simple creation of an Edge.*/
+operation Edge(source : POG!Vertex, target : POG!Vertex, graph: POG!Graph) {
+	var edge = new POG!Edge;
+	edge.source = source;
+	edge.target = target;
+	graph.edges.add(edge);
+}

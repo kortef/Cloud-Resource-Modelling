@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <resources id="1476a263-24da-45c2-b705-5d5d836ef859">
+    <attributes name="occi.core.id" value="1476a263-24da-45c2-b705-5d5d836ef859"/>
+  </resources>
+  <resources id="593102f8-7edf-4c60-a429-27023f7fedad">
+    <attributes name="occi.core.id" value="593102f8-7edf-4c60-a429-27023f7fedad"/>
+  </resources>
+</occi:Configuration>

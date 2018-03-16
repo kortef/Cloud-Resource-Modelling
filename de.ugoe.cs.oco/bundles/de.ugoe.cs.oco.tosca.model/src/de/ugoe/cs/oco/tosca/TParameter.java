@@ -36,7 +36,7 @@ public interface TParameter extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Name()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
@@ -121,7 +121,7 @@ public interface TParameter extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Type()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='type'"
 	 * @generated
 	 */
@@ -148,7 +148,7 @@ public interface TParameter extends EObject {
 	 * @return the value of the '<em>Default Value</em>' attribute.
 	 * @see #setDefaultValue(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_DefaultValue()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model
 	 * @generated
 	 */
 	String getDefaultValue();

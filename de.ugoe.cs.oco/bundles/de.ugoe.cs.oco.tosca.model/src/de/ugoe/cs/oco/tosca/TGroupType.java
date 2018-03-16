@@ -17,7 +17,7 @@ package de.ugoe.cs.oco.tosca;
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType()
- * @model
+ * @model extendedMetaData="kind='elementOnly' name='tGroupType'"
  * @generated
  */
 public interface TGroupType extends TEntityType {

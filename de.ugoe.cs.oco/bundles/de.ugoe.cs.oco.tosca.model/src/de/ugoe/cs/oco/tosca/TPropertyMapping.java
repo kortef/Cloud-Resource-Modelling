@@ -34,7 +34,7 @@ public interface TPropertyMapping extends EObject {
 	 * @return the value of the '<em>Service Template Property Ref</em>' attribute.
 	 * @see #setServiceTemplatePropertyRef(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_ServiceTemplatePropertyRef()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='serviceTemplatePropertyRef'"
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface TPropertyMapping extends EObject {
 	 * @return the value of the '<em>Target Property Ref</em>' attribute.
 	 * @see #setTargetPropertyRef(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_TargetPropertyRef()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='targetPropertyRef'"
 	 * @generated
 	 */

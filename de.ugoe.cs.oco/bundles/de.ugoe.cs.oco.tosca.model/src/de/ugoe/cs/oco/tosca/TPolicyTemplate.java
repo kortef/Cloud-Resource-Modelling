@@ -31,8 +31,7 @@ public interface TPolicyTemplate extends TEntityTemplate {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPolicyTemplate_Name()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        extendedMetaData="kind='attribute' name='name'"
+	 * @model extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
 	String getName();

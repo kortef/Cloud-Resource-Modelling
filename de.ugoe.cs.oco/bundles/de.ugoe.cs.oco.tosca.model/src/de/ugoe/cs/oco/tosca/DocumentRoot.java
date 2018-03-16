@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
@@ -58,7 +59,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XMLNS Prefix Map</em>' map.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_XMLNSPrefixMap()
-	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
+	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
 	 */
@@ -76,64 +77,44 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XSI Schema Location</em>' map.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_XSISchemaLocation()
-	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
+	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
 	 */
 	EMap<String, String> getXSISchemaLocation();
 
 	/**
-	 * Returns the value of the '<em><b>Definitions</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Definitions</b></em>' containment reference list.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.DefinitionsType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Definitions</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Definitions</em>' containment reference.
-	 * @see #setDefinitions(DefinitionsType)
+	 * @return the value of the '<em>Definitions</em>' containment reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_Definitions()
-	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='Definitions' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DefinitionsType getDefinitions();
+	EList<DefinitionsType> getDefinitions();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDefinitions <em>Definitions</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definitions</em>' containment reference.
-	 * @see #getDefinitions()
-	 * @generated
-	 */
-	void setDefinitions(DefinitionsType value);
-
-	/**
-	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference list.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TDocumentation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Documentation</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Documentation</em>' containment reference.
-	 * @see #setDocumentation(TDocumentation)
+	 * @return the value of the '<em>Documentation</em>' containment reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_Documentation()
-	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='documentation' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	TDocumentation getDocumentation();
-
-	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDocumentation <em>Documentation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Documentation</em>' containment reference.
-	 * @see #getDocumentation()
-	 * @generated
-	 */
-	void setDocumentation(TDocumentation value);
+	EList<TDocumentation> getDocumentation();
 
 } // DocumentRoot

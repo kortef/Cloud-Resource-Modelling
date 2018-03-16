@@ -32,7 +32,7 @@ public interface IncludeType extends EObject {
 	 * @return the value of the '<em>Pattern</em>' attribute.
 	 * @see #setPattern(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getIncludeType_Pattern()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='pattern'"
 	 * @generated
 	 */

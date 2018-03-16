@@ -107,19 +107,6 @@ public class DocumentRootTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link de.ugoe.cs.oco.tosca.DocumentRoot#setDefinitions(de.ugoe.cs.oco.tosca.DefinitionsType) <em>Definitions</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.ugoe.cs.oco.tosca.DocumentRoot#setDefinitions(de.ugoe.cs.oco.tosca.DefinitionsType)
-	 * @generated
-	 */
-	public void testSetDefinitions() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
 	 * Tests the '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDocumentation() <em>Documentation</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,19 +115,6 @@ public class DocumentRootTest extends TestCase {
 	 */
 	public void testGetDocumentation() {
 		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link de.ugoe.cs.oco.tosca.DocumentRoot#setDocumentation(de.ugoe.cs.oco.tosca.TDocumentation) <em>Documentation</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.ugoe.cs.oco.tosca.DocumentRoot#setDocumentation(de.ugoe.cs.oco.tosca.TDocumentation)
-	 * @generated
-	 */
-	public void testSetDocumentation() {
-		// TODO: implement this feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();
 	}

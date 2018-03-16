@@ -2486,6 +2486,10 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TGroupType" eSuperTypes="#//TEntityType">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData" references="#//ArtifactReferencesType/%http:%2F%2F%2Forg%2Feclipse%2Femf%2Fecore%2Futil%2FExtendedMetaData%">
+      <details key="kind" value="elementOnly"/>
+      <details key="name" value="tGroupType"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirementDefinitions"
         eType="#//RequirementDefinitionsType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityDefinitions"

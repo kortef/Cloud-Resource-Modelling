@@ -1162,6 +1162,9 @@
         eType="#//TGroupType" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="GroupType"/>
+        <details key="kind" value="element"/>
+        <details key="namespace" value="##targetNamespace"/>
+        <details key="group" value="#group6"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

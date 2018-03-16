@@ -408,7 +408,7 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @return the value of the '<em>Group Type</em>' containment reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_GroupType()
 	 * @model containment="true"
-	 *        extendedMetaData="name='GroupType'"
+	 *        extendedMetaData="name='GroupType' kind='element' namespace='##targetNamespace' group='#group6'"
 	 * @generated
 	 */
 	EList<TGroupType> getGroupType();

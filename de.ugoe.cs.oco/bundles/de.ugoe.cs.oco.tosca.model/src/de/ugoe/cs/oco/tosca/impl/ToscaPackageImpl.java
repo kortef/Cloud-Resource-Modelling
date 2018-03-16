@@ -6601,7 +6601,10 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		  (getTDefinitions_GroupType(), 
 		   source, 
 		   new String[] {
-			 "name", "GroupType"
+			 "name", "GroupType",
+			 "kind", "element",
+			 "namespace", "##targetNamespace",
+			 "group", "#group6"
 		   });	
 		addAnnotation
 		  (tDeploymentArtifactEClass, 

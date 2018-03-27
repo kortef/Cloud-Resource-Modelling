@@ -63,11 +63,15 @@ public class OCCIModelExtractor {
 		this.httpClient = httpClient;
 		Model model = httpClient.getModel();
 		occiModel = this.convertToOCCIModel(model);
-		for(org.eclipse.cmf.occi.core.Resource res: occiModel.getConfiguration().getResources()) {
-			if(res.getId().equals("PUBLIC")) {
-				res.setId(publicNetworkId);
+		
+		if(publicNetworkId != null) {
+			for(org.eclipse.cmf.occi.core.Resource res: occiModel.getConfiguration().getResources()) {
+				if(res.getId().equals("PUBLIC")) {
+					res.setId(publicNetworkId);
+				}
 			}
 		}
+		
 		log.info("Model Extraction: Finished");
 		return occiModel;
 	}

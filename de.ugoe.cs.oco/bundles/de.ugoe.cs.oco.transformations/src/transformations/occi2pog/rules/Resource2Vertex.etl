@@ -11,5 +11,7 @@ rule Resource2Vertex
 	else{
 		vertex.title = resource.kind.term;
 	}
+	"Created Resource Vertex: ".print();
+	vertex.title.println();
 	graph.vertices.add(vertex);
 }

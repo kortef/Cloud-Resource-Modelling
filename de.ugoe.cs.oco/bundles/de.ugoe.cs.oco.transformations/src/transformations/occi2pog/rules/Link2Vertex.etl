@@ -6,11 +6,12 @@ rule Link2Vertex
 	to vertex : POG!Vertex {
 	vertex.id = link.id;
 	
+	vertex.title = "(";
 	if(link.title <> ""){
-		vertex.title = link.title;
+		vertex.title += link.title;
 	}
 	else{
-		vertex.title = link.kind.term;
+		vertex.title += link.kind.term;
 	}
 	
 	vertex.title += " ";
@@ -31,6 +32,10 @@ rule Link2Vertex
 	else{
 		vertex.title += link.target.kind.term;
 	}
-
+	vertex.title += ")";
+	
+	"Created Link Vertex: ".print();
+	vertex.title.println();
+	
 	graph.vertices.add(vertex);
 }

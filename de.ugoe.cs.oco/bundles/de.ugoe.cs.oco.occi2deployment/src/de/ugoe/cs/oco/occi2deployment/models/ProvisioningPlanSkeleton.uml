@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hmwqwDGEEeiTEfZxIfHnjg" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_hmY3UTGEEeiTEfZxIfHnjg" name="DeploymentWorkflow" node="_hmxR0DGEEeiTEfZxIfHnjg _hmx44DGEEeiTEfZxIfHnjg _hmtncDGEEeiTEfZxIfHnjg _hmu1kDGEEeiTEfZxIfHnjg _hnAiYDGEEeiTEfZxIfHnjg">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hm8Q8DGEEeiTEfZxIfHnjg" target="_hmtncDGEEeiTEfZxIfHnjg" source="_hmxR0DGEEeiTEfZxIfHnjg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hm8Q8TGEEeiTEfZxIfHnjg" target="_hmx44DGEEeiTEfZxIfHnjg" source="_hmu1kDGEEeiTEfZxIfHnjg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hnGpADGEEeiTEfZxIfHnjg" target="_hnAiYDGEEeiTEfZxIfHnjg" source="_hmtncDGEEeiTEfZxIfHnjg"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hnHQEDGEEeiTEfZxIfHnjg" target="_hmu1kDGEEeiTEfZxIfHnjg" source="_hnAiYDGEEeiTEfZxIfHnjg"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_hmxR0DGEEeiTEfZxIfHnjg" name="initial" outgoing="_hm8Q8DGEEeiTEfZxIfHnjg"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_hmx44DGEEeiTEfZxIfHnjg" name="final" incoming="_hm8Q8TGEEeiTEfZxIfHnjg"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_hmtncDGEEeiTEfZxIfHnjg" name="initialFork" incoming="_hm8Q8DGEEeiTEfZxIfHnjg" outgoing="_hnGpADGEEeiTEfZxIfHnjg"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_hmu1kDGEEeiTEfZxIfHnjg" name="finalJoin" incoming="_hnHQEDGEEeiTEfZxIfHnjg" outgoing="_hm8Q8TGEEeiTEfZxIfHnjg"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_hnAiYDGEEeiTEfZxIfHnjg" name="Provision (link1 vm2 -> PUBLIC)" incoming="_hnGpADGEEeiTEfZxIfHnjg" outgoing="_hnHQEDGEEeiTEfZxIfHnjg">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_hnDlsDGEEeiTEfZxIfHnjg" name="(link1 vm2 -> PUBLIC) id">
+        <value xmi:type="uml:LiteralString" xmi:id="_hnGB8DGEEeiTEfZxIfHnjg" name="id" value="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af"/>
+      </inputValue>
+    </node>
+  </packagedElement>
+</uml:Model>

@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.cmf.occi.core.*;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -17,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 * @author nvertovec, fglaser
 */
 public class OCCIModel {
+	static Logger log = Logger.getLogger(OCCIModel.class.getName());
 	private Map<String, Extension> extensions = new HashMap<String, Extension>();
 	private Configuration configuration = OCCIFactory.eINSTANCE.createConfiguration();
 	private Set<Action> actions = new HashSet<Action>();
@@ -134,7 +134,6 @@ public class OCCIModel {
      * @return true if the addition was successful, false otherwise
      */
     public boolean addMixin(Mixin mixin) {
-    	System.out.println(mixin.getScheme());
     	String extensionSchema = mixin.getScheme().substring(0, mixin.getScheme().lastIndexOf('/')) + '#';
     	Extension extension = extensions.get(extensionSchema);
     	if (extension == null){
@@ -231,7 +230,7 @@ public class OCCIModel {
 	public Kind getKindBySchemeAndTerm(String scheme, String term){
 		for (Kind kind: this.getKinds()){
 			if (kind.getTerm().equals(term)){
-				System.out.println("Matched kind");
+				log.debug("Matched kind");
 				return kind;
 			}
 		}
@@ -273,12 +272,12 @@ public class OCCIModel {
 
 	public void fillConfiguration() {
 		this.configuration.setDescription("Extracted Runtime Model");
-		System.out.println("Resources: " + this.getResources());
+		log.debug("Resources: " + this.getResources());
 		
 		//Setup Use
 		for(Resource res: this.getResources()) {
 			for(Mixin mix: res.getMixins()) {
-				System.out.println(mix.eContainer());
+				log.debug(mix.eContainer());
 				this.configuration.getUse().add((Extension) mix.eContainer());
 			}
 			this.configuration.getUse().add((Extension) res.getKind().eContainer());
@@ -290,7 +289,7 @@ public class OCCIModel {
 		this.getResources().clear();
 		
 		/*
-		for(Extension ext : this.getExtensions()) {
+		for(Extension ext : this.getExtensiSystem.out.printlnons()) {
 			for(Mixin mixin: ext.getMixins()) {
 				System.out.println(mixin.getEntities());
 				if(mixin.getEntities().isEmpty() == false) {

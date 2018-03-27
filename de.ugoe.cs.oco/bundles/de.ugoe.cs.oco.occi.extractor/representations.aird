@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_k4ijYODZEeeQ1uEvC5JDmA" selectedViews="_k8B8QODZEeeQ1uEvC5JDmA" version="12.0.0.201704271200">
+  <viewpoint:DAnalysis xmi:id="_k4ijYODZEeeQ1uEvC5JDmA" selectedViews="_k8B8QODZEeeQ1uEvC5JDmA" version="12.1.0.201708031200">
     <semanticResources>http://schemas.ogf.org/occi/infrastructure/compute/template/1.1</semanticResources>
     <semanticResources>http://schemas.openstack.org/template</semanticResources>
     <semanticResources>http://schemas.ogf.org/occi/infrastructure</semanticResources>
     <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
+    <semanticResources>MLS.occie</semanticResources>
     <semanticResources>test2.occie</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_k8B8QODZEeeQ1uEvC5JDmA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_sNRVQODZEeeQ1uEvC5JDmA" name="new Configuration diagram" repPath="#_sNPgEODZEeeQ1uEvC5JDmA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_sNRVQODZEeeQ1uEvC5JDmA" name="new Configuration diagram" repPath="#_EtawUBMZEeiPYMCWbIRWPg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']"/>
         <target xmi:type="occi:Configuration" href="test2.occie#/8"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_sNPgEODZEeeQ1uEvC5JDmA" name="new Configuration diagram">
+  <diagram:DSemanticDiagram xmi:id="_sNPgEODZEeeQ1uEvC5JDmA" name="new Configuration diagram" uid="_EtawUBMZEeiPYMCWbIRWPg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_sNPgEeDZEeeQ1uEvC5JDmA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_sNPgEuDZEeeQ1uEvC5JDmA"/>
     </ownedAnnotationEntries>

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.cmf.occi.core.OCCIFactory;
 
 import cz.cesnet.cloud.occi.Model;
@@ -23,6 +24,7 @@ import cz.cesnet.cloud.occi.core.Kind;
 import cz.cesnet.cloud.occi.core.Link;
 import cz.cesnet.cloud.occi.core.Mixin;
 import cz.cesnet.cloud.occi.core.Resource;
+
 /**
  * Class to that implements functionality for extracting OCCI models from
  * OCCI server.
@@ -30,6 +32,8 @@ import cz.cesnet.cloud.occi.core.Resource;
  * 
  */
 public class OCCIModelExtractor {
+	private String publicId;
+	static Logger log = Logger.getLogger(OCCIModelExtractor.class.getName());
 	private Client httpClient;
 	private OCCIModel occiModel;
 	private Set<String> extensionSchemas = new HashSet<String>();
@@ -40,9 +44,31 @@ public class OCCIModelExtractor {
 	 * @return OCCIModel
 	 */
 	public OCCIModel extractModel(Client httpClient){
+		log.info("Model Extraction: Start");
 		this.httpClient = httpClient;
 		Model model = httpClient.getModel();
 		occiModel = this.convertToOCCIModel(model);
+		log.info("Model Extraction: Finished");
+		return occiModel;
+	}
+	
+	/**
+	 * Extracts OCCIModel from cloud specified with help httpClient object. And adjusts Resources with id "PUBLIC" to 
+	 * the one specified in publicNetworkId.
+	 * @param httpClient, publicNetworkId
+	 * @return OCCIModel
+	 */
+	public OCCIModel extractModel(Client httpClient, String publicNetworkId){
+		log.info("Model Extraction: Start");
+		this.httpClient = httpClient;
+		Model model = httpClient.getModel();
+		occiModel = this.convertToOCCIModel(model);
+		for(org.eclipse.cmf.occi.core.Resource res: occiModel.getConfiguration().getResources()) {
+			if(res.getId().equals("PUBLIC")) {
+				res.setId(publicNetworkId);
+			}
+		}
+		log.info("Model Extraction: Finished");
 		return occiModel;
 	}
 	
@@ -110,7 +136,7 @@ public class OCCIModelExtractor {
 		
 		String[] parts = newAction.getScheme().split("/");
 		String term = parts[parts.length - 2];
-		System.out.println("Term: " + term);
+		log.debug("Term: " + term);
 		org.eclipse.cmf.occi.core.Mixin mixin = occiModel.getMixinBySchemeAndTerm("", term);
 		if (mixin != null)
 			mixin.getActions().add(newAction);
@@ -150,7 +176,7 @@ public class OCCIModelExtractor {
 		while(mixin_iterator.hasNext()){
 			mixin = mixin_iterator.next();
 
-			System.out.println("Mixin: " + mixin.getTerm());
+			log.debug("Mixin: " + mixin.getTerm());
 			toMixin(mixin);
 		}
 		return occi;
@@ -175,7 +201,7 @@ public class OCCIModelExtractor {
 		
 		//Es werden keine Attribute zurueckgegeben
 		for (Attribute attribute: mixin.getAttributes()){
-			System.out.println("Found mixin.");
+			log.debug("Found mixin.");
 			newMixin.getAttributes().add(toAttribute(attribute));
 		}
 		
@@ -205,7 +231,7 @@ public class OCCIModelExtractor {
 	 * @return
 	 */
 	private org.eclipse.cmf.occi.core.Kind toKind(Kind kind){
-		System.out.println("Called toKind with " + kind.getTerm());
+		log.debug("Called toKind with " + kind.getTerm());
 		org.eclipse.cmf.occi.core.Kind newKind = occiModel.getKind(kind.getTitle());
 		
 		if (newKind == null){
@@ -215,7 +241,7 @@ public class OCCIModelExtractor {
 		newKind.setTitle(kind.getTitle());
 		
 		if(kind.getParentKind()!=null){
-			System.out.println("Parent kind is: " + kind.getParentKind().getTerm());
+			log.debug("Parent kind is: " + kind.getParentKind().getTerm());
 			newKind.setParent(toKind(kind.getParentKind()));
 		}
 		
@@ -243,7 +269,7 @@ public class OCCIModelExtractor {
 				new LinkedList<Link>();
 		for (org.eclipse.cmf.occi.core.Kind kind: occi.getKinds()){
 			try {
-				System.out.println("Looking for kind: " + kind.getTerm());
+				log.debug("Looking for kind: " + kind.getTerm());
 				List<URI> entityURIs = httpClient.list(kind.getTerm());
 				for (URI entityURI: entityURIs){
 					List<Entity> entities = httpClient.describe(entityURI);
@@ -272,9 +298,15 @@ public class OCCIModelExtractor {
 			newEntity = toResource((Resource)entity);
 		}
 		
+		
 		newEntity.setTitle(entity.getTitle());
 		newEntity.setKind(occiModel.getKindBySchemeAndTerm("", entity.getKind().getTerm()));
-		newEntity.setId(entity.getId());
+		if(newEntity.getId().equals("PUBLIC")) {
+			newEntity.setId(publicId);
+		}
+		else {
+			newEntity.setId(entity.getId());
+		}
 		for (Entry<Attribute, String> entry: entity.getAttributes().entrySet()){
 			org.eclipse.cmf.occi.core.AttributeState state = OCCIFactory.eINSTANCE.createAttributeState();
 			state.setName(entry.getKey().getName());
@@ -327,11 +359,11 @@ public class OCCIModelExtractor {
 			newLink.setSource(occiSource);
 			
 		} catch (CommunicationException e) {
-			System.out.println("Source not found.");
+			log.debug("Source not found.");
 		}
 		
 		
-		System.out.println("Source is " + link.getSource());;
+		log.debug("Source is " + link.getSource());;
 		
 		return newLink;
 	}

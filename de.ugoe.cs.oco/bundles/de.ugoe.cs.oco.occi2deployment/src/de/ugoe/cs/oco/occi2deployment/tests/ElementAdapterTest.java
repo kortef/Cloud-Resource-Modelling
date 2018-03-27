@@ -31,7 +31,7 @@ public class ElementAdapterTest {
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		
-		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens");
+		Connection conn = new Connection("jerbel", "UV2.7F62", "tosca2occi", "http://192.168.34.1:8787/occi1.1", "http://192.168.34.1:35357/v3/auth/tokens","9b24a620-bee8-4526-bcc9-bbfde769a152");
 		ElementAdapter adapter = new ElementAdapter(conn);
 		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		

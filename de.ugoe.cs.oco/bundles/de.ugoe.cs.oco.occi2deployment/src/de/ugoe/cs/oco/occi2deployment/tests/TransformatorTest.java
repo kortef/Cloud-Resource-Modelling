@@ -19,21 +19,25 @@ public class TransformatorTest {
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
 		List<Path> extensions = new ArrayList<Path>();
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/platform.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.occi.platform/model/platform.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.mongodb/model/mongodb.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.placement/model/placement.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstackinstance.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacknetwork.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacktemplate.occie"));
+		//extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/extendedinfrastructure.occie"));
 		
-		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-clusterPaaS.occic");
+		Path occiPath = Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.mongodb.example/MongoDB-Cluster.occic");
+		
 		org.eclipse.emf.ecore.resource.Resource occi = ModelUtility.loadOCCIResource(occiPath, extensions);
 		
 		
 		Transformator occiToPog = TransformatorFactory.getTransformator("OCCI2POG");
-		Path inputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
 		Path outputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
 		occiToPog.transform(occi, outputpath);
 
 		Transformator pogToProvPlan = TransformatorFactory.getTransformator("POG2ProvPlan");
-		inputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
+		Path inputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
 		outputpath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/ProvisioningPlanSkeleton.uml");
 		pogToProvPlan.transform(inputpath, outputpath);
 

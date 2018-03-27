@@ -40,6 +40,7 @@ public class Connection {
 	private String adress;
 	private String authenticationAdress;
 	private Path sysModelPath;
+	private String publicNetworkId;
 	private volatile List<String[]> idSwapList;
 	
 	/**Connection constructor.
@@ -49,7 +50,7 @@ public class Connection {
 	 * @param adress Address of the OCCI Cloud API
 	 * @param authenticationAdress Address of the cloud's authentication node
 	 */
-	public Connection(String user, String password, String project, String adress, String authenticationAdress){
+	public Connection(String user, String password, String project, String adress, String authenticationAdress, String publicNetworkId){
 		this.user=user;
 		this.password=password;
 		this.adress=adress;
@@ -61,7 +62,7 @@ public class Connection {
 			idSwapList = Collections.synchronizedList(new ArrayList<String[]>());
 		}
 		this.sysModelPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/"+this.user+"_"+this.project+".occie");
-		
+		this.publicNetworkId = publicNetworkId;
 		log.info("Connection created: "+ this.user +"_"+this.project);
 		this.logIdSwapList();
 	}
@@ -274,5 +275,13 @@ public class Connection {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getPublicNetworkId() {
+		return publicNetworkId;
+	}
+
+	public void setPublicNetworkId(String publicNetworkId) {
+		this.publicNetworkId = publicNetworkId;
 	}
 }

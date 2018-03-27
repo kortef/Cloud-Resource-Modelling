@@ -132,16 +132,20 @@ public class OCCIExecutor extends AbsExecutor{
 	public String executeGetOperation(EObject extracted) {
 		Entity entity = (Entity) extracted;
 		String adaptedAddress = getEntityKindURI(entity);
-		adaptedAddress += getActualId(((Entity) extracted), connection.getIdSwapList());
+		adaptedAddress += getActualId(entity, connection.getIdSwapList());
 		HttpURLConnection conn = establishConnection(adaptedAddress, null, false, null, this.connection.getToken());	
-			
+		
+		log.debug("GET" + " " + adaptedAddress);
+		
+		return getOutput(conn);
+		/*
 		if(connectionSuccessful(conn)){
 			String output = getOutput(conn);
 			return output;
 		}
 		else{
 			return null;
-		}
+		}*/
 	}
 	
 	
@@ -189,12 +193,11 @@ public class OCCIExecutor extends AbsExecutor{
 				this.connection.getToken());
 		conn.setRequestProperty("Category", generateCategoryHeader(entity));
 		conn.setRequestProperty("X-OCCI-Attribute", generateAttributeHeader(entity));
-		conn.setRequestProperty("Accept", "text/occi");
+		//conn.setRequestProperty("Accept", "text/occi");
 		
 		if(entity.getKind().getTerm().contains("compute")){
 			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
 		}
-		log.debug("TEST" + " " + conn.getRequestProperty("Content-Type"));
 		log.debug("POST" + " "+ conn.getURL() + " Category: " + conn.getRequestProperty("Category") + " X-OCCI-Attribute:" + conn.getRequestProperty("X-OCCI-Attribute"));
 		
 		if(connectionSuccessful(conn)){
@@ -208,7 +211,7 @@ public class OCCIExecutor extends AbsExecutor{
 		}
 		else{
 			conn.disconnect();
-			return null;
+			return getOutput(conn);
 		}
 	}
 	

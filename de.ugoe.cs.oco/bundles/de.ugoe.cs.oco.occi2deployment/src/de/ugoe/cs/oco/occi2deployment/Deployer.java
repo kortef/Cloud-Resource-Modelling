@@ -39,9 +39,9 @@ import de.ugoe.cs.oco.pog.Vertex;
  */
 public class Deployer{
 	static Logger log = Logger.getLogger(Deployer.class.getName());
-	private static Path runtimePath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/runtime.occie");
-	private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/POG.pog");
-	private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/ProvisioningPlanSkeleton.uml");
+	private static Path runtimePath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/runtime.occic");
+	private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/POG.pog");
+	private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/ProvisioningPlanSkeleton.uml");
 	
 	/**Method used to start the deployment of the OCCI model stored in the occiPath in the project stored in
 	 * the Connection conn.
@@ -54,7 +54,7 @@ public class Deployer{
 		//Models should be validated at this point
 		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath);
 		
-		if(ModelUtility.getResources(runtimeModel).size() <= 2){
+		if(ModelUtility.getResources(runtimeModel).size() <= 1){
 			log.info("Chosen: Initial Deployment, Amount of Resources in Runtimemodel: " + ModelUtility.getResources(runtimeModel).size());
 			this.initialDeploy(conn, occiPath);
 		}
@@ -68,12 +68,12 @@ public class Deployer{
 	}
 	
 	public void deploy(Path occiPath, List<Path> extensions, Connection conn) {
-		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath);
+		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath, conn.getPublicNetworkId());
 		org.eclipse.emf.ecore.resource.Resource runtimeModelResource = ModelUtility.loadOCCIResource(runtimePath, null);
 		org.eclipse.emf.ecore.resource.Resource targetModel = ModelUtility.loadOCCIResource(occiPath, extensions);
 		
 		
-		if(ModelUtility.getResources(runtimeModel).size() <= 2){
+		if(ModelUtility.getResources(runtimeModel).size() <= 1){
 			log.info("Chosen: Initial Deployment, Amount of Resources in Runtimemodel: " + ModelUtility.getResources(runtimeModel).size());
 			this.initialDeploy(conn, occiPath, extensions);
 		}
@@ -253,13 +253,19 @@ public class Deployer{
 		log.debug("Update: IdSwapList");
 		for(Match match: comparator.getMatches()){
 			if(match.getSrc()!=null && match.getTar()!=null){
-				Entity oldObj = (Entity) match.getSrc();
-				Entity newObj = (Entity) match.getTar();
+				Entity srcObj = (Entity) match.getSrc();
+				Entity tarObj = (Entity) match.getTar();
+				
+				boolean exists = false;
 				for(String[] ids: conn.getIdSwapList()){
-					if(ids[1].equals(oldObj.getId())){
-						ids[0] = newObj.getId();
-						break;
+					if(ids[1].equals(srcObj.getId())){
+						ids[0] = tarObj.getId();
+						exists = true;
 					}
+				}
+				if(exists == false) {
+					String[] swap = {tarObj.getId(), srcObj.getId()};
+				    conn.idSwapListAdd(swap);
 				}
 			}
 		}

@@ -52,12 +52,12 @@ public class MixedComparator extends AbsComplexComparator {
 		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelResource, newModelResource, this.connection);
 		
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
-		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
+		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
 		occiToPcg.transform(oldModelResource, newModelResource, pcgPath);
 		
 		adaptPCG(pcgPath, simple);
 		
-		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
+		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
 		pcgToIpg.transform(pcgPath, ipgPath);
 		
@@ -72,12 +72,12 @@ public class MixedComparator extends AbsComplexComparator {
 		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, this.connection);
 		
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
-		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My.pcg");
+		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
 		occiToPcg.transform(oldModelPath, newModelPath, pcgPath);
 		
 		adaptPCG(pcgPath, simple);
 		
-		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/My2.pcg");
+		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
 		pcgToIpg.transform(pcgPath, ipgPath);
 		

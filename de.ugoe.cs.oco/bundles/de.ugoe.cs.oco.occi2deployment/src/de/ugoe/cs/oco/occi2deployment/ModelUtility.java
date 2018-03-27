@@ -71,6 +71,7 @@ public class ModelUtility {
 		
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
@@ -438,6 +439,25 @@ public class ModelUtility {
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			OCCIModel model = extractor.extractModel(client);
+			OCCIModelSerializer serializer = new OCCIModelSerializer();
+			serializer.serializeOCCIModel(model, runtimeModelPath);
+			EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimeModelPath);
+			return runtimeModel;
+		} catch (CommunicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;	
+	}
+
+	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath, String publicNetworkId) {
+		Path runtimeModelPath = runtimePath;
+		try {
+			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
+					new BasicAuthentication(conn.getUser(), conn.getPassword()), MediaType.TEXT_PLAIN, true);
+			
+			OCCIModelExtractor extractor = new OCCIModelExtractor();
+			OCCIModel model = extractor.extractModel(client, publicNetworkId);
 			OCCIModelSerializer serializer = new OCCIModelSerializer();
 			serializer.serializeOCCIModel(model, runtimeModelPath);
 			EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimeModelPath);

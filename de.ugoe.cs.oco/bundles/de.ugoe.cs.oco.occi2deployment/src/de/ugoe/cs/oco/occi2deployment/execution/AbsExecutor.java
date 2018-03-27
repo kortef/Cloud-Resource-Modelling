@@ -102,13 +102,28 @@ public abstract class AbsExecutor implements Executor {
 	 */
 	protected String getOutput(HttpURLConnection conn) {
 		try {
+			
+			BufferedReader br;
+			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
+				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			StringBuffer sb = new StringBuffer();
+			String inputLine = "";
+			while ((inputLine = br.readLine()) != null) {
+	            sb.append(inputLine);
+	        }
+	        return sb.toString();
+			
+			/*
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			String outputLine;
 			String output = new String();
 			while ((outputLine = br.readLine()) != null) {
 				output += outputLine;
 			}
-			return output;
+			return output;*/
 		} catch (IOException e) {
 			return null;
 		}		

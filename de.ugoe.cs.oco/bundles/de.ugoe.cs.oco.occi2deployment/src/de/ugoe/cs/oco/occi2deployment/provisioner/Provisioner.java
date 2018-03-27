@@ -278,7 +278,7 @@ public class Provisioner implements Runnable {
 				}
 				else{
 					try {
-						log.debug("INACTIVE: " + ((Entity)extracted).getTitle());
+						log.debug("INACTIVE: " + ((Entity)extracted).getTitle() + " " + output);
 						Thread.sleep(5000);
 						waitForActiveState(extracted);
 					} catch (InterruptedException e) {

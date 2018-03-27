@@ -42,8 +42,10 @@ public class Deprovisioner {
 				if(entity.getKind().getTerm().equals("compute")){
 					computes.add(entity);
 				}
-				else if(entity.getKind().getTerm().equals("network")){	
-					networks.add(entity);
+				else if(entity.getKind().getTerm().equals("network")){
+					if(entity.getId().equals("PUBLIC") == false) {
+						networks.add(entity);
+					}
 				}
 				else if(entity.getKind().getTerm().equals("storage")){
 					storages.add(entity);

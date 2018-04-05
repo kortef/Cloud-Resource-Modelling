@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               class="de.ugoe.cs.oco.occiplugin.popup.actions.OCCI2DeploymentAction"
+               class="de.ugoe.cs.oco.occi2deployment.plugin.actions.OCCI2DeploymentAction"
                enablesFor="1"
                id="de.ugoe.cs.oco.occiplugin.popup.actions.OCCI2DeploymentAction"
                label="Deploy OCCI Configuration"

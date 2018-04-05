@@ -1,4 +1,4 @@
-package de.ugoe.cs.oco.occiplugin.popup.actions;
+package de.ugoe.cs.oco.occi2deployment.plugin.actions;
 
 import java.io.BufferedReader;
 import java.io.File;

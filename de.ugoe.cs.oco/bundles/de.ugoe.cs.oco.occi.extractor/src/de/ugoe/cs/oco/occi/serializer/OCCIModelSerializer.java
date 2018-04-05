@@ -40,7 +40,8 @@ public class OCCIModelSerializer {
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
-		Resource resource = resSet.createResource(URI.createURI(path.toString()));
+		//Resource resource = resSet.createResource(URI.createURI(path.toString()));
+		Resource resource = resSet.createResource(URI.createFileURI(path.toString()));
 		
 		if (model.getExtensions() != null)
 			resource.getContents().addAll(model.getExtensions());

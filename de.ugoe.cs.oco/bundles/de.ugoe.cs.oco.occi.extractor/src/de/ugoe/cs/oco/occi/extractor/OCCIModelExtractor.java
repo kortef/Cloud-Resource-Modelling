@@ -4,6 +4,7 @@
 package de.ugoe.cs.oco.occi.extractor;
 
 import java.net.URI;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,10 +14,14 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.cmf.occi.core.OCCIFactory;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 import cz.cesnet.cloud.occi.Model;
 import cz.cesnet.cloud.occi.api.Client;
 import cz.cesnet.cloud.occi.api.exception.CommunicationException;
+import cz.cesnet.cloud.occi.api.http.HTTPClient;
+import cz.cesnet.cloud.occi.api.http.auth.BasicAuthentication;
 import cz.cesnet.cloud.occi.core.Action;
 import cz.cesnet.cloud.occi.core.Attribute;
 import cz.cesnet.cloud.occi.core.Entity;
@@ -24,6 +29,8 @@ import cz.cesnet.cloud.occi.core.Kind;
 import cz.cesnet.cloud.occi.core.Link;
 import cz.cesnet.cloud.occi.core.Mixin;
 import cz.cesnet.cloud.occi.core.Resource;
+import cz.cesnet.cloud.occi.parser.MediaType;
+import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 
 /**
  * Class to that implements functionality for extracting OCCI models from
@@ -37,6 +44,7 @@ public class OCCIModelExtractor {
 	private Client httpClient;
 	private OCCIModel occiModel;
 	private Set<String> extensionSchemas = new HashSet<String>();
+	
 	
 	/**
 	 * Extracts OCCIModel from cloud specified with help httpClient object.

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pcg:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pcg="http://swe.simpaas.pcg.de/pcg">
-  <vertices title="beidesVonAnfang, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
-    <resources id="74aa0428-7937-4ff4-8010-f1777915d156" title="beidesVonAnfang"/>
+  <vertices title="vm2, vm2" kind="http://schemas.ogf.org/occi/infrastructure#compute">
+    <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
     <resources id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2"/>
   </vertices>
-  <vertices title="volume, volume" kind="http://schemas.ogf.org/occi/infrastructure#storage">
-    <resources id="34918199-f06b-4540-b3e8-c9eb39b47671" title="volume"/>
-    <resources id="urn:uuid:45c6eda3-fe11-4e83-98e5-54077888efe4" title="volume"/>
-  </vertices>
-  <vertices title="provider, PUBLIC" kind="http://schemas.ogf.org/occi/infrastructure#network">
-    <resources id="d52754e0-6729-4034-adbb-8f1f3800f2c6" title="provider"/>
+  <vertices title="PUBLIC, PUBLIC" kind="http://schemas.ogf.org/occi/infrastructure#network">
+    <resources id="d52754e0-6729-4034-adbb-8f1f3800f2c6" title="PUBLIC"/>
     <resources id="d52754e0-6729-4034-adbb-8f1f3800f2c6" title="PUBLIC"/>
   </vertices>
-  <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#storagelink"/>
+  <vertices title="volume, volume" kind="http://schemas.ogf.org/occi/infrastructure#storage">
+    <resources id="urn:uuid:45c6eda3-fe11-4e83-98e5-54077888efe4" title="volume"/>
+    <resources id="urn:uuid:45c6eda3-fe11-4e83-98e5-54077888efe4" title="volume"/>
+  </vertices>
+  <edges target="//@vertices.1" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#networkinterface"/>
+  <edges target="//@vertices.2" source="//@vertices.0" kind="http://schemas.ogf.org/occi/infrastructure#storagelink"/>
 </pcg:Graph>

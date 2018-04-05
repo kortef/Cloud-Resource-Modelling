@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog">
+  <vertices title="mongodb-cluster" id="urn:uuid:ed0973fb-f6f2-4f76-84b1-2dccfbb0abf7"/>
+  <vertices title="router" id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13675"/>
+  <vertices title="shard3" id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13678"/>
+  <vertices title="shard2" id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13677"/>
+  <vertices title="shard1" id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13676"/>
+  <vertices title="vm1" id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2592"/>
+  <vertices title="configserver" id="urn:uuid:b6fc880a-0571-46ba-86db-a206c0d13679"/>
+  <vertices title="vm2" id="urn:uuid:330dd44c-5af0-4ec0-a862-173774cd2593"/>
+  <vertices title="vm3" id="urn:uuid:24706888-533b-460c-9177-daafcf44d6e6"/>
+  <vertices title="vm4" id="urn:uuid:e991175d-d19c-4fb6-a9dc-4106312b32b2"/>
+  <vertices title="vm5" id="urn:uuid:29713f47-76b0-464b-9c0f-a02c4197b9e2"/>
+  <vertices title="pNw" id="urn:uuid:2d566092-7adc-4c11-acd5-eac9be9b131c"/>
+  <vertices title="(componentlink mongodb-cluster -> router)" id="urn:uuid:700cc548-7091-45a2-8976-7ecc2f5c4d05"/>
+  <vertices title="(componentlink mongodb-cluster -> shard1)" id="urn:uuid:652e6b10-d0c5-4f17-ab5d-33132670f336"/>
+  <vertices title="(componentlink mongodb-cluster -> shard2)" id="urn:uuid:530b9cfe-36c3-4352-8e94-3bb545263195"/>
+  <vertices title="(componentlink mongodb-cluster -> shard3)" id="urn:uuid:81382124-af2e-499b-aa7d-309595e2bb1b"/>
+  <vertices title="(componentlink mongodb-cluster -> configserver)" id="urn:uuid:6c5450f2-f504-4609-a834-dbb78d6ecae8"/>
+  <vertices title="(placementlink router -> vm1)" id="urn:uuid:82d8693c-fdd9-45ef-b9d5-22c786a9a2b0"/>
+  <vertices title="(componentlink router -> configserver)" id="urn:uuid:4b9a6567-7cc8-4643-98a6-533068062b55"/>
+  <vertices title="(placementlink shard3 -> vm4)" id="urn:uuid:f170b1e6-1962-4946-8f86-d9f0a0ae15cb"/>
+  <vertices title="(componentlink shard3 -> configserver)" id="urn:uuid:014801d3-adff-460d-ba77-47e9c1e45aca"/>
+  <vertices title="(placementlink shard2 -> vm3)" id="urn:uuid:dd97e5f2-7f97-4037-b668-cfc2d856eee1"/>
+  <vertices title="(componentlink shard2 -> configserver)" id="urn:uuid:4ac35332-79f5-4363-969e-65e0462ea8eb"/>
+  <vertices title="(placementlink shard1 -> vm2)" id="urn:uuid:c423c383-2adf-49df-8c3e-725e564c1b4e"/>
+  <vertices title="(componentlink shard1 -> configserver)" id="urn:uuid:ec281cd1-1657-43f8-b897-4228209b7461"/>
+  <vertices title="(networkinterface vm1 -> pNw)" id="urn:uuid:67170832-5522-4d69-a8b9-a00d3b55eb79"/>
+  <vertices title="(placementlink configserver -> vm5)" id="urn:uuid:e5cf79ab-9763-4ebb-b047-448574e33dc4"/>
+  <vertices title="(networkinterface vm2 -> pNw)" id="urn:uuid:19c5d3c9-b074-4838-b9a0-f4bcf5c2e70d"/>
+  <vertices title="(networkinterface vm3 -> pNw)" id="urn:uuid:279bf06f-ec8d-483e-a85d-9a9dc9f4ef1e"/>
+  <vertices title="(networkinterface vm4 -> pNw)" id="urn:uuid:21290b2a-0857-4ae1-8423-4e384bf349d1"/>
+  <vertices title="(networkinterface vm5 -> pNw)" id="urn:uuid:1191d134-534c-4068-955d-62328389b580"/>
+  <edges source="//@vertices.1" target="//@vertices.12"/>
+  <edges source="//@vertices.0" target="//@vertices.12"/>
+  <edges source="//@vertices.4" target="//@vertices.13"/>
+  <edges source="//@vertices.0" target="//@vertices.13"/>
+  <edges source="//@vertices.3" target="//@vertices.14"/>
+  <edges source="//@vertices.0" target="//@vertices.14"/>
+  <edges source="//@vertices.2" target="//@vertices.15"/>
+  <edges source="//@vertices.0" target="//@vertices.15"/>
+  <edges source="//@vertices.6" target="//@vertices.16"/>
+  <edges source="//@vertices.0" target="//@vertices.16"/>
+  <edges source="//@vertices.5" target="//@vertices.17"/>
+  <edges source="//@vertices.17" target="//@vertices.1"/>
+  <edges source="//@vertices.6" target="//@vertices.18"/>
+  <edges source="//@vertices.1" target="//@vertices.18"/>
+  <edges source="//@vertices.9" target="//@vertices.19"/>
+  <edges source="//@vertices.19" target="//@vertices.2"/>
+  <edges source="//@vertices.6" target="//@vertices.20"/>
+  <edges source="//@vertices.2" target="//@vertices.20"/>
+  <edges source="//@vertices.8" target="//@vertices.21"/>
+  <edges source="//@vertices.21" target="//@vertices.3"/>
+  <edges source="//@vertices.6" target="//@vertices.22"/>
+  <edges source="//@vertices.3" target="//@vertices.22"/>
+  <edges source="//@vertices.7" target="//@vertices.23"/>
+  <edges source="//@vertices.23" target="//@vertices.4"/>
+  <edges source="//@vertices.6" target="//@vertices.24"/>
+  <edges source="//@vertices.4" target="//@vertices.24"/>
+  <edges source="//@vertices.11" target="//@vertices.25"/>
+  <edges source="//@vertices.5" target="//@vertices.25"/>
+  <edges source="//@vertices.10" target="//@vertices.26"/>
+  <edges source="//@vertices.26" target="//@vertices.6"/>
+  <edges source="//@vertices.11" target="//@vertices.27"/>
+  <edges source="//@vertices.7" target="//@vertices.27"/>
+  <edges source="//@vertices.11" target="//@vertices.28"/>
+  <edges source="//@vertices.8" target="//@vertices.28"/>
+  <edges source="//@vertices.11" target="//@vertices.29"/>
+  <edges source="//@vertices.9" target="//@vertices.29"/>
+  <edges source="//@vertices.11" target="//@vertices.30"/>
+  <edges source="//@vertices.10" target="//@vertices.30"/>
+</pog:Graph>

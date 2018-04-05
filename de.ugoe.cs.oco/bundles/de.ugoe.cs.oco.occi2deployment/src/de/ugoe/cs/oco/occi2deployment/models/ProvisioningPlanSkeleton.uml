@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hmwqwDGEEeiTEfZxIfHnjg" name="DeploymentPlan">
-  <packagedElement xmi:type="uml:Activity" xmi:id="_hmY3UTGEEeiTEfZxIfHnjg" name="DeploymentWorkflow" node="_hmxR0DGEEeiTEfZxIfHnjg _hmx44DGEEeiTEfZxIfHnjg _hmtncDGEEeiTEfZxIfHnjg _hmu1kDGEEeiTEfZxIfHnjg _hnAiYDGEEeiTEfZxIfHnjg">
-    <edge xmi:type="uml:ControlFlow" xmi:id="_hm8Q8DGEEeiTEfZxIfHnjg" target="_hmtncDGEEeiTEfZxIfHnjg" source="_hmxR0DGEEeiTEfZxIfHnjg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_hm8Q8TGEEeiTEfZxIfHnjg" target="_hmx44DGEEeiTEfZxIfHnjg" source="_hmu1kDGEEeiTEfZxIfHnjg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_hnGpADGEEeiTEfZxIfHnjg" target="_hnAiYDGEEeiTEfZxIfHnjg" source="_hmtncDGEEeiTEfZxIfHnjg"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_hnHQEDGEEeiTEfZxIfHnjg" target="_hmu1kDGEEeiTEfZxIfHnjg" source="_hnAiYDGEEeiTEfZxIfHnjg"/>
-    <node xmi:type="uml:InitialNode" xmi:id="_hmxR0DGEEeiTEfZxIfHnjg" name="initial" outgoing="_hm8Q8DGEEeiTEfZxIfHnjg"/>
-    <node xmi:type="uml:ActivityFinalNode" xmi:id="_hmx44DGEEeiTEfZxIfHnjg" name="final" incoming="_hm8Q8TGEEeiTEfZxIfHnjg"/>
-    <node xmi:type="uml:ForkNode" xmi:id="_hmtncDGEEeiTEfZxIfHnjg" name="initialFork" incoming="_hm8Q8DGEEeiTEfZxIfHnjg" outgoing="_hnGpADGEEeiTEfZxIfHnjg"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_hmu1kDGEEeiTEfZxIfHnjg" name="finalJoin" incoming="_hnHQEDGEEeiTEfZxIfHnjg" outgoing="_hm8Q8TGEEeiTEfZxIfHnjg"/>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_hnAiYDGEEeiTEfZxIfHnjg" name="Provision (link1 vm2 -> PUBLIC)" incoming="_hnGpADGEEeiTEfZxIfHnjg" outgoing="_hnHQEDGEEeiTEfZxIfHnjg">
-      <inputValue xmi:type="uml:ValuePin" xmi:id="_hnDlsDGEEeiTEfZxIfHnjg" name="(link1 vm2 -> PUBLIC) id">
-        <value xmi:type="uml:LiteralString" xmi:id="_hnGB8DGEEeiTEfZxIfHnjg" name="id" value="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_6hNrQDGGEei5Kvp2jO7GjA" name="DeploymentPlan">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_6gmAMTGGEei5Kvp2jO7GjA" name="DeploymentWorkflow" node="_6hO5YDGGEei5Kvp2jO7GjA _6hPgcDGGEei5Kvp2jO7GjA _6hJZ0DGGEei5Kvp2jO7GjA _6hKA4DGGEei5Kvp2jO7GjA _6hk3oDGGEei5Kvp2jO7GjA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6hhNQDGGEei5Kvp2jO7GjA" target="_6hJZ0DGGEei5Kvp2jO7GjA" source="_6hO5YDGGEei5Kvp2jO7GjA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6hh0UDGGEei5Kvp2jO7GjA" target="_6hPgcDGGEei5Kvp2jO7GjA" source="_6hKA4DGGEei5Kvp2jO7GjA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6huooDGGEei5Kvp2jO7GjA" target="_6hk3oDGGEei5Kvp2jO7GjA" source="_6hJZ0DGGEei5Kvp2jO7GjA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6hv2wDGGEei5Kvp2jO7GjA" target="_6hKA4DGGEei5Kvp2jO7GjA" source="_6hk3oDGGEei5Kvp2jO7GjA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_6hO5YDGGEei5Kvp2jO7GjA" name="initial" outgoing="_6hhNQDGGEei5Kvp2jO7GjA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_6hPgcDGGEei5Kvp2jO7GjA" name="final" incoming="_6hh0UDGGEei5Kvp2jO7GjA"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_6hJZ0DGGEei5Kvp2jO7GjA" name="initialFork" incoming="_6hhNQDGGEei5Kvp2jO7GjA" outgoing="_6huooDGGEei5Kvp2jO7GjA"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_6hKA4DGGEei5Kvp2jO7GjA" name="finalJoin" incoming="_6hv2wDGGEei5Kvp2jO7GjA" outgoing="_6hh0UDGGEei5Kvp2jO7GjA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_6hk3oDGGEei5Kvp2jO7GjA" name="Provision (storageLink vm2 -> volume)" incoming="_6huooDGGEei5Kvp2jO7GjA" outgoing="_6hv2wDGGEei5Kvp2jO7GjA">
+      <inputValue xmi:type="uml:ValuePin" xmi:id="_6hq-QDGGEei5Kvp2jO7GjA" name="(storageLink vm2 -> volume) id">
+        <value xmi:type="uml:LiteralString" xmi:id="_6huBkDGGEei5Kvp2jO7GjA" name="id" value="urn:uuid:aca8dfc2-c1c3-403e-a54e-29ec83055462"/>
       </inputValue>
     </node>
   </packagedElement>

@@ -39,9 +39,12 @@ import de.ugoe.cs.oco.pog.Vertex;
  */
 public class Deployer{
 	static Logger log = Logger.getLogger(Deployer.class.getName());
-	private static Path runtimePath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/runtime.occic");
-	private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/POG.pog");
-	private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/ProvisioningPlanSkeleton.uml");
+	//private static Path runtimePath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/runtime.occic");
+	//private static Path pogPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/POG.pog");
+	//private static Path provPlanPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/ProvisioningPlanSkeleton.uml");
+	private static Path runtimePath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/models/runtime.occic");
+	private static Path pogPath = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/models/POG.pog").toPath();
+	private static Path provPlanPath = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/models/ProvisioningPlanSkeleton.uml").toPath();
 	
 	/**Method used to start the deployment of the OCCI model stored in the occiPath in the project stored in
 	 * the Connection conn.
@@ -69,6 +72,7 @@ public class Deployer{
 	
 	public void deploy(Path occiPath, List<Path> extensions, Connection conn) {
 		EList<EObject> runtimeModel = ModelUtility.extractRuntimeModel(conn, runtimePath, conn.getPublicNetworkId());
+		System.out.println(runtimeModel);
 		org.eclipse.emf.ecore.resource.Resource runtimeModelResource = ModelUtility.loadOCCIResource(runtimePath, null);
 		org.eclipse.emf.ecore.resource.Resource targetModel = ModelUtility.loadOCCIResource(occiPath, extensions);
 		

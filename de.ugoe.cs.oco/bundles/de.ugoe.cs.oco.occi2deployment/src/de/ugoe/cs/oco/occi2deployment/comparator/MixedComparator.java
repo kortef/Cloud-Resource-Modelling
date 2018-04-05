@@ -16,6 +16,7 @@ import org.eclipse.cmf.occi.core.Mixin;
 import org.eclipse.cmf.occi.core.Resource;
 
 import de.ugoe.cs.oco.occi2deployment.Connection;
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
@@ -52,12 +53,14 @@ public class MixedComparator extends AbsComplexComparator {
 		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelResource, newModelResource, this.connection);
 		
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
-		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
+		//Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
+		Path pcgPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
 		occiToPcg.transform(oldModelResource, newModelResource, pcgPath);
-		
+
 		adaptPCG(pcgPath, simple);
 		
-		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
+		//Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
+		Path ipgPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
 		pcgToIpg.transform(pcgPath, ipgPath);
 		
@@ -72,12 +75,11 @@ public class MixedComparator extends AbsComplexComparator {
 		Comparator simple = ComparatorFactory.getComparator("Simple", oldModelPath, newModelPath, this.connection);
 		
 		Transformator occiToPcg = TransformatorFactory.getTransformator("OCCI2PCG");
-		Path pcgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
+		Path pcgPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/models/PCG.pcg");
 		occiToPcg.transform(oldModelPath, newModelPath, pcgPath);
-		
 		adaptPCG(pcgPath, simple);
 		
-		Path ipgPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
+		Path ipgPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/models/IPG.pcg");
 		Transformator pcgToIpg = TransformatorFactory.getTransformator("PCG2IPG");
 		pcgToIpg.transform(pcgPath, ipgPath);
 		

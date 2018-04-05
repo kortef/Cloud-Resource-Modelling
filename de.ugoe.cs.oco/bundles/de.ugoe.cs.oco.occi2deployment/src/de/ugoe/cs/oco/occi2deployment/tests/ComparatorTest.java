@@ -11,6 +11,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
@@ -27,9 +28,13 @@ public class ComparatorTest {
 		String version = "Complex";
 		
 		List<Path> extensions = new ArrayList<Path>();
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/platform.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/lamp.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/placement.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.occi.platform/model/platform.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.mongodb/model/mongodb.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.placement/model/placement.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstackinstance.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacknetwork.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacktemplate.occie"));
+		
 		
 		/*
 		System.out.println("test2 -> test2:");
@@ -41,14 +46,26 @@ public class ComparatorTest {
 		System.out.println("");
 		*/
 		
-		System.out.println("test2 -> LAMP:");
-		Path oldOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/test2.occie");
-		Path newOCCI = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/LAMP-cluster.occic");
-		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(oldOCCI, null);	
-		org.eclipse.emf.ecore.resource.Resource newModelResource = ModelUtility.loadOCCIResource(newOCCI, extensions);	
+		System.out.println("MLS -> MLS:");
+		Path occiPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
+		Path occiPath2 = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
+		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(occiPath, null);	
+		org.eclipse.emf.ecore.resource.Resource newModelResource = ModelUtility.loadOCCIResource(occiPath2, extensions);	
 		Comparator comparator = ComparatorFactory.getComparator(version, oldModelResource, newModelResource, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
+		
+		
+		/*
+		System.out.println("MLS -> MLS:");
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
+		Path occiPath2 = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
+		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(occiPath, null);	
+		org.eclipse.emf.ecore.resource.Resource newModelResource = ModelUtility.loadOCCIResource(occiPath2, extensions);	
+		Comparator comparator = ComparatorFactory.getComparator(version, oldModelResource, newModelResource, null);
+		CachedResourceSet.getCache().clear();
+		System.out.println("");
+		*/
 		
 		/*
 		System.out.println("LAMP ->test2:");

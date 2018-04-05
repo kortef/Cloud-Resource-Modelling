@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pog:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pog="http://swe.simpaas.pog.de/pog">
-  <vertices title="(link1 vm2 -> PUBLIC)" id="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af"/>
+  <vertices title="(storageLink vm2 -> volume)" id="urn:uuid:aca8dfc2-c1c3-403e-a54e-29ec83055462"/>
 </pog:Graph>

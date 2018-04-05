@@ -46,13 +46,9 @@ import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
-import cz.cesnet.cloud.occi.api.Client;
-import cz.cesnet.cloud.occi.api.exception.CommunicationException;
-import cz.cesnet.cloud.occi.api.http.HTTPClient;
-import cz.cesnet.cloud.occi.api.http.auth.BasicAuthentication;
-import cz.cesnet.cloud.occi.parser.MediaType;
 import de.ugoe.cs.oco.occi.extractor.OCCIModel;
 import de.ugoe.cs.oco.occi.extractor.OCCIModelExtractor;
+import de.ugoe.cs.oco.occi.extractor.wrapper.OCCIModelExtractorWrapper;
 import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
@@ -80,7 +76,7 @@ public class ModelUtility {
 			Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
 			if(extResource.getContents().get(0) instanceof Extension) {
 				 Extension ext = (Extension) extResource.getContents().get(0);
-			     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
+			     URI realURI = URI.createFileURI(ext.getScheme()).trimFragment();
 			     extResource.setURI(realURI);
 			}
 			resSet.getResources().add(extResource);
@@ -120,7 +116,7 @@ public class ModelUtility {
 				Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
 				if(extResource.getContents().get(0) instanceof Extension) {
 					 Extension ext = (Extension) extResource.getContents().get(0);
-				     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
+				     URI realURI = URI.createFileURI(ext.getScheme()).trimFragment();
 				     extResource.setURI(realURI);
 				}
 				resSet.getResources().add(extResource);
@@ -208,7 +204,8 @@ public class ModelUtility {
 		
         ResourceSet resSet = new ResourceSetImpl();
        
-        URI fileURI = URI.createURI(path.toString());
+        //URI fileURI = URI.createURI(path.toString());
+        URI fileURI = URI.createFileURI(path.toString());
         Resource resource = resSet.getResource(fileURI, true);
                
 		return resource.getContents();
@@ -227,7 +224,7 @@ public class ModelUtility {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// create a resource
-		URI fileURI = URI.createURI(path.toString());
+		URI fileURI = URI.createFileURI(path.toString());
 		Resource resource = resSet.createResource(fileURI);
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
@@ -256,7 +253,7 @@ public class ModelUtility {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// create a resource
-		URI fileURI = URI.createURI(path.toString());
+		URI fileURI = URI.createFileURI(path.toString());
 		Resource resource = resSet.createResource(fileURI);
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
@@ -284,7 +281,8 @@ public class ModelUtility {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// create a resource
-		URI fileURI = URI.createURI(path.toString());
+		//URI fileURI = URI.createURI(path.toString());
+		URI fileURI = URI.createFileURI(path.toString());
 		Resource resource = resSet.createResource(fileURI);
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
@@ -312,7 +310,8 @@ public class ModelUtility {
 		
         ResourceSet resSet = new ResourceSetImpl();
        
-        URI fileURI = URI.createURI(pcgPath.toString());
+        //URI fileURI = URI.createURI(pcgPath.toString());
+        URI fileURI = URI.createFileURI(pcgPath.toString());
         Resource resource = resSet.getResource(fileURI, true);
                
 		return resource.getContents();
@@ -333,7 +332,7 @@ public class ModelUtility {
         ResourceSet resSet = new ResourceSetImpl();
         // Get the resource
         Resource resource = resSet.getResource(URI
-                        .createURI(path.toString()), true);
+                        .createFileURI(path.toString()), true);
         // Get the first model element and cast it to the right type, in my
         // example everything is hierarchical included in this first node
         Model model = (Model) resource.getContents().get(0);
@@ -432,6 +431,11 @@ public class ModelUtility {
 	 * @return the extracted runtimeModel.
 	 */
 	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath) {
+		OCCIModelExtractorWrapper.extractRuntimeModel(conn.getAdress(), conn.getUser(), conn.getPassword(), runtimePath, null);
+		EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimePath);
+		return runtimeModel;
+		
+		/*
 		Path runtimeModelPath = runtimePath;
 		try {
 			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
@@ -448,9 +452,15 @@ public class ModelUtility {
 			e.printStackTrace();
 		}
 		return null;	
+		*/
 	}
 
 	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath, String publicNetworkId) {
+		
+		OCCIModelExtractorWrapper.extractRuntimeModel(conn.getAdress(), conn.getUser(), conn.getPassword(), runtimePath, publicNetworkId);
+		EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimePath);
+		return runtimeModel;
+		/*
 		Path runtimeModelPath = runtimePath;
 		try {
 			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
@@ -467,5 +477,6 @@ public class ModelUtility {
 			e.printStackTrace();
 		}
 		return null;	
+		*/
 	}
 }

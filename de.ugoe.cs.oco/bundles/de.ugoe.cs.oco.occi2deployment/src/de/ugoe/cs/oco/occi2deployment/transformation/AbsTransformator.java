@@ -1,6 +1,7 @@
 package de.ugoe.cs.oco.occi2deployment.transformation;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
@@ -72,6 +73,26 @@ public abstract class AbsTransformator implements Transformator {
 		StringProperties properties = new StringProperties();
 		if (metauri != null){
 			properties.put(EmfModel.PROPERTY_METAMODEL_URI, metauri);
+		}
+		
+		properties.put(EmfModel.PROPERTY_EXPAND, "true");
+		properties.put(EmfModel.PROPERTY_NAME, name);
+		properties.put(EmfModel.PROPERTY_MODEL_URI, uri);
+		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
+		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal + "");
+		emfModel.getAliases().add(name);
+		emfModel.load(properties, (IRelativePathResolver)null);
+		return emfModel;
+	}
+	
+	protected EmfModel createEmfModel(String name, org.eclipse.emf.common.util.URI uri,
+	 		String pcgURI, boolean readOnLoad, boolean storeOnDisposal)
+					throws EolModelLoadingException, URISyntaxException {
+		EmfModel emfModel = new EmfModel();
+
+		StringProperties properties = new StringProperties();
+		if (pcgURI != null){
+			properties.put(EmfModel.PROPERTY_METAMODEL_URI, pcgURI);
 		}
 		
 		properties.put(EmfModel.PROPERTY_EXPAND, "true");

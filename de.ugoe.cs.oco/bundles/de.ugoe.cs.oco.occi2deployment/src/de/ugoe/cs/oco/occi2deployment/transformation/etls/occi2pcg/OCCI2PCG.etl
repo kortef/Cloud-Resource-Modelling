@@ -1,0 +1,81 @@
+pre {
+"OCCI2PCG Tranformation Start...".println();
+	var graph = new PCG!Graph();
+	for(srcRes in srcOCCI!Resource){
+		for(srcLink in srcRes.links){
+			for(tarRes in tarOCCI!Resource){
+				for(tarLink in tarRes.links){
+					if(tarLink.kind.term == srcLink.kind.term 
+					and tarLink.kind.scheme == srcLink.kind.scheme){	
+						createVertex(srcRes, tarRes);
+						if(not(vertexExists(srcLink.target.id, tarLink.target.id))){
+							createVertex(srcLink.target, tarLink.target);	
+						}
+						createEdge(srcLink.kind, getVertex(srcRes.id, tarRes.id),
+							getVertex(srcLink.target.id, tarLink.target.id));
+					}
+				}
+			}
+		}
+	}	
+}
+post {
+ 	"Transformation Process was Successfull".println();
+}
+
+operation createEdge(kind: srcOCCI!Kind, sourceVertex: PCG!Vertex, targetVertex: PCG!Vertex){
+	var edge = new PCG!Edge();
+	edge.source = sourceVertex;
+	edge.target = targetVertex;
+	edge.kind = kind.scheme + kind.term;
+	graph.edges.add(edge);
+}
+
+operation getVertex(oldId: String, newID: String) : PCG!Vertex{
+	for(vertex in PCG!Vertex){
+		if(vertex.resources.get(0).id=oldId and vertex.resources.get(1).id=newID){
+			return vertex;
+		}
+	}
+	return;
+}
+
+operation getEdge(sourceVertex, targetVertex) : PCG!Edge {
+	var edge = new PCG!Edge();
+	edge.source = sourceVertex;
+	edge.target = targetVertex;
+	graph.edges.add(edge);
+
+}
+
+operation PCG!Vertex addResources(oldResource : srcOCCI!Resource, newResource : tarOCCI!Resource){
+	var pcgResource = new PCG!Resource();
+	pcgResource.id = oldResource.id;
+	pcgResource.title = oldResource.title;
+	self.resources.add(pcgResource);
+	var pcgResource2 = new PCG!Resource();
+	pcgResource2.id = newResource.id;
+	pcgResource2.title = newResource.title;
+	self.resources.add(pcgResource2);
+}
+
+operation createVertex(oldResource : srcOCCI!Resource, newResource : tarOCCI!Resource) {
+	if(not(vertexExists(oldResource.id, newResource.id))){
+		var vertex = new PCG!Vertex();
+		vertex.addResources(oldResource, newResource);
+		vertex.title = oldResource.title + ", " + newResource.title;
+		vertex.kind = oldResource.kind.scheme + oldResource.kind.term;
+		graph.vertices.add(vertex);
+		"Vertex Created: ".print();
+		vertex.title.println();
+	}
+}
+
+operation vertexExists(oldResource:String, newResource:String) : Boolean {
+	for(vertex in PCG!Vertex){
+		if(vertex.resources.get(0).id == oldResource and vertex.resources.get(1).id == newResource){
+		 	return true;
+		}
+	}
+	return false;
+}

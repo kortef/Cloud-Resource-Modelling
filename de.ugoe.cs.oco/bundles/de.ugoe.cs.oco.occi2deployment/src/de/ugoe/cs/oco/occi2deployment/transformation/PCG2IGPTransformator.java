@@ -8,28 +8,39 @@ import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.flock.FlockModule;
+import org.eclipse.emf.common.util.URI;
+
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 
 public class PCG2IGPTransformator extends AbsTransformator {
 
-	private static File flockFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pcg2ipg/PCG2IPG.mig");
+	//private static File flockFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pcg2ipg/PCG2IPG.mig");
+	//private static File flockFile = new File(new DeployerHelper().loadURL("/de/ugoe/cs/oco/occi2deployment/transformation/etls/pcg2ipg/PCG2IPG.mig").getFile());
+	private static File flockFile = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/transformation/etls/pcg2ipg/PCG2IPG.mig");
 	
 	@Override
 	public String transform(Path pcgPath, Path ipgPath) {
 		FlockModule module = flockModuleSetup(flockFile);
 		
 		try {
+			
+			URI uri = URI.createFileURI(pcgPath.toString());
 			String pcgURI2 = "http://swe.simpaas.pcg.de/pcg";
 			String path = pcgPath.getParent().toString() + "/";
 			IModel PCG = createEmfModel("PCG",
-				path + pcgPath.getFileName().toString(),
+				//path + pcgPath.getFileName().toString(),
+				uri,
 				pcgURI2,
 				true,
 				false);
 			
+			
+			uri = URI.createFileURI(ipgPath.toString());
 			String ipgURI = "http://swe.simpaas.pcg.de/pcg";
 			path = ipgPath.getParent().toString() + "/";
 			IModel IPG = createEmfModel("IPG", 
-				path + ipgPath.getFileName().toString(),  
+				//path + ipgPath.getFileName().toString(),  
+				uri,
 				ipgURI,
 				false, 
 				true);

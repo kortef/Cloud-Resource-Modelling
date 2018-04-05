@@ -2,16 +2,11 @@ package de.ugoe.cs.oco.occi2deployment.transformation;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -28,6 +23,7 @@ import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.epsilon.emc.emf.EmfModelResourceSet;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 
 import org.eclipse.cmf.occi.core.Extension;
@@ -39,7 +35,9 @@ import pcg.impl.PcgFactoryImpl;
 
 public class OCCI2PCGTransformator extends AbsTransformator {
 
-	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pcg/OCCI2PCG.etl");
+	//private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pcg/OCCI2PCG.etl");
+	//private static File etlFile = new File(new DeployerHelper().loadURL("/de/ugoe/cs/oco/occi2deployment/transformation/etls/occi2pcg/OCCI2PCG.etl").getFile());
+	private static File etlFile = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/transformation/etls/occi2pcg/OCCI2PCG.etl");
 	
 	private void factorySetup() {
 		PcgPackage.eINSTANCE.eClass();
@@ -102,13 +100,21 @@ public class OCCI2PCGTransformator extends AbsTransformator {
 	public String transform(Resource sourceModel, Resource targetModel, Path outputPath) {
 		factorySetup();	
 		IEolExecutableModule module = etlModuleSetup(etlFile);
-
 		try {	
 			String pcgURI = "http://swe.simpaas.pcg.de/pcg";
 			String path = outputPath.getParent().toString() + "/";
+
 			IModel pcgModel = new EmfModel();
+			
+			
+			System.out.println(outputPath);
+			URI uri = URI.createFileURI(outputPath.toString());
+			
+			
 			pcgModel = createEmfModel("PCG", 
-					path + outputPath.getFileName().toString(),  
+					//path + outputPath.getFileName().toString(),  
+					//outputPath.toString(),
+					uri,
 					pcgURI,
 					false, 
 					true);
@@ -126,6 +132,7 @@ public class OCCI2PCGTransformator extends AbsTransformator {
 			
 			Object result = module.execute();
 			pcgModel.store();
+			//pcgModel.store(outputPath.toString());
 					
 			return result.toString();
 			

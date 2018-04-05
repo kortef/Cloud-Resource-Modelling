@@ -1,0 +1,19 @@
+//-----------------------------------------------//
+//--------Vertex2Activity------------------------//
+//-----------------------------------------------//
+rule Vertex2Action
+	transform vertex : POG!Vertex
+	to action : UML!OpaqueAction {
+	action.name = "Provision " + vertex.title;
+	action.activity = activity;
+	var valuePin = new UML!ValuePin;
+	valuePin.name = vertex.title + " id";
+	action.inputValue.add(valuePin);
+	var valuePinSpecification = new UML!LiteralString;
+	valuePinSpecification.name = "id";
+	valuePinSpecification.value = vertex.id;
+	valuePin.value = valuePinSpecification;
+	
+	activity.ownedNode.add(action);
+	notProvisioned.add(vertex);
+}

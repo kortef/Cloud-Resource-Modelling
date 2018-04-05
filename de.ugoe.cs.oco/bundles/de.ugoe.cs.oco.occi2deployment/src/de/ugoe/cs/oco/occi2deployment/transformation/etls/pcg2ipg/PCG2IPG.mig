@@ -1,0 +1,48 @@
+pre {
+	"Starting PCG2IPG Migration...".println();
+}
+post {
+	"Migration Process was Successfull".println();
+	for(vertex in IPG!Vertex){
+		for(edge in vertex.getOutgoingEdges()){
+			edge.weight = 1.0d/vertex.getOutgoingEdges().getEdgesOfKind(edge.kind).size();
+		}
+	}
+}
+//-------------------------------------//
+//---------MigrateEdges--------//
+//-------------------------------------//
+migrate Edge {
+	createBidirectionalEdge(original);
+}
+
+operation createBidirectionalEdge(edge: PCG!Edge){
+	var edge2 = new IPG!Edge();
+	edge2.source = edge.target.equivalent();
+	edge2.target = edge.source.equivalent();
+	IPG!Graph.all.first.edges.add(edge2);
+}
+
+operation Set getEdgesOfKind(kind:String) : Set{
+	var set = new Set();
+	for(edge in self){
+		if(edge.kind == kind){
+			set.add(edge);
+		}
+	}
+	return set;
+}
+
+operation IPG!Vertex getOutgoingEdges() : Set{
+	var set = new Set();
+	for(edge in IPG!Edge){
+		
+		if(edge.source <> null){
+			if(edge.source.resources.first().id == self.resources.first().id and
+			edge.source.resources.second().id == self.resources.second().id){
+				set.add(edge);
+			}
+		}
+	}
+	return set;
+}

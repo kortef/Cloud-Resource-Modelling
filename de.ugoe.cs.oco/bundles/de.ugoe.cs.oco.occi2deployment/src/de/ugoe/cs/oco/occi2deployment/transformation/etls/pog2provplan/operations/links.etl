@@ -1,0 +1,60 @@
+import "./generalOperations.etl";
+
+/*Operation: linkInitialActions
+Description: For everey Vertex it is checked, whether it has no incoming edges.
+If that is the case, it is linked to the intial Fork, as it is able to be provisioned
+in parallel without any dependencies.*/
+operation linkInitialActions() {
+	for(vertex in POG!Vertex) {
+		if(not(POG!Edge.all.exists(edge| edge.target == vertex))){
+			cFlow(initialFork, vertex.equivalent(), activity);
+			notProvisioned.remove(vertex);
+		}	
+	}
+}
+
+/*Operation: linkReaminingActions
+Description: Until every Vertex is "provisioned", all vertices now able to be provisioned
+are linked via a controll flow. */
+operation linkRemainingActions(){
+	while(notProvisioned.isEmpty() == false){	
+		for(vertex in provisionableVertexes()){
+			var reqVertexes = vertex.requiredVertexes();
+			if(reqVertexes.size() > 1) {
+				var join = new UML!JoinNode;
+				activity.ownedNode.add(join);
+				reqVertexes.joinIn(join);
+				var cFlow = new UML!ControlFlow;
+				cFlow.source = join;
+				cFlow.target = vertex.equivalent();
+				cFlow.activity = activity;
+				join.outgoing.add(cFlow);
+			}
+			else{
+				cFlow(reqVertexes.first().equivalent(), vertex.equivalent(), activity);
+			}
+			notProvisioned.remove(vertex);
+		}
+	}
+}
+
+operation cFlow(source : UML!ActivityNode, target : UML!ActivityNode, activity : UML!Activity){
+	var cFlow = new UML!ControlFlow;
+	cFlow.source = source;
+	cFlow.target = target;
+	cFlow.activity = activity;
+}
+
+/*Operation: linkFinalization
+Description: Finalizes the control flow. If the actions has multiple outgoing edge, a fork is created instead.
+If an action as 0 outgoing edges it is connected to final join. */
+operation linkFinalization(){
+	for(action in UML!Action){
+		if(action.outgoing.size() > 1) {
+			action.multipleFlowsToFork();
+		}
+		if(action.outgoing.size() == 0) {
+			cFlow(action, finalJoin, activity);
+		}
+	}
+}

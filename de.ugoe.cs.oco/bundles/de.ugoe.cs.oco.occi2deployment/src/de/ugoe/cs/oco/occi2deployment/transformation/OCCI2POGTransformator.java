@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
@@ -14,6 +15,7 @@ import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.pog.PogPackage;
 import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
 //import de.ugoe.cs.oco.pog.util.PogResourceFactoryImpl;
@@ -23,7 +25,11 @@ import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
  *
  */
 public class OCCI2POGTransformator extends AbsTransformator{
-	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");
+	//private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/occi2pog/OCCI2POG.etl");
+	//private static File etlFile = new File(new DeployerHelper().loadURL("/de/ugoe/cs/oco/occi2deployment/transformation/etls/occi2ppg/OCCI2POG.etl").getFile());
+	private static File etlFile = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/transformation/etls/occi2pog/OCCI2POG.etl");
+	
+	
 	
 	private void factorySetup() {
 		OCCIPackage.eINSTANCE.eClass();
@@ -88,10 +94,13 @@ public class OCCI2POGTransformator extends AbsTransformator{
 			InMemoryEmfModel occiModel = new InMemoryEmfModel("OCCI", inputModel, OCCIPackage.eINSTANCE);
 			occiModel.getAliases().add("OCCI");
 			
+			
+			URI uri = URI.createFileURI(outputPath.toString());
 			String pogURI = "http://swe.simpaas.pog.de/pog";
 			String path = outputPath.getParent().toString() + "/";
 			IModel pogModel = createEmfModel("POG", 
-					path + outputPath.getFileName().toString(),  
+					//path + outputPath.getFileName().toString(),  
+					uri,
 					pogURI,
 					false, 
 					true);

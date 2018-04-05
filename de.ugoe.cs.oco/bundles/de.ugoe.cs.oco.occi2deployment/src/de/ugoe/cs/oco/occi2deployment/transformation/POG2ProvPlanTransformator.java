@@ -7,12 +7,14 @@ import java.util.Map;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
 
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.pog.PogPackage;
 import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -23,7 +25,9 @@ import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
  *
  */
 public class POG2ProvPlanTransformator extends AbsTransformator{
-	private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pog2provPlan/POG2ProvPlan.etl");
+	//private static File etlFile = new File("../de.ugoe.cs.oco.transformations/src/transformations/pog2provPlan/POG2ProvPlan.etl");
+	//private static File etlFile = new File(new DeployerHelper().loadURL("/de/ugoe/cs/oco/occi2deployment/transformation/etls/pog2provplan/POG2ProvPlan.etl").getFile());
+	private static File etlFile = new DeployerHelper().loadFile("/de/ugoe/cs/oco/occi2deployment/transformation/etls/pog2provplan/POG2ProvPlan.etl");
 	
 	private void factorySetup() {
 		PogPackage.eINSTANCE.eClass();
@@ -42,19 +46,23 @@ public class POG2ProvPlanTransformator extends AbsTransformator{
 		factorySetup();
 		IEolExecutableModule module = etlModuleSetup(etlFile);
 		try {
+			
+			URI uri = URI.createFileURI(pogModelPath.toString());
 			String pogURI = "http://swe.simpaas.pog.de/pog";
 			String path = pogModelPath.getParent().toString() + "/";
 			IModel pogModel = createEmfModel("POG",
-					path + pogModelPath.getFileName().toString(),
+					//path + pogModelPath.getFileName().toString(),
+					uri,
 					pogURI,
 					true,
 					false);
 
-			
+			uri = URI.createFileURI(umlModelPath.toString());
 			String umlURI = "http://www.eclipse.org/uml2/5.0.0/UML";
 			path = umlModelPath.getParent().toString() + "/";
 			IModel umlModel = createEmfModel("UML", 
-					path + umlModelPath.getFileName().toString(),  
+					//path + umlModelPath.getFileName().toString(), 
+					uri,
 					umlURI,
 					false, 
 					true);

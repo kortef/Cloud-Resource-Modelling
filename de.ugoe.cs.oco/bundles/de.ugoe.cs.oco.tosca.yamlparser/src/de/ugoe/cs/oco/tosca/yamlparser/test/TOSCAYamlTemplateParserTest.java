@@ -38,7 +38,7 @@ import de.ugoe.cs.oco.tosca.yamlparser.TOSCAYamlTemplateParser;
 
 
 /**
- * @author fglaser
+ * @author Fabian Korte
  *
  */
 public class TOSCAYamlTemplateParserTest extends ParserTest {
@@ -69,10 +69,10 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 		resSet.getPackageRegistry().put(XSDPackage.eINSTANCE.getNsURI(), XSDPackage.eINSTANCE);
 					    
 	    XMLResource resource = (XMLResource) resSet.createResource(URI
-	        .createURI("swz-testdata/lsf.tosca"));
+	        .createURI("swz-testdata/normative-types.tosca"));
 	    
 	    Resource xsd = resSet.createResource(URI
-	    		.createURI("swz-testdata/lsfPropertyDefinitions.xsd"));
+	    		.createURI("swz-testdata/normative-types.xsd"));
 	    	    
 	    resource.getContents().add(rootElement);
 	    xsd.getContents().add(parser.getPropertyTypesSchema());
@@ -103,6 +103,6 @@ public class TOSCAYamlTemplateParserTest extends ParserTest {
 	}
 	
 	protected String getFileToParse(){
-		return "swz-testdata/lsf.yml";
+		return "swz-testdata/normative-types.yml";
 	}
 }

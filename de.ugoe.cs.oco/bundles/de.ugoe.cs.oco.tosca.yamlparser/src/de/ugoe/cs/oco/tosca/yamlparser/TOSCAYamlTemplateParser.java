@@ -29,7 +29,7 @@ import de.ugoe.cs.oco.tosca.TTopologyTemplate;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 /**
- * @author fglaser
+ * @author Fabian Korte
  *
  */
 public class TOSCAYamlTemplateParser extends Parser{
@@ -47,7 +47,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 		root.getXMLNSPrefixMap().put("xs", "http://www.w3.org/2001/XMLSchema");
 		
 		DefinitionsType definitions = ToscaFactory.eINSTANCE.createDefinitionsType();
-		root.setDefinitions(definitions);
+		root.getDefinitions().add(definitions);
 		
 		for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 			String key = entry.getKey();
@@ -81,12 +81,12 @@ public class TOSCAYamlTemplateParser extends Parser{
 			case "imports":
 				List<TImport> imports = (List<TImport>)
 					new ImportParser().parse((List<?>)entry.getValue());
-				root.getDefinitions().getImport().addAll(imports);
+				root.getDefinitions().get(0).getImport().addAll(imports);
 				break;
 			case "artifact_types":
 				List<TArtifactType> artifactTypes = (List<TArtifactType>)
 					new ArtifactTypeParser().parse((Map<String, ?>)entry.getValue(), this);
-				root.getDefinitions().getArtifactType().addAll(artifactTypes);
+				root.getDefinitions().get(0).getArtifactType().addAll(artifactTypes);
 				break;
 			case "data_types":
 				LOGGER.warning("Datatypes read, but no correspondence in model, hence ignored.");
@@ -94,7 +94,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 			case "capability_types":
 				List<TCapabilityType> capabilityTypes = (List<TCapabilityType>)
 					new CapabilityTypeParser().parse((Map<String, ?>)entry.getValue(), this);
-				root.getDefinitions().getCapabilityType().addAll(capabilityTypes);
+				root.getDefinitions().get(0).getCapabilityType().addAll(capabilityTypes);
 				break;
 			case "interface_types":
 				LOGGER.warning("Interfaces read, but no correspondence in model, hence ignored.");
@@ -102,29 +102,29 @@ public class TOSCAYamlTemplateParser extends Parser{
 			case "relationship_types":
 				List<TRelationshipType> relationshipTypes = (List<TRelationshipType>)
 					new RelationshipTypeParser().parse((Map<String, ?>) entry.getValue(), this);
-				root.getDefinitions().getRelationshipType().addAll(relationshipTypes);
+				root.getDefinitions().get(0).getRelationshipType().addAll(relationshipTypes);
 				break;
 			case "node_types":
 				List<TNodeType> types = (List<TNodeType>) 
 						new NodeTypeParser().parse((Map<String, ?>)entry.getValue(), this);
-				root.getDefinitions().getNodeType().addAll(types);
+				root.getDefinitions().get(0).getNodeType().addAll(types);
 				break;
 			case "group_types":
 				List<TGroupType> groups = (List<TGroupType>)
 					new GroupTypeParser().parse((Map<String, ?>)entry.getValue(), null);
-				root.getDefinitions().getGroupType().addAll(groups);
+				root.getDefinitions().get(0).getGroupType().addAll(groups);
 				break;
 			case "policy_types":
 				List<TPolicyType> policyTypes = (List<TPolicyType>)
 						new PolicyTypeParser().parse((Map<String, ?>)entry.getValue(), null);
-				root.getDefinitions().getPolicyType().addAll(policyTypes);
+				root.getDefinitions().get(0).getPolicyType().addAll(policyTypes);
 				break;		
 			case "topology_template":
 				TTopologyTemplate template = (TTopologyTemplate)
 					new TopologyTemplateParser().parse((Map<String, ?>)entry.getValue(), null);
 				TServiceTemplate st = this.getServiceTemplate();
 				st.setTopologyTemplate(template);
-				root.getDefinitions().getServiceTemplate().add(st);
+				root.getDefinitions().get(0).getServiceTemplate().add(st);
 				break;
 			default:
 				throw new ParseException("Key " + key + " is unknown and can not be handled.");	

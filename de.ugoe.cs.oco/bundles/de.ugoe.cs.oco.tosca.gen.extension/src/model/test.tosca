@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:test="test" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <tosca:Types>
+    <xs:schema targetNamespace="test" elementFormDefault="qualified" xmlns:test="test">
+	<xs:complexType name="ApplicationPropertiesType">
+		<xs:sequence>
+			<xs:element name="Owner" type="xs:string" />
+			<xs:element name="InstanceName" type="xs:string" />
+			<xs:element name="AccountID" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>	            
+  	<xs:element name="ApplicationProperties" type="test:ApplicationPropertiesType" ></xs:element>
+  	</xs:schema>
+  </tosca:Types>
+  <tosca:ServiceTemplate>
+    <tosca:TopologyTemplate>
+      <tosca:NodeTemplate>
+        <tosca:Properties/>
+      </tosca:NodeTemplate>
+    </tosca:TopologyTemplate>
+  </tosca:ServiceTemplate>
+  <tosca:NodeType name="TestNodeType">
+    <tosca:PropertiesDefinition element="properties" type="ApplicationProperties"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition requirementType="TestRequirementsType"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:RequirementType name="TestRequirementsType"/>
+</tosca:Definitions>

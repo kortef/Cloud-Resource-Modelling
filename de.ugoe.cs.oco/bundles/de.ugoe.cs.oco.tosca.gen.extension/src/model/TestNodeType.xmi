@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:TestNodeType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:test="http://oco.cs.ugoe.de/test" xsi:schemaLocation="http://oco.cs.ugoe.de/test toscatest.ecore"/>

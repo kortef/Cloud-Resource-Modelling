@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="xs test">
+  <tosca:Types>
+<xs:schema xmlns:normative="http://oco.cs.ugoe.de/normativetypes" targetNamespace="http://oco.cs.ugoe.de/normativetypes">
+  <xs:complexType name="tosca.nodes.DBMSPropertiesType">
+    <xs:sequence>
+      <xs:element name="port" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>the port the DBMS service will listen to for data and requests</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="root_password" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>the optional root password for the DBMS service</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.DBMS" type="normative:tosca.nodes.DBMSPropertiesType"/>
+  <xs:complexType name="tosca.nodes.ObjectStoragePropertiesType">
+    <xs:sequence>
+      <xs:element name="size">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="name" type="xs:string"/>
+      <xs:element name="maxsize">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.ObjectStorage" type="normative:tosca.nodes.ObjectStoragePropertiesType"/>
+  <xs:complexType name="tosca.nodes.NetworkPropertiesType">
+    <xs:sequence>
+      <xs:element name="network_id" type="xs:string"/>
+      <xs:element default="4" name="ip_version">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="network_name" type="xs:string"/>
+      <xs:element name="cidr" type="xs:string"/>
+      <xs:element name="gateway_ip" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.Network" type="normative:tosca.nodes.NetworkPropertiesType"/>
+  <xs:complexType name="tosca.nodes.SoftwareComponentPropertiesType">
+    <xs:sequence>
+      <xs:element name="component_version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The optional software component’s version.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.SoftwareComponent" type="normative:tosca.nodes.SoftwareComponentPropertiesType"/>
+  <xs:complexType name="tosca.nodes.BlockStoragePropertiesType">
+    <xs:sequence>
+      <xs:element name="size">
+        <xs:annotation>
+          <xs:documentation>The requested storage size (default unit is MB). Note: - Required when an existing volume (i.e., volume_id) is not available. - If volume_id is provided, size is ignored.  Resize of existing volumes is not considered at this time.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="volume_id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>ID of an existing volume (that is in the accessible scope of the requesting application).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="snapshot_id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Some identifier that represents an existing snapshot that should be used when creating the block storage (volume).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="device" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The logical device name which for the attached device (which is represented by the target node in the model). e.g., ‘/dev/hda1’ Note: this property will be moved in next releases to the AttachTo relationship as it is specified by TOSCA spec.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.BlockStorage" type="normative:tosca.nodes.BlockStoragePropertiesType"/>
+  <xs:complexType name="tosca.nodes.DatabasePropertiesType">
+    <xs:sequence>
+      <xs:element name="password" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>the optional password for the DB user account</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="port" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>the port the underlying database service will listen to for data</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>the logical name of the database</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="user" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>the optional user account name for DB administration</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tosca.nodes.Database" type="normative:tosca.nodes.DatabasePropertiesType"/>
+  <xs:complexType name="tosca.capabilities.EndpointPropertiesType">
+    <xs:sequence>
+      <xs:element name="port_name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The optional name (or ID) of the network port this endpoint should be bound to.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="tcp" name="protocol" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the protocol (i.e., the protocol prefix) that the endpoint accepts (any OSI Layer 4-7 protocols) Examples: http, https, ftp, tcp, udp, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="port">
+        <xs:annotation>
+          <xs:documentation>The optional port of the endpoint.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="65535"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element default="source" name="initiator">
+        <xs:annotation>
+          <xs:documentation>The optional indicator of the direction of the connection.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="source"/>
+            <xs:enumeration value="target"/>
+            <xs:enumeration value="peer"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element default="PRIVATE" name="network_name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The optional name (or ID) of the network this endpoint should be bound to. network_name: PRIVATE | PUBLIC |&lt;network_name&gt; | &lt;network_id&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="false" name="secure" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Requests for the endpoint to be secure and use credentials supplied on the ConnectsTo relationship.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url_path" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The optional URL path of the endpoint’s address if applicable for the protocol.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.capabilities.ScalablePropertiesType">
+    <xs:sequence>
+      <xs:element default="1" name="min_instances" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>This property is used to indicate the minimum number of instances that should be created for the associated TOSCA Node Template by a TOSCA orchestrator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="1" name="max_instances" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>This property is used to indicate the maximum number of instances that should be created for the associated TOSCA Node Template by a TOSCA orchestrator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element default="1" name="default_instances" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>An optional property that indicates the requested default number of instances that should be the starting number of instances a TOSCA orchestrator should attempt to allocate. Note: The value for this property MUST be in the range between the values set for ‘min_instances’ and ‘max_instances’ properties.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.capabilities.ContainerPropertiesType">
+    <xs:sequence>
+      <xs:element name="num_cpus">
+        <xs:annotation>
+          <xs:documentation>Number of (actual or virtual) CPUs associated with the Compute node.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="disk_size">
+        <xs:annotation>
+          <xs:documentation>Size of the local disk available to applications running on the Compute node (default unit is MB).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cpu_frequency">
+        <xs:annotation>
+          <xs:documentation>Specifies the operating frequency of CPU's core.  This property expresses the expected frequency of one (1) CPU as provided by the property “num_cpus”.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:float">
+            <xs:minInclusive value="0.1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mem_size">
+        <xs:annotation>
+          <xs:documentation>Size of memory available to applications running on the Compute node (default unit is MB).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.capabilities.Endpoint.PublicPropertiesType">
+    <xs:sequence>
+      <xs:element fixed="PUBLIC" name="network_name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.capabilities.Endpoint.AdminPropertiesType">
+    <xs:sequence>
+      <xs:element fixed="true" name="secure" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.capabilities.OperatingSystemPropertiesType">
+    <xs:sequence>
+      <xs:element name="type" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Operating System (OS) type. Examples of valid values include: linux, aix, mac, windows, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="distribution" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Operating System (OS) distribution. Examples of valid values for an “type” of “Linux” would include:  debian, fedora, rhel and ubuntu.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Operating System version.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="architecture" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Operating System (OS) architecture. Examples of valid values include: x86_32, x86_64, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tosca.relationships.ConnectsToPropertiesType">
+    <xs:sequence>
+      <xs:element name="credential" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The security credential to use to present to the target endpoint to for either authentication or authorization purposes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </tosca:Types>
+  <tosca:NodeType name="tosca.nodes.WebApplication">
+    <tosca:documentation source="The TOSCA WebApplication node represents a software application that can be managed and run by a TOSCA WebServer node. Specific types of web applications such as Java, etc. could be derived from this type."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="host"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint" name="app_endpoint"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.DBMS">
+    <tosca:documentation source="The TOSCA DBMS node represents a typical relational, SQL Database Management System software component or service."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.SoftwareComponent"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.DBMSPropertiesType"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Container" name="host"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.ObjectStorage">
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.ObjectStoragePropertiesType"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint" name="storage_endpoint"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Network">
+    <tosca:documentation source="The TOSCA Network node represents a simple, logical network service."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.NetworkPropertiesType"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Connectivity" name="connection"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Compute">
+    <tosca:documentation source="The TOSCA Compute node represents one or more real or virtual processors of software applications or services along with other essential local resources. Collectively, the resources the compute node represents can logically be viewed as a (real or virtual) &#x201c;server&#x201d;."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="network"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Scalable" name="scalable"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint.Admin" name="endpoint"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.OperatingSystem" name="os"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Container" name="host"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Attachment" name="attach"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.WebServer">
+    <tosca:documentation source="This TOSCA WebServer Node Type represents an abstract software component or service that is capable of hosting and providing management operations for one or more WebApplication nodes."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.SoftwareComponent"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint" name="data_endpoint"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint.Admin" name="admin_endpoint"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Container" name="host"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Container.Application">
+    <tosca:documentation source="The TOSCA Container Application node represents an application that requires Container-level virtualization technology."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="host"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Container.Runtime">
+    <tosca:documentation source="The TOSCA Container Runtime node represents operating system-level virtualization technology used to run multiple application services on a single Compute host."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.SoftwareComponent"/>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Scalable" name="scalable"/>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Container" name="host"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.SoftwareComponent">
+    <tosca:documentation source="The TOSCA SoftwareComponent node represents a generic software component that can be managed and run by a TOSCA Compute Node Type."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.SoftwareComponentPropertiesType"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="host"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.BlockStorage">
+    <tosca:documentation source="The TOSCA BlockStorage node currently represents a server-local block storage device (i.e., not shared) offering evenly sized blocks of data from which raw storage volumes can be created."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.BlockStoragePropertiesType"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="attachment"/>
+    </tosca:RequirementDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Root">
+    <tosca:documentation source="This is the default (root) TOSCA Node Type that all other TOSCA nodes should extends. This allows all TOSCA nodes to have a consistent set of features for modeling and management (e.g, consistent definitions for requirements, capabilities, and lifecycle interfaces)."/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="dependency"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Node" name="feature"/>
+    </tosca:CapabilityDefinitions>
+    <tosca:Interfaces>
+      <tosca:Interface name="tosca.interfaces.node.lifecycle.Standard">
+        <tosca:Operation name="stop">
+          <tosca:documentation source="Standard lifecycle stop operation."/>
+        </tosca:Operation>
+        <tosca:Operation name="start">
+          <tosca:documentation source="Standard lifecycle start operation."/>
+        </tosca:Operation>
+        <tosca:Operation name="description"/>
+        <tosca:Operation name="create">
+          <tosca:documentation source="Standard lifecycle create operation."/>
+        </tosca:Operation>
+        <tosca:Operation name="configure">
+          <tosca:documentation source="Standard lifecycle configure operation."/>
+        </tosca:Operation>
+        <tosca:Operation name="delete">
+          <tosca:documentation source="Standard lifecycle delete operation."/>
+        </tosca:Operation>
+      </tosca:Interface>
+    </tosca:Interfaces>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.LoadBalancer">
+    <tosca:documentation source="The TOSCA Load Balancer node represents logical function that be used in conjunction with a Floating Address to distribute an application&#x2019;s traffic (load) across a number of instances of the application (e.g., for a clustered or scaled application)."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="application"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint.Public" name="client"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:NodeType name="tosca.nodes.Database">
+    <tosca:documentation source="The TOSCA Database node represents a logical database that can be managed and hosted by a TOSCA DBMS node."/>
+    <tosca:DerivedFrom typeRef="tosca.nodes.Root"/>
+    <tosca:PropertiesDefinition type="tosca.nodes.DatabasePropertiesType"/>
+    <tosca:RequirementDefinitions>
+      <tosca:RequirementDefinition name="host"/>
+    </tosca:RequirementDefinitions>
+    <tosca:CapabilityDefinitions>
+      <tosca:CapabilityDefinition capabilityType="tosca.capabilities.Endpoint.Database" name="database_endpoint"/>
+    </tosca:CapabilityDefinitions>
+  </tosca:NodeType>
+  <tosca:PolicyType name="tosca.policies.Update">
+    <tosca:documentation source="The TOSCA Policy Type definition that is used to govern update of TOSCA nodes or groups of nodes."/>
+    <tosca:DerivedFrom typeRef="tosca.policies.Root"/>
+  </tosca:PolicyType>
+  <tosca:PolicyType name="tosca.policies.Placement">
+    <tosca:documentation source="The TOSCA Policy Type definition that is used to govern placement of TOSCA nodes or groups of nodes."/>
+    <tosca:DerivedFrom typeRef="tosca.policies.Root"/>
+  </tosca:PolicyType>
+  <tosca:PolicyType name="tosca.policies.Root">
+    <tosca:documentation source="The TOSCA Policy Type all other TOSCA Policy Types derive from"/>
+  </tosca:PolicyType>
+  <tosca:PolicyType name="tosca.policies.Scaling">
+    <tosca:documentation source="The TOSCA Policy Type definition that is used to govern scaling of TOSCA nodes or groups of nodes."/>
+    <tosca:DerivedFrom typeRef="tosca.policies.Root"/>
+  </tosca:PolicyType>
+  <tosca:PolicyType name="tosca.policies.Performance">
+    <tosca:DerivedFrom typeRef="tosca.policies.Root"/>
+  </tosca:PolicyType>
+  <tosca:ArtifactType name="tosca.artifacts.Root">
+    <tosca:documentation source="The TOSCA Artifact Type all other TOSCA Artifact Types derive from"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Deployment.Image">
+    <tosca:documentation source="This artifact type represents a parent type for any &#x201c;image&#x201d; which is an opaque packaging of a TOSCA Node&#x2019;s deployment (whether real or virtual) whose contents are typically already installed and pre-configured (i.e., &#x201c;stateful&#x201d;) and prepared to be run on a known target container."/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Deployment"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Implementation.Bash">
+    <tosca:documentation source="Script artifact for the Unix Bash shell"/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Implementation"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Deployment.Image.VM">
+    <tosca:documentation source="This artifact represents the parent type for all Virtual Machine (VM) image and container formatted deployment artifacts. These images contain a stateful capture of a machine (e.g., server) including operating system and installed software along with any configurations and can be run on another machine using a hypervisor which virtualizes typical server (i.e., hardware) resources. Virtual Machine (VM) Image"/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Deployment.Image"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Deployment">
+    <tosca:documentation source="TOSCA base type for deployment artifacts"/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Root"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Implementation.Python">
+    <tosca:documentation source="Artifact for the interpreted Python language"/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Implementation"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.File">
+    <tosca:documentation source="This artifact type is used when an artifact definition needs to have its associated file simply treated as a file and no special handling/handlers are invoked."/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Root"/>
+  </tosca:ArtifactType>
+  <tosca:ArtifactType name="tosca.artifacts.Implementation">
+    <tosca:documentation source="TOSCA base type for implementation artifacts"/>
+    <tosca:DerivedFrom typeRef="tosca.artifacts.Root"/>
+  </tosca:ArtifactType>
+  <tosca:CapabilityType name="tosca.capabilities.Node">
+    <tosca:documentation source="The Node capability indicates the base capabilities of a TOSCA Node Type."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Endpoint">
+    <tosca:documentation source="This is the default TOSCA type that should be used or extended to define a network endpoint capability. This includes the information to express a basic endpoint with a single port or a complex endpoint with multiple ports. By default the Endpoint is assumed to represent an address on a private network unless otherwise specified."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.EndpointPropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Scalable">
+    <tosca:documentation source="This is the default TOSCA type that should be used to express a scalability capability for a node."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.ScalablePropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.network.Bindable">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Node"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Root">
+    <tosca:documentation source="This is the default (root) TOSCA Capability Type definition that all other TOSCA Capability Types derive from."/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Container">
+    <tosca:documentation source="The Container capability, when included on a Node Type or Template definition, indicates that the node can act as a container for (or a host for) one or more other declared Node Types."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.ContainerPropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Endpoint.Database">
+    <tosca:documentation source="This is the default TOSCA type that should be used or extended to define a specialized database endpoint capability."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Endpoint"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Endpoint.Public">
+    <tosca:documentation source="This capability represents a public endpoint which is accessible to the general internet (and its public IP address ranges). This public endpoint capability also can be used to create a floating (IP) address that the underlying network assigns from a pool allocated from the application&#x2019;s underlying public network.  This floating address is managed by the underlying network such that can be routed an application&#x2019;s private address and remains reliable to internet clients."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Endpoint"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.Endpoint.PublicPropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Endpoint.Admin">
+    <tosca:documentation source="This is the default TOSCA type that should be used or extended to define a specialized administrator endpoint capability."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Endpoint"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.Endpoint.AdminPropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.OperatingSystem">
+    <tosca:documentation source="This is the default TOSCA type that should be used to express an Operating System capability for a node."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+    <tosca:PropertiesDefinition type="tosca.capabilities.OperatingSystemPropertiesType"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Attachment">
+    <tosca:documentation source="This is the default TOSCA type that should be used or extended to define an attachment capability of a (logical) infrastructure device node (e.g., BlockStorage node)."/>
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:CapabilityType name="tosca.capabilities.Connectivity">
+    <tosca:DerivedFrom typeRef="tosca.capabilities.Root"/>
+  </tosca:CapabilityType>
+  <tosca:RelationshipType name="tosca.relationships.Root"/>
+  <tosca:RelationshipType name="tosca.relationships.RoutesTo">
+    <tosca:ValidTarget typeRef="tosca.capabilities.Endpoint"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.AttachTo">
+    <tosca:ValidTarget typeRef="tosca.capabilities.Attachment"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.Network">
+    <tosca:ValidTarget typeRef="tosca.capabilities.Connectivity"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.HostedOn">
+    <tosca:ValidTarget typeRef="tosca.capabilities.Container"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.DependsOn">
+    <tosca:ValidTarget typeRef="tosca.capabilities.Node"/>
+  </tosca:RelationshipType>
+  <tosca:RelationshipType name="tosca.relationships.ConnectsTo">
+    <tosca:PropertiesDefinition type="tosca.relationships.ConnectsToPropertiesType"/>
+    <tosca:ValidTarget typeRef="tosca.capabilities.Endpoint"/>
+  </tosca:RelationshipType>
+</tosca:Definitions>

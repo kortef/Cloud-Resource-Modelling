@@ -18,8 +18,8 @@ class TOSCADef2EcoreTest {
 
 	@Test
 	void testGenerateEcore() {
-		Path toscaDef = Paths.get("/home/fglaser/workspace_oco_git/de.ugoe.cs.oco.tosca.gen.extension/src/model/normative-types.tosca");
-		Path generatedEcore = Paths.get("/home/fglaser/workspace_oco_git/de.ugoe.cs.oco.tosca.gen.extension/src/model/normative-types.ecore");
+		Path toscaDef = Paths.get("/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.tosca.gen.extension/src/model/normative-types.tosca");
+		Path generatedEcore = Paths.get("/home/fglaser/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.tosca.gen.extension/src/model/normative-types.ecore");
 		TOSCADef2Ecore.generateEcore(toscaDef, generatedEcore);
 	}
 }

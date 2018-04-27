@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -27,6 +28,7 @@ import org.eclipse.xsd.util.XSDResourceFactoryImpl;
 
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
+import de.ugoe.cs.oco.tosca.TArtifactType;
 import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TEntityType;
@@ -42,36 +44,63 @@ import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
  *
  */
 public class TOSCADef2Ecore {
+	protected final static Logger LOGGER = Logger.getLogger(TOSCADef2Ecore.class.getName());
+
 	
 	private static EPackage convertDefinitions(DefinitionsType definitions) {
-		// load tosca metamodel to be able to inherit from defined classes
-		ResourceSet set = new ResourceSetImpl();
-		// only works when actually run as plugin
-		final URI uri = URI.createPlatformPluginURI("/de.ugoe.cs.oco.tosca.model/model/tosca.ecore", true);
-		Resource res = set.createResource(uri);
 		
-		try {
-			res.load(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		EPackage toscaPackage = (EPackage) res.getContents().get(0);
-		//EPackage toscaPackage = ToscaPackage.eINSTANCE;
+		EPackage toscaPackage = getTOSCAPackage();
+		//EPackage toscaPackage = ToscaPackage.eINSTANCE;	
+		EPackage ePackage = createEPackage(definitions);
+		extractRawTypes(definitions, toscaPackage, ePackage);
+		extractSuperTypes(definitions, toscaPackage, ePackage);
 		
-		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
-	
-		ePackage.setName("test");
-		ePackage.setNsURI("http://oco.cs.ugoe.de/test");
-		ePackage.setNsPrefix("test");
+		return ePackage;
+	}
 
-		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore");
-		annotation.getDetails().put("settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.setEModelElement(ePackage);
+	private static EPackage extractSuperTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
+		for (TCapabilityType cType: definitions.getCapabilityType()) {
+			addSuperTypeIfExists(cType, ePackage);
+		}
 		
+		for (TRequirementType rType: definitions.getRequirementType()) {
+			addSuperTypeIfExists(rType, ePackage);
+		}
 		
+		for (TArtifactType aType: definitions.getArtifactType()) {
+			addSuperTypeIfExists(aType, ePackage);
+		}
+		
+		for (TNodeType nType: definitions.getNodeType()) {
+			addSuperTypeIfExists(nType, ePackage);
+		}
+		
+		for (TRelationshipType rlType: definitions.getRelationshipType()) {
+			addSuperTypeIfExists(rlType, ePackage);
+		}
+			
+		return ePackage;
+		
+	}
+	
+	private static EPackage addSuperTypeIfExists(TEntityType eType, EPackage ePackage) {
+		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
+		if (eType.getDerivedFrom() != null) {
+			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
+			EClass superType = (EClass) ePackage.getEClassifier(superTypeName);
+			if (superType == null) {
+				LOGGER.warning("Super type '" + superTypeName + "' for '" + name + "'not found.");
+			} else {
+				EClass type = (EClass) ePackage.getEClassifier((name));
+				type.getESuperTypes().clear();
+				type.getESuperTypes().add(superType);
+			}
+		}
+		
+		return ePackage;
+	}
+
+	private static EPackage extractRawTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
 			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(cType.getName()));
@@ -83,6 +112,13 @@ public class TOSCADef2Ecore {
 			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(rType.getName()));
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRequirement")));
+			ePackage.getEClassifiers().add(eClass);
+		}
+		
+		for (TArtifactType aType: definitions.getArtifactType()) {
+			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+			eClass.setName(ConverterUtils.toEcoreCompatibleName(aType.getName()));
+			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TArtifactTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 		}
 		
@@ -122,7 +158,40 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRelationshipTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 		}
+		
 		return ePackage;
+	}
+
+	private static EPackage createEPackage(DefinitionsType definitions) {
+		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
+	
+		ePackage.setName(definitions.getName());
+		ePackage.setNsURI(definitions.getTargetNamespace());
+		ePackage.setNsPrefix(definitions.getName());
+
+		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore");
+		annotation.getDetails().put("settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		annotation.getDetails().put("invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		annotation.getDetails().put("validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		annotation.setEModelElement(ePackage);
+		return ePackage;
+	}
+
+	private static EPackage getTOSCAPackage() {
+		// load tosca metamodel to be able to inherit from defined classes
+		ResourceSet set = new ResourceSetImpl();
+		// only works when actually run as plugin
+		final URI uri = URI.createPlatformPluginURI("/de.ugoe.cs.oco.tosca.model/model/tosca.ecore", true);
+		Resource res = set.createResource(uri);
+		
+		try {
+			res.load(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		EPackage toscaPackage = (EPackage) res.getContents().get(0);
+		return toscaPackage;
 	}
 	
 	private static EAnnotation addRequirementRestrictions(TNodeType nodeType, EAnnotation annotation) {
@@ -134,7 +203,8 @@ public class TOSCADef2Ecore {
 				if (rType.getRequirementType() !=  null) {
 					// TODO: Check
 					oclBuilder.append("oclIsKindOf(");
-					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(rType.getRequirementType().toString()));
+					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
+							rType.getRequirementType().toString())));
 					oclBuilder.append(") or ");
 				}
 			}
@@ -152,7 +222,8 @@ public class TOSCADef2Ecore {
 			oclBuilder.append("self.capabilities.capability->forAll(");
 			for (TCapabilityDefinition cType: nodeType.getCapabilityDefinitions().getCapabilityDefinition()) {
 				oclBuilder.append("oclIsKindOf(");
-				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(cType.getCapabilityType().toString()));
+				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
+						cType.getCapabilityType().toString())));
 				oclBuilder.append(") or ");
 			}
 			oclBuilder.setLength(oclBuilder.length() - 4);
@@ -173,7 +244,11 @@ public class TOSCADef2Ecore {
 //		return annotation;
 //	}	
 	
-	
+	/**
+	 * Generates a Ecore model from the given TOSCA definition
+	 * @param toscaDef Path to the TOSCA definition
+	 * @param generatedEcore Path to the generated ecore
+	 */
 	public static void generateEcore(Path toscaDef, Path generatedEcore) {
 		ToscaPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
@@ -191,6 +266,15 @@ public class TOSCADef2Ecore {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Resource toscaModel = resourceSet.createResource(URI.createPlatformPluginURI("/de.ugoe.cs.oco.tosca.model/model/tosca.ecore", true));
+		
+		try {
+			toscaModel.load(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		EPackage toscaPackage = (EPackage) toscaModel.getContents().get(0);
 		
 		DocumentRoot root = (DocumentRoot) res.getContents().get(0);
 		DefinitionsType definitions = root.getDefinitions().get(0);
@@ -216,6 +300,18 @@ public class TOSCADef2Ecore {
 		for (Object object: builder.getXSDComponentToEModelElementMap().values()) {
 			if (object instanceof EClassifier) {
 				ePackage.getEClassifiers().add((EClassifier) object);
+//				if (((EClassifier) object).getName().endsWith("PropertiesType")) {
+//					// create wrapper class 
+//					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+//					eClass.setName(((EClassifier) object).getName() + "Wrapper");
+//					eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("PropertiesType")));
+//					EReference reference = EcoreFactory.eINSTANCE.createEReference();
+//					reference.setName(((EClassifier) object).getName());
+//					reference.setContainment(true);
+//					reference.setEType((EClassifier) object);
+//					eClass.getEStructuralFeatures().add(reference);
+//					ePackage.getEClassifiers().add(eClass);
+//				}
 			}
 			if (object instanceof EReference) {
 				EReference attribute = (EReference) object;

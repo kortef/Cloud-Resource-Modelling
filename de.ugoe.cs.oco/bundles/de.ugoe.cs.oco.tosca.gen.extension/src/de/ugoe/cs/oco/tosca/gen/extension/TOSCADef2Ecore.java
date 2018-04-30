@@ -31,6 +31,7 @@ import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TArtifactType;
 import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
+import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.TRelationshipType;
@@ -94,6 +95,10 @@ public class TOSCADef2Ecore {
 				EClass type = (EClass) ePackage.getEClassifier((name));
 				type.getESuperTypes().clear();
 				type.getESuperTypes().add(superType);
+			}
+			// now set super type for corresponding properties type
+			if (eType.getPropertiesDefinition() != null) {
+				
 			}
 		}
 		
@@ -321,7 +326,10 @@ public class TOSCADef2Ecore {
 			}
 		}
 		
-
+		// finally add super classes for Properties
+		addSuperClassesForProperties(definitions, ePackage);
+		
+		// persist metamodel
 		try {
 			ConverterUtils.persistMetamodel(resourceSet, ePackage, generatedEcore.toString());
 		} catch (IOException e) {
@@ -330,7 +338,56 @@ public class TOSCADef2Ecore {
 		}
 		
 	}
+	
+	private static EPackage addSuperClassesForProperties(TDefinitions definitions, EPackage ePackage) {
+		for (TCapabilityType cType: definitions.getCapabilityType()) {
+			addPropertySuperTypeIfExists(cType, ePackage);
+		}
 		
+		for (TRequirementType rType: definitions.getRequirementType()) {
+			addPropertySuperTypeIfExists(rType, ePackage);
+		}
+		
+		for (TArtifactType aType: definitions.getArtifactType()) {
+			addPropertySuperTypeIfExists(aType, ePackage);
+		}
+		
+		for (TNodeType nType: definitions.getNodeType()) {
+			addPropertySuperTypeIfExists(nType, ePackage);
+		}
+		
+		for (TRelationshipType rlType: definitions.getRelationshipType()) {
+			addPropertySuperTypeIfExists(rlType, ePackage);
+		}
+			
+		return ePackage;		
+	}
+		
+	private static EPackage addPropertySuperTypeIfExists(TEntityType eType, EPackage ePackage) {
+		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
+		if (eType.getDerivedFrom() != null) {
+			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
+			EClass superPropertiesType = (EClass) ePackage.getEClassifier(superTypeName + "PropertiesType");
+			if (superPropertiesType == null) {
+				LOGGER.warning("Super properties type '" + superTypeName + "' for '" + name + "'not found.");
+			} else {
+				if (eType.getPropertiesDefinition() != null) {
+					EClass type = (EClass) ePackage.getEClassifier((eType.getPropertiesDefinition().getType().getLocalPart() 
+							+ "PropertiesType"));
+					type.getESuperTypes().clear();
+					type.getESuperTypes().add(superPropertiesType);
+				}
+			}
+			// now set super type for corresponding properties type
+			if (eType.getPropertiesDefinition() != null) {
+				
+			}
+		}
+		
+		return ePackage;
+		
+	}
+
 	private EClass getToscaTemplateClass(TEntityType entityType) {
 		if (entityType instanceof TNodeType) {
 			return ToscaPackage.eINSTANCE.getTNodeTemplate();

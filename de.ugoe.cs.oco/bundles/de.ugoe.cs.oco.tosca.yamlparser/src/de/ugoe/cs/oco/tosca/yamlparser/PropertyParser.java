@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.xsd.XSDAnnotation;
 import org.eclipse.xsd.XSDComplexTypeDefinition;
 import org.eclipse.xsd.XSDCompositor;
 import org.eclipse.xsd.XSDConstraint;
@@ -28,14 +27,9 @@ import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDScope;
 import org.eclipse.xsd.XSDSimpleTypeDefinition;
 import org.eclipse.xsd.XSDTypeDefinition;
-import org.w3c.dom.Element;
-
-import de.ugoe.cs.oco.tosca.TNodeType;
-import de.ugoe.cs.oco.tosca.ToscaFactory;
-import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 /**
- * @author fglaser
+ * @author Fabian Korte 
  *
  */
 public class PropertyParser extends Parser {
@@ -68,29 +62,39 @@ public class PropertyParser extends Parser {
 			wrapperParticle.setContent(elementDeclaration);
 			elementDeclaration.setName(entry.getKey());
 			
-			
-			modelGroup.getContents().add(wrapperParticle);
-			
 			// extract constraints for this property
 			if (entry.getValue() instanceof Map){
 				Map<String, ?> innermap = (Map<String, ?>) entry.getValue();
 				
 				if (innermap.get("type") != null){
 					String type = (String) innermap.get("type");
-					elementDeclaration.setTypeDefinition(this.getType(schema, type));
 					
+					if (type.equals("list")) {
+						XSDModelGroup innerGroup = XSDFactory.eINSTANCE.createXSDModelGroup();
+						// set Compositor to sequence
+						innerGroup.setCompositor(XSDCompositor.SEQUENCE_LITERAL);
+						wrapperParticle.setContent(innerGroup);
+						
+						// create new wrapper particle for inner element
+						XSDParticle innerWrapperParticle = XSDFactory.eINSTANCE.createXSDParticle();
+						innerWrapperParticle.setContent(elementDeclaration);
+						innerGroup.getContents().add(innerWrapperParticle);			
+					}
+					else {
+						elementDeclaration.setTypeDefinition(this.getType(schema, type));
+					}
 				}
 				
-				if (innermap.get("description") != null){
-					String description = (String) innermap.get("description");
-					XSDAnnotation comment = XSDFactory.eINSTANCE.createXSDAnnotation();
-					elementDeclaration.setAnnotation(comment);
-					
-					Element element = comment.createUserInformation(null);
-					
-					comment.getElement().appendChild(element);
-					element.appendChild(element.getOwnerDocument().createTextNode(description));
-				}
+//				if (innermap.get("description") != null){
+//					String description = (String) innermap.get("description");
+//					XSDAnnotation comment = XSDFactory.eINSTANCE.createXSDAnnotation();
+//					elementDeclaration.setAnnotation(comment);
+//					
+//					Element element = comment.createUserInformation(null);
+//					
+//					comment.getElement().appendChild(element);
+//					element.appendChild(element.getOwnerDocument().createTextNode(description));
+//				}
 				
 				if (innermap.get("required") != null){
 					if (((String)innermap.get("required")).equals("true"))
@@ -242,9 +246,8 @@ public class PropertyParser extends Parser {
 				throw new ParseException("Was expecing map with property definitions here.");
 				
 			}
-			
+			modelGroup.getContents().add(wrapperParticle);
 		}
-		
 		return propertiesType;
 	}
 private XSDSimpleTypeDefinition getTypeDefinition(XSDElementDeclaration elementDeclaration) {
@@ -285,21 +288,30 @@ private XSDSimpleTypeDefinition getTypeDefinition(XSDElementDeclaration elementD
 				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "boolean");
 			case ("timestamp"):
 				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "dateTimeStamp");
-			case ("null"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
 			case ("version"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using string instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "string");
 			case ("range"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using string instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "string");
 			case ("list"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using string instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "string");
 			case ("map"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
-			case ("scalar"):
-				throw new ParseException("Type " + toscayamltype + " not supported yet.");
-			
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using string instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "string");
+			case ("scalar-unit.time"):
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using timestamp instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "dateTimeStamp");
+			case ("scalar-unit.size"):
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using integer instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "integer");
+			case ("scalar-unit.frequency"):
+				LOGGER.warning("Type " + toscayamltype + " not supported yet. Using float instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "float");
 			default:
-				throw new ParseException("Type " + toscayamltype + " not known.");
+				LOGGER.warning("Type " + toscayamltype + " not known. Using string instead.");
+				return scope.resolveTypeDefinition("http://www.w3.org/2001/XMLSchema", "string");
 		}
 	}
 

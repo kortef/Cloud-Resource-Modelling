@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.xml.type.internal.QName;
+
 import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TRequirementDefinition;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
@@ -35,12 +37,19 @@ public class RequirementDefinitionParser extends Parser {
 		for (Object requirmentDefinitionMap : inputArray) {
 			Map<String, ?> inputMap = (Map<String, ?>) requirmentDefinitionMap;
 			TRequirementDefinition definition = ToscaFactory.eINSTANCE.createTRequirementDefinition();
-			// We expect only one entry
-			if (inputMap.size() > 1){
-				throw new ParseException("There should be only one requirement element in map.");
-			}
+			
 			for (Map.Entry<String, ?> entry: inputMap.entrySet()){
 				definition.setName(entry.getKey());
+				Map<String, ?> innerMap = (Map<String, ?>) entry.getValue();
+				for (Map.Entry<String, ?> innerentry: innerMap.entrySet()){
+					String key = innerentry.getKey();
+					switch (key){
+						case "capability":
+							definition.setRequirementType(new QName((String)innerentry.getValue()));
+						default:
+							break;
+					}
+				}
 			}
 			
 			resultList.add(definition);

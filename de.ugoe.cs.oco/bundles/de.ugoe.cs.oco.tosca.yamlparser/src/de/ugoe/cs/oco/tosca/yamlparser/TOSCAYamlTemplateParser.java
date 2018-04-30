@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.xsd.XSDFactory;
-import org.eclipse.xsd.XSDPackage;
 import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.DefinitionsType;
@@ -155,6 +154,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 		
 		if (propertyTypes != null){
 			propertyTypes.setTargetNamespace(this.targetNameSpace);
+			propertyTypes.setSchemaForSchemaQNamePrefix("customtypes");
 		}
 	}
 	

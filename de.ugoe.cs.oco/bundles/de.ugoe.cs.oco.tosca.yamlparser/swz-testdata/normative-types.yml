@@ -51,8 +51,8 @@ data_types:
        type: string
      addresses:
        type: list
-     entry_schema:
-       type: string
+       entry_schema:
+         type: string
   tosca.datatypes.network.PortInfo:
     derived_from: tosca.datatypes.Root
     properties: 
@@ -66,8 +66,8 @@ data_types:
        type: string
      addresses:
        type: list
-     entry_schema:
-       type: string
+       entry_schema:
+         type: string
   tosca.datatypes.network.PortDef:
     derived_from: integer
     constraints:
@@ -99,6 +99,10 @@ data_types:
         - in_range: [ 1, 65535 ]
     
 artifact_types:
+  tosca.artifacts.Root:
+    description: The TOSCA Artifact Type all other TOSCA Artifact Types derive from
+  tosca.artifacts.File:
+    derived_from: tosca.artifacts.Root
   tosca.artifacts.Deployment:
     derived_from: tosca.artifacts.Root
     description: TOSCA base type for deployment artifacts
@@ -107,6 +111,9 @@ artifact_types:
   tosca.artifacts.Deployment.Image.VM:
     derived_from: tosca.artifacts.Deployment.Image
     description: Virtual Machine (VM) Image
+  tosca.artifacts.Implementation:
+    derived_from: tosca.artifacts.Root
+    description: TOSCA base type for implementation artifacts
   tosca.artifacts.Implementation.Bash:
     derived_from: tosca.artifacts.Implementation
     description: Script artifact for the Unix Bash shell   
@@ -196,14 +203,15 @@ capability_types:
         - valid_values: [ source, target, peer ]
      ports:
       type: map
+      entry_schema:
+        type: PortSpec
       required: false
       constraints:
         - min_length: 1
-      entry_schema:
-        type: PortSpec
-   attributes:
-    ip_address:
-      type: string
+        
+    attributes:
+     ip_address:
+       type: string
   tosca.capabilities.Endpoint.Public:
     derived_from: tosca.capabilities.Endpoint
     properties:
@@ -331,22 +339,22 @@ node_types:
   tosca.nodes.Root:
    derived_from: tosca.entity.Root
    description: The TOSCA Node Type all other TOSCA base Node Types derive from
-  attributes:
+   attributes:
     tosca_id:
      type: string
     tosca_name:
      type: string
     state:
      type: string
-  capabilities:
+   capabilities:
     feature:
       type: tosca.capabilities.Node
-  requirements:
+   requirements:
     - dependency:
         capability: tosca.capabilities.Node
         node: tosca.nodes.Root
-                 relationship: tosca.relationships.DependsOn
-                 occurrences: [ 0, UNBOUNDED ]
+        relationship: tosca.relationships.DependsOn
+        occurrences: [ 0, UNBOUNDED ]
   
   tosca.nodes.Abstract.Compute:
    derived_from: tosca.nodes.Root

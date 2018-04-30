@@ -9,6 +9,9 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDElementDeclaration;
+import org.eclipse.xsd.XSDFactory;
+import org.eclipse.xsd.XSDParticle;
 import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
@@ -124,6 +127,14 @@ public class RelationshipTypeParser extends Parser {
 					propertiesDefinitionXSD.setName(type.getName() + "PropertiesType");
 					PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
 					propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+					
+					// create top level element declaration to make it instantiable 
+					XSDParticle wrapperParticle = XSDFactory.eINSTANCE.createXSDParticle();
+					XSDElementDeclaration elementDeclaration = XSDFactory.eINSTANCE.createXSDElementDeclaration();
+					wrapperParticle.setContent(elementDeclaration);
+					elementDeclaration.setName(entry.getKey());
+					elementDeclaration.setTypeDefinition(propertiesDefinitionXSD);
+					schema.getContents().add(elementDeclaration);
 					type.setPropertiesDefinition(propertiesDefinitionType);
 					break;
 				

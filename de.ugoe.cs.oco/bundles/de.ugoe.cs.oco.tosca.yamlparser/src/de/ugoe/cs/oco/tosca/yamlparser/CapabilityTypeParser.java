@@ -10,6 +10,9 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.xsd.XSDComplexTypeDefinition;
+import org.eclipse.xsd.XSDElementDeclaration;
+import org.eclipse.xsd.XSDFactory;
+import org.eclipse.xsd.XSDParticle;
 import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
@@ -20,7 +23,7 @@ import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 
 /**
- * @author fglaser
+ * @author Fabian Korte
  *
  */
 public class CapabilityTypeParser extends Parser {
@@ -60,6 +63,15 @@ public class CapabilityTypeParser extends Parser {
 						propertiesDefinitionXSD.setName(capabilityType.getName() + "PropertiesType");
 						PropertiesDefinitionType propertiesDefinitionType = ToscaFactory.eINSTANCE.createPropertiesDefinitionType();
 						propertiesDefinitionType.setType(new QName(propertiesDefinitionXSD.getQName()));
+						
+						// create top level element declaration to make it instantiable 
+						XSDParticle wrapperParticle = XSDFactory.eINSTANCE.createXSDParticle();
+						XSDElementDeclaration elementDeclaration = XSDFactory.eINSTANCE.createXSDElementDeclaration();
+						wrapperParticle.setContent(elementDeclaration);
+						elementDeclaration.setName(entry.getKey());
+						elementDeclaration.setTypeDefinition(propertiesDefinitionXSD);
+						schema.getContents().add(elementDeclaration);
+						
 						capabilityType.setPropertiesDefinition(propertiesDefinitionType);
 						break;
 					case "attributes":
@@ -67,8 +79,10 @@ public class CapabilityTypeParser extends Parser {
 					case "valid_source_types":
 						// List<String> sourceTypes = (List<String>) innerentry.getValue();
 						
-						// TODO: whwere are valid source types stored?
+						// TODO: where are valid source types stored?
 						//capabilityType.getValidSourceTypes().addAll(sourceTypes);
+						break;
+					case "shortname":
 						break;
 					default:
 						throw new ParseException("Unsupported key " + innerentry.getKey() + " read.");			

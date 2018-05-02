@@ -369,12 +369,15 @@ public class TOSCADef2Ecore {
 			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
 			EClass superPropertiesType = (EClass) ePackage.getEClassifier(superTypeName + "PropertiesType");
 			if (superPropertiesType == null) {
-				LOGGER.warning("Super properties type '" + superTypeName + "' for '" + name + "'not found.");
+				LOGGER.warning("Super properties type '" + superTypeName + "PropertiesType for' '" + name + "PropertiesType' not found.");
 			} else {
 				if (eType.getPropertiesDefinition() != null) {
-					EClass type = (EClass) ePackage.getEClassifier((eType.getPropertiesDefinition().getType().getLocalPart() 
-							+ "PropertiesType"));
-					type.getESuperTypes().clear();
+					String propertiesName = ConverterUtils.toEcoreCompatibleName(
+							eType.getPropertiesDefinition().getType().getLocalPart());
+					LOGGER.info("Looking for property type with name " + propertiesName + ".");
+					EClass type = (EClass) ePackage.getEClassifier(propertiesName);
+					if (type.getESuperTypes() != null)
+						type.getESuperTypes().clear();
 					type.getESuperTypes().add(superPropertiesType);
 				}
 			}

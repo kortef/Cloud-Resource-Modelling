@@ -132,7 +132,7 @@ public class RelationshipTypeParser extends Parser {
 					XSDParticle wrapperParticle = XSDFactory.eINSTANCE.createXSDParticle();
 					XSDElementDeclaration elementDeclaration = XSDFactory.eINSTANCE.createXSDElementDeclaration();
 					wrapperParticle.setContent(elementDeclaration);
-					elementDeclaration.setName(entry.getKey());
+					elementDeclaration.setName(propertiesDefinitionXSD.getName());
 					elementDeclaration.setTypeDefinition(propertiesDefinitionXSD);
 					schema.getContents().add(elementDeclaration);
 					type.setPropertiesDefinition(propertiesDefinitionType);

@@ -3,30 +3,35 @@
  */
 package de.ugoe.cs.oco.tosca2occi;
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.Map;
-
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
-import org.occiware.clouddesigner.occi.OCCIPackage;
-import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
+
 
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.normative.NormativePackage;
 import de.ugoe.cs.oco.tosca.types.TypesPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
  * Class responsible for handling the transformation of TOSCA models to OCCI models.
- * @author fglaser
+ * @author Fabian Korte
  */
 public class TOSCA2OCCITransformator {
 	/**
@@ -37,14 +42,17 @@ public class TOSCA2OCCITransformator {
 	 */
 	public static String transform(Path toscaModelPath, Path occiModelPath) throws Exception{
 		ToscaPackage.eINSTANCE.eClass();
-		TypesPackage.eINSTANCE.eClass();
+		NormativePackage.eINSTANCE.eClass();
 		OCCIPackage.eINSTANCE.eClass();
-		InfrastructurePackage.eINSTANCE.eClass();
 		
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
 		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
+		
+		ResourceSet set = new ResourceSetImpl();
+		
 		
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
@@ -63,21 +71,24 @@ public class TOSCA2OCCITransformator {
 		}
 
 		try {
-			String toscaURI = "http://oco.cs.ugoe.de/tosca, http://swe.simpaas.tosca.de/PropertyTypes";
+//			String toscaURI = "http://oco.cs.ugoe.de/tosca, http://oco.cs.ugoe.de/tosca/normativetypes";
 			String path = toscaModelPath.getParent().toString() + "/";
-			IModel toscaModel = createEmfModel("TOSCA", 
-					path + toscaModelPath.getFileName().toString(),  
-					toscaURI,
-					true, 
-					false);
+//			IModel toscaModel = createEmfModel("TOSCA", 
+//					path + toscaModelPath.getFileName().toString(),  
+//					toscaURI,
+//					true, 
+//					false);
+			IModel toscaModel = createEmfModelFromResourceSet("TOSCA", path + toscaModelPath.getFileName().toString(), set);
+			
 			
 			String occiURI = "http://schemas.ogf.org/occi/core/ecore";
 			path = occiModelPath.getParent().toString() + "/";
-			IModel occiModel = createEmfModel("OCCI",
-					path + occiModelPath.getFileName().toString(),
-					occiURI,
-					false,
-					true);
+//			IModel occiModel = createEmfModel("OCCI",
+//					path + occiModelPath.getFileName().toString(),
+//					occiURI,
+//					false,
+//					true);
+			IModel occiModel = createEmfModelFromResourceSet("OCCI", path + occiModelPath.getFileName().toString(), set);
 			
 			String occiCoreURI = OCCIPackage.class.getClassLoader().getResource("model/Core.occie").toString();
 			IModel occiCoreModel = createEmfModel("Core",
@@ -116,6 +127,14 @@ public class TOSCA2OCCITransformator {
 		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal + "");
 		emfModel.load(properties, (IRelativePathResolver)null);
 		return emfModel;
+	}
+	
+	private static IModel createEmfModelFromResourceSet(String name, String uri, ResourceSet set) throws IOException {
+		Resource resource = set.createResource(URI.createURI(uri));
+		resource.load(null);
+		InMemoryEmfModel model = new InMemoryEmfModel(resource);
+		model.setName(name);
+		return model;
 	}
 }
 

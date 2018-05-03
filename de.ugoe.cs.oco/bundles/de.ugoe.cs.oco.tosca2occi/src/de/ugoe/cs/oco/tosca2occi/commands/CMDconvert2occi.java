@@ -5,8 +5,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.occiware.clouddesigner.occi.util.OCCIResourceFactoryImpl;
 
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 import de.ugoe.cs.oco.tosca2occi.TOSCA2OCCITransformator;

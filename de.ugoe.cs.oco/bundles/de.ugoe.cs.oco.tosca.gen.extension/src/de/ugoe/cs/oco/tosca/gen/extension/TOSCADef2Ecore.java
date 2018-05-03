@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.ecore.XSDEcoreBuilder;
 import org.eclipse.xsd.util.XSDResourceFactoryImpl;
@@ -111,6 +113,8 @@ public class TOSCADef2Ecore {
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(cType.getName()));
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TCapability")));
 			ePackage.getEClassifiers().add(eClass);
+			
+			eClass.getEOperations().add(getComputeTypeOperation(cType));
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
@@ -118,6 +122,8 @@ public class TOSCADef2Ecore {
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(rType.getName()));
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRequirement")));
 			ePackage.getEClassifiers().add(eClass);
+			
+			eClass.getEOperations().add(getComputeTypeOperation(rType));
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
@@ -125,6 +131,9 @@ public class TOSCADef2Ecore {
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(aType.getName()));
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TArtifactTemplate")));
 			ePackage.getEClassifiers().add(eClass);
+			
+			eClass.getEOperations().add(getComputeTypeOperation(aType));
+
 		}
 		
 		for (TNodeType nodeType: definitions.getNodeType()) {
@@ -155,6 +164,7 @@ public class TOSCADef2Ecore {
 				ecoreAnnotation.getDetails().put("constraints", constraintStringBuilder.substring(
 						0, constraintStringBuilder.length() - 1));
 			}
+			eClass.getEOperations().add(getComputeTypeOperation(nodeType));
 		}
 		
 		for (TRelationshipType relationshipType: definitions.getRelationshipType()) {
@@ -162,6 +172,8 @@ public class TOSCADef2Ecore {
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(relationshipType.getName()));
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRelationshipTemplate")));
 			ePackage.getEClassifiers().add(eClass);
+			
+			eClass.getEOperations().add(getComputeTypeOperation(relationshipType));
 		}
 		
 		return ePackage;
@@ -173,13 +185,17 @@ public class TOSCADef2Ecore {
 		ePackage.setName(definitions.getName());
 		ePackage.setNsURI(definitions.getTargetNamespace());
 		ePackage.setNsPrefix(definitions.getName());
-
-		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore");
-		annotation.getDetails().put("settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.setEModelElement(ePackage);
+		EAnnotation oclImportAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+		oclImportAnnotation.setSource("http://www.eclipse.org/OCL/Import");
+		oclImportAnnotation.getDetails().put(XMLTypePackage.eNS_PREFIX, XMLTypePackage.eNS_URI);
+		oclImportAnnotation.setEModelElement(ePackage);
+		
+		EAnnotation ecoreAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+		ecoreAnnotation.setSource("http://www.eclipse.org/emf/2002/Ecore");
+		ecoreAnnotation.getDetails().put("settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		ecoreAnnotation.getDetails().put("invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		ecoreAnnotation.getDetails().put("validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		ecoreAnnotation.setEModelElement(ePackage);
 		return ePackage;
 	}
 
@@ -381,33 +397,23 @@ public class TOSCADef2Ecore {
 					type.getESuperTypes().add(superPropertiesType);
 				}
 			}
-			// now set super type for corresponding properties type
-			if (eType.getPropertiesDefinition() != null) {
-				
-			}
 		}
 		
 		return ePackage;
 		
 	}
-
-	private EClass getToscaTemplateClass(TEntityType entityType) {
-		if (entityType instanceof TNodeType) {
-			return ToscaPackage.eINSTANCE.getTNodeTemplate();
-		}
+	
+	private static EOperation getComputeTypeOperation(TEntityType entityType){
+		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
+		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" + entityType.getName() + "'}");
+		typeOperation.getEAnnotations().add(annotation);
 		
-		if (entityType instanceof TRelationshipType) {
-			return ToscaPackage.eINSTANCE.getTRelationshipTemplate();
-		}
+		typeOperation.setName("computeType");
+		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
 		
-		if (entityType instanceof TCapabilityType) {
-			return ToscaPackage.eINSTANCE.getTCapability();
-		}
-		
-		if (entityType instanceof TRequirementType) {
-			return ToscaPackage.eINSTANCE.getTRequirement();
-		}
-		return null;
+		return typeOperation;
 	}
 	 
 }

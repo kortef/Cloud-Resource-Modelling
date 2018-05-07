@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.ProxyCrossReferencer;
 import org.eclipse.emf.ecore.util.EcoreUtil.UnresolvedProxyCrossReferencer;
@@ -39,6 +38,8 @@ import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
+
+import com.jcraft.jsch.JSch;
 
 import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
@@ -53,6 +54,9 @@ import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
 import pcg.PcgPackage;
+
+
+
 
 /**Responsible for EMF Model Utility Operations.
  * @author rockodell
@@ -76,21 +80,22 @@ public class ModelUtility {
 			Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
 			if(extResource.getContents().get(0) instanceof Extension) {
 				 Extension ext = (Extension) extResource.getContents().get(0);
-			     URI realURI = URI.createFileURI(ext.getScheme()).trimFragment();
+			     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
 			     extResource.setURI(realURI);
+
 			}
 			resSet.getResources().add(extResource);
 		}
 		
 		String file = new File(configuration.toString()).getAbsolutePath();
-	       //URI fileURI = URI.createURI(path.toString());
-	       URI fileURI = URI.createFileURI(file);
-	       Resource resource = resSet.getResource(fileURI, true);
+	    //URI fileURI = URI.createURI(path.toString());
+	    URI fileURI = URI.createFileURI(file);
+	    Resource resource = resSet.getResource(fileURI, true);
 		
-		
-		
+	       
 		EcorePlugin.ExtensionProcessor.process(null);
 		EcoreUtil.resolveAll(resSet);
+		
         for(EObject obj: resource.getContents()) {
         	if(obj instanceof Configuration) {
         		return ((Configuration)obj).eContents();
@@ -110,25 +115,27 @@ public class ModelUtility {
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
-		if(extensions != null) {
 			for(Path path: extensions) {
 				String filePath = new File(path.toString()).getAbsolutePath();
 				Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
 				if(extResource.getContents().get(0) instanceof Extension) {
 					 Extension ext = (Extension) extResource.getContents().get(0);
-				     URI realURI = URI.createFileURI(ext.getScheme()).trimFragment();
+				     URI realURI = URI.createURI(ext.getScheme()).trimFragment();
 				     extResource.setURI(realURI);
 				}
 				resSet.getResources().add(extResource);
 			}
-		}
+		
 		
 		String file = new File(configuration.toString()).getAbsolutePath();
-	       //URI fileURI = URI.createURI(path.toString());
-	       URI fileURI = URI.createFileURI(file);
-	       Resource resource = resSet.getResource(fileURI, true);
+	    Resource resource = resSet.getResource(URI.createFileURI(file), true);
+	    
 		
-		
+		/*
+		String file = new File(configuration.toString()).getAbsolutePath();
+	    URI fileURI = URI.createFileURI(file);
+	    Resource resource = resSet.getResource(fileURI, true);
+		*/
 		
 		EcorePlugin.ExtensionProcessor.process(null);
 		EcoreUtil.resolveAll(resSet);
@@ -454,29 +461,25 @@ public class ModelUtility {
 		return null;	
 		*/
 	}
-
-	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath, String publicNetworkId) {
+	
+	public static EList<EObject> retrieveRuntimeModel(String rdirectory, String rfile, String lfile, String host, int port, String username, String pKey) {
+		List<Path> extensions = new ArrayList<Path>();
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.occi.platform/model/platform.occie"));
+		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.placement/model/placement.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstackinstance.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacknetwork.occie"));
+		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacktemplate.occie"));
+		OCCIPackage.eINSTANCE.eClass();
+		ModelRetriever.retrieveRuntimeModel(rdirectory, rfile, lfile, host, port, username, pKey);
 		
+		EList<EObject> runtimeModel = ModelUtility.loadOCCI(Paths.get(lfile), extensions);
+		return runtimeModel;
+	}
+	
+	
+	public static EList<EObject> extractRuntimeModel(Connection conn, Path runtimePath, String publicNetworkId) {
 		OCCIModelExtractorWrapper.extractRuntimeModel(conn.getAdress(), conn.getUser(), conn.getPassword(), runtimePath, publicNetworkId);
 		EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimePath);
 		return runtimeModel;
-		/*
-		Path runtimeModelPath = runtimePath;
-		try {
-			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
-					new BasicAuthentication(conn.getUser(), conn.getPassword()), MediaType.TEXT_PLAIN, true);
-			
-			OCCIModelExtractor extractor = new OCCIModelExtractor();
-			OCCIModel model = extractor.extractModel(client, publicNetworkId);
-			OCCIModelSerializer serializer = new OCCIModelSerializer();
-			serializer.serializeOCCIModel(model, runtimeModelPath);
-			EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimeModelPath);
-			return runtimeModel;
-		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;	
-		*/
 	}
 }

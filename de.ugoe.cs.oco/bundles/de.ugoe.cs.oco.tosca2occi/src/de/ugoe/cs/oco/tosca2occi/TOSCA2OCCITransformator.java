@@ -3,27 +3,20 @@
  */
 package de.ugoe.cs.oco.tosca2occi;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
-
-import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
  * Class responsible for handling the transformation of TOSCA models to OCCI models.
@@ -37,27 +30,12 @@ public class TOSCA2OCCITransformator {
 	 * @throws Exception
 	 */
 	public static String transform(Path toscaModelPath, Path occiModelPath) throws Exception{
-		//ToscaPackage.eINSTANCE.eClass();
-		//NormativePackage.eINSTANCE.eClass();
-		//OCCIPackage.eINSTANCE.eClass();
-		//InfrastructurePackage.eINSTANCE.eClass();
-		
 		EcorePlugin.ExtensionProcessor.process(null);
-
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		
-		m.put("tosca", new ToscaResourceFactoryImpl());
-		m.put("occie", new OCCIResourceFactoryImpl());
-		m.put("occic", new OCCIResourceFactoryImpl());
 					
 		ResourceSet set = new ResourceSetImpl();
-		set.getLoadOptions().put(XMIResource.OPTION_URI_HANDLER, new
-				URIHandlerImpl.PlatformSchemeAware());
-	
+		
 		IEolExecutableModule module = new EtlModule();
 		Object result = null;		
-		// TODO: Remove path
 		File transformationFile = new File("model/TOSCA2OCCI.etl");    
 		try {
 			module.parse(transformationFile);
@@ -73,10 +51,15 @@ public class TOSCA2OCCITransformator {
 
 		try {
 			String path = toscaModelPath.getParent().toString() + "/";
-			IModel toscaModel = createEmfModelFromResourceSet("TOSCA", path + toscaModelPath.getFileName().toString(), set);
-			path = occiModelPath.getParent().toString() + "/";
-			InMemoryEmfModel occiModel = createEmfModelFromResourceSet("OCCI", path + occiModelPath.getFileName().toString(), set);
+			Resource resource = set.getResource(URI.createURI(path + toscaModelPath.getFileName().toString()), true);
+			InMemoryEmfModel toscaModel = new InMemoryEmfModel(resource);
+			toscaModel.setName("TOSCA");
 			
+			path = occiModelPath.getParent().toString() + "/";
+			resource = set.createResource(URI.createURI(path + occiModelPath.getFileName().toString()));
+			InMemoryEmfModel occiModel = new InMemoryEmfModel(resource);
+			occiModel.setName("OCCI");
+						
 			module.getContext().getModelRepository().addModel(toscaModel);
 			module.getContext().getModelRepository().addModel(occiModel);
 			
@@ -88,7 +71,7 @@ public class TOSCA2OCCITransformator {
 			extensionMap.put("http://schemas.modmacao.org/occi/platform", "Platform");
 					
 			for (Entry<String, String> entry: extensionMap.entrySet()) {
-				Resource resource = set.getResource(URI.createURI(entry.getKey(), true), true);
+				resource = set.getResource(URI.createURI(entry.getKey(), true), true);
 				IModel model = new InMemoryEmfModel(resource);
 				model.setName(entry.getValue());
 				module.getContext().getModelRepository().addModel(model);		
@@ -101,31 +84,6 @@ public class TOSCA2OCCITransformator {
 			e.printStackTrace();
 		}
 		return result.toString();
-	}
-
-//	private static EmfModel createEmfModel(String name, String uri,
-//			String metauri, boolean readOnLoad, boolean storeOnDisposal)
-//					throws EolModelLoadingException, URISyntaxException {
-//		EmfModel emfModel = new EmfModel();
-//		StringProperties properties = new StringProperties();
-//		properties.put(EmfModel.PROPERTY_CACHED, "true");
-//		if (metauri != null){
-//			properties.put(EmfModel.PROPERTY_METAMODEL_URI, metauri);
-//		}
-//		properties.put(EmfModel.PROPERTY_EXPAND, "true");
-//		properties.put(EmfModel.PROPERTY_NAME, name);
-//		properties.put(EmfModel.PROPERTY_MODEL_URI, uri);
-//		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad + "");
-//		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal + "");
-//		emfModel.load(properties, (IRelativePathResolver)null);
-//		return emfModel;
-//	}
-	
-	private static InMemoryEmfModel createEmfModelFromResourceSet(String name, String uri, ResourceSet set) throws IOException {
-		Resource resource = set.getResource(URI.createURI(uri), true);
-		InMemoryEmfModel model = new InMemoryEmfModel(resource);
-		model.setName(name);
-		return model;
 	}
 }
 

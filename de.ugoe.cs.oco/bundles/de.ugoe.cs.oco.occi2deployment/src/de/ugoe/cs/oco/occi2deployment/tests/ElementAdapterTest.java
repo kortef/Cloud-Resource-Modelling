@@ -8,10 +8,10 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.adapter.ElementAdapter;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 
 

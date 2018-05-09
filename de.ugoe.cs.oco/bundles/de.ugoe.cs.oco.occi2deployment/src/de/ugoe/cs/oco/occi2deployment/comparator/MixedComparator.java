@@ -11,13 +11,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Mixin;
 import org.eclipse.cmf.occi.core.Resource;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
 import pcg.*;
@@ -46,7 +47,16 @@ public class MixedComparator extends AbsComplexComparator {
 		compare(model1, model2);
 	}
 
-	
+
+	public MixedComparator(Configuration runtimeConfig, Configuration targetConfig) {
+		compare(runtimeConfig, targetConfig);
+	}
+
+	private void compare(Configuration runtimeConfig, Configuration targetConfig) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	void createResourceMatch(org.eclipse.emf.ecore.resource.Resource oldModelResource,
 			org.eclipse.emf.ecore.resource.Resource newModelResource) {

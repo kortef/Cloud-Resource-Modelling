@@ -4,8 +4,6 @@ import java.io.File;
 import java.nio.file.Path;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.epsilon.common.parse.problem.ParseProblem;
-import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.flock.FlockModule;
 import org.eclipse.emf.common.util.URI;
@@ -26,9 +24,7 @@ public class PCG2IGPTransformator extends AbsTransformator {
 			
 			URI uri = URI.createFileURI(pcgPath.toString());
 			String pcgURI2 = "http://swe.simpaas.pcg.de/pcg";
-			String path = pcgPath.getParent().toString() + "/";
 			IModel PCG = createEmfModel("PCG",
-				//path + pcgPath.getFileName().toString(),
 				uri,
 				pcgURI2,
 				true,
@@ -37,9 +33,7 @@ public class PCG2IGPTransformator extends AbsTransformator {
 			
 			uri = URI.createFileURI(ipgPath.toString());
 			String ipgURI = "http://swe.simpaas.pcg.de/pcg";
-			path = ipgPath.getParent().toString() + "/";
 			IModel IPG = createEmfModel("IPG", 
-				//path + ipgPath.getFileName().toString(),  
 				uri,
 				ipgURI,
 				false, 

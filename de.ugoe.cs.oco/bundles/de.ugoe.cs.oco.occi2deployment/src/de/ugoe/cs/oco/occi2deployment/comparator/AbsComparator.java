@@ -10,11 +10,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Resource;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 import pcg.Vertex;
 
 /**Abstract class containing the attributes newElements, oldElements, missingElements and adaptedElements.
@@ -358,7 +359,24 @@ public abstract class AbsComparator implements Comparator {
 		log.info("Comparator: " + this.getClass().getSimpleName());
 		for(Match match: list){
 			if(match.getSrc() == null){
-				if(match.getTar().eClass().getName().equals("Link")){
+				log.info("Mapped: " + "null" + " : " + ((Entity)match.getTar()).getId());
+			
+			}
+			else if(match.getTar() == null){
+				log.info("Mapped: " + ((Entity) match.getSrc()).getId() + " : " + "null");
+			}
+			else if(match.getTar() != null && match.getSrc() != null){
+				log.info("Mapped: " + ((Entity)match.getSrc()).getId() + " : " + ((Entity)match.getTar()).getId());
+
+			}
+		}
+	}
+	/*
+	protected void logMatch(List<Match> list){
+		log.info("Comparator: " + this.getClass().getSimpleName());
+		for(Match match: list){
+			if(match.getSrc() == null){
+				if(match.getTar() instanceof Link){
 					log.info("Mapped: " + "null" + " : " + ((Link)match.getTar()).getSource().getTitle()
 							+ "->"+ ((Link)match.getTar()).getTarget().getTitle());
 				}
@@ -367,7 +385,7 @@ public abstract class AbsComparator implements Comparator {
 				}
 			}
 			else if(match.getTar() == null){
-				if(match.getSrc().eClass().getName().equals("Link")){
+				if(match.getSrc() instanceof Link){
 					log.info("Mapped: " + ((Link)match.getSrc()).getSource().getTitle()
 							+ "->"+ ((Link)match.getSrc()).getTarget().getTitle() + " : null");
 				}
@@ -376,18 +394,28 @@ public abstract class AbsComparator implements Comparator {
 				}
 			}
 			else if(match.getTar() != null && match.getSrc() != null){
-				if(match.getSrc().eClass().getName().equals("Link") && match.getTar().eClass().getName().equals("Link")){
+				if(match.getSrc() instanceof Link && match.getTar() instanceof Link){
+					if(((Link)match.getSrc()).getSource().getTitle() != null && ((Link)match.getSrc()).getTarget().getTitle() != null){
 					log.info("Mapped: " + ((Link)match.getSrc()).getSource().getTitle()
 							+ "->"+ ((Link)match.getSrc()).getTarget().getTitle() + " : " + 
 							((Link)match.getTar()).getSource().getTitle()
 							+ "->"+ ((Link)match.getTar()).getTarget().getTitle());
+					}
+					else {
+						log.info("Mapped: " + ((Entity)match.getSrc()).getId() + " : " + ((Entity)match.getTar()).getId());
+					}
 				}
 				else{
-					log.info("Mapped: " + ((Entity)match.getSrc()).getTitle() + " : " + ((Entity)match.getTar()).getTitle());
+					if(((Entity)match.getSrc()).getTitle() != null && ((Entity)match.getSrc()).getTitle() != null) {
+						log.info("Mapped: " + ((Entity)match.getSrc()).getTitle() + " : " + ((Entity)match.getTar()).getTitle());
+					}
+					else {
+						log.info("Mapped: " + ((Entity)match.getSrc()).getId() + " : " + ((Entity)match.getTar()).getId());
+					}
 				}
 			}
 		}
-	}
+	}*/
 	
 	/**Logs the Map of the fixpoint values from the simlarity flooding process.
 	 * @param map

@@ -6,8 +6,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.cmf.occi.core.Resource;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 
 /**A simple comparator that compares two Models, by matching elements
  * that posses the same ids.

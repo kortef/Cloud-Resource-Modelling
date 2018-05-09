@@ -12,14 +12,15 @@ import java.util.List;
 import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.Connector;
 
 /**Contains multiple methods required by every Executor
  * @author rockodell
  *
  */
 public abstract class AbsExecutor implements Executor {
-	protected Connection connection;
+	protected Connector connection;
 	protected Integer maxTries;
 	
 	/**Establish a HttpURLConnection to the given address using the given REST method, output, contentType and
@@ -44,6 +45,30 @@ public abstract class AbsExecutor implements Executor {
 			}
 			if(authToken != null){
 				conn.setRequestProperty("X-Auth-token", authToken);
+			}
+			return conn;
+			
+		} catch (MalformedURLException e) {
+			log.error("Malformed URL: " + address);
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return null;
+	}
+	
+	protected HttpURLConnection establishConnection(String address, String method, Boolean output, String contentType){
+		try {
+			URL url = new URL(address);
+			System.out.println(url);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(output);
+			if(method != null){
+				conn.setRequestMethod(method);
+			}
+			if(contentType != null){
+				conn.setRequestProperty("Content-Type", contentType);
 			}
 			return conn;
 			
@@ -107,7 +132,12 @@ public abstract class AbsExecutor implements Executor {
 			if (200 <= conn.getResponseCode() && conn.getResponseCode() <= 299) {
 				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			} else {
-				br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				if(conn.getErrorStream() != null) {
+					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+				}
+				else {
+					return "";
+				}
 			}
 			StringBuffer sb = new StringBuffer();
 			String inputLine = "";
@@ -125,7 +155,7 @@ public abstract class AbsExecutor implements Executor {
 			}
 			return output;*/
 		} catch (IOException e) {
-			return null;
+			return "";
 		}		
 	}
 
@@ -167,10 +197,12 @@ public abstract class AbsExecutor implements Executor {
 	 * @return
 	 */
 	public String getActualId(Entity entity, List<String[]> idSwapList) {
-		for (String[] swapID : idSwapList) {	    	
-				if(entity.getId().equals(swapID[0])){
-					return swapID[1];
-				}
+		if(idSwapList != null) {
+			for (String[] swapID : idSwapList) {	    	
+					if(entity.getId().equals(swapID[0])){
+						return swapID[1];
+					}
+			}
 		}
 		return entity.getId();
 	}
@@ -194,7 +226,7 @@ public abstract class AbsExecutor implements Executor {
 	/** Returns connection of the Executor object.
 	 * @return connection
 	 */
-	public Connection getConn() {
+	public Connector getConn() {
 		return connection;
 	}
 

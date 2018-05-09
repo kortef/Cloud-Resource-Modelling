@@ -2,9 +2,11 @@ package de.ugoe.cs.oco.occi2deployment.comparator;
 
 import java.nio.file.Path;
 
+import org.eclipse.cmf.occi.core.Configuration;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 
 public class ComparatorFactory {
 	/**Returns a comparator instance. Comparing model1 (sourceModel) with model2(targetModel).
@@ -44,5 +46,5 @@ public class ComparatorFactory {
 			return new MixedComparator(model1, model2, conn);
 		}
 		return null;
-	}	
+	}
 }

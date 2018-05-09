@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ossweruntime" scheme="http://schemas.modmacao.org/openstack/swe#">
+  <import href="http://schemas.ogf.org/occi/core#/"/>
+  <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <import href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#/"/>
+  <import href="http://schemas.modmacao.org/modmacao#/"/>
+  <import href="http://schemas.modmacao.org/occi/platform#/"/>
+  <import href="http://schemas.modmacao.org/placement#/"/>
+  <mixins name="SWE_Small" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="a6d239e1-4082-4044-9de9-474bee2152bb">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='small']"/>
+  </mixins>
+  <mixins name="SWE_Medium" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="9ed5ac24-d1e7-4665-9c22-318561733f42">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='medium']"/>
+  </mixins>
+  <mixins name="SWE_Large" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="ce8c33af-0cd5-4aac-b6f3-fcde58c4b262">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='large']"/>
+  </mixins>
+  <mixins name="SWE_Mem_Small" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="7ae43f3f-4f39-4855-8a42-8d1f7e26bc0a">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='mem_small']"/>
+  </mixins>
+  <mixins name="SWE_Mem_Medium" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="553402b5-e36c-47b4-b2bf-7ecc8be4a4b5">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='mem_medium']"/>
+  </mixins>
+  <mixins name="SWE_Mem_Large" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="7720ef3e-b585-4edf-860a-a60ba72c5ecc">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#//@mixins[term='mem_large']"/>
+  </mixins>
+  <mixins name="Ubuntu_TrustyTahr" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="adf63ddc-debe-4d7e-b899-b936e989439f">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+  <mixins name="Ubuntu_XenialXerus" scheme="http://schemas.modmacao.org/openstack/swe#">
+    <attributes name="openstack.runtime.id" mutable="false" required="true" default="5437eae8-7c47-4834-929c-a314de77d291">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='os_tpl']"/>
+  </mixins>
+</occi:Extension>

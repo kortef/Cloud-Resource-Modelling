@@ -12,8 +12,8 @@ import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.AttributeState;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
 

@@ -9,12 +9,20 @@ import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OcciRegistry;
+import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
+import org.modmacao.placement.PlacementPackage;
 
 import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
 import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
+import modmacao.ModmacaoPackage;
+import openstackruntime.OpenstackruntimePackage;
 
 
 public class ComparatorTest {
@@ -25,7 +33,20 @@ public class ComparatorTest {
 		Logger.getLogger(Comparator.class.getName()).setLevel(Level.DEBUG);
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
-		String version = "Complex";
+		InfrastructurePackage.eINSTANCE.eClass();
+		OCCIPackage.eINSTANCE.eClass();
+		ModmacaoPackage.eINSTANCE.eClass();
+		OpenstackruntimePackage.eINSTANCE.eClass();
+		PlacementPackage.eINSTANCE.eClass();
+		
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/modmacao#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/modmacao.occie");
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/openstack/runtime#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/openstackruntime.occie");
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/openstack/swe#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/ossweruntime.occie");
+		OcciRegistry.getInstance().registerExtension("http://schemas.occiware.org/placement#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/placement.occie");
+		OcciRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#", InfrastructurePackage.class.getClassLoader().getResource("model/Infrastructure.occie").toString());
+		
+		
+		String version = "Mixed";
 		
 		List<Path> extensions = new ArrayList<Path>();
 		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.occi.platform/model/platform.occie"));
@@ -49,9 +70,37 @@ public class ComparatorTest {
 		System.out.println("MLS -> MLS:");
 		Path occiPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
 		Path occiPath2 = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
-		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(occiPath, null);	
+		org.eclipse.emf.ecore.resource.Resource oldModelResource = ModelUtility.loadOCCIResource(occiPath, null);
+		//System.out.println(oldModelResource.getContents());
 		org.eclipse.emf.ecore.resource.Resource newModelResource = ModelUtility.loadOCCIResource(occiPath2, extensions);	
 		Comparator comparator = ComparatorFactory.getComparator(version, oldModelResource, newModelResource, null);
+		CachedResourceSet.getCache().clear();
+		System.out.println("");
+		//System.out.println(ModelUtility.getOCCIConfigurationContents(newModelResource));
+		
+		
+		
+		
+		System.out.println("anonym -> anonym:");
+		occiPath = Paths.get("/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/model-anonymous.occic");
+		occiPath2 = Paths.get("/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/model-anonymous.occic");
+		org.eclipse.emf.ecore.resource.Resource oldModelResource2 = ModelUtility.loadOCCIResource(occiPath, null);	
+		org.eclipse.emf.ecore.resource.Resource newModelResource2 = ModelUtility.loadOCCIResource(occiPath2, null);	
+		
+		//System.out.println(ModelUtility.getOCCIConfigurationContents(newModelResource2));
+		
+		Comparator comparator2 = ComparatorFactory.getComparator(version, occiPath, occiPath2, null);
+		CachedResourceSet.getCache().clear();
+		System.out.println("");
+		
+		
+		System.out.println("MLS -> anonym:");
+		occiPath = new DeployerHelper().loadPath("/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS.occic");
+		occiPath2 = Paths.get("/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/model-anonymous.occic");
+
+		//System.out.println(ModelUtility.getOCCIConfigurationContents(newModelResource2));
+		
+		Comparator comparator3 = ComparatorFactory.getComparator(version, occiPath, occiPath2, null);
 		CachedResourceSet.getCache().clear();
 		System.out.println("");
 		

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <occi:Configuration>
+    <use href="http://schemas.ogf.org/occi/core#/"/>
+    <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+    <use href="http://schemas.modmacao.org/occi/platform#/"/>
+    <use href="http://schemas.ogf.org/occi/infrastructure/compute/template/1.1#/"/>
+    <use href="http://schemas.occiware.org/placement#/"/>
+    <use href="http://schemas.modmacao.org/openstack/runtime#/"/>
+    <use href="http://schemas.modmacao.org/modmacao#/"/>
+    <use href="http://schemas.modmacao.org/openstack/swe#/"/>
+  </occi:Configuration>
+  <occi:AttributeState name="occi.core.id" value="d52754e0-6729-4034-adbb-8f1f3800f2c6"/>
+  <occi:AttributeState name="occi.core.title" value="provider"/>
+  <occi:AttributeState name="occi.core.summary" value=""/>
+  <occi:AttributeState name="occi.network.vlan" value="0"/>
+  <occi:AttributeState name="occi.network.label" value=""/>
+  <occi:AttributeState name="occi.network.state" value="inactive"/>
+  <occi:AttributeState name="occi.network.state.message" value=""/>
+  <occi:AttributeState name="openstack.runtime.id" value="d52754e0-6729-4034-adbb-8f1f3800f2c6"/>
+  <occi:AttributeState name="occi.core.id" value="3242acc9-be58-4e79-8210-d02784df63f4"/>
+  <occi:AttributeState name="occi.core.title" value="PUBLIC"/>
+  <occi:AttributeState name="occi.core.summary" value=""/>
+  <occi:AttributeState name="occi.network.vlan" value="0"/>
+  <occi:AttributeState name="occi.network.label" value=""/>
+  <occi:AttributeState name="occi.network.state" value="active"/>
+  <occi:AttributeState name="occi.network.state.message" value=""/>
+  <occi:AttributeState name="occi.network.address" value="10.0.0.0/24"/>
+  <occi:AttributeState name="occi.network.gateway" value=""/>
+  <occi:AttributeState name="occi.network.allocation" value="dynamic"/>
+  <occi:AttributeState name="occi.core.id" value="2e6a73d0-faaa-476a-bd25-ca461dd166ce"/>
+  <occi:AttributeState name="occi.core.title" value="vm2"/>
+  <occi:AttributeState name="occi.core.summary" value=""/>
+  <occi:AttributeState name="occi.compute.architecture" value="x86"/>
+  <occi:AttributeState name="occi.compute.cores" value="2"/>
+  <occi:AttributeState name="occi.compute.hostname" value="vm2"/>
+  <occi:AttributeState name="occi.compute.share" value="0"/>
+  <occi:AttributeState name="occi.compute.speed" value="0"/>
+  <occi:AttributeState name="occi.compute.memory" value="4096"/>
+  <occi:AttributeState name="occi.compute.state" value="active"/>
+  <occi:AttributeState name="occi.compute.state.message" value=""/>
+</xmi:XMI>

@@ -14,8 +14,9 @@ import org.eclipse.cmf.occi.core.Mixin;
 import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.OcciCoreConstants;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.Connector;
+import de.ugoe.cs.oco.occi2deployment.provisioner.OOIProvisioner;
 
 /**Handles execution of OCCI Model Elements.
  * @author rockodell
@@ -27,7 +28,7 @@ public class OCCIExecutor extends AbsExecutor{
 	 * Sets maxTries to 3.
 	 * @param conn
 	 */
-	public OCCIExecutor(Connection conn) {
+	public OCCIExecutor(Connector conn) {
 		this.connection = conn;
 		this.maxTries = 3;
 	}
@@ -38,7 +39,7 @@ public class OCCIExecutor extends AbsExecutor{
 	 * @param conn
 	 * @param maxTries
 	 */
-	public OCCIExecutor(Connection conn, int maxTries){
+	public OCCIExecutor(Connector conn, int maxTries){
 		this.connection = conn;
 		this.maxTries = maxTries;
 	}
@@ -196,7 +197,7 @@ public class OCCIExecutor extends AbsExecutor{
 		//conn.setRequestProperty("Accept", "text/occi");
 		
 		if(entity.getKind().getTerm().contains("compute")){
-			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+Provisioner.stubId+"\"");
+			conn.setRequestProperty("Link", "</bar>; rel=\"http://schemas.ogf.org/occi/infrastructure#network\"; occi.core.target=\"http://192.168.34.1:8787/occi1.1/network/"+OOIProvisioner.stubId+"\"");
 		}
 		log.debug("POST" + " "+ conn.getURL() + " Category: " + conn.getRequestProperty("Category") + " X-OCCI-Attribute:" + conn.getRequestProperty("X-OCCI-Attribute"));
 		

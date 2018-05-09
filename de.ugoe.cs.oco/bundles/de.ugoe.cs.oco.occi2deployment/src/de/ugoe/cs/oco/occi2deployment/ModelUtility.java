@@ -2,57 +2,45 @@ package de.ugoe.cs.oco.occi2deployment;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelFactoryImpl;
-import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EReferenceImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EcoreUtil.ProxyCrossReferencer;
-import org.eclipse.emf.ecore.util.EcoreUtil.UnresolvedProxyCrossReferencer;
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
-
-import com.jcraft.jsch.JSch;
+import org.modmacao.placement.PlacementPackage;
 
 import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
+import org.eclipse.cmf.occi.core.util.OcciRegistry;
+import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 
-import de.ugoe.cs.oco.occi.extractor.OCCIModel;
-import de.ugoe.cs.oco.occi.extractor.OCCIModelExtractor;
 import de.ugoe.cs.oco.occi.extractor.wrapper.OCCIModelExtractorWrapper;
-import de.ugoe.cs.oco.occi.serializer.OCCIModelSerializer;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.ModelRetriever;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
+import modmacao.ModmacaoPackage;
+import openstackruntime.OpenstackruntimePackage;
 import pcg.PcgPackage;
 
 
@@ -64,8 +52,9 @@ import pcg.PcgPackage;
  */
 @SuppressWarnings("restriction")
 public class ModelUtility {
-
+	
 	public static EList<EObject> loadOCCI (Path configuration, List<Path> extensions) {
+		InfrastructurePackage.eINSTANCE.eClass();
 		OCCIPackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		
@@ -106,6 +95,7 @@ public class ModelUtility {
 	}
 	
 	public static Resource loadOCCIResource (Path configuration, List<Path> extensions) {
+		InfrastructurePackage.eINSTANCE.eClass();
 		OCCIPackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		
@@ -115,6 +105,7 @@ public class ModelUtility {
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
+		if(extensions != null) {
 			for(Path path: extensions) {
 				String filePath = new File(path.toString()).getAbsolutePath();
 				Resource extResource =resSet.getResource(URI.createFileURI(filePath), true);
@@ -125,7 +116,7 @@ public class ModelUtility {
 				}
 				resSet.getResources().add(extResource);
 			}
-		
+		}
 		
 		String file = new File(configuration.toString()).getAbsolutePath();
 	    Resource resource = resSet.getResource(URI.createFileURI(file), true);
@@ -381,8 +372,9 @@ public class ModelUtility {
 		entities.addAll(getTopLevelEntities(model));
 		entities.addAll(getNestedEntities(model));
 		for(EObject entity: entities){
-			if(entity.eClass().getName().equals("Resource")){
-				resources.add((org.eclipse.cmf.occi.core.Resource)entity);
+			if(entity instanceof org.eclipse.cmf.occi.core.Resource){
+				//Guess that is not correct
+				resources.add((org.eclipse.cmf.occi.core.Resource) entity);
 			}
 		}
 		return resources;
@@ -425,7 +417,7 @@ public class ModelUtility {
 	 * @return
 	 */
 	public static boolean checkIfEntityElement(EObject element){
-		if(element.eClass().getName().equals("Resource") || element.eClass().getName().equals("Link")){
+		if(element instanceof org.eclipse.cmf.occi.core.Entity){
 			return true;
 		}
 		else{
@@ -441,39 +433,6 @@ public class ModelUtility {
 		OCCIModelExtractorWrapper.extractRuntimeModel(conn.getAdress(), conn.getUser(), conn.getPassword(), runtimePath, null);
 		EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimePath);
 		return runtimeModel;
-		
-		/*
-		Path runtimeModelPath = runtimePath;
-		try {
-			Client client =  new HTTPClient(java.net.URI.create(conn.getAdress()), 
-					new BasicAuthentication(conn.getUser(), conn.getPassword()), MediaType.TEXT_PLAIN, true);
-			
-			OCCIModelExtractor extractor = new OCCIModelExtractor();
-			OCCIModel model = extractor.extractModel(client);
-			OCCIModelSerializer serializer = new OCCIModelSerializer();
-			serializer.serializeOCCIModel(model, runtimeModelPath);
-			EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimeModelPath);
-			return runtimeModel;
-		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;	
-		*/
-	}
-	
-	public static EList<EObject> retrieveRuntimeModel(String rdirectory, String rfile, String lfile, String host, int port, String username, String pKey) {
-		List<Path> extensions = new ArrayList<Path>();
-		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.occi.platform/model/platform.occie"));
-		extensions.add(Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.placement/model/placement.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstackinstance.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacknetwork.occie"));
-		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacktemplate.occie"));
-		OCCIPackage.eINSTANCE.eClass();
-		ModelRetriever.retrieveRuntimeModel(rdirectory, rfile, lfile, host, port, username, pKey);
-		
-		EList<EObject> runtimeModel = ModelUtility.loadOCCI(Paths.get(lfile), extensions);
-		return runtimeModel;
 	}
 	
 	
@@ -481,5 +440,32 @@ public class ModelUtility {
 		OCCIModelExtractorWrapper.extractRuntimeModel(conn.getAdress(), conn.getUser(), conn.getPassword(), runtimePath, publicNetworkId);
 		EList<EObject> runtimeModel = ModelUtility.loadOCCI(runtimePath);
 		return runtimeModel;
+	}
+
+	public static Configuration loadOCCIConfiguration(Path occic) {
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
+		
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		String file = new File(occic.toString()).getAbsolutePath();
+	    //URI fileURI = URI.createURI(path.toString());
+	    URI fileURI = URI.createFileURI(file);
+	    Resource resource = resSet.getResource(fileURI, true);
+		
+	       
+		EcorePlugin.ExtensionProcessor.process(null);
+		EcoreUtil.resolveAll(resSet);
+		
+        for(EObject obj: resource.getContents()) {
+        	if(obj instanceof Configuration) {
+        		return ((Configuration)obj);
+        	}
+        }
+        
+		return (Configuration) resource.getContents();
 	}
 }

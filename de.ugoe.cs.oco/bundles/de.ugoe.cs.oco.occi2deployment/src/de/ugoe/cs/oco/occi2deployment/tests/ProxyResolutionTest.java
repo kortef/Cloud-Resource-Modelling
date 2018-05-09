@@ -10,16 +10,14 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.cmf.occi.core.Configuration;
+import org.eclipse.cmf.occi.core.Kind;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.epsilon.emc.emf.CachedResourceSet;
-import org.eclipse.epsilon.emc.emf.EmfModel;
 
+import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.occi2deployment.ModelUtility;
 import de.ugoe.cs.oco.occi2deployment.comparator.Comparator;
-import de.ugoe.cs.oco.occi2deployment.comparator.ComparatorFactory;
 
 
 public class ProxyResolutionTest {
@@ -52,19 +50,23 @@ public class ProxyResolutionTest {
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/openstacktemplate.occie"));
 		extensions.add(Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/extendedinfrastructure.occie"));
 		
+		
 		Path newOCCI = Paths.get("/home/erbel/git/MoDMaCAO/plugins/org.modmacao.mongodb.example/MongoDB-Cluster.occic");
 		
 		EList<EObject> newModel = ModelUtility.loadOCCI(newOCCI, extensions);
-		org.eclipse.emf.ecore.resource.Resource resource = ModelUtility.loadOCCIResource(newOCCI, extensions);
-		EList<Resource> res = ModelUtility.getResources(newModel);
-		
-		System.out.println("");
-		System.out.println("Kinds:");
-		for(Resource r : res) {
-			System.out.print(r.getKind().getScheme());
-			System.out.println(r.getKind().getTerm());
+		for(Resource res: ModelUtility.getResources(newModel)) {
+				System.out.println(res.getKind());
 		}
-		System.out.println("");
+		
+		
+		
+		/*
+		org.eclipse.emf.ecore.resource.Resource resource = ModelUtility.loadOCCIResource(newOCCI, extensions);
+		Configuration config = (Configuration) resource.getContents().get(0);
+		for(Resource res2: config.getResources()) {
+			System.out.println(res2.getKind());
+		}
+		*/
 		
 	}
 }

@@ -54,13 +54,14 @@ public abstract class AbsComplexComparator extends AbsComparator {
 		EList<Match> toReturn = new BasicEList<Match>();
 		for(Vertex vertex: directMatch){
 			Match match = new Match();
-			if(vertex.getResources().get(0).getTitle().equals("none")){
+			if(vertex.getResources().get(0).getTitle() != null && vertex.getResources().get(0).getTitle().equals("none")){
 				match.setOldObj(null);
 			}
 			else{
 				match.setOldObj(getEquivalentResource(vertex.getResources().get(0).getId(), oldModel));
 			}
-			if(vertex.getResources().get(1).getTitle().equals("none")){
+			
+			if(vertex.getResources().get(1).getTitle() != null && vertex.getResources().get(1).getTitle().equals("none")){
 				match.setNewObj(null);
 			}
 			else{

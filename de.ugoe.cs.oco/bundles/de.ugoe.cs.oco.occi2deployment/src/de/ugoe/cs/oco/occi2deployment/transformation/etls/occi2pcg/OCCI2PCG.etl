@@ -51,11 +51,22 @@ operation getEdge(sourceVertex, targetVertex) : PCG!Edge {
 operation PCG!Vertex addResources(oldResource : srcOCCI!Resource, newResource : tarOCCI!Resource){
 	var pcgResource = new PCG!Resource();
 	pcgResource.id = oldResource.id;
-	pcgResource.title = oldResource.title;
+	if(oldResource.title <> null) {
+		pcgResource.title = oldResource.title;
+	}
+	else{
+		pcgResource.title = oldResource.id;
+	}
+	
 	self.resources.add(pcgResource);
 	var pcgResource2 = new PCG!Resource();
 	pcgResource2.id = newResource.id;
-	pcgResource2.title = newResource.title;
+	if(newResource.title <> null) {
+		pcgResource2.title = newResource.title;
+ 	}
+ 	else {
+ 		pcgResource2.title = newResource.id;
+ 	}
 	self.resources.add(pcgResource2);
 }
 
@@ -63,7 +74,14 @@ operation createVertex(oldResource : srcOCCI!Resource, newResource : tarOCCI!Res
 	if(not(vertexExists(oldResource.id, newResource.id))){
 		var vertex = new PCG!Vertex();
 		vertex.addResources(oldResource, newResource);
-		vertex.title = oldResource.title + ", " + newResource.title;
+		
+		if(oldResource.title <> null and newResource.title <> null) {
+			vertex.title = oldResource.title + ", " + newResource.title;
+		}
+		else {
+			vertex.title = oldResource.id + ", " + newResource.id;
+		}
+		
 		vertex.kind = oldResource.kind.scheme + oldResource.kind.term;
 		graph.vertices.add(vertex);
 		"Vertex Created: ".print();

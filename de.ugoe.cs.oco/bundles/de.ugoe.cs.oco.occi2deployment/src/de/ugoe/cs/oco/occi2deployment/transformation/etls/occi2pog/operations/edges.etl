@@ -28,9 +28,19 @@ operation Edge(source : POG!Vertex, target : POG!Vertex, graph: POG!Graph) {
 	edge.target = target;
 	
 	"Create Edge: ".print();
-	source.title.print();
+	if(source.title <> null){
+		source.title.print();
+	}
+	else {
+		source.id.print();
+	}
 	" -> ".print();
-	target.title.println();
+	if(target.title <> null) {
+		target.title.println();
+	}
+	else{
+		target.id.print();
+	}
 
 	graph.edges.add(edge);
 }

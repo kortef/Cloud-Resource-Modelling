@@ -1,0 +1,19 @@
+pre {
+	"Starting OCCIC2OCCIC Migration...".println();
+}
+post {
+	"Migration Process was Successfull".println();
+}
+//-------------------------------------//
+//---------MigrateEdges--------//
+//-------------------------------------//
+migrate Entity{
+	migrated.println();
+		for(attr in original.attributes) {
+			if(attr.name == "occi.core.title") {
+				original.title = attr.value;
+			}
+		}
+		migrated.println();
+		"".println();
+}

@@ -77,7 +77,6 @@ public final class DeployerHelper {
 		else {
 			System.out.println("NO BUNDLE");
 			url = this.getClass().getResource(filename);
-
 			try {
 				path = Paths.get(url.toURI());
 			} catch (URISyntaxException e) {

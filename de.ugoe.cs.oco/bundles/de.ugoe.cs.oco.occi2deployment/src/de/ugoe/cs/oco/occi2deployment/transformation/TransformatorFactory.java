@@ -18,6 +18,9 @@ public class TransformatorFactory {
 		if(criteria.equals("PCG2IPG")){
 			return new PCG2IGPTransformator();
 		}
+		if(criteria.equals("OCCIC2OCCIC")) {
+			return new OCCIC2OCCICTransformator();
+		}
 		return null;
 	}
 }

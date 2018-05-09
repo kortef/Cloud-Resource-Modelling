@@ -9,8 +9,9 @@ import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.MixinBase;
 
-import de.ugoe.cs.oco.occi2deployment.Connection;
-import de.ugoe.cs.oco.occi2deployment.provisioner.Provisioner;
+import de.ugoe.cs.oco.occi2deployment.connector.Connection;
+import de.ugoe.cs.oco.occi2deployment.connector.Connector;
+import de.ugoe.cs.oco.occi2deployment.provisioner.OOIProvisioner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,7 +29,7 @@ public class OpenstackExecutor extends AbsExecutor {
 	/**Creates an executor for the Openstack API using the information in the passed Connection conn.
 	 * @param conn
 	 */
-	public OpenstackExecutor(Connection conn) {
+	public OpenstackExecutor(Connector conn) {
 		this.connection = conn;
 		this.maxTries = 2;
 	}
@@ -39,7 +40,7 @@ public class OpenstackExecutor extends AbsExecutor {
 	 * @param conn
 	 * @param maxTries
 	 */
-	public OpenstackExecutor(Connection conn, int maxTries){
+	public OpenstackExecutor(Connector conn, int maxTries){
 		this.connection = conn;
 		this.maxTries = maxTries;
 	}
@@ -176,7 +177,7 @@ public class OpenstackExecutor extends AbsExecutor {
 			String id = extractIdFromOutput(output);
 			//TO BE IMPROVED
 			if(entity.getTitle().equals("stubNetwork")){
-				Provisioner.stubId = id;
+				OOIProvisioner.stubId = id;
 			}
 			//TO BE IMPROVED
 		    String[] swap = {entity.getId(), id};
@@ -223,8 +224,8 @@ public class OpenstackExecutor extends AbsExecutor {
 		Entity entity = (Entity) element;
 		log.info("Execute Request DELETE: " + entity.getTitle());
 		HttpURLConnection conn;
-		if(entity.getTitle().equals("stubNetwork") && entity.getId().equals(Provisioner.stubId)){
-			conn = establishConnection("http://192.168.34.1:9696/v2.0/networks/" + Provisioner.stubId,
+		if(entity.getTitle().equals("stubNetwork") && entity.getId().equals(OOIProvisioner.stubId)){
+			conn = establishConnection("http://192.168.34.1:9696/v2.0/networks/" + OOIProvisioner.stubId,
 					"DELETE", false, null, this.connection.getToken());
 		}
 		else{
@@ -254,7 +255,7 @@ public class OpenstackExecutor extends AbsExecutor {
 			String networkId = getNwId(portId,0);
 			if(networkId != null){
 				if(networkId.equals(getActualId((Entity) element, connection.getIdSwapList())) 
-						|| networkId.equals(Provisioner.stubId)){
+						|| networkId.equals(OOIProvisioner.stubId)){
 					deletePort(portId);	
 				}
 			}

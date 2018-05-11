@@ -7,6 +7,7 @@ operation createEdges() {
 	for(link in OCCI!Link){
 		var linkBaseKind = new String;
 		if(dependsOnDependencies.exists(kind | kind.compareTo(link.kind.baseKind()))){
+			link.println();
 			Edge(link.target.equivalent(), link.equivalent(), graph);
 			Edge(link.equivalent(), link.source.equivalent(), graph);
 		}
@@ -28,6 +29,7 @@ operation Edge(source : POG!Vertex, target : POG!Vertex, graph: POG!Graph) {
 	edge.target = target;
 	
 	"Create Edge: ".print();
+	source.println();
 	if(source.title <> null){
 		source.title.print();
 	}

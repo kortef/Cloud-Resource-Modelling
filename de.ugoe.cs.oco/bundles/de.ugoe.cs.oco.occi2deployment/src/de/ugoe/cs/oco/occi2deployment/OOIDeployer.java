@@ -153,7 +153,7 @@ public class OOIDeployer extends AbsDeployer{
 		deprovisioner.deprovision(comparator.getMissingElements());
 		
 		//Adapt adapted elements
-		ElementAdapter adapter = new ElementAdapter(conn);
+		ElementAdapter adapter = new ElementAdapter(exec);
 		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		//Create Provisioning Plan
@@ -185,7 +185,7 @@ public class OOIDeployer extends AbsDeployer{
 		deprovisioner.deprovision(comparator.getMissingElements());
 		
 		//Adapt adapted elements
-		ElementAdapter adapter = new ElementAdapter(conn);
+		ElementAdapter adapter = new ElementAdapter(exec);
 		adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		//Create Provisioning Plan

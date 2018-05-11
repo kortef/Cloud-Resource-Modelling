@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -94,14 +95,14 @@ public abstract class AbsProvisioner implements Provisioner, Runnable {
 	 * @param extracted
 	 */
 	public void waitForActiveState(EObject extracted) {
-		if(extracted.eClass().getName().equals("Resource")){
+		if(extracted instanceof Resource){
 			Entity entity = (Entity) extracted;
 			
-			if(entity.getKind().getTerm().contains("network")){
-				log.info("ACTIVE: " + ((Entity)extracted).getTitle());
-				return;
-			}
-			else if(entity.getKind().getTerm().contains("compute")) {
+			//if(entity.getKind().getTerm().contains("network")){
+			//	log.info("ACTIVE: " + ((Entity)extracted).getTitle());
+			//	return;
+			//}
+			//else if(entity.getKind().getTerm().contains("compute")) {
 				String output = executor.executeOperation("GET", entity, null);
 				if(outputShowsActiveState(output)){
 					log.info("ACTIVE: " + ((Entity)extracted).getTitle());
@@ -116,7 +117,7 @@ public abstract class AbsProvisioner implements Provisioner, Runnable {
 						e.printStackTrace();
 					}	
 				}
-			}
+			//}
 		}
 	}
 	/**Checks whether the output string contains an active or online.
@@ -132,7 +133,7 @@ public abstract class AbsProvisioner implements Provisioner, Runnable {
 				|| output.contains("occi.storage.state=\"online\"")
 				|| output.contains("\"occi.network.state\":\"active\"")
 				|| output.contains("\"occi.compute.state\":\"active\"")
-				|| output.contains("\"occi.storage.state\":\"active\"")){
+				|| output.contains("\"occi.storage.state\":\"online\"")){
 			return true;
 		}
 		return false;

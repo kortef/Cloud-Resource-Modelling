@@ -115,11 +115,11 @@ public abstract class AbsComparator implements Comparator {
 	 * @return
 	 */
 	private EList<AttributeState> extractAttr(EObject obj) {
-		if(obj.eClass().getName().equals("Resource")){
+		if(obj instanceof Resource){
 			Resource res = (Resource) obj;
 			return res.getAttributes();
 		}
-		else if(obj.eClass().getName().equals("Link")){
+		else if(obj instanceof Link){
 			Link link = (Link) obj;
 			return link.getAttributes();
 		}
@@ -161,7 +161,7 @@ public abstract class AbsComparator implements Comparator {
 	 * @return
 	 */
 	private EList<Link> extractLinks(EObject obj) {
-		if(obj.eClass().getName().equals("Resource")){
+		if(obj instanceof Resource){
 			Resource res = (Resource) obj;
 				return res.getLinks();
 		}
@@ -177,7 +177,7 @@ public abstract class AbsComparator implements Comparator {
 	protected List<Match> extractDirectResourceMatch(List<Match> matches) {
 		List<Match> directResourceMatches = new BasicEList<Match>();
 		for(Match match: matches){
-			if(match.getSrc() != null && match.getTar() != null && match.getSrc().eClass().getName().equals("Resource")){
+			if(match.getSrc() != null && match.getTar() != null && match.getSrc() instanceof Resource){
 				directResourceMatches.add(match);
 			}
 		}
@@ -208,9 +208,9 @@ public abstract class AbsComparator implements Comparator {
 	private List<Match> extractEqualLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link: obj.eContents()){
-			if(link.eClass().getName().equals("Link")){
+			if(link instanceof Link){
 				for(EObject link2: newObj.eContents()){
-					if(link2.eClass().getName().equals("Link")){
+					if(link2 instanceof Link){
 						Link oldLink = (Link) link;
 						Link newLink = (Link) link2;
 						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
@@ -236,10 +236,10 @@ public abstract class AbsComparator implements Comparator {
 	private List<Match> extractMissingLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link2: obj.eContents()){
-			if(link2.eClass().getName().equals("Link")){
+			if(link2 instanceof Link){
 				Boolean missingElement = true;
 				for(EObject link: newObj.eContents()){
-					if(link.eClass().getName().equals("Link")){
+					if(link instanceof Link){
 						Link oldLink = (Link) link2;
 						Link newLink = (Link) link;
 						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
@@ -267,10 +267,10 @@ public abstract class AbsComparator implements Comparator {
 	private List<Match> extractNewLinks(EObject obj, EObject newObj) {
 		List<Match> toReturn = new ArrayList<Match>();
 		for(EObject link2: newObj.eContents()){
-			if(link2.eClass().getName().equals("Link")){
+			if(link2 instanceof Link){
 				Boolean newElement = true;
 				for(EObject link: obj.eContents()){
-					if(link.eClass().getName().equals("Link")){
+					if(link instanceof Link){
 						Link oldLink = (Link) link;
 						Link newLink = (Link) link2;
 						if(oldLink.getKind().getScheme().equals(newLink.getKind().getScheme())
@@ -355,6 +355,7 @@ public abstract class AbsComparator implements Comparator {
 	/**Logs the Matches of the comparator.
 	 * @param list
 	 */
+	/*logsIDs
 	protected void logMatch(List<Match> list){
 		log.info("Comparator: " + this.getClass().getSimpleName());
 		for(Match match: list){
@@ -371,7 +372,8 @@ public abstract class AbsComparator implements Comparator {
 			}
 		}
 	}
-	/*
+	*/
+	
 	protected void logMatch(List<Match> list){
 		log.info("Comparator: " + this.getClass().getSimpleName());
 		for(Match match: list){
@@ -415,7 +417,7 @@ public abstract class AbsComparator implements Comparator {
 				}
 			}
 		}
-	}*/
+	}
 	
 	/**Logs the Map of the fixpoint values from the simlarity flooding process.
 	 * @param map

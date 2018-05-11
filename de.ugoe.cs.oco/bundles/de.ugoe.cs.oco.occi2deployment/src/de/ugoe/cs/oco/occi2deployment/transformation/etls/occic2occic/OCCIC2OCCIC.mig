@@ -4,16 +4,97 @@ pre {
 post {
 	"Migration Process was Successfull".println();
 }
-//-------------------------------------//
-//---------MigrateEdges--------//
-//-------------------------------------//
+
+
 migrate Entity{
-	migrated.println();
+	if(original.id.startsWith("urn:uuid:") == false) {
+		"Added urn:uuid: to id: ".print();
+		original.id.println();
+		var urn = "urn:uuid:";
+		urn += original.id;
+		original.id = urn;
+	}
+	
+	if(original.title == null) {
 		for(attr in original.attributes) {
 			if(attr.name == "occi.core.title") {
 				original.title = attr.value;
+				"Added attribute title to entity: ".print();
+				original.title.println();
 			}
 		}
-		migrated.println();
-		"".println();
+	}
+	else {
+		var titleAttrExists = false;
+		for(attr in original.attributes) {
+			if(attr.name == "occi.core.title") {
+				titleAttrExists = true;
+				if(attr.value <> original.title) {
+					attr.value = original.title;
+					"Adjusted title attribute to entity title: ".print();
+					original.title.println();
+				}
+			}
+		}
+		if(titleAttrExists == false) {
+			var titleAttr = new OCCI!AttributeState;
+			titleAttr.name = "occi.core.title";
+			titleAttr.value = original.title;
+			original.attributes.add(titleAttr);
+			"Added title Attribute of entity: ".print();
+			original.id.println();
+		}
+	}
+	
+	
+}
+
+migrate Link{
+	var sourceExists = false;
+	var targetExists = false;
+	for(attr in original.attributes) {
+		if(attr.name == "occi.core.source") {
+			if(attr.value <> original.source.location) {
+				"Adjusted source Attribute of link: ".print();
+				original.id.println();
+				attr.value = original.source.location;
+			}
+			sourceExists = true;
+		}
+		if(attr.name == "occi.core.target") {
+			if(attr.value <> original.target.location) {
+				"Adjusted target Attribute of link: ".print();
+				original.id.println();
+				attr.value = original.target.location;
+			}
+		targetExists = true;
+		}
+	}
+	
+	if(sourceExists == false){
+		var sourceAttr = new OCCI!AttributeState;
+		sourceAttr.name = "occi.core.source";
+		sourceAttr.value = original.source.location;
+		original.attributes.add(sourceAttr);
+		"Added source Attribute of link: ".print();
+		original.id.println();
+	}
+	
+	if(targetExists == false){
+		var targetAttr = new OCCI!AttributeState;
+		targetAttr.name = "occi.core.target";
+		targetAttr.value = original.target.location;
+		"Added target Attribute of link: ".print();
+		original.id.println();
+	}
+	
+		if(original.title == null) {
+			var newTitle = "";
+			newTitle += original.source.title;
+			newTitle += " -> ";
+			newTitle += original.target.title;
+			original.title = newTitle;
+			"Added title to link: " + original.id;
+		}
+
 }

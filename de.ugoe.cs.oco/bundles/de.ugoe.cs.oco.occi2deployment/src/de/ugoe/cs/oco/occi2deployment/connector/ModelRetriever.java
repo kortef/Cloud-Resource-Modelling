@@ -22,7 +22,13 @@ public class ModelRetriever{
 		refreshMartRuntimeModel(host, port);
 		ChannelSftp sftp = connect(host, username, pKey);
 		download(rdirectory, rfile, lfile, sftp);
-		sftp.disconnect();
+		sftp.exit();
+		try {
+			sftp.getSession().disconnect();
+		} catch (JSchException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -36,6 +42,7 @@ public class ModelRetriever{
 				conn.setRequestMethod("POST");
 				conn.setRequestProperty("Content-Type", "application/json");
 				conn.setRequestProperty("Accept", "application/json");
+				System.out.println(conn.getResponseCode());
 				if(conn.getResponseCode() != 200) {
 					System.out.println("Model could not be updated!");
 				}

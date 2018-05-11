@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.modmacao.placement.Placementlink;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Resource;
@@ -21,7 +22,7 @@ import de.ugoe.cs.oco.occi2deployment.execution.Executor;
 public class Deprovisioner {
 	static Logger log = Logger.getLogger(Deprovisioner.class.getName());
 	private Executor exec;
-	static private String publicNetwork = "d52754e0-6729-4034-adbb-8f1f3800f2c6";
+	static private String publicNetwork = "urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6";
 	
 	/**Creates a deprovisioner instance for the specified Connection conn.
 	 * @param conn
@@ -36,6 +37,7 @@ public class Deprovisioner {
 	 * @param eList
 	 */
 	public void deprovision(EList<EObject> eList){
+		EList<Entity> resources = new BasicEList<Entity>();
 		EList<Entity> networks = new BasicEList<Entity>();
 		EList<Entity> storages = new BasicEList<Entity>();
 		EList<Entity> computes = new BasicEList<Entity>();
@@ -43,19 +45,26 @@ public class Deprovisioner {
 		//First Deprovision Compute and Storage Instances
 		for(EObject element: eList){
 			if(element instanceof Resource){
+				boolean specialResource = false;
 				Entity entity = (Entity) element;
 				if(entity instanceof Compute){
+					specialResource = true;
 					computes.add(entity);
 				}
 				else if(entity instanceof Network){
+					specialResource = true;
 					if(entity.getId().equals(publicNetwork) == false) {
 						networks.add(entity);
 					}
 				}
 				else if(entity instanceof Storage){
-					storages.add(entity);
-							
+					specialResource = true;
+					storages.add(entity);		
 				}
+				else if(specialResource == false) {
+					resources.add(entity);
+				}
+				
 			}
 			else if(element instanceof Link){
 				Entity entity = (Entity) element;
@@ -64,7 +73,9 @@ public class Deprovisioner {
 		}
 		
 		for(Entity link: links){
-			deprovisionLinkInstance(link);
+			if(link instanceof Placementlink == false) {
+				deprovisionLinkInstance(link);
+			}
 		}
 		for(Entity compute: computes){
 			deprovisionComputeInstance(compute);
@@ -74,6 +85,9 @@ public class Deprovisioner {
 		}
 		for(Entity network: networks){
 			deprovisionNetworkInstance(network);
+		}	
+		for(Entity resource: resources){
+			deprovisionResourceInstance(resource);
 		}	
 	}
 
@@ -106,6 +120,14 @@ public class Deprovisioner {
 	 */
 	private void deprovisionComputeInstance(Entity entity) {
 		log.info("Deprovision Compute: " + entity.getTitle());
+		exec.executeOperation("DELETE", entity, null);	
+	}
+	
+	/**Deprovisions a ResourceInstance
+	 * @param entity
+	 */
+	private void deprovisionResourceInstance(Entity entity) {
+		log.info("Deprovision Resource: " + entity.getTitle());
 		exec.executeOperation("DELETE", entity, null);	
 	}
 }

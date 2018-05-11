@@ -49,7 +49,7 @@ public class MartDeployer extends AbsDeployer{
 		org.eclipse.emf.ecore.resource.Resource runtimeModel = ModelUtility.loadOCCIResource(runtimePath, null);	
 		org.eclipse.emf.ecore.resource.Resource targetModel = ModelUtility.loadOCCIResource(targetConfigPath, null);
 		
-		if(ModelUtility.getOCCIConfigurationContents(runtimeModel).size() <= 1){
+		if(ModelUtility.getOCCIConfigurationContents(runtimeModel).size() < 0){
 			log.info("Chosen: Initial Deployment, Amount of Resources in Runtimemodel: " + ModelUtility.getOCCIConfigurationContents(runtimeModel).size());
 			this.initialDeploy(targetModel, conn);
 		}
@@ -65,30 +65,29 @@ public class MartDeployer extends AbsDeployer{
 		EList<EObject> occiModel = ModelUtility.getOCCIConfigurationContents(targetModel);
 		//Compare Models
 		CachedResourceSet.getCache().clear();
-		System.out.println(runtimeModel);
-		System.out.println(targetModel);
 		Comparator comparator = ComparatorFactory.getComparator("Simple", runtimeModel, targetModel, null);
 		
 		Executor exec = ExecutorFactory.getExecutor("Mart", conn);
 		
 		//Deprovision Missing Elements
-		//Deprovisioner deprovisioner = new Deprovisioner(exec);
-		//deprovisioner.deprovision(comparator.getMissingElements());
+		Deprovisioner deprovisioner = new Deprovisioner(exec);
+		deprovisioner.deprovision(comparator.getMissingElements());
 		
 		//Adapt adapted elements
-		//ElementAdapter adapter = new ElementAdapter(conn);
+		//ElementAdapter adapter = new ElementAdapter(exec);
 		//adapter.update(comparator.getAdaptedElements(), comparator.getMatches());
 		
 		//Create Provisioning Plan
-		//List<EObject> removeFromPOG = new BasicEList<EObject>();
-		//removeFromPOG.addAll(comparator.getOldElements());
-		//removeFromPOG.addAll(comparator.getAdaptedElements());
-		//Model provisioningPlan = generateProvisioningPlan(targetModel, removeFromPOG);
+		List<EObject> removeFromPOG = new BasicEList<EObject>();
+		removeFromPOG.addAll(comparator.getOldElements());
+		removeFromPOG.addAll(comparator.getAdaptedElements());
+		Model provisioningPlan = generateProvisioningPlan(targetModel, removeFromPOG);
 		
 		//Start provisioning
-		//Provisioner provisioner = ProvisionerFactory.getProvisioner("Mart", new ModelUtility().findInitialNode(provisioningPlan), occiModel, exec, null);
-		//provisioner.provisionElements();	
+		Provisioner provisioner = ProvisionerFactory.getProvisioner("Mart", new ModelUtility().findInitialNode(provisioningPlan), occiModel, exec, null);
+		provisioner.provisionElements();	
 		
+		log.info("Deployment process finished");
 	}
 
 	private void initialDeploy(org.eclipse.emf.ecore.resource.Resource targetModel, MartConnector conn) {

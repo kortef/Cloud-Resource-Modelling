@@ -30,17 +30,20 @@ public class MigraterTest {
 		OcciRegistry.getInstance().registerExtension("http://schemas.occiware.org/placement#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/placement.occie");
 		OcciRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#", InfrastructurePackage.class.getClassLoader().getResource("model/Infrastructure.occie").toString());
 		
+		
+		
 		MartConnector conn = new MartConnector("192.168.35.45", 8080 , "ubuntu", "~/key.pem");
 		//Configuration runtimeModel = conn.loadRuntimeModel("models", "model-anonymous.occic", "model-anonymous.occic");
 		Path runtimePath = conn.loadRuntimeModel("models", "model-anonymous.occic", "model-anonymous.occic");
 		System.out.println(runtimePath.toAbsolutePath());
+		
 		Path adjustedRuntime = Paths.get("model2.occic");
 		System.out.println(adjustedRuntime.toAbsolutePath());
 		
 		Transformator trans = TransformatorFactory.getTransformator("OCCIC2OCCIC");
 		trans.transform(runtimePath, adjustedRuntime);
 		
-		org.eclipse.emf.ecore.resource.Resource testRes2 = ModelUtility.loadOCCIResource(adjustedRuntime.toAbsolutePath(), null);
+		org.eclipse.emf.ecore.resource.Resource testRes2 = ModelUtility.loadOCCIResource(runtimePath.toAbsolutePath(), null);
 		System.out.println(testRes2);
 		System.out.println(ModelUtility.getOCCIConfigurationContents(testRes2));
 		Configuration runtimeModel2 = (Configuration) testRes2.getContents().get(0);

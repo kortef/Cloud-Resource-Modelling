@@ -3,6 +3,7 @@ package de.ugoe.cs.oco.occi2deployment.tests;
 import java.nio.file.Path;
 
 import org.eclipse.cmf.occi.core.Configuration;
+import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.core.util.OcciRegistry;
@@ -40,9 +41,13 @@ public class RetrieverTest {
 		System.out.println(runtimeModel);
 		System.out.println(runtimeModel.getResources());
 		for(Resource res: runtimeModel.getResources()) {
-			System.out.println(res.getKind());
+			System.out.print("Resource: " + res.getTitle());
+			System.out.print(" : ");
+			System.out.println(res.getKind().getTitle());
+			for(Link link: res.getLinks()) {
+				System.out.println("     Link: " + link.getTitle());
+			}
 		}
-		System.out.println(runtimeModel.eContents());
 	}
 
 }

@@ -13,9 +13,9 @@ import org.eclipse.cmf.occi.core.Action;
 import org.eclipse.cmf.occi.core.AttributeState;
 
 import de.ugoe.cs.oco.occi2deployment.comparator.Match;
-import de.ugoe.cs.oco.occi2deployment.connector.Connection;
 import de.ugoe.cs.oco.occi2deployment.execution.Executor;
-import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
+import de.ugoe.cs.oco.occi2deployment.extraction.Extractor;
+import de.ugoe.cs.oco.occi2deployment.extraction.ExtractorFactory;
 
 /**Handles the adaptation process for single elements.
  * @author rockodell
@@ -23,15 +23,15 @@ import de.ugoe.cs.oco.occi2deployment.execution.ExecutorFactory;
  */
 public class ElementAdapter {
 	static Logger log = Logger.getLogger(ElementAdapter.class.getName());
-	private Connection connection;
+	private Executor executor;
 	public static List<String> actionList = new ArrayList<String>();
 	
 	/**Constructor. Currently hardcoding the attributes that can be handled the updating process.
 	 * (occi.compute.state; occi.network.state; occi.storage.state)
 	 * @param conn
 	 */
-	public ElementAdapter(Connection conn){
-		this.connection = conn;
+	public ElementAdapter(Executor exec){
+		this.executor = exec;
 		ElementAdapter.actionList.add("occi.compute.state");
 		ElementAdapter.actionList.add("occi.network.state");
 		ElementAdapter.actionList.add("occi.storage.state");
@@ -51,7 +51,7 @@ public class ElementAdapter {
 				performActions(element, differences);
 			}
 			else{
-				performPut(element); //stub
+				performPut(element); 
 			}
 		}	
 	}
@@ -71,8 +71,8 @@ public class ElementAdapter {
 	 * @param element
 	 */
 	private void performPut(EObject element) {
-		// TODO Auto-generated method stub
-		
+		log.info("Perform Put Operation on: " + ((Entity) element).getTitle());
+    	executor.executeOperation("PUT", element, null);	    	
 	}
 
 	/**Performs required Actions to address all evaluated differences.
@@ -87,7 +87,6 @@ public class ElementAdapter {
 			}
 			else{
 				log.debug(correctAction);
-				Executor executor = ExecutorFactory.getExecutor("OCCI", this.connection);
 				executor.executeOperation("POST", element, correctAction);
 			}
 		}

@@ -94,5 +94,11 @@
       <attributes name="occi.network.state" value="active"/>
       <parts mixin="/4/@mixins[term='ipnetwork']"/>
     </resources>
+    <resources id="urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060" title="storage" kind="/4/@kinds[term='storage']" location="/storage/urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060/">
+      <attributes name="occi.core.id" value="urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060"/>
+      <attributes name="occi.core.title" value="storage"/>
+      <attributes name="occi.storage.state" value="online"/>
+      <attributes name="occi.storage.size" value="100"/>
+    </resources>
   </occi:Configuration>
 </xmi:XMI>

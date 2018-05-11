@@ -47,6 +47,7 @@ public class MartProvisioner extends AbsProvisioner implements Runnable {
 		done = false;
 		this.provisionNextNode();
 		
+		
 		synchronized(lock){
 			while(done == false){
 				try {

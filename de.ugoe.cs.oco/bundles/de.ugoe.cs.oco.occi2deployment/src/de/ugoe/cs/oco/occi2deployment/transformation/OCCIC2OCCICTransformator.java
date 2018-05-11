@@ -21,7 +21,7 @@ public class OCCIC2OCCICTransformator extends AbsTransformator {
 			
 			URI uri = URI.createFileURI(inputOccic.toString());
 			String occiURI = "http://schemas.ogf.org/occi/core/ecore";
-			IModel inOCCI = createEmfModel("OCCIOld",
+			IModel inOCCI = createEmfModel("OCCI",
 				uri,
 				occiURI,
 				true,
@@ -38,7 +38,7 @@ public class OCCIC2OCCICTransformator extends AbsTransformator {
 			module.getContext().getModelRepository().addModel(inOCCI);
 			module.getContext().getModelRepository().addModel(outOCCI);	
 			Object result = module.execute(inOCCI, outOCCI);
-			outOCCI.store();	
+			inOCCI.store();	
 			return result.toString();
 			
 		} catch (Exception e) {

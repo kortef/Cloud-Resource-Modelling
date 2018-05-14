@@ -96,6 +96,11 @@ public abstract class AbsProvisioner implements Provisioner, Runnable {
 	 */
 	public void waitForActiveState(EObject extracted) {
 		if(extracted instanceof Resource){
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}	
 			Entity entity = (Entity) extracted;
 			
 			//if(entity.getKind().getTerm().contains("network")){

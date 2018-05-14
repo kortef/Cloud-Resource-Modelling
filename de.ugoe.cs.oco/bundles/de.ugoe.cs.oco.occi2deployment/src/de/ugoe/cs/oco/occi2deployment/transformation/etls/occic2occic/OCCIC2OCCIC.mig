@@ -84,6 +84,7 @@ migrate Link{
 		var targetAttr = new OCCI!AttributeState;
 		targetAttr.name = "occi.core.target";
 		targetAttr.value = original.target.location;
+		original.attributes.add(targetAttr);
 		"Added target Attribute of link: ".print();
 		original.id.println();
 	}

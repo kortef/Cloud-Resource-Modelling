@@ -27,9 +27,7 @@ operation Edge(source : POG!Vertex, target : POG!Vertex, graph: POG!Graph) {
 	var edge = new POG!Edge;
 	edge.source = source;
 	edge.target = target;
-	
 	"Create Edge: ".print();
-	source.println();
 	if(source.title <> null){
 		source.title.print();
 	}

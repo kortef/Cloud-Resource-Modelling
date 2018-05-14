@@ -11,6 +11,7 @@ import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.etl.EtlModule;
+import org.modmacao.placement.PlacementPackage;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
@@ -19,6 +20,8 @@ import de.ugoe.cs.oco.occi2deployment.DeployerHelper;
 import de.ugoe.cs.oco.pog.PogPackage;
 import de.ugoe.cs.oco.pog.impl.PogFactoryImpl;
 //import de.ugoe.cs.oco.pog.util.PogResourceFactoryImpl;
+import modmacao.ModmacaoPackage;
+import openstackruntime.OpenstackruntimePackage;
 
 /**Class implementing the OCCI2POG transformation.
  * @author rockodell
@@ -40,6 +43,7 @@ public class OCCI2POGTransformator extends AbsTransformator{
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("pog2", new PogFactoryImpl());
 		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
 	}
 	
 	/* (non-Javadoc)

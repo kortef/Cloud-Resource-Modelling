@@ -36,7 +36,7 @@ public class MartDeployerTest {
 		Logger.getRootLogger().setLevel(Level.FATAL);
 		
 		
-		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/MLS2.occic");
+		Path occiPath = Paths.get("./src/de/ugoe/cs/oco/occi2deployment/tests/models/mls/PaaS.occic");
 		//Path occiPath = Paths.get("/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/bin/de/ugoe/cs/oco/occi2deployment/models/runtime.occic");
 		
 		//Transformator trans = TransformatorFactory.getTransformator("OCCIC2OCCIC");

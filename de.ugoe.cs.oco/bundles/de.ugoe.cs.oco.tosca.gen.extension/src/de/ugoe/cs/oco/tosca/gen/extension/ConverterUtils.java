@@ -25,6 +25,7 @@ public final class ConverterUtils {
 		resource.getContents().add(rootElement);
 		Map<String, String> options = new HashMap<String, String>();
 		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+		//options.put(XMIResource.OPTION_PROCESS_DANGLING_HREF, XMIResource.OPTION_PROCESS_DANGLING_HREF_DISCARD);
 		resource.save(options);
 	}
 

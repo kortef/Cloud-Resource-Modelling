@@ -5,28 +5,37 @@ package de.ugoe.cs.oco.tosca.gen.extension;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.Logger;
+
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.ecore.XSDEcoreBuilder;
 import org.eclipse.xsd.util.XSDResourceFactoryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
@@ -35,6 +44,7 @@ import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityType;
+import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.TRelationshipType;
 import de.ugoe.cs.oco.tosca.TRequirementDefinition;
@@ -47,67 +57,79 @@ import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
  *
  */
 public class TOSCADef2Ecore {
-	protected final static Logger LOGGER = Logger.getLogger(TOSCADef2Ecore.class.getName());
+	protected final static Logger LOGGER = LoggerFactory.getLogger(TOSCADef2Ecore.class.getName());
 
 	
-	private static EPackage convertDefinitions(DefinitionsType definitions) {
+	private static EPackage addToscaTypeDefinitions(DefinitionsType definitions, EPackage ePackage) {
 		
 		EPackage toscaPackage = getTOSCAPackage();
 		//EPackage toscaPackage = ToscaPackage.eINSTANCE;	
-		EPackage ePackage = createEPackage(definitions);
-		extractRawTypes(definitions, toscaPackage, ePackage);
-		extractSuperTypes(definitions, toscaPackage, ePackage);
+		EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);
+		extractAndAddRawTypes(definitions, toscaPackage, ePackage);
+		extractAndAddSuperTypes(definitions, toscaPackage, ePackage);
 		
 		return ePackage;
 	}
 
-	private static EPackage extractSuperTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
+	private static EPackage extractAndAddSuperTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
+		DocumentRoot root = (DocumentRoot) definitions.eContainer();
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
-			addSuperTypeIfExists(cType, ePackage);
+			addSuperTypeIfExists(cType, root, ePackage);
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
-			addSuperTypeIfExists(rType, ePackage);
+			addSuperTypeIfExists(rType, root, ePackage);
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
-			addSuperTypeIfExists(aType, ePackage);
+			addSuperTypeIfExists(aType, root, ePackage);
 		}
 		
 		for (TNodeType nType: definitions.getNodeType()) {
-			addSuperTypeIfExists(nType, ePackage);
+			addSuperTypeIfExists(nType, root, ePackage);
 		}
 		
 		for (TRelationshipType rlType: definitions.getRelationshipType()) {
-			addSuperTypeIfExists(rlType, ePackage);
+			addSuperTypeIfExists(rlType, root, ePackage);
 		}
 			
 		return ePackage;
 		
 	}
 	
-	private static EPackage addSuperTypeIfExists(TEntityType eType, EPackage ePackage) {
+	private static EPackage addSuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage) {
 		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
 		if (eType.getDerivedFrom() != null) {
 			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
-			EClass superType = (EClass) ePackage.getEClassifier(superTypeName);
+			String superTypePackagePrefix = eType.getDerivedFrom().getTypeRef().getPrefix();
+			LOGGER.debug("Super type package prefix is " + superTypePackagePrefix);
+			
+			EPackage superTypePackage = null;
+			if (superTypePackagePrefix == null || superTypePackagePrefix.equals("")) {
+				superTypePackage = ePackage;
+			} else {
+				String namespace = root.getXMLNSPrefixMap().get(superTypePackagePrefix);
+				superTypePackage = EPackage.Registry.INSTANCE.getEPackage(namespace);
+			}
+			
+			if (superTypePackage == null) {
+				LOGGER.debug("Super type package not found.");
+			}	
+			
+			EClass superType = (EClass) superTypePackage.getEClassifier(superTypeName);
 			if (superType == null) {
-				LOGGER.warning("Super type '" + superTypeName + "' for '" + name + "'not found.");
+				LOGGER.debug("Super type '" + superTypeName + "' for '" + name + "'not found.");
 			} else {
 				EClass type = (EClass) ePackage.getEClassifier((name));
 				type.getESuperTypes().clear();
 				type.getESuperTypes().add(superType);
-			}
-			// now set super type for corresponding properties type
-			if (eType.getPropertiesDefinition() != null) {
-				
 			}
 		}
 		
 		return ePackage;
 	}
 
-	private static EPackage extractRawTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
+	private static EPackage extractAndAddRawTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
 			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 			eClass.setName(ConverterUtils.toEcoreCompatibleName(cType.getName()));
@@ -146,8 +168,8 @@ public class TOSCADef2Ecore {
 			EAnnotation pivotalAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			pivotalAnnotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
 			
-			//addRequirementRestrictions(nodeType, pivotalAnnotation);
-			//addCapabilityRestrictions(nodeType, pivotalAnnotation);
+			addRequirementRestrictions(nodeType, pivotalAnnotation);
+			addCapabilityRestrictions(nodeType, pivotalAnnotation);
 			//addPropertyRestrictions(nodeType, pivotalAnnotation);
 			
 			for (Entry<String, String> entry: pivotalAnnotation.getDetails().entrySet()) {
@@ -274,76 +296,23 @@ public class TOSCADef2Ecore {
 		ToscaPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
+		m.put("xml", new ToscaResourceFactoryImpl());
 		m.put("ecore", new EcoreResourceFactoryImpl());
 		ResourceSet resourceSet = new ResourceSetImpl();
-		final URI uri = URI.createFileURI(toscaDef.toString());
-		Resource res = resourceSet.createResource(uri);
+		DefinitionsType definitions = loadToscaDefinitions(URI.createFileURI(toscaDef.toString()), resourceSet);
 		
-		try {
-			res.load(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Resource toscaModel = resourceSet.createResource(URI.createPlatformPluginURI("/de.ugoe.cs.oco.tosca.model/model/tosca.ecore", true));
-		
-		try {
-			toscaModel.load(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		EPackage toscaPackage = (EPackage) toscaModel.getContents().get(0);
-		
-		DocumentRoot root = (DocumentRoot) res.getContents().get(0);
-		DefinitionsType definitions = root.getDefinitions().get(0);
-		
-		EPackage ePackage = TOSCADef2Ecore.convertDefinitions(definitions);
-		
-		m.put("tosca", new XSDResourceFactoryImpl());
-		ResourceSet xsdResourceSet = new ResourceSetImpl();
-		Resource xsdResource = xsdResourceSet.createResource(uri);
-		
-		try {
-			xsdResource.load(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-		XSDSchema schema = (XSDSchema) xsdResource.getContents().get(0);
-		XSDEcoreBuilder builder = new XSDEcoreBuilder();
-		
-		builder.generate(schema);
-		
-		for (Object object: builder.getXSDComponentToEModelElementMap().values()) {
-			if (object instanceof EClassifier) {
-				ePackage.getEClassifiers().add((EClassifier) object);
-//				if (((EClassifier) object).getName().endsWith("PropertiesType")) {
-//					// create wrapper class 
-//					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-//					eClass.setName(((EClassifier) object).getName() + "Wrapper");
-//					eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("PropertiesType")));
-//					EReference reference = EcoreFactory.eINSTANCE.createEReference();
-//					reference.setName(((EClassifier) object).getName());
-//					reference.setContainment(true);
-//					reference.setEType((EClassifier) object);
-//					eClass.getEStructuralFeatures().add(reference);
-//					ePackage.getEClassifiers().add(eClass);
-//				}
-			}
-			if (object instanceof EReference) {
-				EReference attribute = (EReference) object;
-				if (attribute.getEContainingClass().getName().equals("DocumentRoot")){
-					ePackage.getEClassifiers().add(attribute.getEContainingClass());
-				}
-			}
-		}
+		EPackage ePackage = createEPackage(definitions);
+		handleImports(definitions, ePackage, resourceSet, toscaDef);
+		addToscaTypeDefinitions(definitions, ePackage);
+					
+		//XSDSchema schema = loadXSD(URI.createFileURI(toscaDef.toString()));
+		//addXSDTypeDefinitions(schema, ePackage);
 		
 		// finally add super classes for Properties
-		addSuperClassesForProperties(definitions, ePackage);
+		addSuperTypeForProperties(definitions, ePackage);
 		
 		// persist metamodel
 		try {
@@ -355,37 +324,54 @@ public class TOSCADef2Ecore {
 		
 	}
 	
-	private static EPackage addSuperClassesForProperties(TDefinitions definitions, EPackage ePackage) {
+	private static EPackage addSuperTypeForProperties(TDefinitions definitions, EPackage ePackage) {
+		DocumentRoot root = (DocumentRoot) definitions.eContainer();
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
-			addPropertySuperTypeIfExists(cType, ePackage);
+			addPropertySuperTypeIfExists(cType, root, ePackage);
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
-			addPropertySuperTypeIfExists(rType, ePackage);
+			addPropertySuperTypeIfExists(rType, root, ePackage);
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
-			addPropertySuperTypeIfExists(aType, ePackage);
+			addPropertySuperTypeIfExists(aType, root, ePackage);
 		}
 		
 		for (TNodeType nType: definitions.getNodeType()) {
-			addPropertySuperTypeIfExists(nType, ePackage);
+			addPropertySuperTypeIfExists(nType, root, ePackage);
 		}
 		
 		for (TRelationshipType rlType: definitions.getRelationshipType()) {
-			addPropertySuperTypeIfExists(rlType, ePackage);
+			addPropertySuperTypeIfExists(rlType, root, ePackage);
 		}
 			
 		return ePackage;		
 	}
 		
-	private static EPackage addPropertySuperTypeIfExists(TEntityType eType, EPackage ePackage) {
+	private static EPackage addPropertySuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage) {
 		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
 		if (eType.getDerivedFrom() != null) {
 			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
-			EClass superPropertiesType = (EClass) ePackage.getEClassifier(superTypeName + "PropertiesType");
+			String superTypePackagePrefix = eType.getDerivedFrom().getTypeRef().getPrefix();
+			LOGGER.debug("Super type package prefix is " + superTypePackagePrefix);
+			
+			EPackage superTypePackage = null;
+			if (superTypePackagePrefix == null || superTypePackagePrefix.equals("")) {
+				superTypePackage = ePackage;
+			} else {
+				String namespace = root.getXMLNSPrefixMap().get(superTypePackagePrefix);
+				superTypePackage = EPackage.Registry.INSTANCE.getEPackage(namespace);
+			}
+			
+			if (superTypePackage == null) {
+				LOGGER.error("Super type package not found.");
+			}	
+			
+			EClass superPropertiesType = (EClass) superTypePackage.getEClassifier(superTypeName + "PropertiesType");
+						
 			if (superPropertiesType == null) {
-				LOGGER.warning("Super properties type '" + superTypeName + "PropertiesType for' '" + name + "PropertiesType' not found.");
+				LOGGER.debug("Super properties type '" + superTypeName + "PropertiesType for' '" + name + "PropertiesType' not found.");
 			} else {
 				if (eType.getPropertiesDefinition() != null) {
 					String propertiesName = ConverterUtils.toEcoreCompatibleName(
@@ -414,6 +400,105 @@ public class TOSCADef2Ecore {
 		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
 		
 		return typeOperation;
+	}
+	
+	private static XSDSchema loadXSD(URI xsdURI) {
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("tosca", new XSDResourceFactoryImpl());
+		ResourceSet xsdResourceSet = new ResourceSetImpl();
+		Resource xsdResource = xsdResourceSet.createResource(xsdURI);
+		
+		try {
+			xsdResource.load(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return (XSDSchema) xsdResource.getContents().get(0);
+	}
+	
+	private static DefinitionsType loadToscaDefinitions(URI toscaURI, ResourceSet resourceSet) {
+		Resource res = resourceSet.createResource(toscaURI);
+		
+		try {
+			res.load(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		DocumentRoot root = (DocumentRoot) res.getContents().get(0);
+		return root.getDefinitions().get(0);
+	}
+	
+	private static EPackage addXSDTypeDefinitions(XSDSchema schema, EPackage ePackage) {
+		ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl());
+		
+		XSDEcoreBuilder builder = new XSDEcoreBuilder(extendedMetaData);
+		
+		builder.generate(schema);
+		
+		for (Object object: builder.getXSDComponentToEModelElementMap().values()) {
+			if (object instanceof EClassifier) {
+				ePackage.getEClassifiers().add((EClassifier) object);
+			}
+			if (object instanceof EReference) {
+				EReference attribute = (EReference) object;
+				if (attribute.getEContainingClass().getName().equals("DocumentRoot")){
+					ePackage.getEClassifiers().add(attribute.getEContainingClass());
+				}
+			}
+		}
+		return ePackage;
+	}
+	
+	private static EPackage handleImports(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet, Path root) {
+		for (TImport imp: definitions.getImport()) {
+			// make sure required packages are present
+			EPackage importedPackage = EPackage.Registry.INSTANCE.getEPackage(imp.getNamespace());
+			if (importedPackage == null) {
+				LOGGER.debug("Dependency " + imp.getNamespace() + " is unknown. Trying to load on demand.");
+				if (imp.getImportType().equals("http://www.w3.org/2001/XMLSchema")) {
+					Path path = Paths.get(imp.getLocation());
+					if (!path.isAbsolute()){
+						path = Paths.get(root.getParent().toString(), path.toString());
+					}
+					LOGGER.debug("Trying to read xsd definition from path " + path.toString());
+					XSDSchema schema = loadXSD(URI.createFileURI(path.toString()));
+					addXSDTypeDefinitions(schema, ePackage);
+//					XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
+//					Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(URI.createFileURI(imp.getLocation()));
+//					Iterator<EObject> iter = ecorePackages.iterator();
+//					while(iter.hasNext()) {
+//						EPackage generatedPackage = (EPackage) iter.next();
+//						EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
+//					}
+//					
+				} else if (imp.getImportType().equals("http://docs.oasis-open.org/tosca/ns/2011/12")) {
+					Path path = Paths.get(imp.getLocation());
+					if (!path.isAbsolute()){
+						path = Paths.get(root.getParent().toString(), path.toString());
+					}
+					LOGGER.debug("Trying to read tosca definition from path " + path.toString());
+					
+					DefinitionsType importedDef = loadToscaDefinitions(URI.createFileURI(path.toString()), resourceSet);
+					importedPackage = createEPackage(importedDef);
+					handleImports(importedDef, importedPackage, resourceSet, path);
+					addToscaTypeDefinitions(importedDef, importedPackage);
+					EPackage.Registry.INSTANCE.put(importedPackage.getNsURI(), importedPackage);
+					Resource importedResource = resourceSet.createResource(URI.createURI(importedPackage.getNsURI()));
+					importedResource.getContents().add(importedPackage);
+				}
+				else {
+					LOGGER.error("Import type " + imp.getImportType() + " is unknown.");
+					return null;
+				}
+
+			}
+		}
+		return ePackage;
 	}
 	 
 }

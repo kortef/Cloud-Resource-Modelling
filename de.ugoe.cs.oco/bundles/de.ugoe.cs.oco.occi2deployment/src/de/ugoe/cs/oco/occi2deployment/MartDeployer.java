@@ -29,6 +29,7 @@ import de.ugoe.cs.oco.occi2deployment.transformation.Transformator;
 import de.ugoe.cs.oco.occi2deployment.transformation.TransformatorFactory;
 import modmacao.ModmacaoPackage;
 import openstackruntime.OpenstackruntimePackage;
+import ossweruntime.OssweruntimePackage;
 
 public class MartDeployer extends AbsDeployer{
 	public void deploy(Path targetConfigPath, MartConnector conn) {
@@ -36,6 +37,7 @@ public class MartDeployer extends AbsDeployer{
 		OCCIPackage.eINSTANCE.eClass();
 		ModmacaoPackage.eINSTANCE.eClass();
 		OpenstackruntimePackage.eINSTANCE.eClass();
+		OssweruntimePackage.eINSTANCE.eClass();
 		PlacementPackage.eINSTANCE.eClass();
 		
 		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/modmacao#", "/home/erbel/git/open-cloud-orchestrator/de.ugoe.cs.oco/bundles/de.ugoe.cs.oco.occi2deployment/extensions/modmacao.occie");

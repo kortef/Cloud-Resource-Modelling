@@ -8,7 +8,7 @@
   <use href="http://schemas.modmacao.org/openstack/runtime#/"/>
   <use href="http://schemas.modmacao.org/modmacao#/"/>
   <use href="http://schemas.modmacao.org/openstack/swe#/"/>
-  <resources xsi:type="infrastructure:Network" id="urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6" title="provider" location="/network/urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6/" occiNetworkState="inactive">
+  <resources xsi:type="infrastructure:Network" id="urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6" title="provider" location="/network/urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6/" rlinks="//@resources.2/@links.1" occiNetworkState="inactive">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
     <attributes name="occi.core.id" value="urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6"/>
     <attributes name="occi.core.title" value="provider"/>
@@ -22,7 +22,7 @@
       <attributes name="openstack.runtime.id" value="d52754e0-6729-4034-adbb-8f1f3800f2c6"/>
     </parts>
   </resources>
-  <resources xsi:type="infrastructure:Storage" id="urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060" title="storage" location="/storage/urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060/" rlinks="//@resources.3/@links.0" occiStorageSize="100.0">
+  <resources xsi:type="infrastructure:Storage" id="urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060" title="storage" location="/storage/urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060/" rlinks="//@resources.2/@links.0" occiStorageSize="100.0">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
     <attributes name="occi.core.id" value="urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060"/>
     <attributes name="occi.core.title" value="storage"/>
@@ -31,23 +31,7 @@
     <attributes name="occi.storage.state" value="online"/>
     <attributes name="occi.storage.state.message" value=""/>
   </resources>
-  <resources xsi:type="infrastructure:Network" id="urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590" title="sampleNet" location="/network/urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590/" rlinks="//@resources.3/@links.1" occiNetworkState="active">
-    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
-    <attributes name="occi.core.id" value="urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590"/>
-    <attributes name="occi.core.title" value="sampleNet"/>
-    <attributes name="occi.core.summary" value=""/>
-    <attributes name="occi.network.vlan" value="0"/>
-    <attributes name="occi.network.label" value=""/>
-    <attributes name="occi.network.state" value="active"/>
-    <attributes name="occi.network.state.message" value=""/>
-    <parts xsi:type="infrastructure:Ipnetwork" occiNetworkAddress="10.0.0.0/24">
-      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetwork']"/>
-      <attributes name="occi.network.address" value="10.0.0.0/24"/>
-      <attributes name="occi.network.gateway" value=""/>
-      <attributes name="occi.network.allocation" value="dynamic"/>
-    </parts>
-  </resources>
-  <resources xsi:type="infrastructure:Compute" id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2" location="/compute/urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce/" rlinks="//@resources.4/@links.0" occiComputeCores="2" occiComputeHostname="vm2" occiComputeMemory="4096.0" occiComputeState="active">
+  <resources xsi:type="infrastructure:Compute" id="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce" title="vm2" location="/compute/urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce/" rlinks="//@resources.3/@links.0" occiComputeCores="2" occiComputeHostname="vm2" occiComputeMemory="4096.0" occiComputeState="active">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
     <attributes name="occi.core.id" value="urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce"/>
     <attributes name="occi.core.title" value="vm2"/>
@@ -75,20 +59,13 @@
       <attributes name="occi.core.source" value="/compute/urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce/"/>
       <attributes name="occi.core.target" value="/storage/urn:uuid:a0646f23-4b3a-4298-b262-85fd92d10060/"/>
     </links>
-    <links xsi:type="infrastructure:Networkinterface" id="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af" title="link1" location="/networkinterface/urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af/" target="//@resources.2" occiNetworkinterfaceInterface="" occiNetworkinterfaceMac="" occiNetworkinterfaceStateMessage="">
+    <links xsi:type="infrastructure:Networkinterface" id="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af" title="link1" location="/networkinterface/urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af/" target="//@resources.0" occiNetworkinterfaceInterface="" occiNetworkinterfaceMac="" occiNetworkinterfaceStateMessage="">
       <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
       <attributes name="occi.core.id" value="urn:uuid:0f3c22cd-35ea-4e31-a09b-d866aaf4a8af"/>
       <attributes name="occi.core.title" value="link1"/>
-      <attributes name="occi.networkinterface.interface" value=""/>
-      <attributes name="occi.networkinterface.mac" value=""/>
-      <attributes name="occi.networkinterface.state" value="active"/>
-      <attributes name="occi.networkinterface.state.message" value=""/>
-      <attributes name="occi.networkinterface.address" value="10.0.0.35"/>
-      <attributes name="occi.networkinterface.gateway" value="10.0.0.1"/>
-      <attributes name="occi.networkinterface.allocation" value="dynamic"/>
       <attributes name="occi.core.source" value="/compute/urn:uuid:2e6a73d0-faaa-476a-bd25-ca461dd166ce/"/>
-      <attributes name="occi.core.target" value="/network/urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590/"/>
-      <parts xsi:type="infrastructure:Ipnetworkinterface" occiNetworkinterfaceAddress="10.0.0.35" occiNetworkinterfaceGateway="10.0.0.1">
+      <attributes name="occi.core.target" value="/network/urn:uuid:d52754e0-6729-4034-adbb-8f1f3800f2c6/"/>
+      <parts xsi:type="infrastructure:Ipnetworkinterface" occiNetworkinterfaceAddress="192.168.35.30" occiNetworkinterfaceGateway="192.168.35.1">
         <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetworkinterface']"/>
       </parts>
     </links>
@@ -101,7 +78,7 @@
     <attributes name="occi.component.state" value="undeployed"/>
     <attributes name="occi.component.state.message" value=""/>
     <parts mixin="//@mixins.0"/>
-    <links xsi:type="placement:Placementlink" id="urn:uuid:ff292f08-d263-41b6-88c8-84d33783b918" title="link1" location="/placementlink/urn:uuid:ff292f08-d263-41b6-88c8-84d33783b918/" target="//@resources.3">
+    <links xsi:type="placement:Placementlink" id="urn:uuid:ff292f08-d263-41b6-88c8-84d33783b918" title="link1" location="/placementlink/urn:uuid:ff292f08-d263-41b6-88c8-84d33783b918/" target="//@resources.2">
       <kind href="http://schemas.occiware.org/placement#//@kinds[term='placementlink']"/>
       <attributes name="occi.core.id" value="urn:uuid:ff292f08-d263-41b6-88c8-84d33783b918"/>
       <attributes name="occi.core.title" value="link1"/>

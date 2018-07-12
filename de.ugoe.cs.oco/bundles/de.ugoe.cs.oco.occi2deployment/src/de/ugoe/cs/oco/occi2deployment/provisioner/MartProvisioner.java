@@ -109,7 +109,15 @@ public class MartProvisioner extends AbsProvisioner implements Runnable {
     	executor.executeOperation("PUT", extracted, null);
     	
     	if(extracted instanceof Compute || extracted instanceof Network || extracted instanceof Storage) {
-    		waitForActiveState(extracted);	  
+    		boolean hasRuntime = false;
+    		for(Mixin mix: ((Entity) extracted).getMixins()) {
+    			if(mix.getTerm().equals("runtimeid")) {
+    				hasRuntime = true;
+    			}
+    		}
+    		if(hasRuntime == false) {
+    			waitForActiveState(extracted);
+    		}
     	}
     	
 	    performed.add(this.currentNode.getOutgoings().get(0));

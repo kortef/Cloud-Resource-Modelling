@@ -3,8 +3,6 @@ package de.ugoe.cs.oco.occi2deployment;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -24,23 +22,18 @@ import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl;
-import org.modmacao.placement.PlacementPackage;
 
 import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
-import org.eclipse.cmf.occi.core.util.OcciRegistry;
 import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 
 import de.ugoe.cs.oco.occi.extractor.wrapper.OCCIModelExtractorWrapper;
 import de.ugoe.cs.oco.occi2deployment.connector.Connection;
-import de.ugoe.cs.oco.occi2deployment.connector.ModelRetriever;
 import de.ugoe.cs.oco.pog.Graph;
 import de.ugoe.cs.oco.pog.PogPackage;
-import modmacao.ModmacaoPackage;
-import openstackruntime.OpenstackruntimePackage;
 import pcg.PcgPackage;
 
 

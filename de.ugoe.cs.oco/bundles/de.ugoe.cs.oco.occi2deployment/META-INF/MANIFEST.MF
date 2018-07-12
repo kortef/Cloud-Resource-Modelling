@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.ui,
  org.apache.httpcomponents.httpclient;bundle-version="4.5.2",
  org.apache.commons.logging;bundle-version="1.1.1",
  com.jcraft.jsch;bundle-version="0.1.54",
- com.jcraft.jsch.source;bundle-version="0.1.54"
+ com.jcraft.jsch.source;bundle-version="0.1.54",
+ org.eclipse.cmf.occi.crtp;bundle-version="1.0.0"
 Import-Package: com.google.common.net,
  de.ugoe.cs.oco.occi.extractor,
  de.ugoe.cs.oco.pog.impl

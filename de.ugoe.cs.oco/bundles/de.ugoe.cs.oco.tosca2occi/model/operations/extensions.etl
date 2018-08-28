@@ -2,13 +2,18 @@
 Description: Creates required Extensions for the OCCI2TOSCA transformation. One for nodeTypes and one for relationshipTypes.*/
 operation createRootExtensions() {
 	var core = new Set;
-	core.add(Core!Extension.all.selectOne(element|element.name = "core"));
+	//core.add(Core!Extension.all.selectOne(element|element.name = "core"));
 	for(extension in OCCI!Extension){
 		core.add(extension);
 	}
 		
-	createExtension("nodeTypes", TOSCA!TDefinitions.all.first().targetNamespace + "/TNodeType#", "Transformed TOSCA Node Types", core);
-	createExtension("relationshipTypes", TOSCA!TDefinitions.all.first().targetNamespace + "/TRelationshipType#", "Transformed TOSCA Relationship Types", core);
+	//createExtension("nodeTypes", TOSCA!TDefinitions.all.first().targetNamespace + "/TNodeType#", "Transformed TOSCA Node Types", core);
+	//createExtension("relationshipTypes", TOSCA!TDefinitions.all.first().targetNamespace + "/TRelationshipType#", "Transformed TOSCA Relationship Types", core);
+}
+
+operation createRootConfiguration(){
+	var config = new OCCI!Configuration;
+	return config;
 }
 
 /*

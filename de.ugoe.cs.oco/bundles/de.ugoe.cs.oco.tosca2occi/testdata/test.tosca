@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tosca:Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ntypes="http://oco.cs.ugoe.de/tosca/normativetypes" xmlns:tosca="http://oco.cs.ugoe.de/tosca">
+  <tosca:ServiceTemplate>
+    <tosca:TopologyTemplate>
+      <tosca:NodeTemplate xsi:type="ntypes:ToscaNodesSoftwareComponent" id="id1" type="tosca.nodes.SoftwareComponent" name="SoftwareComponent">
+        <tosca:Properties>
+          <ntypes:tosca.nodes.SoftwareComponentPropertiesType>
+            <component_version>1.0.0</component_version>
+          </ntypes:tosca.nodes.SoftwareComponentPropertiesType>
+        </tosca:Properties>
+      </tosca:NodeTemplate>
+      <tosca:NodeTemplate xsi:type="ntypes:ToscaNodesWebServer" id="id2" type="tosca.nodes.WebServer" name="WebServer">
+        <tosca:Capabilities>
+          <tosca:Capability xsi:type="ntypes:ToscaCapabilitiesNode">
+            <tosca:Properties/>
+          </tosca:Capability>
+        </tosca:Capabilities>
+      </tosca:NodeTemplate>
+    </tosca:TopologyTemplate>
+  </tosca:ServiceTemplate>
+</tosca:Definitions>

@@ -2,10 +2,11 @@
 Input: nodeTemplate from which the Node Type, so the corresponding kind of the resource can be extracted.
 Description: */
 operation OCCI!Resource assignKind(template : TOSCA!TNodeTemplate) {
-	var typestring = template.type.asString;
+	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	
-	self.kind = Cloudconfig!Kind.allInstances.selectOne(k | k.term == term);
+	typestring.println();
+	//self.kind = Core!Kind.allInstances.selectOne(k | k.term == term);
+	self.kind = kind_Set.selectOne(k | k.term == term);
 	
 	if (self.kind == null)
 		self.kind = OCCI!Kind.allInstances.selectOne(k | k.term == typestring);
@@ -33,10 +34,11 @@ for(type in TOSCA!TNodeType){
 Input: RelationshipTemplate from which the Relationship Type, so the corresponding kind of the link can be extracted.
 Description: */
 operation OCCI!Link assignKind(template : TOSCA!TRelationshipTemplate) {
-	var typestring = template.type.asString;
+	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	self.kind = OCCI!Kind.allInstances.selectOne(k | k.term == term);
+	self.kind = kind_Set.selectOne(k | k.term == term);
 	//self.kind = correspondingKind(template.type.asString());
-	if (self.kind == null)
-		self.kind = Cloudconfig!Kind.allInstances.selectOne(k | k.term == typestring);
+	if (self.kind == null){
+		//self.kind = Cloudconfig!Kind.allInstances.selectOne(k | k.term == typestring);
+	}
 }

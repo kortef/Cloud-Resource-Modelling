@@ -1,5 +1,6 @@
 import "./configuration.etl";
 import "./operations/generalOperations.etl";
+import "./operations/normative.etl";
 import "./operations/actions.etl";
 import "./operations/attributes.etl";
 import "./operations/parents.etl";
@@ -20,12 +21,57 @@ pre {
 	"Starting Transformation".println();
 	"\n".print();
 	var kind_Set = new Set; //Set containing all Kinds
+	var extension_Set = new Set; // Set containing all extensions
+	var mixin_Set = new Set;
 	var parentToBeAdded = new Map; //Key = Parent Type; Value = Child Kinds;
 	var linkToBeAdded = new Map; //Key = Target Resource; Value = Source Resource
-	var configuration = getConfiguration();
+	var configuration = getTypeMapping();
 	var propertyMapping = getPropertyMapping();
 	//createConfigurationExtensions();
 	//addKindsToConfiguredExtensions();
+	//kind_Set.addAll(core!Kind.allInstances);
+	kind_Set.addAll(Modmacao!Kind.allInstances);
+	//kind_Set.addAll(Infrastructure!Kind.allInstances);
+	kind_Set.addAll(Platform!Kind.allInstances);
+	kind_Set.addAll(Sweruntime!Kind.allInstances);
+	
+	extension_Set.addAll(Modmacao!Extension.allInstances);
+	//extension_Set.addAll(Infrastructure!Extension.allInstances);
+	extension_Set.addAll(Platform!Extension.allInstances);
+	
+	mixin_Set.addAll(Modmacao!Mixin.allInstances);
+	//mixin_Set.addAll(Infrastructure!Mixin.allInstances);
+	mixin_Set.addAll(Platform!Mixin.allInstances);
+	mixin_Set.addAll(Sweruntime!Mixin.allInstances);
+	
+	for (mixin in mixin_Set){
+		mixin.println();
+	}
+	
+	"Input model stats:".println();
+	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
+	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
+	
+	
+	for (node in TOSCA!TNodeTemplate.allOfKind){
+		node.type.println();
+		//node.capabilities.capability.size.println();
+	}
+	
+	"".println;
+	"OCCI model stats:".println();
+	("#Kinds (known): " + kind_Set.size).println();
+	("#Extensions (known): " + extension_Set.size).println();
+	("#Mixins (known):) " + mixin_Set.size).println();
+	
+	var config = createRootConfiguration();
+	for (extension in extension_Set){
+		config.use.add(extension);
+	}
+	
+	for (kind in kind_Set){
+		kind.println();
+	}
 	
 	createRootExtensions(); //Creates basic Extensions required for the transformation.
 	

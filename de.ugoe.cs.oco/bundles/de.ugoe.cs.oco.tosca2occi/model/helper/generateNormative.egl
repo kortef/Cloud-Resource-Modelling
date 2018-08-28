@@ -2,13 +2,16 @@ operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType:
 	var state: OCCI!AttributeState;
 	var propertyObject = normativePropertiesType.value;
 	[% 
-		var propertyClasses = Normative!EClass.allInstances.select(c | c.name.endsWith("PropertiesType"));
+		var propertyClasses = CRMTypes!EClass.allInstances.select(c | c.name.endsWith("Properties"));
+		propertyClasses.size.println();
+		//propertyClasses.addAll(BaseTypes!EClass.allInstances.select(c | c.name.endsWith("Properties")));
+		//propertyClasses.addAll(SpecificTypes!EClass.allInstances.select(c | c.name.endsWith("Properties")));
 		for (class in propertyClasses){
-			out.println("\tif (propertyObject.isTypeOf(TOSCA!" + class.name + "){");
+			out.println("\tif (propertyObject.isTypeOf(TOSCA!" + class.name + ")){");
 			for (feature in class.getEStructuralFeatures()){
 				out.println("\t\tvar state = new OCCI!AttributeState();");
-				out.println("\t\tstate.name = \"\"");
-				out.println("\t\tstate.value = propertyObject." + feature.name + ";");
+				out.println("\t\tstate.name = \"" + feature.name + "\";");
+				out.println("\t\tstate.value = propertyObject." + feature.name + ".toString();");
 				out.println("\t\tself.getAttributes.add(state);");
 			}
 			out.println("\t}");

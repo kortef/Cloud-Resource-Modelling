@@ -1,0 +1,15 @@
+[% 
+		var ntypes = CRMTypes!TNodeType.allInstances;
+		ntypes.addAll(BaseTypes!TNodeType.allInstances);
+		ntypes.addAll(SpecificTypes!TNodeType.allInstances); 
+		for (type in ntypes){
+			out.println("\tconfiguration.put(\"" + type.name + "\", \"\");");
+		}
+		var rtypes = CRMTypes!TRelationshipType.allInstances;
+		rtypes.addAll(BaseTypes!TRelationshipType.allInstances);
+		rtypes.addAll(SpecificTypes!TRelationshipType.allInstances);
+		for (type in rtypes){
+			out.println("\tconfiguration.put(\"" + type.name + "\", \"\");");
+		} 
+%]
+	

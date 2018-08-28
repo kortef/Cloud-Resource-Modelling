@@ -1,0 +1,150 @@
+operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType: Any){
+	var state: OCCI!AttributeState;
+	var propertyObject = normativePropertiesType.value;
+	propertyObject.println();
+	if (propertyObject.isTypeOf(TOSCA!TSugarCRMApplicationProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "adminUser";
+		state.value = propertyObject.adminUser.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "adminPassword";
+		state.value = propertyObject.adminPassword.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "siteName";
+		state.value = propertyObject.siteName.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "sitePath";
+		state.value = propertyObject.sitePath.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TSugarCRMDatabaseProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "dBName";
+		state.value = propertyObject.dBName.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "dBUser";
+		state.value = propertyObject.dBUser.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "dBPassword";
+		state.value = propertyObject.dBPassword.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "dBPort";
+		state.value = propertyObject.dBPort.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TMySQLProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "rootPassword";
+		state.value = propertyObject.rootPassword;
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TApacheWebServerProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "httpdport";
+		state.value = propertyObject.httpdport.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TOsPackageArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "packageInformation";
+		state.value = propertyObject.packageInformation.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "packageType";
+		state.value = propertyObject.packageType.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TFileArtifactContextProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "fileDeploymentInformation";
+		state.value = propertyObject.fileDeploymentInformation.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TBaseArtifactContextProperties)){
+	}
+	if (propertyObject.isTypeOf(TOSCA!TScriptArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "scriptLanguage";
+		state.value = propertyObject.scriptLanguage.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "primaryScript";
+		state.value = propertyObject.primaryScript.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TUserContentArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "userSpec";
+		state.value = propertyObject.userSpec.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "property";
+		state.value = propertyObject.property.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TRPMGroupArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "groupInformation";
+		state.value = propertyObject.groupInformation.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TArchiveArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "archiveInformation";
+		state.value = propertyObject.archiveInformation.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TArchiveArtifactContextProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "archiveDeploymentInformation";
+		state.value = propertyObject.archiveDeploymentInformation.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TBaseArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "identityProperties";
+		state.value = propertyObject.identityProperties.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TFileArtifactProperties)){
+	}
+	if (propertyObject.isTypeOf(TOSCA!TChefArtifactProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "cookbooks";
+		state.value = propertyObject.cookbooks.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "roles";
+		state.value = propertyObject.roles.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "mappings";
+		state.value = propertyObject.mappings.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "runList";
+		state.value = propertyObject.runList.toString();
+		self.getAttributes.add(state);
+	}
+	if (propertyObject.isTypeOf(TOSCA!TServerProperties)){
+		var state = new OCCI!AttributeState();
+		state.name = "numCpus";
+		state.value = propertyObject.numCpus.toString();
+		self.getAttributes.add(state);
+		var state = new OCCI!AttributeState();
+		state.name = "memory";
+		state.value = propertyObject.memory.toString();
+		self.getAttributes.add(state);
+	}
+	
+}
+	
+	

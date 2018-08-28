@@ -21,7 +21,12 @@ operation OCCI!Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
 		//findAnyTypeElement(nodeTemplate.proper)
 		if(nodeTemplate.properties.isDefined()){
 			for(property in nodeTemplate.properties.any){
-				self.createAttributeStatesRecursive(nodeTemplate.type.toString(), property, null);
+				property.type().println();
+				if (property.isKindOf(TOSCA!AnyType)){
+					self.createAttributeStatesRecursive(nodeTemplate.type.toString(), property, null);
+				} else {
+					self.setAttributeStatesFromNormative(property);
+				}
 			}
 		}
 		if (nodeTemplate.capabilities.isDefined()){

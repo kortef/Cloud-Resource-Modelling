@@ -1,12 +1,49 @@
 /* Operation: getConfiguration
 Description: Configuration File to Map pre existing types to names, which has to be checked for.*/
-operation getConfiguration() : Map {
+operation getTypeMapping() : Map {
 	var configuration = new Map;
-	configuration.put("tosca.nodes.Compute", "compute");
-	configuration.put("tosca.nodes.BlockStorage", "storage");
+	/*configuration.put("tosca.nodes.Compute", "component");
+	configuration.put("tosca.nodes.SoftwareComponent", "component");
+	configuration.put("tosca.nodes.WebServer", "component");
+	configuration.put("tosca.nodes.BlockStorage", "component");
 	configuration.put("tosca.nodes.network.Network", "network");
-	configuration.put("tosca.relationships.attachesTo", "storagelink");
+	configuration.put("tosca.relationships.AttachesTo", "storagelink");
+	configuration.put("tosca.relationships.ConnectsTo", "networkInterface");
+	configuration.put("tosca.relationships.HostedOn", "placementLink");
+	*/
+    configuration.put("SugarCRMApplication", "component");
+	configuration.put("SugarCRMDatabase", "component");
+	//configuration.put("RootNodeType", "");
+	configuration.put("Tier", "");
+	configuration.put("SingleNodeTier", "");
+	configuration.put("ScalableTier", "");
+	configuration.put("Server", "compute");
+	configuration.put("OperatingSystem", "");
+	configuration.put("WebServer", "component");
+	configuration.put("WebApplication", "component");
+	configuration.put("DBMS", "component");
+	configuration.put("Database", "component");
+	configuration.put("ApacheWebServer", "component");
+	configuration.put("ApacheWebApplication", "component");
+	configuration.put("ApacheModule", "component");
+	configuration.put("ApachePHPModule", "component");
+	configuration.put("MySQL", "component");
+	configuration.put("MySQLDatabase", "component");
+	configuration.put("SugarCRMDatabaseConnection", "storagelink");
+	configuration.put("RootRelationshipType", "link");
+	configuration.put("HostedOn", "componentlink");
+	configuration.put("DependsOn", "componentlink");
+	configuration.put("ConnectsTo", "networkinterface");
+	configuration.put("MySQLDatabaseHostedOnMySQL", "componentlink");
+	configuration.put("MySQLDatabaseConnection", "componentlink");
 	return configuration;
+}
+
+operation getMixinMapping(): Map {
+	var mixinMapping = new Map;
+	mixinMapping.put("tosca.nodes.SoftwareComponent", "Component");
+	
+	return mixinMapping; 
 }
 
 operation getFlavorMapping(): Map {

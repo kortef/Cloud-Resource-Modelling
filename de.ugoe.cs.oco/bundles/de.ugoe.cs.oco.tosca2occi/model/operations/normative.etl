@@ -4,65 +4,65 @@ operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType:
 	propertyObject.println();
 	if (propertyObject.isTypeOf(TOSCA!TSugarCRMApplicationProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "adminUser";
+		state.name = "modmacao.sugarcrm.adminUser";
 		state.value = propertyObject.adminUser.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "adminPassword";
+		state.name = "modmacao.sugarcrm.adminpassword";
 		state.value = propertyObject.adminPassword.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "siteName";
+		state.name = "modmacao.sugarcrm.sitename";
 		state.value = propertyObject.siteName.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "sitePath";
+		state.name = "modmacao.sugarcrm.sitepath";
 		state.value = propertyObject.sitePath.toString();
 		self.getAttributes.add(state);
 	}
 	if (propertyObject.isTypeOf(TOSCA!TSugarCRMDatabaseProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "dBName";
+		state.name = "modmacao.sugarcrmdb.dbName";
 		state.value = propertyObject.dBName.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "dBUser";
+		state.name = "modmacao.sugarcrmdb.dbuser";
 		state.value = propertyObject.dBUser.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "dBPassword";
+		state.name = "modmacao.sugarcrmdb.dbpassword";
 		state.value = propertyObject.dBPassword.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "dBPort";
+		state.name = "modmacao.sugarcrmdb.dbport";
 		state.value = propertyObject.dBPort.toString();
 		self.getAttributes.add(state);
 	}
 	if (propertyObject.isTypeOf(TOSCA!TMySQLProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "rootPassword";
+		state.name = "toscaspecific.mysql.rootpassword";
 		state.value = propertyObject.rootPassword;
 		self.getAttributes.add(state);
 	}
 	if (propertyObject.isTypeOf(TOSCA!TApacheWebServerProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "httpdport";
+		state.name = "toscaspecific.apachewebserver.httpport";
 		state.value = propertyObject.httpdport.toString();
 		self.getAttributes.add(state);
 	}
 	if (propertyObject.isTypeOf(TOSCA!TOsPackageArtifactProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "packageInformation";
+		state.name = "toscaspecific.ospackage.packageinformation";
 		state.value = propertyObject.packageInformation.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "packageType";
+		state.name = "modmacao.ospackage.packagetype";
 		state.value = propertyObject.packageType.toString();
 		self.getAttributes.add(state);
 	}
 	if (propertyObject.isTypeOf(TOSCA!TFileArtifactContextProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "fileDeploymentInformation";
+		state.name = "modmacai.file.DeploymentInformation";
 		state.value = propertyObject.fileDeploymentInformation.toString();
 		self.getAttributes.add(state);
 	}
@@ -136,11 +136,11 @@ operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType:
 	}
 	if (propertyObject.isTypeOf(TOSCA!TServerProperties)){
 		var state = new OCCI!AttributeState();
-		state.name = "numCpus";
+		state.name = "occi.compute.cores";
 		state.value = propertyObject.numCpus.toString();
 		self.getAttributes.add(state);
 		var state = new OCCI!AttributeState();
-		state.name = "memory";
+		state.name = "occi.compute.memory";
 		state.value = propertyObject.memory.toString();
 		self.getAttributes.add(state);
 	}

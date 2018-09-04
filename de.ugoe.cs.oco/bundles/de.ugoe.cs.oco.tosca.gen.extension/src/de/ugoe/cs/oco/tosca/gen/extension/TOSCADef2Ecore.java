@@ -6,24 +6,21 @@ package de.ugoe.cs.oco.tosca.gen.extension;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -60,44 +57,44 @@ public class TOSCADef2Ecore {
 	protected final static Logger LOGGER = LoggerFactory.getLogger(TOSCADef2Ecore.class.getName());
 
 	
-	private static EPackage addToscaTypeDefinitions(DefinitionsType definitions, EPackage ePackage) {
+	private static EPackage addToscaTypeDefinitions(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet) {
 		
 		EPackage toscaPackage = getTOSCAPackage();
 		//EPackage toscaPackage = ToscaPackage.eINSTANCE;	
-		EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);
+		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		extractAndAddRawTypes(definitions, toscaPackage, ePackage);
-		extractAndAddSuperTypes(definitions, toscaPackage, ePackage);
+		extractAndAddSuperTypes(definitions, toscaPackage, ePackage, resourceSet);
 		
 		return ePackage;
 	}
 
-	private static EPackage extractAndAddSuperTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage) {
+	private static EPackage extractAndAddSuperTypes(DefinitionsType definitions, EPackage toscaPackage, EPackage ePackage, ResourceSet resourceSet) {
 		DocumentRoot root = (DocumentRoot) definitions.eContainer();
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
-			addSuperTypeIfExists(cType, root, ePackage);
+			addSuperTypeIfExists(cType, root, ePackage, resourceSet);
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
-			addSuperTypeIfExists(rType, root, ePackage);
+			addSuperTypeIfExists(rType, root, ePackage, resourceSet);
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
-			addSuperTypeIfExists(aType, root, ePackage);
+			addSuperTypeIfExists(aType, root, ePackage, resourceSet);
 		}
 		
 		for (TNodeType nType: definitions.getNodeType()) {
-			addSuperTypeIfExists(nType, root, ePackage);
+			addSuperTypeIfExists(nType, root, ePackage, resourceSet);
 		}
 		
 		for (TRelationshipType rlType: definitions.getRelationshipType()) {
-			addSuperTypeIfExists(rlType, root, ePackage);
+			addSuperTypeIfExists(rlType, root, ePackage, resourceSet);
 		}
 			
 		return ePackage;
 		
 	}
 	
-	private static EPackage addSuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage) {
+	private static EPackage addSuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage, ResourceSet resourceSet) {
 		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
 		if (eType.getDerivedFrom() != null) {
 			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
@@ -109,7 +106,7 @@ public class TOSCADef2Ecore {
 				superTypePackage = ePackage;
 			} else {
 				String namespace = root.getXMLNSPrefixMap().get(superTypePackagePrefix);
-				superTypePackage = EPackage.Registry.INSTANCE.getEPackage(namespace);
+				superTypePackage = resourceSet.getPackageRegistry().getEPackage(namespace);
 			}
 			
 			if (superTypePackage == null) {
@@ -137,6 +134,7 @@ public class TOSCADef2Ecore {
 			ePackage.getEClassifiers().add(eClass);
 			
 			eClass.getEOperations().add(getComputeTypeOperation(cType));
+			eClass.getEOperations().add(getPropertiesTypeOperation(cType));
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
@@ -146,6 +144,8 @@ public class TOSCADef2Ecore {
 			ePackage.getEClassifiers().add(eClass);
 			
 			eClass.getEOperations().add(getComputeTypeOperation(rType));
+			eClass.getEOperations().add(getPropertiesTypeOperation(rType));
+
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
@@ -155,6 +155,7 @@ public class TOSCADef2Ecore {
 			ePackage.getEClassifiers().add(eClass);
 			
 			eClass.getEOperations().add(getComputeTypeOperation(aType));
+			eClass.getEOperations().add(getPropertiesTypeOperation(aType));
 
 		}
 		
@@ -187,6 +188,8 @@ public class TOSCADef2Ecore {
 						0, constraintStringBuilder.length() - 1));
 			}
 			eClass.getEOperations().add(getComputeTypeOperation(nodeType));
+			eClass.getEOperations().add(getPropertiesTypeOperation(nodeType));
+
 		}
 		
 		for (TRelationshipType relationshipType: definitions.getRelationshipType()) {
@@ -196,6 +199,8 @@ public class TOSCADef2Ecore {
 			ePackage.getEClassifiers().add(eClass);
 			
 			eClass.getEOperations().add(getComputeTypeOperation(relationshipType));
+			eClass.getEOperations().add(getPropertiesTypeOperation(relationshipType));
+
 		}
 		
 		return ePackage;
@@ -204,7 +209,8 @@ public class TOSCADef2Ecore {
 	private static EPackage createEPackage(DefinitionsType definitions) {
 		EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
 	
-		ePackage.setName(definitions.getName());
+		ePackage.setName(definitions.getName().replace("-", "").replace(".", ""));
+		
 		ePackage.setNsURI(definitions.getTargetNamespace());
 		ePackage.setNsPrefix(definitions.getName());
 		EAnnotation oclImportAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
@@ -218,6 +224,7 @@ public class TOSCADef2Ecore {
 		ecoreAnnotation.getDetails().put("invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
 		ecoreAnnotation.getDetails().put("validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
 		ecoreAnnotation.setEModelElement(ePackage);
+		
 		return ePackage;
 	}
 
@@ -297,22 +304,22 @@ public class TOSCADef2Ecore {
 		EcorePackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		
+		EcorePlugin.ExtensionProcessor.process(null);
+		
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
 		m.put("xml", new ToscaResourceFactoryImpl());
 		m.put("ecore", new EcoreResourceFactoryImpl());
 		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(false));
 		DefinitionsType definitions = loadToscaDefinitions(URI.createFileURI(toscaDef.toString()), resourceSet);
 		
 		EPackage ePackage = createEPackage(definitions);
 		handleImports(definitions, ePackage, resourceSet, toscaDef);
-		addToscaTypeDefinitions(definitions, ePackage);
-					
-		//XSDSchema schema = loadXSD(URI.createFileURI(toscaDef.toString()));
-		//addXSDTypeDefinitions(schema, ePackage);
+		addToscaTypeDefinitions(definitions, ePackage, resourceSet);
 		
 		// finally add super classes for Properties
-		addSuperTypeForProperties(definitions, ePackage);
+		addSuperTypeForProperties(definitions, ePackage, resourceSet);
 		
 		// persist metamodel
 		try {
@@ -324,32 +331,32 @@ public class TOSCADef2Ecore {
 		
 	}
 	
-	private static EPackage addSuperTypeForProperties(TDefinitions definitions, EPackage ePackage) {
+	private static EPackage addSuperTypeForProperties(TDefinitions definitions, EPackage ePackage, ResourceSet resourceSet) {
 		DocumentRoot root = (DocumentRoot) definitions.eContainer();
 		for (TCapabilityType cType: definitions.getCapabilityType()) {
-			addPropertySuperTypeIfExists(cType, root, ePackage);
+			addPropertySuperTypeIfExists(cType, root, ePackage, resourceSet);
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
-			addPropertySuperTypeIfExists(rType, root, ePackage);
+			addPropertySuperTypeIfExists(rType, root, ePackage, resourceSet);
 		}
 		
 		for (TArtifactType aType: definitions.getArtifactType()) {
-			addPropertySuperTypeIfExists(aType, root, ePackage);
+			addPropertySuperTypeIfExists(aType, root, ePackage, resourceSet);
 		}
 		
 		for (TNodeType nType: definitions.getNodeType()) {
-			addPropertySuperTypeIfExists(nType, root, ePackage);
+			addPropertySuperTypeIfExists(nType, root, ePackage, resourceSet);
 		}
 		
 		for (TRelationshipType rlType: definitions.getRelationshipType()) {
-			addPropertySuperTypeIfExists(rlType, root, ePackage);
+			addPropertySuperTypeIfExists(rlType, root, ePackage, resourceSet);
 		}
 			
 		return ePackage;		
 	}
 		
-	private static EPackage addPropertySuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage) {
+	private static EPackage addPropertySuperTypeIfExists(TEntityType eType, DocumentRoot root, EPackage ePackage, ResourceSet resourceSet) {
 		String name = ConverterUtils.toEcoreCompatibleName(eType.getName());
 		if (eType.getDerivedFrom() != null) {
 			String superTypeName = ConverterUtils.toEcoreCompatibleName(eType.getDerivedFrom().getTypeRef().getLocalPart());
@@ -357,11 +364,16 @@ public class TOSCADef2Ecore {
 			LOGGER.debug("Super type package prefix is " + superTypePackagePrefix);
 			
 			EPackage superTypePackage = null;
-			if (superTypePackagePrefix == null || superTypePackagePrefix.equals("")) {
+			if (superTypePackagePrefix == null || superTypePackagePrefix.equals("") ) {
 				superTypePackage = ePackage;
 			} else {
 				String namespace = root.getXMLNSPrefixMap().get(superTypePackagePrefix);
-				superTypePackage = EPackage.Registry.INSTANCE.getEPackage(namespace);
+				if (namespace.equals(ePackage.getNsURI())) {
+					LOGGER.debug("Super type belongs to same package.");
+					superTypePackage = ePackage;
+				} else {
+					superTypePackage = resourceSet.getPackageRegistry().getEPackage(namespace);
+				}
 			}
 			
 			if (superTypePackage == null) {
@@ -393,13 +405,35 @@ public class TOSCADef2Ecore {
 		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
 		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
 		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" + entityType.getName() + "'}");
+		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" 
+				+ entityType.getName() + "'}");
 		typeOperation.getEAnnotations().add(annotation);
 		
 		typeOperation.setName("computeType");
 		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
 		
 		return typeOperation;
+	}
+	
+	private static EOperation getPropertiesTypeOperation(TEntityType entityType) {
+		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
+		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
+		if (entityType.getPropertiesDefinition() != null) {
+			annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" 
+						+ entityType.getPropertiesDefinition().getElement().getLocalPart() + "'}");
+		}
+		else {
+			annotation.getDetails().put("body", "null");	
+		}
+		typeOperation.getEAnnotations().add(annotation);
+		
+		
+		typeOperation.setName("computePropertiesType");
+		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
+		
+		return typeOperation;
+		
 	}
 	
 	private static XSDSchema loadXSD(URI xsdURI) {
@@ -434,6 +468,8 @@ public class TOSCADef2Ecore {
 	}
 	
 	private static EPackage addXSDTypeDefinitions(XSDSchema schema, EPackage ePackage) {
+		EClassifier root = ePackage.getEClassifier("DocumentRoot");
+		
 		ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl());
 		
 		XSDEcoreBuilder builder = new XSDEcoreBuilder(extendedMetaData);
@@ -446,8 +482,16 @@ public class TOSCADef2Ecore {
 			}
 			if (object instanceof EReference) {
 				EReference attribute = (EReference) object;
+				
 				if (attribute.getEContainingClass().getName().equals("DocumentRoot")){
-					ePackage.getEClassifiers().add(attribute.getEContainingClass());
+					if (root == null) {
+						ePackage.getEClassifiers().add(attribute.getEContainingClass());
+					}
+					else {
+						if (root != attribute.getEContainingClass()) {
+							((EClass) root).getEStructuralFeatures().add(attribute);
+						}
+					}
 				}
 			}
 		}
@@ -486,8 +530,8 @@ public class TOSCADef2Ecore {
 					DefinitionsType importedDef = loadToscaDefinitions(URI.createFileURI(path.toString()), resourceSet);
 					importedPackage = createEPackage(importedDef);
 					handleImports(importedDef, importedPackage, resourceSet, path);
-					addToscaTypeDefinitions(importedDef, importedPackage);
-					EPackage.Registry.INSTANCE.put(importedPackage.getNsURI(), importedPackage);
+					addToscaTypeDefinitions(importedDef, importedPackage, resourceSet);
+					resourceSet.getPackageRegistry().put(importedPackage.getNsURI(), importedPackage);
 					Resource importedResource = resourceSet.createResource(URI.createURI(importedPackage.getNsURI()));
 					importedResource.getContents().add(importedPackage);
 				}

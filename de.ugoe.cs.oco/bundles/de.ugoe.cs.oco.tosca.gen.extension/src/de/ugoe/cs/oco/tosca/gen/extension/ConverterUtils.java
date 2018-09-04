@@ -1,11 +1,6 @@
 package de.ugoe.cs.oco.tosca.gen.extension;
 
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,15 +11,22 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 
 public final class ConverterUtils {
 
 
-	public static void save(ResourceSet resourceSet, EObject rootElement, String path) throws IOException {
-		Resource resource = resourceSet.createResource(URI.createURI(path));
+	public static void save(ResourceSet resourceSet, EPackage rootElement, String path) throws IOException {
+		URI uri = URI.createFileURI(path);
+		Resource resource = resourceSet.createResource(uri);
+		resourceSet.getURIConverter().getURIMap().put(URI.createURI(rootElement.getNsURI()), uri);
+		
 		resource.getContents().add(rootElement);
-		Map<String, String> options = new HashMap<String, String>();
+		
+		Map<String, Object> options = new HashMap<String, Object>();
 		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+		//options.put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.AbsoluteCrossBundleAware());
 		//options.put(XMIResource.OPTION_PROCESS_DANGLING_HREF, XMIResource.OPTION_PROCESS_DANGLING_HREF_DISCARD);
 		resource.save(options);
 	}
@@ -75,7 +77,7 @@ public final class ConverterUtils {
 //				}
 //			}
 //		}
-		ConverterUtils.save(resourceSet, generated, "file:/" + path);
+		ConverterUtils.save(resourceSet, generated, path);
 	}
 
 }

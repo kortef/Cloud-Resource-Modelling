@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 import de.ugoe.cs.oco.tosca2occi.TOSCA2OCCITransformator;
 import de.ugoe.cs.util.console.Command;

@@ -3,31 +3,45 @@ pre{
 	typeMap.put("string","String");
 	typeMap.put("int", "Integer");
 	typeMap.put("anyURI", "String");
-	
+		
 	var extension = new OCCIE!Extension;
 	extension.`import`.add(MODMACAO!Extension.allInstances.selectOne(e | e.name = "modmacao"));
-	var scheme = SugarCRMTypesXSD!XSDSchema.allInstances().get(0).targetNamespace;
+	var scheme = TypesXSD!XSDSchema.allInstances().get(0).targetNamespace;
 	extension.name = scheme.split('/').last();
 	extension.scheme = "http://schemas.modmacao.org/" + extension.name + "#";
 }
 
 rule NodeType2Mixin
-	transform nodeType : SugarCRMTypes!TNodeType
+	transform nodeType : Types!TNodeType
 	to mixin : OCCIE!Mixin {	
+		("Transforming " + nodeType.name.toString()).println();
 		mixin.name = nodeType.name;
 		mixin.depends.add(MODMACAO!Mixin.allInstances.selectOne(m | m.name == "Component"));
 		mixin.scheme = extension.scheme;
-		var elementName = nodeType.propertiesDefinition.element;
-		var elementDeclaration = SugarCRMTypesXSD!XSDElementDeclaration.allInstances.selectOne(e | e.name == elementName.localPart);
-		var elementType = elementDeclaration.type;
-		for (particle in elementType.content.content.contents){
-			var attribute = new OCCIE!Attribute;
-			attribute.name = particle.content.name;
-			attribute.`default` = particle.content.value.toString();
-			var type = MODMACAO!DataType.allInstances.selectOne(t | t.name == typeMap.get(particle.content.typeDefinition.name));
-			attribute.type = type;
-			attribute.description = particle.content.annotation.userInformation.get(0).textContent;
-			mixin.attributes.add(attribute);
+		if (not (nodeType.propertiesDefinition == null)){
+			var elementName = nodeType.propertiesDefinition.element;
+			var elementDeclaration = TypesXSD!XSDElementDeclaration.allInstances.selectOne(e | e.name == elementName.localPart);
+			if (elementDeclaration.isDefined()){
+				("\tFound Properties Definition").println();
+				var elementType = elementDeclaration.type;
+				for (particle in elementType.content.content.contents){
+					var attribute = new OCCIE!Attribute;
+					attribute.name = particle.content.name;
+					("\tAdding attribute: " + attribute.name).println();
+					if (particle.content.value.isDefined()){
+						attribute.`default` = particle.content.value.toString();
+					}
+					var type = Core!DataType.allInstances.selectOne(t | t.name == typeMap.get(particle.content.typeDefinition.name));
+					attribute.type = type;
+					attribute.description = particle.content.annotation.userInformation.get(0).textContent;
+					mixin.attributes.add(attribute);
+				}
+			}
+			else {
+				("\tNo Element Declaration found for: " + elementName).errln();
+				"".println();
+			}
+			
 		}
 	extension.mixins.add(mixin);
 }

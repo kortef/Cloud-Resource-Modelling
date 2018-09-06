@@ -27,6 +27,9 @@ pre {
 	var linkToBeAdded = new Map; //Key = Target Resource; Value = Source Resource
 	var configuration = getTypeMapping();
 	var propertyMapping = getPropertyMapping();
+	var mixinMapping = getMixinMapping();
+	
+	OCCIExtensions!Mixin.allInstances().println();
 	//createConfigurationExtensions();
 	//addKindsToConfiguredExtensions();
 	//kind_Set.addAll(core!Kind.allInstances);
@@ -44,19 +47,9 @@ pre {
 	mixin_Set.addAll(Platform!Mixin.allInstances);
 	mixin_Set.addAll(Sweruntime!Mixin.allInstances);
 	
-	for (mixin in mixin_Set){
-		mixin.println();
-	}
-	
 	"Input model stats:".println();
 	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
 	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
-	
-	
-	for (node in TOSCA!TNodeTemplate.allOfKind){
-		node.type.println();
-		//node.capabilities.capability.size.println();
-	}
 	
 	"".println;
 	"OCCI model stats:".println();

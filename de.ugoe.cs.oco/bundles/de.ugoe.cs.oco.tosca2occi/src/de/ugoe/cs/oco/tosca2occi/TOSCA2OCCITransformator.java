@@ -11,8 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.eclipse.cmf.occi.core.Extension;
+import org.eclipse.cmf.occi.core.Mixin;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EcoreFactoryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -68,23 +73,41 @@ public class TOSCA2OCCITransformator {
 			extensionMap.put("http://schemas.modmacao.org/occi/platform", "Platform");
 			extensionMap.put("http://schemas.modmacao.org/openstack/swe", "Sweruntime");
 			
+			
 			for (Entry<String, String> entry: extensionMap.entrySet()) {
 				Resource resource = occiSet.getResource(URI.createURI(entry.getKey(), true), true);
 				IModel model = new InMemoryEmfModel(resource);
 				model.setName(entry.getValue());
-				module.getContext().getModelRepository().addModel(model);		
+				module.getContext().getModelRepository().addModel(model);
+				model.getAliases().add("OCCIExtensions");
 			}
 			
-			List<Resource> externalResources = new EcoreModelLoader().searchAndLoadEcoreModels(new File(toscaModelPath.getParent().toString()), toscaSet);
+			List<Resource> externalOCCIExt = new OCCIExtensionLoader().searchAndLoadOCCIExtensions(
+					new File(toscaModelPath.getParent().toString()), occiSet);
+			
+			for (Resource externalResource: externalOCCIExt) {
+				Extension externalExtension = (Extension) externalResource.getContents().get(0);
+				InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
+				model.setName(externalExtension.getName());
+				module.getContext().getModelRepository().addModel(model);
+				model.getAliases().add("OCCIExtensions");
+			}
+				
+			Resource resource = null;
+			
+			List<Resource> externalEcoreModels = new EcoreModelLoader().searchAndLoadEcoreModels(
+					new File(toscaModelPath.getParent().toString()), toscaSet);
 		
-			for (Resource externalResource: externalResources) {
+			for (Resource externalResource: externalEcoreModels) {
 				EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
 				InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
 				model.setName(externalPackage.getName());
 				module.getContext().getModelRepository().addModel(model);
 			}
 			
-			Resource resource = null;
+			
+			
+			
 			EPackage toscaPackage = getTOSCAPackage(toscaSet);
 			toscaSet.getPackageRegistry().put(toscaPackage.getNsURI(), toscaPackage);
 			String path = toscaModelPath.getParent().toString() + "/";

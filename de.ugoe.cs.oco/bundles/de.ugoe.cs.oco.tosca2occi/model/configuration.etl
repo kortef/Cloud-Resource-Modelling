@@ -21,8 +21,8 @@ operation getTypeMapping() : Map {
 	configuration.put("OperatingSystem", "");
 	configuration.put("WebServer", "component");
 	configuration.put("WebApplication", "component");
-	configuration.put("DBMS", "component");
-	configuration.put("Database", "component");
+	configuration.put("DBMS", "dbms");
+	configuration.put("Database", "database");
 	configuration.put("ApacheWebServer", "component");
 	configuration.put("ApacheWebApplication", "component");
 	configuration.put("ApacheModule", "component");
@@ -41,7 +41,30 @@ operation getTypeMapping() : Map {
 
 operation getMixinMapping(): Map {
 	var mixinMapping = new Map;
-	mixinMapping.put("tosca.nodes.SoftwareComponent", "Component");
+	mixinMapping.put("SugarCRMApplication", "Component");
+	mixinMapping.put("SugarCRMDatabase", "Component");
+	//mixinMapping.put("Tier", "");
+	//mixinMapping.put("SingleNodeTier", "SingleNodeTier");
+	//mixinMapping.put("ScalableTier", "");
+	//mixinMapping.put("Server", "compute");
+	//mixinMapping.put("OperatingSystem", "");
+	mixinMapping.put("WebServer", "WebServer");
+	mixinMapping.put("WebApplication", "WebApplication");
+	mixinMapping.put("DBMS", "DBMS");
+	mixinMapping.put("Database", "Database");
+	mixinMapping.put("ApacheWebServer", "ApacheWebServer");
+	mixinMapping.put("ApacheWebApplication", "ApacheWebApplication");
+	mixinMapping.put("ApacheModule", "ApacheModule");
+	mixinMapping.put("ApachePHPModule", "ApachePHPModule");
+	mixinMapping.put("MySQL", "MySQL");
+	mixinMapping.put("MySQLDatabase", "MySQLDatabase");
+	mixinMapping.put("SugarCRMDatabaseConnection", "storagelink");
+	mixinMapping.put("RootRelationshipType", "link");
+	mixinMapping.put("HostedOn", "componentlink");
+	mixinMapping.put("DependsOn", "componentlink");
+	mixinMapping.put("ConnectsTo", "networkinterface");
+	mixinMapping.put("MySQLDatabaseHostedOnMySQL", "componentlink");
+	mixinMapping.put("MySQLDatabaseConnection", "componentlink");
 	
 	return mixinMapping; 
 }

@@ -1,18 +1,3 @@
-/* Operation: createAttributes
-Returns: Set of Attributes
-Description: For every parameter in Obj an Attribute is created, which is returned as Set.*/
-operation Any createAttributes() : Set {
-	var attribute_Set = new OrderedSet;
-	for(parameter in self){
-		var attribute = new OCCI!Attribute;
-		attribute.name = parameter.name;
-		attribute.required = parameter.required.yesToBoolean();
-		attribute.type = parameter.type.filterType();
-		attribute_Set.add(attribute);
-	}
-	return attribute_Set;
-}
-
 /* Operation: setAttributeStates
 Input: 
 Description: */
@@ -21,7 +6,6 @@ operation OCCI!Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
 		//findAnyTypeElement(nodeTemplate.proper)
 		if(nodeTemplate.properties.isDefined()){
 			for(property in nodeTemplate.properties.any){
-				property.type().println();
 				if (property.isKindOf(TOSCA!AnyType)){
 					self.createAttributeStatesRecursive(nodeTemplate.type.toString(), property, null);
 				} else {
@@ -45,7 +29,6 @@ Input:
 Description: */
 operation OCCI!Resource createAttributeStatesRecursive(owner: String, content : Any, oldContent : Any) {
 //not(content.value.mixed.value.hasProperty("mixed"))
-	content.println();
 	if(not(content.value.hasProperty("mixed"))) {
 		
 		//Newlines are detected as single elements in the Model and are filtered out
@@ -70,22 +53,11 @@ operation OCCI!Resource createAttributeStatesRecursive(owner: String, content : 
 	}
 }
 
-
-/* Operation: setAttributes
-Input: NodeType to extract the attributes from.
-Description: Generates attributes for the Kind the method is invoked on.*/
-operation OCCI!Kind setAttributes(nodeType : TOSCA!TNodeType) {
-	if(nodeType.propertiesDefinition.isDefined()){
-		self.createAttributesRecursive(findAnyTypeElement(nodeType.propertiesDefinition.element.asString()));
-	}
-}	
-
 /* Operation: findAnyTypeElement
 Input: String of AnyType element to search.
 Return: Returns element containing the searched for AnyType.
 Description: Returns feature containing the searched for AnyType.*/
 operation findAnyTypeElement(name: String) : Any{
-	TOSCA!TypesType.all.first().println();
 	if (not TOSCA!TypesType.all.isEmpty()){
 		for (mixedcontent in TOSCA!TypesType.all.first().econtents.mixed){
 			for (feature in mixedcontent){
@@ -98,98 +70,3 @@ operation findAnyTypeElement(name: String) : Any{
 		}
 	}
 }
-
-/* Operation: createAttributesRecursive
-Input: Content which is recursively searched for leaf elements.
-Description: Adds found leaf elements as attributes to the OCCI Kind the method is invoked on.*/
-operation OCCI!Kind createAttributesRecursive(content : Any) {
-	if(content.value.mixed.isEmpty()) {
-		var attr = new OCCI!Attribute;
-		for(leafElement in content.value.anyAttribute){
-				if("name".isSubstringOf(leafElement.asString())){
-					attr.name = leafElement.value;
-				}
-				if("descr".isSubstringOf(leafElement.asString())){
-					attr.description = leafElement.value;
-				}
-				else{
-					attr.type = leafElement.value.filterType();
-				}
-		}
-		self.attributes.add(attr);
-	}
-	else{
-		for (nestedElement in content.value.mixed){
-			self.createAttributesRecursive(nestedElement);
-		}
-	}
-}
-
-
-
-/* Operation: setAttributes NON RECURSIVE VERSION
-Input:
-Description: .
-operation OCCI!Kind setAttributes(nodeType : TOSCA!TNodeType) {
-	nodeType.propertiesDefinition.element.println();
-	var test = new String;
-	test =TOSCA!TypesType.all.first();
-	
-	//durchl�uft komplettes schema
-	for (mixedcontent in test.econtents.mixed){
-		//durchl�uft jedes element des schemas
-		for (feature in mixedcontent){
-			if (feature.estructuralfeature.name == "element"){
-				//�brepr�ft ob passendes element gefunden wurde
-				for(attribute in feature.value.anyAttribute){
-					if(attribute.value.asString() == nodeType.propertiesDefinition.element.asString()){
-						//passendes element gefunden
-						for (content in feature.value.mixed){
-							//geht in den complexType
-							if (content.estructuralfeature.name == "complexType"){
-								//durchl�uft elemente des complexType
-								for (content2 in content.value.mixed){
-									for(content3 in content2.value.mixed){
-										content3.println();
-										//durchl�uft jedes attribute des endelements
-										var attr = new OCCI!Attribute;
-										for(attribute2 in content3.value.anyAttribute){
-											if("name".isSubstringOf(attribute2.asString())){
-												attr.name = attribute2.value;
-											}
-											else{
-												attr.type = attribute2.value.filterType();
-											}
-											self.attributes.add(attr);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}	*/
-
-
-/* setAttributes kombiniert mit findName
-operation OCCI!Kind setAttributes(nodeType : TOSCA!TNodeType) {
-	
-	for (mixedcontent in TOSCA!TypesType.all.first().econtents.mixed){
-		//durchl�uft jedes element des schemas
-		for (feature in mixedcontent){
-		feature.println();
-			if (feature.estructuralfeature.name == "element"){
-				//�brepr�ft ob passendes element gefunden wurde
-				for(attribute in feature.value.anyAttribute){
-					if(attribute.value.asString() == nodeType.propertiesDefinition.element.asString()){
-						//passendes element gefunden
-						self.createAttributesRecursive(feature);
-					}
-				}
-			}
-		}
-	}
-}	*/

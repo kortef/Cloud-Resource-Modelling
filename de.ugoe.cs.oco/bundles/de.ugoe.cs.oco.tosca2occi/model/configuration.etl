@@ -14,11 +14,11 @@ operation getTypeMapping() : Map {
     configuration.put("SugarCRMApplication", "component");
 	configuration.put("SugarCRMDatabase", "component");
 	//configuration.put("RootNodeType", "");
-	configuration.put("Tier", "");
-	configuration.put("SingleNodeTier", "");
-	configuration.put("ScalableTier", "");
+	//configuration.put("Tier", "");
+	//configuration.put("SingleNodeTier", "");
+	//configuration.put("ScalableTier", "");
 	configuration.put("Server", "compute");
-	configuration.put("OperatingSystem", "");
+	//configuration.put("OperatingSystem", "");
 	configuration.put("WebServer", "component");
 	configuration.put("WebApplication", "component");
 	configuration.put("DBMS", "dbms");
@@ -41,8 +41,8 @@ operation getTypeMapping() : Map {
 
 operation getMixinMapping(): Map {
 	var mixinMapping = new Map;
-	mixinMapping.put("SugarCRMApplication", "Component");
-	mixinMapping.put("SugarCRMDatabase", "Component");
+	mixinMapping.put("SugarCRMApplication", "SugarCRMApplication");
+	mixinMapping.put("SugarCRMDatabase", "SugarCRMDatabase");
 	//mixinMapping.put("Tier", "");
 	//mixinMapping.put("SingleNodeTier", "SingleNodeTier");
 	//mixinMapping.put("ScalableTier", "");
@@ -67,128 +67,4 @@ operation getMixinMapping(): Map {
 	mixinMapping.put("MySQLDatabaseConnection", "componentlink");
 	
 	return mixinMapping; 
-}
-
-operation getFlavorMapping(): Map {
- 	var flavorMapping = new Map;
- 	var mapping = new Map;
- 	mapping.put("num_cpus", "1");
- 	mapping.put("disk_size", "1");
- 	mapping.put("mem_size", "512");
- 	
- 	flavorMapping.put("m1.tiny", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("num_cpus", "1");
- 	mapping.put("disk_size", "20");
- 	mapping.put("mem_size", "2048");
- 	
- 	flavorMapping.put("m1.small", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("num_cpus", "2");
- 	mapping.put("disk_size", "40");
- 	mapping.put("mem_size", "4096");
- 	
- 	flavorMapping.put("m1.medium", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("num_cpus", "4");
- 	mapping.put("disk_size", "80");
- 	mapping.put("mem_size", "8192");
- 	
- 	flavorMapping.put("m1.large", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("num_cpus", "8");
- 	mapping.put("disk_size", "160");
- 	mapping.put("mem_size", "16384");
- 	
- 	flavorMapping.put("m1.xlarge", mapping);
- 	
- 	return flavorMapping;
-}
-
-operation getImageMapping(): Map {
-	var imageMapping = new Map;
- 	var mapping = new Map;
- 	mapping.put("type", "linux");
- 	mapping.put("distribution", "ubuntu");
- 	mapping.put("version", "16.04");
- 	
- 	imageMapping.put("Ubuntu Server 16.04", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("type", "linux");
- 	mapping.put("distribution", "ubuntu");
- 	mapping.put("version", "14.04");
- 	
- 	imageMapping.put("Ubuntu Server 14.04", mapping);
- 	
- 	var mapping = new Map;
- 	mapping.put("type", "linux");
- 	mapping.put("distribution", "ubuntu");
- 	mapping.put("version", "12.04");
- 	
- 	imageMapping.put("Ubuntu Server 12.04", mapping);
- 	
- 	return imageMapping;
-}
-
-operation getPropertyMapping(): Map {
-	var propertyMapping = new Map;
-	var mapping = new Map;
-	mapping.put("size", "occi.storage.size");
-	propertyMapping.put("tosca.nodes.BlockStorage", mapping);
-	
-	var mapping = new Map;
-	mapping.put("ip_address", "occi.networkinterface.address");
-	propertyMapping.put("tosca.nodes.network.Port", mapping);
-	
-	var mapping = new Map;
-	mapping.put("cidr", "occi.network.address");
-	propertyMapping.put("tosca.nodes.network.Network", mapping);
-	
-	return propertyMapping;
-}
-
-operation OCCI!Resource findMixinName(mapping: Map): String{
-	for (key in mapping.keySet()){
-		var currentkey = key;
-		var map = mapping.get(currentkey);
-		for (innerkey in map.keySet()){
-			if (not self.attributes.isEmpty()){
-				var attr = self.attributes.selectOne(a | a.name == innerkey);
-				
-				if (attr == null){
-					currentkey = null;
-					break;
-				}
-					
-				if (not (map.get(innerkey) == attr.value)){
-					currentkey = null;
-					break;	
-				}
-			}
-		}
-		if (not (currentkey == null)){
-			return currentkey;
-		}	
-	}
-	return null; 
-}
-
-operation getMixinMappings(): List {
-	var list = new List;
-	list.add(getImageMapping());
-	list.add(getFlavorMapping());
-	return list;
-}
-
-operation Kind(term : String, scheme : String) : OCCI!Kind{
-	var kind = new OCCI!Kind;
-	kind.term = term;
-	kind.title = term;
-	kind.scheme = scheme;
-	return kind;
 }

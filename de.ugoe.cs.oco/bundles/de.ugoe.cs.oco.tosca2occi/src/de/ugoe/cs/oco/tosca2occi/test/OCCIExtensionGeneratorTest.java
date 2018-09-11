@@ -31,17 +31,17 @@ public class OCCIExtensionGeneratorTest {
 		m.put("tosca", new ToscaResourceFactoryImpl());
 		m.put("occie", new XMIResourceFactoryImpl());
 		System.out.println("----------------- Run SugarCRMType Transformation --------------------");
-		Path inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm_original/Definitions/SugarCRMTypes-Definitions.tosca");
+		Path inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm/Definitions/SugarCRMTypes-Definitions.tosca");
 		Path outputpath = Paths.get("testdata/SugarCRM-Types.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run BaseType Transformation --------------------");
-		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm_original/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
+		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
 		outputpath = Paths.get("testdata/TOSCA-v1.0-BaseTypes-Definitions.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run SpecificType Transformation --------------------");
-		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm_original/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
+		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
 		outputpath = Paths.get("testdata/TOSCA-v1.0-BaseSpecific-Definitions.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		

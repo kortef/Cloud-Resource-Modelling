@@ -4,58 +4,68 @@ Description: Creates for every relationship template that has the nodeTemplate a
 Furthermore it fills out the target property of the links, which had the corresponding resource as target.
 (could be splitted)*/
 operation OCCI!Resource setLinks(nodeTemplate : TOSCA!TNodeTemplate) {
-	if(linkToBeAdded.containsKey(nodeTemplate.id)){	
-		for(link in linkToBeAdded.get(nodeTemplate.id)) {
+	if(targetsToBeAdded.containsKey(nodeTemplate.id)){	
+		for(link in targetsToBeAdded.get(nodeTemplate.id)) {
 			link.target = self;
 		}
 		parentToBeAdded.remove(nodeTemplate.id);
 	}
-	for(relationshipTemplate in TOSCA!TRelationshipTemplate.allInstances) {
-		if (not (nodeTemplate.capabilities == null)){
-		for (capability in nodeTemplate.capabilities.capability){
-			if(capability.id == relationshipTemplate.sourceElement.ref){
-				self.links += relationshipTemplate.createLink();
-			}
+	if(sourcesToBeAdded.containsKey(nodeTemplate.id)){	
+		for(link in sourcesToBeAdded.get(nodeTemplate.id)) {
+			self.links.add(link);
 		}
-		}
-		if (not (nodeTemplate.requirements == null)){
-		for (requirement in nodeTemplate.requirements.requirement){
-			if(requirement.id == relationshipTemplate.sourceElement.ref){
-				self.links += relationshipTemplate.createLink();
-			}
-		}
-		}
-	}	
-}
-	
-/* Operation: createLink
-Returns: A Set containing one link of the corresponding relationship Template.
-Description: Creates a link out of the corresponding relationship template. Furthermore if the target is not created
-at that moment, a key value pair for it is created in the linkToBeAdded Map, which is later on resolved in setLinks().*/
-operation TOSCA!TRelationshipTemplate createLink() : Set {
-	var link = new OCCI!Link;
-	link.id = self.id;
-	link.title = self.name;
-	link.assignKind(self);
-	
-	var target = TOSCA!TCapability.allInstances.selectOne(t | t.id == self.targetElement.ref);
-	if (target == null){
-		target = TOSCA!TRequirement.allInstances.selectOne(t | t.id == self.targetElement.ref);
+		parentToBeAdded.remove(nodeTemplate.id);
 	}
-	
-	link.target = OCCI!Resource.allInstances.selectOne(r | r.id == target.econtainer.econtainer.id);
-	
-	if(link.target == null){
-			"Resource is not set".println();
-			if(linkToBeAdded.containsKey(target.econtainer.econtainer.id)){
-				linkToBeAdded.get(target.econtainer.econtainer.id).add(link);	
-			}
-			else{
-				var bag = new Bag;
-				bag.add(link);
-				linkToBeAdded.put(target.econtainer.econtainer.id, bag);
-			}
-		}
-	return link.asSet();
 }
+
+operation TOSCA!TNodeTemplate createPlacementLinkForIncomings(targetID: String){
+	if (self.capabilities.isDefined() and self.capabilities <> null){
+		var capabilityIDs = self.capabilities.capability.collect(c | c.id);
+
+		var relationshipsToConsider = TOSCA!HostedOn.allInstances().select(r | capabilityIDs.contains(r.targetElement.ref));
+		for (relationship in relationshipsToConsider){
+			var placementLink = new OCCI!Link;
+			placementLink.kind = OCCI!Kind.allInstances.selectOne(k | k.term == "placementlink");
+			
+			var targetResource = OCCI!Resource.allInstances.selectOne(r | r.id == targetID);
+			placementLink.target = targetResource;
+		
+			if (targetResource == null){
+				//"Target Resource is not transformed yet".println();
+				if(targetsToBeAdded.containsKey(targetID)){
+					targetsToBeAdded.get(targetID).add(placementLink);	
+				}
+				else{
+					var bag = new Bag;
+					bag.add(placementLink);
+					targetsToBeAdded.put(targetID, bag);
+				}
+			}
+			
+			var sourceRequirement = TOSCA!TRequirement.allInstances().selectOne(c | c.id = relationship.sourceElement.ref);
+			var sourceID = sourceRequirement.econtainer.econtainer.id;
+			var sourceResource = OCCI!Resource.allInstances.selectOne(r | r.id = sourceID);
+			
+			if (sourceResource == null){
+				//("Source Resource " + sourceRequirement.econtainer.econtainer.id + " is not transformed yet").println();
+				if(sourcesToBeAdded.containsKey(sourceID)){
+					sourcesToBeAdded.get(sourceID).add(placementLink);	
+				}
+				else{
+					var bag = new Bag;
+					bag.add(placementLink);
+					sourcesToBeAdded.put(sourceID, bag);
+				}
+			}
+			else {
+				sourceResource.links.add(placementLink);
+			}
+			var sourceNodeTemplate = TOSCA!TNodeTemplate.allInstances.selectOne(n | n.id = sourceRequirement.econtainer.econtainer.id);
+			
+		 	placementLink.id = sourceNodeTemplate.id + "_placedOn_" + targetID;
+			sourceNodeTemplate.createPlacementLinkForIncomings(targetID);
+		}
+	} 
+}
+
 

@@ -4,30 +4,7 @@ Description: */
 operation OCCI!Resource assignKind(template : TOSCA!TNodeTemplate) {
 	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	typestring.println();
-	//self.kind = Core!Kind.allInstances.selectOne(k | k.term == term);
-	self.kind = kind_Set.selectOne(k | k.term == term);
-	
-	if (self.kind == null)
-		self.kind = OCCI!Kind.allInstances.selectOne(k | k.term == typestring);
-		
-	//self.kind = correspondingKind(template.type.asString());
-	
-		
-/*
-Ansatz mit equivalents() um doppelte namen problem zu l�sen:
-Problem hierbei: Geht nur unsch�n mit dem vergleich von namen, 
-da das TOSCA metamodel die types einfach nur als String(QName) zu speichern scheint.
-template.type.equivalents().println();
-for(type in TOSCA!TNodeType){
-			type.println();
-			template.type.println();
-			if(type == template.type){
-				"s".println();
-			}
-		}
-*/
-
+	self.kind = OCCIExtensions!Kind.allInstances.selectOne(k | k.term == term);
 }
 
 /* Operation: assignKind
@@ -36,9 +13,5 @@ Description: */
 operation OCCI!Link assignKind(template : TOSCA!TRelationshipTemplate) {
 	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	self.kind = kind_Set.selectOne(k | k.term == term);
-	//self.kind = correspondingKind(template.type.asString());
-	if (self.kind == null){
-		//self.kind = Cloudconfig!Kind.allInstances.selectOne(k | k.term == typestring);
-	}
+	self.kind = OCCIExtensions!Kind.allInstances.selectOne(k | k.term == term);
 }

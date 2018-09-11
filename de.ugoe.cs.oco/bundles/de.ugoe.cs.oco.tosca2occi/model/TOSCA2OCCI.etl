@@ -1,18 +1,11 @@
 import "./configuration.etl";
 import "./operations/generalOperations.etl";
 import "./operations/normative.etl";
-import "./operations/actions.etl";
 import "./operations/attributes.etl";
-import "./operations/parents.etl";
-import "./operations/scheme.etl";
-import "./operations/extensions.etl";
+import "./operations/configurations.etl";
 import "./operations/kinds.etl";
 import "./operations/links.etl";
-import "./operations/mixins.etl";
-import "./rules/NodeType2Kind.etl";
-import "./rules/RelationshipType2Kind.etl";
-//import "./rules/Capability2Mixin.etl";
-import "./rules/NodeTemplate2Resource.etl";
+import "./rules/rules.etl";
 
 
 
@@ -20,32 +13,11 @@ pre {
 	"Starting ETL".println();
 	"Starting Transformation".println();
 	"\n".print();
-	var kind_Set = new Set; //Set containing all Kinds
-	var extension_Set = new Set; // Set containing all extensions
-	var mixin_Set = new Set;
-	var parentToBeAdded = new Map; //Key = Parent Type; Value = Child Kinds;
-	var linkToBeAdded = new Map; //Key = Target Resource; Value = Source Resource
+
+	var targetsToBeAdded = new Map; //Key = Target Resource id; Value = Link;
+	var sourcesToBeAdded = new Map; //Key = Sources Resource id; Value = Link;
 	var configuration = getTypeMapping();
-	var propertyMapping = getPropertyMapping();
 	var mixinMapping = getMixinMapping();
-	
-	OCCIExtensions!Mixin.allInstances().println();
-	//createConfigurationExtensions();
-	//addKindsToConfiguredExtensions();
-	//kind_Set.addAll(core!Kind.allInstances);
-	kind_Set.addAll(Modmacao!Kind.allInstances);
-	//kind_Set.addAll(Infrastructure!Kind.allInstances);
-	kind_Set.addAll(Platform!Kind.allInstances);
-	kind_Set.addAll(Sweruntime!Kind.allInstances);
-	
-	extension_Set.addAll(Modmacao!Extension.allInstances);
-	//extension_Set.addAll(Infrastructure!Extension.allInstances);
-	extension_Set.addAll(Platform!Extension.allInstances);
-	
-	mixin_Set.addAll(Modmacao!Mixin.allInstances);
-	//mixin_Set.addAll(Infrastructure!Mixin.allInstances);
-	mixin_Set.addAll(Platform!Mixin.allInstances);
-	mixin_Set.addAll(Sweruntime!Mixin.allInstances);
 	
 	"Input model stats:".println();
 	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
@@ -53,30 +25,21 @@ pre {
 	
 	"".println;
 	"OCCI model stats:".println();
-	("#Kinds (known): " + kind_Set.size).println();
-	("#Extensions (known): " + extension_Set.size).println();
-	("#Mixins (known):) " + mixin_Set.size).println();
-	
+	("#Kinds (known): " + OCCIExtensions!Kind.allInstances.size).println();
+	("#Extensions (known): " + OCCIExtensions!Extension.allInstances.size).println();
+	("#Mixins (known):) " + OCCIExtensions!Mixin.allInstances.size).println();
+
 	var config = createRootConfiguration();
-	for (extension in extension_Set){
+	
+	for (extension in OCCIExtensions!Extension.allInstances){
 		config.use.add(extension);
 	}
 	
-	for (kind in kind_Set){
-		kind.println();
-	}
-	
-	createRootExtensions(); //Creates basic Extensions required for the transformation.
-	
 }
 post {
-	"\n".print();
-	for(each in parentToBeAdded.keySet()){
-		"Type ".print();
-		each.print();
-		" is not declared in your model!".println();
-	}
-	
+	("#Resources in output model: " + OCCI!Resource.allInstances.size).println();
+	("#Links in output model: " + OCCI!Link.allInstances.size).println();
+
 	// convert ports to network interfaces
 	var portKinds = OCCI!Kind.allInstances.selectOne(k | k.term == "tosca.nodes.network.Port");	
 	
@@ -99,5 +62,11 @@ post {
 		vm.links.add(link);
 		delete port;
 	}
+	}
+		for (link in targetsToBeAdded.values().flatten()){
+			delete link;
+	}
+		for (link in sourcesToBeAdded.values().flatten()){
+			delete link;
 	}
 }

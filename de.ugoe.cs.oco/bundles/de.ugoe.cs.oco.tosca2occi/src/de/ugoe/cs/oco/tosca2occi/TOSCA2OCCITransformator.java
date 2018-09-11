@@ -105,9 +105,6 @@ public class TOSCA2OCCITransformator {
 				module.getContext().getModelRepository().addModel(model);
 			}
 			
-			
-			
-			
 			EPackage toscaPackage = getTOSCAPackage(toscaSet);
 			toscaSet.getPackageRegistry().put(toscaPackage.getNsURI(), toscaPackage);
 			String path = toscaModelPath.getParent().toString() + "/";

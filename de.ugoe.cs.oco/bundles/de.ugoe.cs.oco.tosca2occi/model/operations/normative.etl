@@ -1,7 +1,6 @@
 operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType: Any){
 	var state: OCCI!AttributeState;
 	var propertyObject = normativePropertiesType.value;
-	propertyObject.println();
 	if (propertyObject.isTypeOf(TOSCA!TSugarCRMApplicationProperties)){
 		var state = new OCCI!AttributeState();
 		state.name = "AdminUser";

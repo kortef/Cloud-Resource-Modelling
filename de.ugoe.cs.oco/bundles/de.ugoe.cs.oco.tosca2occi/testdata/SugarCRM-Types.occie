@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="SugarCRM" scheme="http://schemas.modmacao.org/SugarCRM#">
+  <import href="http://schemas.modmacao.org/modmacao#/"/>
+  <mixins name="SugarCRMApplication" scheme="http://schemas.modmacao.org/SugarCRM#">
+    <attributes name="AdminUser" default="admin" description="Administrator">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="AdminPassword" default="admin" description="Administrator Password">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="SiteName" default="SugarCRM" description="Site Name">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="SitePath" default="sugarcrm" description="Site Path">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="SugarCRMDatabase" scheme="http://schemas.modmacao.org/SugarCRM#">
+    <attributes name="DBName" default="sugarcrm" description="Database Name">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="DBUser" default="sugarcrm" description="Database User">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="DBPassword" default="sugarcrm" description="Database User Password">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="DBPort" default="3306" description="Database Port (default 3306)">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+</occi:Extension>

@@ -18,7 +18,7 @@ rule NodeType2Mixin
 		mixin.name = nodeType.name;
 		mixin.depends.add(MODMACAO!Mixin.allInstances.selectOne(m | m.name == "Component"));
 		mixin.scheme = extension.scheme;
-		if (not (nodeType.propertiesDefinition == null)){
+		if (nodeType.propertiesDefinition <> null){
 			var elementName = nodeType.propertiesDefinition.element;
 			var elementDeclaration = TypesXSD!XSDElementDeclaration.allInstances.selectOne(e | e.name == elementName.localPart);
 			if (elementDeclaration.isDefined()){

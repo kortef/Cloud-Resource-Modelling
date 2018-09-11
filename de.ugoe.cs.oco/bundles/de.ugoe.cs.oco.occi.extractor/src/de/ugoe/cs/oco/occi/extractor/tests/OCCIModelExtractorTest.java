@@ -26,13 +26,8 @@ public class OCCIModelExtractorTest {
 	 */
 	public static void main(String args[]) {
 		try {
-<<<<<<< HEAD
 			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.2"), 
 					new BasicAuthentication("fglaser", "eCzA2017"), MediaType.TEXT_PLAIN, true);
-=======
-			Client client =  new HTTPClient(URI.create("http://192.168.34.1:8787/occi1.1"), 
-					new BasicAuthentication("jerbel", "UV2.7F62"), MediaType.TEXT_PLAIN, true);
->>>>>>> adaptation
 			
 			OCCIModelExtractor extractor = new OCCIModelExtractor();
 			

@@ -9,7 +9,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.ugoe.cs.oco.tosca.types.tests
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.runtime.compatibility,
  de.ugoe.cs.oco.tosca.modelext;visibility:=reexport,
  de.ugoe.cs.oco.tosca.model;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,

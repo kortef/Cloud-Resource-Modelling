@@ -67,7 +67,7 @@ public class TOSCAInstantiator {
 	}
 	
 	public List<TParameter> extractInputPars(DocumentRoot model){
-		TServiceTemplate serviceTemplate = model.getDefinitions().getServiceTemplate().get(0);
+		TServiceTemplate serviceTemplate = model.getDefinitions().get(0).getServiceTemplate().get(0);
 		TPlan plan = serviceTemplate.getPlans().getPlan().get(0);
 		return plan.getInputParameters().getInputParameter();
 	}

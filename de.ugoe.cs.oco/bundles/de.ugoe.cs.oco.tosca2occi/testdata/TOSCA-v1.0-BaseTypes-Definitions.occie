@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ToscaBaseTypes" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+  <import href="http://schemas.modmacao.org/modmacao#/"/>
+  <mixins name="RootNodeType" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="Tier" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="SingleNodeTier" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="ScalableTier" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="Server" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <attributes name="NumCpus" default="1" description="Number of CPUs: Number of CPUs for the virtual machine"/>
+    <attributes name="Memory" description="Memory (in MB): Amount of memory for the virtual machine">
+      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
+    </attributes>
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="OperatingSystem" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="WebServer" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="WebApplication" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="DBMS" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+  <mixins name="Database" scheme="http://schemas.modmacao.org/ToscaBaseTypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  </mixins>
+</occi:Extension>

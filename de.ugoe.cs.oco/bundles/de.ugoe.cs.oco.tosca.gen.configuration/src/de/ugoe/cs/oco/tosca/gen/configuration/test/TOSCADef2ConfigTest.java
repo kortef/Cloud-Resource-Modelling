@@ -11,8 +11,8 @@ public class TOSCADef2ConfigTest {
 	
 	@Test
 	public void testGenerateConfig() {
-		Path toscaDef = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm_original/Definitions/SugarCRM-Interop-Definitions.tosca");
-	    Path generatedEcore = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugercrm_original/Definitions/SugarCRM-Interop-Definitions-migrated.tosca");
+		Path toscaDef = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.tosca");
+	    Path generatedEcore = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions-migrated.tosca");
 
 		TOSCADef2Config.generateConfiguration(toscaDef, generatedEcore);
 	}

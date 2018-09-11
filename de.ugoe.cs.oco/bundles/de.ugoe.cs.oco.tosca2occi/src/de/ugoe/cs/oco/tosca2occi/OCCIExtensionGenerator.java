@@ -115,7 +115,7 @@ public class OCCIExtensionGenerator {
 					}
 					Resource xsdResource = toscaSet.getResource(URI.createFileURI(xsdpath.toString()), true);
 					InMemoryEmfModel xsdModel = new InMemoryEmfModel(xsdResource);
-					xsdModel.setName("TypesXSD");
+					xsdModel.getAliases().add("TypesXSD");
 					module.getContext().getModelRepository().addModel(xsdModel);
 				}
 			}

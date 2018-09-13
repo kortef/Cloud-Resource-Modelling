@@ -49,6 +49,8 @@ public class TOSCADef2Config {
 		Resource resource = resourceSet.createResource(URI.createFileURI(toscaConfig.toString()));
 		resource.getContents().add(root);
 		
+		root.getXMLNSPrefixMap().put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+		
 		// We assume one definition per file with one service template per definition
 		TTopologyTemplate template = root.getDefinitions().get(0).getServiceTemplate().get(0).getTopologyTemplate();		
 		
@@ -73,6 +75,8 @@ public class TOSCADef2Config {
 		for (TGroupTemplate group: template.getGroupTemplate()) {
 			addXSIType(group);
 		}
+		
+		
 		
 		try {
 			resource.save(Collections.EMPTY_MAP);

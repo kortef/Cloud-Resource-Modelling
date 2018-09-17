@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="my.project.design.Activator"
-               id="my.project.design"
+               id="de.ugoe.cs.oco.tosca.designer"
 	       name="project">
     </component>
   </extension>

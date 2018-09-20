@@ -33,7 +33,8 @@ public interface TCapabilityRef extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityRef_Name()
-	 * @model extendedMetaData="kind='attribute' name='name'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
 	String getName();
@@ -49,30 +50,30 @@ public interface TCapabilityRef extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Ref</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ref</em>' attribute.
-	 * @see #setRef(String)
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(TCapability)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityRef_Ref()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='ref'"
 	 * @generated
 	 */
-	String getRef();
+	TCapability getRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TCapabilityRef#getRef <em>Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TCapabilityRef#getRef <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ref</em>' attribute.
+	 * @param value the new value of the '<em>Ref</em>' reference.
 	 * @see #getRef()
 	 * @generated
 	 */
-	void setRef(String value);
+	void setRef(TCapability value);
 
 } // TCapabilityRef

@@ -64,13 +64,13 @@ public interface TPlan extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input Parameters</em>' containment reference.
-	 * @see #setInputParameters(InputParametersType1)
+	 * @see #setInputParameters(InputParametersType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_InputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InputParameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	InputParametersType1 getInputParameters();
+	InputParametersType getInputParameters();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TPlan#getInputParameters <em>Input Parameters</em>}' containment reference.
@@ -80,7 +80,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see #getInputParameters()
 	 * @generated
 	 */
-	void setInputParameters(InputParametersType1 value);
+	void setInputParameters(InputParametersType value);
 
 	/**
 	 * Returns the value of the '<em><b>Output Parameters</b></em>' containment reference.
@@ -91,13 +91,13 @@ public interface TPlan extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output Parameters</em>' containment reference.
-	 * @see #setOutputParameters(OutputParametersType1)
+	 * @see #setOutputParameters(OutputParametersType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_OutputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='OutputParameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	OutputParametersType1 getOutputParameters();
+	OutputParametersType getOutputParameters();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TPlan#getOutputParameters <em>Output Parameters</em>}' containment reference.
@@ -107,7 +107,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see #getOutputParameters()
 	 * @generated
 	 */
-	void setOutputParameters(OutputParametersType1 value);
+	void setOutputParameters(OutputParametersType value);
 
 	/**
 	 * Returns the value of the '<em><b>Plan Model</b></em>' containment reference.
@@ -201,7 +201,8 @@ public interface TPlan extends TExtensibleElements {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_Name()
-	 * @model extendedMetaData="kind='attribute' name='name'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
 	String getName();

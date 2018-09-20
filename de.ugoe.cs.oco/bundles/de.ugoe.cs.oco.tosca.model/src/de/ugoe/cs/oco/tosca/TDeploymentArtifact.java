@@ -88,7 +88,7 @@ public interface TDeploymentArtifact extends TExtensibleElements {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDeploymentArtifact_Name()
-	 * @model required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */

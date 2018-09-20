@@ -22,166 +22,165 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * <div xmlns="http://www.w3.org/1999/xhtml">
- * <h1>About the XML namespace</h1>
  * 
- * <div class="bodytext">
- * <p>
- * This schema document describes the XML namespace, in a form
- * suitable for import by other schema documents.
- * </p>
- * <p>
- * See <a href="http://www.w3.org/XML/1998/namespace.html">
- * http://www.w3.org/XML/1998/namespace.html</a> and
- * <a href="http://www.w3.org/TR/REC-xml">
- * http://www.w3.org/TR/REC-xml</a> for information
- * about this namespace.
- * </p>
- * <p>
- * Note that local names in this namespace are intended to be
- * defined only by the World Wide Web Consortium or its subgroups.
- * The names currently defined in this namespace are listed below.
- * They should not be used with conflicting semantics by any Working
- * Group, specification, or document instance.
- * </p>
- * <p>
- * See further below in this document for more information about <a href="#usage">how to refer to this schema document from your own
- * XSD schema documents</a> and about <a href="#nsversioning">the
- * namespace-versioning policy governing this schema document</a>.
- * </p>
- * </div>
- * </div>
+ *    <div xmlns="http://www.w3.org/1999/xhtml">
+ *     <h1>About the XML namespace</h1>
  * 
+ *     <div class="bodytext">
+ *      <p>
+ *       This schema document describes the XML namespace, in a form
+ *       suitable for import by other schema documents.
+ *      </p>
+ *      <p>
+ *       See <a href="http://www.w3.org/XML/1998/namespace.html">
+ *       http://www.w3.org/XML/1998/namespace.html</a> and
+ *       <a href="http://www.w3.org/TR/REC-xml">
+ *       http://www.w3.org/TR/REC-xml</a> for information 
+ *       about this namespace.
+ *      </p>
+ *      <p>
+ *       Note that local names in this namespace are intended to be
+ *       defined only by the World Wide Web Consortium or its subgroups.
+ *       The names currently defined in this namespace are listed below.
+ *       They should not be used with conflicting semantics by any Working
+ *       Group, specification, or document instance.
+ *      </p>
+ *      <p>   
+ *       See further below in this document for more information about <a href="#usage">how to refer to this schema document from your own
+ *       XSD schema documents</a> and about <a href="#nsversioning">the
+ *       namespace-versioning policy governing this schema document</a>.
+ *      </p>
+ *     </div>
+ *    </div>
+ *   
  * 
- * <div xmlns="http://www.w3.org/1999/xhtml">
+ *    <div xmlns="http://www.w3.org/1999/xhtml">
+ *    
+ *     <h3>Father (in any context at all)</h3> 
  * 
- * <h3>Father (in any context at all)</h3>
+ *     <div class="bodytext">
+ *      <p>
+ *       denotes Jon Bosak, the chair of 
+ *       the original XML Working Group.  This name is reserved by 
+ *       the following decision of the W3C XML Plenary and 
+ *       XML Coordination groups:
+ *      </p>
+ *      <blockquote>
+ *        <p>
+ * 	In appreciation for his vision, leadership and
+ * 	dedication the W3C XML Plenary on this 10th day of
+ * 	February, 2000, reserves for Jon Bosak in perpetuity
+ * 	the XML name "xml:Father".
+ *        </p>
+ *      </blockquote>
+ *     </div>
+ *    </div>
+ *   
  * 
- * <div class="bodytext">
- * <p>
- * denotes Jon Bosak, the chair of
- * the original XML Working Group.  This name is reserved by
- * the following decision of the W3C XML Plenary and
- * XML Coordination groups:
- * </p>
- * <blockquote>
- * <p>
- * In appreciation for his vision, leadership and
- * dedication the W3C XML Plenary on this 10th day of
- * February, 2000, reserves for Jon Bosak in perpetuity
- * the XML name "xml:Father".
- * </p>
- * </blockquote>
- * </div>
- * </div>
+ *    <div id="usage" xml:id="usage" xmlns="http://www.w3.org/1999/xhtml">
+ *     <h2>
+ *       <a name="usage">About this schema document</a>
+ *     </h2>
  * 
+ *     <div class="bodytext">
+ *      <p>
+ *       This schema defines attributes and an attribute group suitable
+ *       for use by schemas wishing to allow <code>xml:base</code>,
+ *       <code>xml:lang</code>, <code>xml:space</code> or
+ *       <code>xml:id</code> attributes on elements they define.
+ *      </p>
+ *      <p>
+ *       To enable this, such a schema must import this schema for
+ *       the XML namespace, e.g. as follows:
+ *      </p>
+ *      <pre>
+ *           &lt;schema . . .&gt;
+ *            . . .
+ *            &lt;import namespace="http://www.w3.org/XML/1998/namespace"
+ *                       schemaLocation="http://www.w3.org/2001/xml.xsd"/&gt;
+ *      </pre>
+ *      <p>
+ *       or
+ *      </p>
+ *      <pre>
+ *            &lt;import namespace="http://www.w3.org/XML/1998/namespace"
+ *                       schemaLocation="http://www.w3.org/2009/01/xml.xsd"/&gt;
+ *      </pre>
+ *      <p>
+ *       Subsequently, qualified reference to any of the attributes or the
+ *       group defined below will have the desired effect, e.g.
+ *      </p>
+ *      <pre>
+ *           &lt;type . . .&gt;
+ *            . . .
+ *            &lt;attributeGroup ref="xml:specialAttrs"/&gt;
+ *      </pre>
+ *      <p>
+ *       will define a type which will schema-validate an instance element
+ *       with any of those attributes.
+ *      </p>
+ *     </div>
+ *    </div>
+ *   
  * 
- * <div id="usage" xml:id="usage" xmlns="http://www.w3.org/1999/xhtml">
- * <h2>
- * <a name="usage">About this schema document</a>
- * </h2>
- * 
- * <div class="bodytext">
- * <p>
- * This schema defines attributes and an attribute group suitable
- * for use by schemas wishing to allow <code>xml:base</code>,
- * <code>xml:lang</code>, <code>xml:space</code> or
- * <code>xml:id</code> attributes on elements they define.
- * </p>
- * <p>
- * To enable this, such a schema must import this schema for
- * the XML namespace, e.g. as follows:
- * </p>
- * <pre>
- * &lt;schema . . .&gt;
- * . . .
- * &lt;import namespace="http://www.w3.org/XML/1998/namespace"
- * schemaLocation="http://www.w3.org/2001/xml.xsd"/&gt;
- * </pre>
- * <p>
- * or
- * </p>
- * <pre>
- * &lt;import namespace="http://www.w3.org/XML/1998/namespace"
- * schemaLocation="http://www.w3.org/2009/01/xml.xsd"/&gt;
- * </pre>
- * <p>
- * Subsequently, qualified reference to any of the attributes or the
- * group defined below will have the desired effect, e.g.
- * </p>
- * <pre>
- * &lt;type . . .&gt;
- * . . .
- * &lt;attributeGroup ref="xml:specialAttrs"/&gt;
- * </pre>
- * <p>
- * will define a type which will schema-validate an instance element
- * with any of those attributes.
- * </p>
- * </div>
- * </div>
- * 
- * 
- * <div id="nsversioning" xml:id="nsversioning" xmlns="http://www.w3.org/1999/xhtml">
- * <h2>
- * <a name="nsversioning">Versioning policy for this schema document</a>
- * </h2>
- * <div class="bodytext">
- * <p>
- * In keeping with the XML Schema WG's standard versioning
- * policy, this schema document will persist at
- * <a href="http://www.w3.org/2009/01/xml.xsd">
- * http://www.w3.org/2009/01/xml.xsd</a>.
- * </p>
- * <p>
- * At the date of issue it can also be found at
- * <a href="http://www.w3.org/2001/xml.xsd">
- * http://www.w3.org/2001/xml.xsd</a>.
- * </p>
- * <p>
- * The schema document at that URI may however change in the future,
- * in order to remain compatible with the latest version of XML
- * Schema itself, or with the XML namespace itself.  In other words,
- * if the XML Schema or XML namespaces change, the version of this
- * document at <a href="http://www.w3.org/2001/xml.xsd">
- * http://www.w3.org/2001/xml.xsd
- * </a>
- * will change accordingly; the version at
- * <a href="http://www.w3.org/2009/01/xml.xsd">
- * http://www.w3.org/2009/01/xml.xsd
- * </a>
- * will not change.
- * </p>
- * <p>
- * Previous dated (and unchanging) versions of this schema
- * document are at:
- * </p>
- * <ul>
- * <li>
- * <a href="http://www.w3.org/2009/01/xml.xsd">
- * http://www.w3.org/2009/01/xml.xsd</a>
- * </li>
- * <li>
- * <a href="http://www.w3.org/2007/08/xml.xsd">
- * http://www.w3.org/2007/08/xml.xsd</a>
- * </li>
- * <li>
- * <a href="http://www.w3.org/2004/10/xml.xsd">
- * http://www.w3.org/2004/10/xml.xsd</a>
- * </li>
- * <li>
- * <a href="http://www.w3.org/2001/03/xml.xsd">
- * http://www.w3.org/2001/03/xml.xsd</a>
- * </li>
- * </ul>
- * </div>
- * </div>
- * 
+ *    <div id="nsversioning" xml:id="nsversioning" xmlns="http://www.w3.org/1999/xhtml">
+ *     <h2>
+ *       <a name="nsversioning">Versioning policy for this schema document</a>
+ *     </h2>
+ *     <div class="bodytext">
+ *      <p>
+ *       In keeping with the XML Schema WG's standard versioning
+ *       policy, this schema document will persist at
+ *       <a href="http://www.w3.org/2009/01/xml.xsd">
+ *        http://www.w3.org/2009/01/xml.xsd</a>.
+ *      </p>
+ *      <p>
+ *       At the date of issue it can also be found at
+ *       <a href="http://www.w3.org/2001/xml.xsd">
+ *        http://www.w3.org/2001/xml.xsd</a>.
+ *      </p>
+ *      <p>
+ *       The schema document at that URI may however change in the future,
+ *       in order to remain compatible with the latest version of XML
+ *       Schema itself, or with the XML namespace itself.  In other words,
+ *       if the XML Schema or XML namespaces change, the version of this
+ *       document at <a href="http://www.w3.org/2001/xml.xsd">
+ *        http://www.w3.org/2001/xml.xsd 
+ *       </a> 
+ *       will change accordingly; the version at 
+ *       <a href="http://www.w3.org/2009/01/xml.xsd">
+ *        http://www.w3.org/2009/01/xml.xsd 
+ *       </a> 
+ *       will not change.
+ *      </p>
+ *      <p>
+ *       Previous dated (and unchanging) versions of this schema 
+ *       document are at:
+ *      </p>
+ *      <ul>
+ *       <li>
+ *           <a href="http://www.w3.org/2009/01/xml.xsd">
+ * 	http://www.w3.org/2009/01/xml.xsd</a>
+ *         </li>
+ *       <li>
+ *           <a href="http://www.w3.org/2007/08/xml.xsd">
+ * 	http://www.w3.org/2007/08/xml.xsd</a>
+ *         </li>
+ *       <li>
+ *           <a href="http://www.w3.org/2004/10/xml.xsd">
+ * 	http://www.w3.org/2004/10/xml.xsd</a>
+ *         </li>
+ *       <li>
+ *           <a href="http://www.w3.org/2001/03/xml.xsd">
+ * 	http://www.w3.org/2001/03/xml.xsd</a>
+ *         </li>
+ *      </ul>
+ *     </div>
+ *    </div>
+ *   
  * <!-- end-model-doc -->
  * @see de.ugoe.cs.oco.tosca.ToscaFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore' ecore.xml.type='http://www.eclipse.org/emf/2003/XMLType' xml='../../org.eclipse.emf.ecore/model/XMLNamespace.ecore#/'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface ToscaPackage extends EPackage {
@@ -329,6 +328,43 @@ public interface ToscaPackage extends EPackage {
 	int CAPABILITIES_TYPE1_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilitiesType2Impl <em>Capabilities Type2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.CapabilitiesType2Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getCapabilitiesType2()
+	 * @generated
+	 */
+	int CAPABILITIES_TYPE2 = 3;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITIES_TYPE2__CAPABILITY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Capabilities Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITIES_TYPE2_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Capabilities Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITIES_TYPE2_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsTypeImpl <em>Capability Definitions Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -336,7 +372,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getCapabilityDefinitionsType()
 	 * @generated
 	 */
-	int CAPABILITY_DEFINITIONS_TYPE = 3;
+	int CAPABILITY_DEFINITIONS_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Capability Definition</b></em>' containment reference list.
@@ -366,6 +402,43 @@ public interface ToscaPackage extends EPackage {
 	int CAPABILITY_DEFINITIONS_TYPE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsType1Impl <em>Capability Definitions Type1</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsType1Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getCapabilityDefinitionsType1()
+	 * @generated
+	 */
+	int CAPABILITY_DEFINITIONS_TYPE1 = 5;
+
+	/**
+	 * The feature id for the '<em><b>Capability Definition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEFINITIONS_TYPE1__CAPABILITY_DEFINITION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Capability Definitions Type1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEFINITIONS_TYPE1_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Capability Definitions Type1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEFINITIONS_TYPE1_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.ConstraintsTypeImpl <em>Constraints Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,7 +446,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getConstraintsType()
 	 * @generated
 	 */
-	int CONSTRAINTS_TYPE = 4;
+	int CONSTRAINTS_TYPE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
@@ -410,7 +483,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getConstraintsType1()
 	 * @generated
 	 */
-	int CONSTRAINTS_TYPE1 = 5;
+	int CONSTRAINTS_TYPE1 = 7;
 
 	/**
 	 * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
@@ -447,7 +520,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTExtensibleElements()
 	 * @generated
 	 */
-	int TEXTENSIBLE_ELEMENTS = 64;
+	int TEXTENSIBLE_ELEMENTS = 70;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -502,7 +575,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTDefinitions()
 	 * @generated
 	 */
-	int TDEFINITIONS = 56;
+	int TDEFINITIONS = 62;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -667,13 +740,22 @@ public interface ToscaPackage extends EPackage {
 	int TDEFINITIONS__POLICY_TEMPLATE = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 14;
 
 	/**
+	 * The feature id for the '<em><b>Group Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDEFINITIONS__GROUP_TYPE = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 15;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TDEFINITIONS__ID = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 15;
+	int TDEFINITIONS__ID = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -682,7 +764,7 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TDEFINITIONS__NAME = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 16;
+	int TDEFINITIONS__NAME = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Target Namespace</b></em>' attribute.
@@ -691,16 +773,7 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TDEFINITIONS__TARGET_NAMESPACE = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 17;
-
-	/**
-	 * The feature id for the '<em><b>Group Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TDEFINITIONS__GROUP_TYPE = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 18;
+	int TDEFINITIONS__TARGET_NAMESPACE = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 18;
 
 	/**
 	 * The number of structural features of the '<em>TDefinitions</em>' class.
@@ -728,7 +801,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getDefinitionsType()
 	 * @generated
 	 */
-	int DEFINITIONS_TYPE = 6;
+	int DEFINITIONS_TYPE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -893,6 +966,15 @@ public interface ToscaPackage extends EPackage {
 	int DEFINITIONS_TYPE__POLICY_TEMPLATE = TDEFINITIONS__POLICY_TEMPLATE;
 
 	/**
+	 * The feature id for the '<em><b>Group Type</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITIONS_TYPE__GROUP_TYPE = TDEFINITIONS__GROUP_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -920,15 +1002,6 @@ public interface ToscaPackage extends EPackage {
 	int DEFINITIONS_TYPE__TARGET_NAMESPACE = TDEFINITIONS__TARGET_NAMESPACE;
 
 	/**
-	 * The feature id for the '<em><b>Group Type</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINITIONS_TYPE__GROUP_TYPE = TDEFINITIONS__GROUP_TYPE;
-
-	/**
 	 * The number of structural features of the '<em>Definitions Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -954,16 +1027,16 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getDerivedFromType()
 	 * @generated
 	 */
-	int DERIVED_FROM_TYPE = 7;
+	int DERIVED_FROM_TYPE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Relationship Type Implementation Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Node Type Implementation Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DERIVED_FROM_TYPE__RELATIONSHIP_TYPE_IMPLEMENTATION_REF = 0;
+	int DERIVED_FROM_TYPE__NODE_TYPE_IMPLEMENTATION_REF = 0;
 
 	/**
 	 * The number of structural features of the '<em>Derived From Type</em>' class.
@@ -991,16 +1064,16 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getDerivedFromType1()
 	 * @generated
 	 */
-	int DERIVED_FROM_TYPE1 = 8;
+	int DERIVED_FROM_TYPE1 = 10;
 
 	/**
-	 * The feature id for the '<em><b>Node Type Implementation Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Relationship Type Implementation Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF = 0;
+	int DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF = 0;
 
 	/**
 	 * The number of structural features of the '<em>Derived From Type1</em>' class.
@@ -1028,7 +1101,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getDerivedFromType2()
 	 * @generated
 	 */
-	int DERIVED_FROM_TYPE2 = 9;
+	int DERIVED_FROM_TYPE2 = 11;
 
 	/**
 	 * The feature id for the '<em><b>Type Ref</b></em>' attribute.
@@ -1065,7 +1138,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getDocumentRoot()
 	 * @generated
 	 */
-	int DOCUMENT_ROOT = 10;
+	int DOCUMENT_ROOT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
@@ -1095,7 +1168,7 @@ public interface ToscaPackage extends EPackage {
 	int DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Definitions</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1104,7 +1177,7 @@ public interface ToscaPackage extends EPackage {
 	int DOCUMENT_ROOT__DEFINITIONS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1138,7 +1211,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getExcludeType()
 	 * @generated
 	 */
-	int EXCLUDE_TYPE = 11;
+	int EXCLUDE_TYPE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -1175,7 +1248,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getExtensionsType()
 	 * @generated
 	 */
-	int EXTENSIONS_TYPE = 12;
+	int EXTENSIONS_TYPE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Extension</b></em>' containment reference list.
@@ -1212,7 +1285,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTImplementationArtifact()
 	 * @generated
 	 */
-	int TIMPLEMENTATION_ARTIFACT = 67;
+	int TIMPLEMENTATION_ARTIFACT = 75;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -1303,7 +1376,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getImplementationArtifactType()
 	 * @generated
 	 */
-	int IMPLEMENTATION_ARTIFACT_TYPE = 13;
+	int IMPLEMENTATION_ARTIFACT_TYPE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -1394,7 +1467,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getIncludeType()
 	 * @generated
 	 */
-	int INCLUDE_TYPE = 14;
+	int INCLUDE_TYPE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -1431,7 +1504,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInputParametersType()
 	 * @generated
 	 */
-	int INPUT_PARAMETERS_TYPE = 15;
+	int INPUT_PARAMETERS_TYPE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Input Parameter</b></em>' containment reference list.
@@ -1468,7 +1541,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInputParametersType1()
 	 * @generated
 	 */
-	int INPUT_PARAMETERS_TYPE1 = 16;
+	int INPUT_PARAMETERS_TYPE1 = 18;
 
 	/**
 	 * The feature id for the '<em><b>Input Parameter</b></em>' containment reference list.
@@ -1505,7 +1578,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInstanceStateType()
 	 * @generated
 	 */
-	int INSTANCE_STATE_TYPE = 17;
+	int INSTANCE_STATE_TYPE = 19;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -1542,7 +1615,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInterfacesType()
 	 * @generated
 	 */
-	int INTERFACES_TYPE = 18;
+	int INTERFACES_TYPE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Interface</b></em>' containment reference list.
@@ -1579,7 +1652,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInterfacesType1()
 	 * @generated
 	 */
-	int INTERFACES_TYPE1 = 19;
+	int INTERFACES_TYPE1 = 21;
 
 	/**
 	 * The feature id for the '<em><b>Interface</b></em>' containment reference list.
@@ -1609,6 +1682,43 @@ public interface ToscaPackage extends EPackage {
 	int INTERFACES_TYPE1_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.InterfacesType2Impl <em>Interfaces Type2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.InterfacesType2Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInterfacesType2()
+	 * @generated
+	 */
+	int INTERFACES_TYPE2 = 22;
+
+	/**
+	 * The feature id for the '<em><b>Interface</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACES_TYPE2__INTERFACE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Interfaces Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACES_TYPE2_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Interfaces Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACES_TYPE2_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.NodeOperationTypeImpl <em>Node Operation Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1616,7 +1726,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getNodeOperationType()
 	 * @generated
 	 */
-	int NODE_OPERATION_TYPE = 20;
+	int NODE_OPERATION_TYPE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
@@ -1628,7 +1738,7 @@ public interface ToscaPackage extends EPackage {
 	int NODE_OPERATION_TYPE__INTERFACE_NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Node Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Node Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1671,7 +1781,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getNodeTypeReferenceType()
 	 * @generated
 	 */
-	int NODE_TYPE_REFERENCE_TYPE = 21;
+	int NODE_TYPE_REFERENCE_TYPE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Type Ref</b></em>' attribute.
@@ -1708,7 +1818,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getOutputParametersType()
 	 * @generated
 	 */
-	int OUTPUT_PARAMETERS_TYPE = 22;
+	int OUTPUT_PARAMETERS_TYPE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Output Parameter</b></em>' containment reference list.
@@ -1745,7 +1855,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getOutputParametersType1()
 	 * @generated
 	 */
-	int OUTPUT_PARAMETERS_TYPE1 = 23;
+	int OUTPUT_PARAMETERS_TYPE1 = 26;
 
 	/**
 	 * The feature id for the '<em><b>Output Parameter</b></em>' containment reference list.
@@ -1782,7 +1892,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPlanModelReferenceType()
 	 * @generated
 	 */
-	int PLAN_MODEL_REFERENCE_TYPE = 24;
+	int PLAN_MODEL_REFERENCE_TYPE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -1819,7 +1929,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPlanModelType()
 	 * @generated
 	 */
-	int PLAN_MODEL_TYPE = 25;
+	int PLAN_MODEL_TYPE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -1856,7 +1966,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPlanType()
 	 * @generated
 	 */
-	int PLAN_TYPE = 26;
+	int PLAN_TYPE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Plan Ref</b></em>' attribute.
@@ -1893,7 +2003,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPoliciesType()
 	 * @generated
 	 */
-	int POLICIES_TYPE = 27;
+	int POLICIES_TYPE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Policy</b></em>' containment reference list.
@@ -1930,7 +2040,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPoliciesType1()
 	 * @generated
 	 */
-	int POLICIES_TYPE1 = 28;
+	int POLICIES_TYPE1 = 31;
 
 	/**
 	 * The feature id for the '<em><b>Policy</b></em>' containment reference list.
@@ -1960,6 +2070,43 @@ public interface ToscaPackage extends EPackage {
 	int POLICIES_TYPE1_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.PoliciesType2Impl <em>Policies Type2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.PoliciesType2Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPoliciesType2()
+	 * @generated
+	 */
+	int POLICIES_TYPE2 = 32;
+
+	/**
+	 * The feature id for the '<em><b>Policy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLICIES_TYPE2__POLICY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Policies Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLICIES_TYPE2_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Policies Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLICIES_TYPE2_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.PropertiesDefinitionTypeImpl <em>Properties Definition Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1967,7 +2114,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertiesDefinitionType()
 	 * @generated
 	 */
-	int PROPERTIES_DEFINITION_TYPE = 29;
+	int PROPERTIES_DEFINITION_TYPE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -2013,7 +2160,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertiesType()
 	 * @generated
 	 */
-	int PROPERTIES_TYPE = 30;
+	int PROPERTIES_TYPE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -2050,7 +2197,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertiesType1()
 	 * @generated
 	 */
-	int PROPERTIES_TYPE1 = 31;
+	int PROPERTIES_TYPE1 = 35;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -2096,7 +2243,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertyConstraintsType()
 	 * @generated
 	 */
-	int PROPERTY_CONSTRAINTS_TYPE = 32;
+	int PROPERTY_CONSTRAINTS_TYPE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Property Constraint</b></em>' containment reference list.
@@ -2133,7 +2280,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertyConstraintsType1()
 	 * @generated
 	 */
-	int PROPERTY_CONSTRAINTS_TYPE1 = 33;
+	int PROPERTY_CONSTRAINTS_TYPE1 = 37;
 
 	/**
 	 * The feature id for the '<em><b>Property Constraint</b></em>' containment reference list.
@@ -2170,7 +2317,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPropertyMappingsType()
 	 * @generated
 	 */
-	int PROPERTY_MAPPINGS_TYPE = 34;
+	int PROPERTY_MAPPINGS_TYPE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Property Mapping</b></em>' containment reference list.
@@ -2207,7 +2354,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRelationshipConstraintsType()
 	 * @generated
 	 */
-	int RELATIONSHIP_CONSTRAINTS_TYPE = 35;
+	int RELATIONSHIP_CONSTRAINTS_TYPE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Relationship Constraint</b></em>' containment reference list.
@@ -2244,7 +2391,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRelationshipConstraintType()
 	 * @generated
 	 */
-	int RELATIONSHIP_CONSTRAINT_TYPE = 36;
+	int RELATIONSHIP_CONSTRAINT_TYPE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -2290,7 +2437,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRelationshipOperationType()
 	 * @generated
 	 */
-	int RELATIONSHIP_OPERATION_TYPE = 37;
+	int RELATIONSHIP_OPERATION_TYPE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Interface Name</b></em>' attribute.
@@ -2311,7 +2458,7 @@ public interface ToscaPackage extends EPackage {
 	int RELATIONSHIP_OPERATION_TYPE__OPERATION_NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Relationship Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Relationship Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2345,7 +2492,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementDefinitionsType()
 	 * @generated
 	 */
-	int REQUIREMENT_DEFINITIONS_TYPE = 38;
+	int REQUIREMENT_DEFINITIONS_TYPE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Requirement Definition</b></em>' containment reference list.
@@ -2375,6 +2522,43 @@ public interface ToscaPackage extends EPackage {
 	int REQUIREMENT_DEFINITIONS_TYPE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementDefinitionsType1Impl <em>Requirement Definitions Type1</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.RequirementDefinitionsType1Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementDefinitionsType1()
+	 * @generated
+	 */
+	int REQUIREMENT_DEFINITIONS_TYPE1 = 43;
+
+	/**
+	 * The feature id for the '<em><b>Requirement Definition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT_DEFINITIONS_TYPE1__REQUIREMENT_DEFINITION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Requirement Definitions Type1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT_DEFINITIONS_TYPE1_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Requirement Definitions Type1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT_DEFINITIONS_TYPE1_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementsTypeImpl <em>Requirements Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2382,7 +2566,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementsType()
 	 * @generated
 	 */
-	int REQUIREMENTS_TYPE = 39;
+	int REQUIREMENTS_TYPE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' containment reference list.
@@ -2419,7 +2603,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementsType1()
 	 * @generated
 	 */
-	int REQUIREMENTS_TYPE1 = 40;
+	int REQUIREMENTS_TYPE1 = 45;
 
 	/**
 	 * The feature id for the '<em><b>Requirement</b></em>' containment reference list.
@@ -2449,6 +2633,43 @@ public interface ToscaPackage extends EPackage {
 	int REQUIREMENTS_TYPE1_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementsType2Impl <em>Requirements Type2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.RequirementsType2Impl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementsType2()
+	 * @generated
+	 */
+	int REQUIREMENTS_TYPE2 = 46;
+
+	/**
+	 * The feature id for the '<em><b>Requirement</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENTS_TYPE2__REQUIREMENT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Requirements Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENTS_TYPE2_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Requirements Type2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENTS_TYPE2_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.SourceElementTypeImpl <em>Source Element Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2456,10 +2677,10 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getSourceElementType()
 	 * @generated
 	 */
-	int SOURCE_ELEMENT_TYPE = 41;
+	int SOURCE_ELEMENT_TYPE = 47;
 
 	/**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2493,7 +2714,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getSourceInterfacesType()
 	 * @generated
 	 */
-	int SOURCE_INTERFACES_TYPE = 42;
+	int SOURCE_INTERFACES_TYPE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Interface</b></em>' containment reference list.
@@ -2530,7 +2751,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTAppliesTo()
 	 * @generated
 	 */
-	int TAPPLIES_TO = 43;
+	int TAPPLIES_TO = 49;
 
 	/**
 	 * The feature id for the '<em><b>Node Type Reference</b></em>' containment reference list.
@@ -2567,10 +2788,10 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTargetElementType()
 	 * @generated
 	 */
-	int TARGET_ELEMENT_TYPE = 44;
+	int TARGET_ELEMENT_TYPE = 50;
 
 	/**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2604,7 +2825,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTargetInterfacesType()
 	 * @generated
 	 */
-	int TARGET_INTERFACES_TYPE = 45;
+	int TARGET_INTERFACES_TYPE = 51;
 
 	/**
 	 * The feature id for the '<em><b>Interface</b></em>' containment reference list.
@@ -2641,7 +2862,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTArtifactReference()
 	 * @generated
 	 */
-	int TARTIFACT_REFERENCE = 46;
+	int TARTIFACT_REFERENCE = 52;
 
 	/**
 	 * The feature id for the '<em><b>Group</b></em>' attribute list.
@@ -2705,7 +2926,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTEntityTemplate()
 	 * @generated
 	 */
-	int TENTITY_TEMPLATE = 60;
+	int TENTITY_TEMPLATE = 66;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -2796,7 +3017,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTArtifactTemplate()
 	 * @generated
 	 */
-	int TARTIFACT_TEMPLATE = 47;
+	int TARTIFACT_TEMPLATE = 53;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -2905,7 +3126,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTEntityType()
 	 * @generated
 	 */
-	int TENTITY_TYPE = 61;
+	int TENTITY_TYPE = 67;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3023,7 +3244,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTArtifactType()
 	 * @generated
 	 */
-	int TARTIFACT_TYPE = 48;
+	int TARTIFACT_TYPE = 54;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3141,7 +3362,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTBoundaryDefinitions()
 	 * @generated
 	 */
-	int TBOUNDARY_DEFINITIONS = 49;
+	int TBOUNDARY_DEFINITIONS = 55;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference.
@@ -3223,7 +3444,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTCapability()
 	 * @generated
 	 */
-	int TCAPABILITY = 50;
+	int TCAPABILITY = 56;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3323,7 +3544,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTCapabilityDefinition()
 	 * @generated
 	 */
-	int TCAPABILITY_DEFINITION = 51;
+	int TCAPABILITY_DEFINITION = 57;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3423,7 +3644,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTCapabilityRef()
 	 * @generated
 	 */
-	int TCAPABILITY_REF = 52;
+	int TCAPABILITY_REF = 58;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3435,7 +3656,7 @@ public interface ToscaPackage extends EPackage {
 	int TCAPABILITY_REF__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3469,7 +3690,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTCapabilityType()
 	 * @generated
 	 */
-	int TCAPABILITY_TYPE = 53;
+	int TCAPABILITY_TYPE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3587,7 +3808,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTCondition()
 	 * @generated
 	 */
-	int TCONDITION = 54;
+	int TCONDITION = 60;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -3633,7 +3854,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTConstraint()
 	 * @generated
 	 */
-	int TCONSTRAINT = 55;
+	int TCONSTRAINT = 61;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -3679,7 +3900,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTDeploymentArtifact()
 	 * @generated
 	 */
-	int TDEPLOYMENT_ARTIFACT = 57;
+	int TDEPLOYMENT_ARTIFACT = 63;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -3761,7 +3982,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTDeploymentArtifacts()
 	 * @generated
 	 */
-	int TDEPLOYMENT_ARTIFACTS = 58;
+	int TDEPLOYMENT_ARTIFACTS = 64;
 
 	/**
 	 * The feature id for the '<em><b>Deployment Artifact</b></em>' containment reference list.
@@ -3798,7 +4019,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTDocumentation()
 	 * @generated
 	 */
-	int TDOCUMENTATION = 59;
+	int TDOCUMENTATION = 65;
 
 	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
@@ -3862,7 +4083,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTExportedInterface()
 	 * @generated
 	 */
-	int TEXPORTED_INTERFACE = 62;
+	int TEXPORTED_INTERFACE = 68;
 
 	/**
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference list.
@@ -3908,7 +4129,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTExportedOperation()
 	 * @generated
 	 */
-	int TEXPORTED_OPERATION = 63;
+	int TEXPORTED_OPERATION = 69;
 
 	/**
 	 * The feature id for the '<em><b>Node Operation</b></em>' containment reference.
@@ -3972,7 +4193,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTExtension()
 	 * @generated
 	 */
-	int TEXTENSION = 65;
+	int TEXTENSION = 71;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4045,7 +4266,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTExtensions()
 	 * @generated
 	 */
-	int TEXTENSIONS = 66;
+	int TEXTENSIONS = 72;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4102,6 +4323,323 @@ public interface ToscaPackage extends EPackage {
 	int TEXTENSIONS_OPERATION_COUNT = TEXTENSIBLE_ELEMENTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl <em>TGroup Template</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupTemplate()
+	 * @generated
+	 */
+	int TGROUP_TEMPLATE = 73;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__DOCUMENTATION = TENTITY_TEMPLATE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__ANY = TENTITY_TEMPLATE__ANY;
+
+	/**
+	 * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__ANY_ATTRIBUTE = TENTITY_TEMPLATE__ANY_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__PROPERTIES = TENTITY_TEMPLATE__PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Property Constraints</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__PROPERTY_CONSTRAINTS = TENTITY_TEMPLATE__PROPERTY_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__ID = TENTITY_TEMPLATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__TYPE = TENTITY_TEMPLATE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__REQUIREMENTS = TENTITY_TEMPLATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__CAPABILITIES = TENTITY_TEMPLATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Policies</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__POLICIES = TENTITY_TEMPLATE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Deployment Artifacts</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__DEPLOYMENT_ARTIFACTS = TENTITY_TEMPLATE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Max Instances</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__MAX_INSTANCES = TENTITY_TEMPLATE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Min Instances</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__MIN_INSTANCES = TENTITY_TEMPLATE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__NAME = TENTITY_TEMPLATE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE__MEMBER = TENTITY_TEMPLATE_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>TGroup Template</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of operations of the '<em>TGroup Template</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TEMPLATE_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl <em>TGroup Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupType()
+	 * @generated
+	 */
+	int TGROUP_TYPE = 74;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__DOCUMENTATION = TENTITY_TYPE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__ANY = TENTITY_TYPE__ANY;
+
+	/**
+	 * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__ANY_ATTRIBUTE = TENTITY_TYPE__ANY_ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__TAGS = TENTITY_TYPE__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Derived From</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__DERIVED_FROM = TENTITY_TYPE__DERIVED_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Properties Definition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__PROPERTIES_DEFINITION = TENTITY_TYPE__PROPERTIES_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__ABSTRACT = TENTITY_TYPE__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__FINAL = TENTITY_TYPE__FINAL;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__NAME = TENTITY_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Target Namespace</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__TARGET_NAMESPACE = TENTITY_TYPE__TARGET_NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Requirement Definitions</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__REQUIREMENT_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Capability Definitions</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__CAPABILITY_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Instance States</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__INSTANCE_STATES = TENTITY_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Interfaces</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__INTERFACES = TENTITY_TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>TGroup Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>TGroup Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TImplementationArtifactsImpl <em>TImplementation Artifacts</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4109,7 +4647,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTImplementationArtifacts()
 	 * @generated
 	 */
-	int TIMPLEMENTATION_ARTIFACTS = 68;
+	int TIMPLEMENTATION_ARTIFACTS = 76;
 
 	/**
 	 * The feature id for the '<em><b>Implementation Artifact</b></em>' containment reference list.
@@ -4146,7 +4684,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTImport()
 	 * @generated
 	 */
-	int TIMPORT = 69;
+	int TIMPORT = 77;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4228,7 +4766,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTInterface()
 	 * @generated
 	 */
-	int TINTERFACE = 70;
+	int TINTERFACE = 78;
 
 	/**
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference list.
@@ -4274,7 +4812,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTNodeTemplate()
 	 * @generated
 	 */
-	int TNODE_TEMPLATE = 71;
+	int TNODE_TEMPLATE = 79;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4403,22 +4941,13 @@ public interface ToscaPackage extends EPackage {
 	int TNODE_TEMPLATE__NAME = TENTITY_TEMPLATE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Interfaces</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TNODE_TEMPLATE__INTERFACES = TENTITY_TEMPLATE_FEATURE_COUNT + 7;
-
-	/**
 	 * The number of structural features of the '<em>TNode Template</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TNODE_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 8;
+	int TNODE_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>TNode Template</em>' class.
@@ -4437,7 +4966,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTNodeType()
 	 * @generated
 	 */
-	int TNODE_TYPE = 72;
+	int TNODE_TYPE = 80;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4591,7 +5120,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTNodeTypeImplementation()
 	 * @generated
 	 */
-	int TNODE_TYPE_IMPLEMENTATION = 73;
+	int TNODE_TYPE_IMPLEMENTATION = 81;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4736,7 +5265,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTOperation()
 	 * @generated
 	 */
-	int TOPERATION = 74;
+	int TOPERATION = 82;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -4793,22 +5322,13 @@ public interface ToscaPackage extends EPackage {
 	int TOPERATION__NAME = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPERATION__IMPLEMENTATION = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>TOperation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOPERATION_FEATURE_COUNT = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 4;
+	int TOPERATION_FEATURE_COUNT = TEXTENSIBLE_ELEMENTS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>TOperation</em>' class.
@@ -4827,7 +5347,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTParameter()
 	 * @generated
 	 */
-	int TPARAMETER = 75;
+	int TPARAMETER = 83;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4857,31 +5377,13 @@ public interface ToscaPackage extends EPackage {
 	int TPARAMETER__TYPE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TPARAMETER__DEFAULT_VALUE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TPARAMETER__VALUE = 4;
-
-	/**
 	 * The number of structural features of the '<em>TParameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TPARAMETER_FEATURE_COUNT = 5;
+	int TPARAMETER_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>TParameter</em>' class.
@@ -4900,7 +5402,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPlan()
 	 * @generated
 	 */
-	int TPLAN = 76;
+	int TPLAN = 84;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5036,7 +5538,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPlans()
 	 * @generated
 	 */
-	int TPLANS = 77;
+	int TPLANS = 85;
 
 	/**
 	 * The feature id for the '<em><b>Plan</b></em>' containment reference list.
@@ -5082,7 +5584,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPolicy()
 	 * @generated
 	 */
-	int TPOLICY = 78;
+	int TPOLICY = 86;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5164,7 +5666,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPolicyTemplate()
 	 * @generated
 	 */
-	int TPOLICY_TEMPLATE = 79;
+	int TPOLICY_TEMPLATE = 87;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5264,7 +5766,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPolicyType()
 	 * @generated
 	 */
-	int TPOLICY_TYPE = 80;
+	int TPOLICY_TYPE = 88;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5400,7 +5902,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPropertyConstraint()
 	 * @generated
 	 */
-	int TPROPERTY_CONSTRAINT = 81;
+	int TPROPERTY_CONSTRAINT = 89;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -5455,7 +5957,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTPropertyMapping()
 	 * @generated
 	 */
-	int TPROPERTY_MAPPING = 82;
+	int TPROPERTY_MAPPING = 90;
 
 	/**
 	 * The feature id for the '<em><b>Service Template Property Ref</b></em>' attribute.
@@ -5510,7 +6012,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRelationshipTemplate()
 	 * @generated
 	 */
-	int TRELATIONSHIP_TEMPLATE = 83;
+	int TRELATIONSHIP_TEMPLATE = 91;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5637,7 +6139,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRelationshipType()
 	 * @generated
 	 */
-	int TRELATIONSHIP_TYPE = 84;
+	int TRELATIONSHIP_TYPE = 92;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5800,7 +6302,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRelationshipTypeImplementation()
 	 * @generated
 	 */
-	int TRELATIONSHIP_TYPE_IMPLEMENTATION = 85;
+	int TRELATIONSHIP_TYPE_IMPLEMENTATION = 93;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -5936,7 +6438,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequiredContainerFeature()
 	 * @generated
 	 */
-	int TREQUIRED_CONTAINER_FEATURE = 86;
+	int TREQUIRED_CONTAINER_FEATURE = 94;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' attribute.
@@ -5973,7 +6475,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequiredContainerFeatures()
 	 * @generated
 	 */
-	int TREQUIRED_CONTAINER_FEATURES = 87;
+	int TREQUIRED_CONTAINER_FEATURES = 95;
 
 	/**
 	 * The feature id for the '<em><b>Required Container Feature</b></em>' containment reference list.
@@ -6010,7 +6512,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequirement()
 	 * @generated
 	 */
-	int TREQUIREMENT = 88;
+	int TREQUIREMENT = 96;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -6110,7 +6612,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequirementDefinition()
 	 * @generated
 	 */
-	int TREQUIREMENT_DEFINITION = 89;
+	int TREQUIREMENT_DEFINITION = 97;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -6210,7 +6712,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequirementRef()
 	 * @generated
 	 */
-	int TREQUIREMENT_REF = 90;
+	int TREQUIREMENT_REF = 98;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6222,7 +6724,7 @@ public interface ToscaPackage extends EPackage {
 	int TREQUIREMENT_REF__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6256,7 +6758,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTRequirementType()
 	 * @generated
 	 */
-	int TREQUIREMENT_TYPE = 91;
+	int TREQUIREMENT_TYPE = 99;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -6383,7 +6885,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTServiceTemplate()
 	 * @generated
 	 */
-	int TSERVICE_TEMPLATE = 92;
+	int TSERVICE_TEMPLATE = 100;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -6510,7 +7012,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTTag()
 	 * @generated
 	 */
-	int TTAG = 93;
+	int TTAG = 101;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6556,7 +7058,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTTags()
 	 * @generated
 	 */
-	int TTAGS = 94;
+	int TTAGS = 102;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' containment reference list.
@@ -6593,7 +7095,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTTopologyElementInstanceStates()
 	 * @generated
 	 */
-	int TTOPOLOGY_ELEMENT_INSTANCE_STATES = 95;
+	int TTOPOLOGY_ELEMENT_INSTANCE_STATES = 103;
 
 	/**
 	 * The feature id for the '<em><b>Instance State</b></em>' containment reference list.
@@ -6630,7 +7132,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTTopologyTemplate()
 	 * @generated
 	 */
-	int TTOPOLOGY_TEMPLATE = 96;
+	int TTOPOLOGY_TEMPLATE = 104;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -6721,7 +7223,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTypesType()
 	 * @generated
 	 */
-	int TYPES_TYPE = 97;
+	int TYPES_TYPE = 105;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -6758,7 +7260,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getValidSourceType()
 	 * @generated
 	 */
-	int VALID_SOURCE_TYPE = 98;
+	int VALID_SOURCE_TYPE = 106;
 
 	/**
 	 * The feature id for the '<em><b>Type Ref</b></em>' attribute.
@@ -6795,7 +7297,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getValidTargetType()
 	 * @generated
 	 */
-	int VALID_TARGET_TYPE = 99;
+	int VALID_TARGET_TYPE = 107;
 
 	/**
 	 * The feature id for the '<em><b>Type Ref</b></em>' attribute.
@@ -6825,269 +7327,6 @@ public interface ToscaPackage extends EPackage {
 	int VALID_TARGET_TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl <em>TGroup Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl
-	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupType()
-	 * @generated
-	 */
-	int TGROUP_TYPE = 100;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__DOCUMENTATION = TENTITY_TYPE__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Any</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__ANY = TENTITY_TYPE__ANY;
-
-	/**
-	 * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__ANY_ATTRIBUTE = TENTITY_TYPE__ANY_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Tags</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__TAGS = TENTITY_TYPE__TAGS;
-
-	/**
-	 * The feature id for the '<em><b>Derived From</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__DERIVED_FROM = TENTITY_TYPE__DERIVED_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Properties Definition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__PROPERTIES_DEFINITION = TENTITY_TYPE__PROPERTIES_DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__ABSTRACT = TENTITY_TYPE__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__FINAL = TENTITY_TYPE__FINAL;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__NAME = TENTITY_TYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Target Namespace</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__TARGET_NAMESPACE = TENTITY_TYPE__TARGET_NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Requirement Definitions</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__REQUIREMENT_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Capability Definitions</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE__CAPABILITY_DEFINITIONS = TENTITY_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>TGroup Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>TGroup Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl <em>TGroup Template</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl
-	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupTemplate()
-	 * @generated
-	 */
-	int TGROUP_TEMPLATE = 101;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__DOCUMENTATION = TENTITY_TEMPLATE__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Any</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__ANY = TENTITY_TEMPLATE__ANY;
-
-	/**
-	 * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__ANY_ATTRIBUTE = TENTITY_TEMPLATE__ANY_ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__PROPERTIES = TENTITY_TEMPLATE__PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Property Constraints</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__PROPERTY_CONSTRAINTS = TENTITY_TEMPLATE__PROPERTY_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__ID = TENTITY_TEMPLATE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__TYPE = TENTITY_TEMPLATE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__NAME = TENTITY_TEMPLATE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__MEMBER = TENTITY_TEMPLATE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Requirements</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__REQUIREMENTS = TENTITY_TEMPLATE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE__CAPABILITIES = TENTITY_TEMPLATE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>TGroup Template</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of operations of the '<em>TGroup Template</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TGROUP_TEMPLATE_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7095,7 +7334,17 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER1 = 102;
+	int MAX_INSTANCES_TYPE_MEMBER1 = 108;
+
+	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11 <em>Max Instances Type Member11</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember11()
+	 * @generated
+	 */
+	int MAX_INSTANCES_TYPE_MEMBER11 = 109;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.TBoolean <em>TBoolean</em>}' enum.
@@ -7105,7 +7354,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTBoolean()
 	 * @generated
 	 */
-	int TBOOLEAN = 103;
+	int TBOOLEAN = 110;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.UpperBoundTypeMember1 <em>Upper Bound Type Member1</em>}' enum.
@@ -7115,7 +7364,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember1()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER1 = 104;
+	int UPPER_BOUND_TYPE_MEMBER1 = 111;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.UpperBoundTypeMember11 <em>Upper Bound Type Member11</em>}' enum.
@@ -7125,7 +7374,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember11()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER11 = 105;
+	int UPPER_BOUND_TYPE_MEMBER11 = 112;
 
 	/**
 	 * The meta object id for the '<em>Imported URI</em>' data type.
@@ -7135,7 +7384,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getImportedURI()
 	 * @generated
 	 */
-	int IMPORTED_URI = 106;
+	int IMPORTED_URI = 113;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type</em>' data type.
@@ -7145,7 +7394,17 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesType()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE = 107;
+	int MAX_INSTANCES_TYPE = 114;
+
+	/**
+	 * The meta object id for the '<em>Max Instances Type1</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Object
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesType1()
+	 * @generated
+	 */
+	int MAX_INSTANCES_TYPE1 = 115;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member0</em>' data type.
@@ -7155,7 +7414,17 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember0()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER0 = 108;
+	int MAX_INSTANCES_TYPE_MEMBER0 = 116;
+
+	/**
+	 * The meta object id for the '<em>Max Instances Type Member01</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.math.BigInteger
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember01()
+	 * @generated
+	 */
+	int MAX_INSTANCES_TYPE_MEMBER01 = 117;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member1 Object</em>' data type.
@@ -7165,7 +7434,17 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1Object()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT = 109;
+	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT = 118;
+
+	/**
+	 * The meta object id for the '<em>Max Instances Type Member1 Object1</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1Object1()
+	 * @generated
+	 */
+	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT1 = 119;
 
 	/**
 	 * The meta object id for the '<em>TBoolean Object</em>' data type.
@@ -7175,7 +7454,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTBooleanObject()
 	 * @generated
 	 */
-	int TBOOLEAN_OBJECT = 110;
+	int TBOOLEAN_OBJECT = 120;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type</em>' data type.
@@ -7185,7 +7464,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundType()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE = 111;
+	int UPPER_BOUND_TYPE = 121;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type1</em>' data type.
@@ -7195,7 +7474,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundType1()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE1 = 112;
+	int UPPER_BOUND_TYPE1 = 122;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member0</em>' data type.
@@ -7205,7 +7484,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember0()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER0 = 113;
+	int UPPER_BOUND_TYPE_MEMBER0 = 123;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member01</em>' data type.
@@ -7215,7 +7494,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember01()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER01 = 114;
+	int UPPER_BOUND_TYPE_MEMBER01 = 124;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member1 Object</em>' data type.
@@ -7225,7 +7504,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember1Object()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER1_OBJECT = 115;
+	int UPPER_BOUND_TYPE_MEMBER1_OBJECT = 125;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member1 Object1</em>' data type.
@@ -7235,7 +7514,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember1Object1()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER1_OBJECT1 = 116;
+	int UPPER_BOUND_TYPE_MEMBER1_OBJECT1 = 126;
 
 
 	/**
@@ -7302,6 +7581,27 @@ public interface ToscaPackage extends EPackage {
 	EReference getCapabilitiesType1_Capability();
 
 	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.CapabilitiesType2 <em>Capabilities Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capabilities Type2</em>'.
+	 * @see de.ugoe.cs.oco.tosca.CapabilitiesType2
+	 * @generated
+	 */
+	EClass getCapabilitiesType2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.CapabilitiesType2#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capability</em>'.
+	 * @see de.ugoe.cs.oco.tosca.CapabilitiesType2#getCapability()
+	 * @see #getCapabilitiesType2()
+	 * @generated
+	 */
+	EReference getCapabilitiesType2_Capability();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType <em>Capability Definitions Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7321,6 +7621,27 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCapabilityDefinitionsType_CapabilityDefinition();
+
+	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1 <em>Capability Definitions Type1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability Definitions Type1</em>'.
+	 * @see de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1
+	 * @generated
+	 */
+	EClass getCapabilityDefinitionsType1();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1#getCapabilityDefinition <em>Capability Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capability Definition</em>'.
+	 * @see de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1#getCapabilityDefinition()
+	 * @see #getCapabilityDefinitionsType1()
+	 * @generated
+	 */
+	EReference getCapabilityDefinitionsType1_CapabilityDefinition();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.ConstraintsType <em>Constraints Type</em>}'.
@@ -7385,15 +7706,15 @@ public interface ToscaPackage extends EPackage {
 	EClass getDerivedFromType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.DerivedFromType#getRelationshipTypeImplementationRef <em>Relationship Type Implementation Ref</em>}'.
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.DerivedFromType#getNodeTypeImplementationRef <em>Node Type Implementation Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relationship Type Implementation Ref</em>'.
-	 * @see de.ugoe.cs.oco.tosca.DerivedFromType#getRelationshipTypeImplementationRef()
+	 * @return the meta object for the attribute '<em>Node Type Implementation Ref</em>'.
+	 * @see de.ugoe.cs.oco.tosca.DerivedFromType#getNodeTypeImplementationRef()
 	 * @see #getDerivedFromType()
 	 * @generated
 	 */
-	EAttribute getDerivedFromType_RelationshipTypeImplementationRef();
+	EAttribute getDerivedFromType_NodeTypeImplementationRef();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.DerivedFromType1 <em>Derived From Type1</em>}'.
@@ -7406,15 +7727,15 @@ public interface ToscaPackage extends EPackage {
 	EClass getDerivedFromType1();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getNodeTypeImplementationRef <em>Node Type Implementation Ref</em>}'.
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getRelationshipTypeImplementationRef <em>Relationship Type Implementation Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Node Type Implementation Ref</em>'.
-	 * @see de.ugoe.cs.oco.tosca.DerivedFromType1#getNodeTypeImplementationRef()
+	 * @return the meta object for the attribute '<em>Relationship Type Implementation Ref</em>'.
+	 * @see de.ugoe.cs.oco.tosca.DerivedFromType1#getRelationshipTypeImplementationRef()
 	 * @see #getDerivedFromType1()
 	 * @generated
 	 */
-	EAttribute getDerivedFromType1_NodeTypeImplementationRef();
+	EAttribute getDerivedFromType1_RelationshipTypeImplementationRef();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.DerivedFromType2 <em>Derived From Type2</em>}'.
@@ -7481,10 +7802,10 @@ public interface ToscaPackage extends EPackage {
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDefinitions <em>Definitions</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDefinitions <em>Definitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Definitions</em>'.
+	 * @return the meta object for the containment reference '<em>Definitions</em>'.
 	 * @see de.ugoe.cs.oco.tosca.DocumentRoot#getDefinitions()
 	 * @see #getDocumentRoot()
 	 * @generated
@@ -7492,10 +7813,10 @@ public interface ToscaPackage extends EPackage {
 	EReference getDocumentRoot_Definitions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDocumentation <em>Documentation</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.DocumentRoot#getDocumentation <em>Documentation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Documentation</em>'.
+	 * @return the meta object for the containment reference '<em>Documentation</em>'.
 	 * @see de.ugoe.cs.oco.tosca.DocumentRoot#getDocumentation()
 	 * @see #getDocumentRoot()
 	 * @generated
@@ -7681,6 +8002,27 @@ public interface ToscaPackage extends EPackage {
 	EReference getInterfacesType1_Interface();
 
 	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.InterfacesType2 <em>Interfaces Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Interfaces Type2</em>'.
+	 * @see de.ugoe.cs.oco.tosca.InterfacesType2
+	 * @generated
+	 */
+	EClass getInterfacesType2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.InterfacesType2#getInterface <em>Interface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Interface</em>'.
+	 * @see de.ugoe.cs.oco.tosca.InterfacesType2#getInterface()
+	 * @see #getInterfacesType2()
+	 * @generated
+	 */
+	EReference getInterfacesType2_Interface();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.NodeOperationType <em>Node Operation Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7702,15 +8044,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getNodeOperationType_InterfaceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.NodeOperationType#getNodeRef <em>Node Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.NodeOperationType#getNodeRef <em>Node Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Node Ref</em>'.
+	 * @return the meta object for the reference '<em>Node Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.NodeOperationType#getNodeRef()
 	 * @see #getNodeOperationType()
 	 * @generated
 	 */
-	EAttribute getNodeOperationType_NodeRef();
+	EReference getNodeOperationType_NodeRef();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.NodeOperationType#getOperationName <em>Operation Name</em>}'.
@@ -7890,6 +8232,27 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPoliciesType1_Policy();
+
+	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.PoliciesType2 <em>Policies Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Policies Type2</em>'.
+	 * @see de.ugoe.cs.oco.tosca.PoliciesType2
+	 * @generated
+	 */
+	EClass getPoliciesType2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.PoliciesType2#getPolicy <em>Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Policy</em>'.
+	 * @see de.ugoe.cs.oco.tosca.PoliciesType2#getPolicy()
+	 * @see #getPoliciesType2()
+	 * @generated
+	 */
+	EReference getPoliciesType2_Policy();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType <em>Properties Definition Type</em>}'.
@@ -8125,15 +8488,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getRelationshipOperationType_OperationName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.RelationshipOperationType#getRelationshipRef <em>Relationship Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.RelationshipOperationType#getRelationshipRef <em>Relationship Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relationship Ref</em>'.
+	 * @return the meta object for the reference '<em>Relationship Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.RelationshipOperationType#getRelationshipRef()
 	 * @see #getRelationshipOperationType()
 	 * @generated
 	 */
-	EAttribute getRelationshipOperationType_RelationshipRef();
+	EReference getRelationshipOperationType_RelationshipRef();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType <em>Requirement Definitions Type</em>}'.
@@ -8155,6 +8518,27 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRequirementDefinitionsType_RequirementDefinition();
+
+	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType1 <em>Requirement Definitions Type1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Requirement Definitions Type1</em>'.
+	 * @see de.ugoe.cs.oco.tosca.RequirementDefinitionsType1
+	 * @generated
+	 */
+	EClass getRequirementDefinitionsType1();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType1#getRequirementDefinition <em>Requirement Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Requirement Definition</em>'.
+	 * @see de.ugoe.cs.oco.tosca.RequirementDefinitionsType1#getRequirementDefinition()
+	 * @see #getRequirementDefinitionsType1()
+	 * @generated
+	 */
+	EReference getRequirementDefinitionsType1_RequirementDefinition();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.RequirementsType <em>Requirements Type</em>}'.
@@ -8199,6 +8583,27 @@ public interface ToscaPackage extends EPackage {
 	EReference getRequirementsType1_Requirement();
 
 	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.RequirementsType2 <em>Requirements Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Requirements Type2</em>'.
+	 * @see de.ugoe.cs.oco.tosca.RequirementsType2
+	 * @generated
+	 */
+	EClass getRequirementsType2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.RequirementsType2#getRequirement <em>Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Requirement</em>'.
+	 * @see de.ugoe.cs.oco.tosca.RequirementsType2#getRequirement()
+	 * @see #getRequirementsType2()
+	 * @generated
+	 */
+	EReference getRequirementsType2_Requirement();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.SourceElementType <em>Source Element Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8209,15 +8614,15 @@ public interface ToscaPackage extends EPackage {
 	EClass getSourceElementType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.SourceElementType#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.SourceElementType#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @return the meta object for the reference '<em>Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.SourceElementType#getRef()
 	 * @see #getSourceElementType()
 	 * @generated
 	 */
-	EAttribute getSourceElementType_Ref();
+	EReference getSourceElementType_Ref();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.SourceInterfacesType <em>Source Interfaces Type</em>}'.
@@ -8272,15 +8677,15 @@ public interface ToscaPackage extends EPackage {
 	EClass getTargetElementType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TargetElementType#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TargetElementType#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @return the meta object for the reference '<em>Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.TargetElementType#getRef()
 	 * @see #getTargetElementType()
 	 * @generated
 	 */
-	EAttribute getTargetElementType_Ref();
+	EReference getTargetElementType_Ref();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TargetInterfacesType <em>Target Interfaces Type</em>}'.
@@ -8583,15 +8988,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTCapabilityRef_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TCapabilityRef#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TCapabilityRef#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @return the meta object for the reference '<em>Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.TCapabilityRef#getRef()
 	 * @see #getTCapabilityRef()
 	 * @generated
 	 */
-	EAttribute getTCapabilityRef_Ref();
+	EReference getTCapabilityRef_Ref();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TCapabilityType <em>TCapability Type</em>}'.
@@ -8843,6 +9248,17 @@ public interface ToscaPackage extends EPackage {
 	EReference getTDefinitions_PolicyTemplate();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType <em>Group Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Group Type</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TDefinitions#getGroupType()
+	 * @see #getTDefinitions()
+	 * @generated
+	 */
+	EReference getTDefinitions_GroupType();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TDefinitions#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8874,17 +9290,6 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTDefinitions_TargetNamespace();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType <em>Group Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Group Type</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TDefinitions#getGroupType()
-	 * @see #getTDefinitions()
-	 * @generated
-	 */
-	EReference getTDefinitions_GroupType();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TDeploymentArtifact <em>TDeployment Artifact</em>}'.
@@ -9328,6 +9733,158 @@ public interface ToscaPackage extends EPackage {
 	EReference getTExtensions_Extension();
 
 	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupTemplate <em>TGroup Template</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TGroup Template</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate
+	 * @generated
+	 */
+	EClass getTGroupTemplate();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements <em>Requirements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Requirements</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_Requirements();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capabilities</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_Capabilities();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getPolicies <em>Policies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Policies</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getPolicies()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_Policies();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getDeploymentArtifacts <em>Deployment Artifacts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Deployment Artifacts</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getDeploymentArtifacts()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EReference getTGroupTemplate_DeploymentArtifacts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMaxInstances <em>Max Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Instances</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getMaxInstances()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EAttribute getTGroupTemplate_MaxInstances();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMinInstances <em>Min Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Instances</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getMinInstances()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EAttribute getTGroupTemplate_MinInstances();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getName()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EAttribute getTGroupTemplate_Name();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMember <em>Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Member</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getMember()
+	 * @see #getTGroupTemplate()
+	 * @generated
+	 */
+	EAttribute getTGroupTemplate_Member();
+
+	/**
+	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupType <em>TGroup Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TGroup Type</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType
+	 * @generated
+	 */
+	EClass getTGroupType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions <em>Requirement Definitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Requirement Definitions</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_RequirementDefinitions();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions <em>Capability Definitions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability Definitions</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_CapabilityDefinitions();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getInstanceStates <em>Instance States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Instance States</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getInstanceStates()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_InstanceStates();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getInterfaces <em>Interfaces</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Interfaces</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getInterfaces()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_Interfaces();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TImplementationArtifact <em>TImplementation Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9565,17 +10122,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTNodeTemplate_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getInterfaces <em>Interfaces</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Interfaces</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TNodeTemplate#getInterfaces()
-	 * @see #getTNodeTemplate()
-	 * @generated
-	 */
-	EReference getTNodeTemplate_Interfaces();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TNodeType <em>TNode Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9793,17 +10339,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTOperation_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TOperation#getImplementation <em>Implementation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Implementation</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TOperation#getImplementation()
-	 * @see #getTOperation()
-	 * @generated
-	 */
-	EAttribute getTOperation_Implementation();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TParameter <em>TParameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9845,28 +10380,6 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTParameter_Type();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TParameter#getDefaultValue <em>Default Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default Value</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TParameter#getDefaultValue()
-	 * @see #getTParameter()
-	 * @generated
-	 */
-	EAttribute getTParameter_DefaultValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TParameter#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TParameter#getValue()
-	 * @see #getTParameter()
-	 * @generated
-	 */
-	EAttribute getTParameter_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TPlan <em>TPlan</em>}'.
@@ -10547,15 +11060,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTRequirementRef_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TRequirementRef#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TRequirementRef#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @return the meta object for the reference '<em>Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.TRequirementRef#getRef()
 	 * @see #getTRequirementRef()
 	 * @generated
 	 */
-	EAttribute getTRequirementRef_Ref();
+	EReference getTRequirementRef_Ref();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TRequirementType <em>TRequirement Type</em>}'.
@@ -10868,92 +11381,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getValidTargetType_TypeRef();
 
 	/**
-	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupType <em>TGroup Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>TGroup Type</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupType
-	 * @generated
-	 */
-	EClass getTGroupType();
-
-	/**
-	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions <em>Requirement Definitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Requirement Definitions</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupType#getRequirementDefinitions()
-	 * @see #getTGroupType()
-	 * @generated
-	 */
-	EReference getTGroupType_RequirementDefinitions();
-
-	/**
-	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions <em>Capability Definitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Capability Definitions</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions()
-	 * @see #getTGroupType()
-	 * @generated
-	 */
-	EReference getTGroupType_CapabilityDefinitions();
-
-	/**
-	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupTemplate <em>TGroup Template</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>TGroup Template</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate
-	 * @generated
-	 */
-	EClass getTGroupTemplate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getName()
-	 * @see #getTGroupTemplate()
-	 * @generated
-	 */
-	EAttribute getTGroupTemplate_Name();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMember <em>Member</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Member</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getMember()
-	 * @see #getTGroupTemplate()
-	 * @generated
-	 */
-	EAttribute getTGroupTemplate_Member();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements <em>Requirements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Requirements</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getRequirements()
-	 * @see #getTGroupTemplate()
-	 * @generated
-	 */
-	EReference getTGroupTemplate_Requirements();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities <em>Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Capabilities</em>'.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getCapabilities()
-	 * @see #getTGroupTemplate()
-	 * @generated
-	 */
-	EReference getTGroupTemplate_Capabilities();
-
-	/**
 	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10962,6 +11389,16 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getMaxInstancesTypeMember1();
+
+	/**
+	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11 <em>Max Instances Type Member11</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Max Instances Type Member11</em>'.
+	 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+	 * @generated
+	 */
+	EEnum getMaxInstancesTypeMember11();
 
 	/**
 	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.tosca.TBoolean <em>TBoolean</em>}'.
@@ -11018,6 +11455,18 @@ public interface ToscaPackage extends EPackage {
 	EDataType getMaxInstancesType();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.Object <em>Max Instances Type1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Max Instances Type1</em>'.
+	 * @see java.lang.Object
+	 * @model instanceClass="java.lang.Object"
+	 *        extendedMetaData="name='maxInstances_._1_._type' memberTypes='maxInstances_._1_._type_._member_._0 maxInstances_._1_._type_._member_._1'"
+	 * @generated
+	 */
+	EDataType getMaxInstancesType1();
+
+	/**
 	 * Returns the meta object for data type '{@link java.math.BigInteger <em>Max Instances Type Member0</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11030,6 +11479,18 @@ public interface ToscaPackage extends EPackage {
 	EDataType getMaxInstancesTypeMember0();
 
 	/**
+	 * Returns the meta object for data type '{@link java.math.BigInteger <em>Max Instances Type Member01</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Max Instances Type Member01</em>'.
+	 * @see java.math.BigInteger
+	 * @model instanceClass="java.math.BigInteger"
+	 *        extendedMetaData="name='maxInstances_._1_._type_._member_._0' baseType='http://www.eclipse.org/emf/2003/XMLType#nonNegativeInteger' pattern='([1-9]+[0-9]*)'"
+	 * @generated
+	 */
+	EDataType getMaxInstancesTypeMember01();
+
+	/**
 	 * Returns the meta object for data type '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1 Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11040,6 +11501,18 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getMaxInstancesTypeMember1Object();
+
+	/**
+	 * Returns the meta object for data type '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11 <em>Max Instances Type Member1 Object1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Max Instances Type Member1 Object1</em>'.
+	 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+	 * @model instanceClass="de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11"
+	 *        extendedMetaData="name='maxInstances_._1_._type_._member_._1:Object' baseType='maxInstances_._1_._type_._member_._1'"
+	 * @generated
+	 */
+	EDataType getMaxInstancesTypeMember1Object1();
 
 	/**
 	 * Returns the meta object for data type '{@link de.ugoe.cs.oco.tosca.TBoolean <em>TBoolean Object</em>}'.
@@ -11203,6 +11676,24 @@ public interface ToscaPackage extends EPackage {
 		EReference CAPABILITIES_TYPE1__CAPABILITY = eINSTANCE.getCapabilitiesType1_Capability();
 
 		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilitiesType2Impl <em>Capabilities Type2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.CapabilitiesType2Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getCapabilitiesType2()
+		 * @generated
+		 */
+		EClass CAPABILITIES_TYPE2 = eINSTANCE.getCapabilitiesType2();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITIES_TYPE2__CAPABILITY = eINSTANCE.getCapabilitiesType2_Capability();
+
+		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsTypeImpl <em>Capability Definitions Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11219,6 +11710,24 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CAPABILITY_DEFINITIONS_TYPE__CAPABILITY_DEFINITION = eINSTANCE.getCapabilityDefinitionsType_CapabilityDefinition();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsType1Impl <em>Capability Definitions Type1</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.CapabilityDefinitionsType1Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getCapabilityDefinitionsType1()
+		 * @generated
+		 */
+		EClass CAPABILITY_DEFINITIONS_TYPE1 = eINSTANCE.getCapabilityDefinitionsType1();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability Definition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_DEFINITIONS_TYPE1__CAPABILITY_DEFINITION = eINSTANCE.getCapabilityDefinitionsType1_CapabilityDefinition();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.ConstraintsTypeImpl <em>Constraints Type</em>}' class.
@@ -11277,12 +11786,12 @@ public interface ToscaPackage extends EPackage {
 		EClass DERIVED_FROM_TYPE = eINSTANCE.getDerivedFromType();
 
 		/**
-		 * The meta object literal for the '<em><b>Relationship Type Implementation Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Node Type Implementation Ref</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DERIVED_FROM_TYPE__RELATIONSHIP_TYPE_IMPLEMENTATION_REF = eINSTANCE.getDerivedFromType_RelationshipTypeImplementationRef();
+		EAttribute DERIVED_FROM_TYPE__NODE_TYPE_IMPLEMENTATION_REF = eINSTANCE.getDerivedFromType_NodeTypeImplementationRef();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType1Impl <em>Derived From Type1</em>}' class.
@@ -11295,12 +11804,12 @@ public interface ToscaPackage extends EPackage {
 		EClass DERIVED_FROM_TYPE1 = eINSTANCE.getDerivedFromType1();
 
 		/**
-		 * The meta object literal for the '<em><b>Node Type Implementation Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Relationship Type Implementation Ref</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF = eINSTANCE.getDerivedFromType1_NodeTypeImplementationRef();
+		EAttribute DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF = eINSTANCE.getDerivedFromType1_RelationshipTypeImplementationRef();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType2Impl <em>Derived From Type2</em>}' class.
@@ -11355,7 +11864,7 @@ public interface ToscaPackage extends EPackage {
 		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Definitions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Definitions</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -11363,7 +11872,7 @@ public interface ToscaPackage extends EPackage {
 		EReference DOCUMENT_ROOT__DEFINITIONS = eINSTANCE.getDocumentRoot_Definitions();
 
 		/**
-		 * The meta object literal for the '<em><b>Documentation</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Documentation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -11525,6 +12034,24 @@ public interface ToscaPackage extends EPackage {
 		EReference INTERFACES_TYPE1__INTERFACE = eINSTANCE.getInterfacesType1_Interface();
 
 		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.InterfacesType2Impl <em>Interfaces Type2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.InterfacesType2Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getInterfacesType2()
+		 * @generated
+		 */
+		EClass INTERFACES_TYPE2 = eINSTANCE.getInterfacesType2();
+
+		/**
+		 * The meta object literal for the '<em><b>Interface</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACES_TYPE2__INTERFACE = eINSTANCE.getInterfacesType2_Interface();
+
+		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.NodeOperationTypeImpl <em>Node Operation Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11543,12 +12070,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute NODE_OPERATION_TYPE__INTERFACE_NAME = eINSTANCE.getNodeOperationType_InterfaceName();
 
 		/**
-		 * The meta object literal for the '<em><b>Node Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Node Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE_OPERATION_TYPE__NODE_REF = eINSTANCE.getNodeOperationType_NodeRef();
+		EReference NODE_OPERATION_TYPE__NODE_REF = eINSTANCE.getNodeOperationType_NodeRef();
 
 		/**
 		 * The meta object literal for the '<em><b>Operation Name</b></em>' attribute feature.
@@ -11701,6 +12228,24 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference POLICIES_TYPE1__POLICY = eINSTANCE.getPoliciesType1_Policy();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.PoliciesType2Impl <em>Policies Type2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.PoliciesType2Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getPoliciesType2()
+		 * @generated
+		 */
+		EClass POLICIES_TYPE2 = eINSTANCE.getPoliciesType2();
+
+		/**
+		 * The meta object literal for the '<em><b>Policy</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference POLICIES_TYPE2__POLICY = eINSTANCE.getPoliciesType2_Policy();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.PropertiesDefinitionTypeImpl <em>Properties Definition Type</em>}' class.
@@ -11897,12 +12442,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute RELATIONSHIP_OPERATION_TYPE__OPERATION_NAME = eINSTANCE.getRelationshipOperationType_OperationName();
 
 		/**
-		 * The meta object literal for the '<em><b>Relationship Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Relationship Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF = eINSTANCE.getRelationshipOperationType_RelationshipRef();
+		EReference RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF = eINSTANCE.getRelationshipOperationType_RelationshipRef();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementDefinitionsTypeImpl <em>Requirement Definitions Type</em>}' class.
@@ -11921,6 +12466,24 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REQUIREMENT_DEFINITIONS_TYPE__REQUIREMENT_DEFINITION = eINSTANCE.getRequirementDefinitionsType_RequirementDefinition();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementDefinitionsType1Impl <em>Requirement Definitions Type1</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.RequirementDefinitionsType1Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementDefinitionsType1()
+		 * @generated
+		 */
+		EClass REQUIREMENT_DEFINITIONS_TYPE1 = eINSTANCE.getRequirementDefinitionsType1();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement Definition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIREMENT_DEFINITIONS_TYPE1__REQUIREMENT_DEFINITION = eINSTANCE.getRequirementDefinitionsType1_RequirementDefinition();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementsTypeImpl <em>Requirements Type</em>}' class.
@@ -11959,6 +12522,24 @@ public interface ToscaPackage extends EPackage {
 		EReference REQUIREMENTS_TYPE1__REQUIREMENT = eINSTANCE.getRequirementsType1_Requirement();
 
 		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.RequirementsType2Impl <em>Requirements Type2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.RequirementsType2Impl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getRequirementsType2()
+		 * @generated
+		 */
+		EClass REQUIREMENTS_TYPE2 = eINSTANCE.getRequirementsType2();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIREMENTS_TYPE2__REQUIREMENT = eINSTANCE.getRequirementsType2_Requirement();
+
+		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.SourceElementTypeImpl <em>Source Element Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -11969,12 +12550,12 @@ public interface ToscaPackage extends EPackage {
 		EClass SOURCE_ELEMENT_TYPE = eINSTANCE.getSourceElementType();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SOURCE_ELEMENT_TYPE__REF = eINSTANCE.getSourceElementType_Ref();
+		EReference SOURCE_ELEMENT_TYPE__REF = eINSTANCE.getSourceElementType_Ref();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.SourceInterfacesTypeImpl <em>Source Interfaces Type</em>}' class.
@@ -12023,12 +12604,12 @@ public interface ToscaPackage extends EPackage {
 		EClass TARGET_ELEMENT_TYPE = eINSTANCE.getTargetElementType();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TARGET_ELEMENT_TYPE__REF = eINSTANCE.getTargetElementType_Ref();
+		EReference TARGET_ELEMENT_TYPE__REF = eINSTANCE.getTargetElementType_Ref();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TargetInterfacesTypeImpl <em>Target Interfaces Type</em>}' class.
@@ -12271,12 +12852,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TCAPABILITY_REF__NAME = eINSTANCE.getTCapabilityRef_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TCAPABILITY_REF__REF = eINSTANCE.getTCapabilityRef_Ref();
+		EReference TCAPABILITY_REF__REF = eINSTANCE.getTCapabilityRef_Ref();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TCapabilityTypeImpl <em>TCapability Type</em>}' class.
@@ -12471,6 +13052,14 @@ public interface ToscaPackage extends EPackage {
 		EReference TDEFINITIONS__POLICY_TEMPLATE = eINSTANCE.getTDefinitions_PolicyTemplate();
 
 		/**
+		 * The meta object literal for the '<em><b>Group Type</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TDEFINITIONS__GROUP_TYPE = eINSTANCE.getTDefinitions_GroupType();
+
+		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12493,14 +13082,6 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TDEFINITIONS__TARGET_NAMESPACE = eINSTANCE.getTDefinitions_TargetNamespace();
-
-		/**
-		 * The meta object literal for the '<em><b>Group Type</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TDEFINITIONS__GROUP_TYPE = eINSTANCE.getTDefinitions_GroupType();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TDeploymentArtifactImpl <em>TDeployment Artifact</em>}' class.
@@ -12851,6 +13432,122 @@ public interface ToscaPackage extends EPackage {
 		EReference TEXTENSIONS__EXTENSION = eINSTANCE.getTExtensions_Extension();
 
 		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl <em>TGroup Template</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupTemplate()
+		 * @generated
+		 */
+		EClass TGROUP_TEMPLATE = eINSTANCE.getTGroupTemplate();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirements</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__REQUIREMENTS = eINSTANCE.getTGroupTemplate_Requirements();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__CAPABILITIES = eINSTANCE.getTGroupTemplate_Capabilities();
+
+		/**
+		 * The meta object literal for the '<em><b>Policies</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__POLICIES = eINSTANCE.getTGroupTemplate_Policies();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployment Artifacts</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TEMPLATE__DEPLOYMENT_ARTIFACTS = eINSTANCE.getTGroupTemplate_DeploymentArtifacts();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Instances</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TGROUP_TEMPLATE__MAX_INSTANCES = eINSTANCE.getTGroupTemplate_MaxInstances();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Instances</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TGROUP_TEMPLATE__MIN_INSTANCES = eINSTANCE.getTGroupTemplate_MinInstances();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TGROUP_TEMPLATE__NAME = eINSTANCE.getTGroupTemplate_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Member</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TGROUP_TEMPLATE__MEMBER = eINSTANCE.getTGroupTemplate_Member();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl <em>TGroup Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupType()
+		 * @generated
+		 */
+		EClass TGROUP_TYPE = eINSTANCE.getTGroupType();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirement Definitions</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__REQUIREMENT_DEFINITIONS = eINSTANCE.getTGroupType_RequirementDefinitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability Definitions</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__CAPABILITY_DEFINITIONS = eINSTANCE.getTGroupType_CapabilityDefinitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Instance States</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__INSTANCE_STATES = eINSTANCE.getTGroupType_InstanceStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Interfaces</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__INTERFACES = eINSTANCE.getTGroupType_Interfaces();
+
+		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TImplementationArtifactImpl <em>TImplementation Artifact</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13037,14 +13734,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TNODE_TEMPLATE__NAME = eINSTANCE.getTNodeTemplate_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Interfaces</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TNODE_TEMPLATE__INTERFACES = eINSTANCE.getTNodeTemplate_Interfaces();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TNodeTypeImpl <em>TNode Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13211,14 +13900,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TOPERATION__NAME = eINSTANCE.getTOperation_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Implementation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TOPERATION__IMPLEMENTATION = eINSTANCE.getTOperation_Implementation();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl <em>TParameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13251,22 +13932,6 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TPARAMETER__TYPE = eINSTANCE.getTParameter_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TPARAMETER__DEFAULT_VALUE = eINSTANCE.getTParameter_DefaultValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TPARAMETER__VALUE = eINSTANCE.getTParameter_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TPlanImpl <em>TPlan</em>}' class.
@@ -13803,12 +14468,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TREQUIREMENT_REF__NAME = eINSTANCE.getTRequirementRef_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TREQUIREMENT_REF__REF = eINSTANCE.getTRequirementRef_Ref();
+		EReference TREQUIREMENT_REF__REF = eINSTANCE.getTRequirementRef_Ref();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TRequirementTypeImpl <em>TRequirement Type</em>}' class.
@@ -14061,74 +14726,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute VALID_TARGET_TYPE__TYPE_REF = eINSTANCE.getValidTargetType_TypeRef();
 
 		/**
-		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl <em>TGroup Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl
-		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupType()
-		 * @generated
-		 */
-		EClass TGROUP_TYPE = eINSTANCE.getTGroupType();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirement Definitions</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TGROUP_TYPE__REQUIREMENT_DEFINITIONS = eINSTANCE.getTGroupType_RequirementDefinitions();
-
-		/**
-		 * The meta object literal for the '<em><b>Capability Definitions</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TGROUP_TYPE__CAPABILITY_DEFINITIONS = eINSTANCE.getTGroupType_CapabilityDefinitions();
-
-		/**
-		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl <em>TGroup Template</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl
-		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTGroupTemplate()
-		 * @generated
-		 */
-		EClass TGROUP_TEMPLATE = eINSTANCE.getTGroupTemplate();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TGROUP_TEMPLATE__NAME = eINSTANCE.getTGroupTemplate_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Member</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TGROUP_TEMPLATE__MEMBER = eINSTANCE.getTGroupTemplate_Member();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirements</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TGROUP_TEMPLATE__REQUIREMENTS = eINSTANCE.getTGroupTemplate_Requirements();
-
-		/**
-		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TGROUP_TEMPLATE__CAPABILITIES = eINSTANCE.getTGroupTemplate_Capabilities();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember1 <em>Max Instances Type Member1</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14137,6 +14734,16 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum MAX_INSTANCES_TYPE_MEMBER1 = eINSTANCE.getMaxInstancesTypeMember1();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11 <em>Max Instances Type Member11</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember11()
+		 * @generated
+		 */
+		EEnum MAX_INSTANCES_TYPE_MEMBER11 = eINSTANCE.getMaxInstancesTypeMember11();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.TBoolean <em>TBoolean</em>}' enum.
@@ -14189,6 +14796,16 @@ public interface ToscaPackage extends EPackage {
 		EDataType MAX_INSTANCES_TYPE = eINSTANCE.getMaxInstancesType();
 
 		/**
+		 * The meta object literal for the '<em>Max Instances Type1</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Object
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesType1()
+		 * @generated
+		 */
+		EDataType MAX_INSTANCES_TYPE1 = eINSTANCE.getMaxInstancesType1();
+
+		/**
 		 * The meta object literal for the '<em>Max Instances Type Member0</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14199,6 +14816,16 @@ public interface ToscaPackage extends EPackage {
 		EDataType MAX_INSTANCES_TYPE_MEMBER0 = eINSTANCE.getMaxInstancesTypeMember0();
 
 		/**
+		 * The meta object literal for the '<em>Max Instances Type Member01</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.math.BigInteger
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember01()
+		 * @generated
+		 */
+		EDataType MAX_INSTANCES_TYPE_MEMBER01 = eINSTANCE.getMaxInstancesTypeMember01();
+
+		/**
 		 * The meta object literal for the '<em>Max Instances Type Member1 Object</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14207,6 +14834,16 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType MAX_INSTANCES_TYPE_MEMBER1_OBJECT = eINSTANCE.getMaxInstancesTypeMember1Object();
+
+		/**
+		 * The meta object literal for the '<em>Max Instances Type Member1 Object1</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.MaxInstancesTypeMember11
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1Object1()
+		 * @generated
+		 */
+		EDataType MAX_INSTANCES_TYPE_MEMBER1_OBJECT1 = eINSTANCE.getMaxInstancesTypeMember1Object1();
 
 		/**
 		 * The meta object literal for the '<em>TBoolean Object</em>' data type.

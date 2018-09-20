@@ -60,10 +60,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getArtifactTemplate <em>Artifact Template</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getPolicyType <em>Policy Type</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getPolicyTemplate <em>Policy Template</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getGroupType <em>Group Type</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getTargetNamespace <em>Target Namespace</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.TDefinitionsImpl#getGroupType <em>Group Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -168,16 +168,6 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 	 * @ordered
 	 */
 	protected String targetNamespace = TARGET_NAMESPACE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getGroupType() <em>Group Type</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroupType()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TGroupType> groupType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -412,6 +402,15 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TGroupType> getGroupType() {
+		return getGroup().list(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getId() {
 		return id;
 	}
@@ -468,18 +467,6 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 		targetNamespace = newTargetNamespace;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TDEFINITIONS__TARGET_NAMESPACE, oldTargetNamespace, targetNamespace));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<TGroupType> getGroupType() {
-		if (groupType == null) {
-			groupType = new EObjectContainmentEList<TGroupType>(TGroupType.class, this, ToscaPackage.TDEFINITIONS__GROUP_TYPE);
-		}
-		return groupType;
 	}
 
 	/**
@@ -565,14 +552,14 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 				return getPolicyType();
 			case ToscaPackage.TDEFINITIONS__POLICY_TEMPLATE:
 				return getPolicyTemplate();
+			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
+				return getGroupType();
 			case ToscaPackage.TDEFINITIONS__ID:
 				return getId();
 			case ToscaPackage.TDEFINITIONS__NAME:
 				return getName();
 			case ToscaPackage.TDEFINITIONS__TARGET_NAMESPACE:
 				return getTargetNamespace();
-			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
-				return getGroupType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -643,6 +630,10 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 				getPolicyTemplate().clear();
 				getPolicyTemplate().addAll((Collection<? extends TPolicyTemplate>)newValue);
 				return;
+			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
+				getGroupType().clear();
+				getGroupType().addAll((Collection<? extends TGroupType>)newValue);
+				return;
 			case ToscaPackage.TDEFINITIONS__ID:
 				setId((String)newValue);
 				return;
@@ -651,10 +642,6 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 				return;
 			case ToscaPackage.TDEFINITIONS__TARGET_NAMESPACE:
 				setTargetNamespace((String)newValue);
-				return;
-			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
-				getGroupType().clear();
-				getGroupType().addAll((Collection<? extends TGroupType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -713,6 +700,9 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 			case ToscaPackage.TDEFINITIONS__POLICY_TEMPLATE:
 				getPolicyTemplate().clear();
 				return;
+			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
+				getGroupType().clear();
+				return;
 			case ToscaPackage.TDEFINITIONS__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -721,9 +711,6 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 				return;
 			case ToscaPackage.TDEFINITIONS__TARGET_NAMESPACE:
 				setTargetNamespace(TARGET_NAMESPACE_EDEFAULT);
-				return;
-			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
-				getGroupType().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -767,14 +754,14 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 				return !getPolicyType().isEmpty();
 			case ToscaPackage.TDEFINITIONS__POLICY_TEMPLATE:
 				return !getPolicyTemplate().isEmpty();
+			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
+				return !getGroupType().isEmpty();
 			case ToscaPackage.TDEFINITIONS__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ToscaPackage.TDEFINITIONS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ToscaPackage.TDEFINITIONS__TARGET_NAMESPACE:
 				return TARGET_NAMESPACE_EDEFAULT == null ? targetNamespace != null : !TARGET_NAMESPACE_EDEFAULT.equals(targetNamespace);
-			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
-				return groupType != null && !groupType.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

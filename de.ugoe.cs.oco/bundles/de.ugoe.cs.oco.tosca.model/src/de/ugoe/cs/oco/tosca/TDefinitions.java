@@ -30,10 +30,10 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getArtifactTemplate <em>Artifact Template</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getPolicyType <em>Policy Type</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getPolicyTemplate <em>Policy Template</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType <em>Group Type</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getId <em>Id</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getName <em>Name</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getTargetNamespace <em>Target Namespace</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType <em>Group Type</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions()
@@ -317,6 +317,23 @@ public interface TDefinitions extends TExtensibleElements {
 	EList<TPolicyTemplate> getPolicyTemplate();
 
 	/**
+	 * Returns the value of the '<em><b>Group Type</b></em>' containment reference list.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TGroupType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Group Type</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Group Type</em>' containment reference list.
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_GroupType()
+	 * @model containment="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='GroupType' namespace='##targetNamespace' group='#group:6'"
+	 * @generated
+	 */
+	EList<TGroupType> getGroupType();
+
+	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -354,7 +371,8 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Name()
-	 * @model extendedMetaData="kind='attribute' name='name'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
 	String getName();
@@ -395,22 +413,5 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @generated
 	 */
 	void setTargetNamespace(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Group Type</b></em>' containment reference list.
-	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TGroupType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Group Type</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Group Type</em>' containment reference list.
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_GroupType()
-	 * @model containment="true"
-	 *        extendedMetaData="name='GroupType' kind='element' namespace='##targetNamespace' group='#group6'"
-	 * @generated
-	 */
-	EList<TGroupType> getGroupType();
 
 } // TDefinitions

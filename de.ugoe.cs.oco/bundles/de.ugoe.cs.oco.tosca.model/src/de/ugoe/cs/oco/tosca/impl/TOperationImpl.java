@@ -2,8 +2,8 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.InputParametersType;
-import de.ugoe.cs.oco.tosca.OutputParametersType;
+import de.ugoe.cs.oco.tosca.InputParametersType1;
+import de.ugoe.cs.oco.tosca.OutputParametersType1;
 import de.ugoe.cs.oco.tosca.TOperation;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TOperationImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TOperationImpl#getOutputParameters <em>Output Parameters</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TOperationImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.TOperationImpl#getImplementation <em>Implementation</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,7 +39,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * @generated
 	 * @ordered
 	 */
-	protected InputParametersType inputParameters;
+	protected InputParametersType1 inputParameters;
 
 	/**
 	 * The cached value of the '{@link #getOutputParameters() <em>Output Parameters</em>}' containment reference.
@@ -50,7 +49,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputParametersType outputParameters;
+	protected OutputParametersType1 outputParameters;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -71,26 +70,6 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String IMPLEMENTATION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementation()
-	 * @generated
-	 * @ordered
-	 */
-	protected String implementation = IMPLEMENTATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +95,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputParametersType getInputParameters() {
+	public InputParametersType1 getInputParameters() {
 		return inputParameters;
 	}
 
@@ -125,8 +104,8 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInputParameters(InputParametersType newInputParameters, NotificationChain msgs) {
-		InputParametersType oldInputParameters = inputParameters;
+	public NotificationChain basicSetInputParameters(InputParametersType1 newInputParameters, NotificationChain msgs) {
+		InputParametersType1 oldInputParameters = inputParameters;
 		inputParameters = newInputParameters;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TOPERATION__INPUT_PARAMETERS, oldInputParameters, newInputParameters);
@@ -140,7 +119,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInputParameters(InputParametersType newInputParameters) {
+	public void setInputParameters(InputParametersType1 newInputParameters) {
 		if (newInputParameters != inputParameters) {
 			NotificationChain msgs = null;
 			if (inputParameters != null)
@@ -159,7 +138,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputParametersType getOutputParameters() {
+	public OutputParametersType1 getOutputParameters() {
 		return outputParameters;
 	}
 
@@ -168,8 +147,8 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOutputParameters(OutputParametersType newOutputParameters, NotificationChain msgs) {
-		OutputParametersType oldOutputParameters = outputParameters;
+	public NotificationChain basicSetOutputParameters(OutputParametersType1 newOutputParameters, NotificationChain msgs) {
+		OutputParametersType1 oldOutputParameters = outputParameters;
 		outputParameters = newOutputParameters;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TOPERATION__OUTPUT_PARAMETERS, oldOutputParameters, newOutputParameters);
@@ -183,7 +162,7 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOutputParameters(OutputParametersType newOutputParameters) {
+	public void setOutputParameters(OutputParametersType1 newOutputParameters) {
 		if (newOutputParameters != outputParameters) {
 			NotificationChain msgs = null;
 			if (outputParameters != null)
@@ -223,27 +202,6 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getImplementation() {
-		return implementation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImplementation(String newImplementation) {
-		String oldImplementation = implementation;
-		implementation = newImplementation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TOPERATION__IMPLEMENTATION, oldImplementation, implementation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -269,8 +227,6 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 				return getOutputParameters();
 			case ToscaPackage.TOPERATION__NAME:
 				return getName();
-			case ToscaPackage.TOPERATION__IMPLEMENTATION:
-				return getImplementation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -284,16 +240,13 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ToscaPackage.TOPERATION__INPUT_PARAMETERS:
-				setInputParameters((InputParametersType)newValue);
+				setInputParameters((InputParametersType1)newValue);
 				return;
 			case ToscaPackage.TOPERATION__OUTPUT_PARAMETERS:
-				setOutputParameters((OutputParametersType)newValue);
+				setOutputParameters((OutputParametersType1)newValue);
 				return;
 			case ToscaPackage.TOPERATION__NAME:
 				setName((String)newValue);
-				return;
-			case ToscaPackage.TOPERATION__IMPLEMENTATION:
-				setImplementation((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -308,16 +261,13 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ToscaPackage.TOPERATION__INPUT_PARAMETERS:
-				setInputParameters((InputParametersType)null);
+				setInputParameters((InputParametersType1)null);
 				return;
 			case ToscaPackage.TOPERATION__OUTPUT_PARAMETERS:
-				setOutputParameters((OutputParametersType)null);
+				setOutputParameters((OutputParametersType1)null);
 				return;
 			case ToscaPackage.TOPERATION__NAME:
 				setName(NAME_EDEFAULT);
-				return;
-			case ToscaPackage.TOPERATION__IMPLEMENTATION:
-				setImplementation(IMPLEMENTATION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -337,8 +287,6 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 				return outputParameters != null;
 			case ToscaPackage.TOPERATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ToscaPackage.TOPERATION__IMPLEMENTATION:
-				return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT.equals(implementation);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -355,8 +303,6 @@ public class TOperationImpl extends TExtensibleElementsImpl implements TOperatio
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", implementation: ");
-		result.append(implementation);
 		result.append(')');
 		return result.toString();
 	}

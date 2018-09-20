@@ -51,31 +51,31 @@ public interface NodeOperationType extends EObject {
 	void setInterfaceName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Node Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Node Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Node Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Node Ref</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node Ref</em>' attribute.
-	 * @see #setNodeRef(String)
+	 * @return the value of the '<em>Node Ref</em>' reference.
+	 * @see #setNodeRef(TNodeType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getNodeOperationType_NodeRef()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='nodeRef'"
 	 * @generated
 	 */
-	String getNodeRef();
+	TNodeType getNodeRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.NodeOperationType#getNodeRef <em>Node Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.NodeOperationType#getNodeRef <em>Node Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node Ref</em>' attribute.
+	 * @param value the new value of the '<em>Node Ref</em>' reference.
 	 * @see #getNodeRef()
 	 * @generated
 	 */
-	void setNodeRef(String value);
+	void setNodeRef(TNodeType value);
 
 	/**
 	 * Returns the value of the '<em><b>Operation Name</b></em>' attribute.

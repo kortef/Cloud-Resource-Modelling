@@ -3,7 +3,7 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.InterfacesType1;
-import de.ugoe.cs.oco.tosca.TExportedInterface;
+import de.ugoe.cs.oco.tosca.TInterface;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
@@ -42,7 +42,7 @@ public class InterfacesType1Impl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TExportedInterface> interface_;
+	protected EList<TInterface> interface_;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +68,9 @@ public class InterfacesType1Impl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TExportedInterface> getInterface() {
+	public EList<TInterface> getInterface() {
 		if (interface_ == null) {
-			interface_ = new EObjectContainmentEList<TExportedInterface>(TExportedInterface.class, this, ToscaPackage.INTERFACES_TYPE1__INTERFACE);
+			interface_ = new EObjectContainmentEList<TInterface>(TInterface.class, this, ToscaPackage.INTERFACES_TYPE1__INTERFACE);
 		}
 		return interface_;
 	}
@@ -114,7 +114,7 @@ public class InterfacesType1Impl extends MinimalEObjectImpl.Container implements
 		switch (featureID) {
 			case ToscaPackage.INTERFACES_TYPE1__INTERFACE:
 				getInterface().clear();
-				getInterface().addAll((Collection<? extends TExportedInterface>)newValue);
+				getInterface().addAll((Collection<? extends TInterface>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

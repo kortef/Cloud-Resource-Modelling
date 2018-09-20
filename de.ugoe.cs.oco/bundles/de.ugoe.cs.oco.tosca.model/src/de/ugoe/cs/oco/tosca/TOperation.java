@@ -15,7 +15,6 @@ package de.ugoe.cs.oco.tosca;
  *   <li>{@link de.ugoe.cs.oco.tosca.TOperation#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TOperation#getOutputParameters <em>Output Parameters</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TOperation#getName <em>Name</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.TOperation#getImplementation <em>Implementation</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation()
@@ -32,13 +31,13 @@ public interface TOperation extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input Parameters</em>' containment reference.
-	 * @see #setInputParameters(InputParametersType)
+	 * @see #setInputParameters(InputParametersType1)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_InputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InputParameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	InputParametersType getInputParameters();
+	InputParametersType1 getInputParameters();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TOperation#getInputParameters <em>Input Parameters</em>}' containment reference.
@@ -48,7 +47,7 @@ public interface TOperation extends TExtensibleElements {
 	 * @see #getInputParameters()
 	 * @generated
 	 */
-	void setInputParameters(InputParametersType value);
+	void setInputParameters(InputParametersType1 value);
 
 	/**
 	 * Returns the value of the '<em><b>Output Parameters</b></em>' containment reference.
@@ -59,13 +58,13 @@ public interface TOperation extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output Parameters</em>' containment reference.
-	 * @see #setOutputParameters(OutputParametersType)
+	 * @see #setOutputParameters(OutputParametersType1)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_OutputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='OutputParameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	OutputParametersType getOutputParameters();
+	OutputParametersType1 getOutputParameters();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TOperation#getOutputParameters <em>Output Parameters</em>}' containment reference.
@@ -75,7 +74,7 @@ public interface TOperation extends TExtensibleElements {
 	 * @see #getOutputParameters()
 	 * @generated
 	 */
-	void setOutputParameters(OutputParametersType value);
+	void setOutputParameters(OutputParametersType1 value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -103,31 +102,5 @@ public interface TOperation extends TExtensibleElements {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Implementation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Implementation</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Implementation</em>' attribute.
-	 * @see #setImplementation(String)
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_Implementation()
-	 * @model
-	 * @generated
-	 */
-	String getImplementation();
-
-	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TOperation#getImplementation <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementation</em>' attribute.
-	 * @see #getImplementation()
-	 * @generated
-	 */
-	void setImplementation(String value);
 
 } // TOperation

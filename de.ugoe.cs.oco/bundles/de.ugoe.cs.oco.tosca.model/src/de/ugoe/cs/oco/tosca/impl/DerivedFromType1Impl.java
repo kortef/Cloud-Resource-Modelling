@@ -22,31 +22,31 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType1Impl#getNodeTypeImplementationRef <em>Node Type Implementation Ref</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType1Impl#getRelationshipTypeImplementationRef <em>Relationship Type Implementation Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implements DerivedFromType1 {
 	/**
-	 * The default value of the '{@link #getNodeTypeImplementationRef() <em>Node Type Implementation Ref</em>}' attribute.
+	 * The default value of the '{@link #getRelationshipTypeImplementationRef() <em>Relationship Type Implementation Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNodeTypeImplementationRef()
+	 * @see #getRelationshipTypeImplementationRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final QName NODE_TYPE_IMPLEMENTATION_REF_EDEFAULT = null;
+	protected static final QName RELATIONSHIP_TYPE_IMPLEMENTATION_REF_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getNodeTypeImplementationRef() <em>Node Type Implementation Ref</em>}' attribute.
+	 * The cached value of the '{@link #getRelationshipTypeImplementationRef() <em>Relationship Type Implementation Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNodeTypeImplementationRef()
+	 * @see #getRelationshipTypeImplementationRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected QName nodeTypeImplementationRef = NODE_TYPE_IMPLEMENTATION_REF_EDEFAULT;
+	protected QName relationshipTypeImplementationRef = RELATIONSHIP_TYPE_IMPLEMENTATION_REF_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +72,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QName getNodeTypeImplementationRef() {
-		return nodeTypeImplementationRef;
+	public QName getRelationshipTypeImplementationRef() {
+		return relationshipTypeImplementationRef;
 	}
 
 	/**
@@ -81,11 +81,11 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNodeTypeImplementationRef(QName newNodeTypeImplementationRef) {
-		QName oldNodeTypeImplementationRef = nodeTypeImplementationRef;
-		nodeTypeImplementationRef = newNodeTypeImplementationRef;
+	public void setRelationshipTypeImplementationRef(QName newRelationshipTypeImplementationRef) {
+		QName oldRelationshipTypeImplementationRef = relationshipTypeImplementationRef;
+		relationshipTypeImplementationRef = newRelationshipTypeImplementationRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF, oldNodeTypeImplementationRef, nodeTypeImplementationRef));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF, oldRelationshipTypeImplementationRef, relationshipTypeImplementationRef));
 	}
 
 	/**
@@ -96,8 +96,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ToscaPackage.DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF:
-				return getNodeTypeImplementationRef();
+			case ToscaPackage.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF:
+				return getRelationshipTypeImplementationRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,8 +110,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ToscaPackage.DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF:
-				setNodeTypeImplementationRef((QName)newValue);
+			case ToscaPackage.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF:
+				setRelationshipTypeImplementationRef((QName)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,8 +125,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ToscaPackage.DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF:
-				setNodeTypeImplementationRef(NODE_TYPE_IMPLEMENTATION_REF_EDEFAULT);
+			case ToscaPackage.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF:
+				setRelationshipTypeImplementationRef(RELATIONSHIP_TYPE_IMPLEMENTATION_REF_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -140,8 +140,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ToscaPackage.DERIVED_FROM_TYPE1__NODE_TYPE_IMPLEMENTATION_REF:
-				return NODE_TYPE_IMPLEMENTATION_REF_EDEFAULT == null ? nodeTypeImplementationRef != null : !NODE_TYPE_IMPLEMENTATION_REF_EDEFAULT.equals(nodeTypeImplementationRef);
+			case ToscaPackage.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF:
+				return RELATIONSHIP_TYPE_IMPLEMENTATION_REF_EDEFAULT == null ? relationshipTypeImplementationRef != null : !RELATIONSHIP_TYPE_IMPLEMENTATION_REF_EDEFAULT.equals(relationshipTypeImplementationRef);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -156,8 +156,8 @@ public class DerivedFromType1Impl extends MinimalEObjectImpl.Container implement
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (nodeTypeImplementationRef: ");
-		result.append(nodeTypeImplementationRef);
+		result.append(" (relationshipTypeImplementationRef: ");
+		result.append(relationshipTypeImplementationRef);
 		result.append(')');
 		return result.toString();
 	}

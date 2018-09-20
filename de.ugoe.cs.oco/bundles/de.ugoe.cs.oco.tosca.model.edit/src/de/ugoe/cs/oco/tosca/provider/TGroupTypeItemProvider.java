@@ -4,16 +4,19 @@ package de.ugoe.cs.oco.tosca.provider;
 
 
 import de.ugoe.cs.oco.tosca.TGroupType;
-
+import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link de.ugoe.cs.oco.tosca.TGroupType} object.
@@ -43,54 +46,41 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRequirementDefinitionsPropertyDescriptor(object);
-			addCapabilityDefinitionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Requirement Definitions feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRequirementDefinitionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TGroupType_requirementDefinitions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_requirementDefinitions_feature", "_UI_TGroupType_type"),
-				 ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TYPE__CAPABILITY_DEFINITIONS);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TYPE__INSTANCE_STATES);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TYPE__INTERFACES);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Capability Definitions feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCapabilityDefinitionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TGroupType_capabilityDefinitions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_capabilityDefinitions_feature", "_UI_TGroupType_type"),
-				 ToscaPackage.Literals.TGROUP_TYPE__CAPABILITY_DEFINITIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -129,6 +119,15 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(TGroupType.class)) {
+			case ToscaPackage.TGROUP_TYPE__REQUIREMENT_DEFINITIONS:
+			case ToscaPackage.TGROUP_TYPE__CAPABILITY_DEFINITIONS:
+			case ToscaPackage.TGROUP_TYPE__INSTANCE_STATES:
+			case ToscaPackage.TGROUP_TYPE__INTERFACES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -142,6 +141,26 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS,
+				 ToscaFactory.eINSTANCE.createRequirementDefinitionsType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TYPE__CAPABILITY_DEFINITIONS,
+				 ToscaFactory.eINSTANCE.createCapabilityDefinitionsType()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TYPE__INSTANCE_STATES,
+				 ToscaFactory.eINSTANCE.createTTopologyElementInstanceStates()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TYPE__INTERFACES,
+				 ToscaFactory.eINSTANCE.createInterfacesType1()));
 	}
 
 }

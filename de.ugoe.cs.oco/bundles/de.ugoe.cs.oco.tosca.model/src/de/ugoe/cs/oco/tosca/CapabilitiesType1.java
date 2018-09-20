@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface CapabilitiesType1 extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Capability</b></em>' containment reference list.
-	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TCapabilityRef}.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TCapability}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface CapabilitiesType1 extends EObject {
 	 *        extendedMetaData="kind='element' name='Capability' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<TCapabilityRef> getCapability();
+	EList<TCapability> getCapability();
 
 } // CapabilitiesType1

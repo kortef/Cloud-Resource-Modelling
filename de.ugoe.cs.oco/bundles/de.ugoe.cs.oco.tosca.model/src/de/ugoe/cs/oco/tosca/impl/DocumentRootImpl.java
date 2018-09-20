@@ -7,10 +7,8 @@ import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TDocumentation;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
-import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
@@ -134,8 +132,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DefinitionsType> getDefinitions() {
-		return getMixed().list(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS);
+	public DefinitionsType getDefinitions() {
+		return (DefinitionsType)getMixed().get(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS, true);
 	}
 
 	/**
@@ -143,8 +141,44 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TDocumentation> getDocumentation() {
-		return getMixed().list(ToscaPackage.Literals.DOCUMENT_ROOT__DOCUMENTATION);
+	public NotificationChain basicSetDefinitions(DefinitionsType newDefinitions, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS, newDefinitions, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefinitions(DefinitionsType newDefinitions) {
+		((FeatureMap.Internal)getMixed()).set(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS, newDefinitions);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TDocumentation getDocumentation() {
+		return (TDocumentation)getMixed().get(ToscaPackage.Literals.DOCUMENT_ROOT__DOCUMENTATION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDocumentation(TDocumentation newDocumentation, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(ToscaPackage.Literals.DOCUMENT_ROOT__DOCUMENTATION, newDocumentation, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentation(TDocumentation newDocumentation) {
+		((FeatureMap.Internal)getMixed()).set(ToscaPackage.Literals.DOCUMENT_ROOT__DOCUMENTATION, newDocumentation);
 	}
 
 	/**
@@ -162,9 +196,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case ToscaPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
 			case ToscaPackage.DOCUMENT_ROOT__DEFINITIONS:
-				return ((InternalEList<?>)getDefinitions()).basicRemove(otherEnd, msgs);
+				return basicSetDefinitions(null, msgs);
 			case ToscaPackage.DOCUMENT_ROOT__DOCUMENTATION:
-				return ((InternalEList<?>)getDocumentation()).basicRemove(otherEnd, msgs);
+				return basicSetDocumentation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,7 +233,6 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -213,12 +246,10 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DEFINITIONS:
-				getDefinitions().clear();
-				getDefinitions().addAll((Collection<? extends DefinitionsType>)newValue);
+				setDefinitions((DefinitionsType)newValue);
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DOCUMENTATION:
-				getDocumentation().clear();
-				getDocumentation().addAll((Collection<? extends TDocumentation>)newValue);
+				setDocumentation((TDocumentation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -242,10 +273,10 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				getXSISchemaLocation().clear();
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DEFINITIONS:
-				getDefinitions().clear();
+				setDefinitions((DefinitionsType)null);
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DOCUMENTATION:
-				getDocumentation().clear();
+				setDocumentation((TDocumentation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -266,9 +297,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case ToscaPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
 			case ToscaPackage.DOCUMENT_ROOT__DEFINITIONS:
-				return !getDefinitions().isEmpty();
+				return getDefinitions() != null;
 			case ToscaPackage.DOCUMENT_ROOT__DOCUMENTATION:
-				return !getDocumentation().isEmpty();
+				return getDocumentation() != null;
 		}
 		return super.eIsSet(featureID);
 	}

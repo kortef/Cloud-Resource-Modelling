@@ -3,6 +3,7 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.RelationshipOperationType;
+import de.ugoe.cs.oco.tosca.TRelationshipType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -69,24 +70,14 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 	protected String operationName = OPERATION_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRelationshipRef() <em>Relationship Ref</em>}' attribute.
+	 * The cached value of the '{@link #getRelationshipRef() <em>Relationship Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRelationshipRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String RELATIONSHIP_REF_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRelationshipRef() <em>Relationship Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelationshipRef()
-	 * @generated
-	 * @ordered
-	 */
-	protected String relationshipRef = RELATIONSHIP_REF_EDEFAULT;
+	protected TRelationshipType relationshipRef;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,7 +145,7 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRelationshipRef() {
+	public TRelationshipType getRelationshipRef() {
 		return relationshipRef;
 	}
 
@@ -163,8 +154,8 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRelationshipRef(String newRelationshipRef) {
-		String oldRelationshipRef = relationshipRef;
+	public void setRelationshipRef(TRelationshipType newRelationshipRef) {
+		TRelationshipType oldRelationshipRef = relationshipRef;
 		relationshipRef = newRelationshipRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF, oldRelationshipRef, relationshipRef));
@@ -203,7 +194,7 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 				setOperationName((String)newValue);
 				return;
 			case ToscaPackage.RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF:
-				setRelationshipRef((String)newValue);
+				setRelationshipRef((TRelationshipType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,7 +215,7 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 				setOperationName(OPERATION_NAME_EDEFAULT);
 				return;
 			case ToscaPackage.RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF:
-				setRelationshipRef(RELATIONSHIP_REF_EDEFAULT);
+				setRelationshipRef((TRelationshipType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -243,7 +234,7 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 			case ToscaPackage.RELATIONSHIP_OPERATION_TYPE__OPERATION_NAME:
 				return OPERATION_NAME_EDEFAULT == null ? operationName != null : !OPERATION_NAME_EDEFAULT.equals(operationName);
 			case ToscaPackage.RELATIONSHIP_OPERATION_TYPE__RELATIONSHIP_REF:
-				return RELATIONSHIP_REF_EDEFAULT == null ? relationshipRef != null : !RELATIONSHIP_REF_EDEFAULT.equals(relationshipRef);
+				return relationshipRef != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,8 +253,6 @@ public class RelationshipOperationTypeImpl extends MinimalEObjectImpl.Container 
 		result.append(interfaceName);
 		result.append(", operationName: ");
 		result.append(operationName);
-		result.append(", relationshipRef: ");
-		result.append(relationshipRef);
 		result.append(')');
 		return result.toString();
 	}

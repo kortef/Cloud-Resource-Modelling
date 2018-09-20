@@ -137,7 +137,6 @@ public class TNodeTemplateItemProvider extends TEntityTemplateItemProvider {
 			childrenFeatures.add(ToscaPackage.Literals.TNODE_TEMPLATE__CAPABILITIES);
 			childrenFeatures.add(ToscaPackage.Literals.TNODE_TEMPLATE__POLICIES);
 			childrenFeatures.add(ToscaPackage.Literals.TNODE_TEMPLATE__DEPLOYMENT_ARTIFACTS);
-			childrenFeatures.add(ToscaPackage.Literals.TNODE_TEMPLATE__INTERFACES);
 		}
 		return childrenFeatures;
 	}
@@ -202,7 +201,6 @@ public class TNodeTemplateItemProvider extends TEntityTemplateItemProvider {
 			case ToscaPackage.TNODE_TEMPLATE__CAPABILITIES:
 			case ToscaPackage.TNODE_TEMPLATE__POLICIES:
 			case ToscaPackage.TNODE_TEMPLATE__DEPLOYMENT_ARTIFACTS:
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -239,11 +237,6 @@ public class TNodeTemplateItemProvider extends TEntityTemplateItemProvider {
 			(createChildParameter
 				(ToscaPackage.Literals.TNODE_TEMPLATE__DEPLOYMENT_ARTIFACTS,
 				 ToscaFactory.eINSTANCE.createTDeploymentArtifacts()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ToscaPackage.Literals.TNODE_TEMPLATE__INTERFACES,
-				 ToscaFactory.eINSTANCE.createInterfacesType()));
 	}
 
 }

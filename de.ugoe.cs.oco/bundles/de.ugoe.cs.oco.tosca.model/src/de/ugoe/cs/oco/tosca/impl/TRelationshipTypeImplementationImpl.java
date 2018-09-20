@@ -2,7 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.DerivedFromType;
+import de.ugoe.cs.oco.tosca.DerivedFromType1;
 import de.ugoe.cs.oco.tosca.TBoolean;
 import de.ugoe.cs.oco.tosca.TImplementationArtifacts;
 import de.ugoe.cs.oco.tosca.TRelationshipTypeImplementation;
@@ -60,7 +60,7 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected DerivedFromType derivedFrom;
+	protected DerivedFromType1 derivedFrom;
 
 	/**
 	 * The cached value of the '{@link #getRequiredContainerFeatures() <em>Required Container Features</em>}' containment reference.
@@ -267,7 +267,7 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DerivedFromType getDerivedFrom() {
+	public DerivedFromType1 getDerivedFrom() {
 		return derivedFrom;
 	}
 
@@ -276,8 +276,8 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDerivedFrom(DerivedFromType newDerivedFrom, NotificationChain msgs) {
-		DerivedFromType oldDerivedFrom = derivedFrom;
+	public NotificationChain basicSetDerivedFrom(DerivedFromType1 newDerivedFrom, NotificationChain msgs) {
+		DerivedFromType1 oldDerivedFrom = derivedFrom;
 		derivedFrom = newDerivedFrom;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TRELATIONSHIP_TYPE_IMPLEMENTATION__DERIVED_FROM, oldDerivedFrom, newDerivedFrom);
@@ -291,7 +291,7 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDerivedFrom(DerivedFromType newDerivedFrom) {
+	public void setDerivedFrom(DerivedFromType1 newDerivedFrom) {
 		if (newDerivedFrom != derivedFrom) {
 			NotificationChain msgs = null;
 			if (derivedFrom != null)
@@ -608,7 +608,7 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 				setTags((TTags)newValue);
 				return;
 			case ToscaPackage.TRELATIONSHIP_TYPE_IMPLEMENTATION__DERIVED_FROM:
-				setDerivedFrom((DerivedFromType)newValue);
+				setDerivedFrom((DerivedFromType1)newValue);
 				return;
 			case ToscaPackage.TRELATIONSHIP_TYPE_IMPLEMENTATION__REQUIRED_CONTAINER_FEATURES:
 				setRequiredContainerFeatures((TRequiredContainerFeatures)newValue);
@@ -647,7 +647,7 @@ public class TRelationshipTypeImplementationImpl extends TExtensibleElementsImpl
 				setTags((TTags)null);
 				return;
 			case ToscaPackage.TRELATIONSHIP_TYPE_IMPLEMENTATION__DERIVED_FROM:
-				setDerivedFrom((DerivedFromType)null);
+				setDerivedFrom((DerivedFromType1)null);
 				return;
 			case ToscaPackage.TRELATIONSHIP_TYPE_IMPLEMENTATION__REQUIRED_CONTAINER_FEATURES:
 				setRequiredContainerFeatures((TRequiredContainerFeatures)null);

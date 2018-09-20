@@ -107,8 +107,12 @@ public class ToscaValidator extends EObjectValidator {
 				return validateCapabilitiesType((CapabilitiesType)value, diagnostics, context);
 			case ToscaPackage.CAPABILITIES_TYPE1:
 				return validateCapabilitiesType1((CapabilitiesType1)value, diagnostics, context);
+			case ToscaPackage.CAPABILITIES_TYPE2:
+				return validateCapabilitiesType2((CapabilitiesType2)value, diagnostics, context);
 			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE:
 				return validateCapabilityDefinitionsType((CapabilityDefinitionsType)value, diagnostics, context);
+			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE1:
+				return validateCapabilityDefinitionsType1((CapabilityDefinitionsType1)value, diagnostics, context);
 			case ToscaPackage.CONSTRAINTS_TYPE:
 				return validateConstraintsType((ConstraintsType)value, diagnostics, context);
 			case ToscaPackage.CONSTRAINTS_TYPE1:
@@ -141,6 +145,8 @@ public class ToscaValidator extends EObjectValidator {
 				return validateInterfacesType((InterfacesType)value, diagnostics, context);
 			case ToscaPackage.INTERFACES_TYPE1:
 				return validateInterfacesType1((InterfacesType1)value, diagnostics, context);
+			case ToscaPackage.INTERFACES_TYPE2:
+				return validateInterfacesType2((InterfacesType2)value, diagnostics, context);
 			case ToscaPackage.NODE_OPERATION_TYPE:
 				return validateNodeOperationType((NodeOperationType)value, diagnostics, context);
 			case ToscaPackage.NODE_TYPE_REFERENCE_TYPE:
@@ -159,6 +165,8 @@ public class ToscaValidator extends EObjectValidator {
 				return validatePoliciesType((PoliciesType)value, diagnostics, context);
 			case ToscaPackage.POLICIES_TYPE1:
 				return validatePoliciesType1((PoliciesType1)value, diagnostics, context);
+			case ToscaPackage.POLICIES_TYPE2:
+				return validatePoliciesType2((PoliciesType2)value, diagnostics, context);
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE:
 				return validatePropertiesDefinitionType((PropertiesDefinitionType)value, diagnostics, context);
 			case ToscaPackage.PROPERTIES_TYPE:
@@ -179,10 +187,14 @@ public class ToscaValidator extends EObjectValidator {
 				return validateRelationshipOperationType((RelationshipOperationType)value, diagnostics, context);
 			case ToscaPackage.REQUIREMENT_DEFINITIONS_TYPE:
 				return validateRequirementDefinitionsType((RequirementDefinitionsType)value, diagnostics, context);
+			case ToscaPackage.REQUIREMENT_DEFINITIONS_TYPE1:
+				return validateRequirementDefinitionsType1((RequirementDefinitionsType1)value, diagnostics, context);
 			case ToscaPackage.REQUIREMENTS_TYPE:
 				return validateRequirementsType((RequirementsType)value, diagnostics, context);
 			case ToscaPackage.REQUIREMENTS_TYPE1:
 				return validateRequirementsType1((RequirementsType1)value, diagnostics, context);
+			case ToscaPackage.REQUIREMENTS_TYPE2:
+				return validateRequirementsType2((RequirementsType2)value, diagnostics, context);
 			case ToscaPackage.SOURCE_ELEMENT_TYPE:
 				return validateSourceElementType((SourceElementType)value, diagnostics, context);
 			case ToscaPackage.SOURCE_INTERFACES_TYPE:
@@ -235,6 +247,10 @@ public class ToscaValidator extends EObjectValidator {
 				return validateTExtension((TExtension)value, diagnostics, context);
 			case ToscaPackage.TEXTENSIONS:
 				return validateTExtensions((TExtensions)value, diagnostics, context);
+			case ToscaPackage.TGROUP_TEMPLATE:
+				return validateTGroupTemplate((TGroupTemplate)value, diagnostics, context);
+			case ToscaPackage.TGROUP_TYPE:
+				return validateTGroupType((TGroupType)value, diagnostics, context);
 			case ToscaPackage.TIMPLEMENTATION_ARTIFACT:
 				return validateTImplementationArtifact((TImplementationArtifact)value, diagnostics, context);
 			case ToscaPackage.TIMPLEMENTATION_ARTIFACTS:
@@ -301,12 +317,10 @@ public class ToscaValidator extends EObjectValidator {
 				return validateValidSourceType((ValidSourceType)value, diagnostics, context);
 			case ToscaPackage.VALID_TARGET_TYPE:
 				return validateValidTargetType((ValidTargetType)value, diagnostics, context);
-			case ToscaPackage.TGROUP_TYPE:
-				return validateTGroupType((TGroupType)value, diagnostics, context);
-			case ToscaPackage.TGROUP_TEMPLATE:
-				return validateTGroupTemplate((TGroupTemplate)value, diagnostics, context);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1:
 				return validateMaxInstancesTypeMember1((MaxInstancesTypeMember1)value, diagnostics, context);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER11:
+				return validateMaxInstancesTypeMember11((MaxInstancesTypeMember11)value, diagnostics, context);
 			case ToscaPackage.TBOOLEAN:
 				return validateTBoolean((TBoolean)value, diagnostics, context);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER1:
@@ -317,10 +331,16 @@ public class ToscaValidator extends EObjectValidator {
 				return validateImportedURI((String)value, diagnostics, context);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
 				return validateMaxInstancesType(value, diagnostics, context);
+			case ToscaPackage.MAX_INSTANCES_TYPE1:
+				return validateMaxInstancesType1(value, diagnostics, context);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER0:
 				return validateMaxInstancesTypeMember0((BigInteger)value, diagnostics, context);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER01:
+				return validateMaxInstancesTypeMember01((BigInteger)value, diagnostics, context);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT:
 				return validateMaxInstancesTypeMember1Object((MaxInstancesTypeMember1)value, diagnostics, context);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT1:
+				return validateMaxInstancesTypeMember1Object1((MaxInstancesTypeMember11)value, diagnostics, context);
 			case ToscaPackage.TBOOLEAN_OBJECT:
 				return validateTBooleanObject((TBoolean)value, diagnostics, context);
 			case ToscaPackage.UPPER_BOUND_TYPE:
@@ -372,8 +392,26 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateCapabilitiesType2(CapabilitiesType2 capabilitiesType2, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(capabilitiesType2, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCapabilityDefinitionsType(CapabilityDefinitionsType capabilityDefinitionsType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(capabilityDefinitionsType, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCapabilityDefinitionsType1(CapabilityDefinitionsType1 capabilityDefinitionsType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(capabilityDefinitionsType1, diagnostics, context);
 	}
 
 	/**
@@ -525,6 +563,15 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateInterfacesType2(InterfacesType2 interfacesType2, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(interfacesType2, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateNodeOperationType(NodeOperationType nodeOperationType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(nodeOperationType, diagnostics, context);
 	}
@@ -599,6 +646,15 @@ public class ToscaValidator extends EObjectValidator {
 	 */
 	public boolean validatePoliciesType1(PoliciesType1 policiesType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(policiesType1, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePoliciesType2(PoliciesType2 policiesType2, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(policiesType2, diagnostics, context);
 	}
 
 	/**
@@ -696,6 +752,15 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateRequirementDefinitionsType1(RequirementDefinitionsType1 requirementDefinitionsType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(requirementDefinitionsType1, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateRequirementsType(RequirementsType requirementsType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(requirementsType, diagnostics, context);
 	}
@@ -707,6 +772,15 @@ public class ToscaValidator extends EObjectValidator {
 	 */
 	public boolean validateRequirementsType1(RequirementsType1 requirementsType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(requirementsType1, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirementsType2(RequirementsType2 requirementsType2, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(requirementsType2, diagnostics, context);
 	}
 
 	/**
@@ -769,17 +843,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTArtifactTemplate(TArtifactTemplate tArtifactTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tArtifactTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tArtifactTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tArtifactTemplate, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tArtifactTemplate, diagnostics, context);
 	}
 
 	/**
@@ -806,17 +870,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTCapability(TCapability tCapability, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tCapability, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tCapability, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tCapability, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tCapability, diagnostics, context);
 	}
 
 	/**
@@ -906,46 +960,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTEntityTemplate(TEntityTemplate tEntityTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tEntityTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tEntityTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tEntityTemplate, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the typeMustExist constraint of '<em>TEntity Template</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String TENTITY_TEMPLATE__TYPE_MUST_EXIST__EEXPRESSION = "TEntityType.allInstances()->exists(t | t.name = self.type.toString())";
-
-	/**
-	 * Validates the typeMustExist constraint of '<em>TEntity Template</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTEntityTemplate_typeMustExist(TEntityTemplate tEntityTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(ToscaPackage.Literals.TENTITY_TEMPLATE,
-				 tEntityTemplate,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "typeMustExist",
-				 TENTITY_TEMPLATE__TYPE_MUST_EXIST__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+		return validate_EveryDefaultConstraint(tEntityTemplate, diagnostics, context);
 	}
 
 	/**
@@ -1007,6 +1022,24 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateTGroupTemplate(TGroupTemplate tGroupTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tGroupTemplate, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTGroupType(TGroupType tGroupType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(tGroupType, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateTImplementationArtifact(TImplementationArtifact tImplementationArtifact, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(tImplementationArtifact, diagnostics, context);
 	}
@@ -1044,17 +1077,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeTemplate(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tNodeTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tNodeTemplate, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tNodeTemplate, diagnostics, context);
 	}
 
 	/**
@@ -1126,17 +1149,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTPolicyTemplate(TPolicyTemplate tPolicyTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tPolicyTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tPolicyTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tPolicyTemplate, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tPolicyTemplate, diagnostics, context);
 	}
 
 	/**
@@ -1172,17 +1185,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTRelationshipTemplate(TRelationshipTemplate tRelationshipTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tRelationshipTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tRelationshipTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tRelationshipTemplate, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tRelationshipTemplate, diagnostics, context);
 	}
 
 	/**
@@ -1227,17 +1230,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTRequirement(TRequirement tRequirement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tRequirement, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tRequirement, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tRequirement, diagnostics, context);
-		return result;
+		return validate_EveryDefaultConstraint(tRequirement, diagnostics, context);
 	}
 
 	/**
@@ -1344,35 +1337,16 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTGroupType(TGroupType tGroupType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tGroupType, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTGroupTemplate(TGroupTemplate tGroupTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(tGroupTemplate, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tGroupTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTEntityTemplate_typeMustExist(tGroupTemplate, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateMaxInstancesTypeMember1(MaxInstancesTypeMember1 maxInstancesTypeMember1, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaxInstancesTypeMember11(MaxInstancesTypeMember11 maxInstancesTypeMember11, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -1457,6 +1431,46 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateMaxInstancesType1(Object maxInstancesType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateMaxInstancesType1_MemberTypes(maxInstancesType1, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the MemberTypes constraint of '<em>Max Instances Type1</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaxInstancesType1_MemberTypes(Object maxInstancesType1, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (diagnostics != null) {
+			BasicDiagnostic tempDiagnostics = new BasicDiagnostic();
+			if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01.isInstance(maxInstancesType1)) {
+				if (validateMaxInstancesTypeMember01((BigInteger)maxInstancesType1, tempDiagnostics, context)) return true;
+			}
+			if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11.isInstance(maxInstancesType1)) {
+				if (validateMaxInstancesTypeMember11((MaxInstancesTypeMember11)maxInstancesType1, tempDiagnostics, context)) return true;
+			}
+			for (Diagnostic diagnostic : tempDiagnostics.getChildren()) {
+				diagnostics.add(diagnostic);
+			}
+		}
+		else {
+			if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01.isInstance(maxInstancesType1)) {
+				if (validateMaxInstancesTypeMember01((BigInteger)maxInstancesType1, null, context)) return true;
+			}
+			if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11.isInstance(maxInstancesType1)) {
+				if (validateMaxInstancesTypeMember11((MaxInstancesTypeMember11)maxInstancesType1, null, context)) return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateMaxInstancesTypeMember0(BigInteger maxInstancesTypeMember0, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = xmlTypeValidator.validateNonNegativeInteger_Min(maxInstancesTypeMember0, diagnostics, context);
 		if (result || diagnostics != null) result &= validateMaxInstancesTypeMember0_Pattern(maxInstancesTypeMember0, diagnostics, context);
@@ -1491,7 +1505,50 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateMaxInstancesTypeMember01(BigInteger maxInstancesTypeMember01, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = xmlTypeValidator.validateNonNegativeInteger_Min(maxInstancesTypeMember01, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMaxInstancesTypeMember01_Pattern(maxInstancesTypeMember01, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateMaxInstancesTypeMember01_Pattern
+	 */
+	public static final  PatternMatcher [][] MAX_INSTANCES_TYPE_MEMBER01__PATTERN__VALUES =
+		new PatternMatcher [][] {
+			new PatternMatcher [] {
+				XMLTypeUtil.createPatternMatcher("([1-9]+[0-9]*)")
+			}
+		};
+
+	/**
+	 * Validates the Pattern constraint of '<em>Max Instances Type Member01</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaxInstancesTypeMember01_Pattern(BigInteger maxInstancesTypeMember01, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validatePattern(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01, maxInstancesTypeMember01, MAX_INSTANCES_TYPE_MEMBER01__PATTERN__VALUES, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateMaxInstancesTypeMember1Object(MaxInstancesTypeMember1 maxInstancesTypeMember1Object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaxInstancesTypeMember1Object1(MaxInstancesTypeMember11 maxInstancesTypeMember1Object1, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

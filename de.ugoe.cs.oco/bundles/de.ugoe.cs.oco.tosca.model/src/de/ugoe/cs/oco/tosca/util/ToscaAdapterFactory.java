@@ -80,8 +80,16 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilitiesType1Adapter();
 			}
 			@Override
+			public Adapter caseCapabilitiesType2(CapabilitiesType2 object) {
+				return createCapabilitiesType2Adapter();
+			}
+			@Override
 			public Adapter caseCapabilityDefinitionsType(CapabilityDefinitionsType object) {
 				return createCapabilityDefinitionsTypeAdapter();
+			}
+			@Override
+			public Adapter caseCapabilityDefinitionsType1(CapabilityDefinitionsType1 object) {
+				return createCapabilityDefinitionsType1Adapter();
 			}
 			@Override
 			public Adapter caseConstraintsType(ConstraintsType object) {
@@ -148,6 +156,10 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 				return createInterfacesType1Adapter();
 			}
 			@Override
+			public Adapter caseInterfacesType2(InterfacesType2 object) {
+				return createInterfacesType2Adapter();
+			}
+			@Override
 			public Adapter caseNodeOperationType(NodeOperationType object) {
 				return createNodeOperationTypeAdapter();
 			}
@@ -182,6 +194,10 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePoliciesType1(PoliciesType1 object) {
 				return createPoliciesType1Adapter();
+			}
+			@Override
+			public Adapter casePoliciesType2(PoliciesType2 object) {
+				return createPoliciesType2Adapter();
 			}
 			@Override
 			public Adapter casePropertiesDefinitionType(PropertiesDefinitionType object) {
@@ -224,12 +240,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 				return createRequirementDefinitionsTypeAdapter();
 			}
 			@Override
+			public Adapter caseRequirementDefinitionsType1(RequirementDefinitionsType1 object) {
+				return createRequirementDefinitionsType1Adapter();
+			}
+			@Override
 			public Adapter caseRequirementsType(RequirementsType object) {
 				return createRequirementsTypeAdapter();
 			}
 			@Override
 			public Adapter caseRequirementsType1(RequirementsType1 object) {
 				return createRequirementsType1Adapter();
+			}
+			@Override
+			public Adapter caseRequirementsType2(RequirementsType2 object) {
+				return createRequirementsType2Adapter();
 			}
 			@Override
 			public Adapter caseSourceElementType(SourceElementType object) {
@@ -334,6 +358,14 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTExtensions(TExtensions object) {
 				return createTExtensionsAdapter();
+			}
+			@Override
+			public Adapter caseTGroupTemplate(TGroupTemplate object) {
+				return createTGroupTemplateAdapter();
+			}
+			@Override
+			public Adapter caseTGroupType(TGroupType object) {
+				return createTGroupTypeAdapter();
 			}
 			@Override
 			public Adapter caseTImplementationArtifact(TImplementationArtifact object) {
@@ -468,14 +500,6 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 				return createValidTargetTypeAdapter();
 			}
 			@Override
-			public Adapter caseTGroupType(TGroupType object) {
-				return createTGroupTypeAdapter();
-			}
-			@Override
-			public Adapter caseTGroupTemplate(TGroupTemplate object) {
-				return createTGroupTemplateAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -538,6 +562,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.CapabilitiesType2 <em>Capabilities Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.CapabilitiesType2
+	 * @generated
+	 */
+	public Adapter createCapabilitiesType2Adapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType <em>Capability Definitions Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -548,6 +586,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityDefinitionsTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1 <em>Capability Definitions Type1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1
+	 * @generated
+	 */
+	public Adapter createCapabilityDefinitionsType1Adapter() {
 		return null;
 	}
 
@@ -776,6 +828,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.InterfacesType2 <em>Interfaces Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.InterfacesType2
+	 * @generated
+	 */
+	public Adapter createInterfacesType2Adapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.NodeOperationType <em>Node Operation Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -898,6 +964,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPoliciesType1Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.PoliciesType2 <em>Policies Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.PoliciesType2
+	 * @generated
+	 */
+	public Adapter createPoliciesType2Adapter() {
 		return null;
 	}
 
@@ -1042,6 +1122,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType1 <em>Requirement Definitions Type1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.RequirementDefinitionsType1
+	 * @generated
+	 */
+	public Adapter createRequirementDefinitionsType1Adapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.RequirementsType <em>Requirements Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1066,6 +1160,20 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRequirementsType1Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.RequirementsType2 <em>Requirements Type2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.RequirementsType2
+	 * @generated
+	 */
+	public Adapter createRequirementsType2Adapter() {
 		return null;
 	}
 
@@ -1430,6 +1538,34 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTExtensionsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.TGroupTemplate <em>TGroup Template</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate
+	 * @generated
+	 */
+	public Adapter createTGroupTemplateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.TGroupType <em>TGroup Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType
+	 * @generated
+	 */
+	public Adapter createTGroupTypeAdapter() {
 		return null;
 	}
 
@@ -1892,34 +2028,6 @@ public class ToscaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createValidTargetTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.TGroupType <em>TGroup Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.ugoe.cs.oco.tosca.TGroupType
-	 * @generated
-	 */
-	public Adapter createTGroupTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.ugoe.cs.oco.tosca.TGroupTemplate <em>TGroup Template</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate
-	 * @generated
-	 */
-	public Adapter createTGroupTemplateAdapter() {
 		return null;
 	}
 

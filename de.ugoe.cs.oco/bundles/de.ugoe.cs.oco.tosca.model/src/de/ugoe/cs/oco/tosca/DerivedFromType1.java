@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getNodeTypeImplementationRef <em>Node Type Implementation Ref</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getRelationshipTypeImplementationRef <em>Relationship Type Implementation Ref</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType1()
@@ -24,30 +24,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DerivedFromType1 extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Node Type Implementation Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Relationship Type Implementation Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Node Type Implementation Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Relationship Type Implementation Ref</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node Type Implementation Ref</em>' attribute.
-	 * @see #setNodeTypeImplementationRef(QName)
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType1_NodeTypeImplementationRef()
+	 * @return the value of the '<em>Relationship Type Implementation Ref</em>' attribute.
+	 * @see #setRelationshipTypeImplementationRef(QName)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType1_RelationshipTypeImplementationRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
-	 *        extendedMetaData="kind='attribute' name='nodeTypeImplementationRef'"
+	 *        extendedMetaData="kind='attribute' name='relationshipTypeImplementationRef'"
 	 * @generated
 	 */
-	QName getNodeTypeImplementationRef();
+	QName getRelationshipTypeImplementationRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getNodeTypeImplementationRef <em>Node Type Implementation Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.DerivedFromType1#getRelationshipTypeImplementationRef <em>Relationship Type Implementation Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node Type Implementation Ref</em>' attribute.
-	 * @see #getNodeTypeImplementationRef()
+	 * @param value the new value of the '<em>Relationship Type Implementation Ref</em>' attribute.
+	 * @see #getRelationshipTypeImplementationRef()
 	 * @generated
 	 */
-	void setNodeTypeImplementationRef(QName value);
+	void setRelationshipTypeImplementationRef(QName value);
 
 } // DerivedFromType1

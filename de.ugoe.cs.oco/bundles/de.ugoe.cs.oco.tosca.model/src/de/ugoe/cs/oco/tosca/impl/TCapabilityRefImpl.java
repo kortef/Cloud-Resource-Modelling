@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
+import de.ugoe.cs.oco.tosca.TCapability;
 import de.ugoe.cs.oco.tosca.TCapabilityRef;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
@@ -48,24 +49,14 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REF_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRef()
-	 * @generated
-	 * @ordered
-	 */
-	protected String ref = REF_EDEFAULT;
+	protected TCapability ref;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,7 +103,7 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRef() {
+	public TCapability getRef() {
 		return ref;
 	}
 
@@ -121,8 +112,8 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRef(String newRef) {
-		String oldRef = ref;
+	public void setRef(TCapability newRef) {
+		TCapability oldRef = ref;
 		ref = newRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TCAPABILITY_REF__REF, oldRef, ref));
@@ -156,7 +147,7 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 				setName((String)newValue);
 				return;
 			case ToscaPackage.TCAPABILITY_REF__REF:
-				setRef((String)newValue);
+				setRef((TCapability)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -174,7 +165,7 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 				setName(NAME_EDEFAULT);
 				return;
 			case ToscaPackage.TCAPABILITY_REF__REF:
-				setRef(REF_EDEFAULT);
+				setRef((TCapability)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -191,7 +182,7 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 			case ToscaPackage.TCAPABILITY_REF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ToscaPackage.TCAPABILITY_REF__REF:
-				return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
+				return ref != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,8 +199,6 @@ public class TCapabilityRefImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", ref: ");
-		result.append(ref);
 		result.append(')');
 		return result.toString();
 	}

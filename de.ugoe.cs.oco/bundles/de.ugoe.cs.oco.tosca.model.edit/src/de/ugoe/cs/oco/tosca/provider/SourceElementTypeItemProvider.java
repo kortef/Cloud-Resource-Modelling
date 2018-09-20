@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -83,7 +82,7 @@ public class SourceElementTypeItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -107,10 +106,7 @@ public class SourceElementTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SourceElementType)object).getRef();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SourceElementType_type") :
-			getString("_UI_SourceElementType_type") + " " + label;
+		return getString("_UI_SourceElementType_type");
 	}
 	
 

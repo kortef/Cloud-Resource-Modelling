@@ -78,30 +78,30 @@ public interface RelationshipOperationType extends EObject {
 	void setOperationName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Relationship Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Relationship Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Relationship Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Relationship Ref</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Relationship Ref</em>' attribute.
-	 * @see #setRelationshipRef(String)
+	 * @return the value of the '<em>Relationship Ref</em>' reference.
+	 * @see #setRelationshipRef(TRelationshipType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipOperationType_RelationshipRef()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='relationshipRef'"
 	 * @generated
 	 */
-	String getRelationshipRef();
+	TRelationshipType getRelationshipRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.RelationshipOperationType#getRelationshipRef <em>Relationship Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.RelationshipOperationType#getRelationshipRef <em>Relationship Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Relationship Ref</em>' attribute.
+	 * @param value the new value of the '<em>Relationship Ref</em>' reference.
 	 * @see #getRelationshipRef()
 	 * @generated
 	 */
-	void setRelationshipRef(String value);
+	void setRelationshipRef(TRelationshipType value);
 
 } // RelationshipOperationType

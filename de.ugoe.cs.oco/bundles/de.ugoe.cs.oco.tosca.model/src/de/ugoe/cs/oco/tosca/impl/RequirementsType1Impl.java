@@ -3,7 +3,7 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.RequirementsType1;
-import de.ugoe.cs.oco.tosca.TRequirementRef;
+import de.ugoe.cs.oco.tosca.TRequirement;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
@@ -42,7 +42,7 @@ public class RequirementsType1Impl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TRequirementRef> requirement;
+	protected EList<TRequirement> requirement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +68,9 @@ public class RequirementsType1Impl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TRequirementRef> getRequirement() {
+	public EList<TRequirement> getRequirement() {
 		if (requirement == null) {
-			requirement = new EObjectContainmentEList<TRequirementRef>(TRequirementRef.class, this, ToscaPackage.REQUIREMENTS_TYPE1__REQUIREMENT);
+			requirement = new EObjectContainmentEList<TRequirement>(TRequirement.class, this, ToscaPackage.REQUIREMENTS_TYPE1__REQUIREMENT);
 		}
 		return requirement;
 	}
@@ -114,7 +114,7 @@ public class RequirementsType1Impl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ToscaPackage.REQUIREMENTS_TYPE1__REQUIREMENT:
 				getRequirement().clear();
-				getRequirement().addAll((Collection<? extends TRequirementRef>)newValue);
+				getRequirement().addAll((Collection<? extends TRequirement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

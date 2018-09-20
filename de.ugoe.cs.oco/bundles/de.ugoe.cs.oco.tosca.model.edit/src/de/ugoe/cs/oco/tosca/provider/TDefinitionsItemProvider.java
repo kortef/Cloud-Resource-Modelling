@@ -139,7 +139,6 @@ public class TDefinitionsItemProvider extends TExtensibleElementsItemProvider {
 			childrenFeatures.add(ToscaPackage.Literals.TDEFINITIONS__IMPORT);
 			childrenFeatures.add(ToscaPackage.Literals.TDEFINITIONS__TYPES);
 			childrenFeatures.add(ToscaPackage.Literals.TDEFINITIONS__GROUP);
-			childrenFeatures.add(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -204,7 +203,6 @@ public class TDefinitionsItemProvider extends TExtensibleElementsItemProvider {
 			case ToscaPackage.TDEFINITIONS__IMPORT:
 			case ToscaPackage.TDEFINITIONS__TYPES:
 			case ToscaPackage.TDEFINITIONS__GROUP:
-			case ToscaPackage.TDEFINITIONS__GROUP_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -316,8 +314,10 @@ public class TDefinitionsItemProvider extends TExtensibleElementsItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE,
-				 ToscaFactory.eINSTANCE.createTGroupType()));
+				(ToscaPackage.Literals.TDEFINITIONS__GROUP,
+				 FeatureMapUtil.createEntry
+					(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE,
+					 ToscaFactory.eINSTANCE.createTGroupType())));
 	}
 
 }

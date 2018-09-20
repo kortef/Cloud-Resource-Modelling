@@ -3,7 +3,6 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.CapabilitiesType;
-import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PoliciesType;
 import de.ugoe.cs.oco.tosca.RequirementsType;
 import de.ugoe.cs.oco.tosca.TDeploymentArtifacts;
@@ -34,7 +33,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TNodeTemplateImpl#getMaxInstances <em>Max Instances</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TNodeTemplateImpl#getMinInstances <em>Min Instances</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TNodeTemplateImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.TNodeTemplateImpl#getInterfaces <em>Interfaces</em>}</li>
  * </ul>
  *
  * @generated
@@ -88,7 +86,7 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object MAX_INSTANCES_EDEFAULT = ToscaFactory.eINSTANCE.createFromString(ToscaPackage.eINSTANCE.getMaxInstancesType(), "1");
+	protected static final Object MAX_INSTANCES_EDEFAULT = ToscaFactory.eINSTANCE.createFromString(ToscaPackage.eINSTANCE.getMaxInstancesType1(), "1");
 
 	/**
 	 * The cached value of the '{@link #getMaxInstances() <em>Max Instances</em>}' attribute.
@@ -157,16 +155,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInterfaces() <em>Interfaces</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaces()
-	 * @generated
-	 * @ordered
-	 */
-	protected InterfacesType interfaces;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -477,49 +465,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfacesType getInterfaces() {
-		return interfaces;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInterfaces(InterfacesType newInterfaces, NotificationChain msgs) {
-		InterfacesType oldInterfaces = interfaces;
-		interfaces = newInterfaces;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TNODE_TEMPLATE__INTERFACES, oldInterfaces, newInterfaces);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInterfaces(InterfacesType newInterfaces) {
-		if (newInterfaces != interfaces) {
-			NotificationChain msgs = null;
-			if (interfaces != null)
-				msgs = ((InternalEObject)interfaces).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToscaPackage.TNODE_TEMPLATE__INTERFACES, null, msgs);
-			if (newInterfaces != null)
-				msgs = ((InternalEObject)newInterfaces).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToscaPackage.TNODE_TEMPLATE__INTERFACES, null, msgs);
-			msgs = basicSetInterfaces(newInterfaces, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TNODE_TEMPLATE__INTERFACES, newInterfaces, newInterfaces));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -531,8 +476,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 				return basicSetPolicies(null, msgs);
 			case ToscaPackage.TNODE_TEMPLATE__DEPLOYMENT_ARTIFACTS:
 				return basicSetDeploymentArtifacts(null, msgs);
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
-				return basicSetInterfaces(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -559,8 +502,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 				return getMinInstances();
 			case ToscaPackage.TNODE_TEMPLATE__NAME:
 				return getName();
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
-				return getInterfaces();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -593,9 +534,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 				return;
 			case ToscaPackage.TNODE_TEMPLATE__NAME:
 				setName((String)newValue);
-				return;
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
-				setInterfaces((InterfacesType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -630,9 +568,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 			case ToscaPackage.TNODE_TEMPLATE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
-				setInterfaces((InterfacesType)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -659,8 +594,6 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 				return isSetMinInstances();
 			case ToscaPackage.TNODE_TEMPLATE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ToscaPackage.TNODE_TEMPLATE__INTERFACES:
-				return interfaces != null;
 		}
 		return super.eIsSet(featureID);
 	}

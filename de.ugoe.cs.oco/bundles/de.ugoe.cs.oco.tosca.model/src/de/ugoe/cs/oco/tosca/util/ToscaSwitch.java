@@ -84,9 +84,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ToscaPackage.CAPABILITIES_TYPE2: {
+				CapabilitiesType2 capabilitiesType2 = (CapabilitiesType2)theEObject;
+				T result = caseCapabilitiesType2(capabilitiesType2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE: {
 				CapabilityDefinitionsType capabilityDefinitionsType = (CapabilityDefinitionsType)theEObject;
 				T result = caseCapabilityDefinitionsType(capabilityDefinitionsType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE1: {
+				CapabilityDefinitionsType1 capabilityDefinitionsType1 = (CapabilityDefinitionsType1)theEObject;
+				T result = caseCapabilityDefinitionsType1(capabilityDefinitionsType1);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -190,6 +202,12 @@ public class ToscaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ToscaPackage.INTERFACES_TYPE2: {
+				InterfacesType2 interfacesType2 = (InterfacesType2)theEObject;
+				T result = caseInterfacesType2(interfacesType2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ToscaPackage.NODE_OPERATION_TYPE: {
 				NodeOperationType nodeOperationType = (NodeOperationType)theEObject;
 				T result = caseNodeOperationType(nodeOperationType);
@@ -241,6 +259,12 @@ public class ToscaSwitch<T> extends Switch<T> {
 			case ToscaPackage.POLICIES_TYPE1: {
 				PoliciesType1 policiesType1 = (PoliciesType1)theEObject;
 				T result = casePoliciesType1(policiesType1);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToscaPackage.POLICIES_TYPE2: {
+				PoliciesType2 policiesType2 = (PoliciesType2)theEObject;
+				T result = casePoliciesType2(policiesType2);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -304,6 +328,12 @@ public class ToscaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ToscaPackage.REQUIREMENT_DEFINITIONS_TYPE1: {
+				RequirementDefinitionsType1 requirementDefinitionsType1 = (RequirementDefinitionsType1)theEObject;
+				T result = caseRequirementDefinitionsType1(requirementDefinitionsType1);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ToscaPackage.REQUIREMENTS_TYPE: {
 				RequirementsType requirementsType = (RequirementsType)theEObject;
 				T result = caseRequirementsType(requirementsType);
@@ -313,6 +343,12 @@ public class ToscaSwitch<T> extends Switch<T> {
 			case ToscaPackage.REQUIREMENTS_TYPE1: {
 				RequirementsType1 requirementsType1 = (RequirementsType1)theEObject;
 				T result = caseRequirementsType1(requirementsType1);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToscaPackage.REQUIREMENTS_TYPE2: {
+				RequirementsType2 requirementsType2 = (RequirementsType2)theEObject;
+				T result = caseRequirementsType2(requirementsType2);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -484,6 +520,22 @@ public class ToscaSwitch<T> extends Switch<T> {
 				TExtensions tExtensions = (TExtensions)theEObject;
 				T result = caseTExtensions(tExtensions);
 				if (result == null) result = caseTExtensibleElements(tExtensions);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToscaPackage.TGROUP_TEMPLATE: {
+				TGroupTemplate tGroupTemplate = (TGroupTemplate)theEObject;
+				T result = caseTGroupTemplate(tGroupTemplate);
+				if (result == null) result = caseTEntityTemplate(tGroupTemplate);
+				if (result == null) result = caseTExtensibleElements(tGroupTemplate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ToscaPackage.TGROUP_TYPE: {
+				TGroupType tGroupType = (TGroupType)theEObject;
+				T result = caseTGroupType(tGroupType);
+				if (result == null) result = caseTEntityType(tGroupType);
+				if (result == null) result = caseTExtensibleElements(tGroupType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -712,22 +764,6 @@ public class ToscaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ToscaPackage.TGROUP_TYPE: {
-				TGroupType tGroupType = (TGroupType)theEObject;
-				T result = caseTGroupType(tGroupType);
-				if (result == null) result = caseTEntityType(tGroupType);
-				if (result == null) result = caseTExtensibleElements(tGroupType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ToscaPackage.TGROUP_TEMPLATE: {
-				TGroupTemplate tGroupTemplate = (TGroupTemplate)theEObject;
-				T result = caseTGroupTemplate(tGroupTemplate);
-				if (result == null) result = caseTEntityTemplate(tGroupTemplate);
-				if (result == null) result = caseTExtensibleElements(tGroupTemplate);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -778,6 +814,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capabilities Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capabilities Type2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapabilitiesType2(CapabilitiesType2 object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Capability Definitions Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -789,6 +840,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityDefinitionsType(CapabilityDefinitionsType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capability Definitions Type1</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capability Definitions Type1</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapabilityDefinitionsType1(CapabilityDefinitionsType1 object) {
 		return null;
 	}
 
@@ -1033,6 +1099,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interfaces Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interfaces Type2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInterfacesType2(InterfacesType2 object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Node Operation Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1164,6 +1245,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePoliciesType1(PoliciesType1 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Policies Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Policies Type2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePoliciesType2(PoliciesType2 object) {
 		return null;
 	}
 
@@ -1318,6 +1414,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Requirement Definitions Type1</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Requirement Definitions Type1</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRequirementDefinitionsType1(RequirementDefinitionsType1 object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Requirements Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1344,6 +1455,21 @@ public class ToscaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRequirementsType1(RequirementsType1 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Requirements Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Requirements Type2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRequirementsType2(RequirementsType2 object) {
 		return null;
 	}
 
@@ -1734,6 +1860,36 @@ public class ToscaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTExtensions(TExtensions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TGroup Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TGroup Template</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTGroupTemplate(TGroupTemplate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TGroup Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TGroup Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTGroupType(TGroupType object) {
 		return null;
 	}
 
@@ -2229,36 +2385,6 @@ public class ToscaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValidTargetType(ValidTargetType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>TGroup Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>TGroup Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTGroupType(TGroupType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>TGroup Template</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>TGroup Template</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTGroupTemplate(TGroupTemplate object) {
 		return null;
 	}
 

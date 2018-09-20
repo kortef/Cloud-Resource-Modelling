@@ -49,7 +49,6 @@ public class TOperationItemProvider extends TExtensibleElementsItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addImplementationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,28 +67,6 @@ public class TOperationItemProvider extends TExtensibleElementsItemProvider {
 				 getString("_UI_TOperation_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_TOperation_name_feature", "_UI_TOperation_type"),
 				 ToscaPackage.Literals.TOPERATION__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Implementation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImplementationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TOperation_implementation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TOperation_implementation_feature", "_UI_TOperation_type"),
-				 ToscaPackage.Literals.TOPERATION__IMPLEMENTATION,
 				 true,
 				 false,
 				 false,
@@ -168,7 +145,6 @@ public class TOperationItemProvider extends TExtensibleElementsItemProvider {
 
 		switch (notification.getFeatureID(TOperation.class)) {
 			case ToscaPackage.TOPERATION__NAME:
-			case ToscaPackage.TOPERATION__IMPLEMENTATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ToscaPackage.TOPERATION__INPUT_PARAMETERS:
@@ -193,12 +169,12 @@ public class TOperationItemProvider extends TExtensibleElementsItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TOPERATION__INPUT_PARAMETERS,
-				 ToscaFactory.eINSTANCE.createInputParametersType()));
+				 ToscaFactory.eINSTANCE.createInputParametersType1()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TOPERATION__OUTPUT_PARAMETERS,
-				 ToscaFactory.eINSTANCE.createOutputParametersType()));
+				 ToscaFactory.eINSTANCE.createOutputParametersType1()));
 	}
 
 }

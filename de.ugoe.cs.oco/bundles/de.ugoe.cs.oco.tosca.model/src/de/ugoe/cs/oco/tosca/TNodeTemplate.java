@@ -19,7 +19,6 @@ package de.ugoe.cs.oco.tosca;
  *   <li>{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getMaxInstances <em>Max Instances</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getMinInstances <em>Min Instances</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getName <em>Name</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getInterfaces <em>Interfaces</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTemplate()
@@ -149,7 +148,7 @@ public interface TNodeTemplate extends TEntityTemplate {
 	 * @see #unsetMaxInstances()
 	 * @see #setMaxInstances(Object)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTemplate_MaxInstances()
-	 * @model default="1" unsettable="true" dataType="de.ugoe.cs.oco.tosca.MaxInstancesType"
+	 * @model default="1" unsettable="true" dataType="de.ugoe.cs.oco.tosca.MaxInstancesType1"
 	 *        extendedMetaData="kind='attribute' name='maxInstances'"
 	 * @generated
 	 */
@@ -256,7 +255,8 @@ public interface TNodeTemplate extends TEntityTemplate {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTemplate_Name()
-	 * @model extendedMetaData="kind='attribute' name='name'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
 	String getName();
@@ -270,31 +270,5 @@ public interface TNodeTemplate extends TEntityTemplate {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Interfaces</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Interfaces</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interfaces</em>' containment reference.
-	 * @see #setInterfaces(InterfacesType)
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTemplate_Interfaces()
-	 * @model containment="true"
-	 * @generated
-	 */
-	InterfacesType getInterfaces();
-
-	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TNodeTemplate#getInterfaces <em>Interfaces</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Interfaces</em>' containment reference.
-	 * @see #getInterfaces()
-	 * @generated
-	 */
-	void setInterfaces(InterfacesType value);
 
 } // TNodeTemplate

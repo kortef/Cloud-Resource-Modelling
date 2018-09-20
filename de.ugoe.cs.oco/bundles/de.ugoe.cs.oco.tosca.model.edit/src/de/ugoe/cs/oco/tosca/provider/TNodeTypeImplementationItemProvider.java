@@ -276,7 +276,7 @@ public class TNodeTypeImplementationItemProvider extends TExtensibleElementsItem
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TNODE_TYPE_IMPLEMENTATION__DERIVED_FROM,
-				 ToscaFactory.eINSTANCE.createDerivedFromType1()));
+				 ToscaFactory.eINSTANCE.createDerivedFromType()));
 
 		newChildDescriptors.add
 			(createChildParameter

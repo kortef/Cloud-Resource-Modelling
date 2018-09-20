@@ -24,8 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl#getRequired <em>Required</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.impl.TParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,46 +97,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 	 * @ordered
 	 */
 	protected String type = TYPE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DEFAULT_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,48 +210,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDefaultValue() {
-		return defaultValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefaultValue(String newDefaultValue) {
-		String oldDefaultValue = defaultValue;
-		defaultValue = newDefaultValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TPARAMETER__DEFAULT_VALUE, oldDefaultValue, defaultValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TPARAMETER__VALUE, oldValue, value));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -303,10 +219,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 				return getRequired();
 			case ToscaPackage.TPARAMETER__TYPE:
 				return getType();
-			case ToscaPackage.TPARAMETER__DEFAULT_VALUE:
-				return getDefaultValue();
-			case ToscaPackage.TPARAMETER__VALUE:
-				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -327,12 +239,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 				return;
 			case ToscaPackage.TPARAMETER__TYPE:
 				setType((String)newValue);
-				return;
-			case ToscaPackage.TPARAMETER__DEFAULT_VALUE:
-				setDefaultValue((String)newValue);
-				return;
-			case ToscaPackage.TPARAMETER__VALUE:
-				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -355,12 +261,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 			case ToscaPackage.TPARAMETER__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case ToscaPackage.TPARAMETER__DEFAULT_VALUE:
-				setDefaultValue(DEFAULT_VALUE_EDEFAULT);
-				return;
-			case ToscaPackage.TPARAMETER__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -379,10 +279,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 				return isSetRequired();
 			case ToscaPackage.TPARAMETER__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case ToscaPackage.TPARAMETER__DEFAULT_VALUE:
-				return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
-			case ToscaPackage.TPARAMETER__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -403,10 +299,6 @@ public class TParameterImpl extends MinimalEObjectImpl.Container implements TPar
 		if (requiredESet) result.append(required); else result.append("<unset>");
 		result.append(", type: ");
 		result.append(type);
-		result.append(", defaultValue: ");
-		result.append(defaultValue);
-		result.append(", value: ");
-		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

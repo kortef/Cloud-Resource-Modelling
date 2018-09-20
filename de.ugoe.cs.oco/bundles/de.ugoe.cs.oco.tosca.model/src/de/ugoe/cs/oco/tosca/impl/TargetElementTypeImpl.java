@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
+import de.ugoe.cs.oco.tosca.TCapability;
 import de.ugoe.cs.oco.tosca.TargetElementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
@@ -27,24 +28,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implements TargetElementType {
 	/**
-	 * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REF_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRef()
-	 * @generated
-	 * @ordered
-	 */
-	protected String ref = REF_EDEFAULT;
+	protected TCapability ref;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,7 +61,7 @@ public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRef() {
+	public TCapability getRef() {
 		return ref;
 	}
 
@@ -79,8 +70,8 @@ public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRef(String newRef) {
-		String oldRef = ref;
+	public void setRef(TCapability newRef) {
+		TCapability oldRef = ref;
 		ref = newRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TARGET_ELEMENT_TYPE__REF, oldRef, ref));
@@ -109,7 +100,7 @@ public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ToscaPackage.TARGET_ELEMENT_TYPE__REF:
-				setRef((String)newValue);
+				setRef((TCapability)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -124,7 +115,7 @@ public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implemen
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ToscaPackage.TARGET_ELEMENT_TYPE__REF:
-				setRef(REF_EDEFAULT);
+				setRef((TCapability)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -139,25 +130,9 @@ public class TargetElementTypeImpl extends MinimalEObjectImpl.Container implemen
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ToscaPackage.TARGET_ELEMENT_TYPE__REF:
-				return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
+				return ref != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ref: ");
-		result.append(ref);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TargetElementTypeImpl

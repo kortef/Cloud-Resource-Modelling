@@ -2,9 +2,9 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType;
+import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1;
 import de.ugoe.cs.oco.tosca.InterfacesType;
-import de.ugoe.cs.oco.tosca.RequirementDefinitionsType;
+import de.ugoe.cs.oco.tosca.RequirementDefinitionsType1;
 import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.TTopologyElementInstanceStates;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
@@ -42,7 +42,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * @generated
 	 * @ordered
 	 */
-	protected RequirementDefinitionsType requirementDefinitions;
+	protected RequirementDefinitionsType1 requirementDefinitions;
 
 	/**
 	 * The cached value of the '{@link #getCapabilityDefinitions() <em>Capability Definitions</em>}' containment reference.
@@ -52,7 +52,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * @generated
 	 * @ordered
 	 */
-	protected CapabilityDefinitionsType capabilityDefinitions;
+	protected CapabilityDefinitionsType1 capabilityDefinitions;
 
 	/**
 	 * The cached value of the '{@link #getInstanceStates() <em>Instance States</em>}' containment reference.
@@ -98,7 +98,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RequirementDefinitionsType getRequirementDefinitions() {
+	public RequirementDefinitionsType1 getRequirementDefinitions() {
 		return requirementDefinitions;
 	}
 
@@ -107,8 +107,8 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRequirementDefinitions(RequirementDefinitionsType newRequirementDefinitions, NotificationChain msgs) {
-		RequirementDefinitionsType oldRequirementDefinitions = requirementDefinitions;
+	public NotificationChain basicSetRequirementDefinitions(RequirementDefinitionsType1 newRequirementDefinitions, NotificationChain msgs) {
+		RequirementDefinitionsType1 oldRequirementDefinitions = requirementDefinitions;
 		requirementDefinitions = newRequirementDefinitions;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TNODE_TYPE__REQUIREMENT_DEFINITIONS, oldRequirementDefinitions, newRequirementDefinitions);
@@ -122,7 +122,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRequirementDefinitions(RequirementDefinitionsType newRequirementDefinitions) {
+	public void setRequirementDefinitions(RequirementDefinitionsType1 newRequirementDefinitions) {
 		if (newRequirementDefinitions != requirementDefinitions) {
 			NotificationChain msgs = null;
 			if (requirementDefinitions != null)
@@ -141,7 +141,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CapabilityDefinitionsType getCapabilityDefinitions() {
+	public CapabilityDefinitionsType1 getCapabilityDefinitions() {
 		return capabilityDefinitions;
 	}
 
@@ -150,8 +150,8 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapabilityDefinitions(CapabilityDefinitionsType newCapabilityDefinitions, NotificationChain msgs) {
-		CapabilityDefinitionsType oldCapabilityDefinitions = capabilityDefinitions;
+	public NotificationChain basicSetCapabilityDefinitions(CapabilityDefinitionsType1 newCapabilityDefinitions, NotificationChain msgs) {
+		CapabilityDefinitionsType1 oldCapabilityDefinitions = capabilityDefinitions;
 		capabilityDefinitions = newCapabilityDefinitions;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TNODE_TYPE__CAPABILITY_DEFINITIONS, oldCapabilityDefinitions, newCapabilityDefinitions);
@@ -165,7 +165,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCapabilityDefinitions(CapabilityDefinitionsType newCapabilityDefinitions) {
+	public void setCapabilityDefinitions(CapabilityDefinitionsType1 newCapabilityDefinitions) {
 		if (newCapabilityDefinitions != capabilityDefinitions) {
 			NotificationChain msgs = null;
 			if (capabilityDefinitions != null)
@@ -314,10 +314,10 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ToscaPackage.TNODE_TYPE__REQUIREMENT_DEFINITIONS:
-				setRequirementDefinitions((RequirementDefinitionsType)newValue);
+				setRequirementDefinitions((RequirementDefinitionsType1)newValue);
 				return;
 			case ToscaPackage.TNODE_TYPE__CAPABILITY_DEFINITIONS:
-				setCapabilityDefinitions((CapabilityDefinitionsType)newValue);
+				setCapabilityDefinitions((CapabilityDefinitionsType1)newValue);
 				return;
 			case ToscaPackage.TNODE_TYPE__INSTANCE_STATES:
 				setInstanceStates((TTopologyElementInstanceStates)newValue);
@@ -338,10 +338,10 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ToscaPackage.TNODE_TYPE__REQUIREMENT_DEFINITIONS:
-				setRequirementDefinitions((RequirementDefinitionsType)null);
+				setRequirementDefinitions((RequirementDefinitionsType1)null);
 				return;
 			case ToscaPackage.TNODE_TYPE__CAPABILITY_DEFINITIONS:
-				setCapabilityDefinitions((CapabilityDefinitionsType)null);
+				setCapabilityDefinitions((CapabilityDefinitionsType1)null);
 				return;
 			case ToscaPackage.TNODE_TYPE__INSTANCE_STATES:
 				setInstanceStates((TTopologyElementInstanceStates)null);

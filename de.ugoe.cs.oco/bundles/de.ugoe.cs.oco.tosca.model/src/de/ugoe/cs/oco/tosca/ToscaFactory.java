@@ -49,6 +49,15 @@ public interface ToscaFactory extends EFactory {
 	CapabilitiesType1 createCapabilitiesType1();
 
 	/**
+	 * Returns a new object of class '<em>Capabilities Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capabilities Type2</em>'.
+	 * @generated
+	 */
+	CapabilitiesType2 createCapabilitiesType2();
+
+	/**
 	 * Returns a new object of class '<em>Capability Definitions Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,6 +65,15 @@ public interface ToscaFactory extends EFactory {
 	 * @generated
 	 */
 	CapabilityDefinitionsType createCapabilityDefinitionsType();
+
+	/**
+	 * Returns a new object of class '<em>Capability Definitions Type1</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability Definitions Type1</em>'.
+	 * @generated
+	 */
+	CapabilityDefinitionsType1 createCapabilityDefinitionsType1();
 
 	/**
 	 * Returns a new object of class '<em>Constraints Type</em>'.
@@ -202,6 +220,15 @@ public interface ToscaFactory extends EFactory {
 	InterfacesType1 createInterfacesType1();
 
 	/**
+	 * Returns a new object of class '<em>Interfaces Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interfaces Type2</em>'.
+	 * @generated
+	 */
+	InterfacesType2 createInterfacesType2();
+
+	/**
 	 * Returns a new object of class '<em>Node Operation Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -281,6 +308,15 @@ public interface ToscaFactory extends EFactory {
 	 * @generated
 	 */
 	PoliciesType1 createPoliciesType1();
+
+	/**
+	 * Returns a new object of class '<em>Policies Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Policies Type2</em>'.
+	 * @generated
+	 */
+	PoliciesType2 createPoliciesType2();
 
 	/**
 	 * Returns a new object of class '<em>Properties Definition Type</em>'.
@@ -373,6 +409,15 @@ public interface ToscaFactory extends EFactory {
 	RequirementDefinitionsType createRequirementDefinitionsType();
 
 	/**
+	 * Returns a new object of class '<em>Requirement Definitions Type1</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Requirement Definitions Type1</em>'.
+	 * @generated
+	 */
+	RequirementDefinitionsType1 createRequirementDefinitionsType1();
+
+	/**
 	 * Returns a new object of class '<em>Requirements Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,6 +434,15 @@ public interface ToscaFactory extends EFactory {
 	 * @generated
 	 */
 	RequirementsType1 createRequirementsType1();
+
+	/**
+	 * Returns a new object of class '<em>Requirements Type2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Requirements Type2</em>'.
+	 * @generated
+	 */
+	RequirementsType2 createRequirementsType2();
 
 	/**
 	 * Returns a new object of class '<em>Source Element Type</em>'.
@@ -605,6 +659,24 @@ public interface ToscaFactory extends EFactory {
 	 * @generated
 	 */
 	TExtensions createTExtensions();
+
+	/**
+	 * Returns a new object of class '<em>TGroup Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TGroup Template</em>'.
+	 * @generated
+	 */
+	TGroupTemplate createTGroupTemplate();
+
+	/**
+	 * Returns a new object of class '<em>TGroup Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TGroup Type</em>'.
+	 * @generated
+	 */
+	TGroupType createTGroupType();
 
 	/**
 	 * Returns a new object of class '<em>TImplementation Artifact</em>'.
@@ -902,24 +974,6 @@ public interface ToscaFactory extends EFactory {
 	 * @generated
 	 */
 	ValidTargetType createValidTargetType();
-
-	/**
-	 * Returns a new object of class '<em>TGroup Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>TGroup Type</em>'.
-	 * @generated
-	 */
-	TGroupType createTGroupType();
-
-	/**
-	 * Returns a new object of class '<em>TGroup Template</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>TGroup Template</em>'.
-	 * @generated
-	 */
-	TGroupTemplate createTGroupTemplate();
 
 	/**
 	 * Returns the package supported by this factory.

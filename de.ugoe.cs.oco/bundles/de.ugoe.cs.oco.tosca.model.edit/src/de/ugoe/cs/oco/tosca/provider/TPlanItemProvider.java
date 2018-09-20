@@ -252,12 +252,12 @@ public class TPlanItemProvider extends TExtensibleElementsItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TPLAN__INPUT_PARAMETERS,
-				 ToscaFactory.eINSTANCE.createInputParametersType1()));
+				 ToscaFactory.eINSTANCE.createInputParametersType()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TPLAN__OUTPUT_PARAMETERS,
-				 ToscaFactory.eINSTANCE.createOutputParametersType1()));
+				 ToscaFactory.eINSTANCE.createOutputParametersType()));
 
 		newChildDescriptors.add
 			(createChildParameter

@@ -22,30 +22,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SourceElementType extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ref</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Ref</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ref</em>' attribute.
-	 * @see #setRef(String)
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(TRequirement)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getSourceElementType_Ref()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='ref'"
 	 * @generated
 	 */
-	String getRef();
+	TRequirement getRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.SourceElementType#getRef <em>Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.SourceElementType#getRef <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ref</em>' attribute.
+	 * @param value the new value of the '<em>Ref</em>' reference.
 	 * @see #getRef()
 	 * @generated
 	 */
-	void setRef(String value);
+	void setRef(TRequirement value);
 
 } // SourceElementType

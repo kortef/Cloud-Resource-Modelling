@@ -152,7 +152,7 @@ public class CapabilitiesType1ItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.CAPABILITIES_TYPE1__CAPABILITY,
-				 ToscaFactory.eINSTANCE.createTCapabilityRef()));
+				 ToscaFactory.eINSTANCE.createTCapability()));
 	}
 
 	/**

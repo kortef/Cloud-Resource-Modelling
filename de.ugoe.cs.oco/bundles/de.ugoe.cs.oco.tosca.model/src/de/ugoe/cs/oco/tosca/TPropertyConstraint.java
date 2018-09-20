@@ -31,7 +31,7 @@ public interface TPropertyConstraint extends TConstraint {
 	 * @return the value of the '<em>Property</em>' attribute.
 	 * @see #setProperty(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyConstraint_Property()
-	 * @model required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='property'"
 	 * @generated
 	 */

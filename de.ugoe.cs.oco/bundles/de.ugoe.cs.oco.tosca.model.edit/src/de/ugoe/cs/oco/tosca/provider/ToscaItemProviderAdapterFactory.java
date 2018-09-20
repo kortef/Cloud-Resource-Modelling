@@ -3,18 +3,21 @@
 package de.ugoe.cs.oco.tosca.provider;
 
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+
 import de.ugoe.cs.oco.tosca.util.ToscaAdapterFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -155,6 +158,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.CapabilitiesType2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CapabilitiesType2ItemProvider capabilitiesType2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.CapabilitiesType2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCapabilitiesType2Adapter() {
+		if (capabilitiesType2ItemProvider == null) {
+			capabilitiesType2ItemProvider = new CapabilitiesType2ItemProvider(this);
+		}
+
+		return capabilitiesType2ItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,6 +201,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		}
 
 		return capabilityDefinitionsTypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CapabilityDefinitionsType1ItemProvider capabilityDefinitionsType1ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCapabilityDefinitionsType1Adapter() {
+		if (capabilityDefinitionsType1ItemProvider == null) {
+			capabilityDefinitionsType1ItemProvider = new CapabilityDefinitionsType1ItemProvider(this);
+		}
+
+		return capabilityDefinitionsType1ItemProvider;
 	}
 
 	/**
@@ -546,6 +595,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.InterfacesType2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterfacesType2ItemProvider interfacesType2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.InterfacesType2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInterfacesType2Adapter() {
+		if (interfacesType2ItemProvider == null) {
+			interfacesType2ItemProvider = new InterfacesType2ItemProvider(this);
+		}
+
+		return interfacesType2ItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.NodeOperationType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -750,6 +822,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		}
 
 		return policiesType1ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.PoliciesType2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PoliciesType2ItemProvider policiesType2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.PoliciesType2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPoliciesType2Adapter() {
+		if (policiesType2ItemProvider == null) {
+			policiesType2ItemProvider = new PoliciesType2ItemProvider(this);
+		}
+
+		return policiesType2ItemProvider;
 	}
 
 	/**
@@ -983,6 +1078,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType1} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RequirementDefinitionsType1ItemProvider requirementDefinitionsType1ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.RequirementDefinitionsType1}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRequirementDefinitionsType1Adapter() {
+		if (requirementDefinitionsType1ItemProvider == null) {
+			requirementDefinitionsType1ItemProvider = new RequirementDefinitionsType1ItemProvider(this);
+		}
+
+		return requirementDefinitionsType1ItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.RequirementsType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1026,6 +1144,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		}
 
 		return requirementsType1ItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.RequirementsType2} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RequirementsType2ItemProvider requirementsType2ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.RequirementsType2}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRequirementsType2Adapter() {
+		if (requirementsType2ItemProvider == null) {
+			requirementsType2ItemProvider = new RequirementsType2ItemProvider(this);
+		}
+
+		return requirementsType2ItemProvider;
 	}
 
 	/**
@@ -1578,6 +1719,52 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		}
 
 		return tExtensionsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TGroupTemplate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TGroupTemplateItemProvider tGroupTemplateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.TGroupTemplate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTGroupTemplateAdapter() {
+		if (tGroupTemplateItemProvider == null) {
+			tGroupTemplateItemProvider = new TGroupTemplateItemProvider(this);
+		}
+
+		return tGroupTemplateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TGroupType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TGroupTypeItemProvider tGroupTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.TGroupType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTGroupTypeAdapter() {
+		if (tGroupTypeItemProvider == null) {
+			tGroupTypeItemProvider = new TGroupTypeItemProvider(this);
+		}
+
+		return tGroupTypeItemProvider;
 	}
 
 	/**
@@ -2340,52 +2527,6 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TGroupType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TGroupTypeItemProvider tGroupTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.TGroupType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTGroupTypeAdapter() {
-		if (tGroupTypeItemProvider == null) {
-			tGroupTypeItemProvider = new TGroupTypeItemProvider(this);
-		}
-
-		return tGroupTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TGroupTemplate} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TGroupTemplateItemProvider tGroupTemplateItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.TGroupTemplate}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTGroupTemplateAdapter() {
-		if (tGroupTemplateItemProvider == null) {
-			tGroupTemplateItemProvider = new TGroupTemplateItemProvider(this);
-		}
-
-		return tGroupTemplateItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2514,7 +2655,9 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (artifactReferencesTypeItemProvider != null) artifactReferencesTypeItemProvider.dispose();
 		if (capabilitiesTypeItemProvider != null) capabilitiesTypeItemProvider.dispose();
 		if (capabilitiesType1ItemProvider != null) capabilitiesType1ItemProvider.dispose();
+		if (capabilitiesType2ItemProvider != null) capabilitiesType2ItemProvider.dispose();
 		if (capabilityDefinitionsTypeItemProvider != null) capabilityDefinitionsTypeItemProvider.dispose();
+		if (capabilityDefinitionsType1ItemProvider != null) capabilityDefinitionsType1ItemProvider.dispose();
 		if (constraintsTypeItemProvider != null) constraintsTypeItemProvider.dispose();
 		if (constraintsType1ItemProvider != null) constraintsType1ItemProvider.dispose();
 		if (definitionsTypeItemProvider != null) definitionsTypeItemProvider.dispose();
@@ -2531,6 +2674,7 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (instanceStateTypeItemProvider != null) instanceStateTypeItemProvider.dispose();
 		if (interfacesTypeItemProvider != null) interfacesTypeItemProvider.dispose();
 		if (interfacesType1ItemProvider != null) interfacesType1ItemProvider.dispose();
+		if (interfacesType2ItemProvider != null) interfacesType2ItemProvider.dispose();
 		if (nodeOperationTypeItemProvider != null) nodeOperationTypeItemProvider.dispose();
 		if (nodeTypeReferenceTypeItemProvider != null) nodeTypeReferenceTypeItemProvider.dispose();
 		if (outputParametersTypeItemProvider != null) outputParametersTypeItemProvider.dispose();
@@ -2540,6 +2684,7 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (planTypeItemProvider != null) planTypeItemProvider.dispose();
 		if (policiesTypeItemProvider != null) policiesTypeItemProvider.dispose();
 		if (policiesType1ItemProvider != null) policiesType1ItemProvider.dispose();
+		if (policiesType2ItemProvider != null) policiesType2ItemProvider.dispose();
 		if (propertiesDefinitionTypeItemProvider != null) propertiesDefinitionTypeItemProvider.dispose();
 		if (propertiesTypeItemProvider != null) propertiesTypeItemProvider.dispose();
 		if (propertiesType1ItemProvider != null) propertiesType1ItemProvider.dispose();
@@ -2550,8 +2695,10 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (relationshipConstraintTypeItemProvider != null) relationshipConstraintTypeItemProvider.dispose();
 		if (relationshipOperationTypeItemProvider != null) relationshipOperationTypeItemProvider.dispose();
 		if (requirementDefinitionsTypeItemProvider != null) requirementDefinitionsTypeItemProvider.dispose();
+		if (requirementDefinitionsType1ItemProvider != null) requirementDefinitionsType1ItemProvider.dispose();
 		if (requirementsTypeItemProvider != null) requirementsTypeItemProvider.dispose();
 		if (requirementsType1ItemProvider != null) requirementsType1ItemProvider.dispose();
+		if (requirementsType2ItemProvider != null) requirementsType2ItemProvider.dispose();
 		if (sourceElementTypeItemProvider != null) sourceElementTypeItemProvider.dispose();
 		if (sourceInterfacesTypeItemProvider != null) sourceInterfacesTypeItemProvider.dispose();
 		if (tAppliesToItemProvider != null) tAppliesToItemProvider.dispose();
@@ -2576,6 +2723,8 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (tExtensibleElementsItemProvider != null) tExtensibleElementsItemProvider.dispose();
 		if (tExtensionItemProvider != null) tExtensionItemProvider.dispose();
 		if (tExtensionsItemProvider != null) tExtensionsItemProvider.dispose();
+		if (tGroupTemplateItemProvider != null) tGroupTemplateItemProvider.dispose();
+		if (tGroupTypeItemProvider != null) tGroupTypeItemProvider.dispose();
 		if (tImplementationArtifactItemProvider != null) tImplementationArtifactItemProvider.dispose();
 		if (tImplementationArtifactsItemProvider != null) tImplementationArtifactsItemProvider.dispose();
 		if (tImportItemProvider != null) tImportItemProvider.dispose();
@@ -2609,8 +2758,6 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (typesTypeItemProvider != null) typesTypeItemProvider.dispose();
 		if (validSourceTypeItemProvider != null) validSourceTypeItemProvider.dispose();
 		if (validTargetTypeItemProvider != null) validTargetTypeItemProvider.dispose();
-		if (tGroupTypeItemProvider != null) tGroupTypeItemProvider.dispose();
-		if (tGroupTemplateItemProvider != null) tGroupTemplateItemProvider.dispose();
 	}
 
 }

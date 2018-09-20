@@ -63,25 +63,25 @@ public class DerivedFromTypeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRelationshipTypeImplementationRefPropertyDescriptor(object);
+			addNodeTypeImplementationRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Relationship Type Implementation Ref feature.
+	 * This adds a property descriptor for the Node Type Implementation Ref feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRelationshipTypeImplementationRefPropertyDescriptor(Object object) {
+	protected void addNodeTypeImplementationRefPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DerivedFromType_relationshipTypeImplementationRef_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DerivedFromType_relationshipTypeImplementationRef_feature", "_UI_DerivedFromType_type"),
-				 ToscaPackage.Literals.DERIVED_FROM_TYPE__RELATIONSHIP_TYPE_IMPLEMENTATION_REF,
+				 getString("_UI_DerivedFromType_nodeTypeImplementationRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DerivedFromType_nodeTypeImplementationRef_feature", "_UI_DerivedFromType_type"),
+				 ToscaPackage.Literals.DERIVED_FROM_TYPE__NODE_TYPE_IMPLEMENTATION_REF,
 				 true,
 				 false,
 				 false,
@@ -109,7 +109,7 @@ public class DerivedFromTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		QName labelValue = ((DerivedFromType)object).getRelationshipTypeImplementationRef();
+		QName labelValue = ((DerivedFromType)object).getNodeTypeImplementationRef();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DerivedFromType_type") :
@@ -129,7 +129,7 @@ public class DerivedFromTypeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DerivedFromType.class)) {
-			case ToscaPackage.DERIVED_FROM_TYPE__RELATIONSHIP_TYPE_IMPLEMENTATION_REF:
+			case ToscaPackage.DERIVED_FROM_TYPE__NODE_TYPE_IMPLEMENTATION_REF:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

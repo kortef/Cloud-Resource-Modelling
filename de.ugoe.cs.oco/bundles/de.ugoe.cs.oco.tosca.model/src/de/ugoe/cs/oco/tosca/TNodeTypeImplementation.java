@@ -66,13 +66,13 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Derived From</em>' containment reference.
-	 * @see #setDerivedFrom(DerivedFromType1)
+	 * @see #setDerivedFrom(DerivedFromType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_DerivedFrom()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DerivedFrom' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DerivedFromType1 getDerivedFrom();
+	DerivedFromType getDerivedFrom();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TNodeTypeImplementation#getDerivedFrom <em>Derived From</em>}' containment reference.
@@ -82,7 +82,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see #getDerivedFrom()
 	 * @generated
 	 */
-	void setDerivedFrom(DerivedFromType1 value);
+	void setDerivedFrom(DerivedFromType value);
 
 	/**
 	 * Returns the value of the '<em><b>Required Container Features</b></em>' containment reference.

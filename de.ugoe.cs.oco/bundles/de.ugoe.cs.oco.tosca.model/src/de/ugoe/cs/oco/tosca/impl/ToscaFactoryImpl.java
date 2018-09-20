@@ -67,7 +67,9 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.ARTIFACT_REFERENCES_TYPE: return createArtifactReferencesType();
 			case ToscaPackage.CAPABILITIES_TYPE: return createCapabilitiesType();
 			case ToscaPackage.CAPABILITIES_TYPE1: return createCapabilitiesType1();
+			case ToscaPackage.CAPABILITIES_TYPE2: return createCapabilitiesType2();
 			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE: return createCapabilityDefinitionsType();
+			case ToscaPackage.CAPABILITY_DEFINITIONS_TYPE1: return createCapabilityDefinitionsType1();
 			case ToscaPackage.CONSTRAINTS_TYPE: return createConstraintsType();
 			case ToscaPackage.CONSTRAINTS_TYPE1: return createConstraintsType1();
 			case ToscaPackage.DEFINITIONS_TYPE: return createDefinitionsType();
@@ -84,6 +86,7 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.INSTANCE_STATE_TYPE: return createInstanceStateType();
 			case ToscaPackage.INTERFACES_TYPE: return createInterfacesType();
 			case ToscaPackage.INTERFACES_TYPE1: return createInterfacesType1();
+			case ToscaPackage.INTERFACES_TYPE2: return createInterfacesType2();
 			case ToscaPackage.NODE_OPERATION_TYPE: return createNodeOperationType();
 			case ToscaPackage.NODE_TYPE_REFERENCE_TYPE: return createNodeTypeReferenceType();
 			case ToscaPackage.OUTPUT_PARAMETERS_TYPE: return createOutputParametersType();
@@ -93,6 +96,7 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.PLAN_TYPE: return createPlanType();
 			case ToscaPackage.POLICIES_TYPE: return createPoliciesType();
 			case ToscaPackage.POLICIES_TYPE1: return createPoliciesType1();
+			case ToscaPackage.POLICIES_TYPE2: return createPoliciesType2();
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE: return createPropertiesDefinitionType();
 			case ToscaPackage.PROPERTIES_TYPE: return createPropertiesType();
 			case ToscaPackage.PROPERTIES_TYPE1: return createPropertiesType1();
@@ -103,8 +107,10 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.RELATIONSHIP_CONSTRAINT_TYPE: return createRelationshipConstraintType();
 			case ToscaPackage.RELATIONSHIP_OPERATION_TYPE: return createRelationshipOperationType();
 			case ToscaPackage.REQUIREMENT_DEFINITIONS_TYPE: return createRequirementDefinitionsType();
+			case ToscaPackage.REQUIREMENT_DEFINITIONS_TYPE1: return createRequirementDefinitionsType1();
 			case ToscaPackage.REQUIREMENTS_TYPE: return createRequirementsType();
 			case ToscaPackage.REQUIREMENTS_TYPE1: return createRequirementsType1();
+			case ToscaPackage.REQUIREMENTS_TYPE2: return createRequirementsType2();
 			case ToscaPackage.SOURCE_ELEMENT_TYPE: return createSourceElementType();
 			case ToscaPackage.SOURCE_INTERFACES_TYPE: return createSourceInterfacesType();
 			case ToscaPackage.TAPPLIES_TO: return createTAppliesTo();
@@ -129,6 +135,8 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.TEXTENSIBLE_ELEMENTS: return createTExtensibleElements();
 			case ToscaPackage.TEXTENSION: return createTExtension();
 			case ToscaPackage.TEXTENSIONS: return createTExtensions();
+			case ToscaPackage.TGROUP_TEMPLATE: return createTGroupTemplate();
+			case ToscaPackage.TGROUP_TYPE: return createTGroupType();
 			case ToscaPackage.TIMPLEMENTATION_ARTIFACT: return createTImplementationArtifact();
 			case ToscaPackage.TIMPLEMENTATION_ARTIFACTS: return createTImplementationArtifacts();
 			case ToscaPackage.TIMPORT: return createTImport();
@@ -162,8 +170,6 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.TYPES_TYPE: return createTypesType();
 			case ToscaPackage.VALID_SOURCE_TYPE: return createValidSourceType();
 			case ToscaPackage.VALID_TARGET_TYPE: return createValidTargetType();
-			case ToscaPackage.TGROUP_TYPE: return createTGroupType();
-			case ToscaPackage.TGROUP_TEMPLATE: return createTGroupTemplate();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -179,6 +185,8 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 		switch (eDataType.getClassifierID()) {
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1:
 				return createMaxInstancesTypeMember1FromString(eDataType, initialValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER11:
+				return createMaxInstancesTypeMember11FromString(eDataType, initialValue);
 			case ToscaPackage.TBOOLEAN:
 				return createTBooleanFromString(eDataType, initialValue);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER1:
@@ -189,10 +197,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 				return createImportedURIFromString(eDataType, initialValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
 				return createMaxInstancesTypeFromString(eDataType, initialValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE1:
+				return createMaxInstancesType1FromString(eDataType, initialValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER0:
 				return createMaxInstancesTypeMember0FromString(eDataType, initialValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER01:
+				return createMaxInstancesTypeMember01FromString(eDataType, initialValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT:
 				return createMaxInstancesTypeMember1ObjectFromString(eDataType, initialValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT1:
+				return createMaxInstancesTypeMember1Object1FromString(eDataType, initialValue);
 			case ToscaPackage.TBOOLEAN_OBJECT:
 				return createTBooleanObjectFromString(eDataType, initialValue);
 			case ToscaPackage.UPPER_BOUND_TYPE:
@@ -222,6 +236,8 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 		switch (eDataType.getClassifierID()) {
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1:
 				return convertMaxInstancesTypeMember1ToString(eDataType, instanceValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER11:
+				return convertMaxInstancesTypeMember11ToString(eDataType, instanceValue);
 			case ToscaPackage.TBOOLEAN:
 				return convertTBooleanToString(eDataType, instanceValue);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER1:
@@ -232,10 +248,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 				return convertImportedURIToString(eDataType, instanceValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
 				return convertMaxInstancesTypeToString(eDataType, instanceValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE1:
+				return convertMaxInstancesType1ToString(eDataType, instanceValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER0:
 				return convertMaxInstancesTypeMember0ToString(eDataType, instanceValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER01:
+				return convertMaxInstancesTypeMember01ToString(eDataType, instanceValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT:
 				return convertMaxInstancesTypeMember1ObjectToString(eDataType, instanceValue);
+			case ToscaPackage.MAX_INSTANCES_TYPE_MEMBER1_OBJECT1:
+				return convertMaxInstancesTypeMember1Object1ToString(eDataType, instanceValue);
 			case ToscaPackage.TBOOLEAN_OBJECT:
 				return convertTBooleanObjectToString(eDataType, instanceValue);
 			case ToscaPackage.UPPER_BOUND_TYPE:
@@ -290,9 +312,29 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CapabilitiesType2 createCapabilitiesType2() {
+		CapabilitiesType2Impl capabilitiesType2 = new CapabilitiesType2Impl();
+		return capabilitiesType2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CapabilityDefinitionsType createCapabilityDefinitionsType() {
 		CapabilityDefinitionsTypeImpl capabilityDefinitionsType = new CapabilityDefinitionsTypeImpl();
 		return capabilityDefinitionsType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityDefinitionsType1 createCapabilityDefinitionsType1() {
+		CapabilityDefinitionsType1Impl capabilityDefinitionsType1 = new CapabilityDefinitionsType1Impl();
+		return capabilityDefinitionsType1;
 	}
 
 	/**
@@ -460,6 +502,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InterfacesType2 createInterfacesType2() {
+		InterfacesType2Impl interfacesType2 = new InterfacesType2Impl();
+		return interfacesType2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NodeOperationType createNodeOperationType() {
 		NodeOperationTypeImpl nodeOperationType = new NodeOperationTypeImpl();
 		return nodeOperationType;
@@ -543,6 +595,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	public PoliciesType1 createPoliciesType1() {
 		PoliciesType1Impl policiesType1 = new PoliciesType1Impl();
 		return policiesType1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PoliciesType2 createPoliciesType2() {
+		PoliciesType2Impl policiesType2 = new PoliciesType2Impl();
+		return policiesType2;
 	}
 
 	/**
@@ -650,6 +712,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RequirementDefinitionsType1 createRequirementDefinitionsType1() {
+		RequirementDefinitionsType1Impl requirementDefinitionsType1 = new RequirementDefinitionsType1Impl();
+		return requirementDefinitionsType1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RequirementsType createRequirementsType() {
 		RequirementsTypeImpl requirementsType = new RequirementsTypeImpl();
 		return requirementsType;
@@ -663,6 +735,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	public RequirementsType1 createRequirementsType1() {
 		RequirementsType1Impl requirementsType1 = new RequirementsType1Impl();
 		return requirementsType1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RequirementsType2 createRequirementsType2() {
+		RequirementsType2Impl requirementsType2 = new RequirementsType2Impl();
+		return requirementsType2;
 	}
 
 	/**
@@ -903,6 +985,26 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	public TExtensions createTExtensions() {
 		TExtensionsImpl tExtensions = new TExtensionsImpl();
 		return tExtensions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TGroupTemplate createTGroupTemplate() {
+		TGroupTemplateImpl tGroupTemplate = new TGroupTemplateImpl();
+		return tGroupTemplate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TGroupType createTGroupType() {
+		TGroupTypeImpl tGroupType = new TGroupTypeImpl();
+		return tGroupType;
 	}
 
 	/**
@@ -1240,26 +1342,6 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TGroupType createTGroupType() {
-		TGroupTypeImpl tGroupType = new TGroupTypeImpl();
-		return tGroupType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TGroupTemplate createTGroupTemplate() {
-		TGroupTemplateImpl tGroupTemplate = new TGroupTemplateImpl();
-		return tGroupTemplate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MaxInstancesTypeMember1 createMaxInstancesTypeMember1FromString(EDataType eDataType, String initialValue) {
 		MaxInstancesTypeMember1 result = MaxInstancesTypeMember1.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -1272,6 +1354,26 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * @generated
 	 */
 	public String convertMaxInstancesTypeMember1ToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MaxInstancesTypeMember11 createMaxInstancesTypeMember11FromString(EDataType eDataType, String initialValue) {
+		MaxInstancesTypeMember11 result = MaxInstancesTypeMember11.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMaxInstancesTypeMember11ToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -1418,6 +1520,66 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Object createMaxInstancesType1FromString(EDataType eDataType, String initialValue) {
+		if (initialValue == null) return null;
+		Object result = null;
+		RuntimeException exception = null;
+		try {
+			result = createMaxInstancesTypeMember01FromString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		try {
+			result = createMaxInstancesTypeMember11FromString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11, initialValue);
+			if (result != null && Diagnostician.INSTANCE.validate(eDataType, result, null, null)) {
+				return result;
+			}
+		}
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		if (result != null || exception == null) return result;
+    
+		throw exception;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMaxInstancesType1ToString(EDataType eDataType, Object instanceValue) {
+		if (instanceValue == null) return null;
+		if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01.isInstance(instanceValue)) {
+			try {
+				String value = convertMaxInstancesTypeMember01ToString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER01, instanceValue);
+				if (value != null) return value;
+			}
+			catch (Exception e) {
+				// Keep trying other member types until all have failed.
+			}
+		}
+		if (ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11.isInstance(instanceValue)) {
+			try {
+				String value = convertMaxInstancesTypeMember11ToString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11, instanceValue);
+				if (value != null) return value;
+			}
+			catch (Exception e) {
+				// Keep trying other member types until all have failed.
+			}
+		}
+		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BigInteger createMaxInstancesTypeMember0FromString(EDataType eDataType, String initialValue) {
 		return (BigInteger)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.NON_NEGATIVE_INTEGER, initialValue);
 	}
@@ -1428,6 +1590,24 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * @generated
 	 */
 	public String convertMaxInstancesTypeMember0ToString(EDataType eDataType, Object instanceValue) {
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.NON_NEGATIVE_INTEGER, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BigInteger createMaxInstancesTypeMember01FromString(EDataType eDataType, String initialValue) {
+		return (BigInteger)XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.NON_NEGATIVE_INTEGER, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMaxInstancesTypeMember01ToString(EDataType eDataType, Object instanceValue) {
 		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.NON_NEGATIVE_INTEGER, instanceValue);
 	}
 
@@ -1447,6 +1627,24 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 */
 	public String convertMaxInstancesTypeMember1ObjectToString(EDataType eDataType, Object instanceValue) {
 		return convertMaxInstancesTypeMember1ToString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER1, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MaxInstancesTypeMember11 createMaxInstancesTypeMember1Object1FromString(EDataType eDataType, String initialValue) {
+		return createMaxInstancesTypeMember11FromString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMaxInstancesTypeMember1Object1ToString(EDataType eDataType, Object instanceValue) {
+		return convertMaxInstancesTypeMember11ToString(ToscaPackage.Literals.MAX_INSTANCES_TYPE_MEMBER11, instanceValue);
 	}
 
 	/**

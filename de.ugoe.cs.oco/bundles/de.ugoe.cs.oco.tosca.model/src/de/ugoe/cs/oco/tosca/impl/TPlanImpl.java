@@ -2,8 +2,8 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.InputParametersType1;
-import de.ugoe.cs.oco.tosca.OutputParametersType1;
+import de.ugoe.cs.oco.tosca.InputParametersType;
+import de.ugoe.cs.oco.tosca.OutputParametersType;
 import de.ugoe.cs.oco.tosca.PlanModelReferenceType;
 import de.ugoe.cs.oco.tosca.PlanModelType;
 import de.ugoe.cs.oco.tosca.TCondition;
@@ -58,7 +58,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * @generated
 	 * @ordered
 	 */
-	protected InputParametersType1 inputParameters;
+	protected InputParametersType inputParameters;
 
 	/**
 	 * The cached value of the '{@link #getOutputParameters() <em>Output Parameters</em>}' containment reference.
@@ -68,7 +68,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputParametersType1 outputParameters;
+	protected OutputParametersType outputParameters;
 
 	/**
 	 * The cached value of the '{@link #getPlanModel() <em>Plan Model</em>}' containment reference.
@@ -237,7 +237,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputParametersType1 getInputParameters() {
+	public InputParametersType getInputParameters() {
 		return inputParameters;
 	}
 
@@ -246,8 +246,8 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInputParameters(InputParametersType1 newInputParameters, NotificationChain msgs) {
-		InputParametersType1 oldInputParameters = inputParameters;
+	public NotificationChain basicSetInputParameters(InputParametersType newInputParameters, NotificationChain msgs) {
+		InputParametersType oldInputParameters = inputParameters;
 		inputParameters = newInputParameters;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TPLAN__INPUT_PARAMETERS, oldInputParameters, newInputParameters);
@@ -261,7 +261,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInputParameters(InputParametersType1 newInputParameters) {
+	public void setInputParameters(InputParametersType newInputParameters) {
 		if (newInputParameters != inputParameters) {
 			NotificationChain msgs = null;
 			if (inputParameters != null)
@@ -280,7 +280,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputParametersType1 getOutputParameters() {
+	public OutputParametersType getOutputParameters() {
 		return outputParameters;
 	}
 
@@ -289,8 +289,8 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOutputParameters(OutputParametersType1 newOutputParameters, NotificationChain msgs) {
-		OutputParametersType1 oldOutputParameters = outputParameters;
+	public NotificationChain basicSetOutputParameters(OutputParametersType newOutputParameters, NotificationChain msgs) {
+		OutputParametersType oldOutputParameters = outputParameters;
 		outputParameters = newOutputParameters;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TPLAN__OUTPUT_PARAMETERS, oldOutputParameters, newOutputParameters);
@@ -304,7 +304,7 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOutputParameters(OutputParametersType1 newOutputParameters) {
+	public void setOutputParameters(OutputParametersType newOutputParameters) {
 		if (newOutputParameters != outputParameters) {
 			NotificationChain msgs = null;
 			if (outputParameters != null)
@@ -552,10 +552,10 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 				setPrecondition((TCondition)newValue);
 				return;
 			case ToscaPackage.TPLAN__INPUT_PARAMETERS:
-				setInputParameters((InputParametersType1)newValue);
+				setInputParameters((InputParametersType)newValue);
 				return;
 			case ToscaPackage.TPLAN__OUTPUT_PARAMETERS:
-				setOutputParameters((OutputParametersType1)newValue);
+				setOutputParameters((OutputParametersType)newValue);
 				return;
 			case ToscaPackage.TPLAN__PLAN_MODEL:
 				setPlanModel((PlanModelType)newValue);
@@ -591,10 +591,10 @@ public class TPlanImpl extends TExtensibleElementsImpl implements TPlan {
 				setPrecondition((TCondition)null);
 				return;
 			case ToscaPackage.TPLAN__INPUT_PARAMETERS:
-				setInputParameters((InputParametersType1)null);
+				setInputParameters((InputParametersType)null);
 				return;
 			case ToscaPackage.TPLAN__OUTPUT_PARAMETERS:
-				setOutputParameters((OutputParametersType1)null);
+				setOutputParameters((OutputParametersType)null);
 				return;
 			case ToscaPackage.TPLAN__PLAN_MODEL:
 				setPlanModel((PlanModelType)null);

@@ -22,8 +22,6 @@ import javax.xml.namespace.QName;
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate()
  * @model abstract="true"
  *        extendedMetaData="name='tEntityTemplate' kind='elementOnly'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='typeMustExist'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot typeMustExist='TEntityType.allInstances()-&gt;exists(t | t.name = self.type.toString())'"
  * @generated
  */
 public interface TEntityTemplate extends TExtensibleElements {

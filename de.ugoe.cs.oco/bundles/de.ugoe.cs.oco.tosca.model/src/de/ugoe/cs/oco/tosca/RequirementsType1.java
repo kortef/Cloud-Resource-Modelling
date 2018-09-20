@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface RequirementsType1 extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Requirement</b></em>' containment reference list.
-	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TRequirementRef}.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TRequirement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Requirement</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface RequirementsType1 extends EObject {
 	 *        extendedMetaData="kind='element' name='Requirement' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<TRequirementRef> getRequirement();
+	EList<TRequirement> getRequirement();
 
 } // RequirementsType1

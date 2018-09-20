@@ -3,7 +3,7 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.CapabilitiesType1;
-import de.ugoe.cs.oco.tosca.TCapabilityRef;
+import de.ugoe.cs.oco.tosca.TCapability;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
@@ -42,7 +42,7 @@ public class CapabilitiesType1Impl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TCapabilityRef> capability;
+	protected EList<TCapability> capability;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +68,9 @@ public class CapabilitiesType1Impl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TCapabilityRef> getCapability() {
+	public EList<TCapability> getCapability() {
 		if (capability == null) {
-			capability = new EObjectContainmentEList<TCapabilityRef>(TCapabilityRef.class, this, ToscaPackage.CAPABILITIES_TYPE1__CAPABILITY);
+			capability = new EObjectContainmentEList<TCapability>(TCapability.class, this, ToscaPackage.CAPABILITIES_TYPE1__CAPABILITY);
 		}
 		return capability;
 	}
@@ -114,7 +114,7 @@ public class CapabilitiesType1Impl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ToscaPackage.CAPABILITIES_TYPE1__CAPABILITY:
 				getCapability().clear();
-				getCapability().addAll((Collection<? extends TCapabilityRef>)newValue);
+				getCapability().addAll((Collection<? extends TCapability>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

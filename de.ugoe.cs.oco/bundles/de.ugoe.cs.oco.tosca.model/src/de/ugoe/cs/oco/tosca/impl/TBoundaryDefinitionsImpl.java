@@ -2,12 +2,12 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.CapabilitiesType1;
-import de.ugoe.cs.oco.tosca.InterfacesType1;
-import de.ugoe.cs.oco.tosca.PoliciesType1;
+import de.ugoe.cs.oco.tosca.CapabilitiesType2;
+import de.ugoe.cs.oco.tosca.InterfacesType2;
+import de.ugoe.cs.oco.tosca.PoliciesType2;
 import de.ugoe.cs.oco.tosca.PropertiesType1;
 import de.ugoe.cs.oco.tosca.PropertyConstraintsType1;
-import de.ugoe.cs.oco.tosca.RequirementsType1;
+import de.ugoe.cs.oco.tosca.RequirementsType2;
 import de.ugoe.cs.oco.tosca.TBoundaryDefinitions;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
@@ -67,7 +67,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected RequirementsType1 requirements;
+	protected RequirementsType2 requirements;
 
 	/**
 	 * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' containment reference.
@@ -77,7 +77,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected CapabilitiesType1 capabilities;
+	protected CapabilitiesType2 capabilities;
 
 	/**
 	 * The cached value of the '{@link #getPolicies() <em>Policies</em>}' containment reference.
@@ -87,7 +87,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected PoliciesType1 policies;
+	protected PoliciesType2 policies;
 
 	/**
 	 * The cached value of the '{@link #getInterfaces() <em>Interfaces</em>}' containment reference.
@@ -97,7 +97,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 * @ordered
 	 */
-	protected InterfacesType1 interfaces;
+	protected InterfacesType2 interfaces;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,7 +209,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RequirementsType1 getRequirements() {
+	public RequirementsType2 getRequirements() {
 		return requirements;
 	}
 
@@ -218,8 +218,8 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRequirements(RequirementsType1 newRequirements, NotificationChain msgs) {
-		RequirementsType1 oldRequirements = requirements;
+	public NotificationChain basicSetRequirements(RequirementsType2 newRequirements, NotificationChain msgs) {
+		RequirementsType2 oldRequirements = requirements;
 		requirements = newRequirements;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TBOUNDARY_DEFINITIONS__REQUIREMENTS, oldRequirements, newRequirements);
@@ -233,7 +233,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRequirements(RequirementsType1 newRequirements) {
+	public void setRequirements(RequirementsType2 newRequirements) {
 		if (newRequirements != requirements) {
 			NotificationChain msgs = null;
 			if (requirements != null)
@@ -252,7 +252,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CapabilitiesType1 getCapabilities() {
+	public CapabilitiesType2 getCapabilities() {
 		return capabilities;
 	}
 
@@ -261,8 +261,8 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapabilities(CapabilitiesType1 newCapabilities, NotificationChain msgs) {
-		CapabilitiesType1 oldCapabilities = capabilities;
+	public NotificationChain basicSetCapabilities(CapabilitiesType2 newCapabilities, NotificationChain msgs) {
+		CapabilitiesType2 oldCapabilities = capabilities;
 		capabilities = newCapabilities;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TBOUNDARY_DEFINITIONS__CAPABILITIES, oldCapabilities, newCapabilities);
@@ -276,7 +276,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCapabilities(CapabilitiesType1 newCapabilities) {
+	public void setCapabilities(CapabilitiesType2 newCapabilities) {
 		if (newCapabilities != capabilities) {
 			NotificationChain msgs = null;
 			if (capabilities != null)
@@ -295,7 +295,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PoliciesType1 getPolicies() {
+	public PoliciesType2 getPolicies() {
 		return policies;
 	}
 
@@ -304,8 +304,8 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPolicies(PoliciesType1 newPolicies, NotificationChain msgs) {
-		PoliciesType1 oldPolicies = policies;
+	public NotificationChain basicSetPolicies(PoliciesType2 newPolicies, NotificationChain msgs) {
+		PoliciesType2 oldPolicies = policies;
 		policies = newPolicies;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TBOUNDARY_DEFINITIONS__POLICIES, oldPolicies, newPolicies);
@@ -319,7 +319,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPolicies(PoliciesType1 newPolicies) {
+	public void setPolicies(PoliciesType2 newPolicies) {
 		if (newPolicies != policies) {
 			NotificationChain msgs = null;
 			if (policies != null)
@@ -338,7 +338,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfacesType1 getInterfaces() {
+	public InterfacesType2 getInterfaces() {
 		return interfaces;
 	}
 
@@ -347,8 +347,8 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInterfaces(InterfacesType1 newInterfaces, NotificationChain msgs) {
-		InterfacesType1 oldInterfaces = interfaces;
+	public NotificationChain basicSetInterfaces(InterfacesType2 newInterfaces, NotificationChain msgs) {
+		InterfacesType2 oldInterfaces = interfaces;
 		interfaces = newInterfaces;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToscaPackage.TBOUNDARY_DEFINITIONS__INTERFACES, oldInterfaces, newInterfaces);
@@ -362,7 +362,7 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInterfaces(InterfacesType1 newInterfaces) {
+	public void setInterfaces(InterfacesType2 newInterfaces) {
 		if (newInterfaces != interfaces) {
 			NotificationChain msgs = null;
 			if (interfaces != null)
@@ -439,16 +439,16 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 				setPropertyConstraints((PropertyConstraintsType1)newValue);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__REQUIREMENTS:
-				setRequirements((RequirementsType1)newValue);
+				setRequirements((RequirementsType2)newValue);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__CAPABILITIES:
-				setCapabilities((CapabilitiesType1)newValue);
+				setCapabilities((CapabilitiesType2)newValue);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__POLICIES:
-				setPolicies((PoliciesType1)newValue);
+				setPolicies((PoliciesType2)newValue);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__INTERFACES:
-				setInterfaces((InterfacesType1)newValue);
+				setInterfaces((InterfacesType2)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -469,16 +469,16 @@ public class TBoundaryDefinitionsImpl extends MinimalEObjectImpl.Container imple
 				setPropertyConstraints((PropertyConstraintsType1)null);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__REQUIREMENTS:
-				setRequirements((RequirementsType1)null);
+				setRequirements((RequirementsType2)null);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__CAPABILITIES:
-				setCapabilities((CapabilitiesType1)null);
+				setCapabilities((CapabilitiesType2)null);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__POLICIES:
-				setPolicies((PoliciesType1)null);
+				setPolicies((PoliciesType2)null);
 				return;
 			case ToscaPackage.TBOUNDARY_DEFINITIONS__INTERFACES:
-				setInterfaces((InterfacesType1)null);
+				setInterfaces((InterfacesType2)null);
 				return;
 		}
 		super.eUnset(featureID);

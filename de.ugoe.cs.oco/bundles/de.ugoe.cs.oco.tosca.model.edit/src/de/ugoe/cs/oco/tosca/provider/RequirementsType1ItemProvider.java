@@ -152,7 +152,7 @@ public class RequirementsType1ItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.REQUIREMENTS_TYPE1__REQUIREMENT,
-				 ToscaFactory.eINSTANCE.createTRequirementRef()));
+				 ToscaFactory.eINSTANCE.createTRequirement()));
 	}
 
 	/**

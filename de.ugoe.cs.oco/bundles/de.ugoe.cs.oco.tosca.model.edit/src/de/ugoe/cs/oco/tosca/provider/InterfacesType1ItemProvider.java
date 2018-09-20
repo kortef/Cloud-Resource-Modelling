@@ -152,7 +152,7 @@ public class InterfacesType1ItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.INTERFACES_TYPE1__INTERFACE,
-				 ToscaFactory.eINSTANCE.createTExportedInterface()));
+				 ToscaFactory.eINSTANCE.createTInterface()));
 	}
 
 	/**

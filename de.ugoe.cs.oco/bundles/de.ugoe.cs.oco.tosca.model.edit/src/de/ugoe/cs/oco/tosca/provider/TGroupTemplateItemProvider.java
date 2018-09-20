@@ -4,6 +4,7 @@ package de.ugoe.cs.oco.tosca.provider;
 
 
 import de.ugoe.cs.oco.tosca.TGroupTemplate;
+import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
@@ -11,6 +12,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -45,12 +48,56 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMaxInstancesPropertyDescriptor(object);
+			addMinInstancesPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addMemberPropertyDescriptor(object);
-			addRequirementsPropertyDescriptor(object);
-			addCapabilitiesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Max Instances feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMaxInstancesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupTemplate_maxInstances_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_maxInstances_feature", "_UI_TGroupTemplate_type"),
+				 ToscaPackage.Literals.TGROUP_TEMPLATE__MAX_INSTANCES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Min Instances feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMinInstancesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupTemplate_minInstances_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_minInstances_feature", "_UI_TGroupTemplate_type"),
+				 ToscaPackage.Literals.TGROUP_TEMPLATE__MIN_INSTANCES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -98,47 +145,36 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Requirements feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRequirementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TGroupTemplate_requirements_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_requirements_feature", "_UI_TGroupTemplate_type"),
-				 ToscaPackage.Literals.TGROUP_TEMPLATE__REQUIREMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TEMPLATE__REQUIREMENTS);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TEMPLATE__CAPABILITIES);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TEMPLATE__POLICIES);
+			childrenFeatures.add(ToscaPackage.Literals.TGROUP_TEMPLATE__DEPLOYMENT_ARTIFACTS);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Capabilities feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCapabilitiesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TGroupTemplate_capabilities_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupTemplate_capabilities_feature", "_UI_TGroupTemplate_type"),
-				 ToscaPackage.Literals.TGROUP_TEMPLATE__CAPABILITIES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -179,9 +215,17 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TGroupTemplate.class)) {
+			case ToscaPackage.TGROUP_TEMPLATE__MAX_INSTANCES:
+			case ToscaPackage.TGROUP_TEMPLATE__MIN_INSTANCES:
 			case ToscaPackage.TGROUP_TEMPLATE__NAME:
 			case ToscaPackage.TGROUP_TEMPLATE__MEMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ToscaPackage.TGROUP_TEMPLATE__REQUIREMENTS:
+			case ToscaPackage.TGROUP_TEMPLATE__CAPABILITIES:
+			case ToscaPackage.TGROUP_TEMPLATE__POLICIES:
+			case ToscaPackage.TGROUP_TEMPLATE__DEPLOYMENT_ARTIFACTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -197,6 +241,26 @@ public class TGroupTemplateItemProvider extends TEntityTemplateItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TEMPLATE__REQUIREMENTS,
+				 ToscaFactory.eINSTANCE.createRequirementsType1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TEMPLATE__CAPABILITIES,
+				 ToscaFactory.eINSTANCE.createCapabilitiesType1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TEMPLATE__POLICIES,
+				 ToscaFactory.eINSTANCE.createPoliciesType1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ToscaPackage.Literals.TGROUP_TEMPLATE__DEPLOYMENT_ARTIFACTS,
+				 ToscaFactory.eINSTANCE.createTDeploymentArtifacts()));
 	}
 
 }

@@ -3,6 +3,7 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.NodeOperationType;
+import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -49,24 +50,14 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 	protected String interfaceName = INTERFACE_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNodeRef() <em>Node Ref</em>}' attribute.
+	 * The cached value of the '{@link #getNodeRef() <em>Node Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNodeRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NODE_REF_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getNodeRef() <em>Node Ref</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodeRef()
-	 * @generated
-	 * @ordered
-	 */
-	protected String nodeRef = NODE_REF_EDEFAULT;
+	protected TNodeType nodeRef;
 
 	/**
 	 * The default value of the '{@link #getOperationName() <em>Operation Name</em>}' attribute.
@@ -133,7 +124,7 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getNodeRef() {
+	public TNodeType getNodeRef() {
 		return nodeRef;
 	}
 
@@ -142,8 +133,8 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNodeRef(String newNodeRef) {
-		String oldNodeRef = nodeRef;
+	public void setNodeRef(TNodeType newNodeRef) {
+		TNodeType oldNodeRef = nodeRef;
 		nodeRef = newNodeRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.NODE_OPERATION_TYPE__NODE_REF, oldNodeRef, nodeRef));
@@ -200,7 +191,7 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 				setInterfaceName((String)newValue);
 				return;
 			case ToscaPackage.NODE_OPERATION_TYPE__NODE_REF:
-				setNodeRef((String)newValue);
+				setNodeRef((TNodeType)newValue);
 				return;
 			case ToscaPackage.NODE_OPERATION_TYPE__OPERATION_NAME:
 				setOperationName((String)newValue);
@@ -221,7 +212,7 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 				setInterfaceName(INTERFACE_NAME_EDEFAULT);
 				return;
 			case ToscaPackage.NODE_OPERATION_TYPE__NODE_REF:
-				setNodeRef(NODE_REF_EDEFAULT);
+				setNodeRef((TNodeType)null);
 				return;
 			case ToscaPackage.NODE_OPERATION_TYPE__OPERATION_NAME:
 				setOperationName(OPERATION_NAME_EDEFAULT);
@@ -241,7 +232,7 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 			case ToscaPackage.NODE_OPERATION_TYPE__INTERFACE_NAME:
 				return INTERFACE_NAME_EDEFAULT == null ? interfaceName != null : !INTERFACE_NAME_EDEFAULT.equals(interfaceName);
 			case ToscaPackage.NODE_OPERATION_TYPE__NODE_REF:
-				return NODE_REF_EDEFAULT == null ? nodeRef != null : !NODE_REF_EDEFAULT.equals(nodeRef);
+				return nodeRef != null;
 			case ToscaPackage.NODE_OPERATION_TYPE__OPERATION_NAME:
 				return OPERATION_NAME_EDEFAULT == null ? operationName != null : !OPERATION_NAME_EDEFAULT.equals(operationName);
 		}
@@ -260,8 +251,6 @@ public class NodeOperationTypeImpl extends MinimalEObjectImpl.Container implemen
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interfaceName: ");
 		result.append(interfaceName);
-		result.append(", nodeRef: ");
-		result.append(nodeRef);
 		result.append(", operationName: ");
 		result.append(operationName);
 		result.append(')');

@@ -65,13 +65,13 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Derived From</em>' containment reference.
-	 * @see #setDerivedFrom(DerivedFromType)
+	 * @see #setDerivedFrom(DerivedFromType1)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_DerivedFrom()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DerivedFrom' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DerivedFromType getDerivedFrom();
+	DerivedFromType1 getDerivedFrom();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TRelationshipTypeImplementation#getDerivedFrom <em>Derived From</em>}' containment reference.
@@ -81,7 +81,7 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see #getDerivedFrom()
 	 * @generated
 	 */
-	void setDerivedFrom(DerivedFromType value);
+	void setDerivedFrom(DerivedFromType1 value);
 
 	/**
 	 * Returns the value of the '<em><b>Required Container Features</b></em>' containment reference.

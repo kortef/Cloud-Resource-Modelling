@@ -32,13 +32,13 @@ public interface TNodeType extends TEntityType {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Requirement Definitions</em>' containment reference.
-	 * @see #setRequirementDefinitions(RequirementDefinitionsType)
+	 * @see #setRequirementDefinitions(RequirementDefinitionsType1)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_RequirementDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RequirementDefinitions' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	RequirementDefinitionsType getRequirementDefinitions();
+	RequirementDefinitionsType1 getRequirementDefinitions();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TNodeType#getRequirementDefinitions <em>Requirement Definitions</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface TNodeType extends TEntityType {
 	 * @see #getRequirementDefinitions()
 	 * @generated
 	 */
-	void setRequirementDefinitions(RequirementDefinitionsType value);
+	void setRequirementDefinitions(RequirementDefinitionsType1 value);
 
 	/**
 	 * Returns the value of the '<em><b>Capability Definitions</b></em>' containment reference.
@@ -59,13 +59,13 @@ public interface TNodeType extends TEntityType {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Capability Definitions</em>' containment reference.
-	 * @see #setCapabilityDefinitions(CapabilityDefinitionsType)
+	 * @see #setCapabilityDefinitions(CapabilityDefinitionsType1)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_CapabilityDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='CapabilityDefinitions' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CapabilityDefinitionsType getCapabilityDefinitions();
+	CapabilityDefinitionsType1 getCapabilityDefinitions();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TNodeType#getCapabilityDefinitions <em>Capability Definitions</em>}' containment reference.
@@ -75,7 +75,7 @@ public interface TNodeType extends TEntityType {
 	 * @see #getCapabilityDefinitions()
 	 * @generated
 	 */
-	void setCapabilityDefinitions(CapabilityDefinitionsType value);
+	void setCapabilityDefinitions(CapabilityDefinitionsType1 value);
 
 	/**
 	 * Returns the value of the '<em><b>Instance States</b></em>' containment reference.

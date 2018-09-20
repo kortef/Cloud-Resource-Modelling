@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.ugoe.cs.oco.tosca.TParameter#getName <em>Name</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TParameter#getRequired <em>Required</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TParameter#getType <em>Type</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.TParameter#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link de.ugoe.cs.oco.tosca.TParameter#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter()
@@ -36,7 +34,7 @@ public interface TParameter extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Name()
-	 * @model required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */
@@ -121,7 +119,7 @@ public interface TParameter extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Type()
-	 * @model required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='type'"
 	 * @generated
 	 */
@@ -136,57 +134,5 @@ public interface TParameter extends EObject {
 	 * @generated
 	 */
 	void setType(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default Value</em>' attribute.
-	 * @see #setDefaultValue(String)
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_DefaultValue()
-	 * @model
-	 * @generated
-	 */
-	String getDefaultValue();
-
-	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TParameter#getDefaultValue <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default Value</em>' attribute.
-	 * @see #getDefaultValue()
-	 * @generated
-	 */
-	void setDefaultValue(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Value()
-	 * @model
-	 * @generated
-	 */
-	String getValue();
-
-	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TParameter#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(String value);
 
 } // TParameter

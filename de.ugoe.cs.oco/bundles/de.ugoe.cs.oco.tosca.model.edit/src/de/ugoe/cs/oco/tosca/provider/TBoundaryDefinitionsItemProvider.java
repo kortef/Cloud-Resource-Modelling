@@ -172,22 +172,22 @@ public class TBoundaryDefinitionsItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__REQUIREMENTS,
-				 ToscaFactory.eINSTANCE.createRequirementsType1()));
+				 ToscaFactory.eINSTANCE.createRequirementsType2()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__CAPABILITIES,
-				 ToscaFactory.eINSTANCE.createCapabilitiesType1()));
+				 ToscaFactory.eINSTANCE.createCapabilitiesType2()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__POLICIES,
-				 ToscaFactory.eINSTANCE.createPoliciesType1()));
+				 ToscaFactory.eINSTANCE.createPoliciesType2()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__INTERFACES,
-				 ToscaFactory.eINSTANCE.createInterfacesType1()));
+				 ToscaFactory.eINSTANCE.createInterfacesType2()));
 	}
 
 	/**

@@ -274,7 +274,7 @@ public class TRelationshipTypeImplementationItemProvider extends TExtensibleElem
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TRELATIONSHIP_TYPE_IMPLEMENTATION__DERIVED_FROM,
-				 ToscaFactory.eINSTANCE.createDerivedFromType()));
+				 ToscaFactory.eINSTANCE.createDerivedFromType1()));
 
 		newChildDescriptors.add
 			(createChildParameter

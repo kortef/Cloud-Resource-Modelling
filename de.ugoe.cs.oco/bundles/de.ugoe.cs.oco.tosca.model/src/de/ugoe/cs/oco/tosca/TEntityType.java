@@ -235,7 +235,7 @@ public interface TEntityType extends TExtensibleElements {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityType_Name()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
+	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
 	 * @generated
 	 */

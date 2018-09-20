@@ -145,12 +145,12 @@ public class TNodeTypeItemProvider extends TEntityTypeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TNODE_TYPE__REQUIREMENT_DEFINITIONS,
-				 ToscaFactory.eINSTANCE.createRequirementDefinitionsType()));
+				 ToscaFactory.eINSTANCE.createRequirementDefinitionsType1()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ToscaPackage.Literals.TNODE_TYPE__CAPABILITY_DEFINITIONS,
-				 ToscaFactory.eINSTANCE.createCapabilityDefinitionsType()));
+				 ToscaFactory.eINSTANCE.createCapabilityDefinitionsType1()));
 
 		newChildDescriptors.add
 			(createChildParameter

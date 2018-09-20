@@ -89,13 +89,13 @@ public interface TBoundaryDefinitions extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference.
-	 * @see #setRequirements(RequirementsType1)
+	 * @see #setRequirements(RequirementsType2)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Requirements' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	RequirementsType1 getRequirements();
+	RequirementsType2 getRequirements();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TBoundaryDefinitions#getRequirements <em>Requirements</em>}' containment reference.
@@ -105,7 +105,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see #getRequirements()
 	 * @generated
 	 */
-	void setRequirements(RequirementsType1 value);
+	void setRequirements(RequirementsType2 value);
 
 	/**
 	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference.
@@ -116,13 +116,13 @@ public interface TBoundaryDefinitions extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Capabilities</em>' containment reference.
-	 * @see #setCapabilities(CapabilitiesType1)
+	 * @see #setCapabilities(CapabilitiesType2)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Capabilities()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Capabilities' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CapabilitiesType1 getCapabilities();
+	CapabilitiesType2 getCapabilities();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TBoundaryDefinitions#getCapabilities <em>Capabilities</em>}' containment reference.
@@ -132,7 +132,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see #getCapabilities()
 	 * @generated
 	 */
-	void setCapabilities(CapabilitiesType1 value);
+	void setCapabilities(CapabilitiesType2 value);
 
 	/**
 	 * Returns the value of the '<em><b>Policies</b></em>' containment reference.
@@ -143,13 +143,13 @@ public interface TBoundaryDefinitions extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Policies</em>' containment reference.
-	 * @see #setPolicies(PoliciesType1)
+	 * @see #setPolicies(PoliciesType2)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Policies()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Policies' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	PoliciesType1 getPolicies();
+	PoliciesType2 getPolicies();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TBoundaryDefinitions#getPolicies <em>Policies</em>}' containment reference.
@@ -159,7 +159,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see #getPolicies()
 	 * @generated
 	 */
-	void setPolicies(PoliciesType1 value);
+	void setPolicies(PoliciesType2 value);
 
 	/**
 	 * Returns the value of the '<em><b>Interfaces</b></em>' containment reference.
@@ -170,13 +170,13 @@ public interface TBoundaryDefinitions extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Interfaces</em>' containment reference.
-	 * @see #setInterfaces(InterfacesType1)
+	 * @see #setInterfaces(InterfacesType2)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Interfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Interfaces' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	InterfacesType1 getInterfaces();
+	InterfacesType2 getInterfaces();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TBoundaryDefinitions#getInterfaces <em>Interfaces</em>}' containment reference.
@@ -186,6 +186,6 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see #getInterfaces()
 	 * @generated
 	 */
-	void setInterfaces(InterfacesType1 value);
+	void setInterfaces(InterfacesType2 value);
 
 } // TBoundaryDefinitions

@@ -337,13 +337,13 @@
             </subContainerMappings>
             <subContainerMappings name="RequirementDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::RequirementDefinitionsType1" childrenPresentation="List">
               <subNodeMappings name="RequirementDefinitionContainer" semanticCandidatesExpression="aql:self.requirementDefinition" domainClass="tosca::TRequirementDefinition">
-                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.requirementType.toString().substring(self.requirementType.toString().lastIndex('}') + 1)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <style xsi:type="style:SquareDescription" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.requirementTypeRef.name)" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="Requirements">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="Requirements" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -353,13 +353,13 @@
             </subContainerMappings>
             <subContainerMappings name="CapabilityDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::CapabilityDefinitionsType1" childrenPresentation="List">
               <subNodeMappings name="CapabilityDefinitionContainer" semanticCandidatesExpression="aql:self.capabilityDefinition" domainClass="tosca::TCapabilityDefinition">
-                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.capabilityType.toString().substring(self.capabilityType.toString().lastIndex('}') + 1)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <style xsi:type="style:SquareDescription" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.capabilityTypeRef.name" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="Capabilities">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="Capabilities" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -391,7 +391,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/NodeType.png" roundedCorner="true" widthComputationExpression="1" heightComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -416,7 +416,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RelationshipType.png" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -441,7 +441,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -466,7 +466,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -507,14 +507,14 @@
           </style>
         </containerMappings>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create NodeType" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create NodeType" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/NodeType.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TNodeType" referenceName="nodeType"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create CapabilityDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='CapabilityDefinitionsTypeContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create CapabilityDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='CapabilityDefinitionsTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -528,7 +528,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RequirementDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RequirementDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -537,29 +537,30 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::RequirementDefinitionsType1" referenceName="requirementDefinitions"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.requirementDefinitions">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRequirementDefinition" referenceName="requirement"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRequirementDefinition" referenceName="requirementDefinition"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Relationship">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RelationshipType" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RelationshipType.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().eContainer().eContainer()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRelationshipTemplate" referenceName="relationshipTemplate">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::SourceElementType" referenceName="sourceElement" variableName="sourceElement">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="aql:source.id"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TargetElementType" referenceName="targetElement" variableName="targetElement">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="aql:target.id"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRelationshipType" referenceName="relationshipType"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create CapabilityType" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TCapabilityType" referenceName="capabilityType"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RequirementType" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRequirementType" referenceName="requirementType"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

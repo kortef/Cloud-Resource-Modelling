@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="my.project.design.Activator"
+    <component class="de.ugoe.cs.oco.tosca.designer.Activator"
                id="de.ugoe.cs.oco.tosca.designer"
 	       name="project">
     </component>

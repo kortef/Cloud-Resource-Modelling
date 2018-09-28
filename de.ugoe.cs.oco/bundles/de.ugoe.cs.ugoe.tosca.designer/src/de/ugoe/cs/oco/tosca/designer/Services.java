@@ -1,4 +1,4 @@
-package my.project.design;
+package de.ugoe.cs.oco.tosca.designer;
 
 import org.eclipse.emf.ecore.EObject;
 

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.ugoe.cs.ugoe.tosca.designer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: my.project.design.Activator
+Bundle-Activator: de.ugoe.cs.oco.tosca.designer.Activator
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

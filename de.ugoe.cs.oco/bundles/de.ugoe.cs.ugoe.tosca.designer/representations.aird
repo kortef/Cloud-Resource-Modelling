@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://schemas.ogf.org/occi/core/ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tosca="http://oco.cs.ugoe.de/tosca" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_Ld4oALwREei6SftRrYJISw" selectedViews="_Ly1kULwREei6SftRrYJISw _eRo9YMMhEei6be62DTGcpQ" version="13.0.0.201804031646">
+    <semanticResources>platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_Ly1kULwREei6SftRrYJISw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_MTv5ALwREei6SftRrYJISw" name="My" repPath="#_L1AHgLwREei6SftRrYJISw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']"/>
+        <target xmi:type="ecore:Configuration" href="My.occic#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_eRo9YMMhEei6be62DTGcpQ">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_smIWsMMhEei6be62DTGcpQ" name="AMROC Types" repPath="#_siOuIMMhEei6be62DTGcpQ">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']"/>
+        <target xmi:type="tosca:Definitions_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#amroc_template"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_MTvR8LwREei6SftRrYJISw" name="My" uid="_L1AHgLwREei6SftRrYJISw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MTvR8bwREei6SftRrYJISw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_MTvR8rwREei6SftRrYJISw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MTwgELwREei6SftRrYJISw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_MTwgEbwREei6SftRrYJISw" type="Sirius" element="_MTvR8LwREei6SftRrYJISw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_NNBDULwREei6SftRrYJISw" type="2002" element="_NLfZULwREei6SftRrYJISw">
+          <children xmi:type="notation:Node" xmi:id="_NNBqYLwREei6SftRrYJISw" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_NNBqYbwREei6SftRrYJISw" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_NNDfkLwREei6SftRrYJISw" type="3009" element="_NMZYQLwREei6SftRrYJISw">
+              <children xmi:type="notation:Node" xmi:id="_NNDfk7wREei6SftRrYJISw" type="5004"/>
+              <children xmi:type="notation:Node" xmi:id="_NNDflLwREei6SftRrYJISw" type="7003">
+                <children xmi:type="notation:Node" xmi:id="_NNEtsLwREei6SftRrYJISw" type="3010" element="_NMbNcLwREei6SftRrYJISw">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_NNEtsbwREei6SftRrYJISw" fontName="CMU Sans Serif" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_NNEtsrwREei6SftRrYJISw"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_NNEts7wREei6SftRrYJISw" type="3010" element="_NM35YLwREei6SftRrYJISw">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_NNEttLwREei6SftRrYJISw" fontName="CMU Sans Serif" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_NNEttbwREei6SftRrYJISw"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_NNDflbwREei6SftRrYJISw"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_NNDflrwREei6SftRrYJISw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_NNDfl7wREei6SftRrYJISw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_NNDfkbwREei6SftRrYJISw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NNDfkrwREei6SftRrYJISw"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_NNBqYrwREei6SftRrYJISw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_NNBqY7wREei6SftRrYJISw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_NNBDUbwREei6SftRrYJISw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NNBDUrwREei6SftRrYJISw" x="324" y="180"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_MTwgErwREei6SftRrYJISw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NLfZULwREei6SftRrYJISw" name="resource1: Resource" childrenPresentation="VerticalStack">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NLv4ALwREei6SftRrYJISw" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,168">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_NMZYQLwREei6SftRrYJISw" name="Resource">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NMZ_ULwREei6SftRrYJISw" labelSize="12" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_NMbNcLwREei6SftRrYJISw" name="occi.core.id= urn:uuid:6df90c4b-65fa-4227-b9b7-bee68e7f9fcb">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_NM3SULwREei6SftRrYJISw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
+          <target xmi:type="ecore:AttributeState" href="My.occic#//@resources.0/@attributes.0"/>
+          <semanticElements xmi:type="ecore:AttributeState" href="My.occic#//@resources.0/@attributes.0"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_NM35YLwREei6SftRrYJISw" name="occi.core.title= resource1">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_NM5HgLwREei6SftRrYJISw" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
+          <target xmi:type="ecore:AttributeState" href="My.occic#//@resources.0/@attributes.1"/>
+          <semanticElements xmi:type="ecore:AttributeState" href="My.occic#//@resources.0/@attributes.1"/>
+        </ownedElements>
+        <target xmi:type="ecore:Resource" href="My.occic#//@resources.0"/>
+        <semanticElements xmi:type="ecore:Resource" href="My.occic#//@resources.0"/>
+      </ownedDiagramElements>
+      <target xmi:type="ecore:Resource" href="My.occic#//@resources.0"/>
+      <semanticElements xmi:type="ecore:Resource" href="My.occic#//@resources.0"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_MTvR9LwREei6SftRrYJISw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer"/>
+    <target xmi:type="ecore:Configuration" href="My.occic#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_smCQEMMhEei6be62DTGcpQ" name="AMROC Types" uid="_siOuIMMhEei6be62DTGcpQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_smCQEcMhEei6be62DTGcpQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_smCQEsMhEei6be62DTGcpQ"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_smuMkMMhEei6be62DTGcpQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_smuMkcMhEei6be62DTGcpQ" type="Sirius" element="_smCQEMMhEei6be62DTGcpQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_smzFEMMhEei6be62DTGcpQ" type="2002" element="_smCQFMMhEei6be62DTGcpQ">
+          <children xmi:type="notation:Node" xmi:id="_sm-rQMMhEei6be62DTGcpQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_sm_SUMMhEei6be62DTGcpQ" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_snBHgMMhEei6be62DTGcpQ" type="3008" element="_smCQFsMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snBukMMhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snCVoMMhEei6be62DTGcpQ" type="7002">
+                <children xmi:type="notation:Node" xmi:id="_snIcQMMhEei6be62DTGcpQ" type="3009" element="_smCQGMMhEei6be62DTGcpQ">
+                  <children xmi:type="notation:Node" xmi:id="_snJDUMMhEei6be62DTGcpQ" type="5004"/>
+                  <children xmi:type="notation:Node" xmi:id="_snJqYMMhEei6be62DTGcpQ" type="7003">
+                    <children xmi:type="notation:Node" xmi:id="_snOi4MMhEei6be62DTGcpQ" type="3010" element="_smCQGsMhEei6be62DTGcpQ">
+                      <styles xmi:type="notation:FontStyle" xmi:id="_snOi4cMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="8"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_snOi4sMhEei6be62DTGcpQ"/>
+                    </children>
+                    <children xmi:type="notation:Node" xmi:id="_snPJ8MMhEei6be62DTGcpQ" type="3010" element="_smCQHMMhEei6be62DTGcpQ">
+                      <styles xmi:type="notation:FontStyle" xmi:id="_snPJ8cMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="8"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_snPJ8sMhEei6be62DTGcpQ"/>
+                    </children>
+                    <children xmi:type="notation:Node" xmi:id="_snPxAMMhEei6be62DTGcpQ" type="3010" element="_smCQHsMhEei6be62DTGcpQ">
+                      <styles xmi:type="notation:FontStyle" xmi:id="_snPxAcMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="8"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_snPxAsMhEei6be62DTGcpQ"/>
+                    </children>
+                    <styles xmi:type="notation:SortingStyle" xmi:id="_snJqYcMhEei6be62DTGcpQ"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="_snJqYsMhEei6be62DTGcpQ"/>
+                    <styles xmi:type="notation:DrawerStyle" xmi:id="_snKRcMMhEei6be62DTGcpQ"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_snIcQcMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snIcQsMhEei6be62DTGcpQ" width="227" height="68"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snCVocMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snCVosMhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snBHgcMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snBHgsMhEei6be62DTGcpQ" x="31" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snC8sMMhEei6be62DTGcpQ" type="3008" element="_smCQIMMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snC8s8MhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snDjwMMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snDjwcMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snDjwsMhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snC8scMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snC8ssMhEei6be62DTGcpQ" x="379" y="85"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snDjw8MhEei6be62DTGcpQ" type="3008" element="_smCQIsMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snEK0MMhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snEK0cMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snEK0sMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snEK08MhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snDjxMMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snDjxcMhEei6be62DTGcpQ" x="379" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snEK1MMhEei6be62DTGcpQ" type="3008" element="_smCQJMMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snEK18MhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snEx4MMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snEx4cMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snEx4sMhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snEK1cMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snEK1sMhEei6be62DTGcpQ" x="667" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snEx48MhEei6be62DTGcpQ" type="3008" element="_smCQJsMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snFY8MMhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snFY8cMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snFY8sMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snFY88MhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snEx5MMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snEx5cMhEei6be62DTGcpQ" x="859" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snFY9MMhEei6be62DTGcpQ" type="3008" element="_smCQKMMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snFY98MhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snGAAMMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snGAAcMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snGAAsMhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snFY9cMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snFY9sMhEei6be62DTGcpQ" x="1027" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snGAA8MhEei6be62DTGcpQ" type="3008" element="_smCQKsMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snGABsMhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snGnEMMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snGnEcMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snGnEsMhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snGABMMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snGABcMhEei6be62DTGcpQ" x="1171" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_snHOIMMhEei6be62DTGcpQ" type="3008" element="_smCQLMMhEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_snH1MMMhEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_snH1McMhEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_snH1MsMhEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_snH1M8MhEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_snHOIcMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snHOIsMhEei6be62DTGcpQ" x="1339" y="28"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_XbbeEMMiEei6be62DTGcpQ" type="3008" element="_XbFf0MMiEei6be62DTGcpQ">
+              <children xmi:type="notation:Node" xmi:id="_XbehYMMiEei6be62DTGcpQ" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_XbehYcMiEei6be62DTGcpQ" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_XbehYsMiEei6be62DTGcpQ"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_XbehY8MiEei6be62DTGcpQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_XbcFIMMiEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="10" bold="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XbcFIcMiEei6be62DTGcpQ" x="667" y="85"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_sm_SUcMhEei6be62DTGcpQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_sm_SUsMhEei6be62DTGcpQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_smzFEcMhEei6be62DTGcpQ" fontName="CMU Sans Serif" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_smzFEsMhEei6be62DTGcpQ"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_smuMksMhEei6be62DTGcpQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQFMMhEei6be62DTGcpQ" name="AMROC Definition:  http://dist.swz.de/amroctemplate">
+      <target xmi:type="tosca:Definitions_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#amroc_template"/>
+      <semanticElements xmi:type="tosca:Definitions_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#amroc_template"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQFcMhEei6be62DTGcpQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQFsMhEei6be62DTGcpQ" name="AMROCNType" width="1" height="1" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tNodeType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#AMROCNType"/>
+        <semanticElements xmi:type="tosca:tNodeType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#AMROCNType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQF8MhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/NodeType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_smCQGMMhEei6be62DTGcpQ" name="Requirements">
+          <target xmi:type="tosca:RequirementDefinitions_._1_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions"/>
+          <semanticElements xmi:type="tosca:RequirementDefinitions_._1_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQGcMhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" borderSize="1" borderSizeComputationExpression="1">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_smCQGsMhEei6be62DTGcpQ" name="MPIClusterRDef[1..1]: MPIClusterRType">
+            <target xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.0"/>
+            <semanticElements xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_smCQG8MhEei6be62DTGcpQ" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_smCQHMMhEei6be62DTGcpQ" name="HostRDef[1..1]: HostRType">
+            <target xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.1"/>
+            <semanticElements xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_smCQHcMhEei6be62DTGcpQ" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']"/>
+          </ownedElements>
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_smCQHsMhEei6be62DTGcpQ" name="PackageRDef[1..1]: PackageRType">
+            <target xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.2"/>
+            <semanticElements xmi:type="tosca:tRequirementDefinition" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#//@definitions.0/@nodeType.0/@requirementDefinitions/@requirementDefinition.2"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_smCQH8MhEei6be62DTGcpQ" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" labelAlignment="LEFT" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']/@subNodeMappings[name='RequirementDefinitionContainer']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQIMMhEei6be62DTGcpQ" name="RunsOnMPIClusterRType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tRelationshipType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#RunsOnMPIClusterRType"/>
+        <semanticElements xmi:type="tosca:tRelationshipType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#RunsOnMPIClusterRType"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQIcMhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RelationshipType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQIsMhEei6be62DTGcpQ" name="DependsOnPackageRType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tRelationshipType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#DependsOnPackageRType"/>
+        <semanticElements xmi:type="tosca:tRelationshipType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#DependsOnPackageRType"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQI8MhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RelationshipType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQJMMhEei6be62DTGcpQ" name="MPIClusterCType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tCapabilityType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#MPIClusterCType"/>
+        <semanticElements xmi:type="tosca:tCapabilityType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#MPIClusterCType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQJcMhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQJsMhEei6be62DTGcpQ" name="PackageCType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tCapabilityType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#PackageCType"/>
+        <semanticElements xmi:type="tosca:tCapabilityType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#PackageCType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQJ8MhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/CapabilityType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQKMMhEei6be62DTGcpQ" name="HostRType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#HostRType"/>
+        <semanticElements xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#HostRType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQKcMhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQKsMhEei6be62DTGcpQ" name="PackageRType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#PackageRType"/>
+        <semanticElements xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#PackageRType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQK8MhEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_smCQLMMhEei6be62DTGcpQ" name="AnsibleRoleAType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tArtifactType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#AnsibleRoleAType"/>
+        <semanticElements xmi:type="tosca:tArtifactType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#AnsibleRoleAType"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_smCQLcMhEei6be62DTGcpQ" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='ArtifactTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='ArtifactTypeContainer']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_XbFf0MMiEei6be62DTGcpQ" name="MPIClusterRType" childrenPresentation="VerticalStack">
+        <target xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#MPIClusterRType"/>
+        <semanticElements xmi:type="tosca:tRequirementType" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#MPIClusterRType"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XbGG4MMiEei6be62DTGcpQ" labelSize="10" iconPath="/de.ugoe.cs.ugoe.tosca.designer/icons/RequirementType.png" borderSize="1" borderSizeComputationExpression="1">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_smCQLsMhEei6be62DTGcpQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/de.ugoe.cs.oco/bundles/de.ugoe.cs.ugoe.tosca.designer/description/project.odesign#//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer"/>
+    <target xmi:type="tosca:Definitions_._type" href="platform:/resource/swz-numerisch-intensive-simulation/metamodels/amroc/amroc_template.tosca#amroc_template"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

@@ -6959,13 +6959,22 @@ public interface ToscaPackage extends EPackage {
 	int TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE = TENTITY_TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Required Capability Type Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF = TENTITY_TYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>TRequirement Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREQUIREMENT_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 1;
+	int TREQUIREMENT_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>TRequirement Type</em>' class.
@@ -11235,6 +11244,17 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTRequirementType_RequiredCapabilityType();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef <em>Required Capability Type Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Required Capability Type Ref</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef()
+	 * @see #getTRequirementType()
+	 * @generated
+	 */
+	EReference getTRequirementType_RequiredCapabilityTypeRef();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TServiceTemplate <em>TService Template</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14667,6 +14687,14 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE = eINSTANCE.getTRequirementType_RequiredCapabilityType();
+
+		/**
+		 * The meta object literal for the '<em><b>Required Capability Type Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF = eINSTANCE.getTRequirementType_RequiredCapabilityTypeRef();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TServiceTemplateImpl <em>TService Template</em>}' class.

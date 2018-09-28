@@ -4153,6 +4153,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTRequirementType_RequiredCapabilityTypeRef() {
+		return (EReference)tRequirementTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTServiceTemplate() {
 		return tServiceTemplateEClass;
 	}
@@ -5027,6 +5036,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		tRequirementTypeEClass = createEClass(TREQUIREMENT_TYPE);
 		createEAttribute(tRequirementTypeEClass, TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE);
+		createEReference(tRequirementTypeEClass, TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF);
 
 		tServiceTemplateEClass = createEClass(TSERVICE_TEMPLATE);
 		createEReference(tServiceTemplateEClass, TSERVICE_TEMPLATE__TAGS);
@@ -5592,6 +5602,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		initEClass(tRequirementTypeEClass, TRequirementType.class, "TRequirementType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTRequirementType_RequiredCapabilityType(), theXMLTypePackage.getQName(), "requiredCapabilityType", null, 0, 1, TRequirementType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTRequirementType_RequiredCapabilityTypeRef(), this.getTCapabilityType(), null, "requiredCapabilityTypeRef", null, 0, 1, TRequirementType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(tServiceTemplateEClass, TServiceTemplate.class, "TServiceTemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTServiceTemplate_Tags(), this.getTTags(), null, "tags", null, 0, 1, TServiceTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

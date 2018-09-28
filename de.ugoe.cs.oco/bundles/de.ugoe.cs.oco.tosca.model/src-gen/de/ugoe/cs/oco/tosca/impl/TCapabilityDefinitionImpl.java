@@ -7,7 +7,6 @@ import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TDefinitions;
-import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
@@ -16,12 +15,10 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc -->

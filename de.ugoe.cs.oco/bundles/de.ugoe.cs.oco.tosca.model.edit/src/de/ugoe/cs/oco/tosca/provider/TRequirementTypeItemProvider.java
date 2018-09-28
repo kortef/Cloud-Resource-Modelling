@@ -46,6 +46,7 @@ public class TRequirementTypeItemProvider extends TEntityTypeItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addRequiredCapabilityTypePropertyDescriptor(object);
+			addRequiredCapabilityTypeRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,6 +69,28 @@ public class TRequirementTypeItemProvider extends TEntityTypeItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Required Capability Type Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequiredCapabilityTypeRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TRequirementType_requiredCapabilityTypeRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TRequirementType_requiredCapabilityTypeRef_feature", "_UI_TRequirementType_type"),
+				 ToscaPackage.Literals.TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

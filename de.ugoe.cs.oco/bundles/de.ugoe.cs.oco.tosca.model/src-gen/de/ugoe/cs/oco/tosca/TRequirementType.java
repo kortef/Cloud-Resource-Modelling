@@ -14,6 +14,7 @@ import javax.xml.namespace.QName;
  * </p>
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityType <em>Required Capability Type</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef <em>Required Capability Type Ref</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementType()
@@ -47,5 +48,31 @@ public interface TRequirementType extends TEntityType {
 	 * @generated
 	 */
 	void setRequiredCapabilityType(QName value);
+
+	/**
+	 * Returns the value of the '<em><b>Required Capability Type Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Required Capability Type Ref</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Required Capability Type Ref</em>' reference.
+	 * @see #setRequiredCapabilityTypeRef(TCapabilityType)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementType_RequiredCapabilityTypeRef()
+	 * @model transient="true" derived="true"
+	 * @generated
+	 */
+	TCapabilityType getRequiredCapabilityTypeRef();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef <em>Required Capability Type Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Required Capability Type Ref</em>' reference.
+	 * @see #getRequiredCapabilityTypeRef()
+	 * @generated
+	 */
+	void setRequiredCapabilityTypeRef(TCapabilityType value);
 
 } // TRequirementType

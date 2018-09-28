@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TOSCA Configuration Diagram" showOnStartup="true" domainClass="tosca::TTopologyTemplate" enablePopupBars="true">
       <metamodel href="http://oco.cs.ugoe.de/tosca#/"/>
       <defaultLayer name="ConfigurationDesigner" label="ConfigurationDesigner">
-        <edgeMappings name="RelationshipTemplate" label="RelationshipTemplate" preconditionExpression="true" semanticCandidatesExpression="feature:relationshipTemplate" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode']" targetFinderExpression="aql:self.eContainer().eAllContents()->filter(tosca::TCapability)->any(c | c.id.toString().equals(self.targetElement.ref.toString()))" sourceFinderExpression="aql:self.eContainer().eAllContents()->filter(tosca::TRequirement)->any(r | r.id.toString().equals(self.sourceElement.ref.toString()))" domainClass="tosca::TRelationshipTemplate" useDomainElement="true">
+        <edgeMappings name="RelationshipTemplate" label="RelationshipTemplate" preconditionExpression="true" semanticCandidatesExpression="feature:relationshipTemplate" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode']" targetFinderExpression="aql:self.targetElement.ref" sourceFinderExpression="aql:self.sourceElement.ref" domainClass="tosca::TRelationshipTemplate" useDomainElement="true">
           <style lineStyle="dash" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
@@ -186,21 +186,26 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TNodeTemplate" referenceName="nodeTemplate">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilitiesType" referenceName="capabilities"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilitiesType" referenceName="capability"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Capability" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Capability" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:capabilities">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TCapability" referenceName="capability"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.capabilities = null">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilitiesType" referenceName="capabilities"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.capabilities">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TCapability" referenceName="capability"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Requirement" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Requirement" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -220,14 +225,54 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().eContainer().eContainer()">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRelationshipTemplate" referenceName="relationshipTemplate">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::SourceElementType" referenceName="sourceElement" variableName="sourceElement">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="aql:source.id"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:source"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TargetElementType" referenceName="targetElement" variableName="targetElement">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="aql:target.id"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:target"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AddAllCapabilities" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='CapabilityContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.capabilities = null">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilitiesType" referenceName="capabilities"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.typeRef.eAllContents()->filter(tosca::TCapabilityDefinition)" iteratorName="cap">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.capabilities">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TCapability" referenceName="capability">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:cap.name"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AddAllRequirements" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@subContainerMappings[name='RequirementContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requirements = null">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::RequirementsType" referenceName="requirements"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.typeRef.eAllContents()->filter(tosca::TRequirementDefinition)" iteratorName="req">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.requirements">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRequirement" referenceName="requirement">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:req.name"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -290,7 +335,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="RequirementDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::RequirementDefinitionsType" childrenPresentation="List">
+            <subContainerMappings name="RequirementDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::RequirementDefinitionsType1" childrenPresentation="List">
               <subNodeMappings name="RequirementDefinitionContainer" semanticCandidatesExpression="aql:self.requirementDefinition" domainClass="tosca::TRequirementDefinition">
                 <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.requirementType.toString().substring(self.requirementType.toString().lastIndex('}') + 1)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -306,7 +351,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="CapabilityDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::CapabilityDefinitionsType" childrenPresentation="List">
+            <subContainerMappings name="CapabilityDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::CapabilityDefinitionsType1" childrenPresentation="List">
               <subNodeMappings name="CapabilityDefinitionContainer" semanticCandidatesExpression="aql:self.capabilityDefinition" domainClass="tosca::TCapabilityDefinition">
                 <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.capabilityType.toString().substring(self.capabilityType.toString().lastIndex('}') + 1)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -466,16 +511,16 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TNodeType" referenceName="nodeTemplate"/>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TNodeType" referenceName="nodeType"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create CapabilityDefinition">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create CapabilityDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='CapabilityDefinitionsTypeContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.capabilityDefinitions = null">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilityDefinitionsType" referenceName="requirementDefinitions"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::CapabilityDefinitionsType1" referenceName="capabilityDefinitions"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.capabilityDefinitions">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TCapabilityDefinition" referenceName="capabilityDefinition"/>
                   </subModelOperations>
@@ -483,13 +528,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RequirementDefinition">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create RequirementDefinition" containerMappings="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']/@subContainerMappings[name='RequirementDefinitionsTypeContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requirementDefinitions = null">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::RequirementDefinitionsType" referenceName="requirementDefinitions"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::RequirementDefinitionsType1" referenceName="requirementDefinitions"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.requirementDefinitions">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRequirementDefinition" referenceName="requirement"/>

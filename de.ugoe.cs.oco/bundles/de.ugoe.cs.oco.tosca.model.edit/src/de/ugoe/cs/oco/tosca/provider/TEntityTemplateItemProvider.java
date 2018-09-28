@@ -50,6 +50,7 @@ public class TEntityTemplateItemProvider extends TExtensibleElementsItemProvider
 
 			addIdPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addTypeRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -94,6 +95,28 @@ public class TEntityTemplateItemProvider extends TExtensibleElementsItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Type Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypeRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TEntityTemplate_typeRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TEntityTemplate_typeRef_feature", "_UI_TEntityTemplate_type"),
+				 ToscaPackage.Literals.TENTITY_TEMPLATE__TYPE_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

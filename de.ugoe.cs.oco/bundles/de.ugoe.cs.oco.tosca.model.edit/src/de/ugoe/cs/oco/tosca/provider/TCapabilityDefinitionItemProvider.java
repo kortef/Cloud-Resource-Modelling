@@ -52,6 +52,7 @@ public class TCapabilityDefinitionItemProvider extends TExtensibleElementsItemPr
 			addLowerBoundPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addUpperBoundPropertyDescriptor(object);
+			addCapabilityTypeRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -140,6 +141,28 @@ public class TCapabilityDefinitionItemProvider extends TExtensibleElementsItemPr
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Capability Type Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCapabilityTypeRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TCapabilityDefinition_capabilityTypeRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TCapabilityDefinition_capabilityTypeRef_feature", "_UI_TCapabilityDefinition_type"),
+				 ToscaPackage.Literals.TCAPABILITY_DEFINITION__CAPABILITY_TYPE_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

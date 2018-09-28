@@ -48,6 +48,7 @@ public class TImportItemProvider extends TExtensibleElementsItemProvider {
 			addImportTypePropertyDescriptor(object);
 			addLocationPropertyDescriptor(object);
 			addNamespacePropertyDescriptor(object);
+			addResourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,6 +120,28 @@ public class TImportItemProvider extends TExtensibleElementsItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Resource feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TImport_resource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TImport_resource_feature", "_UI_TImport_type"),
+				 ToscaPackage.Literals.TIMPORT__RESOURCE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns TImport.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -159,6 +182,7 @@ public class TImportItemProvider extends TExtensibleElementsItemProvider {
 			case ToscaPackage.TIMPORT__IMPORT_TYPE:
 			case ToscaPackage.TIMPORT__LOCATION:
 			case ToscaPackage.TIMPORT__NAMESPACE:
+			case ToscaPackage.TIMPORT__RESOURCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

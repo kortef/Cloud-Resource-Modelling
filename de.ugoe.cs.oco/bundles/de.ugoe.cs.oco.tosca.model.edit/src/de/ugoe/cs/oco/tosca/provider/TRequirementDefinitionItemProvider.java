@@ -52,6 +52,7 @@ public class TRequirementDefinitionItemProvider extends TExtensibleElementsItemP
 			addNamePropertyDescriptor(object);
 			addRequirementTypePropertyDescriptor(object);
 			addUpperBoundPropertyDescriptor(object);
+			addRequirementTypeRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -140,6 +141,28 @@ public class TRequirementDefinitionItemProvider extends TExtensibleElementsItemP
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Requirement Type Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequirementTypeRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TRequirementDefinition_requirementTypeRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TRequirementDefinition_requirementTypeRef_feature", "_UI_TRequirementDefinition_type"),
+				 ToscaPackage.Literals.TREQUIREMENT_DEFINITION__REQUIREMENT_TYPE_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

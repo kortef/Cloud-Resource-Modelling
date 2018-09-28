@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.ugoe.cs.oco.tosca.model;singleton:=true
+Automatic-Module-Name: de.ugoe.cs.oco.tosca.model
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -12,6 +13,8 @@ Export-Package: de.ugoe.cs.oco.tosca,
  de.ugoe.cs.oco.tosca.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ocl.pivot;visibility:=reexport,
+ org.eclipse.ocl.examples.codegen;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit,
  org.junit.jupiter.api,
@@ -26,5 +29,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit.vintage.engine,
  org.hamcrest.core,
  org.opentest4j,
- org.apiguardian
+ org.apiguardian,
+ org.eclipse.emf.common,
+ org.eclipse.xsd
 Bundle-ActivationPolicy: lazy

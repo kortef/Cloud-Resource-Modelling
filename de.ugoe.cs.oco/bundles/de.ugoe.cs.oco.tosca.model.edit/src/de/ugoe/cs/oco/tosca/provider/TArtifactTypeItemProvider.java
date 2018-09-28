@@ -4,7 +4,6 @@ package de.ugoe.cs.oco.tosca.provider;
 
 
 import de.ugoe.cs.oco.tosca.TArtifactType;
-
 import java.util.Collection;
 import java.util.List;
 

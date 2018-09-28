@@ -295,10 +295,18 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CapabilityRef" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']" targetFinderExpression="aql:self.eContainer().eAllContents()->filter(tosca::TCapabilityType)->any(ct | ct.name.equals(self.requiredCapabilityType.toString().substring(self.requiredCapabilityType.toString().lastIndex('}') + 1)))">
+        <edgeMappings name="CapabilityRef" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']" targetFinderExpression="aql:self.requiredCapabilityTypeRef">
           <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="requiredCapability">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="UsesType" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']" targetFinderExpression="aql:self.requirementDefinitions.requirementDefinition->collect(rd | rd.requirementTypeRef)">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="uses">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>

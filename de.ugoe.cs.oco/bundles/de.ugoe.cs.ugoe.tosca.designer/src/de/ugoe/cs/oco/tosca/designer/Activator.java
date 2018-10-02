@@ -13,7 +13,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "my.project.design";
+    public static final String PLUGIN_ID = "de.ugoe.cs.oco.tosca.designer";
 
     // The shared instance
     private static Activator plugin;

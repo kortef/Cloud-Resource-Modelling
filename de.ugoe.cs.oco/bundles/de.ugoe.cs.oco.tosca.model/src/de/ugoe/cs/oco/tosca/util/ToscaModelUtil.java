@@ -28,7 +28,7 @@ public class ToscaModelUtil {
 				if (imp.getImportType().equals(ToscaPackage.eNS_URI) || (imp.getImportType().equals("http://docs.oasis-open.org/tosca/ns/2011/12") 
 						&& imp.getNamespace().equals(namespaceURI))) {
 					Resource resource = imp.getResource();
-					entityTypeRef = (TRequirementType) resource.getEObject(qName.getLocalPart());
+					entityTypeRef = (TEntityType) resource.getEObject(qName.getLocalPart());
 				}
 			}
 		}

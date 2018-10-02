@@ -5,6 +5,7 @@ package de.ugoe.cs.oco.tosca.impl;
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TDocumentation;
+import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
@@ -132,10 +133,20 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<DefinitionsType> getDefinitions() {
-		return getMixed().list(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS);
+		EList<DefinitionsType> definitions = getMixed().list(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS);
+		
+		
+		// Load all imports
+		for (DefinitionsType definition: definitions) {
+			for (TImport imp: definition.getImport()) {
+				imp.getResource();
+			}
+			
+		}
+		return definitions;
 	}
 
 	/**

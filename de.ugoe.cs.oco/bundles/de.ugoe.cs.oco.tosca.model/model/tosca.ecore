@@ -578,6 +578,8 @@
         <details key="processing" value="lax"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertiesElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertiesType1">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

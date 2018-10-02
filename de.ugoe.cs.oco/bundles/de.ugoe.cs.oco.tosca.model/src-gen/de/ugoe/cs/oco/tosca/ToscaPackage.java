@@ -2172,13 +2172,22 @@ public interface ToscaPackage extends EPackage {
 	int PROPERTIES_TYPE__ANY = 0;
 
 	/**
+	 * The feature id for the '<em><b>Properties Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_TYPE__PROPERTIES_ELEMENT = 1;
+
+	/**
 	 * The number of structural features of the '<em>Properties Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES_TYPE_FEATURE_COUNT = 1;
+	int PROPERTIES_TYPE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Properties Type</em>' class.
@@ -8416,6 +8425,17 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getPropertiesType_Any();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.PropertiesType#getPropertiesElement <em>Properties Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Properties Element</em>'.
+	 * @see de.ugoe.cs.oco.tosca.PropertiesType#getPropertiesElement()
+	 * @see #getPropertiesType()
+	 * @generated
+	 */
+	EReference getPropertiesType_PropertiesElement();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.PropertiesType1 <em>Properties Type1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12453,6 +12473,14 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTIES_TYPE__ANY = eINSTANCE.getPropertiesType_Any();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTIES_TYPE__PROPERTIES_ELEMENT = eINSTANCE.getPropertiesType_PropertiesElement();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.PropertiesType1Impl <em>Properties Type1</em>}' class.

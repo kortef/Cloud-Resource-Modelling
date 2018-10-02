@@ -1786,6 +1786,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPropertiesType_PropertiesElement() {
+		return (EReference)propertiesTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertiesType1() {
 		return propertiesType1EClass;
 	}
@@ -4708,6 +4717,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		propertiesTypeEClass = createEClass(PROPERTIES_TYPE);
 		createEAttribute(propertiesTypeEClass, PROPERTIES_TYPE__ANY);
+		createEReference(propertiesTypeEClass, PROPERTIES_TYPE__PROPERTIES_ELEMENT);
 
 		propertiesType1EClass = createEClass(PROPERTIES_TYPE1);
 		createEAttribute(propertiesType1EClass, PROPERTIES_TYPE1__ANY);
@@ -5274,6 +5284,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		initEClass(propertiesTypeEClass, PropertiesType.class, "PropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, 1, PropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertiesType_PropertiesElement(), ecorePackage.getEObject(), null, "propertiesElement", null, 0, 1, PropertiesType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertiesType1EClass, PropertiesType1.class, "PropertiesType1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesType1_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, 1, PropertiesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

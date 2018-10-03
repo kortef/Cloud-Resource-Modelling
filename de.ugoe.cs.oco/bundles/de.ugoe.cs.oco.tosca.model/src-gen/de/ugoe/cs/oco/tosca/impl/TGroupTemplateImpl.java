@@ -12,6 +12,7 @@ import de.ugoe.cs.oco.tosca.ToscaPackage;
 
 import java.util.Collection;
 
+import javax.xml.namespace.QName;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -171,7 +172,7 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> member;
+	protected EList<QName> member;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -482,9 +483,9 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getMember() {
+	public EList<QName> getMember() {
 		if (member == null) {
-			member = new EDataTypeUniqueEList<String>(String.class, this, ToscaPackage.TGROUP_TEMPLATE__MEMBER);
+			member = new EDataTypeUniqueEList<QName>(QName.class, this, ToscaPackage.TGROUP_TEMPLATE__MEMBER);
 		}
 		return member;
 	}
@@ -569,7 +570,7 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 				return;
 			case ToscaPackage.TGROUP_TEMPLATE__MEMBER:
 				getMember().clear();
-				getMember().addAll((Collection<? extends String>)newValue);
+				getMember().addAll((Collection<? extends QName>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

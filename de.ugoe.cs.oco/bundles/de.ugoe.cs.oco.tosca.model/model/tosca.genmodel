@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.ugoe.cs.oco.tosca.model/src-gen" modelPluginID="de.ugoe.cs.oco.tosca.model"
     modelName="Tosca" modelPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    language="" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
+    language="" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace ../../org.eclipse.xsd/model/XSD.genmodel#//xsd"
     interfaceNamePattern="" operationReflection="true" importOrganizing="true" decoration="Live">
   <foreignModel>tosca.ecore</foreignModel>
   <genPackages prefix="Tosca" basePackage="de.ugoe.cs.oco" resource="XML" disposableProviderFactory="true"
@@ -143,9 +143,11 @@
     <genClasses ecoreClass="tosca.ecore#//PropertiesDefinitionType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesDefinitionType/element"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesDefinitionType/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesDefinitionType/elementRef"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//PropertiesType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesType/any"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType/propertiesElement"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//PropertiesType1">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesType1/any"/>
@@ -472,6 +474,7 @@
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TRequirementType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TRequirementType/requiredCapabilityType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TRequirementType/requiredCapabilityTypeRef"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TServiceTemplate">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TServiceTemplate/tags"/>

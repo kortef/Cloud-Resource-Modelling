@@ -20,4 +20,5 @@
             type="tosca"
             class="de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl"/>
    </extension>
+
 </plugin>

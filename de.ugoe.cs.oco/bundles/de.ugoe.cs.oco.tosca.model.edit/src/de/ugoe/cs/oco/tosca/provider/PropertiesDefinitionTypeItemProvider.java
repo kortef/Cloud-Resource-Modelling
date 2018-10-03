@@ -63,6 +63,7 @@ public class PropertiesDefinitionTypeItemProvider
 
 			addElementPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
+			addElementRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -107,6 +108,28 @@ public class PropertiesDefinitionTypeItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Element Ref feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addElementRefPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PropertiesDefinitionType_elementRef_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertiesDefinitionType_elementRef_feature", "_UI_PropertiesDefinitionType_type"),
+				 ToscaPackage.Literals.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -2,9 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.TBoundaryDefinitions;
-import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.TPlans;
 import de.ugoe.cs.oco.tosca.TServiceTemplate;
 import de.ugoe.cs.oco.tosca.TTags;
@@ -273,7 +271,6 @@ public class TServiceTemplateImpl extends TExtensibleElementsImpl implements TSe
 	 * @generated
 	 */
 	public TTopologyTemplate getTopologyTemplate() {
-		// Load all imports	
 		return topologyTemplate;
 	}
 

@@ -2135,13 +2135,22 @@ public interface ToscaPackage extends EPackage {
 	int PROPERTIES_DEFINITION_TYPE__TYPE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Element Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_DEFINITION_TYPE__ELEMENT_REF = 2;
+
+	/**
 	 * The number of structural features of the '<em>Properties Definition Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES_DEFINITION_TYPE_FEATURE_COUNT = 2;
+	int PROPERTIES_DEFINITION_TYPE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Properties Definition Type</em>' class.
@@ -8404,6 +8413,17 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getPropertiesDefinitionType_Type();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef <em>Element Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Element Ref</em>'.
+	 * @see de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef()
+	 * @see #getPropertiesDefinitionType()
+	 * @generated
+	 */
+	EReference getPropertiesDefinitionType_ElementRef();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.PropertiesType <em>Properties Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12455,6 +12475,14 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTIES_DEFINITION_TYPE__TYPE = eINSTANCE.getPropertiesDefinitionType_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Element Ref</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTIES_DEFINITION_TYPE__ELEMENT_REF = eINSTANCE.getPropertiesDefinitionType_ElementRef();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.PropertiesTypeImpl <em>Properties Type</em>}' class.

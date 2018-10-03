@@ -5,6 +5,7 @@ package de.ugoe.cs.oco.tosca;
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xsd.XSDElementDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElement <em>Element</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getType <em>Type</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef <em>Element Ref</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesDefinitionType()
@@ -77,5 +79,31 @@ public interface PropertiesDefinitionType extends EObject {
 	 * @generated
 	 */
 	void setType(QName value);
+
+	/**
+	 * Returns the value of the '<em><b>Element Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Ref</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Ref</em>' reference.
+	 * @see #setElementRef(XSDElementDeclaration)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesDefinitionType_ElementRef()
+	 * @model transient="true" derived="true"
+	 * @generated
+	 */
+	XSDElementDeclaration getElementRef();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef <em>Element Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Element Ref</em>' reference.
+	 * @see #getElementRef()
+	 * @generated
+	 */
+	void setElementRef(XSDElementDeclaration value);
 
 } // PropertiesDefinitionType

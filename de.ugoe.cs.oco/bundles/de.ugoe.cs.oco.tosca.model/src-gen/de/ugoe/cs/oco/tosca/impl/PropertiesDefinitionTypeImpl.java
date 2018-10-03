@@ -4,6 +4,7 @@ package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
 
 import javax.xml.namespace.QName;
 
@@ -11,8 +12,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.xsd.XSDElementDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesDefinitionTypeImpl#getElement <em>Element</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesDefinitionTypeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesDefinitionTypeImpl#getElementRef <em>Element Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +72,16 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 	 * @ordered
 	 */
 	protected QName type = TYPE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getElementRef() <em>Element Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected XSDElementDeclaration elementRef;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +147,52 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public XSDElementDeclaration getElementRef() {
+		if (elementRef == null) {
+			if (getElement() != null) {
+				elementRef = ToscaModelUtil.resolveElementDeclaration(this, getElement());
+			}
+		}
+		if (elementRef != null && elementRef.eIsProxy()) {
+			InternalEObject oldElementRef = (InternalEObject)elementRef;
+			elementRef = (XSDElementDeclaration)eResolveProxy(oldElementRef);
+			if (elementRef != oldElementRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF, oldElementRef, elementRef));
+			}
+		}
+		return elementRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XSDElementDeclaration basicGetElementRef() {
+		return elementRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setElementRef(XSDElementDeclaration newElementRef) {
+		XSDElementDeclaration oldElementRef = elementRef;
+		elementRef = newElementRef;
+		QName derivedName = new QName(newElementRef.getTargetNamespace(), newElementRef.getQName());
+		setElement(derivedName);
+		
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF, oldElementRef, elementRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -142,6 +202,9 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 				return getElement();
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__TYPE:
 				return getType();
+			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF:
+				if (resolve) return getElementRef();
+				return basicGetElementRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -159,6 +222,9 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 				return;
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__TYPE:
 				setType((QName)newValue);
+				return;
+			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF:
+				setElementRef((XSDElementDeclaration)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -178,6 +244,9 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF:
+				setElementRef((XSDElementDeclaration)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -194,6 +263,8 @@ public class PropertiesDefinitionTypeImpl extends MinimalEObjectImpl.Container i
 				return ELEMENT_EDEFAULT == null ? element != null : !ELEMENT_EDEFAULT.equals(element);
 			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case ToscaPackage.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF:
+				return elementRef != null;
 		}
 		return super.eIsSet(featureID);
 	}

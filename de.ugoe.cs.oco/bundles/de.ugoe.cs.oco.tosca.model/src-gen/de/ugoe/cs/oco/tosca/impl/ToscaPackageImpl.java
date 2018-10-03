@@ -135,6 +135,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.namespace.XMLNamespacePackage;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.xsd.XSDPackage;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -1080,6 +1082,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		// Initialize simple dependencies
 		XMLNamespacePackage.eINSTANCE.eClass();
+		XSDPackage.eINSTANCE.eClass();
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -1761,6 +1764,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 */
 	public EAttribute getPropertiesDefinitionType_Type() {
 		return (EAttribute)propertiesDefinitionTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPropertiesDefinitionType_ElementRef() {
+		return (EReference)propertiesDefinitionTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4714,6 +4726,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		propertiesDefinitionTypeEClass = createEClass(PROPERTIES_DEFINITION_TYPE);
 		createEAttribute(propertiesDefinitionTypeEClass, PROPERTIES_DEFINITION_TYPE__ELEMENT);
 		createEAttribute(propertiesDefinitionTypeEClass, PROPERTIES_DEFINITION_TYPE__TYPE);
+		createEReference(propertiesDefinitionTypeEClass, PROPERTIES_DEFINITION_TYPE__ELEMENT_REF);
 
 		propertiesTypeEClass = createEClass(PROPERTIES_TYPE);
 		createEAttribute(propertiesTypeEClass, PROPERTIES_TYPE__ANY);
@@ -5132,6 +5145,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		// Obtain other dependent packages
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XSDPackage theXSDPackage = (XSDPackage)EPackage.Registry.INSTANCE.getEPackage(XSDPackage.eNS_URI);
 		XMLNamespacePackage theXMLNamespacePackage = (XMLNamespacePackage)EPackage.Registry.INSTANCE.getEPackage(XMLNamespacePackage.eNS_URI);
 
 		// Create type parameters
@@ -5281,6 +5295,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEClass(propertiesDefinitionTypeEClass, PropertiesDefinitionType.class, "PropertiesDefinitionType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesDefinitionType_Element(), theXMLTypePackage.getQName(), "element", null, 0, 1, PropertiesDefinitionType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertiesDefinitionType_Type(), theXMLTypePackage.getQName(), "type", null, 0, 1, PropertiesDefinitionType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertiesDefinitionType_ElementRef(), theXSDPackage.getXSDElementDeclaration(), null, "elementRef", null, 0, 1, PropertiesDefinitionType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertiesTypeEClass, PropertiesType.class, "PropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, 1, PropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5467,7 +5482,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getTGroupTemplate_MaxInstances(), this.getMaxInstancesType(), "maxInstances", "1", 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTGroupTemplate_MinInstances(), theXMLTypePackage.getInt(), "minInstances", "1", 1, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTGroupTemplate_Name(), ecorePackage.getEString(), "name", null, 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTGroupTemplate_Member(), ecorePackage.getEString(), "member", null, 0, -1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTGroupTemplate_Member(), theXMLTypePackage.getQName(), "member", null, 0, -1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tGroupTypeEClass, TGroupType.class, "TGroupType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTGroupType_RequirementDefinitions(), this.getRequirementDefinitionsType(), null, "requirementDefinitions", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -7414,6 +7429,14 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
+		   });	
+		addAnnotation
+		  (getTGroupTemplate_Member(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "Member",
+			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation
 		  (tGroupTypeEClass, 

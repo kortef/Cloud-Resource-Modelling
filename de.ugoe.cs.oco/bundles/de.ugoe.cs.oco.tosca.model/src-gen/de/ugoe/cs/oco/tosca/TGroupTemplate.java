@@ -2,6 +2,7 @@
  */
 package de.ugoe.cs.oco.tosca;
 
+import javax.xml.namespace.QName;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -274,7 +275,7 @@ public interface TGroupTemplate extends TEntityTemplate {
 
 	/**
 	 * Returns the value of the '<em><b>Member</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * The list contents are of type {@link javax.xml.namespace.QName}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Member</em>' attribute list isn't clear,
@@ -283,9 +284,10 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Member</em>' attribute list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Member()
-	 * @model
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
+	 *        extendedMetaData="kind='element' name='Member' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<String> getMember();
+	EList<QName> getMember();
 
 } // TGroupTemplate

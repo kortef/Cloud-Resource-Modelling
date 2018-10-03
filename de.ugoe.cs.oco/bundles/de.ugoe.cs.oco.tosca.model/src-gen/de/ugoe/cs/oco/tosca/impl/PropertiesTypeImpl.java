@@ -2,23 +2,13 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.DocumentRoot;
-import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.PropertiesType;
-import de.ugoe.cs.oco.tosca.TDefinitions;
-import de.ugoe.cs.oco.tosca.TEntityTemplate;
-import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
-
-import javax.xml.namespace.QName;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;

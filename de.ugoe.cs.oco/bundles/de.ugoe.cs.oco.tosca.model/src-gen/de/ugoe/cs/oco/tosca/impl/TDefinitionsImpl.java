@@ -234,12 +234,13 @@ public class TDefinitionsImpl extends TExtensibleElementsImpl implements TDefini
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<TImport> getImport() {
 		if (import_ == null) {
 			import_ = new EObjectContainmentEList<TImport>(TImport.class, this, ToscaPackage.TDEFINITIONS__IMPORT);
 		}
+		
 		return import_;
 	}
 

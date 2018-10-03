@@ -5,6 +5,7 @@ import javax.xml.namespace.QName;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xsd.XSDElementDeclaration;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TDefinitions;
@@ -35,5 +36,22 @@ public class ToscaModelUtil {
 		
 		
 		return entityTypeRef;
+	}
+	
+	public static XSDElementDeclaration resolveElementDeclaration(EObject object, QName qName) {
+		XSDElementDeclaration elementDeclarationRef = null;
+		String namespaceURI = qName.getNamespaceURI();
+		DocumentRoot root = (DocumentRoot) object.eResource().getContents().get(0);
+		
+		EList<TImport> imports = ((TDefinitions) root.getDefinitions().get(0)).getImport();
+		for (TImport imp:imports) {
+			if (imp.getImportType().equals("http://www.w3.org/2001/XMLSchema") 
+					&& imp.getNamespace().equals(namespaceURI)) {
+				Resource resource = imp.getResource();
+				elementDeclarationRef = (XSDElementDeclaration) resource.getEObject(qName.getLocalPart());
+			}
+		}
+		
+		return elementDeclarationRef;
 	}
 }

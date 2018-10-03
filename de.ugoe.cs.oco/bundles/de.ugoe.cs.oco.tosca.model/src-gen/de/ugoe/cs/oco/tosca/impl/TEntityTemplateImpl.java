@@ -299,7 +299,7 @@ public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implem
 		QName derivedName = null;
 		
 		if (remoteDef.equals(ownDef)) {
-			derivedName = new QName(newTypeRef.getName());
+			derivedName = new QName(ownDef.getTargetNamespace(), newTypeRef.getName());
 		}
 		else {
 			derivedName = new QName(remoteDef.getTargetNamespace(), newTypeRef.getName());

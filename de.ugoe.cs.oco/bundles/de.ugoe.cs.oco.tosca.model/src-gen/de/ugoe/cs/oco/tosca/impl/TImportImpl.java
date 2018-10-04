@@ -5,6 +5,7 @@ package de.ugoe.cs.oco.tosca.impl;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -44,7 +45,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String IMPORT_TYPE_EDEFAULT = null;
+	protected static final ValidImportTypes IMPORT_TYPE_EDEFAULT = ValidImportTypes.TOSCA_TYPE;
 
 	/**
 	 * The cached value of the '{@link #getImportType() <em>Import Type</em>}' attribute.
@@ -54,7 +55,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	 * @generated
 	 * @ordered
 	 */
-	protected String importType = IMPORT_TYPE_EDEFAULT;
+	protected ValidImportTypes importType = IMPORT_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
@@ -140,7 +141,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getImportType() {
+	public ValidImportTypes getImportType() {
 		return importType;
 	}
 
@@ -149,9 +150,9 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImportType(String newImportType) {
-		String oldImportType = importType;
-		importType = newImportType;
+	public void setImportType(ValidImportTypes newImportType) {
+		ValidImportTypes oldImportType = importType;
+		importType = newImportType == null ? IMPORT_TYPE_EDEFAULT : newImportType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TIMPORT__IMPORT_TYPE, oldImportType, importType));
 	}
@@ -218,7 +219,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 							resource = resourceSet.createResource(resourceURI, ContentHandler.UNSPECIFIED_CONTENT_TYPE);
 						}
 					}
-					if (getImportType().equals("http://www.w3.org/2001/XMLSchema")){
+					if (getImportType().equals(ValidImportTypes.XSD_TYPE)){
 						XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
 						Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(resourceURI);
 						Iterator<EObject> iter = ecorePackages.iterator();
@@ -274,7 +275,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ToscaPackage.TIMPORT__IMPORT_TYPE:
-				setImportType((String)newValue);
+				setImportType((ValidImportTypes)newValue);
 				return;
 			case ToscaPackage.TIMPORT__LOCATION:
 				setLocation((String)newValue);
@@ -322,7 +323,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ToscaPackage.TIMPORT__IMPORT_TYPE:
-				return IMPORT_TYPE_EDEFAULT == null ? importType != null : !IMPORT_TYPE_EDEFAULT.equals(importType);
+				return importType != IMPORT_TYPE_EDEFAULT;
 			case ToscaPackage.TIMPORT__LOCATION:
 				return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
 			case ToscaPackage.TIMPORT__NAMESPACE:

@@ -327,6 +327,8 @@ public class ToscaValidator extends EObjectValidator {
 				return validateUpperBoundTypeMember1((UpperBoundTypeMember1)value, diagnostics, context);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER11:
 				return validateUpperBoundTypeMember11((UpperBoundTypeMember11)value, diagnostics, context);
+			case ToscaPackage.VALID_IMPORT_TYPES:
+				return validateValidImportTypes((ValidImportTypes)value, diagnostics, context);
 			case ToscaPackage.IMPORTED_URI:
 				return validateImportedURI((String)value, diagnostics, context);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
@@ -1374,6 +1376,15 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateUpperBoundTypeMember11(UpperBoundTypeMember11 upperBoundTypeMember11, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateValidImportTypes(ValidImportTypes validImportTypes, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

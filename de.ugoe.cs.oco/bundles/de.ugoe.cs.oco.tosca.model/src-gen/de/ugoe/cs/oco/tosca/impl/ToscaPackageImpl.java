@@ -115,6 +115,7 @@ import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.TypesType;
 import de.ugoe.cs.oco.tosca.UpperBoundTypeMember1;
 import de.ugoe.cs.oco.tosca.UpperBoundTypeMember11;
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
 import de.ugoe.cs.oco.tosca.ValidSourceType;
 import de.ugoe.cs.oco.tosca.ValidTargetType;
 
@@ -935,6 +936,13 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * @generated
 	 */
 	private EEnum upperBoundTypeMember11EEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum validImportTypesEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3094,8 +3102,8 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTGroupTemplate_Member() {
-		return (EAttribute)tGroupTemplateEClass.getEStructuralFeatures().get(7);
+	public EReference getTGroupTemplate_Member() {
+		return (EReference)tGroupTemplateEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -3141,6 +3149,24 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 */
 	public EReference getTGroupType_Interfaces() {
 		return (EReference)tGroupTypeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTGroupType_Member() {
+		return (EAttribute)tGroupTypeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTGroupType_MemberRefs() {
+		return (EReference)tGroupTypeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4471,6 +4497,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getValidImportTypes() {
+		return validImportTypesEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getImportedURI() {
 		return importedURIEDataType;
 	}
@@ -4913,13 +4948,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__MAX_INSTANCES);
 		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__MIN_INSTANCES);
 		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__NAME);
-		createEAttribute(tGroupTemplateEClass, TGROUP_TEMPLATE__MEMBER);
+		createEReference(tGroupTemplateEClass, TGROUP_TEMPLATE__MEMBER);
 
 		tGroupTypeEClass = createEClass(TGROUP_TYPE);
 		createEReference(tGroupTypeEClass, TGROUP_TYPE__REQUIREMENT_DEFINITIONS);
 		createEReference(tGroupTypeEClass, TGROUP_TYPE__CAPABILITY_DEFINITIONS);
 		createEReference(tGroupTypeEClass, TGROUP_TYPE__INSTANCE_STATES);
 		createEReference(tGroupTypeEClass, TGROUP_TYPE__INTERFACES);
+		createEAttribute(tGroupTypeEClass, TGROUP_TYPE__MEMBER);
+		createEReference(tGroupTypeEClass, TGROUP_TYPE__MEMBER_REFS);
 
 		tImplementationArtifactEClass = createEClass(TIMPLEMENTATION_ARTIFACT);
 		createEAttribute(tImplementationArtifactEClass, TIMPLEMENTATION_ARTIFACT__ARTIFACT_REF);
@@ -5102,6 +5139,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		tBooleanEEnum = createEEnum(TBOOLEAN);
 		upperBoundTypeMember1EEnum = createEEnum(UPPER_BOUND_TYPE_MEMBER1);
 		upperBoundTypeMember11EEnum = createEEnum(UPPER_BOUND_TYPE_MEMBER11);
+		validImportTypesEEnum = createEEnum(VALID_IMPORT_TYPES);
 
 		// Create data types
 		importedURIEDataType = createEDataType(IMPORTED_URI);
@@ -5482,13 +5520,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getTGroupTemplate_MaxInstances(), this.getMaxInstancesType(), "maxInstances", "1", 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTGroupTemplate_MinInstances(), theXMLTypePackage.getInt(), "minInstances", "1", 1, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTGroupTemplate_Name(), ecorePackage.getEString(), "name", null, 0, 1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTGroupTemplate_Member(), theXMLTypePackage.getQName(), "member", null, 0, -1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTGroupTemplate_Member(), this.getTEntityTemplate(), null, "member", null, 0, -1, TGroupTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tGroupTypeEClass, TGroupType.class, "TGroupType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTGroupType_RequirementDefinitions(), this.getRequirementDefinitionsType(), null, "requirementDefinitions", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTGroupType_CapabilityDefinitions(), this.getCapabilityDefinitionsType(), null, "capabilityDefinitions", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTGroupType_InstanceStates(), this.getTTopologyElementInstanceStates(), null, "instanceStates", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTGroupType_Interfaces(), this.getInterfacesType1(), null, "interfaces", null, 0, 1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTGroupType_Member(), theXMLTypePackage.getQName(), "member", null, 0, -1, TGroupType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTGroupType_MemberRefs(), this.getTEntityType(), null, "memberRefs", null, 0, -1, TGroupType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(tImplementationArtifactEClass, TImplementationArtifact.class, "TImplementationArtifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTImplementationArtifact_ArtifactRef(), theXMLTypePackage.getQName(), "artifactRef", null, 0, 1, TImplementationArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5500,7 +5540,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEReference(getTImplementationArtifacts_ImplementationArtifact(), this.getImplementationArtifactType(), null, "implementationArtifact", null, 1, -1, TImplementationArtifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tImportEClass, TImport.class, "TImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTImport_ImportType(), this.getImportedURI(), "importType", null, 1, 1, TImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTImport_ImportType(), this.getValidImportTypes(), "importType", null, 1, 1, TImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTImport_Location(), theXMLTypePackage.getAnyURI(), "location", null, 0, 1, TImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTImport_Namespace(), theXMLTypePackage.getAnyURI(), "namespace", null, 0, 1, TImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTImport_Resource(), ecorePackage.getEResource(), "resource", null, 0, 1, TImport.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -5681,6 +5721,10 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		initEEnum(upperBoundTypeMember11EEnum, UpperBoundTypeMember11.class, "UpperBoundTypeMember11");
 		addEEnumLiteral(upperBoundTypeMember11EEnum, UpperBoundTypeMember11.UNBOUNDED);
+
+		initEEnum(validImportTypesEEnum, ValidImportTypes.class, "ValidImportTypes");
+		addEEnumLiteral(validImportTypesEEnum, ValidImportTypes.TOSCA_TYPE);
+		addEEnumLiteral(validImportTypesEEnum, ValidImportTypes.XSD_TYPE);
 
 		// Initialize data types
 		initEDataType(importedURIEDataType, String.class, "ImportedURI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -7475,6 +7519,14 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "Interfaces",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getTGroupType_Member(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "Member",
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation

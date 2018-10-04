@@ -15,7 +15,9 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -46,8 +48,54 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMemberPropertyDescriptor(object);
+			addMemberRefsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Member feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemberPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupType_member_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_member_feature", "_UI_TGroupType_type"),
+				 ToscaPackage.Literals.TGROUP_TYPE__MEMBER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Member Refs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemberRefsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TGroupType_memberRefs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TGroupType_memberRefs_feature", "_UI_TGroupType_type"),
+				 ToscaPackage.Literals.TGROUP_TYPE__MEMBER_REFS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -121,6 +169,9 @@ public class TGroupTypeItemProvider extends TEntityTypeItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TGroupType.class)) {
+			case ToscaPackage.TGROUP_TYPE__MEMBER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case ToscaPackage.TGROUP_TYPE__REQUIREMENT_DEFINITIONS:
 			case ToscaPackage.TGROUP_TYPE__CAPABILITY_DEFINITIONS:
 			case ToscaPackage.TGROUP_TYPE__INSTANCE_STATES:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="tosca" version="12.0.0.2017041100">
   <ownedViewpoints name="ConfigurationDesign" label="TOSCA Configuration Design" modelFileExtension="tosca">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TOSCA Configuration Diagram" showOnStartup="true" domainClass="tosca::TDefinitions" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TOSCA Configuration Diagram" domainClass="tosca::TDefinitions" enablePopupBars="true">
       <metamodel href="http://oco.cs.ugoe.de/tosca#/"/>
       <defaultLayer name="ConfigurationDesigner" label="ConfigurationDesigner">
         <edgeMappings name="RelationshipTemplate" label="RelationshipTemplate" preconditionExpression="true" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='TOSCAConfiguration']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='GroupTemplateContainer']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode']" targetFinderExpression="aql:self.targetElement.ref" sourceFinderExpression="aql:self.sourceElement.ref" domainClass="tosca::TRelationshipTemplate" useDomainElement="true">
@@ -347,6 +347,14 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <edgeMappings name="Members" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='GroupTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer'] //@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='GroupTypeContainer'] //@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RelationshipTypeContainer']" targetFinderExpression="aql:self.eContainer().eAllContents()->filter(tosca::TEntityType)->select(et | self.member->collect(m | m.toString())->includes(et.name))">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="member">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="TOSCAExtension" semanticCandidatesExpression="aql:self" domainClass="tosca::TDefinitions">
           <subContainerMappings name="NodeTypeContainer" semanticCandidatesExpression="aql:self.nodeType" domainClass="tosca::TNodeType" childrenPresentation="VerticalStack">
             <borderedNodeMappings name="BorderedCapabilityNode" preconditionExpression="false" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::TCapabilityDefinition">
@@ -536,6 +544,101 @@
               </style>
             </subContainerMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="GroupTypeContainer" semanticCandidatesExpression="aql:self.groupType" domainClass="tosca::TGroupType" childrenPresentation="VerticalStack">
+            <borderedNodeMappings name="BorderedCapabilityNode" preconditionExpression="false" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::TCapabilityDefinition">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" sizeComputationExpression="2" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="BorderedRequirementNode" preconditionExpression="false" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::TRequirementDefinition">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" sizeComputationExpression="2" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </borderedNodeMappings>
+            <subContainerMappings name="GroupTypePropertiesContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::PropertiesDefinitionType" childrenPresentation="List">
+              <subNodeMappings name="Properties" semanticCandidatesExpression="aql:self" domainClass="tosca::PropertiesDefinitionType">
+                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'element: ' + self.element.toString().substring(self.element.toString().lastIndex('}') + 1)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="Properties">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="RequirementDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::RequirementDefinitionsType" childrenPresentation="List">
+              <subNodeMappings name="RequirementDefinitionContainer" semanticCandidatesExpression="aql:self.requirementDefinition" domainClass="tosca::TRequirementDefinition">
+                <style xsi:type="style:SquareDescription" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.requirementTypeRef.name)" iconPath="/de.ugoe.cs.oco.tosca.designer/icons/RequirementType.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="Requirements" iconPath="/de.ugoe.cs.oco.tosca.designer/icons/RequirementType.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="CapabilityDefinitionsTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::CapabilityDefinitionsType" childrenPresentation="List">
+              <subNodeMappings name="CapabilityDefinitionContainer" semanticCandidatesExpression="aql:self.capabilityDefinition" domainClass="tosca::TCapabilityDefinition">
+                <style xsi:type="style:SquareDescription" labelExpression="aql: self.name + '[' + self.lowerBound + '..' + self.upperBound + ']: ' + self.capabilityTypeRef.name" iconPath="/de.ugoe.cs.oco.tosca.designer/icons/CapabilityType.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="Capabilities" iconPath="/de.ugoe.cs.oco.tosca.designer/icons/CapabilityType.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="InterfacesTypeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::InterfacesType1" childrenPresentation="VerticalStack">
+              <subContainerMappings name="InterfaceContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::TInterface" childrenPresentation="List">
+                <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" domainClass="tosca::TOperation">
+                  <style xsi:type="style:SquareDescription" showIcon="false" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="Interfaces">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" iconPath="/de.ugoe.cs.oco.tosca.designer/icons/GroupType.png" roundedCorner="true" widthComputationExpression="1" heightComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

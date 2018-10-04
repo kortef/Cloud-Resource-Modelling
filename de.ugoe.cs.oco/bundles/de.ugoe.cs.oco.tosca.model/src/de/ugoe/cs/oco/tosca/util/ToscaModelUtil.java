@@ -9,10 +9,13 @@ import org.eclipse.xsd.XSDElementDeclaration;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TDefinitions;
+import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.TRequirementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
+import de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl;
 
 public class ToscaModelUtil {
 	public static TEntityType resolveType(EObject object, QName qName){
@@ -26,8 +29,7 @@ public class ToscaModelUtil {
 		else {
 			EList<TImport> imports = ((TDefinitions) root.getDefinitions().get(0)).getImport();
 			for (TImport imp:imports) {
-				if (imp.getImportType().equals(ToscaPackage.eNS_URI) || (imp.getImportType().equals("http://docs.oasis-open.org/tosca/ns/2011/12") 
-						&& imp.getNamespace().equals(namespaceURI))) {
+				if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE) && imp.getNamespace().equals(namespaceURI)) {
 					Resource resource = imp.getResource();
 					entityTypeRef = (TEntityType) resource.getEObject(qName.getLocalPart());
 				}
@@ -53,5 +55,12 @@ public class ToscaModelUtil {
 		}
 		
 		return elementDeclarationRef;
+	}
+	
+	public static QName getQualifiedName(TEntityType entity) {
+		TDefinitions def = (TDefinitions) entity.eContainer();
+		QName derivedName = new QName(def.getTargetNamespace(), entity.getName());
+		
+		return derivedName;
 	}
 }

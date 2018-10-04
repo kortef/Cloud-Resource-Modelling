@@ -5,24 +5,19 @@ package de.ugoe.cs.oco.tosca.designer.services;
 
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.UUID;
 
 import javax.xml.namespace.QName;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TImport;
-import de.ugoe.cs.oco.tosca.TTopologyTemplate;
 import de.ugoe.cs.oco.tosca.impl.ToscaFactoryImpl;
 
 

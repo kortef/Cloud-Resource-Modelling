@@ -6,13 +6,11 @@ import de.ugoe.cs.oco.tosca.CapabilitiesType1;
 import de.ugoe.cs.oco.tosca.PoliciesType1;
 import de.ugoe.cs.oco.tosca.RequirementsType1;
 import de.ugoe.cs.oco.tosca.TDeploymentArtifacts;
+import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TGroupTemplate;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
-
 import java.util.Collection;
-
-import javax.xml.namespace.QName;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -22,8 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -165,14 +162,14 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMember() <em>Member</em>}' attribute list.
+	 * The cached value of the '{@link #getMember() <em>Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMember()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QName> member;
+	protected EList<TEntityTemplate> member;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -483,9 +480,9 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<QName> getMember() {
+	public EList<TEntityTemplate> getMember() {
 		if (member == null) {
-			member = new EDataTypeUniqueEList<QName>(QName.class, this, ToscaPackage.TGROUP_TEMPLATE__MEMBER);
+			member = new EObjectResolvingEList<TEntityTemplate>(TEntityTemplate.class, this, ToscaPackage.TGROUP_TEMPLATE__MEMBER);
 		}
 		return member;
 	}
@@ -570,7 +567,7 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 				return;
 			case ToscaPackage.TGROUP_TEMPLATE__MEMBER:
 				getMember().clear();
-				getMember().addAll((Collection<? extends QName>)newValue);
+				getMember().addAll((Collection<? extends TEntityTemplate>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -656,8 +653,6 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 		if (minInstancesESet) result.append(minInstances); else result.append("<unset>");
 		result.append(", name: ");
 		result.append(name);
-		result.append(", member: ");
-		result.append(member);
 		result.append(')');
 		return result.toString();
 	}

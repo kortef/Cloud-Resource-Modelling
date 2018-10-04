@@ -5,17 +5,24 @@ package de.ugoe.cs.oco.tosca.impl;
 import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType;
 import de.ugoe.cs.oco.tosca.InterfacesType1;
 import de.ugoe.cs.oco.tosca.RequirementDefinitionsType;
+import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TGroupType;
 import de.ugoe.cs.oco.tosca.TTopologyElementInstanceStates;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
 
+import java.util.Collection;
+import javax.xml.namespace.QName;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +36,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl#getCapabilityDefinitions <em>Capability Definitions</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl#getInstanceStates <em>Instance States</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl#getMember <em>Member</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl#getMemberRefs <em>Member Refs</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +82,26 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 	 * @ordered
 	 */
 	protected InterfacesType1 interfaces;
+
+	/**
+	 * The cached value of the '{@link #getMember() <em>Member</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMember()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QName> member;
+
+	/**
+	 * The cached value of the '{@link #getMemberRefs() <em>Member Refs</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemberRefs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TEntityType> memberRefs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,6 +299,34 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<QName> getMember() {
+		if (member == null) {
+			member = new EDataTypeUniqueEList<QName>(QName.class, this, ToscaPackage.TGROUP_TYPE__MEMBER);
+		}
+		return member;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<TEntityType> getMemberRefs() {
+		if (memberRefs == null) {
+			memberRefs = new EObjectResolvingEList<TEntityType>(TEntityType.class, this, ToscaPackage.TGROUP_TYPE__MEMBER_REFS);
+		}
+		memberRefs.clear();
+		for (QName member: getMember()) {
+			memberRefs.add(ToscaModelUtil.resolveType(this, member));
+		}
+		return memberRefs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -301,6 +358,10 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 				return getInstanceStates();
 			case ToscaPackage.TGROUP_TYPE__INTERFACES:
 				return getInterfaces();
+			case ToscaPackage.TGROUP_TYPE__MEMBER:
+				return getMember();
+			case ToscaPackage.TGROUP_TYPE__MEMBER_REFS:
+				return getMemberRefs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -310,6 +371,7 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -324,6 +386,14 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 				return;
 			case ToscaPackage.TGROUP_TYPE__INTERFACES:
 				setInterfaces((InterfacesType1)newValue);
+				return;
+			case ToscaPackage.TGROUP_TYPE__MEMBER:
+				getMember().clear();
+				getMember().addAll((Collection<? extends QName>)newValue);
+				return;
+			case ToscaPackage.TGROUP_TYPE__MEMBER_REFS:
+				getMemberRefs().clear();
+				getMemberRefs().addAll((Collection<? extends TEntityType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -349,6 +419,12 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 			case ToscaPackage.TGROUP_TYPE__INTERFACES:
 				setInterfaces((InterfacesType1)null);
 				return;
+			case ToscaPackage.TGROUP_TYPE__MEMBER:
+				getMember().clear();
+				return;
+			case ToscaPackage.TGROUP_TYPE__MEMBER_REFS:
+				getMemberRefs().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,8 +445,28 @@ public class TGroupTypeImpl extends TEntityTypeImpl implements TGroupType {
 				return instanceStates != null;
 			case ToscaPackage.TGROUP_TYPE__INTERFACES:
 				return interfaces != null;
+			case ToscaPackage.TGROUP_TYPE__MEMBER:
+				return member != null && !member.isEmpty();
+			case ToscaPackage.TGROUP_TYPE__MEMBER_REFS:
+				return memberRefs != null && !memberRefs.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (member: ");
+		result.append(member);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TGroupTypeImpl

@@ -2,6 +2,9 @@
  */
 package de.ugoe.cs.oco.tosca;
 
+import javax.xml.namespace.QName;
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +19,8 @@ package de.ugoe.cs.oco.tosca;
  *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getCapabilityDefinitions <em>Capability Definitions</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getInstanceStates <em>Instance States</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getMember <em>Member</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs <em>Member Refs</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType()
@@ -130,5 +135,38 @@ public interface TGroupType extends TEntityType {
 	 * @generated
 	 */
 	void setInterfaces(InterfacesType1 value);
+
+	/**
+	 * Returns the value of the '<em><b>Member</b></em>' attribute list.
+	 * The list contents are of type {@link javax.xml.namespace.QName}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Member</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Member</em>' attribute list.
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_Member()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
+	 *        extendedMetaData="kind='element' name='Member' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<QName> getMember();
+
+	/**
+	 * Returns the value of the '<em><b>Member Refs</b></em>' reference list.
+	 * The list contents are of type {@link de.ugoe.cs.oco.tosca.TEntityType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Member Refs</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Member Refs</em>' reference list.
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_MemberRefs()
+	 * @model transient="true" derived="true"
+	 * @generated
+	 */
+	EList<TEntityType> getMemberRefs();
 
 } // TGroupType

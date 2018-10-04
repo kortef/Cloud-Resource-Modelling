@@ -2,10 +2,8 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.PropertiesType;
 import de.ugoe.cs.oco.tosca.PropertyConstraintsType;
-import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
@@ -293,19 +291,7 @@ public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implem
 	 * @generated NOT
 	 */
 	public void setTypeRef(TEntityType newTypeRef) {
-		TDefinitions remoteDef = (TDefinitions) newTypeRef.eContainer();
-		DocumentRoot root = (DocumentRoot) this.eResource().getContents().get(0);
-		TDefinitions ownDef = (TDefinitions) root.getDefinitions().get(0);
-		QName derivedName = null;
-		
-		if (remoteDef.equals(ownDef)) {
-			derivedName = new QName(ownDef.getTargetNamespace(), newTypeRef.getName());
-		}
-		else {
-			derivedName = new QName(remoteDef.getTargetNamespace(), newTypeRef.getName());
-		}
-		
-		setType(derivedName);
+		setType(ToscaModelUtil.getQualifiedName(newTypeRef));
 		
 		TEntityType oldTypeRef = typeRef;
 		typeRef = newTypeRef;

@@ -5,6 +5,8 @@ package de.ugoe.cs.oco.tosca.impl;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TRequirementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
+
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -102,9 +104,15 @@ public class TRequirementTypeImpl extends TEntityTypeImpl implements TRequiremen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TCapabilityType getRequiredCapabilityTypeRef() {
+		if (requiredCapabilityTypeRef == null) {
+			if (getRequiredCapabilityType() != null) {
+				requiredCapabilityTypeRef = (TCapabilityType) ToscaModelUtil.resolveType(this, getRequiredCapabilityType());
+			}
+		}
+		
 		if (requiredCapabilityTypeRef != null && requiredCapabilityTypeRef.eIsProxy()) {
 			InternalEObject oldRequiredCapabilityTypeRef = (InternalEObject)requiredCapabilityTypeRef;
 			requiredCapabilityTypeRef = (TCapabilityType)eResolveProxy(oldRequiredCapabilityTypeRef);
@@ -128,9 +136,11 @@ public class TRequirementTypeImpl extends TEntityTypeImpl implements TRequiremen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setRequiredCapabilityTypeRef(TCapabilityType newRequiredCapabilityTypeRef) {
+		setRequiredCapabilityType(ToscaModelUtil.getQualifiedName(newRequiredCapabilityTypeRef));
+		
 		TCapabilityType oldRequiredCapabilityTypeRef = requiredCapabilityTypeRef;
 		requiredCapabilityTypeRef = newRequiredCapabilityTypeRef;
 		if (eNotificationRequired())

@@ -193,6 +193,8 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 				return createUpperBoundTypeMember1FromString(eDataType, initialValue);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER11:
 				return createUpperBoundTypeMember11FromString(eDataType, initialValue);
+			case ToscaPackage.VALID_IMPORT_TYPES:
+				return createValidImportTypesFromString(eDataType, initialValue);
 			case ToscaPackage.IMPORTED_URI:
 				return createImportedURIFromString(eDataType, initialValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
@@ -244,6 +246,8 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 				return convertUpperBoundTypeMember1ToString(eDataType, instanceValue);
 			case ToscaPackage.UPPER_BOUND_TYPE_MEMBER11:
 				return convertUpperBoundTypeMember11ToString(eDataType, instanceValue);
+			case ToscaPackage.VALID_IMPORT_TYPES:
+				return convertValidImportTypesToString(eDataType, instanceValue);
 			case ToscaPackage.IMPORTED_URI:
 				return convertImportedURIToString(eDataType, instanceValue);
 			case ToscaPackage.MAX_INSTANCES_TYPE:
@@ -1434,6 +1438,26 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	 * @generated
 	 */
 	public String convertUpperBoundTypeMember11ToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValidImportTypes createValidImportTypesFromString(EDataType eDataType, String initialValue) {
+		ValidImportTypes result = ValidImportTypes.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertValidImportTypesToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

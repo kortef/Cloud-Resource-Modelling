@@ -4522,7 +4522,7 @@ public interface ToscaPackage extends EPackage {
 	int TGROUP_TEMPLATE__NAME = TENTITY_TEMPLATE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Member</b></em>' attribute list.
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4685,13 +4685,31 @@ public interface ToscaPackage extends EPackage {
 	int TGROUP_TYPE__INTERFACES = TENTITY_TYPE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Member</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__MEMBER = TENTITY_TYPE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Member Refs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TGROUP_TYPE__MEMBER_REFS = TENTITY_TYPE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>TGroup Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 4;
+	int TGROUP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>TGroup Type</em>' class.
@@ -7503,6 +7521,16 @@ public interface ToscaPackage extends EPackage {
 	int UPPER_BOUND_TYPE_MEMBER11 = 112;
 
 	/**
+	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.ValidImportTypes <em>Valid Import Types</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
+	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getValidImportTypes()
+	 * @generated
+	 */
+	int VALID_IMPORT_TYPES = 113;
+
+	/**
 	 * The meta object id for the '<em>Imported URI</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7510,7 +7538,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getImportedURI()
 	 * @generated
 	 */
-	int IMPORTED_URI = 113;
+	int IMPORTED_URI = 114;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type</em>' data type.
@@ -7520,7 +7548,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesType()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE = 114;
+	int MAX_INSTANCES_TYPE = 115;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type1</em>' data type.
@@ -7530,7 +7558,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesType1()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE1 = 115;
+	int MAX_INSTANCES_TYPE1 = 116;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member0</em>' data type.
@@ -7540,7 +7568,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember0()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER0 = 116;
+	int MAX_INSTANCES_TYPE_MEMBER0 = 117;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member01</em>' data type.
@@ -7550,7 +7578,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember01()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER01 = 117;
+	int MAX_INSTANCES_TYPE_MEMBER01 = 118;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member1 Object</em>' data type.
@@ -7560,7 +7588,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1Object()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT = 118;
+	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT = 119;
 
 	/**
 	 * The meta object id for the '<em>Max Instances Type Member1 Object1</em>' data type.
@@ -7570,7 +7598,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getMaxInstancesTypeMember1Object1()
 	 * @generated
 	 */
-	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT1 = 119;
+	int MAX_INSTANCES_TYPE_MEMBER1_OBJECT1 = 120;
 
 	/**
 	 * The meta object id for the '<em>TBoolean Object</em>' data type.
@@ -7580,7 +7608,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getTBooleanObject()
 	 * @generated
 	 */
-	int TBOOLEAN_OBJECT = 120;
+	int TBOOLEAN_OBJECT = 121;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type</em>' data type.
@@ -7590,7 +7618,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundType()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE = 121;
+	int UPPER_BOUND_TYPE = 122;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type1</em>' data type.
@@ -7600,7 +7628,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundType1()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE1 = 122;
+	int UPPER_BOUND_TYPE1 = 123;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member0</em>' data type.
@@ -7610,7 +7638,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember0()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER0 = 123;
+	int UPPER_BOUND_TYPE_MEMBER0 = 124;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member01</em>' data type.
@@ -7620,7 +7648,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember01()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER01 = 124;
+	int UPPER_BOUND_TYPE_MEMBER01 = 125;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member1 Object</em>' data type.
@@ -7630,7 +7658,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember1Object()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER1_OBJECT = 125;
+	int UPPER_BOUND_TYPE_MEMBER1_OBJECT = 126;
 
 	/**
 	 * The meta object id for the '<em>Upper Bound Type Member1 Object1</em>' data type.
@@ -7640,7 +7668,7 @@ public interface ToscaPackage extends EPackage {
 	 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getUpperBoundTypeMember1Object1()
 	 * @generated
 	 */
-	int UPPER_BOUND_TYPE_MEMBER1_OBJECT1 = 126;
+	int UPPER_BOUND_TYPE_MEMBER1_OBJECT1 = 127;
 
 
 	/**
@@ -9990,15 +10018,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTGroupTemplate_Name();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMember <em>Member</em>}'.
+	 * Returns the meta object for the reference list '{@link de.ugoe.cs.oco.tosca.TGroupTemplate#getMember <em>Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Member</em>'.
+	 * @return the meta object for the reference list '<em>Member</em>'.
 	 * @see de.ugoe.cs.oco.tosca.TGroupTemplate#getMember()
 	 * @see #getTGroupTemplate()
 	 * @generated
 	 */
-	EAttribute getTGroupTemplate_Member();
+	EReference getTGroupTemplate_Member();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TGroupType <em>TGroup Type</em>}'.
@@ -10053,6 +10081,28 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTGroupType_Interfaces();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.ugoe.cs.oco.tosca.TGroupType#getMember <em>Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Member</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getMember()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EAttribute getTGroupType_Member();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs <em>Member Refs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Member Refs</em>'.
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs()
+	 * @see #getTGroupType()
+	 * @generated
+	 */
+	EReference getTGroupType_MemberRefs();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TImplementationArtifact <em>TImplementation Artifact</em>}'.
@@ -11632,6 +11682,16 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getUpperBoundTypeMember11();
+
+	/**
+	 * Returns the meta object for enum '{@link de.ugoe.cs.oco.tosca.ValidImportTypes <em>Valid Import Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Valid Import Types</em>'.
+	 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
+	 * @generated
+	 */
+	EEnum getValidImportTypes();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>Imported URI</em>}'.
@@ -13733,12 +13793,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TGROUP_TEMPLATE__NAME = eINSTANCE.getTGroupTemplate_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Member</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Member</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TGROUP_TEMPLATE__MEMBER = eINSTANCE.getTGroupTemplate_Member();
+		EReference TGROUP_TEMPLATE__MEMBER = eINSTANCE.getTGroupTemplate_Member();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TGroupTypeImpl <em>TGroup Type</em>}' class.
@@ -13781,6 +13841,22 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TGROUP_TYPE__INTERFACES = eINSTANCE.getTGroupType_Interfaces();
+
+		/**
+		 * The meta object literal for the '<em><b>Member</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TGROUP_TYPE__MEMBER = eINSTANCE.getTGroupType_Member();
+
+		/**
+		 * The meta object literal for the '<em><b>Member Refs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TGROUP_TYPE__MEMBER_REFS = eINSTANCE.getTGroupType_MemberRefs();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TImplementationArtifactImpl <em>TImplementation Artifact</em>}' class.
@@ -15033,6 +15109,16 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum UPPER_BOUND_TYPE_MEMBER11 = eINSTANCE.getUpperBoundTypeMember11();
+
+		/**
+		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.ValidImportTypes <em>Valid Import Types</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
+		 * @see de.ugoe.cs.oco.tosca.impl.ToscaPackageImpl#getValidImportTypes()
+		 * @generated
+		 */
+		EEnum VALID_IMPORT_TYPES = eINSTANCE.getValidImportTypes();
 
 		/**
 		 * The meta object literal for the '<em>Imported URI</em>' data type.

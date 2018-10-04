@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 public interface TImport extends TExtensibleElements {
 	/**
 	 * Returns the value of the '<em><b>Import Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.ugoe.cs.oco.tosca.ValidImportTypes}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Import Type</em>' attribute isn't clear,
@@ -34,23 +35,25 @@ public interface TImport extends TExtensibleElements {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Import Type</em>' attribute.
-	 * @see #setImportType(String)
+	 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
+	 * @see #setImportType(ValidImportTypes)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_ImportType()
-	 * @model dataType="de.ugoe.cs.oco.tosca.ImportedURI" required="true"
+	 * @model dataType="de.ugoe.cs.oco.tosca.ValidImportTypes" required="true"
 	 *        extendedMetaData="kind='attribute' name='importType'"
 	 * @generated
 	 */
-	String getImportType();
+	ValidImportTypes getImportType();
 
 	/**
 	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TImport#getImportType <em>Import Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Import Type</em>' attribute.
+	 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
 	 * @see #getImportType()
 	 * @generated
 	 */
-	void setImportType(String value);
+	void setImportType(ValidImportTypes value);
 
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' attribute.

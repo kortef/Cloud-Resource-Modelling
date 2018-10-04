@@ -4,12 +4,18 @@
 package de.ugoe.cs.oco.tosca.designer.services;
 
 
+import java.io.IOException;
+import java.util.Collection;
+import java.util.UUID;
+
 import javax.xml.namespace.QName;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
@@ -59,6 +65,18 @@ public class DesignServices {
 		String name = definitions.getName();
 		definitions.setName("");
 		definitions.setName(name);
+		
+		try {
+			definitions.eResource().save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void setUUID(TEntityTemplate entity) {
+		UUID uuid = UUID.randomUUID();
+		entity.setId("uuid-" + uuid.toString());
 	}
 	
 }

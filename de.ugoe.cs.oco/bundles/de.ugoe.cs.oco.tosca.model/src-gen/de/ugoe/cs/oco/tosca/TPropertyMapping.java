@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getServiceTemplatePropertyRef <em>Service Template Property Ref</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef <em>Target Object Ref</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getServiceTemplatePropertyRef <em>Service Template Property Ref</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetPropertyRef <em>Target Property Ref</em>}</li>
  * </ul>
  *
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface TPropertyMapping extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Service Template Property Ref</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Service Template Property Ref</em>' attribute isn't clear,
@@ -34,7 +35,7 @@ public interface TPropertyMapping extends EObject {
 	 * @return the value of the '<em>Service Template Property Ref</em>' attribute.
 	 * @see #setServiceTemplatePropertyRef(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_ServiceTemplatePropertyRef()
-	 * @model required="true"
+	 * @model default="" required="true"
 	 *        extendedMetaData="kind='attribute' name='serviceTemplatePropertyRef'"
 	 * @generated
 	 */
@@ -51,31 +52,31 @@ public interface TPropertyMapping extends EObject {
 	void setServiceTemplatePropertyRef(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Object Ref</b></em>' attribute.
+	 * Returns the value of the '<em><b>Target Object Ref</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Object Ref</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Object Ref</em>' attribute.
-	 * @see #setTargetObjectRef(String)
+	 * @return the value of the '<em>Target Object Ref</em>' reference.
+	 * @see #setTargetObjectRef(TEntityTemplate)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_TargetObjectRef()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='targetObjectRef'"
 	 * @generated
 	 */
-	String getTargetObjectRef();
+	TEntityTemplate getTargetObjectRef();
 
 	/**
-	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef <em>Target Object Ref</em>}' attribute.
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef <em>Target Object Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Object Ref</em>' attribute.
+	 * @param value the new value of the '<em>Target Object Ref</em>' reference.
 	 * @see #getTargetObjectRef()
 	 * @generated
 	 */
-	void setTargetObjectRef(String value);
+	void setTargetObjectRef(TEntityTemplate value);
 
 	/**
 	 * Returns the value of the '<em><b>Target Property Ref</b></em>' attribute.

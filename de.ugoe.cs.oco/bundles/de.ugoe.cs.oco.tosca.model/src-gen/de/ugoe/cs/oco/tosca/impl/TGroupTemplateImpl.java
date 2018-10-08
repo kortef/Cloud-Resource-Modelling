@@ -478,7 +478,7 @@ public class TGroupTemplateImpl extends TEntityTemplateImpl implements TGroupTem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<TEntityTemplate> getMember() {
 		if (member == null) {

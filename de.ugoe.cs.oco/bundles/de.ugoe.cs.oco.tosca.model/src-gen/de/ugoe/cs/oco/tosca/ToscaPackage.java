@@ -2236,13 +2236,22 @@ public interface ToscaPackage extends EPackage {
 	int PROPERTIES_TYPE1__PROPERTY_MAPPINGS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Properties Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES_TYPE1__PROPERTIES_ELEMENT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Properties Type1</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES_TYPE1_FEATURE_COUNT = 2;
+	int PROPERTIES_TYPE1_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Properties Type1</em>' class.
@@ -6068,22 +6077,22 @@ public interface ToscaPackage extends EPackage {
 	int TPROPERTY_MAPPING = 90;
 
 	/**
+	 * The feature id for the '<em><b>Target Object Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPROPERTY_MAPPING__TARGET_OBJECT_REF = 0;
+
+	/**
 	 * The feature id for the '<em><b>Service Template Property Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF = 0;
-
-	/**
-	 * The feature id for the '<em><b>Target Object Ref</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TPROPERTY_MAPPING__TARGET_OBJECT_REF = 1;
+	int TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF = 1;
 
 	/**
 	 * The feature id for the '<em><b>Target Property Ref</b></em>' attribute.
@@ -8516,6 +8525,17 @@ public interface ToscaPackage extends EPackage {
 	EReference getPropertiesType1_PropertyMappings();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement <em>Properties Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Properties Element</em>'.
+	 * @see de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement()
+	 * @see #getPropertiesType1()
+	 * @generated
+	 */
+	EReference getPropertiesType1_PropertiesElement();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.PropertyConstraintsType <em>Property Constraints Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10892,15 +10912,15 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTPropertyMapping_ServiceTemplatePropertyRef();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef <em>Target Object Ref</em>}'.
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef <em>Target Object Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target Object Ref</em>'.
+	 * @return the meta object for the reference '<em>Target Object Ref</em>'.
 	 * @see de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetObjectRef()
 	 * @see #getTPropertyMapping()
 	 * @generated
 	 */
-	EAttribute getTPropertyMapping_TargetObjectRef();
+	EReference getTPropertyMapping_TargetObjectRef();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.ugoe.cs.oco.tosca.TPropertyMapping#getTargetPropertyRef <em>Target Property Ref</em>}'.
@@ -12595,6 +12615,14 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROPERTIES_TYPE1__PROPERTY_MAPPINGS = eINSTANCE.getPropertiesType1_PropertyMappings();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTIES_TYPE1__PROPERTIES_ELEMENT = eINSTANCE.getPropertiesType1_PropertiesElement();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.PropertyConstraintsTypeImpl <em>Property Constraints Type</em>}' class.
@@ -14475,12 +14503,12 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF = eINSTANCE.getTPropertyMapping_ServiceTemplatePropertyRef();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Object Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Target Object Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TPROPERTY_MAPPING__TARGET_OBJECT_REF = eINSTANCE.getTPropertyMapping_TargetObjectRef();
+		EReference TPROPERTY_MAPPING__TARGET_OBJECT_REF = eINSTANCE.getTPropertyMapping_TargetObjectRef();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Property Ref</b></em>' attribute feature.

@@ -25,6 +25,10 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="tosca.ecore#//UpperBoundTypeMember11">
       <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//UpperBoundTypeMember11/unbounded"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="tosca.ecore#//ValidImportTypes">
+      <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//ValidImportTypes/TOSCAType"/>
+      <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//ValidImportTypes/XSDType"/>
+    </genEnums>
     <genDataTypes ecoreDataType="tosca.ecore#//ImportedURI"/>
     <genDataTypes ecoreDataType="tosca.ecore#//MaxInstancesType"/>
     <genDataTypes ecoreDataType="tosca.ecore#//MaxInstancesType1"/>
@@ -152,6 +156,7 @@
     <genClasses ecoreClass="tosca.ecore#//PropertiesType1">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesType1/any"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType1/propertyMappings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType/propertiesElement"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//PropertyConstraintsType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertyConstraintsType/propertyConstraint"/>
@@ -328,13 +333,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/maxInstances"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/minInstances"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupTemplate/member"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference tosca.ecore#//TGroupTemplate/member"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TGroupType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/requirementDefinitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/capabilityDefinitions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/instanceStates"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/interfaces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TGroupType/member"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//TGroupType/memberRefs"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TImplementationArtifact">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TImplementationArtifact/artifactRef"/>
@@ -423,8 +430,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TPropertyConstraint/property"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TPropertyMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference tosca.ecore#//TPropertyMapping/targetObjectRef"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TPropertyMapping/serviceTemplatePropertyRef"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TPropertyMapping/targetObjectRef"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tosca.ecore#//TPropertyMapping/targetPropertyRef"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//TRelationshipTemplate">

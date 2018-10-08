@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesType1#getAny <em>Any</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertyMappings <em>Property Mappings</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement <em>Properties Element</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType1()
@@ -67,5 +68,31 @@ public interface PropertiesType1 extends EObject {
 	 * @generated
 	 */
 	void setPropertyMappings(PropertyMappingsType value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties Element</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties Element</em>' reference.
+	 * @see #setPropertiesElement(EObject)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType1_PropertiesElement()
+	 * @model transient="true" derived="true"
+	 * @generated
+	 */
+	EObject getPropertiesElement();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement <em>Properties Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Properties Element</em>' reference.
+	 * @see #getPropertiesElement()
+	 * @generated
+	 */
+	void setPropertiesElement(EObject value);
 
 } // PropertiesType1

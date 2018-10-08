@@ -33,13 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class TPropertyMappingItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -61,8 +55,8 @@ public class TPropertyMappingItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addServiceTemplatePropertyRefPropertyDescriptor(object);
 			addTargetObjectRefPropertyDescriptor(object);
+			addServiceTemplatePropertyRefPropertyDescriptor(object);
 			addTargetPropertyRefPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -107,7 +101,7 @@ public class TPropertyMappingItemProvider
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null,
 				 null));
 	}
@@ -172,8 +166,8 @@ public class TPropertyMappingItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TPropertyMapping.class)) {
-			case ToscaPackage.TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF:
 			case ToscaPackage.TPROPERTY_MAPPING__TARGET_OBJECT_REF:
+			case ToscaPackage.TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF:
 			case ToscaPackage.TPROPERTY_MAPPING__TARGET_PROPERTY_REF:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

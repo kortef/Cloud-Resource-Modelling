@@ -2,18 +2,23 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
+import de.ugoe.cs.oco.tosca.DocumentRoot;
+import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.PropertiesType;
 import de.ugoe.cs.oco.tosca.PropertyConstraintsType;
+import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TEntityType;
+import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
-
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -152,7 +157,7 @@ public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setProperties(PropertiesType newProperties) {
 		if (newProperties != properties) {
@@ -164,6 +169,27 @@ public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implem
 			msgs = basicSetProperties(newProperties, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
+		
+		if (this.getTypeRef() != null) {
+			TDefinitions definitions = ((DocumentRoot) this.eResource().getContents().get(0)).getDefinitions().get(0);
+			for (TImport imp: definitions.getImport()) {
+				imp.getResource();
+			}
+			PropertiesDefinitionType definition = this.getTypeRef().getPropertiesDefinition();
+			
+			QName element = definition.getElement();
+			EPackage pack = this.eResource().getResourceSet().getPackageRegistry().getEPackage(element.getNamespaceURI());
+			
+			if (pack != null) {
+				EClass clazz = (EClass) pack.getEClassifier("DocumentRoot");
+				EStructuralFeature feature = clazz.getEStructuralFeature(element.getLocalPart().substring(0, 1).toLowerCase() 
+						+ element.getLocalPart().substring(1));
+				EClass propertiesClazz = (EClass) feature.getEType();
+				
+				newProperties.getAny().add(feature, pack.getEFactoryInstance().create(propertiesClazz));
+			}
+		}
+		
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.TENTITY_TEMPLATE__PROPERTIES, newProperties, newProperties));
 	}

@@ -1842,6 +1842,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPropertiesType1_PropertiesElement() {
+		return (EReference)propertiesType1EClass.getEStructuralFeatures().get(-1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertyConstraintsType() {
 		return propertyConstraintsTypeEClass;
 	}
@@ -3823,7 +3832,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * @generated
 	 */
 	public EAttribute getTPropertyMapping_ServiceTemplatePropertyRef() {
-		return (EAttribute)tPropertyMappingEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)tPropertyMappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3831,8 +3840,8 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTPropertyMapping_TargetObjectRef() {
-		return (EAttribute)tPropertyMappingEClass.getEStructuralFeatures().get(1);
+	public EReference getTPropertyMapping_TargetObjectRef() {
+		return (EReference)tPropertyMappingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4770,6 +4779,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		propertiesType1EClass = createEClass(PROPERTIES_TYPE1);
 		createEAttribute(propertiesType1EClass, PROPERTIES_TYPE1__ANY);
 		createEReference(propertiesType1EClass, PROPERTIES_TYPE1__PROPERTY_MAPPINGS);
+		createEReference(propertiesType1EClass, PROPERTIES_TYPE1__PROPERTIES_ELEMENT);
 
 		propertyConstraintsTypeEClass = createEClass(PROPERTY_CONSTRAINTS_TYPE);
 		createEReference(propertyConstraintsTypeEClass, PROPERTY_CONSTRAINTS_TYPE__PROPERTY_CONSTRAINT);
@@ -5045,8 +5055,8 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createEAttribute(tPropertyConstraintEClass, TPROPERTY_CONSTRAINT__PROPERTY);
 
 		tPropertyMappingEClass = createEClass(TPROPERTY_MAPPING);
+		createEReference(tPropertyMappingEClass, TPROPERTY_MAPPING__TARGET_OBJECT_REF);
 		createEAttribute(tPropertyMappingEClass, TPROPERTY_MAPPING__SERVICE_TEMPLATE_PROPERTY_REF);
-		createEAttribute(tPropertyMappingEClass, TPROPERTY_MAPPING__TARGET_OBJECT_REF);
 		createEAttribute(tPropertyMappingEClass, TPROPERTY_MAPPING__TARGET_PROPERTY_REF);
 
 		tRelationshipTemplateEClass = createEClass(TRELATIONSHIP_TEMPLATE);
@@ -5342,6 +5352,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEClass(propertiesType1EClass, PropertiesType1.class, "PropertiesType1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesType1_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, 1, PropertiesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertiesType1_PropertyMappings(), this.getPropertyMappingsType(), null, "propertyMappings", null, 0, 1, PropertiesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertiesType1_PropertiesElement(), ecorePackage.getEObject(), null, "propertiesElement", null, 0, 1, PropertiesType1.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyConstraintsTypeEClass, PropertyConstraintsType.class, "PropertyConstraintsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyConstraintsType_PropertyConstraint(), this.getTPropertyConstraint(), null, "propertyConstraint", null, 1, -1, PropertyConstraintsType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5617,8 +5628,8 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getTPropertyConstraint_Property(), ecorePackage.getEString(), "property", null, 1, 1, TPropertyConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPropertyMappingEClass, TPropertyMapping.class, "TPropertyMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTPropertyMapping_ServiceTemplatePropertyRef(), ecorePackage.getEString(), "serviceTemplatePropertyRef", null, 1, 1, TPropertyMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTPropertyMapping_TargetObjectRef(), theXMLTypePackage.getIDREF(), "targetObjectRef", null, 1, 1, TPropertyMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTPropertyMapping_TargetObjectRef(), this.getTEntityTemplate(), null, "targetObjectRef", null, 1, 1, TPropertyMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTPropertyMapping_ServiceTemplatePropertyRef(), ecorePackage.getEString(), "serviceTemplatePropertyRef", "", 1, 1, TPropertyMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTPropertyMapping_TargetPropertyRef(), ecorePackage.getEString(), "targetPropertyRef", null, 1, 1, TPropertyMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tRelationshipTemplateEClass, TRelationshipTemplate.class, "TRelationshipTemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -8051,18 +8062,18 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 			 "kind", "empty"
 		   });	
 		addAnnotation
-		  (getTPropertyMapping_ServiceTemplatePropertyRef(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "serviceTemplatePropertyRef"
-		   });	
-		addAnnotation
 		  (getTPropertyMapping_TargetObjectRef(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "targetObjectRef"
+		   });	
+		addAnnotation
+		  (getTPropertyMapping_ServiceTemplatePropertyRef(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "serviceTemplatePropertyRef"
 		   });	
 		addAnnotation
 		  (getTPropertyMapping_TargetPropertyRef(), 

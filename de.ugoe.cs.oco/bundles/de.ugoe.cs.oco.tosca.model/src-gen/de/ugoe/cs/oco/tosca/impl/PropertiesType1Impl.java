@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesType1Impl#getAny <em>Any</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesType1Impl#getPropertyMappings <em>Property Mappings</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesType1Impl#getPropertiesElement <em>Properties Element</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.PropertiesType1Impl#getPropertiesElement <em>Properties Element</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,6 +56,16 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected PropertyMappingsType propertyMappings;
+
+	/**
+	 * The cached value of the '{@link #getPropertiesElement() <em>Properties Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPropertiesElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject propertiesElement;
 
 	/**
 	 * The cached value of the '{@link #getPropertiesElement() <em>Properties Element</em>}' reference.
@@ -140,6 +151,45 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.PROPERTIES_TYPE1__PROPERTY_MAPPINGS, newPropertyMappings, newPropertyMappings));
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject getPropertiesElement() {
+		if (propertiesElement != null && propertiesElement.eIsProxy()) {
+			InternalEObject oldPropertiesElement = (InternalEObject)propertiesElement;
+			propertiesElement = eResolveProxy(oldPropertiesElement);
+			if (propertiesElement != oldPropertiesElement) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT, oldPropertiesElement, propertiesElement));
+			}
+		}
+		return propertiesElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject basicGetPropertiesElement() {
+		return propertiesElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPropertiesElement(EObject newPropertiesElement) {
+		EObject oldPropertiesElement = propertiesElement;
+		propertiesElement = newPropertiesElement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT, oldPropertiesElement, propertiesElement));
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +263,9 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
 				if (resolve) return getPropertiesElement();
 				return basicGetPropertiesElement();
+			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
+				if (resolve) return getPropertiesElement();
+				return basicGetPropertiesElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,6 +283,9 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 				return;
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTY_MAPPINGS:
 				setPropertyMappings((PropertyMappingsType)newValue);
+				return;
+			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
+				setPropertiesElement((EObject)newValue);
 				return;
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
 				setPropertiesElement((EObject)newValue);
@@ -255,6 +311,9 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
 				setPropertiesElement((EObject)null);
 				return;
+			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
+				setPropertiesElement((EObject)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -271,6 +330,8 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 				return any != null && !any.isEmpty();
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTY_MAPPINGS:
 				return propertyMappings != null;
+			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
+				return propertiesElement != null;
 			case ToscaPackage.PROPERTIES_TYPE1__PROPERTIES_ELEMENT:
 				return propertiesElement != null;
 		}

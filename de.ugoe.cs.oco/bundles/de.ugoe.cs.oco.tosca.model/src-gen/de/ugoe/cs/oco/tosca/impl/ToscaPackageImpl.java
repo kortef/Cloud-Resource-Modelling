@@ -1843,6 +1843,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * @generated
 	 */
 	public EReference getPropertiesType1_PropertiesElement() {
+		return (EReference)propertiesType1EClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPropertiesType1_PropertiesElement() {
 		return (EReference)propertiesType1EClass.getEStructuralFeatures().get(-1);
 	}
 
@@ -4780,6 +4789,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createEAttribute(propertiesType1EClass, PROPERTIES_TYPE1__ANY);
 		createEReference(propertiesType1EClass, PROPERTIES_TYPE1__PROPERTY_MAPPINGS);
 		createEReference(propertiesType1EClass, PROPERTIES_TYPE1__PROPERTIES_ELEMENT);
+		createEReference(propertiesType1EClass, PROPERTIES_TYPE1__PROPERTIES_ELEMENT);
 
 		propertyConstraintsTypeEClass = createEClass(PROPERTY_CONSTRAINTS_TYPE);
 		createEReference(propertyConstraintsTypeEClass, PROPERTY_CONSTRAINTS_TYPE__PROPERTY_CONSTRAINT);
@@ -5352,6 +5362,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEClass(propertiesType1EClass, PropertiesType1.class, "PropertiesType1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertiesType1_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, 1, PropertiesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertiesType1_PropertyMappings(), this.getPropertyMappingsType(), null, "propertyMappings", null, 0, 1, PropertiesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertiesType1_PropertiesElement(), ecorePackage.getEObject(), null, "propertiesElement", null, 0, 1, PropertiesType1.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertiesType1_PropertiesElement(), ecorePackage.getEObject(), null, "propertiesElement", null, 0, 1, PropertiesType1.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyConstraintsTypeEClass, PropertyConstraintsType.class, "PropertyConstraintsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

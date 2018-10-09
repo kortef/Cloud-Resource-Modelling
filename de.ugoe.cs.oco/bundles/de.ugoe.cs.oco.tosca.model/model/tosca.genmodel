@@ -156,7 +156,7 @@
     <genClasses ecoreClass="tosca.ecore#//PropertiesType1">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute tosca.ecore#//PropertiesType1/any"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType1/propertyMappings"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType/propertiesElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertiesType1/propertiesElement"/>
     </genClasses>
     <genClasses ecoreClass="tosca.ecore#//PropertyConstraintsType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tosca.ecore#//PropertyConstraintsType/propertyConstraint"/>

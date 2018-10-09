@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Definitions xmlns="http://oco.cs.ugoe.de/tosca" xmlns:XMLSchema-instance="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes" xmlns:ns3="http://www.example.com/tosca/Types/SugarCRM" id="SugarCRM-InteropDefinitions" name="SugarCRM-Interop Definitions" targetNamespace="http://www.example.com/tosca/ServiceTemplates/SugarCRM-Interop">
+<Definitions xmlns="http://oco.cs.ugoe.de/tosca" xmlns:ns1="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes" xmlns:ns2="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes" xmlns:ns3="http://www.example.com/tosca/Types/SugarCRM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SugarCRM-InteropDefinitions" name="SugarCRM-Interop Definitions" targetNamespace="http://www.example.com/tosca/ServiceTemplates/SugarCRM-Interop">
   <Import importType="http://docs.oasis-open.org/tosca/ns/2011/12" location="TOSCA-v1.0-BaseTypes-Definitions.xml" namespace="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
   <Import importType="http://www.w3.org/2001/XMLSchema" location="../types/TOSCA-v1.0-BaseTypes.xsd" namespace="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes"/>
   <Import importType="http://docs.oasis-open.org/tosca/ns/2011/12" location="TOSCA-v1.0-SpecificTypes-Definitions.xml" namespace="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes"/>
@@ -8,12 +8,12 @@
   <Import importType="http://www.w3.org/2001/XMLSchema" location="../types/SugarCRMTypes.xsd" namespace="http://www.example.com/tosca/Types/SugarCRM"/>
   <ServiceTemplate id="SugarCRM-Interop" name="SugarCRM-Interop Template">
     <TopologyTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:Tier" id="WebTier" type="ns1:Tier" name="Web Tier">
+      <NodeTemplate xsi:type="ns1:Tier" id="WebTier" type="ns1:Tier" name="Web Tier">
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:ServerContainerCapability" id="WebTier_nodes" type="ns1:ServerContainerCapability" name="nodes"/>
+          <Capability xsi:type="ns1:ServerContainerCapability" id="WebTier_nodes" type="ns1:ServerContainerCapability" name="nodes"/>
         </Capabilities>
       </NodeTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:Server" id="VmApache" type="ns1:Server" name="VM for Apache">
+      <NodeTemplate xsi:type="ns1:Server" id="VmApache" type="ns1:Server" name="VM for Apache">
         <Properties>
           <ns1:ServerProperties>
             <ns1:NumCpus>1</ns1:NumCpus>
@@ -21,60 +21,60 @@
           </ns1:ServerProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:ServerContainerRequirement" id="VmApache_container" type="ns1:ServerContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:ServerContainerRequirement" id="VmApache_container" type="ns1:ServerContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:OperatingSystemContainerCapability" id="VmApache_os" type="ns1:OperatingSystemContainerCapability" name="os"/>
+          <Capability xsi:type="ns1:OperatingSystemContainerCapability" id="VmApache_os" type="ns1:OperatingSystemContainerCapability" name="os"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="VmApache_HostedOn_WebTier" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="VmApache_HostedOn_WebTier" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="VmApache_container"/>
         <TargetElement ref="WebTier_nodes"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:OperatingSystem" id="OsApache" type="ns1:OperatingSystem" name="OS for Apache">
+      <NodeTemplate xsi:type="ns1:OperatingSystem" id="OsApache" type="ns1:OperatingSystem" name="OS for Apache">
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:OperatingSystemContainerRequirement" id="OsApache_container" type="ns1:OperatingSystemContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:OperatingSystemContainerRequirement" id="OsApache_container" type="ns1:OperatingSystemContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:SoftwareContainerCapability" id="OsApache_software" type="ns1:SoftwareContainerCapability" name="software"/>
+          <Capability xsi:type="ns1:SoftwareContainerCapability" id="OsApache_software" type="ns1:SoftwareContainerCapability" name="software"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="OsApache_HostedOn_VmApache" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="OsApache_HostedOn_VmApache" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="OsApache_container"/>
         <TargetElement ref="VmApache_os"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns2:ApacheWebServer" id="ApacheWebServer" type="ns2:ApacheWebServer" name="Apache Web Server">
+      <NodeTemplate xsi:type="ns2:ApacheWebServer" id="ApacheWebServer" type="ns2:ApacheWebServer" name="Apache Web Server">
         <Properties>
           <ns2:ApacheWebServerProperties>
             <ns2:httpdport>80</ns2:httpdport>
           </ns2:ApacheWebServerProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:SoftwareContainerRequirement" id="ApacheWebServer_container" type="ns1:SoftwareContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:SoftwareContainerRequirement" id="ApacheWebServer_container" type="ns1:SoftwareContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns2:ApacheWebApplicationContainerCapability" id="ApacheWebServer_webapps" type="ns2:ApacheWebApplicationContainerCapability" name="webapps"/>
-          <Capability XMLSchema-instance:type="ns2:ApacheModuleContainerCapability" id="ApacheWebServer_modules" type="ns2:ApacheModuleContainerCapability" name="modules"/>
-          <Capability XMLSchema-instance:type="ns1:HTTPEndpointCapability" id="ApacheWebServer_clients" type="ns1:HTTPEndpointCapability" name="clients"/>
+          <Capability xsi:type="ns2:ApacheWebApplicationContainerCapability" id="ApacheWebServer_webapps" type="ns2:ApacheWebApplicationContainerCapability" name="webapps"/>
+          <Capability xsi:type="ns2:ApacheModuleContainerCapability" id="ApacheWebServer_modules" type="ns2:ApacheModuleContainerCapability" name="modules"/>
+          <Capability xsi:type="ns1:HTTPEndpointCapability" id="ApacheWebServer_clients" type="ns1:HTTPEndpointCapability" name="clients"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="Apache_HostedOn_OsApache" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="Apache_HostedOn_OsApache" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="ApacheWebServer_container"/>
         <TargetElement ref="OsApache_software"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns2:ApachePHPModule" id="PhpModule" type="ns2:ApachePHPModule" name="PHP Module">
+      <NodeTemplate xsi:type="ns2:ApachePHPModule" id="PhpModule" type="ns2:ApachePHPModule" name="PHP Module">
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns2:ApacheModuleContainerRequirement" id="PhpModule_container" type="ns2:ApacheModuleContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns2:ApacheModuleContainerRequirement" id="PhpModule_container" type="ns2:ApacheModuleContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns2:PHPRuntimeCapability" id="PhpModule_phpApps" type="ns2:PHPRuntimeCapability" name="phpApps"/>
+          <Capability xsi:type="ns2:PHPRuntimeCapability" id="PhpModule_phpApps" type="ns2:PHPRuntimeCapability" name="phpApps"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="PhpModule_HostedOn_Apache" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="PhpModule_HostedOn_Apache" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="PhpModule_container"/>
         <TargetElement ref="ApacheWebServer_modules"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns3:SugarCRMApplication" id="SugarCrmApp" type="ns3:SugarCRMApplication" name="SugarCRM App">
+      <NodeTemplate xsi:type="ns3:SugarCRMApplication" id="SugarCrmApp" type="ns3:SugarCRMApplication" name="SugarCRM App">
         <Properties>
           <ns3:SugarCRMApplicationProperties>
             <ns3:AdminUser>crmadmin</ns3:AdminUser>
@@ -84,25 +84,25 @@
           </ns3:SugarCRMApplicationProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns2:PHPRuntimeRequirement" id="SugarCrmApp_phpRuntime" type="ns2:PHPRuntimeRequirement" name="phpRuntime"/>
-          <Requirement XMLSchema-instance:type="ns3:SugarCRMDatabaseEndpointRequirement" id="SugarCrmApp_database" type="ns3:SugarCRMDatabaseEndpointRequirement" name="database"/>
-          <Requirement XMLSchema-instance:type="ns2:ApacheWebApplicationContainerRequirement" id="SugarCrmApp_container" type="ns2:ApacheWebApplicationContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns2:PHPRuntimeRequirement" id="SugarCrmApp_phpRuntime" type="ns2:PHPRuntimeRequirement" name="phpRuntime"/>
+          <Requirement xsi:type="ns3:SugarCRMDatabaseEndpointRequirement" id="SugarCrmApp_database" type="ns3:SugarCRMDatabaseEndpointRequirement" name="database"/>
+          <Requirement xsi:type="ns2:ApacheWebApplicationContainerRequirement" id="SugarCrmApp_container" type="ns2:ApacheWebApplicationContainerRequirement" name="container"/>
         </Requirements>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="SugarCrmApp_HostedOn_Apache" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="SugarCrmApp_HostedOn_Apache" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="SugarCrmApp_container"/>
         <TargetElement ref="ApacheWebServer_webapps"/>
       </RelationshipTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:DependsOn" id="SugarCrmApp_DependsOn_PhpModule" type="ns1:DependsOn" name="depends on">
+      <RelationshipTemplate xsi:type="ns1:DependsOn" id="SugarCrmApp_DependsOn_PhpModule" type="ns1:DependsOn" name="depends on">
         <SourceElement ref="SugarCrmApp_phpRuntime"/>
         <TargetElement ref="PhpModule_phpApps"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:Tier" id="DatabaseTier" type="ns1:Tier" name="Database Tier">
+      <NodeTemplate xsi:type="ns1:Tier" id="DatabaseTier" type="ns1:Tier" name="Database Tier">
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:ServerContainerCapability" id="DatabaseTier_nodes" type="ns1:ServerContainerCapability" name="nodes"/>
+          <Capability xsi:type="ns1:ServerContainerCapability" id="DatabaseTier_nodes" type="ns1:ServerContainerCapability" name="nodes"/>
         </Capabilities>
       </NodeTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:Server" id="VmMySql" type="ns1:Server" name="VM for MySQL">
+      <NodeTemplate xsi:type="ns1:Server" id="VmMySql" type="ns1:Server" name="VM for MySQL">
         <Properties>
           <ns1:ServerProperties>
             <ns1:NumCpus>1</ns1:NumCpus>
@@ -110,46 +110,46 @@
           </ns1:ServerProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:ServerContainerRequirement" id="VmMySql_container" type="ns1:ServerContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:ServerContainerRequirement" id="VmMySql_container" type="ns1:ServerContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:OperatingSystemContainerCapability" id="VmMySql_os" type="ns1:OperatingSystemContainerCapability" name="os"/>
+          <Capability xsi:type="ns1:OperatingSystemContainerCapability" id="VmMySql_os" type="ns1:OperatingSystemContainerCapability" name="os"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="VmMySQL_HostedOn_DatabaseTier" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="VmMySQL_HostedOn_DatabaseTier" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="VmMySql_container"/>
         <TargetElement ref="DatabaseTier_nodes"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns1:OperatingSystem" id="OsMySQL" type="ns1:OperatingSystem" name="OS for MySQL">
+      <NodeTemplate xsi:type="ns1:OperatingSystem" id="OsMySQL" type="ns1:OperatingSystem" name="OS for MySQL">
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:OperatingSystemContainerRequirement" id="OsMySQL_container" type="ns1:OperatingSystemContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:OperatingSystemContainerRequirement" id="OsMySQL_container" type="ns1:OperatingSystemContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns1:SoftwareContainerCapability" id="OsMySQL_software" type="ns1:SoftwareContainerCapability" name="software"/>
+          <Capability xsi:type="ns1:SoftwareContainerCapability" id="OsMySQL_software" type="ns1:SoftwareContainerCapability" name="software"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="OsMySQL_HostedOn_VmMySQL" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="OsMySQL_HostedOn_VmMySQL" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="OsMySQL_container"/>
         <TargetElement ref="VmMySql_os"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns2:MySQL" id="MySql" type="ns2:MySQL" name="MySQL">
+      <NodeTemplate xsi:type="ns2:MySQL" id="MySql" type="ns2:MySQL" name="MySQL">
         <Properties>
           <ns2:MySQLProperties>
             <ns2:RootPassword>password</ns2:RootPassword>
           </ns2:MySQLProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns1:SoftwareContainerRequirement" id="MySql_container" type="ns1:SoftwareContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns1:SoftwareContainerRequirement" id="MySql_container" type="ns1:SoftwareContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns2:MySQLDatabaseContainerCapability" id="MySql_databases" type="ns2:MySQLDatabaseContainerCapability" name="databases"/>
+          <Capability xsi:type="ns2:MySQLDatabaseContainerCapability" id="MySql_databases" type="ns2:MySQLDatabaseContainerCapability" name="databases"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns1:HostedOn" id="MySqlHostedOnOsMySQL" type="ns1:HostedOn" name="hosted on">
+      <RelationshipTemplate xsi:type="ns1:HostedOn" id="MySqlHostedOnOsMySQL" type="ns1:HostedOn" name="hosted on">
         <SourceElement ref="MySql_container"/>
         <TargetElement ref="OsMySQL_software"/>
       </RelationshipTemplate>
-      <NodeTemplate XMLSchema-instance:type="ns3:SugarCRMDatabase" id="SugarCrmDb" type="ns3:SugarCRMDatabase" name="SugarCRM DB">
+      <NodeTemplate xsi:type="ns3:SugarCRMDatabase" id="SugarCrmDb" type="ns3:SugarCRMDatabase" name="SugarCRM DB">
         <Properties>
           <ns3:SugarCRMDatabaseProperties>
             <ns3:DBName>crmdb</ns3:DBName>
@@ -159,17 +159,17 @@
           </ns3:SugarCRMDatabaseProperties>
         </Properties>
         <Requirements>
-          <Requirement XMLSchema-instance:type="ns2:MySQLDatabaseContainerRequirement" id="SugarCrmDb_container" type="ns2:MySQLDatabaseContainerRequirement" name="container"/>
+          <Requirement xsi:type="ns2:MySQLDatabaseContainerRequirement" id="SugarCrmDb_container" type="ns2:MySQLDatabaseContainerRequirement" name="container"/>
         </Requirements>
         <Capabilities>
-          <Capability XMLSchema-instance:type="ns2:MySQLDatabaseEndpointCapability" id="SugarCrmDb_clients" type="ns2:MySQLDatabaseEndpointCapability" name="clients"/>
+          <Capability xsi:type="ns2:MySQLDatabaseEndpointCapability" id="SugarCrmDb_clients" type="ns2:MySQLDatabaseEndpointCapability" name="clients"/>
         </Capabilities>
       </NodeTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns2:MySQLDatabaseHostedOnMySQL" id="SugarCrmDb_HostedOn_MySql" type="ns2:MySQLDatabaseHostedOnMySQL" name="hosted on">
+      <RelationshipTemplate xsi:type="ns2:MySQLDatabaseHostedOnMySQL" id="SugarCrmDb_HostedOn_MySql" type="ns2:MySQLDatabaseHostedOnMySQL" name="hosted on">
         <SourceElement ref="SugarCrmDb_container"/>
         <TargetElement ref="MySql_databases"/>
       </RelationshipTemplate>
-      <RelationshipTemplate XMLSchema-instance:type="ns3:SugarCRMDatabaseConnection" id="SugarCrmApp_ConnectsTo_SugarCrmDb" type="ns3:SugarCRMDatabaseConnection" name="connects to">
+      <RelationshipTemplate xsi:type="ns3:SugarCRMDatabaseConnection" id="SugarCrmApp_ConnectsTo_SugarCrmDb" type="ns3:SugarCRMDatabaseConnection" name="connects to">
         <SourceElement ref="SugarCrmApp_database"/>
         <TargetElement ref="SugarCrmDb_clients"/>
       </RelationshipTemplate>

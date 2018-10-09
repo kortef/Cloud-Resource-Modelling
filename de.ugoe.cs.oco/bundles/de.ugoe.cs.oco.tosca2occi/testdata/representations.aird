@@ -59,7 +59,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BK24LXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BK24bXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BK24rXOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BK247XOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BK247XOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BKP1rXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BKP17XOEei4t5gDNSWGyw" y="40"/>
@@ -69,7 +69,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BK26LXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BK26bXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BK26rXOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BK267XOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BK267XOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BK25bXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BK25rXOEei4t5gDNSWGyw" y="80"/>
@@ -110,7 +110,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BQWdbXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BQWdrXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BQWd7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BQWeLXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BQWeLXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BQWcrXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BQWc7XOEei4t5gDNSWGyw" y="40"/>
@@ -147,7 +147,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BSLobXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BSLorXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BSLo7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BSLpLXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BSLpLXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BRkmbXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BRkmrXOEei4t5gDNSWGyw" y="40"/>
@@ -200,7 +200,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BTZwbXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BTZwrXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BTZw7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BTZxLXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BTZxLXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BSyubXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BSyurXOEei4t5gDNSWGyw" y="40"/>
@@ -245,7 +245,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BdKwbXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BdKwrXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BdKw7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BdKxLXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BdKxLXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BcjtrXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Bcjt7XOEei4t5gDNSWGyw" y="40"/>
@@ -255,7 +255,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BfnALXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BfnAbXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BfnArXOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BfnA7XOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BfnA7XOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BdKxrXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BdKx7XOEei4t5gDNSWGyw" y="80"/>
@@ -296,7 +296,7 @@
               <children xmi:type="notation:Node" xmi:id="_7BiDQbXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7BiDQrXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7BiDQ7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BiDRLXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7BiDRLXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7BhcNbXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7BhcNrXOEei4t5gDNSWGyw" y="40"/>
@@ -349,7 +349,7 @@
               <children xmi:type="notation:Node" xmi:id="_7Byh-bXOEei4t5gDNSWGyw" type="7003">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_7Byh-rXOEei4t5gDNSWGyw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_7Byh-7XOEei4t5gDNSWGyw"/>
-                <styles xmi:type="notation:DrawerStyle" xmi:id="_7Byh_LXOEei4t5gDNSWGyw"/>
+                <styles xmi:type="notation:DrawerStyle" xmi:id="_7Byh_LXOEei4t5gDNSWGyw" collapsed="true"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_7Byh9rXOEei4t5gDNSWGyw" fontName="CMU Sans Serif" fontHeight="12" bold="true"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Byh97XOEei4t5gDNSWGyw" y="40"/>
@@ -982,18 +982,20 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqkLXOEei4t5gDNSWGyw" name="Ubuntu_XenialXerus">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqkLXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.0/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.0/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_AsGtQLZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7AzqkbXOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqkrXOEei4t5gDNSWGyw" name="SWE_Small">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqkrXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.0/@parts.1"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.0/@parts.1"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_A1FqILZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azqk7XOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1042,9 +1044,10 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqnrXOEei4t5gDNSWGyw" name="ApacheWebServer">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqnrXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.1/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.1/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_AQyDMLZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azqn7XOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1085,9 +1088,10 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqqLXOEei4t5gDNSWGyw" name="ApachePHPModule">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqqLXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.2/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.2/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="__5XBsLZ6EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7AzqqbXOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1160,9 +1164,10 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqurXOEei4t5gDNSWGyw" name="SugarCRMApplication">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqurXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.3/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.3/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="__DdUcLZ6EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azqu7XOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1219,18 +1224,20 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqyLXOEei4t5gDNSWGyw" name="Ubuntu_XenialXerus">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqyLXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.4/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.4/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_EE84YLZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7AzqybXOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqyrXOEei4t5gDNSWGyw" name="SWE_Small">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7AzqyrXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.4/@parts.1"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.4/@parts.1"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_EOYhMLZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azqy7XOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1279,9 +1286,10 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7Azq1rXOEei4t5gDNSWGyw" name="MySQL">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7Azq1rXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.5/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.5/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_C4wyELZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azq17XOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>
@@ -1354,9 +1362,10 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='SubResourceContainer']/@subNodeMappings[name='ResourceAttributeState']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7Azq6LXOEei4t5gDNSWGyw" name="SugarCRMDatabase">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_7Azq6LXOEei4t5gDNSWGyw">
         <target xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.6/@parts.0"/>
         <semanticElements xmi:type="occi:MixinBase" href="SugarCRM-Interop-Definitions-migrated.occic#//@resources.6/@parts.0"/>
+        <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_DaXqULZ7EeiQ8f_8b-UR3Q" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_7Azq6bXOEei4t5gDNSWGyw" labelSize="12" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Configuration']/@ownedRepresentations[name='Configuration%20diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ResourceMixinBase']/@style"/>

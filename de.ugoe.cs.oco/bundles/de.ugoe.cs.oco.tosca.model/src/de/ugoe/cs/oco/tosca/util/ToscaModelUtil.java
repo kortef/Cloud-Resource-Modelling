@@ -9,13 +9,9 @@ import org.eclipse.xsd.XSDElementDeclaration;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TDefinitions;
-import de.ugoe.cs.oco.tosca.TEntityTemplate;
 import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TImport;
-import de.ugoe.cs.oco.tosca.TRequirementType;
-import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.ValidImportTypes;
-import de.ugoe.cs.oco.tosca.impl.TGroupTemplateImpl;
 
 public class ToscaModelUtil {
 	public static TEntityType resolveType(EObject object, QName qName){

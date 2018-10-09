@@ -224,7 +224,7 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DEFINITIONS:
 				getDefinitions().clear();
-				getDefinitions().addAll((Collection<? extends DefinitionsType>)newValue);
+				getDefinitions().add((DefinitionsType) newValue);
 				return;
 			case ToscaPackage.DOCUMENT_ROOT__DOCUMENTATION:
 				getDocumentation().clear();

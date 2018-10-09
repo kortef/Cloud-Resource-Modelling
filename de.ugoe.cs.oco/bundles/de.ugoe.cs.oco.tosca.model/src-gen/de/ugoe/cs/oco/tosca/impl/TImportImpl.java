@@ -2,23 +2,21 @@
  */
 package de.ugoe.cs.oco.tosca.impl;
 
-import de.ugoe.cs.oco.tosca.TImport;
-import de.ugoe.cs.oco.tosca.ToscaPackage;
-
-import de.ugoe.cs.oco.tosca.ValidImportTypes;
-import java.util.Collection;
-import java.util.Iterator;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xsd.ecore.XSDEcoreBuilder;
+
+import de.ugoe.cs.oco.tosca.DefinitionsType;
+import de.ugoe.cs.oco.tosca.DocumentRoot;
+import de.ugoe.cs.oco.tosca.TImport;
+import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
+import de.ugoe.cs.oco.tosca.util.TOSCADef2Ecore;
 
 /**
  * <!-- begin-user-doc -->
@@ -219,15 +217,28 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 							resource = resourceSet.createResource(resourceURI, ContentHandler.UNSPECIFIED_CONTENT_TYPE);
 						}
 					}
-					if (getImportType().equals(ValidImportTypes.XSD_TYPE)){
-						XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
-						Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(resourceURI);
-						Iterator<EObject> iter = ecorePackages.iterator();
-						while(iter.hasNext()) {
-							EPackage generatedPackage = (EPackage) iter.next();
-							EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
+					
+					if (getImportType().equals(ValidImportTypes.TOSCA_TYPE)) {
+						DocumentRoot root = (DocumentRoot) resource.getContents().get(0);
+						DefinitionsType definitions = root.getDefinitions().get(0);
+						
+						EPackage pack = TOSCADef2Ecore.getEPackage(resourceURI, resourceSet, definitions);
+						EPackage.Registry.INSTANCE.put(pack.getNsURI(), pack);
+						resourceURI = URI.createURI(pack.getNsURI());
+						
+						if (resourceSet.getResource(resourceURI, false) == null) {
+							Resource packageResource = resourceSet.createResource(resourceURI);
+							packageResource.getContents().add(pack);
 						}
+						else {
+							resourceSet.getResource(resourceURI, true);
+						}
+					} else if(getImportType().equals(ValidImportTypes.XSD_TYPE)){
+						DocumentRoot root = (DocumentRoot) changeResource.getContents().get(0);
+						DefinitionsType definitions = root.getDefinitions().get(0);
+						TOSCADef2Ecore.handleXSDImports(definitions, resourceSet);
 					}
+					
 				}
 			}
 		}

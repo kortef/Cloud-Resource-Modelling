@@ -3,7 +3,6 @@
  */
 package de.ugoe.cs.oco.tosca.util;
 
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -336,8 +335,9 @@ public class TOSCADef2Ecore {
 		
 		for (Object object: builder.getXSDComponentToEModelElementMap().values()) {
 			if (object instanceof EClassifier) {
-				if (ePackage.getEClassifier(((EClassifier) object).getName()) == null)
+				if (ePackage.getEClassifier(((EClassifier) object).getName()) == null) {
 					ePackage.getEClassifiers().add((EClassifier) object);
+				}
 			}
 			if (object instanceof EReference) {
 				EReference attribute = (EReference) object;
@@ -348,7 +348,7 @@ public class TOSCADef2Ecore {
 					}
 					else {
 						if (root != attribute.getEContainingClass()) {
-							if (((EClass) root).getEStructuralFeature(attribute.getName()) != null)
+							if (((EClass) root).getEStructuralFeature(attribute.getName()) == null)
 								((EClass) root).getEStructuralFeatures().add(attribute);
 						}
 					}

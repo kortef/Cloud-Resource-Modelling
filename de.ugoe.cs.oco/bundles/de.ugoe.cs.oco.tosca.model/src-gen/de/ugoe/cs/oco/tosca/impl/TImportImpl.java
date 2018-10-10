@@ -213,7 +213,7 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 						if (resourceSet.getURIConverter().exists(resourceURI, resourceSet.getLoadOptions())){	
 							resource = resourceSet.getResource(resourceURI, true);
 						}
-						else{
+						else {
 							resource = resourceSet.createResource(resourceURI, ContentHandler.UNSPECIFIED_CONTENT_TYPE);
 						}
 					}
@@ -231,7 +231,8 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 							packageResource.getContents().add(pack);
 						}
 						else {
-							resourceSet.getResource(resourceURI, true);
+							Resource packageResource = resourceSet.getResource(resourceURI, false);
+							packageResource.getContents().add(pack);
 						}
 					} else if(getImportType().equals(ValidImportTypes.XSD_TYPE)){
 						DocumentRoot root = (DocumentRoot) changeResource.getContents().get(0);

@@ -47,6 +47,7 @@ import de.ugoe.cs.oco.tosca.TRelationshipType;
 import de.ugoe.cs.oco.tosca.TRequirementDefinition;
 import de.ugoe.cs.oco.tosca.TRequirementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
@@ -59,8 +60,8 @@ public class TOSCADef2Ecore {
 	
 	private static EPackage addToscaTypeDefinitions(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet) {
 		
-		EPackage toscaPackage = getTOSCAPackage();
-		//EPackage toscaPackage = ToscaPackage.eINSTANCE;	
+		//EPackage toscaPackage = getTOSCAPackage();
+		EPackage toscaPackage = ToscaPackage.eINSTANCE;	
 		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		extractAndAddRawTypes(definitions, toscaPackage, ePackage);
 		extractAndAddSuperTypes(definitions, toscaPackage, ePackage, resourceSet);
@@ -171,6 +172,7 @@ public class TOSCADef2Ecore {
 			
 			addRequirementRestrictions(nodeType, pivotalAnnotation);
 			addCapabilityRestrictions(nodeType, pivotalAnnotation);
+			addTypeRestrictions(nodeType, pivotalAnnotation);
 			//addPropertyRestrictions(nodeType, pivotalAnnotation);
 			
 			for (Entry<String, String> entry: pivotalAnnotation.getDetails().entrySet()) {
@@ -248,18 +250,17 @@ public class TOSCADef2Ecore {
 		if (nodeType.getRequirementDefinitions() != null && 
 				nodeType.getRequirementDefinitions().getRequirementDefinition().size() > 0) {
 			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("self.requirements.requirement->forAll(");
+			oclBuilder.append("if self.requirements <> null then self.requirements.requirement->forAll(");
 			for (TRequirementDefinition rType: nodeType.getRequirementDefinitions().getRequirementDefinition()) {
 				if (rType.getRequirementType() !=  null) {
-					// TODO: Check
 					oclBuilder.append("oclIsKindOf(");
 					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
-							rType.getRequirementType().toString())));
+							rType.getRequirementType().getLocalPart().toString())));
 					oclBuilder.append(") or ");
 				}
 			}
 			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(")\n");
+			oclBuilder.append(") else true endif\n");
 			annotation.getDetails().put("restrictsRequirementTypes", oclBuilder.toString());
 		}
 		return annotation;
@@ -269,19 +270,27 @@ public class TOSCADef2Ecore {
 		if (nodeType.getCapabilityDefinitions() != null && 
 				nodeType.getCapabilityDefinitions().getCapabilityDefinition().size() > 0) {
 			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("self.capabilities.capability->forAll(");
+			oclBuilder.append("if self.capabilities <> null then self.capabilities.capability->forAll(");
 			for (TCapabilityDefinition cType: nodeType.getCapabilityDefinitions().getCapabilityDefinition()) {
 				oclBuilder.append("oclIsKindOf(");
 				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
-						cType.getCapabilityType().toString())));
+						cType.getCapabilityType().getLocalPart().toString())));
 				oclBuilder.append(") or ");
 			}
 			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(")\n");
+			oclBuilder.append(") else true endif\n");
 			annotation.getDetails().put("restrictsCapabilityTypes", oclBuilder.toString());
 		}
 		return annotation;
 	}
+	
+	private static EAnnotation addTypeRestrictions(TNodeType nodeType, EAnnotation annotation) {
+		StringBuilder oclBuilder = new StringBuilder();
+		oclBuilder.append("self.type = self.computeType()");
+		annotation.getDetails().put("typeMustBeOfKind" + nodeType.getName(), oclBuilder.toString());
+		return annotation;
+	}
+	
 	
 //	private static EAnnotation addPropertyRestrictions(TNodeType nodeType, EAnnotation annotation){
 //		if (nodeType.getPropertiesDefinition() != null) {
@@ -314,12 +323,7 @@ public class TOSCADef2Ecore {
 		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(false));
 		DefinitionsType definitions = loadToscaDefinitions(URI.createFileURI(toscaDef.toString()), resourceSet);
 		
-		EPackage ePackage = createEPackage(definitions);
-		handleImports(definitions, ePackage, resourceSet, toscaDef);
-		addToscaTypeDefinitions(definitions, ePackage, resourceSet);
-		
-		// finally add super classes for Properties
-		addSuperTypeForProperties(definitions, ePackage, resourceSet);
+		EPackage ePackage = generateEPackage(toscaDef, resourceSet, definitions);
 		
 		// persist metamodel
 		try {
@@ -329,6 +333,16 @@ public class TOSCADef2Ecore {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public static EPackage generateEPackage(Path toscaDef, ResourceSet resourceSet, DefinitionsType definitions) {
+		EPackage ePackage = createEPackage(definitions);
+		handleImports(definitions, ePackage, resourceSet, toscaDef);
+		addToscaTypeDefinitions(definitions, ePackage, resourceSet);
+		
+		// finally add super classes for Properties
+		addSuperTypeForProperties(definitions, ePackage, resourceSet);
+		return ePackage;
 	}
 	
 	private static EPackage addSuperTypeForProperties(TDefinitions definitions, EPackage ePackage, ResourceSet resourceSet) {
@@ -520,7 +534,7 @@ public class TOSCADef2Ecore {
 //						EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
 //					}
 //					
-				} else if (imp.getImportType().equals("http://docs.oasis-open.org/tosca/ns/2011/12")) {
+				} else if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE)) {
 					Path path = Paths.get(imp.getLocation());
 					if (!path.isAbsolute()){
 						path = Paths.get(root.getParent().toString(), path.toString());

@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getValidImportTypes()
- * @model instanceClass="de.ugoe.cs.oco.tosca.ValidImportTypes"
+ * @model
  * @generated
  */
 public enum ValidImportTypes implements Enumerator {

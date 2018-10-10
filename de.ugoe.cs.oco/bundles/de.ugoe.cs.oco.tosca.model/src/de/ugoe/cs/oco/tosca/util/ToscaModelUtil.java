@@ -47,7 +47,7 @@ public class ToscaModelUtil {
 		
 		EList<TImport> imports = ((TDefinitions) root.getDefinitions().get(0)).getImport();
 		for (TImport imp:imports) {
-			if (imp.getImportType().equals("http://www.w3.org/2001/XMLSchema") 
+			if (imp.getImportType().equals(ValidImportTypes.XSD_TYPE) 
 					&& imp.getNamespace().equals(namespaceURI)) {
 				Resource resource = imp.getResource();
 				elementDeclarationRef = (XSDElementDeclaration) resource.getEObject(qName.getLocalPart());

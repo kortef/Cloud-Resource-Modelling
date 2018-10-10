@@ -20,5 +20,12 @@
             type="tosca"
             class="de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl"/>
    </extension>
+   
+   <!-- Register the factory of this connector. -->
+   <extension point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            uri="http://oco.cs.ugoe.de/tosca"
+            class="de.ugoe.cs.oco.tosca.util.ExtendedToscaFactoryImpl"/>
+   </extension>
 
 </plugin>

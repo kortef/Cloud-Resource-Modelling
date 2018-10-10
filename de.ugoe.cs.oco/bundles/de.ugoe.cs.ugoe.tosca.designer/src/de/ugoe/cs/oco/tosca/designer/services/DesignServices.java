@@ -5,11 +5,14 @@ package de.ugoe.cs.oco.tosca.designer.services;
 
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -61,17 +64,11 @@ public class DesignServices {
 		definitions.setName("");
 		definitions.setName(name);
 		
-		try {
-			definitions.eResource().save(null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void setUUID(TEntityTemplate entity) {
 		UUID uuid = UUID.randomUUID();
 		entity.setId("uuid-" + uuid.toString());
 	}
-	
+
 }

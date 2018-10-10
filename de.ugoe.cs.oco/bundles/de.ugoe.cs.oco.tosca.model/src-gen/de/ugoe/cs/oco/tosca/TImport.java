@@ -38,7 +38,7 @@ public interface TImport extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ValidImportTypes
 	 * @see #setImportType(ValidImportTypes)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_ImportType()
-	 * @model dataType="de.ugoe.cs.oco.tosca.ValidImportTypes" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='importType'"
 	 * @generated
 	 */

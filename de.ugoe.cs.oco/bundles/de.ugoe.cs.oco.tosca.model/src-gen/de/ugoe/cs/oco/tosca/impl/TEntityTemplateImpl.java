@@ -12,6 +12,9 @@ import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
+
+import java.util.UUID;
+
 import javax.xml.namespace.QName;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -66,10 +69,10 @@ public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implem
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getId()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final String ID_EDEFAULT = "uuid-" + UUID.randomUUID().toString();
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.

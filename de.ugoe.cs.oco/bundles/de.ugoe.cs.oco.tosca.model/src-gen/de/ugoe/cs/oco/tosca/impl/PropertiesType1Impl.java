@@ -143,9 +143,15 @@ public class PropertiesType1Impl extends MinimalEObjectImpl.Container implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EObject getPropertiesElement() {
+		
+		if (getAny() != null) {
+			propertiesElement = (EObject) getAny().get(0).getValue();
+		}
+		
+		
 		if (propertiesElement != null && propertiesElement.eIsProxy()) {
 			InternalEObject oldPropertiesElement = (InternalEObject)propertiesElement;
 			propertiesElement = eResolveProxy(oldPropertiesElement);

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="tosca" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="tosca" version="12.0.0.2017041100">
   <ownedViewpoints name="ConfigurationDesign" label="TOSCA Configuration Design" modelFileExtension="tosca">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TOSCA Configuration Diagram" domainClass="tosca::TDefinitions" enablePopupBars="true">
       <metamodel href="http://oco.cs.ugoe.de/tosca#/"/>
       <metamodel href="http://www.eclipse.org/xsd/2002/XSD#/"/>
       <defaultLayer name="ConfigurationDesigner" label="ConfigurationDesigner">
         <edgeMappings name="RelationshipTemplate" label="RelationshipTemplate" preconditionExpression="true" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedRequirementNode']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='NodeTemplateContainer']/@borderedNodeMappings[name='BorderedCapabilityNode']" targetFinderExpression="aql:self.targetElement.ref" sourceFinderExpression="aql:self.sourceElement.ref" domainClass="tosca::TRelationshipTemplate" useDomainElement="true">
-          <style lineStyle="dash" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+          <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -14,9 +14,17 @@
           </style>
         </edgeMappings>
         <edgeMappings name="Membership" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='GroupTemplateContainer']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='NodeTemplateContainer'] //@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='GroupTemplateContainer']" targetFinderExpression="aql:self.eContainer().eContainer().eAllContents()->filter(tosca::TEntityTemplate)->select(nt | self.member->includes(nt))">
-          <style lineStyle="dash" sizeComputationExpression="2">
+          <style lineStyle="dash" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="member">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="BoundaryMapping" sourceMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@borderedNodeMappings[name='BorderedProperties']" targetMapping="//@ownedViewpoints[name='ConfigurationDesign']/@ownedRepresentations[name='TOSCA%20Configuration%20Diagram']/@defaultLayer/@containerMappings[name='ServiceTemplate']/@subContainerMappings[name='TopologyTemplate']/@subContainerMappings[name='NodeTemplateContainer']" targetFinderExpression="aql:self.targetObjectRef" sourceFinderExpression="aql:self.eContainer().eContainer().eContainer().eContainer().eContainer().eAllContents()->filter(tosca::TServiceTemplate)->first().boundaryDefinitions.properties.propertiesElement" domainClass="tosca::TPropertyMapping" useDomainElement="true">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="maps to">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -37,10 +45,10 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="BorderedProperties" semanticCandidatesExpression="aql:self.boundaryDefinitions.properties.propertiesElement" domainClass="EObject">
-            <style xsi:type="style:SquareDescription" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Parameters" sizeComputationExpression="2" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="TopologyTemplate" semanticCandidatesExpression="aql:self.eAllContents()" synchronizationLock="true" domainClass="tosca::TTopologyTemplate">
@@ -210,18 +218,14 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().eContainer().eContainer()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TRelationshipTemplate" referenceName="relationshipTemplate">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::SourceElementType" referenceName="sourceElement" variableName="sourceElement">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceElement">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:source"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:source"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="tosca::TargetElementType" referenceName="targetElement" variableName="targetElement">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:targetElement">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:target"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -277,7 +281,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:addProperties"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="SyncWithModel" precondition="[oclIsKindOf(tosca::TTopologyTemplate)/]">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="SyncWithModel">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -773,4 +777,17 @@
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <metamodels href="http://oco.cs.ugoe.de/tosca#/"/>
+    <categories name="Properties">
+      <pages name="PropertiesPage" labelExpression="Properties" domainClass="tosca::TEntityTemplate" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <groups name="PropertiesGroup" labelExpression="Properties" domainClass="EObject">
+        <controls xsi:type="properties:DynamicMappingForDescription" name="loopOverElements" iterator="eStructuralFeature" iterableExpression="aql:self.properties.propertiesElement.eClass().eAllStructuralFeatures">
+          <ifs name="ifCondition" predicateExpression="aql:Sequence{'int', 'float', 'short', 'java.math.BigDecimal', 'java.lang.String', 'java.lang.Integer'}->includes(eStructuralFeature.eType.instanceTypeName)">
+            <widget xsi:type="properties:TextDescription" name="displayStringProperties" labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'" valueExpression="aql:self.properties.propertiesElement.eGet(eStructuralFeature.name)"/>
+          </ifs>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>

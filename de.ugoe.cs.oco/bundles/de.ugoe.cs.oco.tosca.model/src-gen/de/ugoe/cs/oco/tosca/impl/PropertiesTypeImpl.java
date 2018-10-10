@@ -93,7 +93,7 @@ public class PropertiesTypeImpl extends MinimalEObjectImpl.Container implements 
 	public EObject getPropertiesElement() {
 
 		if (getAny() != null) {
-			return (EObject) any.get(0).getValue();
+			propertiesElement = (EObject) getAny().get(0).getValue();
 		}
 		
 		

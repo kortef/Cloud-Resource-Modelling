@@ -171,6 +171,7 @@ public class TOSCADef2Ecore {
 			
 			addRequirementRestrictions(nodeType, pivotalAnnotation);
 			addCapabilityRestrictions(nodeType, pivotalAnnotation);
+			addTypeRestriction(nodeType, pivotalAnnotation);
 			//addPropertyRestrictions(nodeType, pivotalAnnotation);
 			
 			for (Entry<String, String> entry: pivotalAnnotation.getDetails().entrySet()) {
@@ -244,22 +245,29 @@ public class TOSCADef2Ecore {
 		return toscaPackage;
 	}
 	
+	private static EAnnotation addTypeRestriction(TEntityType entityType, EAnnotation annotation) {
+		StringBuilder oclBuilder = new StringBuilder();
+		oclBuilder.append("self.type = self.computeType()\n");
+		annotation.getDetails().put("restrictsTypeString", oclBuilder.toString());
+		return annotation;
+	}
+	
 	private static EAnnotation addRequirementRestrictions(TNodeType nodeType, EAnnotation annotation) {
 		if (nodeType.getRequirementDefinitions() != null && 
 				nodeType.getRequirementDefinitions().getRequirementDefinition().size() > 0) {
 			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("self.requirements.requirement->forAll(");
+			oclBuilder.append("if self.capabilities <> null then self.requirements.requirement->forAll(");
 			for (TRequirementDefinition rType: nodeType.getRequirementDefinitions().getRequirementDefinition()) {
 				if (rType.getRequirementType() !=  null) {
 					// TODO: Check
 					oclBuilder.append("oclIsKindOf(");
-					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
-							rType.getRequirementType().toString())));
+					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(
+							rType.getRequirementTypeRef().getName().toString()));
 					oclBuilder.append(") or ");
 				}
 			}
 			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(")\n");
+			oclBuilder.append(") else true endif\n");
 			annotation.getDetails().put("restrictsRequirementTypes", oclBuilder.toString());
 		}
 		return annotation;
@@ -269,15 +277,15 @@ public class TOSCADef2Ecore {
 		if (nodeType.getCapabilityDefinitions() != null && 
 				nodeType.getCapabilityDefinitions().getCapabilityDefinition().size() > 0) {
 			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("self.capabilities.capability->forAll(");
+			oclBuilder.append("if self.capabilities <> null then self.capabilities.capability->forAll(");
 			for (TCapabilityDefinition cType: nodeType.getCapabilityDefinitions().getCapabilityDefinition()) {
 				oclBuilder.append("oclIsKindOf(");
-				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(ConverterUtils.toEcoreCompatibleName(
-						cType.getCapabilityType().toString())));
+				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(
+						cType.getCapabilityTypeRef().getName().toString()));
 				oclBuilder.append(") or ");
 			}
 			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(")\n");
+			oclBuilder.append(") else true endif\n");
 			annotation.getDetails().put("restrictsCapabilityTypes", oclBuilder.toString());
 		}
 		return annotation;
@@ -406,7 +414,9 @@ public class TOSCADef2Ecore {
 		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
 		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
 		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" 
+		DocumentRoot root = (DocumentRoot) entityType.eResource().getContents().get(0);
+		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'"
+				+ root.getDefinitions().get(0).getTargetNamespace() + "','"
 				+ entityType.getName() + "'}");
 		typeOperation.getEAnnotations().add(annotation);
 		
@@ -510,13 +520,6 @@ public class TOSCADef2Ecore {
 				fileURI = fileURI.resolve(root);
 				XSDSchema schema = loadXSD(fileURI);
 				addXSDTypeDefinitions(schema, ePackage);
-//				XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
-//				Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(URI.createFileURI(imp.getLocation()));
-//				Iterator<EObject> iter = ecorePackages.iterator();
-//				while(iter.hasNext()) {
-//				EPackage generatedPackage = (EPackage) iter.next();
-//				EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
-//				}
 				// add tosca definitions to resourceset if namespace not allready present					
 			} else if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE) 
 					&& resourceSet.getPackageRegistry().getEPackage(imp.getNamespace()) == null) {

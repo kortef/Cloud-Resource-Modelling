@@ -47,6 +47,7 @@ import de.ugoe.cs.oco.tosca.TRelationshipType;
 import de.ugoe.cs.oco.tosca.TRequirementDefinition;
 import de.ugoe.cs.oco.tosca.TRequirementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.ValidImportTypes;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
@@ -299,7 +300,7 @@ public class TOSCADef2Ecore {
 	 * @param toscaDef Path to the TOSCA definition
 	 * @param generatedEcore Path to the generated ecore
 	 */
-	public static void generateEcore(Path toscaDef, Path generatedEcore) {
+	public static void generateEcore(URI toscaDef, URI generatedEcore) {
 		ToscaPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -312,7 +313,7 @@ public class TOSCADef2Ecore {
 		m.put("ecore", new EcoreResourceFactoryImpl());
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(false));
-		DefinitionsType definitions = loadToscaDefinitions(URI.createFileURI(toscaDef.toString()), resourceSet);
+		DefinitionsType definitions = loadToscaDefinitions(toscaDef, resourceSet);
 		
 		EPackage ePackage = createEPackage(definitions);
 		handleImports(definitions, ePackage, resourceSet, toscaDef);
@@ -323,7 +324,7 @@ public class TOSCADef2Ecore {
 		
 		// persist metamodel
 		try {
-			ConverterUtils.persistMetamodel(resourceSet, ePackage, generatedEcore.toString());
+			ConverterUtils.persistMetamodel(resourceSet, ePackage, generatedEcore);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -498,19 +499,17 @@ public class TOSCADef2Ecore {
 		return ePackage;
 	}
 	
-	private static EPackage handleImports(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet, Path root) {
+	private static EPackage handleImports(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet, URI root) {
 		for (TImport imp: definitions.getImport()) {
 			// make sure required packages are present
 			EPackage importedPackage = EPackage.Registry.INSTANCE.getEPackage(imp.getNamespace());
 			if (importedPackage == null) {
 				LOGGER.debug("Dependency " + imp.getNamespace() + " is unknown. Trying to load on demand.");
-				if (imp.getImportType().equals("http://www.w3.org/2001/XMLSchema")) {
-					Path path = Paths.get(imp.getLocation());
-					if (!path.isAbsolute()){
-						path = Paths.get(root.getParent().toString(), path.toString());
-					}
-					LOGGER.debug("Trying to read xsd definition from path " + path.toString());
-					XSDSchema schema = loadXSD(URI.createFileURI(path.toString()));
+				if (imp.getImportType().equals(ValidImportTypes.XSD_TYPE)) {
+					URI fileURI = URI.createFileURI(imp.getLocation());
+					fileURI = fileURI.resolve(root);
+					LOGGER.debug("Trying to read xsd definition from path " + fileURI.toString());
+					XSDSchema schema = loadXSD(fileURI);
 					addXSDTypeDefinitions(schema, ePackage);
 //					XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
 //					Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(URI.createFileURI(imp.getLocation()));
@@ -520,16 +519,14 @@ public class TOSCADef2Ecore {
 //						EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
 //					}
 //					
-				} else if (imp.getImportType().equals("http://docs.oasis-open.org/tosca/ns/2011/12")) {
-					Path path = Paths.get(imp.getLocation());
-					if (!path.isAbsolute()){
-						path = Paths.get(root.getParent().toString(), path.toString());
-					}
-					LOGGER.debug("Trying to read tosca definition from path " + path.toString());
+				} else if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE)) {
+					URI fileURI = URI.createFileURI(imp.getLocation());
+					fileURI = fileURI.resolve(root);
+					LOGGER.debug("Trying to read tosca definition from path " + fileURI.toString());
 					
-					DefinitionsType importedDef = loadToscaDefinitions(URI.createFileURI(path.toString()), resourceSet);
+					DefinitionsType importedDef = loadToscaDefinitions(fileURI, resourceSet);
 					importedPackage = createEPackage(importedDef);
-					handleImports(importedDef, importedPackage, resourceSet, path);
+					handleImports(importedDef, importedPackage, resourceSet, fileURI);
 					addToscaTypeDefinitions(importedDef, importedPackage, resourceSet);
 					resourceSet.getPackageRegistry().put(importedPackage.getNsURI(), importedPackage);
 					Resource importedResource = resourceSet.createResource(URI.createURI(importedPackage.getNsURI()));

@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 public final class ConverterUtils {
 
 
-	public static void save(ResourceSet resourceSet, EPackage rootElement, String path) throws IOException {
-		URI uri = URI.createFileURI(path);
+	public static void save(ResourceSet resourceSet, EPackage rootElement, URI uri) throws IOException {
 		Resource resource = resourceSet.createResource(uri);
 		resourceSet.getURIConverter().getURIMap().put(URI.createURI(rootElement.getNsURI()), uri);
 		
@@ -59,7 +58,7 @@ public final class ConverterUtils {
 		return sb.toString();
 	}
 	
-	public static void persistMetamodel(ResourceSet resourceSet, EPackage generated, String path) throws IOException {
+	public static void persistMetamodel(ResourceSet resourceSet, EPackage generated, URI uri) throws IOException {
 //		if (new File(path).exists()) {
 //			EPackage existing = (EPackage) OcciHelper.getRootElement(resourceSet, "file:/" + path);
 //			for (Iterator<EObject> iterator = existing.eAllContents(); iterator.hasNext();) {
@@ -77,7 +76,7 @@ public final class ConverterUtils {
 //				}
 //			}
 //		}
-		ConverterUtils.save(resourceSet, generated, path);
+		ConverterUtils.save(resourceSet, generated, uri);
 	}
 
 }

@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
+
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.gen.extension.TOSCADef2Ecore;
 import de.ugoe.cs.util.console.Command;
@@ -41,11 +43,7 @@ public class CMDconvertDefinition2ecore implements Command {
 		}
 		
 	
-		TOSCADef2Ecore.generateEcore(filePath, outputPath);
-	
-		
-	    ToscaPackage.eINSTANCE.eClass();
-
+		TOSCADef2Ecore.generateEcore(URI.createURI(filePath.toString()), URI.createURI(outputPath.toString()));
 	}
 
 	@Override

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ <!-- Popup menu to convert TOSCA model to ecore. -->
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.tosca"
+            id="de.ugoe.cs.oco.tosca.model.ui.contribution1">
+         <menu
+               label="TOSCA modelling"
+               path="additionsTOSCAModelling"
+               id="de.ugoe.cs.oco.tosca.model.ui.menu">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         <action
+               label="Convert to Ecore model"
+               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToEcoreAction"
+               menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
+               enablesFor="1"
+               id="de.ugoe.cs.oco.tosca.model.ui.ConvertToEcoreAction">
+         </action>
+      </objectContribution>
+</extension>
+
+</plugin>

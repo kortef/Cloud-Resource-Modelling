@@ -60,9 +60,8 @@ public class TOSCADef2Ecore {
 	
 	private static EPackage addToscaTypeDefinitions(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet) {
 		
-		EPackage toscaPackage = getTOSCAPackage();
-		//EPackage toscaPackage = ToscaPackage.eINSTANCE;	
-		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
+		//EPackage toscaPackage = getTOSCAPackage();
+		EPackage toscaPackage = ToscaPackage.eINSTANCE;	
 		extractAndAddRawTypes(definitions, toscaPackage, ePackage);
 		extractAndAddSuperTypes(definitions, toscaPackage, ePackage, resourceSet);
 		
@@ -316,6 +315,7 @@ public class TOSCADef2Ecore {
 		DefinitionsType definitions = loadToscaDefinitions(toscaDef, resourceSet);
 		
 		EPackage ePackage = createEPackage(definitions);
+		resourceSet.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		handleImports(definitions, ePackage, resourceSet, toscaDef);
 		addToscaTypeDefinitions(definitions, ePackage, resourceSet);
 		
@@ -479,7 +479,8 @@ public class TOSCADef2Ecore {
 		
 		for (Object object: builder.getXSDComponentToEModelElementMap().values()) {
 			if (object instanceof EClassifier) {
-				ePackage.getEClassifiers().add((EClassifier) object);
+				if (ePackage.getEClassifier(((EClassifier) object).getName()) == null)
+					ePackage.getEClassifiers().add((EClassifier) object);
 			}
 			if (object instanceof EReference) {
 				EReference attribute = (EReference) object;
@@ -490,7 +491,8 @@ public class TOSCADef2Ecore {
 					}
 					else {
 						if (root != attribute.getEContainingClass()) {
-							((EClass) root).getEStructuralFeatures().add(attribute);
+							if (((EClass) root).getEStructuralFeature(attribute.getName()) == null)
+								((EClass) root).getEStructuralFeatures().add(attribute);
 						}
 					}
 				}
@@ -501,42 +503,34 @@ public class TOSCADef2Ecore {
 	
 	private static EPackage handleImports(DefinitionsType definitions, EPackage ePackage, ResourceSet resourceSet, URI root) {
 		for (TImport imp: definitions.getImport()) {
-			// make sure required packages are present
-			EPackage importedPackage = EPackage.Registry.INSTANCE.getEPackage(imp.getNamespace());
-			if (importedPackage == null) {
-				LOGGER.debug("Dependency " + imp.getNamespace() + " is unknown. Trying to load on demand.");
-				if (imp.getImportType().equals(ValidImportTypes.XSD_TYPE)) {
-					URI fileURI = URI.createFileURI(imp.getLocation());
-					fileURI = fileURI.resolve(root);
-					LOGGER.debug("Trying to read xsd definition from path " + fileURI.toString());
-					XSDSchema schema = loadXSD(fileURI);
-					addXSDTypeDefinitions(schema, ePackage);
-//					XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
-//					Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(URI.createFileURI(imp.getLocation()));
-//					Iterator<EObject> iter = ecorePackages.iterator();
-//					while(iter.hasNext()) {
-//						EPackage generatedPackage = (EPackage) iter.next();
-//						EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
-//					}
-//					
-				} else if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE)) {
-					URI fileURI = URI.createFileURI(imp.getLocation());
-					fileURI = fileURI.resolve(root);
-					LOGGER.debug("Trying to read tosca definition from path " + fileURI.toString());
-					
-					DefinitionsType importedDef = loadToscaDefinitions(fileURI, resourceSet);
-					importedPackage = createEPackage(importedDef);
-					handleImports(importedDef, importedPackage, resourceSet, fileURI);
-					addToscaTypeDefinitions(importedDef, importedPackage, resourceSet);
-					resourceSet.getPackageRegistry().put(importedPackage.getNsURI(), importedPackage);
-					Resource importedResource = resourceSet.createResource(URI.createURI(importedPackage.getNsURI()));
-					importedResource.getContents().add(importedPackage);
-				}
-				else {
-					LOGGER.error("Import type " + imp.getImportType() + " is unknown.");
-					return null;
-				}
+			// add xsd definitions to current package
+			if (imp.getImportType().equals(ValidImportTypes.XSD_TYPE) 
+					&& imp.getNamespace().equals(ePackage.getNsURI())) {
+				URI fileURI = URI.createFileURI(imp.getLocation());
+				fileURI = fileURI.resolve(root);
+				XSDSchema schema = loadXSD(fileURI);
+				addXSDTypeDefinitions(schema, ePackage);
+//				XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
+//				Collection<EObject> ecorePackages = xsdEcoreBuilder.generate(URI.createFileURI(imp.getLocation()));
+//				Iterator<EObject> iter = ecorePackages.iterator();
+//				while(iter.hasNext()) {
+//				EPackage generatedPackage = (EPackage) iter.next();
+//				EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
+//				}
+				// add tosca definitions to resourceset if namespace not allready present					
+			} else if (imp.getImportType().equals(ValidImportTypes.TOSCA_TYPE) 
+					&& resourceSet.getPackageRegistry().getEPackage(imp.getNamespace()) == null) {
+				
+				URI fileURI = URI.createFileURI(imp.getLocation());
+				fileURI = fileURI.resolve(root);
 
+				DefinitionsType importedDef = loadToscaDefinitions(fileURI, resourceSet);
+				EPackage importedPackage = createEPackage(importedDef);
+				handleImports(importedDef, importedPackage, resourceSet, fileURI);
+				addToscaTypeDefinitions(importedDef, importedPackage, resourceSet);
+				resourceSet.getPackageRegistry().put(importedPackage.getNsURI(), importedPackage);
+				Resource importedResource = resourceSet.createResource(URI.createURI(importedPackage.getNsURI()));
+				importedResource.getContents().add(importedPackage);
 			}
 		}
 		return ePackage;

@@ -225,7 +225,8 @@ public class TImportImpl extends TExtensibleElementsImpl implements TImport {
 						Iterator<EObject> iter = ecorePackages.iterator();
 						while(iter.hasNext()) {
 							EPackage generatedPackage = (EPackage) iter.next();
-							EPackage.Registry.INSTANCE.put(generatedPackage.getNsURI(), generatedPackage);
+							if (resourceSet.getPackageRegistry().getEPackage(generatedPackage.getNsURI()) == null)
+								resourceSet.getPackageRegistry().put(generatedPackage.getNsURI(), generatedPackage);
 						}
 					}
 				}

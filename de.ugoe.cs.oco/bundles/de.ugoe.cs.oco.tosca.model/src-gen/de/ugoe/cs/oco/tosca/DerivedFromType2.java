@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getTypeRef <em>Type Ref</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType <em>Referenced Entity Type</em>}</li>
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType2()
@@ -49,5 +50,31 @@ public interface DerivedFromType2 extends EObject {
 	 * @generated
 	 */
 	void setTypeRef(QName value);
+
+	/**
+	 * Returns the value of the '<em><b>Referenced Entity Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Referenced Entity Type</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Referenced Entity Type</em>' reference.
+	 * @see #setReferencedEntityType(TEntityType)
+	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType2_ReferencedEntityType()
+	 * @model transient="true" derived="true"
+	 * @generated
+	 */
+	TEntityType getReferencedEntityType();
+
+	/**
+	 * Sets the value of the '{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType <em>Referenced Entity Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Referenced Entity Type</em>' reference.
+	 * @see #getReferencedEntityType()
+	 * @generated
+	 */
+	void setReferencedEntityType(TEntityType value);
 
 } // DerivedFromType2

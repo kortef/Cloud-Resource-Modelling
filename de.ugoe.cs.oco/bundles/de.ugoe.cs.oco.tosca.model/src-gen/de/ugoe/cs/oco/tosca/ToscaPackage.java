@@ -1113,13 +1113,22 @@ public interface ToscaPackage extends EPackage {
 	int DERIVED_FROM_TYPE2__TYPE_REF = 0;
 
 	/**
+	 * The feature id for the '<em><b>Referenced Entity Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Derived From Type2</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DERIVED_FROM_TYPE2_FEATURE_COUNT = 1;
+	int DERIVED_FROM_TYPE2_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Derived From Type2</em>' class.
@@ -7922,6 +7931,17 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getDerivedFromType2_TypeRef();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType <em>Referenced Entity Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Referenced Entity Type</em>'.
+	 * @see de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType()
+	 * @see #getDerivedFromType2()
+	 * @generated
+	 */
+	EReference getDerivedFromType2_ReferencedEntityType();
+
+	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12112,6 +12132,14 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DERIVED_FROM_TYPE2__TYPE_REF = eINSTANCE.getDerivedFromType2_TypeRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Referenced Entity Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE = eINSTANCE.getDerivedFromType2_ReferencedEntityType();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.DocumentRootImpl <em>Document Root</em>}' class.

@@ -3,7 +3,9 @@
 package de.ugoe.cs.oco.tosca.impl;
 
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
+import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaModelUtil;
 
 import javax.xml.namespace.QName;
 
@@ -11,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -23,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType2Impl#getTypeRef <em>Type Ref</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.impl.DerivedFromType2Impl#getReferencedEntityType <em>Referenced Entity Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +51,16 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected QName typeRef = TYPE_REF_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReferencedEntityType() <em>Referenced Entity Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferencedEntityType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TEntityType referencedEntityType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,6 +105,53 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public TEntityType getReferencedEntityType() {
+		if (referencedEntityType == null) {
+			if (getTypeRef() != null) {
+				referencedEntityType = ToscaModelUtil.resolveType(this, getTypeRef());
+			}
+		}
+		
+		
+		if (referencedEntityType != null && referencedEntityType.eIsProxy()) {
+			InternalEObject oldReferencedEntityType = (InternalEObject)referencedEntityType;
+			referencedEntityType = (TEntityType)eResolveProxy(oldReferencedEntityType);
+			if (referencedEntityType != oldReferencedEntityType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE, oldReferencedEntityType, referencedEntityType));
+			}
+		}
+		return referencedEntityType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TEntityType basicGetReferencedEntityType() {
+		return referencedEntityType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setReferencedEntityType(TEntityType newReferencedEntityType) {
+		setTypeRef(ToscaModelUtil.getQualifiedName(newReferencedEntityType));
+		
+		TEntityType oldReferencedEntityType = referencedEntityType;
+		referencedEntityType = newReferencedEntityType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE, oldReferencedEntityType, referencedEntityType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -98,6 +159,9 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case ToscaPackage.DERIVED_FROM_TYPE2__TYPE_REF:
 				return getTypeRef();
+			case ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE:
+				if (resolve) return getReferencedEntityType();
+				return basicGetReferencedEntityType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,6 +176,9 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case ToscaPackage.DERIVED_FROM_TYPE2__TYPE_REF:
 				setTypeRef((QName)newValue);
+				return;
+			case ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE:
+				setReferencedEntityType((TEntityType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,6 +195,9 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 			case ToscaPackage.DERIVED_FROM_TYPE2__TYPE_REF:
 				setTypeRef(TYPE_REF_EDEFAULT);
 				return;
+			case ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE:
+				setReferencedEntityType((TEntityType)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -142,6 +212,8 @@ public class DerivedFromType2Impl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case ToscaPackage.DERIVED_FROM_TYPE2__TYPE_REF:
 				return TYPE_REF_EDEFAULT == null ? typeRef != null : !TYPE_REF_EDEFAULT.equals(typeRef);
+			case ToscaPackage.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE:
+				return referencedEntityType != null;
 		}
 		return super.eIsSet(featureID);
 	}

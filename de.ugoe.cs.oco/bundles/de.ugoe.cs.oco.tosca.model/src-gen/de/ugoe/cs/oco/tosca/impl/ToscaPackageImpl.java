@@ -1329,6 +1329,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDerivedFromType2_ReferencedEntityType() {
+		return (EReference)derivedFromType2EClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDocumentRoot() {
 		return documentRootEClass;
 	}
@@ -4699,6 +4708,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		derivedFromType2EClass = createEClass(DERIVED_FROM_TYPE2);
 		createEAttribute(derivedFromType2EClass, DERIVED_FROM_TYPE2__TYPE_REF);
+		createEReference(derivedFromType2EClass, DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE);
 
 		documentRootEClass = createEClass(DOCUMENT_ROOT);
 		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
@@ -5272,6 +5282,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		initEClass(derivedFromType2EClass, DerivedFromType2.class, "DerivedFromType2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDerivedFromType2_TypeRef(), theXMLTypePackage.getQName(), "typeRef", null, 1, 1, DerivedFromType2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDerivedFromType2_ReferencedEntityType(), this.getTEntityType(), null, "referencedEntityType", null, 0, 1, DerivedFromType2.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentRootEClass, DocumentRoot.class, "DocumentRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

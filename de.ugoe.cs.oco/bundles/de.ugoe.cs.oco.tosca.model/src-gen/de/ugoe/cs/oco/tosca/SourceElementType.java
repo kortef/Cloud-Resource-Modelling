@@ -34,6 +34,7 @@ public interface SourceElementType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getSourceElementType_Ref()
 	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='ref'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!SourceElementType!ref'"
 	 * @generated
 	 */
 	TRequirement getRef();

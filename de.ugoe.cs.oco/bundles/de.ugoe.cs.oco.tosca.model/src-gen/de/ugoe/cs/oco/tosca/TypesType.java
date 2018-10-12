@@ -36,6 +36,7 @@ public interface TypesType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTypesType_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TypesType!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();

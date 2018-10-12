@@ -56,6 +56,7 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://oco.cs.ugoe.de/tosca", null, de.ugoe.cs.oco.tosca.ToscaPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2003_s_XMLType = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2003/XMLType", null, org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_xsd_s_2002_s_XSD = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://www.eclipse.org/xsd/2002/XSD", null, org.eclipse.xsd.XSDPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_www_w3_org_s_XML_s_1998_s_namespace = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://www.w3.org/XML/1998/namespace", null, org.eclipse.emf.ecore.xml.namespace.XMLNamespacePackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ArtifactReferencesType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("ArtifactReferencesType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_CapabilitiesType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("CapabilitiesType", 0);
@@ -71,6 +72,7 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_DerivedFromType1 = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("DerivedFromType1", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_DerivedFromType2 = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("DerivedFromType2", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_DocumentRoot = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("DocumentRoot", 0);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_EObject = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getClassId("EObject", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_EStringToStringMapEntry = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getClassId("EStringToStringMapEntry", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ExcludeType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("ExcludeType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ExtensionsType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("ExtensionsType", 0);
@@ -166,12 +168,12 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_TypesType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("TypesType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ValidSourceType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("ValidSourceType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ValidTargetType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getClassId("ValidTargetType", 0);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_XSDElementDeclaration = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_xsd_s_2002_s_XSD.getClassId("XSDElementDeclaration", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_AnyURI = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2003_s_XMLType.getDataTypeId("AnyURI", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_EFeatureMapEntry = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EFeatureMapEntry", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_EResource = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EResource", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_ID = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2003_s_XMLType.getDataTypeId("ID", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_IDREF = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2003_s_XMLType.getDataTypeId("IDREF", 0);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_ImportedURI = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getDataTypeId("ImportedURI", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_Int = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2003_s_XMLType.getDataTypeId("Int", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_LangType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_www_w3_org_s_XML_s_1998_s_namespace.getDataTypeId("LangType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_MaxInstancesType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getDataTypeId("MaxInstancesType", 0);
@@ -181,24 +183,30 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_UpperBoundType = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getDataTypeId("UpperBoundType", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_UpperBoundType1 = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getDataTypeId("UpperBoundType1", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_TBoolean = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getEnumerationId("TBoolean");
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_ValidImportTypes = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getEnumerationId("ValidImportTypes");
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue INT_0 = org.eclipse.ocl.pivot.utilities.ValueUtil.integerValueOf("0");
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_PRIMid_String = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(org.eclipse.ocl.pivot.ids.TypeId.STRING);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.TuplePartId PARTid_ = org.eclipse.ocl.pivot.ids.IdManager.getTuplePartId(0, "message", org.eclipse.ocl.pivot.ids.TypeId.STRING);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.TuplePartId PARTid__0 = org.eclipse.ocl.pivot.ids.IdManager.getTuplePartId(1, "status", org.eclipse.ocl.pivot.ids.TypeId.BOOLEAN);
-	public static final /*@NonInvalid*/ java.lang.String STR_One_32_of_32_the_32_CapabilityTypes_32_is_32_not_32_allowed_32_in_32_NodeType = "One of the CapabilityTypes is not allowed in NodeType.";
-	public static final /*@NonInvalid*/ java.lang.String STR_One_32_of_32_the_32_RequiremenTypes_32_is_32_not_32_allowed_32_in_32_NodeType = "One of the RequiremenTypes is not allowed in NodeType.";
-	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_capabilityTypesMustBeAllowed = "TNodeTemplate::capabilityTypesMustBeAllowed";
-	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_requirementTypesMustBeAllowed = "TNodeTemplate::requirementTypesMustBeAllowed";
+	public static final /*@NonInvalid*/ java.lang.String STR_TCapability_c_c_typeMustBeCapabilityType = "TCapability::typeMustBeCapabilityType";
+	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_capabilitiesMustBeDefinedInReferencedNodeType = "TNodeTemplate::capabilitiesMustBeDefinedInReferencedNodeType";
+	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_requirementsMustBeDefinedInReferencedNodeType = "TNodeTemplate::requirementsMustBeDefinedInReferencedNodeType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_typeMustBeNodeType = "TNodeTemplate::typeMustBeNodeType";
-	public static final /*@NonInvalid*/ java.lang.String STR_Type_32_must_32_be_32_a_32_subclass_32_of_32_NodeType_32_Currently_32_it_32_is_32_32_10_9_9_9_p_32_type = "Type must be a subclass of NodeType. Currently it is  \n\t\t\t+ typeRef.oclType().toString() + ";
+	public static final /*@NonInvalid*/ java.lang.String STR_TRequirement_c_c_typeMustBeRequirementType = "TRequirement::typeMustBeRequirementType";
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_CapabilityDefinitionsType1 = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_CapabilityDefinitionsType1);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_DerivedFromType2 = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_DerivedFromType2);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_NodeOperationType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_NodeOperationType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_RelationshipOperationType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_RelationshipOperationType);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_RequirementDefinitionsType1 = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_RequirementDefinitionsType1);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_SourceElementType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_SourceElementType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TCapabilityDefinition = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TCapabilityDefinition);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TCapabilityRef = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TCapabilityRef);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TCapabilityType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TCapabilityType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TEntityTemplate = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TEntityTemplate);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TGroupTemplate = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TGroupTemplate);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TGroupType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TGroupType);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TNodeType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TNodeType);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TPropertyMapping = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TPropertyMapping);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TRequirementDefinition = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TRequirementDefinition);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TRequirementRef = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TRequirementRef);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TRequirementType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TRequirementType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_TargetElementType = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TargetElementType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_DefinitionsType = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_DefinitionsType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_EStringToStringMapEntry = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_EStringToStringMapEntry);
@@ -218,6 +226,8 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TConstraint = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TConstraint);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TDeploymentArtifact = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TDeploymentArtifact);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TDocumentation = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TDocumentation);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TEntityTemplate = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TEntityTemplate);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TEntityType = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TEntityType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TExportedInterface = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TExportedInterface);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TExportedOperation = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TExportedOperation);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TExtension = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TExtension);
@@ -246,8 +256,11 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TRequirementType = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TRequirementType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TServiceTemplate = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TServiceTemplate);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_CLSSid_TTag = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TTag);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId ORD_DATAid_QName = org.eclipse.ocl.pivot.ids.TypeId.ORDERED_SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.DATAid_QName);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_TCapabilityType = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TCapabilityType);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_CLSSid_TRequirementType = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TRequirementType);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_DATAid_EFeatureMapEntry = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.DATAid_EFeatureMapEntry);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.TupleTypeId TUPLid_ = org.eclipse.ocl.pivot.ids.IdManager.getTupleTypeId("Tuple", de.ugoe.cs.oco.tosca.ToscaTables.PARTid_, de.ugoe.cs.oco.tosca.ToscaTables.PARTid__0);
+	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SET_CLSSid_TNodeType = org.eclipse.ocl.pivot.ids.TypeId.SET.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_TNodeType);
 
 	/**
 	 *	The type parameters for templated types and operations.
@@ -402,6 +415,7 @@ public class ToscaTables
 		public static final /*@NonNull*/ EcoreExecutorEnumeration _UpperBoundTypeMember11 = new EcoreExecutorEnumeration(ToscaPackage.Literals.UPPER_BOUND_TYPE_MEMBER11, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _UpperBoundTypeMember1Object = new EcoreExecutorType("UpperBoundTypeMember1Object", PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _UpperBoundTypeMember1Object1 = new EcoreExecutorType("UpperBoundTypeMember1Object1", PACKAGE, 0);
+		public static final /*@NonNull*/ EcoreExecutorEnumeration _ValidImportTypes = new EcoreExecutorEnumeration(ToscaPackage.Literals.VALID_IMPORT_TYPES, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _ValidSourceType = new EcoreExecutorType(ToscaPackage.Literals.VALID_SOURCE_TYPE, PACKAGE, 0);
 		public static final /*@NonNull*/ EcoreExecutorType _ValidTargetType = new EcoreExecutorType(ToscaPackage.Literals.VALID_TARGET_TYPE, PACKAGE, 0);
 
@@ -531,6 +545,7 @@ public class ToscaTables
 			_UpperBoundTypeMember11,
 			_UpperBoundTypeMember1Object,
 			_UpperBoundTypeMember1Object1,
+			_ValidImportTypes,
 			_ValidSourceType,
 			_ValidTargetType
 		};
@@ -1104,6 +1119,12 @@ public class ToscaTables
 		private static final /*@NonNull*/ ExecutorFragment _UpperBoundTypeMember1Object1__OclAny = new ExecutorFragment(Types._UpperBoundTypeMember1Object1, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _UpperBoundTypeMember1Object1__UpperBoundTypeMember1Object1 = new ExecutorFragment(Types._UpperBoundTypeMember1Object1, ToscaTables.Types._UpperBoundTypeMember1Object1);
 
+		private static final /*@NonNull*/ ExecutorFragment _ValidImportTypes__OclAny = new ExecutorFragment(Types._ValidImportTypes, OCLstdlibTables.Types._OclAny);
+		private static final /*@NonNull*/ ExecutorFragment _ValidImportTypes__OclElement = new ExecutorFragment(Types._ValidImportTypes, OCLstdlibTables.Types._OclElement);
+		private static final /*@NonNull*/ ExecutorFragment _ValidImportTypes__OclEnumeration = new ExecutorFragment(Types._ValidImportTypes, OCLstdlibTables.Types._OclEnumeration);
+		private static final /*@NonNull*/ ExecutorFragment _ValidImportTypes__OclType = new ExecutorFragment(Types._ValidImportTypes, OCLstdlibTables.Types._OclType);
+		private static final /*@NonNull*/ ExecutorFragment _ValidImportTypes__ValidImportTypes = new ExecutorFragment(Types._ValidImportTypes, ToscaTables.Types._ValidImportTypes);
+
 		private static final /*@NonNull*/ ExecutorFragment _ValidSourceType__OclAny = new ExecutorFragment(Types._ValidSourceType, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _ValidSourceType__OclElement = new ExecutorFragment(Types._ValidSourceType, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _ValidSourceType__ValidSourceType = new ExecutorFragment(Types._ValidSourceType, ToscaTables.Types._ValidSourceType);
@@ -1214,8 +1235,9 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType1__relationshipTypeImplementationRef = new EcoreExecutorProperty(ToscaPackage.Literals.DERIVED_FROM_TYPE1__RELATIONSHIP_TYPE_IMPLEMENTATION_REF, Types._DerivedFromType1, 0);
 		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType1__TRelationshipTypeImplementation__derivedFrom = new ExecutorPropertyWithImplementation("TRelationshipTypeImplementation", Types._DerivedFromType1, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TRELATIONSHIP_TYPE_IMPLEMENTATION__DERIVED_FROM));
 
-		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType2__typeRef = new EcoreExecutorProperty(ToscaPackage.Literals.DERIVED_FROM_TYPE2__TYPE_REF, Types._DerivedFromType2, 0);
-		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType2__TEntityType__derivedFrom = new ExecutorPropertyWithImplementation("TEntityType", Types._DerivedFromType2, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TYPE__DERIVED_FROM));
+		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType2__referencedEntityType = new EcoreExecutorProperty(ToscaPackage.Literals.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE, Types._DerivedFromType2, 0);
+		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType2__typeRef = new EcoreExecutorProperty(ToscaPackage.Literals.DERIVED_FROM_TYPE2__TYPE_REF, Types._DerivedFromType2, 1);
+		public static final /*@NonNull*/ ExecutorProperty _DerivedFromType2__TEntityType__derivedFrom = new ExecutorPropertyWithImplementation("TEntityType", Types._DerivedFromType2, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TYPE__DERIVED_FROM));
 
 		public static final /*@NonNull*/ ExecutorProperty _DocumentRoot__definitions = new EcoreExecutorProperty(ToscaPackage.Literals.DOCUMENT_ROOT__DEFINITIONS, Types._DocumentRoot, 0);
 		public static final /*@NonNull*/ ExecutorProperty _DocumentRoot__documentation = new EcoreExecutorProperty(ToscaPackage.Literals.DOCUMENT_ROOT__DOCUMENTATION, Types._DocumentRoot, 1);
@@ -1285,15 +1307,18 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _PoliciesType2__TBoundaryDefinitions__policies = new ExecutorPropertyWithImplementation("TBoundaryDefinitions", Types._PoliciesType2, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__POLICIES));
 
 		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__element = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_DEFINITION_TYPE__ELEMENT, Types._PropertiesDefinitionType, 0);
-		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__type = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_DEFINITION_TYPE__TYPE, Types._PropertiesDefinitionType, 1);
-		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__TEntityType__propertiesDefinition = new ExecutorPropertyWithImplementation("TEntityType", Types._PropertiesDefinitionType, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TYPE__PROPERTIES_DEFINITION));
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__elementRef = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_DEFINITION_TYPE__ELEMENT_REF, Types._PropertiesDefinitionType, 1);
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__type = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_DEFINITION_TYPE__TYPE, Types._PropertiesDefinitionType, 2);
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesDefinitionType__TEntityType__propertiesDefinition = new ExecutorPropertyWithImplementation("TEntityType", Types._PropertiesDefinitionType, 3, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TYPE__PROPERTIES_DEFINITION));
 
 		public static final /*@NonNull*/ ExecutorProperty _PropertiesType__any = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE__ANY, Types._PropertiesType, 0);
-		public static final /*@NonNull*/ ExecutorProperty _PropertiesType__TEntityTemplate__properties = new ExecutorPropertyWithImplementation("TEntityTemplate", Types._PropertiesType, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__PROPERTIES));
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesType__propertiesElement = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE__PROPERTIES_ELEMENT, Types._PropertiesType, 1);
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesType__TEntityTemplate__properties = new ExecutorPropertyWithImplementation("TEntityTemplate", Types._PropertiesType, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__PROPERTIES));
 
 		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__any = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE1__ANY, Types._PropertiesType1, 0);
-		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__propertyMappings = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE1__PROPERTY_MAPPINGS, Types._PropertiesType1, 1);
-		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__TBoundaryDefinitions__properties = new ExecutorPropertyWithImplementation("TBoundaryDefinitions", Types._PropertiesType1, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__PROPERTIES));
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__propertiesElement = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE1__PROPERTIES_ELEMENT, Types._PropertiesType1, 1);
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__propertyMappings = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTIES_TYPE1__PROPERTY_MAPPINGS, Types._PropertiesType1, 2);
+		public static final /*@NonNull*/ ExecutorProperty _PropertiesType1__TBoundaryDefinitions__properties = new ExecutorPropertyWithImplementation("TBoundaryDefinitions", Types._PropertiesType1, 3, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TBOUNDARY_DEFINITIONS__PROPERTIES));
 
 		public static final /*@NonNull*/ ExecutorProperty _PropertyConstraintsType__propertyConstraint = new EcoreExecutorProperty(ToscaPackage.Literals.PROPERTY_CONSTRAINTS_TYPE__PROPERTY_CONSTRAINT, Types._PropertyConstraintsType, 0);
 		public static final /*@NonNull*/ ExecutorProperty _PropertyConstraintsType__TEntityTemplate__propertyConstraints = new ExecutorPropertyWithImplementation("TEntityTemplate", Types._PropertyConstraintsType, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__PROPERTY_CONSTRAINTS));
@@ -1381,6 +1406,7 @@ public class ToscaTables
 
 		public static final /*@NonNull*/ ExecutorProperty _TCapabilityType__TCapabilityDefinition__capabilityTypeRef = new ExecutorPropertyWithImplementation("TCapabilityDefinition", Types._TCapabilityType, 0, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TCAPABILITY_DEFINITION__CAPABILITY_TYPE_REF));
 		public static final /*@NonNull*/ ExecutorProperty _TCapabilityType__TDefinitions__capabilityType = new ExecutorPropertyWithImplementation("TDefinitions", Types._TCapabilityType, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TDEFINITIONS__CAPABILITY_TYPE));
+		public static final /*@NonNull*/ ExecutorProperty _TCapabilityType__TRequirementType__requiredCapabilityTypeRef = new ExecutorPropertyWithImplementation("TRequirementType", Types._TCapabilityType, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF));
 
 		public static final /*@NonNull*/ ExecutorProperty _TCondition__any = new EcoreExecutorProperty(ToscaPackage.Literals.TCONDITION__ANY, Types._TCondition, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TCondition__expressionLanguage = new EcoreExecutorProperty(ToscaPackage.Literals.TCONDITION__EXPRESSION_LANGUAGE, Types._TCondition, 1);
@@ -1433,6 +1459,8 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _TEntityTemplate__propertyConstraints = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__PROPERTY_CONSTRAINTS, Types._TEntityTemplate, 2);
 		public static final /*@NonNull*/ ExecutorProperty _TEntityTemplate__type = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__TYPE, Types._TEntityTemplate, 3);
 		public static final /*@NonNull*/ ExecutorProperty _TEntityTemplate__typeRef = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__TYPE_REF, Types._TEntityTemplate, 4);
+		public static final /*@NonNull*/ ExecutorProperty _TEntityTemplate__TGroupTemplate__member = new ExecutorPropertyWithImplementation("TGroupTemplate", Types._TEntityTemplate, 5, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TGROUP_TEMPLATE__MEMBER));
+		public static final /*@NonNull*/ ExecutorProperty _TEntityTemplate__TPropertyMapping__targetObjectRef = new ExecutorPropertyWithImplementation("TPropertyMapping", Types._TEntityTemplate, 6, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TPROPERTY_MAPPING__TARGET_OBJECT_REF));
 
 		public static final /*@NonNull*/ ExecutorProperty _TEntityType__abstract = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TYPE__ABSTRACT, Types._TEntityType, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TEntityType__derivedFrom = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TYPE__DERIVED_FROM, Types._TEntityType, 1);
@@ -1441,7 +1469,9 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _TEntityType__propertiesDefinition = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TYPE__PROPERTIES_DEFINITION, Types._TEntityType, 4);
 		public static final /*@NonNull*/ ExecutorProperty _TEntityType__tags = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TYPE__TAGS, Types._TEntityType, 5);
 		public static final /*@NonNull*/ ExecutorProperty _TEntityType__targetNamespace = new EcoreExecutorProperty(ToscaPackage.Literals.TENTITY_TYPE__TARGET_NAMESPACE, Types._TEntityType, 6);
-		public static final /*@NonNull*/ ExecutorProperty _TEntityType__TEntityTemplate__typeRef = new ExecutorPropertyWithImplementation("TEntityTemplate", Types._TEntityType, 7, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__TYPE_REF));
+		public static final /*@NonNull*/ ExecutorProperty _TEntityType__DerivedFromType2__referencedEntityType = new ExecutorPropertyWithImplementation("DerivedFromType2", Types._TEntityType, 7, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE));
+		public static final /*@NonNull*/ ExecutorProperty _TEntityType__TEntityTemplate__typeRef = new ExecutorPropertyWithImplementation("TEntityTemplate", Types._TEntityType, 8, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TENTITY_TEMPLATE__TYPE_REF));
+		public static final /*@NonNull*/ ExecutorProperty _TEntityType__TGroupType__memberRefs = new ExecutorPropertyWithImplementation("TGroupType", Types._TEntityType, 9, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TGROUP_TYPE__MEMBER_REFS));
 
 		public static final /*@NonNull*/ ExecutorProperty _TExportedInterface__name = new EcoreExecutorProperty(ToscaPackage.Literals.TEXPORTED_INTERFACE__NAME, Types._TExportedInterface, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TExportedInterface__operation = new EcoreExecutorProperty(ToscaPackage.Literals.TEXPORTED_INTERFACE__OPERATION, Types._TExportedInterface, 1);
@@ -1477,8 +1507,10 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _TGroupType__capabilityDefinitions = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__CAPABILITY_DEFINITIONS, Types._TGroupType, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TGroupType__instanceStates = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__INSTANCE_STATES, Types._TGroupType, 1);
 		public static final /*@NonNull*/ ExecutorProperty _TGroupType__interfaces = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__INTERFACES, Types._TGroupType, 2);
-		public static final /*@NonNull*/ ExecutorProperty _TGroupType__requirementDefinitions = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS, Types._TGroupType, 3);
-		public static final /*@NonNull*/ ExecutorProperty _TGroupType__TDefinitions__groupType = new ExecutorPropertyWithImplementation("TDefinitions", Types._TGroupType, 4, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE));
+		public static final /*@NonNull*/ ExecutorProperty _TGroupType__member = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__MEMBER, Types._TGroupType, 3);
+		public static final /*@NonNull*/ ExecutorProperty _TGroupType__memberRefs = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__MEMBER_REFS, Types._TGroupType, 4);
+		public static final /*@NonNull*/ ExecutorProperty _TGroupType__requirementDefinitions = new EcoreExecutorProperty(ToscaPackage.Literals.TGROUP_TYPE__REQUIREMENT_DEFINITIONS, Types._TGroupType, 5);
+		public static final /*@NonNull*/ ExecutorProperty _TGroupType__TDefinitions__groupType = new ExecutorPropertyWithImplementation("TDefinitions", Types._TGroupType, 6, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TDEFINITIONS__GROUP_TYPE));
 
 		public static final /*@NonNull*/ ExecutorProperty _TImplementationArtifact__artifactRef = new EcoreExecutorProperty(ToscaPackage.Literals.TIMPLEMENTATION_ARTIFACT__ARTIFACT_REF, Types._TImplementationArtifact, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TImplementationArtifact__artifactType = new EcoreExecutorProperty(ToscaPackage.Literals.TIMPLEMENTATION_ARTIFACT__ARTIFACT_TYPE, Types._TImplementationArtifact, 1);
@@ -1633,8 +1665,9 @@ public class ToscaTables
 		public static final /*@NonNull*/ ExecutorProperty _TRequirementRef__RequirementsType2__requirement = new ExecutorPropertyWithImplementation("RequirementsType2", Types._TRequirementRef, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.REQUIREMENTS_TYPE2__REQUIREMENT));
 
 		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__requiredCapabilityType = new EcoreExecutorProperty(ToscaPackage.Literals.TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE, Types._TRequirementType, 0);
-		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__TDefinitions__requirementType = new ExecutorPropertyWithImplementation("TDefinitions", Types._TRequirementType, 1, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TDEFINITIONS__REQUIREMENT_TYPE));
-		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__TRequirementDefinition__requirementTypeRef = new ExecutorPropertyWithImplementation("TRequirementDefinition", Types._TRequirementType, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TREQUIREMENT_DEFINITION__REQUIREMENT_TYPE_REF));
+		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__requiredCapabilityTypeRef = new EcoreExecutorProperty(ToscaPackage.Literals.TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF, Types._TRequirementType, 1);
+		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__TDefinitions__requirementType = new ExecutorPropertyWithImplementation("TDefinitions", Types._TRequirementType, 2, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TDEFINITIONS__REQUIREMENT_TYPE));
+		public static final /*@NonNull*/ ExecutorProperty _TRequirementType__TRequirementDefinition__requirementTypeRef = new ExecutorPropertyWithImplementation("TRequirementDefinition", Types._TRequirementType, 3, new EcoreLibraryOppositeProperty(ToscaPackage.Literals.TREQUIREMENT_DEFINITION__REQUIREMENT_TYPE_REF));
 
 		public static final /*@NonNull*/ ExecutorProperty _TServiceTemplate__boundaryDefinitions = new EcoreExecutorProperty(ToscaPackage.Literals.TSERVICE_TEMPLATE__BOUNDARY_DEFINITIONS, Types._TServiceTemplate, 0);
 		public static final /*@NonNull*/ ExecutorProperty _TServiceTemplate__id = new EcoreExecutorProperty(ToscaPackage.Literals.TSERVICE_TEMPLATE__ID, Types._TServiceTemplate, 1);
@@ -2746,6 +2779,16 @@ public class ToscaTables
 		};
 		private static final int /*@NonNull*/ [] __UpperBoundTypeMember1Object1 = { 1,1 };
 
+		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _ValidImportTypes =
+		{
+			Fragments._ValidImportTypes__OclAny /* 0 */,
+			Fragments._ValidImportTypes__OclElement /* 1 */,
+			Fragments._ValidImportTypes__OclType /* 2 */,
+			Fragments._ValidImportTypes__OclEnumeration /* 3 */,
+			Fragments._ValidImportTypes__ValidImportTypes /* 4 */
+		};
+		private static final int /*@NonNull*/ [] __ValidImportTypes = { 1,1,1,1,1 };
+
 		private static final /*@NonNull*/ ExecutorFragment /*@NonNull*/ [] _ValidSourceType =
 		{
 			Fragments._ValidSourceType__OclAny /* 0 */,
@@ -2891,6 +2934,7 @@ public class ToscaTables
 			Types._UpperBoundTypeMember11.initFragments(_UpperBoundTypeMember11, __UpperBoundTypeMember11);
 			Types._UpperBoundTypeMember1Object.initFragments(_UpperBoundTypeMember1Object, __UpperBoundTypeMember1Object);
 			Types._UpperBoundTypeMember1Object1.initFragments(_UpperBoundTypeMember1Object1, __UpperBoundTypeMember1Object1);
+			Types._ValidImportTypes.initFragments(_ValidImportTypes, __ValidImportTypes);
 			Types._ValidSourceType.initFragments(_ValidSourceType, __ValidSourceType);
 			Types._ValidTargetType.initFragments(_ValidTargetType, __ValidTargetType);
 
@@ -6366,6 +6410,40 @@ public class ToscaTables
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
 
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidImportTypes__ValidImportTypes = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidImportTypes__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidImportTypes__OclElement = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances() */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[?]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidImportTypes__OclEnumeration = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances() */
+		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidImportTypes__OclType = {
+			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
+		};
+
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidSourceType__ValidSourceType = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _ValidSourceType__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
@@ -6972,6 +7050,12 @@ public class ToscaTables
 			Fragments._UpperBoundTypeMember1Object1__OclAny.initOperations(_UpperBoundTypeMember1Object1__OclAny);
 			Fragments._UpperBoundTypeMember1Object1__UpperBoundTypeMember1Object1.initOperations(_UpperBoundTypeMember1Object1__UpperBoundTypeMember1Object1);
 
+			Fragments._ValidImportTypes__OclAny.initOperations(_ValidImportTypes__OclAny);
+			Fragments._ValidImportTypes__OclElement.initOperations(_ValidImportTypes__OclElement);
+			Fragments._ValidImportTypes__OclEnumeration.initOperations(_ValidImportTypes__OclEnumeration);
+			Fragments._ValidImportTypes__OclType.initOperations(_ValidImportTypes__OclType);
+			Fragments._ValidImportTypes__ValidImportTypes.initOperations(_ValidImportTypes__ValidImportTypes);
+
 			Fragments._ValidSourceType__OclAny.initOperations(_ValidSourceType__OclAny);
 			Fragments._ValidSourceType__OclElement.initOperations(_ValidSourceType__OclElement);
 			Fragments._ValidSourceType__ValidSourceType.initOperations(_ValidSourceType__ValidSourceType);
@@ -7064,6 +7148,7 @@ public class ToscaTables
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _DerivedFromType2 = {
+			ToscaTables.Properties._DerivedFromType2__referencedEntityType,
 			ToscaTables.Properties._DerivedFromType2__typeRef
 		};
 
@@ -7183,15 +7268,18 @@ public class ToscaTables
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _PropertiesDefinitionType = {
 			ToscaTables.Properties._PropertiesDefinitionType__element,
+			ToscaTables.Properties._PropertiesDefinitionType__elementRef,
 			ToscaTables.Properties._PropertiesDefinitionType__type
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _PropertiesType = {
-			ToscaTables.Properties._PropertiesType__any
+			ToscaTables.Properties._PropertiesType__any,
+			ToscaTables.Properties._PropertiesType__propertiesElement
 		};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _PropertiesType1 = {
 			ToscaTables.Properties._PropertiesType1__any,
+			ToscaTables.Properties._PropertiesType1__propertiesElement,
 			ToscaTables.Properties._PropertiesType1__propertyMappings
 		};
 
@@ -7483,6 +7571,8 @@ public class ToscaTables
 			ToscaTables.Properties._TEntityType__final,
 			ToscaTables.Properties._TGroupType__instanceStates,
 			ToscaTables.Properties._TGroupType__interfaces,
+			ToscaTables.Properties._TGroupType__member,
+			ToscaTables.Properties._TGroupType__memberRefs,
 			ToscaTables.Properties._TEntityType__name,
 			ToscaTables.Properties._TEntityType__propertiesDefinition,
 			ToscaTables.Properties._TGroupType__requirementDefinitions,
@@ -7748,6 +7838,7 @@ public class ToscaTables
 			ToscaTables.Properties._TEntityType__name,
 			ToscaTables.Properties._TEntityType__propertiesDefinition,
 			ToscaTables.Properties._TRequirementType__requiredCapabilityType,
+			ToscaTables.Properties._TRequirementType__requiredCapabilityTypeRef,
 			ToscaTables.Properties._TEntityType__tags,
 			ToscaTables.Properties._TEntityType__targetNamespace
 		};
@@ -7816,6 +7907,8 @@ public class ToscaTables
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _UpperBoundTypeMember1Object = {};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _UpperBoundTypeMember1Object1 = {};
+
+		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _ValidImportTypes = {};
 
 		private static final /*@NonNull*/ ExecutorProperty /*@NonNull*/ [] _ValidSourceType = {
 			ToscaTables.Properties._ValidSourceType__typeRef
@@ -7954,6 +8047,7 @@ public class ToscaTables
 			Fragments._UpperBoundTypeMember11__UpperBoundTypeMember11.initProperties(_UpperBoundTypeMember11);
 			Fragments._UpperBoundTypeMember1Object__UpperBoundTypeMember1Object.initProperties(_UpperBoundTypeMember1Object);
 			Fragments._UpperBoundTypeMember1Object1__UpperBoundTypeMember1Object1.initProperties(_UpperBoundTypeMember1Object1);
+			Fragments._ValidImportTypes__ValidImportTypes.initProperties(_ValidImportTypes);
 			Fragments._ValidSourceType__ValidSourceType.initProperties(_ValidSourceType);
 			Fragments._ValidTargetType__ValidTargetType.initProperties(_ValidTargetType);
 
@@ -8002,6 +8096,13 @@ public class ToscaTables
 			_UpperBoundTypeMember11__unbounded
 		};
 
+		public static final /*@NonNull*/ EcoreExecutorEnumerationLiteral _ValidImportTypes__TOSCAType = new EcoreExecutorEnumerationLiteral(ToscaPackage.Literals.VALID_IMPORT_TYPES.getEEnumLiteral("TOSCAType"), Types._ValidImportTypes, 0);
+		public static final /*@NonNull*/ EcoreExecutorEnumerationLiteral _ValidImportTypes__XSDType = new EcoreExecutorEnumerationLiteral(ToscaPackage.Literals.VALID_IMPORT_TYPES.getEEnumLiteral("XSDType"), Types._ValidImportTypes, 1);
+		private static final /*@NonNull*/ EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _ValidImportTypes = {
+			_ValidImportTypes__TOSCAType,
+			_ValidImportTypes__XSDType
+		};
+
 		/**
 		 *	Install the enumeration literals in the enumerations.
 		 */
@@ -8011,6 +8112,7 @@ public class ToscaTables
 			Types._TBoolean.initLiterals(_TBoolean);
 			Types._UpperBoundTypeMember1.initLiterals(_UpperBoundTypeMember1);
 			Types._UpperBoundTypeMember11.initLiterals(_UpperBoundTypeMember11);
+			Types._ValidImportTypes.initLiterals(_ValidImportTypes);
 
 			Init.initEnd();
 		}

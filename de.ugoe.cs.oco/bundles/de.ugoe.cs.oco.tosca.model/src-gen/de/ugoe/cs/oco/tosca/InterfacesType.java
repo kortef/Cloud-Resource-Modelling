@@ -36,6 +36,7 @@ public interface InterfacesType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getInterfacesType_Interface()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Interface' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!InterfacesType!interface'"
 	 * @generated
 	 */
 	EList<TInterface> getInterface();

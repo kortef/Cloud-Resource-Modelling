@@ -39,6 +39,7 @@ public interface TDocumentation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDocumentation_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDocumentation!mixed'"
 	 * @generated
 	 */
 	FeatureMap getMixed();
@@ -56,6 +57,7 @@ public interface TDocumentation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDocumentation_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':1' processing='lax'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDocumentation!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -102,6 +104,7 @@ public interface TDocumentation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDocumentation_Lang()
 	 * @model dataType="org.eclipse.emf.ecore.xml.namespace.LangType"
 	 *        extendedMetaData="kind='attribute' name='lang' namespace='http://www.w3.org/XML/1998/namespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDocumentation!lang'"
 	 * @generated
 	 */
 	String getLang();
@@ -129,6 +132,7 @@ public interface TDocumentation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDocumentation_Source()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='source'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDocumentation!source'"
 	 * @generated
 	 */
 	String getSource();

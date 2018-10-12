@@ -37,6 +37,7 @@ public interface DerivedFromType2 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType2_TypeRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='typeRef'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DerivedFromType2!typeRef'"
 	 * @generated
 	 */
 	QName getTypeRef();
@@ -63,6 +64,7 @@ public interface DerivedFromType2 extends EObject {
 	 * @see #setReferencedEntityType(TEntityType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType2_ReferencedEntityType()
 	 * @model transient="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DerivedFromType2!referencedEntityType'"
 	 * @generated
 	 */
 	TEntityType getReferencedEntityType();

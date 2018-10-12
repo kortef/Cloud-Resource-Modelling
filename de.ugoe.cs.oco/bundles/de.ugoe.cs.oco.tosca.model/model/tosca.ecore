@@ -8,6 +8,12 @@
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
     <details key="ecore.xml.type" value="http://www.eclipse.org/emf/2003/XMLType"/>
     <details key="xml" value="../../org.eclipse.emf.ecore/model/XMLNamespace.ecore#/"/>
+    <details key="xsd" value="../../org.eclipse.xsd/model/XSD.ecore#/"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ArtifactReferencesType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -992,6 +998,12 @@
       <details key="name" value="tCapability"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeMustBeCapabilityType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeMustBeCapabilityType" value="self.typeRef.oclIsKindOf(TCapabilityType)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
@@ -1795,6 +1807,14 @@
       <details key="name" value="tNodeTemplate"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeMustBeNodeType capabilitiesMustBeDefinedInReferencedNodeType requirementsMustBeDefinedInReferencedNodeType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeMustBeNodeType" value="&#xA;&#x9;&#x9;&#x9;self.typeRef.oclIsKindOf(TNodeType)"/>
+      <details key="capabilitiesMustBeDefinedInReferencedNodeType" value="&#xA;&#x9;&#x9;&#x9;if self.typeRef.oclIsKindOf(TNodeType) and self.capabilities &lt;> null then&#xA;&#x9;&#x9;&#x9;&#x9;if self.capabilities.capability->forAll(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType).capabilityDefinitions &lt;> null and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType).capabilityDefinitions.capabilityDefinition&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(capabilityTypeRef)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->includes(typeRef) or&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->closure(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if derivedFrom &lt;> null then &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;derivedFrom.referencedEntityType &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;null &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(et | et &lt;> null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;    ->collect(oclAsType(tosca::TNodeType))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(capabilityDefinitions)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(cd | cd &lt;> null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(capabilityDefinition.capabilityTypeRef)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->includes(typeRef)) then &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;true &#xA;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;null &#xA;&#x9;&#x9;&#x9;&#x9;endif &#xA;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;true &#xA;&#x9;&#x9;&#x9;endif"/>
+      <details key="requirementsMustBeDefinedInReferencedNodeType" value="&#xA;&#x9;&#x9;&#x9;&#x9;if self.typeRef.oclIsKindOf(TNodeType) and self.requirements &lt;> null then&#xA;&#x9;&#x9;&#x9;&#x9;if self.requirements.requirement->forAll(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType).requirementDefinitions &lt;> null and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType).requirementDefinitions.requirementDefinition&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(requirementTypeRef)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->includes(typeRef) or&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.typeRef.oclAsType(tosca::TNodeType)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->closure(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if derivedFrom &lt;> null then &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;derivedFrom.referencedEntityType &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;null &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(et | et &lt;> null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;    ->collect(oclAsType(tosca::TNodeType))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(requirementDefinitions)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(cd | cd &lt;> null)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(requirementDefinition.requirementTypeRef)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->includes(typeRef)) then &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;true &#xA;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;null &#xA;&#x9;&#x9;&#x9;&#x9;endif &#xA;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;true &#xA;&#x9;&#x9;&#x9;endif"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" eType="#//RequirementsType"
         containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -2396,6 +2416,12 @@
       <details key="name" value="tRequirement"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeMustBeRequirementType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeMustBeRequirementType" value="self.typeRef.oclIsKindOf(TRequirementType)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
@@ -2726,7 +2752,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ValidImportTypes">
-    <eLiterals name="TOSCAType" literal="http://docs.oasis-open.org/tosca/ns/2011/12"/>
-    <eLiterals name="XSDType" value="1" literal="http://www.w3.org/2001/XMLSchema"/>
+    <eLiterals name="TOSCAType"/>
+    <eLiterals name="XSDType" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

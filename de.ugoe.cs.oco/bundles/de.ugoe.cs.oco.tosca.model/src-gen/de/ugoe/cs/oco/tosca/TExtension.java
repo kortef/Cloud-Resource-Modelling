@@ -39,6 +39,7 @@ public interface TExtension extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtension_MustUnderstand()
 	 * @model default="yes" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='mustUnderstand'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtension!mustUnderstand'"
 	 * @generated
 	 */
 	TBoolean getMustUnderstand();
@@ -92,6 +93,7 @@ public interface TExtension extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtension_Namespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='namespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtension!namespace'"
 	 * @generated
 	 */
 	String getNamespace();

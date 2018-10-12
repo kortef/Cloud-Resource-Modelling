@@ -35,6 +35,7 @@ public interface TOperation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_InputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InputParameters' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TOperation!inputParameters'"
 	 * @generated
 	 */
 	InputParametersType1 getInputParameters();
@@ -62,6 +63,7 @@ public interface TOperation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_OutputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='OutputParameters' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TOperation!outputParameters'"
 	 * @generated
 	 */
 	OutputParametersType1 getOutputParameters();
@@ -89,6 +91,7 @@ public interface TOperation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTOperation_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TOperation!name'"
 	 * @generated
 	 */
 	String getName();

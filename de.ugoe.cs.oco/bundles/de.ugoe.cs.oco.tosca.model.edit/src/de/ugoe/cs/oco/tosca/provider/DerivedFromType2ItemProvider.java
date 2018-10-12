@@ -62,6 +62,7 @@ public class DerivedFromType2ItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTypeRefPropertyDescriptor(object);
+			addReferencedEntityTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,6 +85,28 @@ public class DerivedFromType2ItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Referenced Entity Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferencedEntityTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DerivedFromType2_referencedEntityType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DerivedFromType2_referencedEntityType_feature", "_UI_DerivedFromType2_type"),
+				 ToscaPackage.Literals.DERIVED_FROM_TYPE2__REFERENCED_ENTITY_TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

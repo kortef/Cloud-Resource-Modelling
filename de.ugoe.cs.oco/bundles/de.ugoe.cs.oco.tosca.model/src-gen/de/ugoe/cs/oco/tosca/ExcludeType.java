@@ -34,6 +34,7 @@ public interface ExcludeType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getExcludeType_Pattern()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='pattern'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!ExcludeType!pattern'"
 	 * @generated
 	 */
 	String getPattern();

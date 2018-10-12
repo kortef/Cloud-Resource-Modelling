@@ -36,6 +36,7 @@ public interface DerivedFromType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType1_RelationshipTypeImplementationRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='relationshipTypeImplementationRef'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DerivedFromType1!relationshipTypeImplementationRef'"
 	 * @generated
 	 */
 	QName getRelationshipTypeImplementationRef();

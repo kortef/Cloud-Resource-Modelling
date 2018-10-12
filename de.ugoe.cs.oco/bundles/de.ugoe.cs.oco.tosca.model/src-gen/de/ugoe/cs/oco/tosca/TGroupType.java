@@ -41,6 +41,7 @@ public interface TGroupType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_RequirementDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RequirementDefinitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!requirementDefinitions'"
 	 * @generated
 	 */
 	RequirementDefinitionsType getRequirementDefinitions();
@@ -68,6 +69,7 @@ public interface TGroupType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_CapabilityDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='CapabilityDefinitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!capabilityDefinitions'"
 	 * @generated
 	 */
 	CapabilityDefinitionsType getCapabilityDefinitions();
@@ -95,6 +97,7 @@ public interface TGroupType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_InstanceStates()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InstanceStates' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!instanceStates'"
 	 * @generated
 	 */
 	TTopologyElementInstanceStates getInstanceStates();
@@ -122,6 +125,7 @@ public interface TGroupType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_Interfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Interfaces' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!interfaces'"
 	 * @generated
 	 */
 	InterfacesType1 getInterfaces();
@@ -149,6 +153,7 @@ public interface TGroupType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_Member()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='element' name='Member' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!member'"
 	 * @generated
 	 */
 	EList<QName> getMember();
@@ -165,6 +170,7 @@ public interface TGroupType extends TEntityType {
 	 * @return the value of the '<em>Member Refs</em>' reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupType_MemberRefs()
 	 * @model transient="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupType!memberRefs'"
 	 * @generated
 	 */
 	EList<TEntityType> getMemberRefs();

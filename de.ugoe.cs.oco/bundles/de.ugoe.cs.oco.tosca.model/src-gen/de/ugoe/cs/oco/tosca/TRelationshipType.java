@@ -37,6 +37,7 @@ public interface TRelationshipType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipType_InstanceStates()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InstanceStates' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipType!instanceStates'"
 	 * @generated
 	 */
 	TTopologyElementInstanceStates getInstanceStates();
@@ -64,6 +65,7 @@ public interface TRelationshipType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipType_SourceInterfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='SourceInterfaces' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipType!sourceInterfaces'"
 	 * @generated
 	 */
 	SourceInterfacesType getSourceInterfaces();
@@ -91,6 +93,7 @@ public interface TRelationshipType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipType_TargetInterfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='TargetInterfaces' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipType!targetInterfaces'"
 	 * @generated
 	 */
 	TargetInterfacesType getTargetInterfaces();
@@ -118,6 +121,7 @@ public interface TRelationshipType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipType_ValidSource()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ValidSource' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipType!validSource'"
 	 * @generated
 	 */
 	ValidSourceType getValidSource();
@@ -145,6 +149,7 @@ public interface TRelationshipType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipType_ValidTarget()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ValidTarget' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipType!validTarget'"
 	 * @generated
 	 */
 	ValidTargetType getValidTarget();

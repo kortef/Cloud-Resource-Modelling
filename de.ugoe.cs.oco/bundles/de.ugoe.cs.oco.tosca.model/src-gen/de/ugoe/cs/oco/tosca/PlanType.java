@@ -34,6 +34,7 @@ public interface PlanType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPlanType_PlanRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.IDREF" required="true"
 	 *        extendedMetaData="kind='attribute' name='planRef'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PlanType!planRef'"
 	 * @generated
 	 */
 	String getPlanRef();

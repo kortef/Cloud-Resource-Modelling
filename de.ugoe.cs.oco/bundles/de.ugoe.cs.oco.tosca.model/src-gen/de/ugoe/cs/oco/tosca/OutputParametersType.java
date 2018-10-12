@@ -36,6 +36,7 @@ public interface OutputParametersType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getOutputParametersType_OutputParameter()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='OutputParameter' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!OutputParametersType!outputParameter'"
 	 * @generated
 	 */
 	EList<TParameter> getOutputParameter();

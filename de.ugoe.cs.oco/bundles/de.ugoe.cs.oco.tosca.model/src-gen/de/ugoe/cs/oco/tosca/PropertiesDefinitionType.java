@@ -39,6 +39,7 @@ public interface PropertiesDefinitionType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesDefinitionType_Element()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='attribute' name='element'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesDefinitionType!element'"
 	 * @generated
 	 */
 	QName getElement();
@@ -66,6 +67,7 @@ public interface PropertiesDefinitionType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesDefinitionType_Type()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='attribute' name='type'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesDefinitionType!type'"
 	 * @generated
 	 */
 	QName getType();
@@ -92,6 +94,7 @@ public interface PropertiesDefinitionType extends EObject {
 	 * @see #setElementRef(XSDElementDeclaration)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesDefinitionType_ElementRef()
 	 * @model transient="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesDefinitionType!elementRef'"
 	 * @generated
 	 */
 	XSDElementDeclaration getElementRef();

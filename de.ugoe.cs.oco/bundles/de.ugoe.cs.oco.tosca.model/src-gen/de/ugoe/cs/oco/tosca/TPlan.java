@@ -41,6 +41,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_Precondition()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Precondition' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!precondition'"
 	 * @generated
 	 */
 	TCondition getPrecondition();
@@ -68,6 +69,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_InputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InputParameters' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!inputParameters'"
 	 * @generated
 	 */
 	InputParametersType getInputParameters();
@@ -95,6 +97,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_OutputParameters()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='OutputParameters' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!outputParameters'"
 	 * @generated
 	 */
 	OutputParametersType getOutputParameters();
@@ -122,6 +125,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_PlanModel()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='PlanModel' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!planModel'"
 	 * @generated
 	 */
 	PlanModelType getPlanModel();
@@ -149,6 +153,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_PlanModelReference()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='PlanModelReference' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!planModelReference'"
 	 * @generated
 	 */
 	PlanModelReferenceType getPlanModelReference();
@@ -176,6 +181,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_Id()
 	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='attribute' name='id'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!id'"
 	 * @generated
 	 */
 	String getId();
@@ -202,6 +208,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!name'"
 	 * @generated
 	 */
 	String getName();
@@ -229,6 +236,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_PlanLanguage()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='planLanguage'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!planLanguage'"
 	 * @generated
 	 */
 	String getPlanLanguage();
@@ -256,6 +264,7 @@ public interface TPlan extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlan_PlanType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='planType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlan!planType'"
 	 * @generated
 	 */
 	String getPlanType();

@@ -38,6 +38,7 @@ public interface PropertiesType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType1_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='strict'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesType1!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -55,6 +56,7 @@ public interface PropertiesType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType1_PropertyMappings()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='PropertyMappings' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesType1!propertyMappings'"
 	 * @generated
 	 */
 	PropertyMappingsType getPropertyMappings();
@@ -81,6 +83,7 @@ public interface PropertiesType1 extends EObject {
 	 * @see #setPropertiesElement(EObject)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType1_PropertiesElement()
 	 * @model transient="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesType1!propertiesElement'"
 	 * @generated
 	 */
 	EObject getPropertiesElement();

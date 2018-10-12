@@ -34,6 +34,7 @@ public interface PlanModelReferenceType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPlanModelReferenceType_Reference()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='reference'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PlanModelReferenceType!reference'"
 	 * @generated
 	 */
 	String getReference();

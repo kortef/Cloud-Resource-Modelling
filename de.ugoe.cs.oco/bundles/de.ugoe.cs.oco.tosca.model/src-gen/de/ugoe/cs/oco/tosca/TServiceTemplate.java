@@ -41,6 +41,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_Tags()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Tags' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!tags'"
 	 * @generated
 	 */
 	TTags getTags();
@@ -68,6 +69,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_BoundaryDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='BoundaryDefinitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!boundaryDefinitions'"
 	 * @generated
 	 */
 	TBoundaryDefinitions getBoundaryDefinitions();
@@ -95,6 +97,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_TopologyTemplate()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='TopologyTemplate' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!topologyTemplate'"
 	 * @generated
 	 */
 	TTopologyTemplate getTopologyTemplate();
@@ -122,6 +125,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_Plans()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Plans' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!plans'"
 	 * @generated
 	 */
 	TPlans getPlans();
@@ -149,6 +153,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_Id()
 	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='attribute' name='id'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!id'"
 	 * @generated
 	 */
 	String getId();
@@ -175,6 +180,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!name'"
 	 * @generated
 	 */
 	String getName();
@@ -202,6 +208,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_SubstitutableNodeType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='attribute' name='substitutableNodeType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!substitutableNodeType'"
 	 * @generated
 	 */
 	QName getSubstitutableNodeType();
@@ -229,6 +236,7 @@ public interface TServiceTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTServiceTemplate_TargetNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TServiceTemplate!targetNamespace'"
 	 * @generated
 	 */
 	String getTargetNamespace();

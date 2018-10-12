@@ -37,6 +37,7 @@ public interface TImplementationArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImplementationArtifact_ArtifactRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='attribute' name='artifactRef'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImplementationArtifact!artifactRef'"
 	 * @generated
 	 */
 	QName getArtifactRef();
@@ -64,6 +65,7 @@ public interface TImplementationArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImplementationArtifact_ArtifactType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='artifactType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImplementationArtifact!artifactType'"
 	 * @generated
 	 */
 	QName getArtifactType();
@@ -91,6 +93,7 @@ public interface TImplementationArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImplementationArtifact_InterfaceName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='interfaceName'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImplementationArtifact!interfaceName'"
 	 * @generated
 	 */
 	String getInterfaceName();
@@ -118,6 +121,7 @@ public interface TImplementationArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImplementationArtifact_OperationName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName"
 	 *        extendedMetaData="kind='attribute' name='operationName'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImplementationArtifact!operationName'"
 	 * @generated
 	 */
 	String getOperationName();

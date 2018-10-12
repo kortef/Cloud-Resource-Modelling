@@ -37,6 +37,7 @@ public interface TConstraint extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTConstraint_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TConstraint!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -54,6 +55,7 @@ public interface TConstraint extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTConstraint_ConstraintType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='constraintType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TConstraint!constraintType'"
 	 * @generated
 	 */
 	String getConstraintType();

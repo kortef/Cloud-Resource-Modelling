@@ -40,6 +40,7 @@ public interface TImport extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_ImportType()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='importType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImport!importType'"
 	 * @generated
 	 */
 	ValidImportTypes getImportType();
@@ -68,6 +69,7 @@ public interface TImport extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_Location()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='location'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImport!location'"
 	 * @generated
 	 */
 	String getLocation();
@@ -95,6 +97,7 @@ public interface TImport extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_Namespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='namespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImport!namespace'"
 	 * @generated
 	 */
 	String getNamespace();
@@ -121,6 +124,7 @@ public interface TImport extends TExtensibleElements {
 	 * @see #setResource(Resource)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTImport_Resource()
 	 * @model transient="true" derived="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TImport!resource'"
 	 * @generated
 	 */
 	Resource getResource();

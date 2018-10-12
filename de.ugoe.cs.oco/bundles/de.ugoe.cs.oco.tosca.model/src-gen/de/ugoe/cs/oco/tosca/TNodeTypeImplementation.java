@@ -43,6 +43,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_Tags()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Tags' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!tags'"
 	 * @generated
 	 */
 	TTags getTags();
@@ -70,6 +71,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_DerivedFrom()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DerivedFrom' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!derivedFrom'"
 	 * @generated
 	 */
 	DerivedFromType getDerivedFrom();
@@ -97,6 +99,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_RequiredContainerFeatures()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RequiredContainerFeatures' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!requiredContainerFeatures'"
 	 * @generated
 	 */
 	TRequiredContainerFeatures getRequiredContainerFeatures();
@@ -124,6 +127,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_ImplementationArtifacts()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ImplementationArtifacts' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!implementationArtifacts'"
 	 * @generated
 	 */
 	TImplementationArtifacts getImplementationArtifacts();
@@ -151,6 +155,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_DeploymentArtifacts()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DeploymentArtifacts' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!deploymentArtifacts'"
 	 * @generated
 	 */
 	TDeploymentArtifacts getDeploymentArtifacts();
@@ -183,6 +188,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_Abstract()
 	 * @model default="no" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='abstract'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!abstract'"
 	 * @generated
 	 */
 	TBoolean getAbstract();
@@ -241,6 +247,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_Final()
 	 * @model default="no" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='final'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!final'"
 	 * @generated
 	 */
 	TBoolean getFinal();
@@ -294,6 +301,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!name'"
 	 * @generated
 	 */
 	String getName();
@@ -321,6 +329,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_NodeType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='nodeType'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!nodeType'"
 	 * @generated
 	 */
 	QName getNodeType();
@@ -348,6 +357,7 @@ public interface TNodeTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeTypeImplementation_TargetNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeTypeImplementation!targetNamespace'"
 	 * @generated
 	 */
 	String getTargetNamespace();

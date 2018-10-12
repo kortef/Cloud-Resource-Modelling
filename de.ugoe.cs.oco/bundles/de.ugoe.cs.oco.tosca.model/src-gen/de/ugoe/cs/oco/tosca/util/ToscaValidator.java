@@ -47,12 +47,52 @@ public class ToscaValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "de.ugoe.cs.oco.tosca";
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Capability Type' of 'TCapability'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TCAPABILITY__TYPE_MUST_BE_CAPABILITY_TYPE = 1;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Requirements Must Be Defined In Referenced Node Type' of 'TNode Template'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 3;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Node Type' of 'TNode Template'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE = 2;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Capabilities Must Be Defined In Referenced Node Type' of 'TNode Template'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 4;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Requirement Type' of 'TRequirement'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE = 5;
+
+	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 5;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -872,7 +912,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTCapability(TCapability tCapability, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tCapability, diagnostics, context);
+		if (!validate_NoCircularContainment(tCapability, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tCapability, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTCapability_typeMustBeCapabilityType(tCapability, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the typeMustBeCapabilityType constraint of '<em>TCapability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTCapability_typeMustBeCapabilityType(TCapability tCapability, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tCapability.typeMustBeCapabilityType(diagnostics, context);
 	}
 
 	/**
@@ -1079,7 +1139,49 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeTemplate(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tNodeTemplate, diagnostics, context);
+		if (!validate_NoCircularContainment(tNodeTemplate, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTNodeTemplate_capabilitiesMustBeDefinedInReferencedNodeType(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTNodeTemplate_typeMustBeNodeType(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTNodeTemplate_requirementsMustBeDefinedInReferencedNodeType(tNodeTemplate, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the capabilitiesMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTNodeTemplate_capabilitiesMustBeDefinedInReferencedNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tNodeTemplate.capabilitiesMustBeDefinedInReferencedNodeType(diagnostics, context);
+	}
+
+	/**
+	 * Validates the requirementsMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTNodeTemplate_requirementsMustBeDefinedInReferencedNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tNodeTemplate.requirementsMustBeDefinedInReferencedNodeType(diagnostics, context);
+	}
+
+	/**
+	 * Validates the typeMustBeNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTNodeTemplate_typeMustBeNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tNodeTemplate.typeMustBeNodeType(diagnostics, context);
 	}
 
 	/**
@@ -1232,7 +1334,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTRequirement(TRequirement tRequirement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tRequirement, diagnostics, context);
+		if (!validate_NoCircularContainment(tRequirement, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tRequirement, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTRequirement_typeMustBeRequirementType(tRequirement, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the typeMustBeRequirementType constraint of '<em>TRequirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTRequirement_typeMustBeRequirementType(TRequirement tRequirement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tRequirement.typeMustBeRequirementType(diagnostics, context);
 	}
 
 	/**

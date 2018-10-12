@@ -36,6 +36,7 @@ public interface TDeploymentArtifacts extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDeploymentArtifacts_DeploymentArtifact()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='DeploymentArtifact' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDeploymentArtifacts!deploymentArtifact'"
 	 * @generated
 	 */
 	EList<TDeploymentArtifact> getDeploymentArtifact();

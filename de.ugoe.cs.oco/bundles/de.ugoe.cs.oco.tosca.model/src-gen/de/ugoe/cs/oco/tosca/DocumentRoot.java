@@ -43,6 +43,7 @@ public interface DocumentRoot extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DocumentRoot!mixed'"
 	 * @generated
 	 */
 	FeatureMap getMixed();
@@ -61,6 +62,7 @@ public interface DocumentRoot extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_XMLNSPrefixMap()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DocumentRoot!xMLNSPrefixMap'"
 	 * @generated
 	 */
 	EMap<String, String> getXMLNSPrefixMap();
@@ -79,6 +81,7 @@ public interface DocumentRoot extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_XSISchemaLocation()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DocumentRoot!xSISchemaLocation'"
 	 * @generated
 	 */
 	EMap<String, String> getXSISchemaLocation();
@@ -96,6 +99,7 @@ public interface DocumentRoot extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_Definitions()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='Definitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DocumentRoot!definitions'"
 	 * @generated
 	 */
 	EList<DefinitionsType> getDefinitions();
@@ -113,6 +117,7 @@ public interface DocumentRoot extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDocumentRoot_Documentation()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='documentation' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DocumentRoot!documentation'"
 	 * @generated
 	 */
 	EList<TDocumentation> getDocumentation();

@@ -127,6 +127,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
@@ -2338,6 +2340,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTCapability__TypeMustBeCapabilityType__DiagnosticChain_Map() {
+		return tCapabilityEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTCapabilityDefinition() {
 		return tCapabilityDefinitionEClass;
 	}
@@ -3400,6 +3411,33 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTNodeTemplate__TypeMustBeNodeType__DiagnosticChain_Map_11() {
+		return tNodeTemplateEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTNodeTemplate__RequirementsMustBeDefinedInReferencedNodeType__DiagnosticChain_Map_11() {
+		return tNodeTemplateEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTNodeTemplate__CapabilitiesMustBeDefinedInReferencedNodeType__DiagnosticChain_Map_12() {
+		return tNodeTemplateEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTNodeType() {
 		return tNodeTypeEClass;
 	}
@@ -4104,6 +4142,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 	 */
 	public EAttribute getTRequirement_Name() {
 		return (EAttribute)tRequirementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTRequirement__TypeMustBeRequirementType__DiagnosticChain_Map() {
+		return tRequirementEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4865,6 +4912,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		tCapabilityEClass = createEClass(TCAPABILITY);
 		createEAttribute(tCapabilityEClass, TCAPABILITY__NAME);
+		createEOperation(tCapabilityEClass, TCAPABILITY___TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP);
 
 		tCapabilityDefinitionEClass = createEClass(TCAPABILITY_DEFINITION);
 		createEReference(tCapabilityDefinitionEClass, TCAPABILITY_DEFINITION__CONSTRAINTS);
@@ -5006,6 +5054,9 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createEAttribute(tNodeTemplateEClass, TNODE_TEMPLATE__MAX_INSTANCES);
 		createEAttribute(tNodeTemplateEClass, TNODE_TEMPLATE__MIN_INSTANCES);
 		createEAttribute(tNodeTemplateEClass, TNODE_TEMPLATE__NAME);
+		createEOperation(tNodeTemplateEClass, TNODE_TEMPLATE___TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP_11);
+		createEOperation(tNodeTemplateEClass, TNODE_TEMPLATE___REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_11);
+		createEOperation(tNodeTemplateEClass, TNODE_TEMPLATE___CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_12);
 
 		tNodeTypeEClass = createEClass(TNODE_TYPE);
 		createEReference(tNodeTypeEClass, TNODE_TYPE__REQUIREMENT_DEFINITIONS);
@@ -5102,6 +5153,7 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 
 		tRequirementEClass = createEClass(TREQUIREMENT);
 		createEAttribute(tRequirementEClass, TREQUIREMENT__NAME);
+		createEOperation(tRequirementEClass, TREQUIREMENT___TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP);
 
 		tRequirementDefinitionEClass = createEClass(TREQUIREMENT_DEFINITION);
 		createEReference(tRequirementDefinitionEClass, TREQUIREMENT_DEFINITION__CONSTRAINTS);
@@ -5440,6 +5492,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEClass(tCapabilityEClass, TCapability.class, "TCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTCapability_Name(), ecorePackage.getEString(), "name", null, 1, 1, TCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getTCapability__TypeMustBeCapabilityType__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "typeMustBeCapabilityType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(tCapabilityDefinitionEClass, TCapabilityDefinition.class, "TCapabilityDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTCapabilityDefinition_Constraints(), this.getConstraintsType(), null, "constraints", null, 0, 1, TCapabilityDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTCapabilityDefinition_CapabilityType(), theXMLTypePackage.getQName(), "capabilityType", null, 1, 1, TCapabilityDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5581,6 +5642,33 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEAttribute(getTNodeTemplate_MinInstances(), theXMLTypePackage.getInt(), "minInstances", "1", 1, 1, TNodeTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTNodeTemplate_Name(), ecorePackage.getEString(), "name", null, 0, 1, TNodeTemplate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getTNodeTemplate__TypeMustBeNodeType__DiagnosticChain_Map_11(), ecorePackage.getEBoolean(), "typeMustBeNodeType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTNodeTemplate__RequirementsMustBeDefinedInReferencedNodeType__DiagnosticChain_Map_11(), ecorePackage.getEBoolean(), "requirementsMustBeDefinedInReferencedNodeType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getTNodeTemplate__CapabilitiesMustBeDefinedInReferencedNodeType__DiagnosticChain_Map_12(), ecorePackage.getEBoolean(), "capabilitiesMustBeDefinedInReferencedNodeType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(tNodeTypeEClass, TNodeType.class, "TNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTNodeType_RequirementDefinitions(), this.getRequirementDefinitionsType1(), null, "requirementDefinitions", null, 0, 1, TNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTNodeType_CapabilityDefinitions(), this.getCapabilityDefinitionsType1(), null, "capabilityDefinitions", null, 0, 1, TNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5677,6 +5765,15 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		initEClass(tRequirementEClass, TRequirement.class, "TRequirement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTRequirement_Name(), ecorePackage.getEString(), "name", null, 1, 1, TRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getTRequirement__TypeMustBeRequirementType__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "typeMustBeRequirementType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(tRequirementDefinitionEClass, TRequirementDefinition.class, "TRequirementDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTRequirementDefinition_Constraints(), this.getConstraintsType1(), null, "constraints", null, 0, 1, TRequirementDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTRequirementDefinition_LowerBound(), theXMLTypePackage.getInt(), "lowerBound", "1", 1, 1, TRequirementDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5769,27 +5866,42 @@ public class ToscaPackageImpl extends EPackageImpl implements ToscaPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/OCL/Import
-		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";	
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-			 "ecore", "http://www.eclipse.org/emf/2002/Ecore",
-			 "ecore.xml.type", "http://www.eclipse.org/emf/2003/XMLType",
-			 "xml", "../../org.eclipse.emf.ecore/model/XMLNamespace.ecore#/"
+		   });	
+		addAnnotation
+		  (tCapabilityEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "typeMustBeCapabilityType"
+		   });	
+		addAnnotation
+		  (tNodeTemplateEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "capabilitiesMustBeDefinedInReferencedNodeType"
+		   });	
+		addAnnotation
+		  (tRequirementEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "typeMustBeRequirementType"
 		   });
 	}
 

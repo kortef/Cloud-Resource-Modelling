@@ -37,6 +37,7 @@ public interface TPlans extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlans_Plan()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Plan' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlans!plan'"
 	 * @generated
 	 */
 	EList<TPlan> getPlan();
@@ -54,6 +55,7 @@ public interface TPlans extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPlans_TargetNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPlans!targetNamespace'"
 	 * @generated
 	 */
 	String getTargetNamespace();

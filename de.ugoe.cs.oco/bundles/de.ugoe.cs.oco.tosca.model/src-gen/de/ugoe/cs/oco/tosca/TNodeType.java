@@ -36,6 +36,7 @@ public interface TNodeType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_RequirementDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RequirementDefinitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeType!requirementDefinitions'"
 	 * @generated
 	 */
 	RequirementDefinitionsType1 getRequirementDefinitions();
@@ -63,6 +64,7 @@ public interface TNodeType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_CapabilityDefinitions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='CapabilityDefinitions' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeType!capabilityDefinitions'"
 	 * @generated
 	 */
 	CapabilityDefinitionsType1 getCapabilityDefinitions();
@@ -90,6 +92,7 @@ public interface TNodeType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_InstanceStates()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='InstanceStates' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeType!instanceStates'"
 	 * @generated
 	 */
 	TTopologyElementInstanceStates getInstanceStates();
@@ -117,6 +120,7 @@ public interface TNodeType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTNodeType_Interfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Interfaces' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TNodeType!interfaces'"
 	 * @generated
 	 */
 	InterfacesType getInterfaces();

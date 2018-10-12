@@ -39,6 +39,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Properties()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Properties' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!properties'"
 	 * @generated
 	 */
 	PropertiesType1 getProperties();
@@ -66,6 +67,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_PropertyConstraints()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='PropertyConstraints' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!propertyConstraints'"
 	 * @generated
 	 */
 	PropertyConstraintsType1 getPropertyConstraints();
@@ -93,6 +95,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Requirements' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!requirements'"
 	 * @generated
 	 */
 	RequirementsType2 getRequirements();
@@ -120,6 +123,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Capabilities()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Capabilities' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!capabilities'"
 	 * @generated
 	 */
 	CapabilitiesType2 getCapabilities();
@@ -147,6 +151,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Policies()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Policies' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!policies'"
 	 * @generated
 	 */
 	PoliciesType2 getPolicies();
@@ -174,6 +179,7 @@ public interface TBoundaryDefinitions extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTBoundaryDefinitions_Interfaces()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Interfaces' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TBoundaryDefinitions!interfaces'"
 	 * @generated
 	 */
 	InterfacesType2 getInterfaces();

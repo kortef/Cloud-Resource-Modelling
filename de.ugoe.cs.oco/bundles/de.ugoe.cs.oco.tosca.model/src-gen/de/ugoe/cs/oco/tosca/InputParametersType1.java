@@ -36,6 +36,7 @@ public interface InputParametersType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getInputParametersType1_InputParameter()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='InputParameter' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!InputParametersType1!inputParameter'"
 	 * @generated
 	 */
 	EList<TParameter> getInputParameter();

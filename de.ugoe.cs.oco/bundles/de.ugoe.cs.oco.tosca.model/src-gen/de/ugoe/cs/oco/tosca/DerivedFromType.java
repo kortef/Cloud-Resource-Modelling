@@ -36,6 +36,7 @@ public interface DerivedFromType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getDerivedFromType_NodeTypeImplementationRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='nodeTypeImplementationRef'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!DerivedFromType!nodeTypeImplementationRef'"
 	 * @generated
 	 */
 	QName getNodeTypeImplementationRef();

@@ -34,6 +34,7 @@ public interface TCapabilityRef extends EObject {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityRef_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityRef!name'"
 	 * @generated
 	 */
 	String getName();
@@ -61,6 +62,7 @@ public interface TCapabilityRef extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityRef_Ref()
 	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='ref'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityRef!ref'"
 	 * @generated
 	 */
 	TCapability getRef();

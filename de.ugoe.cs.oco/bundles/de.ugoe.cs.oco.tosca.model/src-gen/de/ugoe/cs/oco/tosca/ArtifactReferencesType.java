@@ -36,6 +36,7 @@ public interface ArtifactReferencesType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getArtifactReferencesType_ArtifactReference()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='ArtifactReference' namespace='##targetNamespace'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!ArtifactReferencesType!artifactReference'"
 	 * @generated
 	 */
 	EList<TArtifactReference> getArtifactReference();

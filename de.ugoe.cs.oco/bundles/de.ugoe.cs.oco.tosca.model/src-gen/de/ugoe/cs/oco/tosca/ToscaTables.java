@@ -185,10 +185,14 @@ public class ToscaTables
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_TBoolean = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getEnumerationId("TBoolean");
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_ValidImportTypes = de.ugoe.cs.oco.tosca.ToscaTables.PACKid_http_c_s_s_oco_cs_ugoe_de_s_tosca.getEnumerationId("ValidImportTypes");
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.values.IntegerValue INT_0 = org.eclipse.ocl.pivot.utilities.ValueUtil.integerValueOf("0");
+	public static final /*@NonInvalid*/ java.lang.String STR_TCapabilityType_c_c_superTypeMustBeCapabilityType = "TCapabilityType::superTypeMustBeCapabilityType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TCapability_c_c_typeMustBeCapabilityType = "TCapability::typeMustBeCapabilityType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_capabilitiesMustBeDefinedInReferencedNodeType = "TNodeTemplate::capabilitiesMustBeDefinedInReferencedNodeType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_requirementsMustBeDefinedInReferencedNodeType = "TNodeTemplate::requirementsMustBeDefinedInReferencedNodeType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TNodeTemplate_c_c_typeMustBeNodeType = "TNodeTemplate::typeMustBeNodeType";
+	public static final /*@NonInvalid*/ java.lang.String STR_TNodeType_c_c_superTypeMustBeNodeType = "TNodeType::superTypeMustBeNodeType";
+	public static final /*@NonInvalid*/ java.lang.String STR_TRelationshipType_c_c_superTypeMustBeRelationshipType = "TRelationshipType::superTypeMustBeRelationshipType";
+	public static final /*@NonInvalid*/ java.lang.String STR_TRequirementType_c_c_superTypeMustBeRequirementType = "TRequirementType::superTypeMustBeRequirementType";
 	public static final /*@NonInvalid*/ java.lang.String STR_TRequirement_c_c_typeMustBeRequirementType = "TRequirement::typeMustBeRequirementType";
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_CapabilityDefinitionsType1 = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_CapabilityDefinitionsType1);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId BAG_CLSSid_DerivedFromType2 = org.eclipse.ocl.pivot.ids.TypeId.BAG.getSpecializedId(de.ugoe.cs.oco.tosca.ToscaTables.CLSSid_DerivedFromType2);

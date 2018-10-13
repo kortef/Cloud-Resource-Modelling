@@ -1079,6 +1079,12 @@
       <details key="name" value="tCapabilityType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="superTypeMustBeCapabilityType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="superTypeMustBeCapabilityType" value="if self.derivedFrom &lt;> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TCapabilityType) else true endif"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TCondition">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -1874,6 +1880,12 @@
       <details key="name" value="tNodeType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="superTypeMustBeNodeType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="superTypeMustBeNodeType" value="if self.derivedFrom &lt;> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TNodeType) else true endif"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirementDefinitions"
         eType="#//RequirementDefinitionsType1" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -2271,6 +2283,12 @@
       <details key="name" value="tRelationshipType"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="superTypeMustBeRelationshipType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="superTypeMustBeRelationshipType" value="if self.derivedFrom &lt;> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TRelationshipType) else true endif"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instanceStates" eType="#//TTopologyElementInstanceStates"
         containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -2496,6 +2514,12 @@
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="tRequirementType"/>
       <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="superTypeMustBeRequirementType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="superTypeMustBeRequirementType" value="if self.derivedFrom &lt;> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TRequirementType) else true endif"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredCapabilityType"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//QName">

@@ -55,12 +55,20 @@ public class ToscaValidator extends EObjectValidator {
 	public static final int TCAPABILITY__TYPE_MUST_BE_CAPABILITY_TYPE = 1;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Capability Type' of 'TCapability Type'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TCAPABILITY_TYPE__SUPER_TYPE_MUST_BE_CAPABILITY_TYPE = 2;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Requirements Must Be Defined In Referenced Node Type' of 'TNode Template'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 3;
+	public static final int TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 4;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Node Type' of 'TNode Template'.
@@ -68,7 +76,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE = 2;
+	public static final int TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE = 3;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Capabilities Must Be Defined In Referenced Node Type' of 'TNode Template'.
@@ -76,7 +84,23 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 4;
+	public static final int TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 5;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Node Type' of 'TNode Type'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TNODE_TYPE__SUPER_TYPE_MUST_BE_NODE_TYPE = 6;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Relationship Type' of 'TRelationship Type'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TRELATIONSHIP_TYPE__SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE = 7;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Requirement Type' of 'TRequirement'.
@@ -84,7 +108,15 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE = 5;
+	public static final int TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE = 8;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Requirement Type' of 'TRequirement Type'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TREQUIREMENT_TYPE__SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE = 9;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -92,7 +124,7 @@ public class ToscaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 5;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 9;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -959,7 +991,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTCapabilityType(TCapabilityType tCapabilityType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tCapabilityType, diagnostics, context);
+		if (!validate_NoCircularContainment(tCapabilityType, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tCapabilityType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTCapabilityType_superTypeMustBeCapabilityType(tCapabilityType, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the superTypeMustBeCapabilityType constraint of '<em>TCapability Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTCapabilityType_superTypeMustBeCapabilityType(TCapabilityType tCapabilityType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tCapabilityType.superTypeMustBeCapabilityType(diagnostics, context);
 	}
 
 	/**
@@ -1190,7 +1242,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeType(TNodeType tNodeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tNodeType, diagnostics, context);
+		if (!validate_NoCircularContainment(tNodeType, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tNodeType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTNodeType_superTypeMustBeNodeType(tNodeType, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the superTypeMustBeNodeType constraint of '<em>TNode Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTNodeType_superTypeMustBeNodeType(TNodeType tNodeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tNodeType.superTypeMustBeNodeType(diagnostics, context);
 	}
 
 	/**
@@ -1298,7 +1370,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTRelationshipType(TRelationshipType tRelationshipType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tRelationshipType, diagnostics, context);
+		if (!validate_NoCircularContainment(tRelationshipType, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tRelationshipType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTRelationshipType_superTypeMustBeRelationshipType(tRelationshipType, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the superTypeMustBeRelationshipType constraint of '<em>TRelationship Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTRelationshipType_superTypeMustBeRelationshipType(TRelationshipType tRelationshipType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tRelationshipType.superTypeMustBeRelationshipType(diagnostics, context);
 	}
 
 	/**
@@ -1381,7 +1473,27 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTRequirementType(TRequirementType tRequirementType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(tRequirementType, diagnostics, context);
+		if (!validate_NoCircularContainment(tRequirementType, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tRequirementType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTRequirementType_superTypeMustBeRequirementType(tRequirementType, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the superTypeMustBeRequirementType constraint of '<em>TRequirement Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTRequirementType_superTypeMustBeRequirementType(TRequirementType tRequirementType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return tRequirementType.superTypeMustBeRequirementType(diagnostics, context);
 	}
 
 	/**

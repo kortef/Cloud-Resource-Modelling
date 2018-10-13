@@ -1446,11 +1446,11 @@ public class TNodeTemplateImpl extends TEntityTemplateImpl implements TNodeTempl
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ToscaPackage.TNODE_TEMPLATE___TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP_11:
+			case ToscaPackage.TNODE_TEMPLATE___TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP_1:
 				return typeMustBeNodeType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case ToscaPackage.TNODE_TEMPLATE___REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_11:
+			case ToscaPackage.TNODE_TEMPLATE___REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_1:
 				return requirementsMustBeDefinedInReferencedNodeType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case ToscaPackage.TNODE_TEMPLATE___CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_12:
+			case ToscaPackage.TNODE_TEMPLATE___CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP_1:
 				return capabilitiesMustBeDefinedInReferencedNodeType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);

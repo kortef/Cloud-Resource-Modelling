@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -37,14 +36,12 @@ import org.slf4j.LoggerFactory;
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TArtifactType;
-import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityType;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.TRelationshipType;
-import de.ugoe.cs.oco.tosca.TRequirementDefinition;
 import de.ugoe.cs.oco.tosca.TRequirementType;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.ValidImportTypes;
@@ -133,8 +130,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TCapability")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(getComputeTypeOperation(cType));
-			eClass.getEOperations().add(getPropertiesTypeOperation(cType));
+			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(cType));
+			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(cType));
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
@@ -143,8 +140,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRequirement")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(getComputeTypeOperation(rType));
-			eClass.getEOperations().add(getPropertiesTypeOperation(rType));
+			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(rType));
+			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(rType));
 
 		}
 		
@@ -154,8 +151,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TArtifactTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(getComputeTypeOperation(aType));
-			eClass.getEOperations().add(getPropertiesTypeOperation(aType));
+			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(aType));
+			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(aType));
 
 		}
 		
@@ -169,9 +166,9 @@ public class TOSCADef2Ecore {
 			EAnnotation pivotalAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			pivotalAnnotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
 			
-			addRequirementRestrictions(nodeType, pivotalAnnotation);
-			addCapabilityRestrictions(nodeType, pivotalAnnotation);
-			addTypeRestriction(nodeType, pivotalAnnotation);
+			OCLGenerator.addRequirementRestrictions(nodeType, pivotalAnnotation);
+			OCLGenerator.addCapabilityRestrictions(nodeType, pivotalAnnotation);
+			//OCLGenerator.addTypeRestriction(nodeType, pivotalAnnotation);
 			//addPropertyRestrictions(nodeType, pivotalAnnotation);
 			
 			for (Entry<String, String> entry: pivotalAnnotation.getDetails().entrySet()) {
@@ -188,8 +185,9 @@ public class TOSCADef2Ecore {
 				ecoreAnnotation.getDetails().put("constraints", constraintStringBuilder.substring(
 						0, constraintStringBuilder.length() - 1));
 			}
-			eClass.getEOperations().add(getComputeTypeOperation(nodeType));
-			eClass.getEOperations().add(getPropertiesTypeOperation(nodeType));
+			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(nodeType));
+			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(nodeType));
+			eClass.getEOperations().add(OCLGenerator.getCapabilityConstraintOperation(nodeType));
 
 		}
 		
@@ -199,8 +197,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRelationshipTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(getComputeTypeOperation(relationshipType));
-			eClass.getEOperations().add(getPropertiesTypeOperation(relationshipType));
+			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(relationshipType));
+			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(relationshipType));
 
 		}
 		
@@ -245,51 +243,9 @@ public class TOSCADef2Ecore {
 		return toscaPackage;
 	}
 	
-	private static EAnnotation addTypeRestriction(TEntityType entityType, EAnnotation annotation) {
-		StringBuilder oclBuilder = new StringBuilder();
-		oclBuilder.append("self.type = self.computeType()\n");
-		annotation.getDetails().put("restrictsTypeString", oclBuilder.toString());
-		return annotation;
-	}
 	
-	private static EAnnotation addRequirementRestrictions(TNodeType nodeType, EAnnotation annotation) {
-		if (nodeType.getRequirementDefinitions() != null && 
-				nodeType.getRequirementDefinitions().getRequirementDefinition().size() > 0) {
-			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("if self.capabilities <> null then self.requirements.requirement->forAll(");
-			for (TRequirementDefinition rType: nodeType.getRequirementDefinitions().getRequirementDefinition()) {
-				if (rType.getRequirementType() !=  null) {
-					// TODO: Check
-					oclBuilder.append("oclIsKindOf(");
-					oclBuilder.append(ConverterUtils.toEcoreCompatibleName(
-							rType.getRequirementTypeRef().getName().toString()));
-					oclBuilder.append(") or ");
-				}
-			}
-			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(") else true endif\n");
-			annotation.getDetails().put("restrictsRequirementTypes", oclBuilder.toString());
-		}
-		return annotation;
-	}
 	
-	private static EAnnotation addCapabilityRestrictions(TNodeType nodeType, EAnnotation annotation) {
-		if (nodeType.getCapabilityDefinitions() != null && 
-				nodeType.getCapabilityDefinitions().getCapabilityDefinition().size() > 0) {
-			StringBuilder oclBuilder = new StringBuilder();
-			oclBuilder.append("if self.capabilities <> null then self.capabilities.capability->forAll(");
-			for (TCapabilityDefinition cType: nodeType.getCapabilityDefinitions().getCapabilityDefinition()) {
-				oclBuilder.append("oclIsKindOf(");
-				oclBuilder.append(ConverterUtils.toEcoreCompatibleName(
-						cType.getCapabilityTypeRef().getName().toString()));
-				oclBuilder.append(") or ");
-			}
-			oclBuilder.setLength(oclBuilder.length() - 4);
-			oclBuilder.append(") else true endif\n");
-			annotation.getDetails().put("restrictsCapabilityTypes", oclBuilder.toString());
-		}
-		return annotation;
-	}
+	
 	
 //	private static EAnnotation addPropertyRestrictions(TNodeType nodeType, EAnnotation annotation){
 //		if (nodeType.getPropertiesDefinition() != null) {
@@ -407,43 +363,6 @@ public class TOSCADef2Ecore {
 		}
 		
 		return ePackage;
-		
-	}
-	
-	private static EOperation getComputeTypeOperation(TEntityType entityType){
-		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
-		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		DocumentRoot root = (DocumentRoot) entityType.eResource().getContents().get(0);
-		annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'"
-				+ root.getDefinitions().get(0).getTargetNamespace() + "','"
-				+ entityType.getName() + "'}");
-		typeOperation.getEAnnotations().add(annotation);
-		
-		typeOperation.setName("computeType");
-		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
-		
-		return typeOperation;
-	}
-	
-	private static EOperation getPropertiesTypeOperation(TEntityType entityType) {
-		EOperation typeOperation = EcoreFactory.eINSTANCE.createEOperation();
-		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		annotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
-		if (entityType.getPropertiesDefinition() != null) {
-			annotation.getDetails().put("body", "_'" + XMLTypePackage.eINSTANCE.getNsPrefix() + "'::QName{'" 
-						+ entityType.getPropertiesDefinition().getElement().getLocalPart() + "'}");
-		}
-		else {
-			annotation.getDetails().put("body", "null");	
-		}
-		typeOperation.getEAnnotations().add(annotation);
-		
-		
-		typeOperation.setName("computePropertiesType");
-		typeOperation.setEType(XMLTypePackage.eINSTANCE.getEClassifier("QName"));
-		
-		return typeOperation;
 		
 	}
 	

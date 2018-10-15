@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 
+import de.ugoe.cs.oco.tosca.DocumentRoot;
+import de.ugoe.cs.oco.tosca.TEntityType;
+
 public final class ConverterUtils {
 
 
@@ -78,5 +81,12 @@ public final class ConverterUtils {
 //		}
 		ConverterUtils.save(resourceSet, generated, uri);
 	}
-
+	
+	public static String getNamespace(TEntityType entityType) {
+		if (entityType.eResource() != null) {
+			DocumentRoot root = (DocumentRoot) entityType.eResource().getContents().get(0);
+			return root.getDefinitions().get(0).getTargetNamespace();
+		}
+		return null;
+	}
 }

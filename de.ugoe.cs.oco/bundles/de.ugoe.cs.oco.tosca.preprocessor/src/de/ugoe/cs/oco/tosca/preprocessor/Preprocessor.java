@@ -13,7 +13,6 @@ import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.EolModule;
-import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
@@ -35,7 +34,7 @@ public class Preprocessor {
     Map<String, Object> m = reg.getExtensionToFactoryMap();
     m.put("tosca", new ToscaResourceFactoryImpl());
     
-    IEolExecutableModule module = new EolModule();
+    EolModule module = new EolModule();
 	URL eolCode = this.getClass().getResource("/de/ugoe/cs/oco/tosca/preprocessor/model/preprocessor.eol");
 	System.out.println(eolCode);
 	try{

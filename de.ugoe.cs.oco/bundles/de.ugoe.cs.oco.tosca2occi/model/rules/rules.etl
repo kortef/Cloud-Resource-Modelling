@@ -39,11 +39,13 @@ rule OperatingSystem2ImageMixin
 	to mixinBase: OCCI!MixinBase{
 	mixinBase.setMixin(OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "Ubuntu_XenialXerus"));
 	for (requirement in operatingSystem.requirements.requirement){
-		var r = TOSCA!TRelationshipTemplate.allInstances.selectOne(r | r.sourceElement.ref == requirement.id);
-		var targetId = r.targetElement.ref;
-		var c = TOSCA!TCapability.allInstances.selectOne(c | c.id == targetId);
+		requirement.println();
+		requirement.id.println();
+		var r = TOSCA!TRelationshipTemplate.allInstances.selectOne(r | r.sourceElement.ref == requirement);
+		var c = r.targetElement.ref;
+		c.println();
 		var resource = OCCI!Resource.allInstances.selectOne(r | r.id = c.econtainer.econtainer.id);
-		resource.getParts().add(mixinBase);	
+		resource.parts.add(mixinBase);	
 	}
 }
 
@@ -57,17 +59,15 @@ rule RelationshipTemplate2Link
 	link.title = relTemplate.name;
 	link.assignKind(relTemplate);
 	
-	var target = TOSCA!TCapability.allInstances.selectOne(t | t.id == relTemplate.targetElement.ref);
-	if (target == null){
-		target = TOSCA!TRequirement.allInstances.selectOne(t | t.id == relTemplate.targetElement.ref);
-	}
+	var target = relTemplate.targetElement.ref;
+	
 	
 	var targetNodeTemplate = target.econtainer.econtainer;
 	
 	if (targetNodeTemplate.isTypeOf(TOSCA!Server)){
 		//"Found target of type Server.".println();
 		link.kind = OCCI!Kind.allInstances.selectOne(k | k.term == "placementlink");
-		var sourceNodeTemplate = TOSCA!TRequirement.allInstances.selectOne(t | t.id == relTemplate.sourceElement.ref).econtainer.econtainer;
+		var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
 		sourceNodeTemplate.createPlacementLinkForIncomings(target.econtainer.econtainer.id);
 	}
 	
@@ -85,7 +85,7 @@ rule RelationshipTemplate2Link
 				targetsToBeAdded.put(target.econtainer.econtainer.id, bag);
 			}
 		}
-	var sourceRequirement = TOSCA!TRequirement.allInstances().selectOne(c | c.id = relTemplate.sourceElement.ref);
+	var sourceRequirement = relTemplate.sourceElement.ref;
 	var sourceID = sourceRequirement.econtainer.econtainer.id;
 	var sourceResource = OCCI!Resource.allInstances.selectOne(r | r.id = sourceID);
 			
@@ -126,5 +126,5 @@ rule Server2FlavorMixin
 	} 
 	mixinBase.setMixin(mixin);
 	var resource = OCCI!Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
-	resource.getParts().add(mixinBase);
+	resource.parts.add(mixinBase);
 }

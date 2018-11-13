@@ -22,7 +22,7 @@ operation TOSCA!TNodeTemplate createPlacementLinkForIncomings(targetID: String){
 	if (self.capabilities.isDefined() and self.capabilities <> null){
 		var capabilityIDs = self.capabilities.capability.collect(c | c.id);
 
-		var relationshipsToConsider = TOSCA!HostedOn.allInstances().select(r | capabilityIDs.contains(r.targetElement.ref));
+		var relationshipsToConsider = TOSCA!HostedOn.allInstances().select(r | capabilityIDs.contains(r.targetElement.ref.id));
 		for (relationship in relationshipsToConsider){
 			var placementLink = new OCCI!Link;
 			placementLink.kind = OCCI!Kind.allInstances.selectOne(k | k.term == "placementlink");
@@ -42,7 +42,7 @@ operation TOSCA!TNodeTemplate createPlacementLinkForIncomings(targetID: String){
 				}
 			}
 			
-			var sourceRequirement = TOSCA!TRequirement.allInstances().selectOne(c | c.id = relationship.sourceElement.ref);
+			var sourceRequirement = relationship.sourceElement.ref;
 			var sourceID = sourceRequirement.econtainer.econtainer.id;
 			var sourceResource = OCCI!Resource.allInstances.selectOne(r | r.id = sourceID);
 			

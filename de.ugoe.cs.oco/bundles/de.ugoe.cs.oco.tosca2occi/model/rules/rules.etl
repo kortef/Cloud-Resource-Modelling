@@ -6,7 +6,7 @@ import "./../operations/generalOperations.etl";
 @greedy
 rule NodeTemplate2Resource
 	transform nodeTemplate : TOSCA!TNodeTemplate
-	to resource : OCCI!Resource{ 
+	to resource : OCCI!occi::Resource{ 
 	guard: (configuration.get(nodeTemplate.type.localPart) <> null)
 	
 	resource.id = nodeTemplate.id;	
@@ -15,20 +15,19 @@ rule NodeTemplate2Resource
 	resource.assignKind(nodeTemplate);
 	resource.setLinks(nodeTemplate);
 	resource.setAttributeStates(nodeTemplate);
-	
-	OCCI!Configuration.allInstances.first.resources.add(resource);
+	OCCI!occi::Configuration.allInstances.first.resources.add(resource);
 }
 
 @greedy
 rule NodeTemplate2Mixin
 	transform nodeTemplate : TOSCA!TNodeTemplate
-	to mixinBase : OCCI!MixinBase{ 
+	to mixinBase : OCCI!occi::MixinBase{ 
 	guard: ((mixinMapping.get(nodeTemplate.type.localPart) <> null) and 
-		(OCCIExtensions!Mixin.allInstances.selectOne(m | m.name = mixinMapping.get(nodeTemplate.type.localPart)) <> null))
-	var mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name = mixinMapping.get(nodeTemplate.type.localPart));
+		(OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name = mixinMapping.get(nodeTemplate.type.localPart)) <> null))
+	var mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name = mixinMapping.get(nodeTemplate.type.localPart));
 	if (mixin.isDefined()){
 		mixinBase.setMixin(mixin);
-		var resource = OCCI!Resource.allInstances.selectOne(r | r.id =  nodeTemplate.id);
+		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  nodeTemplate.id);
 		resource.getParts().add(mixinBase);
 	}	
 }
@@ -36,15 +35,15 @@ rule NodeTemplate2Mixin
 @greedy
 rule OperatingSystem2ImageMixin
 	transform operatingSystem : TOSCA!OperatingSystem
-	to mixinBase: OCCI!MixinBase{
-	mixinBase.setMixin(OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "Ubuntu_XenialXerus"));
+	to mixinBase: OCCI!occi::MixinBase{
+	mixinBase.setMixin(OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "Ubuntu_XenialXerus"));
 	for (requirement in operatingSystem.requirements.requirement){
 		requirement.println();
 		requirement.id.println();
 		var r = TOSCA!TRelationshipTemplate.allInstances.selectOne(r | r.sourceElement.ref == requirement);
 		var c = r.targetElement.ref;
 		c.println();
-		var resource = OCCI!Resource.allInstances.selectOne(r | r.id = c.econtainer.econtainer.id);
+		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id = c.econtainer.econtainer.id);
 		resource.parts.add(mixinBase);	
 	}
 }
@@ -52,7 +51,7 @@ rule OperatingSystem2ImageMixin
 @greedy
 rule RelationshipTemplate2Link
 	transform relTemplate : TOSCA!TRelationshipTemplate
-	to link : OCCI!Link{ 
+	to link : OCCI!occi::Link{ 
 	guard: (configuration.get(relTemplate.type.localPart) <> null)
 	
 	link.id = relTemplate.id;	
@@ -66,12 +65,12 @@ rule RelationshipTemplate2Link
 	
 	if (targetNodeTemplate.isTypeOf(TOSCA!Server)){
 		//"Found target of type Server.".println();
-		link.kind = OCCI!Kind.allInstances.selectOne(k | k.term == "placementlink");
+		link.kind = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "placementlink");
 		var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
 		sourceNodeTemplate.createPlacementLinkForIncomings(target.econtainer.econtainer.id);
 	}
 	
-	var targetResource = OCCI!Resource.allInstances.selectOne(r | r.id == target.econtainer.econtainer.id);
+	var targetResource = OCCI!occi::Resource.allInstances.selectOne(r | r.id == target.econtainer.econtainer.id);
 	link.target = targetResource;
 	
 	if(link.target == null){
@@ -87,7 +86,7 @@ rule RelationshipTemplate2Link
 		}
 	var sourceRequirement = relTemplate.sourceElement.ref;
 	var sourceID = sourceRequirement.econtainer.econtainer.id;
-	var sourceResource = OCCI!Resource.allInstances.selectOne(r | r.id = sourceID);
+	var sourceResource = OCCI!occi::Resource.allInstances.selectOne(r | r.id = sourceID);
 			
 	if (sourceResource == null){
 		   //("Source Resource " + sourceRequirement.econtainer.econtainer.id + " is not transformed yet").println();
@@ -109,22 +108,22 @@ rule RelationshipTemplate2Link
 @greedy
 rule Server2FlavorMixin
 	transform props : TOSCA!TServerProperties
-	to mixinBase: OCCI!MixinBase{
+	to mixinBase: OCCI!occi::MixinBase{
 	var mixin = null;
 	if (props.numCpus.asInteger() == 1 and props.memory.asInteger() == 1024){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Small");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Small");
 	} else if (props.numCpus.asInteger() == 2 and props.memory.asInteger() == 2048){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Medium");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Medium");
 	} else if (props.numCpus.asInteger() == 4 and props.memory.asInteger() == 4096){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Large");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Large");
 	} else if (props.numCpus.asInteger() == 1 and props.memory.asInteger() == 4096){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Small");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Small");
 	} else if (props.numCpus.asInteger() == 2 and props.memory.asInteger() == 8192){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Medium");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Medium");
 	} else if (props.numCpus.asInteger() == 4 and props.memory.asInteger() == 16384){
-		mixin = OCCIExtensions!Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Large");
+		mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "SWE_Mem_Large");
 	} 
 	mixinBase.setMixin(mixin);
-	var resource = OCCI!Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
+	var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
 	resource.parts.add(mixinBase);
 }

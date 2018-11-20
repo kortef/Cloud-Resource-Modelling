@@ -9,7 +9,7 @@ operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType:
 		for (class in propertyClasses){
 			out.println("\tif (propertyObject.isTypeOf(TOSCA!" + class.name + ")){");
 			for (feature in class.getEStructuralFeatures()){
-				out.println("\t\tvar state = new OCCI!AttributeState();");
+				out.println("\t\tvar state = new OCCI!occi::AttributeState();");
 				out.println("\t\tstate.name = \"" + feature.name + "\";");
 				out.println("\t\tstate.value = propertyObject." + feature.name + ".toString();");
 				out.println("\t\tself.getAttributes.add(state);");

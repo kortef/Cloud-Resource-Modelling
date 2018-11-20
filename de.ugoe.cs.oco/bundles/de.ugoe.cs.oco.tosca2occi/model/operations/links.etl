@@ -3,7 +3,7 @@ Input:  nodeTemplate of resource to be created.
 Description: Creates for every relationship template that has the nodeTemplate as source a Link.
 Furthermore it fills out the target property of the links, which had the corresponding resource as target.
 (could be splitted)*/
-operation OCCI!Resource setLinks(nodeTemplate : TOSCA!TNodeTemplate) {
+operation OCCI!occi::Resource setLinks(nodeTemplate : TOSCA!TNodeTemplate) {
 	if(targetsToBeAdded.containsKey(nodeTemplate.id)){	
 		for(link in targetsToBeAdded.get(nodeTemplate.id)) {
 			link.target = self;
@@ -24,10 +24,10 @@ operation TOSCA!TNodeTemplate createPlacementLinkForIncomings(targetID: String){
 
 		var relationshipsToConsider = TOSCA!HostedOn.allInstances().select(r | capabilityIDs.contains(r.targetElement.ref.id));
 		for (relationship in relationshipsToConsider){
-			var placementLink = new OCCI!Link;
-			placementLink.kind = OCCI!Kind.allInstances.selectOne(k | k.term == "placementlink");
+			var placementLink = new OCCI!occi::Link;
+			placementLink.kind = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "placementlink");
 			
-			var targetResource = OCCI!Resource.allInstances.selectOne(r | r.id == targetID);
+			var targetResource = OCCI!occi::Resource.allInstances.selectOne(r | r.id == targetID);
 			placementLink.target = targetResource;
 		
 			if (targetResource == null){
@@ -44,7 +44,7 @@ operation TOSCA!TNodeTemplate createPlacementLinkForIncomings(targetID: String){
 			
 			var sourceRequirement = relationship.sourceElement.ref;
 			var sourceID = sourceRequirement.econtainer.econtainer.id;
-			var sourceResource = OCCI!Resource.allInstances.selectOne(r | r.id = sourceID);
+			var sourceResource = OCCI!occi::Resource.allInstances.selectOne(r | r.id = sourceID);
 			
 			if (sourceResource == null){
 				//("Source Resource " + sourceRequirement.econtainer.econtainer.id + " is not transformed yet").println();

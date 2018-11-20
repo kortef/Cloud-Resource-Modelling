@@ -1,7 +1,7 @@
 /* Operation: setAttributeStates
 Input: 
 Description: */
-operation OCCI!Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
+operation OCCI!occi::Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
 		//self.createAttributesRecursive(findAnyTypeElement(nodeType.propertiesDefinition.element.asString()));
 		//findAnyTypeElement(nodeTemplate.proper)
 		if(nodeTemplate.properties.isDefined()){
@@ -27,13 +27,13 @@ operation OCCI!Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
 /* Operation: createAttributeStatesRecursive
 Input:
 Description: */
-operation OCCI!Resource createAttributeStatesRecursive(owner: String, content : Any, oldContent : Any) {
+operation OCCI!occi::Resource createAttributeStatesRecursive(owner: String, content : Any, oldContent : Any) {
 //not(content.value.mixed.value.hasProperty("mixed"))
 	if(not(content.value.hasProperty("mixed"))) {
 		
 		//Newlines are detected as single elements in the Model and are filtered out
 		if(not("\n".isSubstringOf(content.value))){	
-			var attr = new OCCI!AttributeState;	
+			var attr = new OCCI!occi::AttributeState;	
 			for(leafElement in content.value){
 				if (propertyMapping.get(owner) == null){
 					attr.name = oldContent.estructuralfeature.name;

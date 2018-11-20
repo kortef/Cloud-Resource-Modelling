@@ -37,17 +37,17 @@ pre {
 	
 }
 post {
-	("#Resources in output model: " + OCCI!Resource.allInstances.size).println();
-	("#Links in output model: " + OCCI!Link.allInstances.size).println();
+	("#Resources in output model: " + OCCI!occi::Resource.allInstances.size).println();
+	("#Links in output model: " + OCCI!occi::Link.allInstances.size).println();
 
 	// convert ports to network interfaces
-	var portKinds = OCCI!Kind.allInstances.selectOne(k | k.term == "tosca.nodes.network.Port");	
+	var portKinds = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "tosca.nodes.network.Port");	
 	
 	if (not (portKinds == null)){
 		for (port in portKinds.entities){
 			var vm = port.links.selectOne(l | l.title.contains("bindsTo")).target;
 			var network = port.links.selectOne(l | l.title.contains("linksTo")).target;
-			var link = new OCCI!Link;
+			var link = new OCCI!occi::Link;
 			var mixin = Cloudconfig!Mixin.allInstances.selectOne(m | m.term == "ipnetworkinterface");
 			link.title = vm.title + "_" + "linksTo" + "_" + network.title;
 			//link.id = "linksTo" + network.title;

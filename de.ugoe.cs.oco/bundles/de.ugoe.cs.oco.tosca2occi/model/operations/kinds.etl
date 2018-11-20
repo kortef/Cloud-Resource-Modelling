@@ -1,17 +1,17 @@
 /* Operation: assignKind
 Input: nodeTemplate from which the Node Type, so the corresponding kind of the resource can be extracted.
 Description: */
-operation OCCI!Resource assignKind(template : TOSCA!TNodeTemplate) {
+operation OCCI!occi::Resource assignKind(template : TOSCA!TNodeTemplate) {
 	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	self.kind = OCCIExtensions!Kind.allInstances.selectOne(k | k.term == term);
+	self.kind = OCCIExtensions!occi::Kind.allInstances.selectOne(k | k.term == term);
 }
 
 /* Operation: assignKind
 Input: RelationshipTemplate from which the Relationship Type, so the corresponding kind of the link can be extracted.
 Description: */
-operation OCCI!Link assignKind(template : TOSCA!TRelationshipTemplate) {
+operation OCCI!occi::Link assignKind(template : TOSCA!TRelationshipTemplate) {
 	var typestring = template.type.localPart.asString;
 	var term = configuration.get(typestring);
-	self.kind = OCCIExtensions!Kind.allInstances.selectOne(k | k.term == term);
+	self.kind = OCCIExtensions!occi::Kind.allInstances.selectOne(k | k.term == term);
 }

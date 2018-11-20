@@ -23,24 +23,18 @@
     </parts>
     <links id="ApacheWebServer_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
-      <attributes name="occi.core.id" value="ApacheWebServer_placedOn_VmApache"/>
     </links>
   </resources>
   <resources id="PhpModule" title="PHP Module" rlinks="//@resources.3/@links.2">
     <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
-    <attributes name="occi.core.id" value="PhpModule"/>
-    <attributes name="occi.core.title" value="PHP Module"/>
     <parts>
       <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='apachephpmodule']"/>
     </parts>
     <links id="PhpModule_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
-      <attributes name="occi.core.id" value="PhpModule_placedOn_VmApache"/>
     </links>
     <links id="PhpModule_HostedOn_Apache" title="hosted on" target="//@resources.1">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
-      <attributes name="occi.core.id" value="PhpModule_HostedOn_Apache"/>
-      <attributes name="occi.core.title" value="hosted on"/>
     </links>
   </resources>
   <resources id="SugarCrmApp" title="SugarCRM App">
@@ -56,22 +50,15 @@
     </parts>
     <links id="SugarCrmApp_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
-      <attributes name="occi.core.id" value="SugarCrmApp_placedOn_VmApache"/>
     </links>
     <links id="SugarCrmApp_HostedOn_Apache" title="hosted on" target="//@resources.1">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
-      <attributes name="occi.core.id" value="SugarCrmApp_HostedOn_Apache"/>
-      <attributes name="occi.core.title" value="hosted on"/>
     </links>
     <links id="SugarCrmApp_DependsOn_PhpModule" title="depends on" target="//@resources.2">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
-      <attributes name="occi.core.id" value="SugarCrmApp_DependsOn_PhpModule"/>
-      <attributes name="occi.core.title" value="depends on"/>
     </links>
     <links id="SugarCrmApp_ConnectsTo_SugarCrmDb" title="connects to" target="//@resources.6">
       <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storagelink']"/>
-      <attributes name="occi.core.id" value="SugarCrmApp_ConnectsTo_SugarCrmDb"/>
-      <attributes name="occi.core.title" value="connects to"/>
     </links>
   </resources>
   <resources id="VmMySql" title="VM for MySQL" rlinks="//@resources.5/@links.0 //@resources.6/@links.0">
@@ -97,7 +84,6 @@
     </parts>
     <links id="MySql_placedOn_VmMySql" target="//@resources.4">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
-      <attributes name="occi.core.id" value="MySql_placedOn_VmMySql"/>
     </links>
   </resources>
   <resources id="SugarCrmDb" title="SugarCRM DB" rlinks="//@resources.3/@links.3">
@@ -113,12 +99,9 @@
     </parts>
     <links id="SugarCrmDb_placedOn_VmMySql" target="//@resources.4">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
-      <attributes name="occi.core.id" value="SugarCrmDb_placedOn_VmMySql"/>
     </links>
     <links id="SugarCrmDb_HostedOn_MySql" title="hosted on" target="//@resources.5">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
-      <attributes name="occi.core.id" value="SugarCrmDb_HostedOn_MySql"/>
-      <attributes name="occi.core.title" value="hosted on"/>
     </links>
   </resources>
 </occi:Configuration>

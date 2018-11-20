@@ -7,7 +7,7 @@ Input: String
 Returns: Kind
 Description: Searches for a Kind term with the passed parameter "name". Therefore, first the self created Kinds checked,
 followed by Kinds given via the configuration file. */
-operation correspondingKind(name : String) : OCCI!Kind {
+operation correspondingKind(name : String) : OCCI!occi::Kind {
 	kind_Set.println();
 	if(kind_Set.selectOne(kind| kind.term.asString() == name) <> null){
 		return kind_Set.selectOne(kind| kind.term.asString() == name);

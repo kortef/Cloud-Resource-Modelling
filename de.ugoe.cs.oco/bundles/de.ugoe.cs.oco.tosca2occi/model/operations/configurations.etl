@@ -1,4 +1,4 @@
 operation createRootConfiguration(){
-	var config = new OCCI!Configuration;
+	var config = new OCCI!occi::Configuration;
 	return config;
 }

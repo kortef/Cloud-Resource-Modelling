@@ -23,6 +23,13 @@
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.ConvertToEcoreAction">
          </action>
+         <action
+               label="Convert to OCCI Configuration"
+               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToOCCIConfigurationAction"
+               menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
+               enablesFor="1"
+               id="de.ugoe.cs.oco.tosca.model.ui.ConvertToOCCIAction">
+         </action>
       </objectContribution>
 </extension>
 

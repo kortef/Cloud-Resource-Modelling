@@ -1,7 +1,5 @@
 package de.ugoe.cs.oco.tosca.model.ui.popup.actions;
 
-import java.nio.file.Paths;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;

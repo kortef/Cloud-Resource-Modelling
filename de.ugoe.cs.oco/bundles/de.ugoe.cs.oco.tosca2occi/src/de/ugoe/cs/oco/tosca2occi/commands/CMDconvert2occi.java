@@ -57,7 +57,7 @@ public class CMDconvert2occi implements Command {
 		
 		
 		try{
-			TOSCA2OCCITransformator.transform(URI.createFileURI(filePath.toString()), 
+			new TOSCA2OCCITransformator().transform(URI.createFileURI(filePath.toString()), 
 					URI.createFileURI(output.toString()));
 		
 		} catch (Exception e) {

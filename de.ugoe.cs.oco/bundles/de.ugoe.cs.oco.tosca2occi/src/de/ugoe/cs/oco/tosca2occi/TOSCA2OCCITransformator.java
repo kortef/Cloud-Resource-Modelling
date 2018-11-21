@@ -2,7 +2,6 @@
  * 
  */
 package de.ugoe.cs.oco.tosca2occi;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
@@ -37,7 +36,7 @@ public class TOSCA2OCCITransformator {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String transform(URI toscaModelURI, URI occiModelURI) throws Exception{
+	public String transform(URI toscaModelURI, URI occiModelURI) throws Exception{
 		//EcorePlugin.ExtensionProcessor.process(null);
 					
 		ResourceSet occiSet = new ResourceSetImpl();
@@ -45,9 +44,8 @@ public class TOSCA2OCCITransformator {
 		
 		EtlModule module = new EtlModule();
 		Object result = null;		
-		File transformationFile = new File("model/TOSCA2OCCI.etl");    
 		try {
-			module.parse(transformationFile);
+			module.parse(this.getClass().getClassLoader().getResource("model/TOSCA2OCCI.etl").toURI());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -30,3 +30,4 @@ Export-Package: de.ugoe.cs.oco.tosca2occi,
  de.ugoe.cs.oco.tosca2occi.commands,
  de.ugoe.cs.oco.tosca2occi.test
 Automatic-Module-Name: de.ugoe.cs.oco.tosca2occi
+Import-Package: org.eclipse.core.resources

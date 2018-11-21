@@ -37,7 +37,7 @@ public class TOSCA2OCCITransformatorTest {
 		URI inputpath = URI.createFileURI("testdata/SugarCRM-Interop-Definitions-migrated.tosca");
 		URI outputpath = URI.createFileURI("testdata/SugarCRM-Interop-Definitions-migrated.occic");
 		
-		TOSCA2OCCITransformator.transform(inputpath, outputpath);
+		new TOSCA2OCCITransformator().transform(inputpath, outputpath);
 		
 		m.put("occic", new OCCIResourceFactoryImpl());
 		ResourceSet set = new ResourceSetImpl();

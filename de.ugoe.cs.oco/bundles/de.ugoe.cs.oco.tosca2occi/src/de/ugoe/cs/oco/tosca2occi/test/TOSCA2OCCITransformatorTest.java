@@ -5,9 +5,6 @@ package de.ugoe.cs.oco.tosca2occi.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.cmf.occi.core.Configuration;
@@ -37,8 +34,8 @@ public class TOSCA2OCCITransformatorTest {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
-		Path inputpath = Paths.get("testdata/SugarCRM-Interop-Definitions-migrated.tosca");
-		Path outputpath = Paths.get("testdata/SugarCRM-Interop-Definitions-migrated.occic");
+		URI inputpath = URI.createFileURI("testdata/SugarCRM-Interop-Definitions-migrated.tosca");
+		URI outputpath = URI.createFileURI("testdata/SugarCRM-Interop-Definitions-migrated.occic");
 		
 		TOSCA2OCCITransformator.transform(inputpath, outputpath);
 		

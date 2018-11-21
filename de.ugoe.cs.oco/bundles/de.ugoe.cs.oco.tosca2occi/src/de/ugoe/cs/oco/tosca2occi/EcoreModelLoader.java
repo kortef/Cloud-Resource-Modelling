@@ -16,24 +16,25 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
  * Helper class to load ecore models at runtime
  */
 public class EcoreModelLoader {
-	public List<Resource> searchAndLoadEcoreModels(File inputDir) {
+	public List<Resource> searchAndLoadEcoreModels(URI inputDirURI) {
 		ResourceSet set = new ResourceSetImpl();
-		return searchAndLoadEcoreModels(inputDir, set);
+		return searchAndLoadEcoreModels(inputDirURI, set);
 	}
 	
 	
 	
-	/* Loads all ecore models from provided path and returns them as a
+	/* Loads all ecore models from provided uri and returns them as a
 	 * set of resources.
 	 */
-	public List<Resource> searchAndLoadEcoreModels(File inputDir, ResourceSet set) {
+	public List<Resource> searchAndLoadEcoreModels(URI inputDirURI, ResourceSet set) {
 		List<File> ecoreFileList =  new LinkedList<File>();
 		List<Resource> ecoreResources = new LinkedList<Resource>();
 		
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
 	    m.put("ecore", new EcoreResourceFactoryImpl());
-		
+		File inputDir = new File(inputDirURI.toFileString());
+	    
 	    try {
 			for (File file: inputDir.listFiles()) {
 				if (file.getName().endsWith(".ecore")) {

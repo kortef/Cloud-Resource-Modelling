@@ -16,17 +16,18 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  * Helper class to load occi extensions models at runtime
  */
 public class OCCIExtensionLoader {
-	public List<Resource> searchAndLoadOCCIExtensions(File inputDir) {
+	public List<Resource> searchAndLoadOCCIExtensions(URI inputDirURI) {
 		ResourceSet set = new ResourceSetImpl();
-		return searchAndLoadOCCIExtensions(inputDir, set);
+		return searchAndLoadOCCIExtensions(inputDirURI, set);
 	}
 	
 	/* Loads all occi extension models from provided path and returns them as a
 	 * set of resources.
 	 */
-	public List<Resource> searchAndLoadOCCIExtensions(File inputDir, ResourceSet set) {
+	public List<Resource> searchAndLoadOCCIExtensions(URI inputDirURI, ResourceSet set) {
 		List<File> occiExtFileList =  new LinkedList<File>();
 		List<Resource> occiExtResources = new LinkedList<Resource>();
+		File inputDir = new File(inputDirURI.toFileString()); 
 		
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();

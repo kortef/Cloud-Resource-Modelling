@@ -3,17 +3,12 @@
  */
 package de.ugoe.cs.oco.tosca2occi;
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
 import org.eclipse.cmf.occi.core.OCCIPackage;
-import org.eclipse.cmf.occi.core.OcciCoreConstants;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -45,7 +40,7 @@ public class OCCIExtensionGenerator {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String generate(Path toscaModelPath, Path occiModelPath) throws Exception{
+	public static String generate(URI toscaModelPath, URI occiModelPath) throws Exception{
 		//EcorePlugin.ExtensionProcessor.process(null);
 					
 		ResourceSet occiSet = new ResourceSetImpl();
@@ -82,7 +77,7 @@ public class OCCIExtensionGenerator {
 			}
 			
 			List<Resource> externalResources = new EcoreModelLoader().searchAndLoadEcoreModels(
-					new File(toscaModelPath.getParent().toString()), toscaSet);
+					toscaModelPath, toscaSet);
 			
 			for (Resource externalResource: externalResources) {
 				EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
@@ -93,11 +88,10 @@ public class OCCIExtensionGenerator {
 			
 			Resource resource = null;
 						
-			String path = toscaModelPath.getParent().toString() + "/";
 			toscaSet.getPackageRegistry().put(XMLTypePackage.eNS_URI, XMLTypePackage.eINSTANCE);
 			toscaSet.getPackageRegistry().put(ToscaPackage.eNS_URI, ToscaPackage.eINSTANCE);
 			
-			resource = toscaSet.getResource(URI.createFileURI(path + toscaModelPath.getFileName().toString()), true);
+			resource = toscaSet.getResource(toscaModelPath, true);
 			InMemoryEmfModel toscaModel = new InMemoryEmfModel(resource);
 			toscaModel.setName("Types");
 			
@@ -108,11 +102,8 @@ public class OCCIExtensionGenerator {
 			// we assume here that there is only one import
 			for (TImport imp: imports) {
 				if (imp.getImportType().equals("http://www.w3.org/2001/XMLSchema")) {
-					Path xsdpath = Paths.get(imp.getLocation());
-					if (!xsdpath.isAbsolute()){
-						xsdpath = Paths.get(toscaModelPath.getParent().toString(), xsdpath.toString());
-					}
-					Resource xsdResource = toscaSet.getResource(URI.createFileURI(xsdpath.toString()), true);
+					URI xsdpath = URI.createFileURI(imp.getLocation()).resolve(toscaModelPath);
+					Resource xsdResource = toscaSet.getResource(xsdpath, true);
 					InMemoryEmfModel xsdModel = new InMemoryEmfModel(xsdResource);
 					xsdModel.getAliases().add("TypesXSD");
 					module.getContext().getModelRepository().addModel(xsdModel);
@@ -121,8 +112,7 @@ public class OCCIExtensionGenerator {
 			
 			
 			
-			path = occiModelPath.getParent().toString() + "/";
-			resource = occiSet.createResource(URI.createURI(path + occiModelPath.getFileName().toString()));
+			resource = occiSet.createResource(occiModelPath);
 			InMemoryEmfModel occiModel = new InMemoryEmfModel(resource);
 			occiModel.setMetamodelUri("http://schemas.ogf.org/occi/core/ecore");
 			occiModel.setName("OCCIE");

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 import de.ugoe.cs.oco.tosca2occi.TOSCA2OCCITransformator;
@@ -15,7 +16,6 @@ public class CMDconvert2occi implements Command {
 
 	@Override
 	public void run(List<Object> parameters) {
-		String result = null;		
 		Path outputPath = Paths.get(System.getProperty("user.dir"));
 		Path filePath = null;
 		String fileName = "";
@@ -57,7 +57,8 @@ public class CMDconvert2occi implements Command {
 		
 		
 		try{
-			result = TOSCA2OCCITransformator.transform(filePath, output);
+			TOSCA2OCCITransformator.transform(URI.createFileURI(filePath.toString()), 
+					URI.createFileURI(output.toString()));
 		
 		} catch (Exception e) {
 			e.printStackTrace();

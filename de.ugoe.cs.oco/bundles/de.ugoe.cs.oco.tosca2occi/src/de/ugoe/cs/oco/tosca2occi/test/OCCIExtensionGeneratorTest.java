@@ -3,10 +3,9 @@
  */
 package de.ugoe.cs.oco.tosca2occi.test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
@@ -31,18 +30,18 @@ public class OCCIExtensionGeneratorTest {
 		m.put("tosca", new ToscaResourceFactoryImpl());
 		m.put("occie", new XMIResourceFactoryImpl());
 		System.out.println("----------------- Run SugarCRMType Transformation --------------------");
-		Path inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRMTypes-Definitions.tosca");
-		Path outputpath = Paths.get("testdata/SugarCRM-Types.occie");
+		URI inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRMTypes-Definitions.tosca");
+		URI outputpath = URI.createFileURI("testdata/SugarCRM-Types.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run BaseType Transformation --------------------");
-		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
-		outputpath = Paths.get("testdata/TOSCA-v1.0-BaseTypes-Definitions.occie");
+		inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
+		outputpath = URI.createFileURI("testdata/TOSCA-v1.0-BaseTypes-Definitions.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run SpecificType Transformation --------------------");
-		inputpath = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
-		outputpath = Paths.get("testdata/TOSCA-v1.0-BaseSpecific-Definitions.occie");
+		inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
+		outputpath = URI.createFileURI("testdata/TOSCA-v1.0-BaseSpecific-Definitions.occie");
 		OCCIExtensionGenerator.generate(inputpath, outputpath);
 		
 	}

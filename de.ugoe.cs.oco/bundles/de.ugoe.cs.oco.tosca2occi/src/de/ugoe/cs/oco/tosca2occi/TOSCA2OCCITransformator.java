@@ -5,19 +5,14 @@ package de.ugoe.cs.oco.tosca2occi;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
 import org.eclipse.cmf.occi.core.Extension;
-import org.eclipse.cmf.occi.core.Mixin;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EcoreFactoryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -37,12 +32,12 @@ import org.eclipse.epsilon.etl.EtlModule;
  */
 public class TOSCA2OCCITransformator {
 	/**
-	 * @param toscaModelPath The input path to the TOSCA model
-	 * @param occiModelPath The output path where the generated OCCI model will be stored. 
+	 * @param toscaModelURI The input path to the TOSCA model
+	 * @param occiModelURI The output path where the generated OCCI model will be stored. 
 	 * @return
 	 * @throws Exception
 	 */
-	public static String transform(Path toscaModelPath, Path occiModelPath) throws Exception{
+	public static String transform(URI toscaModelURI, URI occiModelURI) throws Exception{
 		//EcorePlugin.ExtensionProcessor.process(null);
 					
 		ResourceSet occiSet = new ResourceSetImpl();
@@ -82,7 +77,7 @@ public class TOSCA2OCCITransformator {
 			}
 			
 			List<Resource> externalOCCIExt = new OCCIExtensionLoader().searchAndLoadOCCIExtensions(
-					new File(toscaModelPath.getParent().toString()), occiSet);
+					occiModelURI.trimSegments(1), occiSet);
 			
 			for (Resource externalResource: externalOCCIExt) {
 				Extension externalExtension = (Extension) externalResource.getContents().get(0);
@@ -95,7 +90,7 @@ public class TOSCA2OCCITransformator {
 			Resource resource = null;
 			
 			List<Resource> externalEcoreModels = new EcoreModelLoader().searchAndLoadEcoreModels(
-					new File(toscaModelPath.getParent().toString()), toscaSet);
+					toscaModelURI.trimSegments(1), toscaSet);
 		
 			for (Resource externalResource: externalEcoreModels) {
 				EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
@@ -106,16 +101,14 @@ public class TOSCA2OCCITransformator {
 			
 			EPackage toscaPackage = getTOSCAPackage(toscaSet);
 			toscaSet.getPackageRegistry().put(toscaPackage.getNsURI(), toscaPackage);
-			String path = toscaModelPath.getParent().toString() + "/";
 			EPackage xmlTypePackage = EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 			toscaSet.getPackageRegistry().put(xmlTypePackage.getNsURI(), xmlTypePackage);
 			
-			resource = toscaSet.getResource(URI.createURI(path + toscaModelPath.getFileName().toString()), true);
+			resource = toscaSet.getResource(toscaModelURI, true);
 			InMemoryEmfModel toscaModel = new InMemoryEmfModel(resource);
 			toscaModel.setName("TOSCA");
 			
-			path = occiModelPath.getParent().toString() + "/";
-			resource = occiSet.createResource(URI.createURI(path + occiModelPath.getFileName().toString()));
+			resource = occiSet.createResource(occiModelURI);
 			InMemoryEmfModel occiModel = new InMemoryEmfModel(resource);
 			occiModel.setName("OCCI");
 						

@@ -5,7 +5,6 @@ Bundle-SymbolicName: de.ugoe.cs.oco.tosca2occi;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
-Bundle-Localization: plugin
 Bundle-Activator: de.ugoe.cs.oco.tosca2occi.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -30,3 +29,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: de.ugoe.cs.oco.tosca2occi,
  de.ugoe.cs.oco.tosca2occi.commands,
  de.ugoe.cs.oco.tosca2occi.test
+Automatic-Module-Name: de.ugoe.cs.oco.tosca2occi

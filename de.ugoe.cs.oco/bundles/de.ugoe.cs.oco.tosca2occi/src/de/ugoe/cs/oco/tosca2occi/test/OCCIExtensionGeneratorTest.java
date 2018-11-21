@@ -29,20 +29,21 @@ public class OCCIExtensionGeneratorTest {
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
 		m.put("occie", new XMIResourceFactoryImpl());
+		OCCIExtensionGenerator generator = new OCCIExtensionGenerator();
 		System.out.println("----------------- Run SugarCRMType Transformation --------------------");
-		URI inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRMTypes-Definitions.tosca");
+		URI inputpath = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRMTypes-Definitions.tosca");
 		URI outputpath = URI.createFileURI("testdata/SugarCRM-Types.occie");
-		OCCIExtensionGenerator.generate(inputpath, outputpath);
+		generator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run BaseType Transformation --------------------");
-		inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
+		inputpath = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-BaseTypes-Definitions.tosca");
 		outputpath = URI.createFileURI("testdata/TOSCA-v1.0-BaseTypes-Definitions.occie");
-		OCCIExtensionGenerator.generate(inputpath, outputpath);
+		generator.generate(inputpath, outputpath);
 		
 		System.out.println("----------------- Run SpecificType Transformation --------------------");
-		inputpath = URI.createFileURI("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
+		inputpath = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/TOSCA-v1.0-SpecificTypes-Definitions.tosca");
 		outputpath = URI.createFileURI("testdata/TOSCA-v1.0-BaseSpecific-Definitions.occie");
-		OCCIExtensionGenerator.generate(inputpath, outputpath);
+		generator.generate(inputpath, outputpath);
 		
 	}
 

@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import org.eclipse.emf.common.util.URI;
 import org.junit.jupiter.api.Test;
 
-import de.ugoe.cs.oco.tosca.gen.configuration.TOSCADef2Config;
+import de.ugoe.cs.oco.tosca.gen.configuration.TOSCADefToConfigTransformator;
 import de.ugoe.cs.oco.tosca.gen.extension.TOSCADef2Ecore;
 
 /**

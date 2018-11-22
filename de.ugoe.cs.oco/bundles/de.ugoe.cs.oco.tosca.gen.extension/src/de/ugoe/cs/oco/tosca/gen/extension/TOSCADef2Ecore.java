@@ -4,8 +4,6 @@
 package de.ugoe.cs.oco.tosca.gen.extension;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -130,8 +128,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TCapability")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(cType));
-			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(cType));
+			//eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(cType));
+			//eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(cType));
 		}
 		
 		for (TRequirementType rType: definitions.getRequirementType()) {
@@ -140,8 +138,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRequirement")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(rType));
-			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(rType));
+			//eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(rType));
+			//eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(rType));
 
 		}
 		
@@ -151,8 +149,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TArtifactTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(aType));
-			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(aType));
+			//eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(aType));
+			//eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(aType));
 
 		}
 		
@@ -166,8 +164,8 @@ public class TOSCADef2Ecore {
 			EAnnotation pivotalAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			pivotalAnnotation.setSource("http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot");
 			
-			OCLGenerator.addRequirementRestrictions(nodeType, pivotalAnnotation);
-			OCLGenerator.addCapabilityRestrictions(nodeType, pivotalAnnotation);
+			//OCLGenerator.addRequirementRestrictions(nodeType, pivotalAnnotation);
+			//OCLGenerator.addCapabilityRestrictions(nodeType, pivotalAnnotation);
 			//OCLGenerator.addTypeRestriction(nodeType, pivotalAnnotation);
 			//addPropertyRestrictions(nodeType, pivotalAnnotation);
 			
@@ -185,9 +183,9 @@ public class TOSCADef2Ecore {
 				ecoreAnnotation.getDetails().put("constraints", constraintStringBuilder.substring(
 						0, constraintStringBuilder.length() - 1));
 			}
-			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(nodeType));
-			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(nodeType));
-			eClass.getEOperations().add(OCLGenerator.getCapabilityConstraintOperation(nodeType));
+			// eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(nodeType));
+			// eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(nodeType));
+			// eClass.getEOperations().add(OCLGenerator.getCapabilityConstraintOperation(nodeType));
 
 		}
 		
@@ -197,8 +195,8 @@ public class TOSCADef2Ecore {
 			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TRelationshipTemplate")));
 			ePackage.getEClassifiers().add(eClass);
 			
-			eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(relationshipType));
-			eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(relationshipType));
+			// eClass.getEOperations().add(OCLGenerator.getComputeTypeOperation(relationshipType));
+			// eClass.getEOperations().add(OCLGenerator.getPropertiesTypeOperation(relationshipType));
 
 		}
 		

@@ -6,7 +6,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.core.resources.IFile"
-            nameFilter="*.tosca"
+            nameFilter="*.tosca*"
             id="de.ugoe.cs.oco.tosca.model.ui.contribution1">
          <menu
                label="TOSCA modelling"
@@ -29,6 +29,20 @@
                menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.ConvertToOCCIAction">
+         </action>
+          <action
+               label="Convert to TOSCA Configuration"
+               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToTOSCAConfigurationAction"
+               menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
+               enablesFor="1"
+               id="de.ugoe.cs.oco.tosca.model.ui.ConvertToTOSCAConfigurationAction">
+         </action>
+           <action
+               label="Generate OCCI Extension"
+               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.GenerateOCCIExtensionAction"
+               menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
+               enablesFor="1"
+               id="de.ugoe.cs.oco.tosca.model.ui.GenerateOCCIExtensionAction">
          </action>
       </objectContribution>
 </extension>

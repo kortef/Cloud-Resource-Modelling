@@ -1,20 +1,18 @@
 package de.ugoe.cs.oco.tosca.gen.configuration.test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
+import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 
-import de.ugoe.cs.oco.tosca.gen.configuration.TOSCADef2Config;
+import de.ugoe.cs.oco.tosca.gen.configuration.TOSCADefToConfigTransformator;
 
 public class TOSCADef2ConfigTest {
 	
 	@Test
 	public void testGenerateConfig() {
-		Path toscaDef = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.tosca");
-	    Path generatedEcore = Paths.get("/home/fglaser/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions-migrated.tosca");
+		URI toscaDef = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.tosca");
+	    URI generatedEcore = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.toscac");
 
-		TOSCADef2Config.generateConfiguration(toscaDef, generatedEcore);
+		new TOSCADefToConfigTransformator().transform(toscaDef, generatedEcore);
 	}
 
 }

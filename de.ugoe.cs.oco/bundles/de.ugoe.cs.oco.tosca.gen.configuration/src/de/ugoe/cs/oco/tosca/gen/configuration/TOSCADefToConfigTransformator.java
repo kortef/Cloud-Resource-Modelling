@@ -1,7 +1,6 @@
 package de.ugoe.cs.oco.tosca.gen.configuration;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 
@@ -30,10 +29,10 @@ import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 
-public class TOSCADef2Config {
-	protected final static Logger LOGGER = LoggerFactory.getLogger(TOSCADef2Config.class.getName());
+public class TOSCADefToConfigTransformator {
+	protected final static Logger LOGGER = LoggerFactory.getLogger(TOSCADefToConfigTransformator.class.getName());
 	
-	public static void generateConfiguration(Path toscaDef, Path toscaConfig) {
+	public void transform(URI toscaDef, URI toscaConfig) {
 		ToscaPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -44,9 +43,9 @@ public class TOSCADef2Config {
 		m.put("xml", new XMLResourceFactoryImpl());
 		m.put("ecore", new EcoreResourceFactoryImpl());
 		ResourceSet resourceSet = new ResourceSetImpl();
-		DocumentRoot root = loadToscaRoot(URI.createFileURI(toscaDef.toString()), resourceSet);
+		DocumentRoot root = loadToscaRoot(toscaDef, resourceSet);
 		
-		Resource resource = resourceSet.createResource(URI.createFileURI(toscaConfig.toString()));
+		Resource resource = resourceSet.createResource(toscaConfig);
 		resource.getContents().add(root);
 		
 		root.getXMLNSPrefixMap().put("xsi", "http://www.w3.org/2001/XMLSchema-instance");

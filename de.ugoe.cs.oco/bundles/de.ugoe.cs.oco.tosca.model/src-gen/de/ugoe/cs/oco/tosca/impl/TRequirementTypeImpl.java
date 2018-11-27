@@ -305,7 +305,7 @@ public class TRequirementTypeImpl extends TEntityTypeImpl implements TRequiremen
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ToscaPackage.TREQUIREMENT_TYPE___SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP_1:
+			case ToscaPackage.TREQUIREMENT_TYPE___SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP:
 				return superTypeMustBeRequirementType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);

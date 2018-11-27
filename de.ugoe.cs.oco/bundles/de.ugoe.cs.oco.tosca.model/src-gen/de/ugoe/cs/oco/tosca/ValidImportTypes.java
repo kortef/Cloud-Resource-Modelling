@@ -26,7 +26,7 @@ public enum ValidImportTypes implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TOSCA_TYPE(0, "TOSCAType", "TOSCAType"),
+	TOSCA_TYPE(0, "TOSCAType", "http://docs.oasis-open.org/tosca/ns/2011/12"),
 
 	/**
 	 * The '<em><b>XSD Type</b></em>' literal object.
@@ -36,7 +36,7 @@ public enum ValidImportTypes implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	XSD_TYPE(1, "XSDType", "XSDType");
+	XSD_TYPE(1, "XSDType", "http://www.w3.org/2001/XMLSchema");
 
 	/**
 	 * The '<em><b>TOSCA Type</b></em>' literal value.
@@ -47,7 +47,7 @@ public enum ValidImportTypes implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TOSCA_TYPE
-	 * @model name="TOSCAType"
+	 * @model name="TOSCAType" literal="http://docs.oasis-open.org/tosca/ns/2011/12"
 	 * @generated
 	 * @ordered
 	 */
@@ -62,7 +62,7 @@ public enum ValidImportTypes implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #XSD_TYPE
-	 * @model name="XSDType"
+	 * @model name="XSDType" literal="http://www.w3.org/2001/XMLSchema"
 	 * @generated
 	 * @ordered
 	 */

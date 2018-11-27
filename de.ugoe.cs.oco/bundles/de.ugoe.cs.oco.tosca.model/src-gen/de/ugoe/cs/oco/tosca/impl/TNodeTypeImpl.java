@@ -462,7 +462,7 @@ public class TNodeTypeImpl extends TEntityTypeImpl implements TNodeType {
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ToscaPackage.TNODE_TYPE___SUPER_TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP_1:
+			case ToscaPackage.TNODE_TYPE___SUPER_TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP:
 				return superTypeMustBeNodeType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);

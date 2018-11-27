@@ -2776,7 +2776,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ValidImportTypes">
-    <eLiterals name="TOSCAType"/>
-    <eLiterals name="XSDType" value="1"/>
+    <eLiterals name="TOSCAType" literal="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <eLiterals name="XSDType" value="1" literal="http://www.w3.org/2001/XMLSchema"/>
   </eClassifiers>
 </ecore:EPackage>

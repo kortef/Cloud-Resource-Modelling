@@ -123,7 +123,7 @@ public class TCapabilityTypeImpl extends TEntityTypeImpl implements TCapabilityT
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ToscaPackage.TCAPABILITY_TYPE___SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP_1:
+			case ToscaPackage.TCAPABILITY_TYPE___SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP:
 				return superTypeMustBeCapabilityType((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);

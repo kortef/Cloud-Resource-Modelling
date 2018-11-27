@@ -6,14 +6,16 @@ pre{
 		
 	var extension = new OCCIE!Extension;
 	extension.`import`.add(MODMACAO!Extension.allInstances.selectOne(e | e.name = "modmacao"));
-	var scheme = TypesXSD!XSDSchema.allInstances().get(0).targetNamespace;
-	extension.name = scheme.split('/').last();
+	var targetNamespace = Types!TDefinitions.allInstances().get(0).targetNamespace;
+	extension.name = targetNamespace.split('/').last().toString().toLowerCase();
 	extension.scheme = "http://schemas.modmacao.org/" + extension.name + "#";
+	
 }
 
 rule NodeType2Mixin
 	transform nodeType : Types!TNodeType
-	to mixin : OCCIE!Mixin {	
+	to mixin : OCCIE!Mixin {
+	guard: (nodeType.eContainer.targetNamespace == targetNamespace)	
 		("Transforming " + nodeType.name.toString()).println();
 		mixin.name = nodeType.name;
 		mixin.depends.add(MODMACAO!Mixin.allInstances.selectOne(m | m.name == "Component"));

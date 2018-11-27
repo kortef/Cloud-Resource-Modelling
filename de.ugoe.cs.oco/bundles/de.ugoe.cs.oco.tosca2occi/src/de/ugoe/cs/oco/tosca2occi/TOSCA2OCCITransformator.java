@@ -7,9 +7,11 @@ import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.cmf.occi.core.Extension;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -24,6 +26,8 @@ import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
+
+import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
  * Class responsible for handling the transformation of TOSCA models to OCCI models.
@@ -41,6 +45,11 @@ public class TOSCA2OCCITransformator {
 					
 		ResourceSet occiSet = new ResourceSetImpl();
 		ResourceSet toscaSet = new ResourceSetImpl();
+		
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("toscac", new ToscaResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
 		
 		EtlModule module = new EtlModule();
 		Object result = null;		

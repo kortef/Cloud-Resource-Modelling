@@ -1,4 +1,4 @@
-operation OCCI!Resource setAttributeStatesFromNormative(normativePropertiesType: Any){
+operation OCCI!occi::Resource setAttributeStatesFromNormative(normativePropertiesType: Any){
 	var state: OCCI!AttributeState;
 	var propertyObject = normativePropertiesType.value;
 	if (propertyObject.isTypeOf(TOSCA!TSugarCRMApplicationProperties)){

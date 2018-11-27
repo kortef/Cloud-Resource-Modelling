@@ -29,7 +29,7 @@ operation getTypeMapping() : Map {
 	configuration.put("ApachePHPModule", "component");
 	configuration.put("MySQL", "component");
 	configuration.put("MySQLDatabase", "component");
-	configuration.put("SugarCRMDatabaseConnection", "storagelink");
+	configuration.put("SugarCRMDatabaseConnection", "componentlink");
 	configuration.put("RootRelationshipType", "link");
 	configuration.put("HostedOn", "componentlink");
 	configuration.put("DependsOn", "componentlink");

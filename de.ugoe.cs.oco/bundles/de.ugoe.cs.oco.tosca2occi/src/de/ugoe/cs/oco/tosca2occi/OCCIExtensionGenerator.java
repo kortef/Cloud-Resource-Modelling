@@ -6,9 +6,11 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -29,6 +31,7 @@ import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.ValidImportTypes;
+import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 /**
  * Class responsible for handling the transformation of TOSCA models to OCCI models.
@@ -46,6 +49,11 @@ public class OCCIExtensionGenerator {
 					
 		ResourceSet occiSet = new ResourceSetImpl();
 		ResourceSet toscaSet = new ResourceSetImpl();
+		
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("tosca", new ToscaResourceFactoryImpl());
+		m.put("occie", new OCCIResourceFactoryImpl());
 		
 		EtlModule module = new EtlModule();
 		Object result = null;	  
@@ -76,15 +84,16 @@ public class OCCIExtensionGenerator {
 				module.getContext().getModelRepository().addModel(model);		
 			}
 			
-			List<Resource> externalResources = new EcoreModelLoader().searchAndLoadEcoreModels(
-					toscaModelURI.trimSegments(1), toscaSet);
+			//List<Resource> externalResources = new EcoreModelLoader().searchAndLoadEcoreModels(
+			//		toscaModelURI.trimSegments(1), toscaSet);
 			
-			for (Resource externalResource: externalResources) {
-				EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
-				InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
-				model.setName(externalPackage.getName());
-				module.getContext().getModelRepository().addModel(model);
-			}
+			//for (Resource externalResource: externalResources) {
+			//	EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
+			//	InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
+			//	model.setName(externalPackage.getName());
+			//	module.getContext().getModelRepository().addModel(model);
+			//}
+			
 			
 			Resource resource = null;
 						

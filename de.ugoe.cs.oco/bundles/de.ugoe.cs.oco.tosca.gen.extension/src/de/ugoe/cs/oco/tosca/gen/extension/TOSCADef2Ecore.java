@@ -378,6 +378,7 @@ public class TOSCADef2Ecore {
 			e.printStackTrace();
 		}
 		
+		m.put("tosca", new ToscaResourceFactoryImpl());
 		return (XSDSchema) xsdResource.getContents().get(0);
 	}
 	

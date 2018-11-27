@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Configuration
-Bundle-SymbolicName: de.ugoe.cs.oco.tosca.gen.configuration
+Bundle-SymbolicName: de.ugoe.cs.oco.tosca.gen.configuration; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Export-Package: de.ugoe.cs.oco.tosca.gen.configuration
 Require-Bundle: org.slf4j.api;bundle-version="1.7.2",
@@ -20,3 +20,5 @@ Require-Bundle: org.slf4j.api;bundle-version="1.7.2",
  org.hamcrest.core,
  org.opentest4j,
  org.apiguardian
+Bundle-ClassPath: .
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

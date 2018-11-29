@@ -25,13 +25,13 @@ pre {
 	
 	"".println;
 	"OCCI model stats:".println();
-	("#Kinds (known): " + OCCIExtensions!Kind.allInstances.size).println();
-	("#Extensions (known): " + OCCIExtensions!Extension.allInstances.size).println();
-	("#Mixins (known):) " + OCCIExtensions!Mixin.allInstances.size).println();
+	("#Kinds (known): " + OCCIExtensions!occi::Kind.allInstances.size).println();
+	("#Extensions (known): " + OCCIExtensions!occi::Extension.allInstances.size).println();
+	("#Mixins (known):) " + OCCIExtensions!occi::Mixin.allInstances.size).println();
 
 	var config = createRootConfiguration();
 	
-	for (extension in OCCIExtensions!Extension.allInstances){
+	for (extension in OCCIExtensions!occi::Extension.allInstances){
 		config.use.add(extension);
 	}
 	

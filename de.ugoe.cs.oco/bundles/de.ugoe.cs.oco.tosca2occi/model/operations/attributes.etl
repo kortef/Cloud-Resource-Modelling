@@ -1,28 +1,18 @@
 /* Operation: setAttributeStates
 Input: 
 Description: */
-operation OCCI!occi::Resource setAttributeStates(nodeTemplate : TOSCA!TNodeTemplate) {
-		//self.createAttributesRecursive(findAnyTypeElement(nodeType.propertiesDefinition.element.asString()));
-		//findAnyTypeElement(nodeTemplate.proper)
+operation OCCI!occi::Resource setAttributeStates(nodeTemplate: TOSCA!TNodeTemplate) {
 		if(nodeTemplate.properties.isDefined()){
-			for(property in nodeTemplate.properties.any){
-				if (property.isKindOf(TOSCA!AnyType)){
-					self.createAttributeStatesRecursive(nodeTemplate.type.toString(), property, null);
-				} else {
-					self.setAttributeStatesFromNormative(property);
+			for (propertyObject in nodeTemplate.properties.any){
+				for (feature in propertyObject.value.eClass.eAllStructuralFeatures){
+					var state = new OCCI!occi::AttributeState();
+					state.name = feature.name;
+					state.value = propertyObject.value.eGet(feature).toString();
+					self.getAttributes.add(state);
 				}
 			}
 		}
-		if (nodeTemplate.capabilities.isDefined()){
-			for (capability in nodeTemplate.capabilities.capability){
-				if (capability.properties.isDefined()){
-					for (property in capability.properties.any){
-						self.createAttributeStatesRecursive(capability.type.toString(), property, null);
-					}
-				}
-			}
-		}
-}	
+}
 
 /* Operation: createAttributeStatesRecursive
 Input:

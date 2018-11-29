@@ -1,7 +1,6 @@
 package de.ugoe.cs.oco.tosca.model.ui.popup.actions;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
@@ -12,8 +11,6 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 import de.ugoe.cs.oco.tosca.gen.configuration.TOSCADefToConfigTransformator;
-import de.ugoe.cs.oco.tosca2occi.OCCIExtensionGenerator;
-import de.ugoe.cs.oco.tosca2occi.TOSCA2OCCITransformator;
 
 public class ConvertToTOSCAConfigurationAction implements IObjectActionDelegate {
 	private Shell shell;
@@ -21,13 +18,11 @@ public class ConvertToTOSCAConfigurationAction implements IObjectActionDelegate 
 	
 	@Override
 	public void run(IAction action) {
-		String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-		
 		IFile selectedFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
-		IPath outputPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("toscac");
+		IPath outputPath = selectedFile.getRawLocation().makeAbsolute().removeFileExtension().addFileExtension("toscac");
 		
-		URI toscaURI = URI.createFileURI(workspacePath + selectedFile.getFullPath().toString());
-		URI occiURI = URI.createFileURI(workspacePath + outputPath.toString());
+		URI toscaURI = URI.createFileURI(selectedFile.getRawLocation().makeAbsolute().toString());
+		URI occiURI = URI.createFileURI(outputPath.toString());
 		
 		try {
 			new TOSCADefToConfigTransformator().transform(toscaURI, occiURI);

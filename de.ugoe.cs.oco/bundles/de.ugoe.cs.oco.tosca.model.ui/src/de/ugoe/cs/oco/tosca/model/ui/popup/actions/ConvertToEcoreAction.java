@@ -20,9 +20,9 @@ public class ConvertToEcoreAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		IFile selectedFile = (IFile) ((IStructuredSelection) selection)
 				.getFirstElement();
-		IPath outputPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("ecore");
+		IPath outputPath = selectedFile.getRawLocation().makeAbsolute().removeFileExtension().addFileExtension("ecore");
 		
-		URI inputURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
+		URI inputURI = URI.createPlatformResourceURI(selectedFile.getRawLocation().makeAbsolute().toString(), true);
 		URI outputURI = URI.createPlatformResourceURI(outputPath.toString(), true);
 		
 		TOSCADef2Ecore.generateEcore(inputURI, outputURI);

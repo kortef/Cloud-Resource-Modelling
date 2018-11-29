@@ -1,7 +1,6 @@
 package de.ugoe.cs.oco.tosca.model.ui.popup.actions;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
@@ -12,16 +11,13 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 import de.ugoe.cs.oco.tosca2occi.OCCIExtensionGenerator;
-import de.ugoe.cs.oco.tosca2occi.TOSCA2OCCITransformator;
 
 public class GenerateOCCIExtensionAction implements IObjectActionDelegate {
 	private Shell shell;
 	private ISelection selection;
 	
 	@Override
-	public void run(IAction action) {
-		//String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-		
+	public void run(IAction action) {		
 		IFile selectedFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
 		IPath outputPath = selectedFile.getRawLocation().makeAbsolute().removeFileExtension().addFileExtension("occie");
 		

@@ -1,7 +1,6 @@
 package de.ugoe.cs.oco.tosca.model.ui.popup.actions;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
@@ -19,13 +18,11 @@ public class ConvertToOCCIConfigurationAction implements IObjectActionDelegate {
 	
 	@Override
 	public void run(IAction action) {
-		String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-		
 		IFile selectedFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
-		IPath outputPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("occic");
+		IPath outputPath = selectedFile.getRawLocation().makeAbsolute().removeFileExtension().addFileExtension("occic");
 		
-		URI toscaURI = URI.createFileURI(workspacePath + selectedFile.getFullPath().toString());
-		URI occiURI = URI.createFileURI(workspacePath + outputPath.toString());
+		URI toscaURI = URI.createFileURI(selectedFile.getRawLocation().makeAbsolute().toString());
+		URI occiURI = URI.createFileURI(outputPath.toString());
 		
 		try {
 			new TOSCA2OCCITransformator().transform(toscaURI, occiURI);

@@ -20,13 +20,13 @@ public class GenerateOCCIExtensionAction implements IObjectActionDelegate {
 	
 	@Override
 	public void run(IAction action) {
-		String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
+		//String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 		
 		IFile selectedFile = (IFile) ((IStructuredSelection) selection).getFirstElement();
-		IPath outputPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("occie");
+		IPath outputPath = selectedFile.getRawLocation().makeAbsolute().removeFileExtension().addFileExtension("occie");
 		
-		URI toscaURI = URI.createFileURI(workspacePath + selectedFile.getFullPath().toString());
-		URI occiURI = URI.createFileURI(workspacePath + outputPath.toString());
+		URI toscaURI = URI.createFileURI(selectedFile.getRawLocation().makeAbsolute().toString());
+		URI occiURI = URI.createFileURI(outputPath.toString());
 		
 		try {
 			new OCCIExtensionGenerator().generate(toscaURI, occiURI);

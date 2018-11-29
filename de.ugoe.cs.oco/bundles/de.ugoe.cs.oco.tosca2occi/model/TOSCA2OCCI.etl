@@ -1,6 +1,5 @@
 import "./configuration.etl";
 import "./operations/generalOperations.etl";
-import "./operations/normative.etl";
 import "./operations/attributes.etl";
 import "./operations/configurations.etl";
 import "./operations/kinds.etl";

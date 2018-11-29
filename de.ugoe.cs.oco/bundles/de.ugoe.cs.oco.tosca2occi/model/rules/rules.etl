@@ -14,12 +14,11 @@ rule NodeTemplate2Resource
 	resource.summary = nodeTemplate.getDescription();
 	resource.assignKind(nodeTemplate);
 	resource.setLinks(nodeTemplate);
-	resource.setAttributeStates(nodeTemplate);
 	OCCI!occi::Configuration.allInstances.first.resources.add(resource);
 }
 
 @greedy
-rule NodeTemplate2Mixin
+rule NodeTemplate2MixinAndAttributeStates
 	transform nodeTemplate : TOSCA!TNodeTemplate
 	to mixinBase : OCCI!occi::MixinBase{ 
 	guard: ((mixinMapping.get(nodeTemplate.type.localPart) <> null) and 
@@ -28,6 +27,7 @@ rule NodeTemplate2Mixin
 	if (mixin.isDefined()){
 		mixinBase.setMixin(mixin);
 		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  nodeTemplate.id);
+		resource.setAttributeStates(nodeTemplate);
 		resource.getParts().add(mixinBase);
 	}	
 }

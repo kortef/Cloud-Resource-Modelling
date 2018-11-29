@@ -28,7 +28,7 @@ rule NodeType2Mixin
 				var elementType = elementDeclaration.type;
 				for (particle in elementType.content.content.contents){
 					var attribute = new OCCIE!Attribute;
-					attribute.name = particle.content.name;
+					attribute.name = particle.content.name.firstToLowerCase();
 					("\tAdding attribute: " + attribute.name).println();
 					if (particle.content.value.isDefined()){
 						attribute.`default` = particle.content.value.toString();

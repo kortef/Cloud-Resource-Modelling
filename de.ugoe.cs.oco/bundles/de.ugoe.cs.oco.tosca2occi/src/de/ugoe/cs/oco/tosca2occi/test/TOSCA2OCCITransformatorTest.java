@@ -45,7 +45,7 @@ public class TOSCA2OCCITransformatorTest {
 		
 		Configuration configuration = (Configuration) resource.getContents().get(0);
 		EList<org.eclipse.cmf.occi.core.Resource> resources = configuration.getResources();
-		assertEquals(7, resources.size());
+		assertEquals(8, resources.size());
 		
 		for (org.eclipse.cmf.occi.core.Resource res: resources) {
 			if (res.getId().equals("VmApache")) {

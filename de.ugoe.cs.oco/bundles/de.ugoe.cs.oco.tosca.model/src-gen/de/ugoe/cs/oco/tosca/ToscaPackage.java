@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -181,6 +180,8 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-model-doc -->
  * @see de.ugoe.cs.oco.tosca.ToscaFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore' ecore.xml.type='http://www.eclipse.org/emf/2003/XMLType' xml='../../org.eclipse.emf.ecore/model/XMLNamespace.ecore#/' xsd='../../org.eclipse.xsd/model/XSD.ecore#/'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface ToscaPackage extends EPackage {
@@ -3591,22 +3592,13 @@ public interface ToscaPackage extends EPackage {
 	int TCAPABILITY_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Type Must Be Capability Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TCAPABILITY___TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TCapability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TCAPABILITY_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 1;
+	int TCAPABILITY_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TCapabilityDefinitionImpl <em>TCapability Definition</em>}' class.
@@ -3873,22 +3865,13 @@ public interface ToscaPackage extends EPackage {
 	int TCAPABILITY_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Super Type Must Be Capability Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TCAPABILITY_TYPE___SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TCapability Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TCAPABILITY_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 1;
+	int TCAPABILITY_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TConditionImpl <em>TCondition</em>}' class.
@@ -5085,40 +5068,13 @@ public interface ToscaPackage extends EPackage {
 	int TNODE_TEMPLATE_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 7;
 
 	/**
-	 * The operation id for the '<em>Type Must Be Node Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TNODE_TEMPLATE___TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Requirements Must Be Defined In Referenced Node Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TNODE_TEMPLATE___REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TEMPLATE_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Capabilities Must Be Defined In Referenced Node Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TNODE_TEMPLATE___CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TEMPLATE_OPERATION_COUNT + 2;
-
-	/**
 	 * The number of operations of the '<em>TNode Template</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TNODE_TEMPLATE_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 3;
+	int TNODE_TEMPLATE_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TNodeTypeImpl <em>TNode Type</em>}' class.
@@ -5266,22 +5222,13 @@ public interface ToscaPackage extends EPackage {
 	int TNODE_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Super Type Must Be Node Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TNODE_TYPE___SUPER_TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TNode Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TNODE_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 1;
+	int TNODE_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TNodeTypeImplementationImpl <em>TNode Type Implementation</em>}' class.
@@ -6475,22 +6422,13 @@ public interface ToscaPackage extends EPackage {
 	int TRELATIONSHIP_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 5;
 
 	/**
-	 * The operation id for the '<em>Super Type Must Be Relationship Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRELATIONSHIP_TYPE___SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TRelationship Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRELATIONSHIP_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 1;
+	int TRELATIONSHIP_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TRelationshipTypeImplementationImpl <em>TRelationship Type Implementation</em>}' class.
@@ -6803,22 +6741,13 @@ public interface ToscaPackage extends EPackage {
 	int TREQUIREMENT_FEATURE_COUNT = TENTITY_TEMPLATE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Type Must Be Requirement Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREQUIREMENT___TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TRequirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREQUIREMENT_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 1;
+	int TREQUIREMENT_OPERATION_COUNT = TENTITY_TEMPLATE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TRequirementDefinitionImpl <em>TRequirement Definition</em>}' class.
@@ -7103,22 +7032,13 @@ public interface ToscaPackage extends EPackage {
 	int TREQUIREMENT_TYPE_FEATURE_COUNT = TENTITY_TYPE_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Super Type Must Be Requirement Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREQUIREMENT_TYPE___SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP = TENTITY_TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>TRequirement Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREQUIREMENT_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 1;
+	int TREQUIREMENT_TYPE_OPERATION_COUNT = TENTITY_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.ugoe.cs.oco.tosca.impl.TServiceTemplateImpl <em>TService Template</em>}' class.
@@ -9200,16 +9120,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTCapability_Name();
 
 	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TCapability#typeMustBeCapabilityType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Type Must Be Capability Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Type Must Be Capability Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TCapability#typeMustBeCapabilityType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTCapability__TypeMustBeCapabilityType__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition <em>TCapability Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9326,16 +9236,6 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTCapabilityType();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TCapabilityType#superTypeMustBeCapabilityType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Super Type Must Be Capability Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Super Type Must Be Capability Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TCapabilityType#superTypeMustBeCapabilityType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTCapabilityType__SuperTypeMustBeCapabilityType__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TCondition <em>TCondition</em>}'.
@@ -10495,36 +10395,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTNodeTemplate_Name();
 
 	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TNodeTemplate#typeMustBeNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Type Must Be Node Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Type Must Be Node Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TNodeTemplate#typeMustBeNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTNodeTemplate__TypeMustBeNodeType__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TNodeTemplate#requirementsMustBeDefinedInReferencedNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Requirements Must Be Defined In Referenced Node Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Requirements Must Be Defined In Referenced Node Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TNodeTemplate#requirementsMustBeDefinedInReferencedNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTNodeTemplate__RequirementsMustBeDefinedInReferencedNodeType__DiagnosticChain_Map();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TNodeTemplate#capabilitiesMustBeDefinedInReferencedNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Capabilities Must Be Defined In Referenced Node Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Capabilities Must Be Defined In Referenced Node Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TNodeTemplate#capabilitiesMustBeDefinedInReferencedNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTNodeTemplate__CapabilitiesMustBeDefinedInReferencedNodeType__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TNodeType <em>TNode Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10577,16 +10447,6 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTNodeType_Interfaces();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TNodeType#superTypeMustBeNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Super Type Must Be Node Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Super Type Must Be Node Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TNodeType#superTypeMustBeNodeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTNodeType__SuperTypeMustBeNodeType__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TNodeTypeImplementation <em>TNode Type Implementation</em>}'.
@@ -11215,16 +11075,6 @@ public interface ToscaPackage extends EPackage {
 	EReference getTRelationshipType_ValidTarget();
 
 	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TRelationshipType#superTypeMustBeRelationshipType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Super Type Must Be Relationship Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Super Type Must Be Relationship Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TRelationshipType#superTypeMustBeRelationshipType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTRelationshipType__SuperTypeMustBeRelationshipType__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TRelationshipTypeImplementation <em>TRelationship Type Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11397,16 +11247,6 @@ public interface ToscaPackage extends EPackage {
 	EAttribute getTRequirement_Name();
 
 	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TRequirement#typeMustBeRequirementType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Type Must Be Requirement Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Type Must Be Requirement Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TRequirement#typeMustBeRequirementType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTRequirement__TypeMustBeRequirementType__DiagnosticChain_Map();
-
-	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TRequirementDefinition <em>TRequirement Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11545,16 +11385,6 @@ public interface ToscaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTRequirementType_RequiredCapabilityTypeRef();
-
-	/**
-	 * Returns the meta object for the '{@link de.ugoe.cs.oco.tosca.TRequirementType#superTypeMustBeRequirementType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Super Type Must Be Requirement Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Super Type Must Be Requirement Type</em>' operation.
-	 * @see de.ugoe.cs.oco.tosca.TRequirementType#superTypeMustBeRequirementType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getTRequirementType__SuperTypeMustBeRequirementType__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link de.ugoe.cs.oco.tosca.TServiceTemplate <em>TService Template</em>}'.
@@ -13291,14 +13121,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TCAPABILITY__NAME = eINSTANCE.getTCapability_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Must Be Capability Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TCAPABILITY___TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTCapability__TypeMustBeCapabilityType__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TCapabilityDefinitionImpl <em>TCapability Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13391,14 +13213,6 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TCAPABILITY_TYPE = eINSTANCE.getTCapabilityType();
-
-		/**
-		 * The meta object literal for the '<em><b>Super Type Must Be Capability Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TCAPABILITY_TYPE___SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTCapabilityType__SuperTypeMustBeCapabilityType__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TConditionImpl <em>TCondition</em>}' class.
@@ -14297,30 +14111,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TNODE_TEMPLATE__NAME = eINSTANCE.getTNodeTemplate_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Must Be Node Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TNODE_TEMPLATE___TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTNodeTemplate__TypeMustBeNodeType__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirements Must Be Defined In Referenced Node Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TNODE_TEMPLATE___REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTNodeTemplate__RequirementsMustBeDefinedInReferencedNodeType__DiagnosticChain_Map();
-
-		/**
-		 * The meta object literal for the '<em><b>Capabilities Must Be Defined In Referenced Node Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TNODE_TEMPLATE___CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTNodeTemplate__CapabilitiesMustBeDefinedInReferencedNodeType__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TNodeTypeImpl <em>TNode Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14361,14 +14151,6 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TNODE_TYPE__INTERFACES = eINSTANCE.getTNodeType_Interfaces();
-
-		/**
-		 * The meta object literal for the '<em><b>Super Type Must Be Node Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TNODE_TYPE___SUPER_TYPE_MUST_BE_NODE_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTNodeType__SuperTypeMustBeNodeType__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TNodeTypeImplementationImpl <em>TNode Type Implementation</em>}' class.
@@ -14859,14 +14641,6 @@ public interface ToscaPackage extends EPackage {
 		EReference TRELATIONSHIP_TYPE__VALID_TARGET = eINSTANCE.getTRelationshipType_ValidTarget();
 
 		/**
-		 * The meta object literal for the '<em><b>Super Type Must Be Relationship Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TRELATIONSHIP_TYPE___SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTRelationshipType__SuperTypeMustBeRelationshipType__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TRelationshipTypeImplementationImpl <em>TRelationship Type Implementation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -15003,14 +14777,6 @@ public interface ToscaPackage extends EPackage {
 		EAttribute TREQUIREMENT__NAME = eINSTANCE.getTRequirement_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Must Be Requirement Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TREQUIREMENT___TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTRequirement__TypeMustBeRequirementType__DiagnosticChain_Map();
-
-		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TRequirementDefinitionImpl <em>TRequirement Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -15119,14 +14885,6 @@ public interface ToscaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TREQUIREMENT_TYPE__REQUIRED_CAPABILITY_TYPE_REF = eINSTANCE.getTRequirementType_RequiredCapabilityTypeRef();
-
-		/**
-		 * The meta object literal for the '<em><b>Super Type Must Be Requirement Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TREQUIREMENT_TYPE___SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__DIAGNOSTICCHAIN_MAP = eINSTANCE.getTRequirementType__SuperTypeMustBeRequirementType__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link de.ugoe.cs.oco.tosca.impl.TServiceTemplateImpl <em>TService Template</em>}' class.

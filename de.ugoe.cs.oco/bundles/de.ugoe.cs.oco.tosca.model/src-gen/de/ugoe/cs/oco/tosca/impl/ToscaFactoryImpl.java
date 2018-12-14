@@ -130,6 +130,7 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 			case ToscaPackage.TDEPLOYMENT_ARTIFACT: return createTDeploymentArtifact();
 			case ToscaPackage.TDEPLOYMENT_ARTIFACTS: return createTDeploymentArtifacts();
 			case ToscaPackage.TDOCUMENTATION: return createTDocumentation();
+			case ToscaPackage.TENTITY_TEMPLATE: return createTEntityTemplate();
 			case ToscaPackage.TEXPORTED_INTERFACE: return createTExportedInterface();
 			case ToscaPackage.TEXPORTED_OPERATION: return createTExportedOperation();
 			case ToscaPackage.TEXTENSIBLE_ELEMENTS: return createTExtensibleElements();
@@ -939,6 +940,16 @@ public class ToscaFactoryImpl extends EFactoryImpl implements ToscaFactory {
 	public TDocumentation createTDocumentation() {
 		TDocumentationImpl tDocumentation = new TDocumentationImpl();
 		return tDocumentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TEntityTemplate createTEntityTemplate() {
+		TEntityTemplateImpl tEntityTemplate = new TEntityTemplateImpl();
+		return tEntityTemplate;
 	}
 
 	/**

@@ -33,7 +33,6 @@ public interface TPropertyConstraint extends TConstraint {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyConstraint_Property()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='property'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPropertyConstraint!property'"
 	 * @generated
 	 */
 	String getProperty();

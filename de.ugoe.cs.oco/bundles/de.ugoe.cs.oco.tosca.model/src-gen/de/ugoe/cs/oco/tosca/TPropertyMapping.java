@@ -37,7 +37,6 @@ public interface TPropertyMapping extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_ServiceTemplatePropertyRef()
 	 * @model default="" required="true"
 	 *        extendedMetaData="kind='attribute' name='serviceTemplatePropertyRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPropertyMapping!serviceTemplatePropertyRef'"
 	 * @generated
 	 */
 	String getServiceTemplatePropertyRef();
@@ -65,7 +64,6 @@ public interface TPropertyMapping extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_TargetObjectRef()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='targetObjectRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPropertyMapping!targetObjectRef'"
 	 * @generated
 	 */
 	TEntityTemplate getTargetObjectRef();
@@ -93,7 +91,6 @@ public interface TPropertyMapping extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPropertyMapping_TargetPropertyRef()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='targetPropertyRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPropertyMapping!targetPropertyRef'"
 	 * @generated
 	 */
 	String getTargetPropertyRef();

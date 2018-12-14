@@ -41,7 +41,6 @@ public interface TArtifactReference extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactReference_Group()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='group' name='group:0'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactReference!group'"
 	 * @generated
 	 */
 	FeatureMap getGroup();
@@ -59,7 +58,6 @@ public interface TArtifactReference extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactReference_Include()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='Include' namespace='##targetNamespace' group='#group:0'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactReference!include'"
 	 * @generated
 	 */
 	EList<IncludeType> getInclude();
@@ -77,7 +75,6 @@ public interface TArtifactReference extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactReference_Exclude()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='Exclude' namespace='##targetNamespace' group='#group:0'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactReference!exclude'"
 	 * @generated
 	 */
 	EList<ExcludeType> getExclude();
@@ -95,7 +92,6 @@ public interface TArtifactReference extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactReference_Reference()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='reference'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactReference!reference'"
 	 * @generated
 	 */
 	String getReference();

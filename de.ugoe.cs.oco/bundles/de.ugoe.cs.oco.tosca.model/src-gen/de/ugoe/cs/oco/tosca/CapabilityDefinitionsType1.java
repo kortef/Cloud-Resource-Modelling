@@ -36,7 +36,6 @@ public interface CapabilityDefinitionsType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getCapabilityDefinitionsType1_CapabilityDefinition()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='CapabilityDefinition' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!CapabilityDefinitionsType1!capabilityDefinition'"
 	 * @generated
 	 */
 	EList<TCapabilityDefinition> getCapabilityDefinition();

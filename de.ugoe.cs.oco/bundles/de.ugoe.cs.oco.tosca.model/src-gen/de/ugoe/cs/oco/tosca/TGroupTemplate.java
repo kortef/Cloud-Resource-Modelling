@@ -41,7 +41,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Requirements' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!requirements'"
 	 * @generated
 	 */
 	RequirementsType1 getRequirements();
@@ -69,7 +68,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Capabilities()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Capabilities' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!capabilities'"
 	 * @generated
 	 */
 	CapabilitiesType1 getCapabilities();
@@ -97,7 +95,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Policies()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Policies' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!policies'"
 	 * @generated
 	 */
 	PoliciesType1 getPolicies();
@@ -125,7 +122,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_DeploymentArtifacts()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DeploymentArtifacts' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!deploymentArtifacts'"
 	 * @generated
 	 */
 	TDeploymentArtifacts getDeploymentArtifacts();
@@ -156,7 +152,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_MaxInstances()
 	 * @model default="1" unsettable="true" dataType="de.ugoe.cs.oco.tosca.MaxInstancesType"
 	 *        extendedMetaData="kind='attribute' name='maxInstances'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!maxInstances'"
 	 * @generated
 	 */
 	Object getMaxInstances();
@@ -212,7 +207,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_MinInstances()
 	 * @model default="1" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='attribute' name='minInstances'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!minInstances'"
 	 * @generated
 	 */
 	int getMinInstances();
@@ -264,7 +258,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!name'"
 	 * @generated
 	 */
 	String getName();
@@ -291,7 +284,6 @@ public interface TGroupTemplate extends TEntityTemplate {
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTGroupTemplate_Member()
 	 * @model extendedMetaData="kind='element' name='Member' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TGroupTemplate!member'"
 	 * @generated
 	 */
 	EList<TEntityTemplate> getMember();

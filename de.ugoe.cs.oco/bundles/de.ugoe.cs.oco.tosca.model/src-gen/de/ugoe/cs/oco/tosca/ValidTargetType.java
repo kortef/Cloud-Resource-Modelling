@@ -36,7 +36,6 @@ public interface ValidTargetType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getValidTargetType_TypeRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='typeRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!ValidTargetType!typeRef'"
 	 * @generated
 	 */
 	QName getTypeRef();

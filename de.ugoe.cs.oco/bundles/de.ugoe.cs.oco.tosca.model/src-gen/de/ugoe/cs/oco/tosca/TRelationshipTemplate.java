@@ -36,7 +36,6 @@ public interface TRelationshipTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTemplate_SourceElement()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='SourceElement' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTemplate!sourceElement'"
 	 * @generated
 	 */
 	SourceElementType getSourceElement();
@@ -64,7 +63,6 @@ public interface TRelationshipTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTemplate_TargetElement()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='TargetElement' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTemplate!targetElement'"
 	 * @generated
 	 */
 	TargetElementType getTargetElement();
@@ -92,7 +90,6 @@ public interface TRelationshipTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTemplate_RelationshipConstraints()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RelationshipConstraints' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTemplate!relationshipConstraints'"
 	 * @generated
 	 */
 	RelationshipConstraintsType getRelationshipConstraints();
@@ -119,7 +116,6 @@ public interface TRelationshipTemplate extends TEntityTemplate {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTemplate_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTemplate!name'"
 	 * @generated
 	 */
 	String getName();

@@ -34,7 +34,6 @@ public interface TPolicyType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPolicyType_AppliesTo()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='AppliesTo' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPolicyType!appliesTo'"
 	 * @generated
 	 */
 	TAppliesTo getAppliesTo();
@@ -62,7 +61,6 @@ public interface TPolicyType extends TEntityType {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPolicyType_PolicyLanguage()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='policyLanguage'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPolicyType!policyLanguage'"
 	 * @generated
 	 */
 	String getPolicyLanguage();

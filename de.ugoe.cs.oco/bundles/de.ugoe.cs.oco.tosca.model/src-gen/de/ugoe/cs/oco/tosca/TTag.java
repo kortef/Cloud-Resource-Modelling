@@ -35,7 +35,6 @@ public interface TTag extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTag_Name()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTag!name'"
 	 * @generated
 	 */
 	String getName();
@@ -63,7 +62,6 @@ public interface TTag extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTag_Value()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='value'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTag!value'"
 	 * @generated
 	 */
 	String getValue();

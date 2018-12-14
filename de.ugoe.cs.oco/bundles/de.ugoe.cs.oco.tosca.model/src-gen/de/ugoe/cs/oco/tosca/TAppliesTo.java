@@ -36,7 +36,6 @@ public interface TAppliesTo extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTAppliesTo_NodeTypeReference()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='NodeTypeReference' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TAppliesTo!nodeTypeReference'"
 	 * @generated
 	 */
 	EList<NodeTypeReferenceType> getNodeTypeReference();

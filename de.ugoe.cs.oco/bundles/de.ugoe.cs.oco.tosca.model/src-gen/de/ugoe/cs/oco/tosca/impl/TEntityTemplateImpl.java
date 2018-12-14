@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class TEntityTemplateImpl extends TExtensibleElementsImpl implements TEntityTemplate {
+public class TEntityTemplateImpl extends TExtensibleElementsImpl implements TEntityTemplate {
 	/**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference.
 	 * <!-- begin-user-doc -->

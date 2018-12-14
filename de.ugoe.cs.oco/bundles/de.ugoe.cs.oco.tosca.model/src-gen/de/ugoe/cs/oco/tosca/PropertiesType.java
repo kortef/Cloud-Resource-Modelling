@@ -37,7 +37,6 @@ public interface PropertiesType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesType!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -54,7 +53,6 @@ public interface PropertiesType extends EObject {
 	 * @see #setPropertiesElement(EObject)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertiesType_PropertiesElement()
 	 * @model transient="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertiesType!propertiesElement'"
 	 * @generated
 	 */
 	EObject getPropertiesElement();

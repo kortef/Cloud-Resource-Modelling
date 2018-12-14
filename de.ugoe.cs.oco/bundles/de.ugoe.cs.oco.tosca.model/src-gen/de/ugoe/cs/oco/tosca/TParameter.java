@@ -36,7 +36,6 @@ public interface TParameter extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Name()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TParameter!name'"
 	 * @generated
 	 */
 	String getName();
@@ -69,7 +68,6 @@ public interface TParameter extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Required()
 	 * @model default="yes" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='required'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TParameter!required'"
 	 * @generated
 	 */
 	TBoolean getRequired();
@@ -123,7 +121,6 @@ public interface TParameter extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTParameter_Type()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='type'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TParameter!type'"
 	 * @generated
 	 */
 	String getType();

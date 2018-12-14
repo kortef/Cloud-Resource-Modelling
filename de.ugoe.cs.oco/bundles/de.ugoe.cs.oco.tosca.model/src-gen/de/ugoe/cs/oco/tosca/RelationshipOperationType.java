@@ -36,7 +36,6 @@ public interface RelationshipOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipOperationType_InterfaceName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='interfaceName'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!RelationshipOperationType!interfaceName'"
 	 * @generated
 	 */
 	String getInterfaceName();
@@ -64,7 +63,6 @@ public interface RelationshipOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipOperationType_OperationName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='operationName'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!RelationshipOperationType!operationName'"
 	 * @generated
 	 */
 	String getOperationName();
@@ -92,7 +90,6 @@ public interface RelationshipOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipOperationType_RelationshipRef()
 	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='relationshipRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!RelationshipOperationType!relationshipRef'"
 	 * @generated
 	 */
 	TRelationshipType getRelationshipRef();

@@ -36,7 +36,6 @@ public interface PlanModelType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPlanModelType_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PlanModelType!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();

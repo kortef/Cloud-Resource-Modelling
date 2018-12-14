@@ -37,7 +37,6 @@ public interface TInterface extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTInterface_Operation()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Operation' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TInterface!operation'"
 	 * @generated
 	 */
 	EList<TOperation> getOperation();
@@ -55,7 +54,6 @@ public interface TInterface extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTInterface_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TInterface!name'"
 	 * @generated
 	 */
 	String getName();

@@ -39,7 +39,6 @@ public interface TTopologyTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTopologyTemplate_Group()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='group' name='group:3'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTopologyTemplate!group'"
 	 * @generated
 	 */
 	FeatureMap getGroup();
@@ -57,7 +56,6 @@ public interface TTopologyTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTopologyTemplate_NodeTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='NodeTemplate' namespace='##targetNamespace' group='#group:3'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTopologyTemplate!nodeTemplate'"
 	 * @generated
 	 */
 	EList<TNodeTemplate> getNodeTemplate();
@@ -75,7 +73,6 @@ public interface TTopologyTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTopologyTemplate_RelationshipTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='RelationshipTemplate' namespace='##targetNamespace' group='#group:3'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTopologyTemplate!relationshipTemplate'"
 	 * @generated
 	 */
 	EList<TRelationshipTemplate> getRelationshipTemplate();
@@ -93,7 +90,6 @@ public interface TTopologyTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTTopologyTemplate_GroupTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='GroupTemplate' namespace='##targetNamespace' group='#group:3'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TTopologyTemplate!groupTemplate'"
 	 * @generated
 	 */
 	EList<TGroupTemplate> getGroupTemplate();

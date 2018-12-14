@@ -37,7 +37,6 @@ public interface RelationshipConstraintType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipConstraintType_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':0' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!RelationshipConstraintType!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -55,7 +54,6 @@ public interface RelationshipConstraintType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getRelationshipConstraintType_ConstraintType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='constraintType'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!RelationshipConstraintType!constraintType'"
 	 * @generated
 	 */
 	String getConstraintType();

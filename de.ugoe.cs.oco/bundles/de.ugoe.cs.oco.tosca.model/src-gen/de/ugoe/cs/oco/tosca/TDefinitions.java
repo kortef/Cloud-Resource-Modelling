@@ -54,7 +54,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Extensions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Extensions' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!extensions'"
 	 * @generated
 	 */
 	ExtensionsType getExtensions();
@@ -82,7 +81,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Import()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Import' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!import'"
 	 * @generated
 	 */
 	EList<TImport> getImport();
@@ -100,7 +98,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Types()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Types' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!types'"
 	 * @generated
 	 */
 	TypesType getTypes();
@@ -128,7 +125,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Group()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='group' name='group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!group'"
 	 * @generated
 	 */
 	FeatureMap getGroup();
@@ -146,7 +142,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_ServiceTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='ServiceTemplate' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!serviceTemplate'"
 	 * @generated
 	 */
 	EList<TServiceTemplate> getServiceTemplate();
@@ -164,7 +159,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_NodeType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='NodeType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!nodeType'"
 	 * @generated
 	 */
 	EList<TNodeType> getNodeType();
@@ -182,7 +176,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_NodeTypeImplementation()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='NodeTypeImplementation' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!nodeTypeImplementation'"
 	 * @generated
 	 */
 	EList<TNodeTypeImplementation> getNodeTypeImplementation();
@@ -200,7 +193,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_RelationshipType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='RelationshipType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!relationshipType'"
 	 * @generated
 	 */
 	EList<TRelationshipType> getRelationshipType();
@@ -218,7 +210,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_RelationshipTypeImplementation()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='RelationshipTypeImplementation' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!relationshipTypeImplementation'"
 	 * @generated
 	 */
 	EList<TRelationshipTypeImplementation> getRelationshipTypeImplementation();
@@ -236,7 +227,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_RequirementType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='RequirementType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!requirementType'"
 	 * @generated
 	 */
 	EList<TRequirementType> getRequirementType();
@@ -254,7 +244,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_CapabilityType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='CapabilityType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!capabilityType'"
 	 * @generated
 	 */
 	EList<TCapabilityType> getCapabilityType();
@@ -272,7 +261,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_ArtifactType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='ArtifactType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!artifactType'"
 	 * @generated
 	 */
 	EList<TArtifactType> getArtifactType();
@@ -290,7 +278,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_ArtifactTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='ArtifactTemplate' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!artifactTemplate'"
 	 * @generated
 	 */
 	EList<TArtifactTemplate> getArtifactTemplate();
@@ -308,7 +295,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_PolicyType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='PolicyType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!policyType'"
 	 * @generated
 	 */
 	EList<TPolicyType> getPolicyType();
@@ -326,7 +312,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_PolicyTemplate()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='PolicyTemplate' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!policyTemplate'"
 	 * @generated
 	 */
 	EList<TPolicyTemplate> getPolicyTemplate();
@@ -344,7 +329,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_GroupType()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='GroupType' namespace='##targetNamespace' group='#group:6'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!groupType'"
 	 * @generated
 	 */
 	EList<TGroupType> getGroupType();
@@ -362,7 +346,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Id()
 	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='attribute' name='id'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!id'"
 	 * @generated
 	 */
 	String getId();
@@ -389,7 +372,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!name'"
 	 * @generated
 	 */
 	String getName();
@@ -417,7 +399,6 @@ public interface TDefinitions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDefinitions_TargetNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDefinitions!targetNamespace'"
 	 * @generated
 	 */
 	String getTargetNamespace();

@@ -40,7 +40,6 @@ public interface TExtensibleElements extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtensibleElements_Documentation()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='documentation' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtensibleElements!documentation'"
 	 * @generated
 	 */
 	EList<TDocumentation> getDocumentation();
@@ -58,7 +57,6 @@ public interface TExtensibleElements extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtensibleElements_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':1' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtensibleElements!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -76,7 +74,6 @@ public interface TExtensibleElements extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtensibleElements_AnyAttribute()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='attributeWildcard' wildcards='##other' name=':2' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtensibleElements!anyAttribute'"
 	 * @generated
 	 */
 	FeatureMap getAnyAttribute();

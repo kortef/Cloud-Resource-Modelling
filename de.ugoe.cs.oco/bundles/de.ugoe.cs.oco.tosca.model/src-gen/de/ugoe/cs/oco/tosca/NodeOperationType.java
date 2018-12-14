@@ -36,7 +36,6 @@ public interface NodeOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getNodeOperationType_InterfaceName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='interfaceName'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!NodeOperationType!interfaceName'"
 	 * @generated
 	 */
 	String getInterfaceName();
@@ -64,7 +63,6 @@ public interface NodeOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getNodeOperationType_NodeRef()
 	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='nodeRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!NodeOperationType!nodeRef'"
 	 * @generated
 	 */
 	TNodeType getNodeRef();
@@ -92,7 +90,6 @@ public interface NodeOperationType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getNodeOperationType_OperationName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='operationName'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!NodeOperationType!operationName'"
 	 * @generated
 	 */
 	String getOperationName();

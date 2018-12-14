@@ -32,7 +32,6 @@ public interface TPolicyTemplate extends TEntityTemplate {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTPolicyTemplate_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TPolicyTemplate!name'"
 	 * @generated
 	 */
 	String getName();

@@ -37,7 +37,6 @@ public interface TExportedOperation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExportedOperation_NodeOperation()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='NodeOperation' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExportedOperation!nodeOperation'"
 	 * @generated
 	 */
 	NodeOperationType getNodeOperation();
@@ -65,7 +64,6 @@ public interface TExportedOperation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExportedOperation_RelationshipOperation()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RelationshipOperation' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExportedOperation!relationshipOperation'"
 	 * @generated
 	 */
 	RelationshipOperationType getRelationshipOperation();
@@ -93,7 +91,6 @@ public interface TExportedOperation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExportedOperation_Plan()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Plan' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExportedOperation!plan'"
 	 * @generated
 	 */
 	PlanType getPlan();
@@ -121,7 +118,6 @@ public interface TExportedOperation extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExportedOperation_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExportedOperation!name'"
 	 * @generated
 	 */
 	String getName();

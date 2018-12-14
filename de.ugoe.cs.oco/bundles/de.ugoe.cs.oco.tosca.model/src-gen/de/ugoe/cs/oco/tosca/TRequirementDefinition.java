@@ -39,7 +39,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_Constraints()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Constraints' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!constraints'"
 	 * @generated
 	 */
 	ConstraintsType1 getConstraints();
@@ -70,7 +69,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_LowerBound()
 	 * @model default="1" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='attribute' name='lowerBound'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!lowerBound'"
 	 * @generated
 	 */
 	int getLowerBound();
@@ -123,7 +121,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_Name()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!name'"
 	 * @generated
 	 */
 	String getName();
@@ -151,7 +148,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_RequirementType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='requirementType'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!requirementType'"
 	 * @generated
 	 */
 	QName getRequirementType();
@@ -182,7 +178,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_UpperBound()
 	 * @model default="1" unsettable="true" dataType="de.ugoe.cs.oco.tosca.UpperBoundType1"
 	 *        extendedMetaData="kind='attribute' name='upperBound'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!upperBound'"
 	 * @generated
 	 */
 	Object getUpperBound();
@@ -234,7 +229,6 @@ public interface TRequirementDefinition extends TExtensibleElements {
 	 * @see #setRequirementTypeRef(TRequirementType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementDefinition_RequirementTypeRef()
 	 * @model transient="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementDefinition!requirementTypeRef'"
 	 * @generated
 	 */
 	TRequirementType getRequirementTypeRef();

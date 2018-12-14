@@ -36,7 +36,6 @@ public interface TDeploymentArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDeploymentArtifact_ArtifactRef()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName"
 	 *        extendedMetaData="kind='attribute' name='artifactRef'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDeploymentArtifact!artifactRef'"
 	 * @generated
 	 */
 	QName getArtifactRef();
@@ -64,7 +63,6 @@ public interface TDeploymentArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDeploymentArtifact_ArtifactType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='artifactType'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDeploymentArtifact!artifactType'"
 	 * @generated
 	 */
 	QName getArtifactType();
@@ -92,7 +90,6 @@ public interface TDeploymentArtifact extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTDeploymentArtifact_Name()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TDeploymentArtifact!name'"
 	 * @generated
 	 */
 	String getName();

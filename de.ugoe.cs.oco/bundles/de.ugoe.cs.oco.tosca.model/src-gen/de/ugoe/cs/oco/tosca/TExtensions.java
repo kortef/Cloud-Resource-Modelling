@@ -34,7 +34,6 @@ public interface TExtensions extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTExtensions_Extension()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='Extension' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TExtensions!extension'"
 	 * @generated
 	 */
 	EList<TExtension> getExtension();

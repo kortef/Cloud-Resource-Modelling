@@ -601,7 +601,7 @@
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##other"/>
         <details key="name" value=":0"/>
-        <details key="processing" value="strict"/>
+        <details key="processing" value="lax"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyMappings" eType="#//PropertyMappingsType"
@@ -1384,7 +1384,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TEntityTemplate" abstract="true" eSuperTypes="#//TExtensibleElements">
+  <eClassifiers xsi:type="ecore:EClass" name="TEntityTemplate" eSuperTypes="#//TExtensibleElements">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="tEntityTemplate"/>
       <details key="kind" value="elementOnly"/>

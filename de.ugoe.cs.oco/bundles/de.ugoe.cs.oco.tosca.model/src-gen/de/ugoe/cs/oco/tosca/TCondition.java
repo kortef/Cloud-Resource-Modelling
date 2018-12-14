@@ -37,7 +37,6 @@ public interface TCondition extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCondition_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':0' processing='lax'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCondition!any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
@@ -55,7 +54,6 @@ public interface TCondition extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCondition_ExpressionLanguage()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='expressionLanguage'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCondition!expressionLanguage'"
 	 * @generated
 	 */
 	String getExpressionLanguage();

@@ -36,7 +36,6 @@ public interface TRequiredContainerFeatures extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequiredContainerFeatures_RequiredContainerFeature()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='RequiredContainerFeature' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequiredContainerFeatures!requiredContainerFeature'"
 	 * @generated
 	 */
 	EList<TRequiredContainerFeature> getRequiredContainerFeature();

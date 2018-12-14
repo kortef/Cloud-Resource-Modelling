@@ -36,7 +36,6 @@ public interface PropertyConstraintsType1 extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getPropertyConstraintsType1_PropertyConstraint()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='PropertyConstraint' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!PropertyConstraintsType1!propertyConstraint'"
 	 * @generated
 	 */
 	EList<TPropertyConstraint> getPropertyConstraint();

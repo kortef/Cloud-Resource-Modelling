@@ -42,7 +42,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_Tags()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Tags' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!tags'"
 	 * @generated
 	 */
 	TTags getTags();
@@ -70,7 +69,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_DerivedFrom()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='DerivedFrom' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!derivedFrom'"
 	 * @generated
 	 */
 	DerivedFromType1 getDerivedFrom();
@@ -98,7 +96,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_RequiredContainerFeatures()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='RequiredContainerFeatures' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!requiredContainerFeatures'"
 	 * @generated
 	 */
 	TRequiredContainerFeatures getRequiredContainerFeatures();
@@ -126,7 +123,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_ImplementationArtifacts()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ImplementationArtifacts' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!implementationArtifacts'"
 	 * @generated
 	 */
 	TImplementationArtifacts getImplementationArtifacts();
@@ -159,7 +155,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_Abstract()
 	 * @model default="no" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='abstract'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!abstract'"
 	 * @generated
 	 */
 	TBoolean getAbstract();
@@ -218,7 +213,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_Final()
 	 * @model default="no" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='final'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!final'"
 	 * @generated
 	 */
 	TBoolean getFinal();
@@ -272,7 +266,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.NCName" required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!name'"
 	 * @generated
 	 */
 	String getName();
@@ -300,7 +293,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_RelationshipType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='relationshipType'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!relationshipType'"
 	 * @generated
 	 */
 	QName getRelationshipType();
@@ -328,7 +320,6 @@ public interface TRelationshipTypeImplementation extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRelationshipTypeImplementation_TargetNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI"
 	 *        extendedMetaData="kind='attribute' name='targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRelationshipTypeImplementation!targetNamespace'"
 	 * @generated
 	 */
 	String getTargetNamespace();

@@ -21,8 +21,7 @@ import javax.xml.namespace.QName;
  * </ul>
  *
  * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate()
- * @model abstract="true"
- *        extendedMetaData="name='tEntityTemplate' kind='elementOnly'"
+ * @model extendedMetaData="name='tEntityTemplate' kind='elementOnly'"
  * @generated
  */
 public interface TEntityTemplate extends TExtensibleElements {
@@ -39,7 +38,6 @@ public interface TEntityTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate_Properties()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Properties' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TEntityTemplate!properties'"
 	 * @generated
 	 */
 	PropertiesType getProperties();
@@ -67,7 +65,6 @@ public interface TEntityTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate_PropertyConstraints()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='PropertyConstraints' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TEntityTemplate!propertyConstraints'"
 	 * @generated
 	 */
 	PropertyConstraintsType getPropertyConstraints();
@@ -95,7 +92,6 @@ public interface TEntityTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate_Id()
 	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='attribute' name='id'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TEntityTemplate!id'"
 	 * @generated
 	 */
 	String getId();
@@ -123,7 +119,6 @@ public interface TEntityTemplate extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate_Type()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='type'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TEntityTemplate!type'"
 	 * @generated
 	 */
 	QName getType();
@@ -150,7 +145,6 @@ public interface TEntityTemplate extends TExtensibleElements {
 	 * @see #setTypeRef(TEntityType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTEntityTemplate_TypeRef()
 	 * @model transient="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TEntityTemplate!typeRef'"
 	 * @generated
 	 */
 	TEntityType getTypeRef();

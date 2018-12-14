@@ -47,84 +47,12 @@ public class ToscaValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "de.ugoe.cs.oco.tosca";
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Capability Type' of 'TCapability'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TCAPABILITY__TYPE_MUST_BE_CAPABILITY_TYPE = 1;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Capability Type' of 'TCapability Type'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TCAPABILITY_TYPE__SUPER_TYPE_MUST_BE_CAPABILITY_TYPE = 2;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Requirements Must Be Defined In Referenced Node Type' of 'TNode Template'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 4;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Node Type' of 'TNode Template'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE = 3;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Capabilities Must Be Defined In Referenced Node Type' of 'TNode Template'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE = 5;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Node Type' of 'TNode Type'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TNODE_TYPE__SUPER_TYPE_MUST_BE_NODE_TYPE = 6;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Relationship Type' of 'TRelationship Type'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TRELATIONSHIP_TYPE__SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE = 7;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Type Must Be Requirement Type' of 'TRequirement'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE = 8;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Super Type Must Be Requirement Type' of 'TRequirement Type'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int TREQUIREMENT_TYPE__SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE = 9;
-
-	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 9;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -958,13 +886,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the typeMustBeCapabilityType constraint of '<em>TCapability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TCAPABILITY__TYPE_MUST_BE_CAPABILITY_TYPE__EEXPRESSION = "self.typeRef.oclIsKindOf(TCapabilityType)";
+
+	/**
 	 * Validates the typeMustBeCapabilityType constraint of '<em>TCapability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTCapability_typeMustBeCapabilityType(TCapability tCapability, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tCapability.typeMustBeCapabilityType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TCAPABILITY,
+				 tCapability,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "typeMustBeCapabilityType",
+				 TCAPABILITY__TYPE_MUST_BE_CAPABILITY_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1005,13 +952,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the superTypeMustBeCapabilityType constraint of '<em>TCapability Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TCAPABILITY_TYPE__SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__EEXPRESSION = "if self.derivedFrom <> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TCapabilityType) else true endif";
+
+	/**
 	 * Validates the superTypeMustBeCapabilityType constraint of '<em>TCapability Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTCapabilityType_superTypeMustBeCapabilityType(TCapabilityType tCapabilityType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tCapabilityType.superTypeMustBeCapabilityType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TCAPABILITY_TYPE,
+				 tCapabilityType,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "superTypeMustBeCapabilityType",
+				 TCAPABILITY_TYPE__SUPER_TYPE_MUST_BE_CAPABILITY_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1200,11 +1166,20 @@ public class ToscaValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(tNodeTemplate, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tNodeTemplate, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(tNodeTemplate, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTNodeTemplate_capabilitiesMustBeDefinedInReferencedNodeType(tNodeTemplate, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTNodeTemplate_typeMustBeNodeType(tNodeTemplate, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTNodeTemplate_capabilitiesMustBeDefinedInReferencedNodeType(tNodeTemplate, diagnostics, context);
 		if (result || diagnostics != null) result &= validateTNodeTemplate_requirementsMustBeDefinedInReferencedNodeType(tNodeTemplate, diagnostics, context);
 		return result;
 	}
+
+	/**
+	 * The cached validation expression for the typeMustBeNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE__EEXPRESSION = "\n" +
+		"\t\t\tself.typeRef.oclIsKindOf(TNodeType)";
 
 	/**
 	 * Validates the capabilitiesMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
@@ -1213,8 +1188,54 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeTemplate_capabilitiesMustBeDefinedInReferencedNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tNodeTemplate.capabilitiesMustBeDefinedInReferencedNodeType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TNODE_TEMPLATE,
+				 tNodeTemplate,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "capabilitiesMustBeDefinedInReferencedNodeType",
+				 TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the requirementsMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__EEXPRESSION = "\n" +
+		"\t\t\t\tif self.typeRef.oclIsKindOf(TNodeType) and self.requirements <> null then\n" +
+		"\t\t\t\tif self.requirements.requirement->forAll(\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType).requirementDefinitions <> null and\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType).requirementDefinitions.requirementDefinition\n" +
+		"\t\t\t\t\t\t->collect(requirementTypeRef)\n" +
+		"\t\t\t\t\t\t->includes(typeRef) or\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType)\n" +
+		"\t\t\t\t\t\t->closure(\n" +
+		"\t\t\t\t\t\t\tif derivedFrom <> null then \n" +
+		"\t\t\t\t\t\t\t\tderivedFrom.referencedEntityType \n" +
+		"\t\t\t\t\t\t\telse \n" +
+		"\t\t\t\t\t\t\t\tnull \n" +
+		"\t\t\t\t\t\t\tendif\n" +
+		"\t\t\t\t\t\t)\n" +
+		"\t\t\t\t\t\t->select(et | et <> null)\n" +
+		"\t\t\t\t\t    ->collect(oclAsType(tosca::TNodeType))\n" +
+		"\t\t\t\t\t\t->collect(requirementDefinitions)\n" +
+		"\t\t\t\t\t\t->select(cd | cd <> null)\n" +
+		"\t\t\t\t\t\t->collect(requirementDefinition.requirementTypeRef)\n" +
+		"\t\t\t\t\t\t->includes(typeRef)) then \n" +
+		"\t\t\t\t\ttrue \n" +
+		"\t\t\t\telse \n" +
+		"\t\t\t\t\tnull \n" +
+		"\t\t\t\tendif \n" +
+		"\t\t\telse \n" +
+		"\t\t\t\ttrue \n" +
+		"\t\t\tendif";
 
 	/**
 	 * Validates the requirementsMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
@@ -1223,7 +1244,18 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeTemplate_requirementsMustBeDefinedInReferencedNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tNodeTemplate.requirementsMustBeDefinedInReferencedNodeType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TNODE_TEMPLATE,
+				 tNodeTemplate,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "requirementsMustBeDefinedInReferencedNodeType",
+				 TNODE_TEMPLATE__REQUIREMENTS_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1233,8 +1265,54 @@ public class ToscaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTNodeTemplate_typeMustBeNodeType(TNodeTemplate tNodeTemplate, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tNodeTemplate.typeMustBeNodeType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TNODE_TEMPLATE,
+				 tNodeTemplate,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "typeMustBeNodeType",
+				 TNODE_TEMPLATE__TYPE_MUST_BE_NODE_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
+
+	/**
+	 * The cached validation expression for the capabilitiesMustBeDefinedInReferencedNodeType constraint of '<em>TNode Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TNODE_TEMPLATE__CAPABILITIES_MUST_BE_DEFINED_IN_REFERENCED_NODE_TYPE__EEXPRESSION = "\n" +
+		"\t\t\tif self.typeRef.oclIsKindOf(TNodeType) and self.capabilities <> null then\n" +
+		"\t\t\t\tif self.capabilities.capability->forAll(\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType).capabilityDefinitions <> null and\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType).capabilityDefinitions.capabilityDefinition\n" +
+		"\t\t\t\t\t\t->collect(capabilityTypeRef)\n" +
+		"\t\t\t\t\t\t->includes(typeRef) or\n" +
+		"\t\t\t\t\tself.typeRef.oclAsType(tosca::TNodeType)\n" +
+		"\t\t\t\t\t\t->closure(\n" +
+		"\t\t\t\t\t\t\tif derivedFrom <> null then \n" +
+		"\t\t\t\t\t\t\t\tderivedFrom.referencedEntityType \n" +
+		"\t\t\t\t\t\t\telse \n" +
+		"\t\t\t\t\t\t\t\tnull \n" +
+		"\t\t\t\t\t\t\tendif\n" +
+		"\t\t\t\t\t\t)\n" +
+		"\t\t\t\t\t\t->select(et | et <> null)\n" +
+		"\t\t\t\t\t    ->collect(oclAsType(tosca::TNodeType))\n" +
+		"\t\t\t\t\t\t->collect(capabilityDefinitions)\n" +
+		"\t\t\t\t\t\t->select(cd | cd <> null)\n" +
+		"\t\t\t\t\t\t->collect(capabilityDefinition.capabilityTypeRef)\n" +
+		"\t\t\t\t\t\t->includes(typeRef)) then \n" +
+		"\t\t\t\t\ttrue \n" +
+		"\t\t\t\telse \n" +
+		"\t\t\t\t\tnull \n" +
+		"\t\t\t\tendif \n" +
+		"\t\t\telse \n" +
+		"\t\t\t\ttrue \n" +
+		"\t\t\tendif";
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1256,13 +1334,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the superTypeMustBeNodeType constraint of '<em>TNode Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TNODE_TYPE__SUPER_TYPE_MUST_BE_NODE_TYPE__EEXPRESSION = "if self.derivedFrom <> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TNodeType) else true endif";
+
+	/**
 	 * Validates the superTypeMustBeNodeType constraint of '<em>TNode Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTNodeType_superTypeMustBeNodeType(TNodeType tNodeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tNodeType.superTypeMustBeNodeType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TNODE_TYPE,
+				 tNodeType,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "superTypeMustBeNodeType",
+				 TNODE_TYPE__SUPER_TYPE_MUST_BE_NODE_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1384,13 +1481,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the superTypeMustBeRelationshipType constraint of '<em>TRelationship Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TRELATIONSHIP_TYPE__SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE__EEXPRESSION = "if self.derivedFrom <> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TRelationshipType) else true endif";
+
+	/**
 	 * Validates the superTypeMustBeRelationshipType constraint of '<em>TRelationship Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTRelationshipType_superTypeMustBeRelationshipType(TRelationshipType tRelationshipType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tRelationshipType.superTypeMustBeRelationshipType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TRELATIONSHIP_TYPE,
+				 tRelationshipType,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "superTypeMustBeRelationshipType",
+				 TRELATIONSHIP_TYPE__SUPER_TYPE_MUST_BE_RELATIONSHIP_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1440,13 +1556,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the typeMustBeRequirementType constraint of '<em>TRequirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE__EEXPRESSION = "self.typeRef.oclIsKindOf(TRequirementType)";
+
+	/**
 	 * Validates the typeMustBeRequirementType constraint of '<em>TRequirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTRequirement_typeMustBeRequirementType(TRequirement tRequirement, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tRequirement.typeMustBeRequirementType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TREQUIREMENT,
+				 tRequirement,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "typeMustBeRequirementType",
+				 TREQUIREMENT__TYPE_MUST_BE_REQUIREMENT_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -1487,13 +1622,32 @@ public class ToscaValidator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the superTypeMustBeRequirementType constraint of '<em>TRequirement Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String TREQUIREMENT_TYPE__SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__EEXPRESSION = "if self.derivedFrom <> null then self.derivedFrom.referencedEntityType.oclIsKindOf(TRequirementType) else true endif";
+
+	/**
 	 * Validates the superTypeMustBeRequirementType constraint of '<em>TRequirement Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateTRequirementType_superTypeMustBeRequirementType(TRequirementType tRequirementType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return tRequirementType.superTypeMustBeRequirementType(diagnostics, context);
+		return
+			validate
+				(ToscaPackage.Literals.TREQUIREMENT_TYPE,
+				 tRequirementType,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				 "superTypeMustBeRequirementType",
+				 TREQUIREMENT_TYPE__SUPER_TYPE_MUST_BE_REQUIREMENT_TYPE__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**

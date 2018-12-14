@@ -616,6 +616,15 @@ public interface ToscaFactory extends EFactory {
 	TDocumentation createTDocumentation();
 
 	/**
+	 * Returns a new object of class '<em>TEntity Template</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TEntity Template</em>'.
+	 * @generated
+	 */
+	TEntityTemplate createTEntityTemplate();
+
+	/**
 	 * Returns a new object of class '<em>TExported Interface</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

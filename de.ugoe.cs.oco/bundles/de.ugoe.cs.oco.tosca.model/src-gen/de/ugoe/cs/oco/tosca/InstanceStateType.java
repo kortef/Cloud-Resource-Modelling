@@ -34,7 +34,6 @@ public interface InstanceStateType extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getInstanceStateType_State()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
 	 *        extendedMetaData="kind='attribute' name='state'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!InstanceStateType!state'"
 	 * @generated
 	 */
 	String getState();

@@ -34,7 +34,6 @@ public interface TRequirementRef extends EObject {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementRef_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementRef!name'"
 	 * @generated
 	 */
 	String getName();
@@ -62,7 +61,6 @@ public interface TRequirementRef extends EObject {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTRequirementRef_Ref()
 	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='attribute' name='ref'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TRequirementRef!ref'"
 	 * @generated
 	 */
 	TRequirement getRef();

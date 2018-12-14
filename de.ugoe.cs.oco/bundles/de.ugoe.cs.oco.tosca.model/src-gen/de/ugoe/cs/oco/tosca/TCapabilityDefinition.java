@@ -39,7 +39,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_Constraints()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Constraints' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!constraints'"
 	 * @generated
 	 */
 	ConstraintsType getConstraints();
@@ -67,7 +66,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_CapabilityType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.QName" required="true"
 	 *        extendedMetaData="kind='attribute' name='capabilityType'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!capabilityType'"
 	 * @generated
 	 */
 	QName getCapabilityType();
@@ -98,7 +96,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_LowerBound()
 	 * @model default="1" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='attribute' name='lowerBound'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!lowerBound'"
 	 * @generated
 	 */
 	int getLowerBound();
@@ -151,7 +148,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_Name()
 	 * @model required="true"
 	 *        extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!name'"
 	 * @generated
 	 */
 	String getName();
@@ -182,7 +178,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_UpperBound()
 	 * @model default="1" unsettable="true" dataType="de.ugoe.cs.oco.tosca.UpperBoundType"
 	 *        extendedMetaData="kind='attribute' name='upperBound'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!upperBound'"
 	 * @generated
 	 */
 	Object getUpperBound();
@@ -236,7 +231,6 @@ public interface TCapabilityDefinition extends TExtensibleElements {
 	 * @see #setCapabilityTypeRef(TCapabilityType)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTCapabilityDefinition_CapabilityTypeRef()
 	 * @model unsettable="true" transient="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TCapabilityDefinition!capabilityTypeRef'"
 	 * @generated
 	 */
 	TCapabilityType getCapabilityTypeRef();

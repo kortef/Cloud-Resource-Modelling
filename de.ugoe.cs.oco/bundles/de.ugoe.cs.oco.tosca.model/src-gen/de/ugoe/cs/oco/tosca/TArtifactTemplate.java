@@ -34,7 +34,6 @@ public interface TArtifactTemplate extends TEntityTemplate {
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactTemplate_ArtifactReferences()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ArtifactReferences' namespace='##targetNamespace'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactTemplate!artifactReferences'"
 	 * @generated
 	 */
 	ArtifactReferencesType getArtifactReferences();
@@ -61,7 +60,6 @@ public interface TArtifactTemplate extends TEntityTemplate {
 	 * @see #setName(String)
 	 * @see de.ugoe.cs.oco.tosca.ToscaPackage#getTArtifactTemplate_Name()
 	 * @model extendedMetaData="kind='attribute' name='name'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://oco.cs.ugoe.de/tosca!TArtifactTemplate!name'"
 	 * @generated
 	 */
 	String getName();

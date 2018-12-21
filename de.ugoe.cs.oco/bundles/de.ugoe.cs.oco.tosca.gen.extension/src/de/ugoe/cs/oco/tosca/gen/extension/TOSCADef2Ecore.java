@@ -37,6 +37,8 @@ import de.ugoe.cs.oco.tosca.TArtifactType;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TDefinitions;
 import de.ugoe.cs.oco.tosca.TEntityType;
+import de.ugoe.cs.oco.tosca.TGroupTemplate;
+import de.ugoe.cs.oco.tosca.TGroupType;
 import de.ugoe.cs.oco.tosca.TImport;
 import de.ugoe.cs.oco.tosca.TNodeType;
 import de.ugoe.cs.oco.tosca.TRelationshipType;
@@ -200,6 +202,14 @@ public class TOSCADef2Ecore {
 
 		}
 		
+		for (TGroupType groupType: definitions.getGroupType()) {
+			EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+			eClass.setName(ConverterUtils.toEcoreCompatibleName(groupType.getName()));
+			eClass.getESuperTypes().add((EClass)(toscaPackage.getEClassifier("TGroupTemplate")));
+			ePackage.getEClassifiers().add(eClass);
+		}
+		
+		
 		return ePackage;
 	}
 
@@ -314,6 +324,10 @@ public class TOSCADef2Ecore {
 		
 		for (TRelationshipType rlType: definitions.getRelationshipType()) {
 			addPropertySuperTypeIfExists(rlType, root, ePackage, resourceSet);
+		}
+		
+		for (TGroupType gType: definitions.getGroupType()) {
+			addPropertySuperTypeIfExists(gType, root, ePackage, resourceSet);
 		}
 			
 		return ePackage;		

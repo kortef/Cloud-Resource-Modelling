@@ -26,6 +26,8 @@ public class ConvertToOCCIConfigurationAction implements IObjectActionDelegate {
 		
 		try {
 			new TOSCA2OCCITransformator().transform(toscaURI, occiURI);
+			selectedFile.refreshLocal(2, null);
+			selectedFile.getParent().refreshLocal(2, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

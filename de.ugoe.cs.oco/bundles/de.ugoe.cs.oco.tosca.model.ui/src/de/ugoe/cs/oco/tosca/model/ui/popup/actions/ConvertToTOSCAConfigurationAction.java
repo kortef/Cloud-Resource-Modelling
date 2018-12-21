@@ -26,6 +26,8 @@ public class ConvertToTOSCAConfigurationAction implements IObjectActionDelegate 
 		
 		try {
 			new TOSCADefToConfigTransformator().transform(toscaURI, occiURI);
+			selectedFile.refreshLocal(2, null);
+			selectedFile.getParent().refreshLocal(2, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

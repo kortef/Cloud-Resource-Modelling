@@ -1,6 +1,7 @@
 package de.ugoe.cs.oco.tosca.model.ui.popup.actions;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
@@ -26,6 +27,14 @@ public class ConvertToEcoreAction implements IObjectActionDelegate {
 		URI outputURI = URI.createFileURI(outputPath.toString());
 		
 		TOSCADef2Ecore.generateEcore(inputURI, outputURI);
+		
+		try {
+			selectedFile.refreshLocal(2, null);
+			selectedFile.getParent().refreshLocal(2, null);
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

@@ -14,12 +14,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ui,
  org.eclipse.sirius.common.acceleo.aql,
- org.eclipse.sirius.properties;bundle-version="6.0.1",
- org.eclipse.sirius.ui.properties;bundle-version="6.0.1",
+ org.eclipse.sirius.ui.properties,
  de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0",
  org.eclipse.emf.ecore,
- org.eclipse.sirius.common.acceleo.mtl;bundle-version="6.0.2",
- org.eclipse.emf.common
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.eclipse.emf.common,
+ org.eclipse.sirius.properties
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

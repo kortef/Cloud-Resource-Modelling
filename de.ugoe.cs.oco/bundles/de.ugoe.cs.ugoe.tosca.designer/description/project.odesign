@@ -315,7 +315,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="UsesType" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']" targetFinderExpression="aql:self.requirementDefinitions.requirementDefinition->collect(rd | rd.requirementTypeRef)">
+        <edgeMappings name="UsesRequirementType" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='RequirementTypeContainer']" targetFinderExpression="aql:self.requirementDefinitions.requirementDefinition->collect(rd | rd.requirementTypeRef) ">
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="uses">
@@ -327,6 +327,14 @@
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="member">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="UsesCapabilityType" sourceMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='NodeTypeContainer']" targetMapping="//@ownedViewpoints[name='TOSCAExtensionDesign']/@ownedRepresentations[name='TOSCAExtensionDiagram']/@defaultLayer/@containerMappings[name='TOSCAExtension']/@subContainerMappings[name='CapabilityTypeContainer']" targetFinderExpression="aql:self.capabilityDefinitions.capabilityDefinition->collect(cd | cd.capabilityTypeRef) ">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="uses">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>

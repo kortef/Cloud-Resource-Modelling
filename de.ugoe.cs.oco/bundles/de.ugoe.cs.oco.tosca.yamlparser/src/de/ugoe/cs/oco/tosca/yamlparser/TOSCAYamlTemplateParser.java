@@ -12,7 +12,7 @@ import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.DefinitionsType;
 import de.ugoe.cs.oco.tosca.DocumentRoot;
-import de.ugoe.cs.oco.tosca.InputParametersType1;
+import de.ugoe.cs.oco.tosca.InputParametersType;
 import de.ugoe.cs.oco.tosca.TArtifactType;
 import de.ugoe.cs.oco.tosca.TCapabilityType;
 import de.ugoe.cs.oco.tosca.TGroupType;
@@ -55,7 +55,7 @@ public class TOSCAYamlTemplateParser extends Parser{
 				LOGGER.info("Inputs read in Service Template, creating new Plan with inputs.");
 				TServiceTemplate serviceTemplate = this.getServiceTemplate();
 				TPlan defaultPlan = ToscaFactory.eINSTANCE.createTPlan();
-				InputParametersType1 parameterType = ToscaFactory.eINSTANCE.createInputParametersType1();
+				InputParametersType parameterType = ToscaFactory.eINSTANCE.createInputParametersType();
 				List<TParameter> parameters = (List<TParameter>)
 						new ParameterParser().parse((Map<String, ?>) entry.getValue(), this);
 				parameterType.getInputParameter().addAll(parameters);

@@ -428,7 +428,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TNodeType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -461,7 +461,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TRelationshipType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -494,7 +494,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TCapabilityType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -527,7 +527,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TRequirementType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -560,7 +560,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TArtifactType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -663,7 +663,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="VisualizationDummy" semanticCandidatesExpression="aql:self" domainClass="tosca::TGroupType">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" widthComputationExpression="0" heightComputationExpression="0">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true" roundedCorner="true" widthComputationExpression="0" heightComputationExpression="0">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

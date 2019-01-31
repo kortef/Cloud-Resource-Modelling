@@ -1607,6 +1607,29 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TEntityTemplate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TEntityTemplateItemProvider tEntityTemplateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.ugoe.cs.oco.tosca.TEntityTemplate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTEntityTemplateAdapter() {
+		if (tEntityTemplateItemProvider == null) {
+			tEntityTemplateItemProvider = new TEntityTemplateItemProvider(this);
+		}
+
+		return tEntityTemplateItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.ugoe.cs.oco.tosca.TExportedInterface} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2718,6 +2741,7 @@ public class ToscaItemProviderAdapterFactory extends ToscaAdapterFactory impleme
 		if (tDeploymentArtifactItemProvider != null) tDeploymentArtifactItemProvider.dispose();
 		if (tDeploymentArtifactsItemProvider != null) tDeploymentArtifactsItemProvider.dispose();
 		if (tDocumentationItemProvider != null) tDocumentationItemProvider.dispose();
+		if (tEntityTemplateItemProvider != null) tEntityTemplateItemProvider.dispose();
 		if (tExportedInterfaceItemProvider != null) tExportedInterfaceItemProvider.dispose();
 		if (tExportedOperationItemProvider != null) tExportedOperationItemProvider.dispose();
 		if (tExtensibleElementsItemProvider != null) tExtensibleElementsItemProvider.dispose();

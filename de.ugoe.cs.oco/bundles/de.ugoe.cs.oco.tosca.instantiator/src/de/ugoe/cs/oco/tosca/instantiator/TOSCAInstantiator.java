@@ -17,10 +17,6 @@ import de.ugoe.cs.oco.tosca.ToscaPackage;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 public class TOSCAInstantiator {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	}
 	
 	private boolean isConsistent(List<TParameter> toscaModelPars, 
 			List<Parameter> domainModelPars){

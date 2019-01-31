@@ -15,7 +15,7 @@ import de.ugoe.cs.oco.tosca.TargetElementType;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 /**
- * @author fglaser
+ * @author fkorte
  *
  */
 public class RelationshipTemplateParser extends Parser {

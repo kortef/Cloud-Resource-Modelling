@@ -2,21 +2,23 @@
 Description: Configuration File to Map pre existing types to names, which has to be checked for.*/
 operation getTypeMapping() : Map {
 	var configuration = new Map;
-	/*configuration.put("tosca.nodes.Compute", "component");
-	configuration.put("tosca.nodes.SoftwareComponent", "component");
-	configuration.put("tosca.nodes.WebServer", "component");
-	configuration.put("tosca.nodes.BlockStorage", "component");
-	configuration.put("tosca.nodes.network.Network", "network");
-	configuration.put("tosca.relationships.AttachesTo", "storagelink");
-	configuration.put("tosca.relationships.ConnectsTo", "networkInterface");
-	configuration.put("tosca.relationships.HostedOn", "placementLink");
-	*/
+	
+	/* SugarCRM transformation configuration */
     configuration.put("SugarCRMApplication", "component");
 	configuration.put("SugarCRMDatabase", "component");
+	
+	/* OpenFOAM transformation configuration */
+	//configuration.put("CloudServer", "compute");
+	//configuration.put("Volume", "volume");
+	//configuration.put("MPIWorker", "component");
+	//configuration.put("Gateway", "component");
+	
+	/* TOSCA Base Types and Specific Types transformation configuration */
 	//configuration.put("RootNodeType", "");
 	//configuration.put("Tier", "");
 	//configuration.put("SingleNodeTier", "");
 	//configuration.put("ScalableTier", "");
+	
 	configuration.put("Server", "compute");
 	//configuration.put("OperatingSystem", "");
 	configuration.put("WebServer", "component");
@@ -36,6 +38,8 @@ operation getTypeMapping() : Map {
 	configuration.put("ConnectsTo", "networkinterface");
 	configuration.put("MySQLDatabaseHostedOnMySQL", "componentlink");
 	configuration.put("MySQLDatabaseConnection", "componentlink");
+	
+	
 	return configuration;
 }
 
@@ -58,13 +62,14 @@ operation getMixinMapping(): Map {
 	mixinMapping.put("ApachePHPModule", "ApachePHPModule");
 	mixinMapping.put("MySQL", "MySQL");
 	mixinMapping.put("MySQLDatabase", "MySQLDatabase");
-	mixinMapping.put("SugarCRMDatabaseConnection", "storagelink");
-	mixinMapping.put("RootRelationshipType", "link");
-	mixinMapping.put("HostedOn", "componentlink");
-	mixinMapping.put("DependsOn", "componentlink");
-	mixinMapping.put("ConnectsTo", "networkinterface");
-	mixinMapping.put("MySQLDatabaseHostedOnMySQL", "componentlink");
-	mixinMapping.put("MySQLDatabaseConnection", "componentlink");
+	
+	mixinMapping.put("SugarCRMDatabaseConnection", "ExecutionDependency");
+	//mixinMapping.put("RootRelationshipType", "link");
+	mixinMapping.put("HostedOn", "ExecutionDependency");
+	mixinMapping.put("DependsOn", "ExecutionDependency");
+	//mixinMapping.put("ConnectsTo", "NetworkInterface");
+	mixinMapping.put("MySQLDatabaseHostedOnMySQL", "ExecutionDependency");
+	mixinMapping.put("MySQLDatabaseConnection", "ExecutionDependency");
 	
 	return mixinMapping; 
 }

@@ -31,6 +31,7 @@ public class ArtifactTypeParser extends Parser {
 	/* (non-Javadoc)
 	 * @see de.ugoe.swe.simpaas.tosca.parser.Parser#parse(java.util.Map, org.eclipse.emf.ecore.EObject)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TArtifactType> parse(Map<String, ?> input, Parser containingParser) throws ParseException {
 		TOSCAYamlTemplateParser parser = (TOSCAYamlTemplateParser) containingParser;

@@ -7,13 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import de.ugoe.cs.oco.tosca.TParameter;
 import de.ugoe.cs.oco.tosca.ToscaFactory;
 
 /**
- * @author fglaser
+ * @author fkorte
  *
  */
 public class ParameterParser extends Parser {
@@ -43,8 +42,7 @@ public class ParameterParser extends Parser {
 							value = ToscaModelUtil.buildStringFromMap((Map<String, ?>)innerentry.getValue());
 						} else 
 							value = (String) innerentry.getValue();
-						
-						parameter.setDefaultValue(value);
+						//parameter.setDefaultValue(value);
 						break;
 					case "description":
 						break;
@@ -58,7 +56,7 @@ public class ParameterParser extends Parser {
 					case "get_attribute":
 					case "get_input":
 						String valueString = ToscaModelUtil.buildStringFromMap((Map<String, ?>) entry.getValue());
-						parameter.setValue(valueString);
+						//parameter.setValue(valueString);
 						break;
 					default:
 						throw new ParseException("Key " + key + " is unknown and can not be handled.");	
@@ -67,10 +65,10 @@ public class ParameterParser extends Parser {
 			}
 			else if (entry.getValue() instanceof List){
 				String valueString = ToscaModelUtil.buildStringFromList((List<?>)entry.getValue());
-				parameter.setValue(valueString);
+				//parameter.setValue(valueString);
 			}
 			else if (entry.getValue() instanceof String){
-				parameter.setValue((String) entry.getValue());
+				//parameter.setValue((String) entry.getValue());
 			}
 			parameters.add(parameter);
 		}

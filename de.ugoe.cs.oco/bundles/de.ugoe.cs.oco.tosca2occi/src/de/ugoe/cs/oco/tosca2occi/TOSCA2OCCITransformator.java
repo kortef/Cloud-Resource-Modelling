@@ -22,10 +22,12 @@ import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
+import org.eclipse.epsilon.eol.dom.Import;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
+import org.eclipse.epsilon.etl.dom.TransformationRule;
 
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
@@ -55,6 +57,7 @@ public class TOSCA2OCCITransformator {
 		Object result = null;		
 		try {
 			module.parse(this.getClass().getClassLoader().getResource("model/TOSCA2OCCI.etl").toURI());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

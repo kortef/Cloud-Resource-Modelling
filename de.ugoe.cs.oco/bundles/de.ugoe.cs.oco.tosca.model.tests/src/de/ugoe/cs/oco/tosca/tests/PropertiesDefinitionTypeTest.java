@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Properties Definition Type</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef() <em>Element Ref</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class PropertiesDefinitionTypeTest extends TestCase {
@@ -84,6 +90,32 @@ public class PropertiesDefinitionTypeTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef() <em>Element Ref</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.PropertiesDefinitionType#getElementRef()
+	 * @generated
+	 */
+	public void testGetElementRef() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.PropertiesDefinitionType#setElementRef(org.eclipse.xsd.XSDElementDeclaration) <em>Element Ref</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.PropertiesDefinitionType#setElementRef(org.eclipse.xsd.XSDElementDeclaration)
+	 * @generated
+	 */
+	public void testSetElementRef() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //PropertiesDefinitionTypeTest

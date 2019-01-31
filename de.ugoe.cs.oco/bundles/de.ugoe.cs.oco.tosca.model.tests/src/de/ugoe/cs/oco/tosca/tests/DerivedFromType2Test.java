@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Derived From Type2</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType() <em>Referenced Entity Type</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class DerivedFromType2Test extends TestCase {
@@ -84,6 +90,32 @@ public class DerivedFromType2Test extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType() <em>Referenced Entity Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.DerivedFromType2#getReferencedEntityType()
+	 * @generated
+	 */
+	public void testGetReferencedEntityType() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.DerivedFromType2#setReferencedEntityType(de.ugoe.cs.oco.tosca.TEntityType) <em>Referenced Entity Type</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.DerivedFromType2#setReferencedEntityType(de.ugoe.cs.oco.tosca.TEntityType)
+	 * @generated
+	 */
+	public void testSetReferencedEntityType() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //DerivedFromType2Test

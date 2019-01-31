@@ -102,8 +102,17 @@ rule RelationshipTemplate2Link
 	else {
 		sourceResource.links.add(link);
 	}
+	
+	if (mixinMapping.get(relTemplate.type.localPart) <> null){
+		var mixinBase = new OCCI!occi::MixinBase();
+	    var mixin = OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name = mixinMapping.get(relTemplate.type.localPart));
+		if (mixin.isDefined()){
+			mixinBase.setMixin(mixin);
+			var link = OCCI!occi::Link.allInstances.selectOne(r | r.id =  relTemplate.id);
+			link.getParts().add(mixinBase);
+		}
+	}
 }
-
 
 @greedy
 rule Server2FlavorMixin

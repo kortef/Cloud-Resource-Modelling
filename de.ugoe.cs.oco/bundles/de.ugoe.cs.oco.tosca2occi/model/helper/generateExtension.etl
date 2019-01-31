@@ -35,7 +35,9 @@ rule NodeType2Mixin
 					}
 					var type = Core!DataType.allInstances.selectOne(t | t.name == typeMap.get(particle.content.typeDefinition.name));
 					attribute.type = type;
-					attribute.description = particle.content.annotation.userInformation.get(0).textContent;
+					if (particle.content.annotation <> null){
+						attribute.description = particle.content.annotation.userInformation.get(0).textContent;
+					}
 					mixin.attributes.add(attribute);
 				}
 			}

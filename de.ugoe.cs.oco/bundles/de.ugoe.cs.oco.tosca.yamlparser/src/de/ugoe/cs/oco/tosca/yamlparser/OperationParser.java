@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import de.ugoe.cs.oco.tosca.InputParametersType;
+import de.ugoe.cs.oco.tosca.InputParametersType1;
 import de.ugoe.cs.oco.tosca.TDocumentation;
 import de.ugoe.cs.oco.tosca.TOperation;
 import de.ugoe.cs.oco.tosca.TParameter;
@@ -47,10 +47,11 @@ public class OperationParser extends Parser {
 						operation.getDocumentation().add(documentation);
 						break;
 					case "implementation":
-						operation.setImplementation((String) innerentry.getValue());
+						LOGGER.warning("Unsopported key" + innerentry.getKey() + " read.");
+						//operation.setImplementation((String) innerentry.getValue());
 						break;
 					case "inputs":
-						InputParametersType parametertypes = ToscaFactory.eINSTANCE.createInputParametersType();
+						InputParametersType1 parametertypes = ToscaFactory.eINSTANCE.createInputParametersType1();
 						List<TParameter> parameters = 
 								new ParameterParser().parse((Map<String,?>) innerentry.getValue(), null);
 						parametertypes.getInputParameter().addAll(parameters);

@@ -79,12 +79,12 @@ public class NodeTemplateParser extends Parser{
 						template.setCapabilities(capabilites);
 						break;
 					case "interfaces":
-						List<TInterface> interfaceList = (List<TInterface>) 
-								new InterfaceParser().parse((Map<String, ?>) innerentry.getValue(), null);
-						InterfacesType interfacesType = ToscaFactory.eINSTANCE.createInterfacesType();
-						interfacesType.getInterface().addAll(interfaceList);
-						template.setInterfaces(interfacesType);
-						LOGGER.warning("Read interfaces, using non standardized model element");
+//						List<TInterface> interfaceList = (List<TInterface>) 
+//								new InterfaceParser().parse((Map<String, ?>) innerentry.getValue(), null);
+//						InterfacesType1 interfacesType = ToscaFactory.eINSTANCE.createInterfacesType1();
+//						interfacesType.getInterface().addAll(interfaceList);
+//						template.setInterfaces(interfacesType);
+						LOGGER.warning("Unsopported key interfaces read.");
 						break;
 					case "artifacts":
 						List<TDeploymentArtifact> artifactsList = (List<TDeploymentArtifact>)

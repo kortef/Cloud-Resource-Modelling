@@ -25,6 +25,7 @@ import junit.textui.TestRunner;
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getArtifactTemplate() <em>Artifact Template</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getPolicyType() <em>Policy Type</em>}</li>
  *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getPolicyTemplate() <em>Policy Template</em>}</li>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType() <em>Group Type</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -221,6 +222,19 @@ public class TDefinitionsTest extends TExtensibleElementsTest {
 	 * @generated
 	 */
 	public void testGetPolicyTemplate() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TDefinitions#getGroupType() <em>Group Type</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TDefinitions#getGroupType()
+	 * @generated
+	 */
+	public void testGetGroupType() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

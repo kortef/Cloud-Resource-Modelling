@@ -11,6 +11,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>TGroup Type</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs() <em>Member Refs</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TGroupTypeTest extends TEntityTypeTest {
@@ -65,6 +71,19 @@ public class TGroupTypeTest extends TEntityTypeTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs() <em>Member Refs</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TGroupType#getMemberRefs()
+	 * @generated
+	 */
+	public void testGetMemberRefs() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //TGroupTypeTest

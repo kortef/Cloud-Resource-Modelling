@@ -11,6 +11,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>TCapability Definition</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition#getCapabilityTypeRef() <em>Capability Type Ref</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TCapabilityDefinitionTest extends TExtensibleElementsTest {
@@ -65,6 +71,58 @@ public class TCapabilityDefinitionTest extends TExtensibleElementsTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition#getCapabilityTypeRef() <em>Capability Type Ref</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TCapabilityDefinition#getCapabilityTypeRef()
+	 * @generated
+	 */
+	public void testGetCapabilityTypeRef() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition#setCapabilityTypeRef(de.ugoe.cs.oco.tosca.TCapabilityType) <em>Capability Type Ref</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TCapabilityDefinition#setCapabilityTypeRef(de.ugoe.cs.oco.tosca.TCapabilityType)
+	 * @generated
+	 */
+	public void testSetCapabilityTypeRef() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition#unsetCapabilityTypeRef() <em>unsetCapabilityTypeRef()</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TCapabilityDefinition#unsetCapabilityTypeRef()
+	 * @generated
+	 */
+	public void testUnsetCapabilityTypeRef() {
+		// TODO: implement this test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TCapabilityDefinition#isSetCapabilityTypeRef() <em>isSetCapabilityTypeRef()</em>}' method.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TCapabilityDefinition#isSetCapabilityTypeRef()
+	 * @generated
+	 */
+	public void testIsSetCapabilityTypeRef() {
+		// TODO: implement this test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //TCapabilityDefinitionTest

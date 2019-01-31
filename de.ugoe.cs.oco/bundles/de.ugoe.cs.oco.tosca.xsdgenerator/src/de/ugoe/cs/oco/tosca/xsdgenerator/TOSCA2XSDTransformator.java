@@ -37,7 +37,6 @@ import de.ugoe.cs.util.console.Console;
 public class TOSCA2XSDTransformator {
 	public String transform(Path toscaYamlPath, Path xsdModelPath, String targetNamespace) throws Exception{
 		XSDPackage.eINSTANCE.eClass();
-		String fileSeparator = System.getProperty("file.separator");
 		
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();

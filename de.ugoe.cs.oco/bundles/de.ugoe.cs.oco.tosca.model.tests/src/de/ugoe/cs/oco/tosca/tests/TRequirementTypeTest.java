@@ -11,6 +11,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>TRequirement Type</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef() <em>Required Capability Type Ref</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class TRequirementTypeTest extends TEntityTypeTest {
@@ -65,6 +71,32 @@ public class TRequirementTypeTest extends TEntityTypeTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef() <em>Required Capability Type Ref</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TRequirementType#getRequiredCapabilityTypeRef()
+	 * @generated
+	 */
+	public void testGetRequiredCapabilityTypeRef() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.TRequirementType#setRequiredCapabilityTypeRef(de.ugoe.cs.oco.tosca.TCapabilityType) <em>Required Capability Type Ref</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.TRequirementType#setRequiredCapabilityTypeRef(de.ugoe.cs.oco.tosca.TCapabilityType)
+	 * @generated
+	 */
+	public void testSetRequiredCapabilityTypeRef() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //TRequirementTypeTest

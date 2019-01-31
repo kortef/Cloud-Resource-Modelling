@@ -1,20 +1,18 @@
 package de.ugoe.cs.oco.tosca.yamlgenerator;
 
-import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.common.parse.problem.ParseProblem;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.egl.EglTemplateFactory;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
 import org.eclipse.epsilon.emc.emf.EmfModel;
-import org.eclipse.epsilon.eol.IEolExecutableModule;
+import org.eclipse.epsilon.eol.IEolModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
@@ -35,7 +33,7 @@ public class BlueprintGenerator {
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
 	    m.put("tosca", new ToscaResourceFactoryImpl());
 		
-		IEolExecutableModule module = new EglTemplateFactoryModuleAdapter(new EglTemplateFactory());
+		IEolModule module = new EglTemplateFactoryModuleAdapter(new EglTemplateFactory());
 		Object result = null;
 		URL eglCode = this.getClass().getResource("/de/ugoe/cs/oco/tosca/yamlgenerator/model/BlueprintGenerator.egl");
 		try {

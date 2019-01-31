@@ -13,6 +13,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Properties Type1</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement() <em>Properties Element</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class PropertiesType1Test extends TestCase {
@@ -85,5 +91,35 @@ public class PropertiesType1Test extends TestCase {
 	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
+
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.PropertiesType1#setPropertiesElement(org.eclipse.emf.ecore.EObject) <em>Properties Element</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.PropertiesType1#setPropertiesElement(org.eclipse.emf.ecore.EObject)
+	 * @generated
+	 */
+	public void testSetPropertiesElement() {
+		// TODO: implement this feature setter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+
+	/**
+	 * Tests the '{@link de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement() <em>Properties Element</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.ugoe.cs.oco.tosca.PropertiesType1#getPropertiesElement()
+	 * @generated
+	 */
+	public void testGetPropertiesElement() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+
 
 } //PropertiesType1Test

@@ -11,10 +11,12 @@ import org.eclipse.xsd.XSDParticle;
 import org.eclipse.xsd.XSDSchema;
 
 import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType;
+import de.ugoe.cs.oco.tosca.CapabilityDefinitionsType1;
 import de.ugoe.cs.oco.tosca.DerivedFromType2;
 import de.ugoe.cs.oco.tosca.InterfacesType;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
 import de.ugoe.cs.oco.tosca.RequirementDefinitionsType;
+import de.ugoe.cs.oco.tosca.RequirementDefinitionsType1;
 import de.ugoe.cs.oco.tosca.TCapabilityDefinition;
 import de.ugoe.cs.oco.tosca.TDocumentation;
 import de.ugoe.cs.oco.tosca.TInterface;
@@ -71,7 +73,7 @@ public class NodeTypeParser extends Parser {
 						type.setPropertiesDefinition(propertiesDefinitionType);
 						break;
 					case "requirements":
-						RequirementDefinitionsType requirementDefinition = ToscaFactory.eINSTANCE.createRequirementDefinitionsType();
+						RequirementDefinitionsType1 requirementDefinition = ToscaFactory.eINSTANCE.createRequirementDefinitionsType1();
 						List<TRequirementDefinition> requirements = (List<TRequirementDefinition>) new RequirementDefinitionParser().parse(
 								(List<String>) innerentry.getValue());
 						
@@ -79,7 +81,7 @@ public class NodeTypeParser extends Parser {
 						type.setRequirementDefinitions(requirementDefinition);
 						break;
 					case "capabilities":
-						CapabilityDefinitionsType capabilityDefinition = ToscaFactory.eINSTANCE.createCapabilityDefinitionsType();
+						CapabilityDefinitionsType1 capabilityDefinition = ToscaFactory.eINSTANCE.createCapabilityDefinitionsType1();
 						List<TCapabilityDefinition> capabilities = (List<TCapabilityDefinition>) new CapabilityDefinitionParser().parse(
 								(Map<String, ?>) innerentry.getValue(), null);
 						

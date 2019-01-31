@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 /*
- * Helper class to load occi extensions models at runtime
+ * Helper class to load OCCI extensions models at runtime
  */
 public class OCCIExtensionLoader {
 	public List<Resource> searchAndLoadOCCIExtensions(URI inputDirURI) {
@@ -21,7 +21,7 @@ public class OCCIExtensionLoader {
 		return searchAndLoadOCCIExtensions(inputDirURI, set);
 	}
 	
-	/* Loads all occi extension models from provided path and returns them as a
+	/* Loads all OCCI extension models from provided path and returns them as a
 	 * set of resources.
 	 */
 	public List<Resource> searchAndLoadOCCIExtensions(URI inputDirURI, ResourceSet set) {

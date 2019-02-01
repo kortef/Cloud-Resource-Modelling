@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="ASCII"?>
+<occi:Configuration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:occi="http://schemas.ogf.org/occi/core/ecore">
+  <use href="http://schemas.ogf.org/occi/infrastructure#/"/>
+  <use href="http://schemas.modmacao.org/openstack/swe#/"/>
+  <use href="http://schemas.modmacao.org/placement#/"/>
+  <use href="http://schemas.modmacao.org/modmacao#/"/>
+  <use href="http://schemas.ogf.org/occi/core#/"/>
+  <use href="http://schemas.modmacao.org/occi/platform#/"/>
+  <use href="http://schemas.modmacao.org/sugarcrm#/"/>
+  <use href="http://schemas.modmacao.org/toscaspecifictypes#/"/>
+  <use href="http://schemas.modmacao.org/toscabasetypes#/"/>
+  <resources id="urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e" title="VM for Apache" location="/compute/urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e" rlinks="//@resources.1/@links.0 //@resources.2/@links.0 //@resources.3/@links.0">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <attributes name="occi.core.id" value="urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e"/>
+    <attributes name="occi.core.title" value="VM for Apache"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='swe_small']"/>
+    </parts>
+    <parts>
+      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ssh_key']"/>
+      <attributes name="occi.credentials.ssh.publickey" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3y+/DnTyhETdDGREFT9PzqA3DWY3h5O5l0cgRu37NiWSyHJUD8RgdRXd/GtJ4iNQqudvvABNYR65304o6ayO9nZKsyL4Q0o789eCiqk6oU/gY7t8LotJYpvk5Hn+bEznaykmZmOJ/56vSigntUKjke0TMCOrnzof765mapePZkT4Vqj1gD6owpLceGd3iLK8kd+iKISyp9Ca4Q1D6hXmLdw0aB4t8eJr+rulPvjU1WoqE/miU76+Qj5/foMNwiEJN2GpNSUdTv9+FBpi4AESGpeOukVlOsZQshmKzeQqUnjb/R8ZSjebZOwmE+KZBHg39iIiqumK4vppYhk5huUeV"/>
+    </parts>
+    <parts>
+      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='user_data']"/>
+      <attributes name="occi.compute.userdata" value="IyEvYmluL2Jhc2gKCmNwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgxCnN1ZG8gc2VkIC1pICdzL2V0aDAvZXRoMS9nJyAvZXRjL3N5c2NvbmZpZy9uZXR3b3JrLXNjcmlwdHMvaWZjZmctZXRoMQppZnVwIGV0aDEKCnJvdXRlIGRlbCBkZWZhdWx0CnN1ZG8gcm91dGUgYWRkIGRlZmF1bHQgZ3cgMTkyLjE2OC4zNS4yNTQgZXRoMAoK"/>
+    </parts>
+    <links id="urn:uuid:71367ff5-670e-4a3d-963d-e631ed57e126" title="VM for Apache -> Management Network" location="/networkinterface/urn:uuid:71367ff5-670e-4a3d-963d-e631ed57e126" target="//@resources.8">
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.core.id" value="urn:uuid:71367ff5-670e-4a3d-963d-e631ed57e126"/>
+      <attributes name="occi.core.title" value="VM for Apache -> Management Network"/>
+      <attributes name="occi.core.source" value="/compute/urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e"/>
+      <attributes name="occi.core.target" value="/network/urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590"/>
+      <parts>
+        <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetworkinterface']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/occi/ansible#//@mixins[term='ansibleendpoint']"/>
+      </parts>
+    </links>
+  </resources>
+  <resources id="urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e" title="Apache Web Server" location="/component/urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e" rlinks="//@resources.2/@links.1 //@resources.3/@links.1 //@resources.7/@links.0">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e"/>
+    <attributes name="occi.core.title" value="Apache Web Server"/>
+    <attributes name="httpdport" value="80"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='apachewebserver']"/>
+    </parts>
+    <links id="urn:uuid:ae3e53b6-edb9-4af1-916d-3ca151f507da" title="Apache Web Server -> VM for Apache" location="/placementlink/urn:uuid:ae3e53b6-edb9-4af1-916d-3ca151f507da" target="//@resources.0">
+      <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:ae3e53b6-edb9-4af1-916d-3ca151f507da"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e"/>
+      <attributes name="occi.core.target" value="/compute/urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e"/>
+      <attributes name="occi.core.title" value="Apache Web Server -> VM for Apache"/>
+    </links>
+  </resources>
+  <resources id="urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c" title="PHP Module" location="/component/urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c" rlinks="//@resources.3/@links.2 //@resources.7/@links.1">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c"/>
+    <attributes name="occi.core.title" value="PHP Module"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='apachephpmodule']"/>
+    </parts>
+    <links id="urn:uuid:a591a780-94d9-4bef-8c1b-6768c6f84c3f" title="PHP Module -> VM for Apache" location="/placementlink/urn:uuid:a591a780-94d9-4bef-8c1b-6768c6f84c3f" target="//@resources.0">
+      <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:a591a780-94d9-4bef-8c1b-6768c6f84c3f"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c"/>
+      <attributes name="occi.core.target" value="/compute/urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e"/>
+      <attributes name="occi.core.title" value="PHP Module -> VM for Apache"/>
+    </links>
+    <links id="urn:uuid:2af7d42e-e2f8-41a7-8798-5091aebbe5d8" title="hosted on" location="/componentlink/urn:uuid:2af7d42e-e2f8-41a7-8798-5091aebbe5d8" target="//@resources.1">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:2af7d42e-e2f8-41a7-8798-5091aebbe5d8"/>
+      <attributes name="occi.core.title" value="hosted on"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e"/>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+    </links>
+  </resources>
+  <resources id="urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9" title="SugarCRM App" location="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9" rlinks="//@resources.7/@links.2">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+    <attributes name="occi.core.title" value="SugarCRM App"/>
+    <attributes name="adminUser" value="crmadmin"/>
+    <attributes name="adminPassword" value="crm123"/>
+    <attributes name="siteName" value="My CRM"/>
+    <attributes name="sitePath" value="sugarcrm"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/sugarcrm#//@mixins[term='sugarcrmapplication']"/>
+    </parts>
+    <links id="urn:uuid:27f92d54-816c-4c5b-a3fc-357c6cbdabdd" title="SugarCRM App -> VM for Apache" location="/placementlink/urn:uuid:27f92d54-816c-4c5b-a3fc-357c6cbdabdd" target="//@resources.0">
+      <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:27f92d54-816c-4c5b-a3fc-357c6cbdabdd"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+      <attributes name="occi.core.target" value="/compute/urn:uuid:f794abf2-ccd0-4b65-a660-3ac7385ab93e"/>
+      <attributes name="occi.core.title" value="SugarCRM App -> VM for Apache"/>
+    </links>
+    <links id="urn:uuid:cbd01b68-e0ea-4795-a7e9-d34f9009caa7" title="hosted on" location="/componentlink/urn:uuid:cbd01b68-e0ea-4795-a7e9-d34f9009caa7" target="//@resources.1">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:cbd01b68-e0ea-4795-a7e9-d34f9009caa7"/>
+      <attributes name="occi.core.title" value="hosted on"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e"/>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+    </links>
+    <links id="urn:uuid:e35a6d91-cfa3-4d56-956e-e0292d67e886" title="depends on" location="/componentlink/urn:uuid:e35a6d91-cfa3-4d56-956e-e0292d67e886" target="//@resources.2">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:e35a6d91-cfa3-4d56-956e-e0292d67e886"/>
+      <attributes name="occi.core.title" value="depends on"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c"/>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+    </links>
+    <links id="urn:uuid:d2099b65-ed81-4a3e-a4d6-6b841b734026" title="connects to" location="/componentlink/urn:uuid:d2099b65-ed81-4a3e-a4d6-6b841b734026" target="//@resources.6">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:d2099b65-ed81-4a3e-a4d6-6b841b734026"/>
+      <attributes name="occi.core.title" value="connects to"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e"/>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+    </links>
+  </resources>
+  <resources id="urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181" title="VM for MySQL" location="/compute/urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181" rlinks="//@resources.5/@links.0 //@resources.6/@links.0">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
+    <attributes name="occi.core.id" value="urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181"/>
+    <attributes name="occi.core.title" value="VM for MySQL"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='swe_small']"/>
+    </parts>
+    <parts>
+      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ssh_key']"/>
+      <attributes name="occi.credentials.ssh.publickey" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3y+/DnTyhETdDGREFT9PzqA3DWY3h5O5l0cgRu37NiWSyHJUD8RgdRXd/GtJ4iNQqudvvABNYR65304o6ayO9nZKsyL4Q0o789eCiqk6oU/gY7t8LotJYpvk5Hn+bEznaykmZmOJ/56vSigntUKjke0TMCOrnzof765mapePZkT4Vqj1gD6owpLceGd3iLK8kd+iKISyp9Ca4Q1D6hXmLdw0aB4t8eJr+rulPvjU1WoqE/miU76+Qj5/foMNwiEJN2GpNSUdTv9+FBpi4AESGpeOukVlOsZQshmKzeQqUnjb/R8ZSjebZOwmE+KZBHg39iIiqumK4vppYhk5huUeV"/>
+    </parts>
+    <parts>
+      <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='user_data']"/>
+      <attributes name="occi.compute.userdata" value="IyEvYmluL2Jhc2gKCmNwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgxCnN1ZG8gc2VkIC1pICdzL2V0aDAvZXRoMS9nJyAvZXRjL3N5c2NvbmZpZy9uZXR3b3JrLXNjcmlwdHMvaWZjZmctZXRoMQppZnVwIGV0aDEKCnJvdXRlIGRlbCBkZWZhdWx0CnN1ZG8gcm91dGUgYWRkIGRlZmF1bHQgZ3cgMTkyLjE2OC4zNS4yNTQgZXRoMAoK"/>
+    </parts>
+    <links id="urn:uuid:9ec64aed-274e-431a-8be2-c08fd8b2ce8f" title="VM for MySQL -> Management Network" location="/networkinterface/urn:uuid:9ec64aed-274e-431a-8be2-c08fd8b2ce8f" target="//@resources.8">
+      <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='networkinterface']"/>
+      <attributes name="occi.core.id" value="urn:uuid:9ec64aed-274e-431a-8be2-c08fd8b2ce8f"/>
+      <attributes name="occi.core.title" value="VM for MySQL -> Management Network"/>
+      <attributes name="occi.core.source" value="/compute/urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181"/>
+      <attributes name="occi.core.target" value="/network/urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590"/>
+      <parts>
+        <mixin href="http://schemas.ogf.org/occi/infrastructure#//@mixins[term='ipnetworkinterface']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/occi/ansible#//@mixins[term='ansibleendpoint']"/>
+      </parts>
+    </links>
+  </resources>
+  <resources id="urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5" title="MySQL" location="/component/urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5" rlinks="//@resources.6/@links.1 //@resources.7/@links.3">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5"/>
+    <attributes name="occi.core.title" value="MySQL"/>
+    <attributes name="rootPassword" value="R#?7!rez@xwt7VWP"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='mysql']"/>
+    </parts>
+    <links id="urn:uuid:f0fadfc1-5a91-46ea-b6cf-ea60c3384ce2" title="MySQL -> VM for MySQL" location="/placementlink/urn:uuid:f0fadfc1-5a91-46ea-b6cf-ea60c3384ce2" target="//@resources.4">
+      <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:f0fadfc1-5a91-46ea-b6cf-ea60c3384ce2"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5"/>
+      <attributes name="occi.core.target" value="/compute/urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181"/>
+      <attributes name="occi.core.title" value="MySQL -> VM for MySQL"/>
+    </links>
+  </resources>
+  <resources id="urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e" title="SugarCRM DB" location="/component/urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e" rlinks="//@resources.3/@links.3 //@resources.7/@links.4">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
+    <attributes name="occi.core.id" value="urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e"/>
+    <attributes name="occi.core.title" value="SugarCRM DB"/>
+    <attributes name="dBName" value="crmdb"/>
+    <attributes name="dBUser" value="crmadmin"/>
+    <attributes name="dBPassword" value="R#?7!rez@xwt7VWP"/>
+    <attributes name="dBPort" value="3306"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/sugarcrm#//@mixins[term='sugarcrmdatabase']"/>
+    </parts>
+    <links id="urn:uuid:28646e05-31a3-4a5a-a8e5-eff1ab1b7ed2" title="SugarCRM DB -> VM for MySQL" location="/placementlink/urn:uuid:28646e05-31a3-4a5a-a8e5-eff1ab1b7ed2" target="//@resources.4">
+      <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:28646e05-31a3-4a5a-a8e5-eff1ab1b7ed2"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e"/>
+      <attributes name="occi.core.target" value="/compute/urn:uuid:3c2ef7c1-e5bc-44a9-a550-565fc7843181"/>
+      <attributes name="occi.core.title" value="SugarCRM DB -> VM for MySQL"/>
+    </links>
+    <links id="urn:uuid:88042593-3ee6-4f7d-9dbe-dbf8d34ec121" title="hosted on" location="/componentlink/urn:uuid:88042593-3ee6-4f7d-9dbe-dbf8d34ec121" target="//@resources.5">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:88042593-3ee6-4f7d-9dbe-dbf8d34ec121"/>
+      <attributes name="occi.core.title" value="hosted on"/>
+      <attributes name="occi.core.source" value="/component/urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5"/>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+    </links>
+  </resources>
+  <resources id="urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4" title="User application" location="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4">
+    <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='application']"/>
+    <attributes name="occi.core.id" value="urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+    <attributes name="occi.core.title" value="User application"/>
+    <links id="urn:uuid:a53ecfbb-63ce-4a0d-bd12-0fc04b33134c" title="application_to_Apache Web Server" location="/componentlink/urn:uuid:a53ecfbb-63ce-4a0d-bd12-0fc04b33134c" target="//@resources.1">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:a53ecfbb-63ce-4a0d-bd12-0fc04b33134c"/>
+      <attributes name="occi.core.title" value="application_to_Apache Web Server"/>
+      <attributes name="occi.core.source" value="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:d83d0183-a3b1-4a94-a707-1d4ba1a5662e"/>
+    </links>
+    <links id="urn:uuid:5cb8e26f-4a00-4373-b65c-c5cdbd61103f" title="application_to_PHP Module" location="/componentlink/urn:uuid:5cb8e26f-4a00-4373-b65c-c5cdbd61103f" target="//@resources.2">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:5cb8e26f-4a00-4373-b65c-c5cdbd61103f"/>
+      <attributes name="occi.core.title" value="application_to_PHP Module"/>
+      <attributes name="occi.core.source" value="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:7de50709-0215-43dc-b47d-e4b4ef4c124c"/>
+    </links>
+    <links id="urn:uuid:17d6cdcd-a303-40ad-90ad-e2d4f29e5f0d" title="application_to_SugarCRM App" location="/componentlink/urn:uuid:17d6cdcd-a303-40ad-90ad-e2d4f29e5f0d" target="//@resources.3">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:17d6cdcd-a303-40ad-90ad-e2d4f29e5f0d"/>
+      <attributes name="occi.core.title" value="application_to_SugarCRM App"/>
+      <attributes name="occi.core.source" value="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:ca75fec1-9f12-4cd7-a091-4e461f4eb7d9"/>
+    </links>
+    <links id="urn:uuid:3026eef6-8295-4bfe-ab5b-45dd4d96b342" title="application_to_MySQL" location="/componentlink/urn:uuid:3026eef6-8295-4bfe-ab5b-45dd4d96b342" target="//@resources.5">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:3026eef6-8295-4bfe-ab5b-45dd4d96b342"/>
+      <attributes name="occi.core.title" value="application_to_MySQL"/>
+      <attributes name="occi.core.source" value="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:02fc1335-6f73-45f3-9609-ef97c24cd2b5"/>
+    </links>
+    <links id="urn:uuid:803f4b18-7e9c-411d-bff8-00bc84d56c4e" title="application_to_SugarCRM DB" location="/componentlink/urn:uuid:803f4b18-7e9c-411d-bff8-00bc84d56c4e" target="//@resources.6">
+      <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
+      <attributes name="occi.core.id" value="urn:uuid:803f4b18-7e9c-411d-bff8-00bc84d56c4e"/>
+      <attributes name="occi.core.title" value="application_to_SugarCRM DB"/>
+      <attributes name="occi.core.source" value="/application/urn:uuid:360c24f4-b4ea-4a43-83a6-36d65cfef1a4"/>
+      <attributes name="occi.core.target" value="/component/urn:uuid:87bf0d3e-32cc-4ffd-bd43-bd20deafb47e"/>
+    </links>
+  </resources>
+  <resources id="urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590" title="Management Network" location="/network/urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590" rlinks="//@resources.0/@links.0 //@resources.4/@links.0">
+    <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
+    <attributes name="occi.core.id" value="urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590"/>
+    <attributes name="occi.core.title" value="Management Network"/>
+    <parts>
+      <mixin href="http://schemas.modmacao.org/openstack/runtime#//@mixins[term='runtimeid']"/>
+      <attributes name="openstack.runtime.id" value="29d78078-fb4c-47aa-a9af-b8aaf3339590"/>
+    </parts>
+  </resources>
+</occi:Configuration>

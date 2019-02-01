@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="libs/slf4j-log4j12-1.7.25.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="libs/de.ugoe.cs.rwm.cocci.jar"/>
+	<classpathentry kind="lib" path="libs/de.ugoe.cs.rwm.docci.jar"/>
+	<classpathentry kind="lib" path="libs/de.ugoe.cs.rwm.tocci.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="libs/json-20180813.jar"/>
+	<classpathentry kind="lib" path="libs/pcg-1.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/pog-1.0.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

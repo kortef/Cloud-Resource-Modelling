@@ -1,1 +1,5 @@
-Project for experimental model-driven cloud orchestration based on TOSCA and OCCI.
+This repository contains Eclipse plugins for
+- TOSCA modelling, and
+- TOSCA to OCCI transformations
+
+Furthermore it provides libraries for automated TOSCA model parameter setting.

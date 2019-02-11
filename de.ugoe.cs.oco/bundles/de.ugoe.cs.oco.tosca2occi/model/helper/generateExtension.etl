@@ -50,4 +50,43 @@ rule NodeType2Mixin
 	extension.mixins.add(mixin);
 }
 
+rule RelationshipType2Mixin
+	transform relType : Types!TRelationshipType
+	to mixin : OCCIE!Mixin {
+	guard: (relType.eContainer.targetNamespace == targetNamespace)	
+		("Transforming " + relType.name.toString()).println();
+		mixin.name = relType.name;
+		mixin.depends.add(MODMACAO!Mixin.allInstances.selectOne(m | m.name == "Dependency"));
+		mixin.scheme = extension.scheme;
+		if (relType.propertiesDefinition <> null){
+			var elementName = relType.propertiesDefinition.element;
+			var elementDeclaration = TypesXSD!XSDElementDeclaration.allInstances.selectOne(e | e.name == elementName.localPart);
+			if (elementDeclaration.isDefined()){
+				("\tFound Properties Definition").println();
+				var elementType = elementDeclaration.type;
+				for (particle in elementType.content.content.contents){
+					var attribute = new OCCIE!Attribute;
+					attribute.name = particle.content.name.firstToLowerCase();
+					("\tAdding attribute: " + attribute.name).println();
+					if (particle.content.value.isDefined()){
+						attribute.`default` = particle.content.value.toString();
+					}
+					var type = Core!DataType.allInstances.selectOne(t | t.name == typeMap.get(particle.content.typeDefinition.name));
+					attribute.type = type;
+					if (particle.content.annotation <> null){
+						attribute.description = particle.content.annotation.userInformation.get(0).textContent;
+					}
+					mixin.attributes.add(attribute);
+				}
+			}
+			else {
+				("\tNo Element Declaration found for: " + elementName).errln();
+				"".println();
+			}
+			
+		}
+	extension.mixins.add(mixin);
+}
+
+
 

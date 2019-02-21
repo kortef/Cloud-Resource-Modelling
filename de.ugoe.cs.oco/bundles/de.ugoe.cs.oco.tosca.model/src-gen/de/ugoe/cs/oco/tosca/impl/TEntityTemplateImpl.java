@@ -79,10 +79,10 @@ public class TEntityTemplateImpl extends TExtensibleElementsImpl implements TEnt
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getId()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
+	protected String id = "uuid-" + UUID.randomUUID().toString();
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.

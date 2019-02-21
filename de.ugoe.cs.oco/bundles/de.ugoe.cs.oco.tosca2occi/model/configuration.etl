@@ -45,31 +45,86 @@ operation getTypeMapping() : Map {
 
 operation getMixinMapping(): Map {
 	var mixinMapping = new Map;
-	mixinMapping.put("SugarCRMApplication", "SugarCRMApplication");
-	mixinMapping.put("SugarCRMDatabase", "SugarCRMDatabase");
+	var seq = new Sequence;
+	seq.add("SugarCRMApplication");
+	mixinMapping.put("SugarCRMApplication", seq);
+	
+	seq = new Sequence;
+	seq.add("SugarCRMDatabase");
+	mixinMapping.put("SugarCRMDatabase", seq);
 	//mixinMapping.put("Tier", "");
 	//mixinMapping.put("SingleNodeTier", "SingleNodeTier");
 	//mixinMapping.put("ScalableTier", "");
-	//mixinMapping.put("Server", "compute");
+	//mixinMapping.put("Server", "comadde");
 	//mixinMapping.put("OperatingSystem", "");
-	mixinMapping.put("WebServer", "WebServer");
-	mixinMapping.put("WebApplication", "WebApplication");
-	mixinMapping.put("DBMS", "DBMS");
-	mixinMapping.put("Database", "Database");
-	mixinMapping.put("ApacheWebServer", "ApacheWebServer");
-	mixinMapping.put("ApacheWebApplication", "ApacheWebApplication");
-	mixinMapping.put("ApacheModule", "ApacheModule");
-	mixinMapping.put("ApachePHPModule", "ApachePHPModule");
-	mixinMapping.put("MySQL", "MySQL");
-	mixinMapping.put("MySQLDatabase", "MySQLDatabase");
 	
-	mixinMapping.put("SugarCRMDatabaseConnection", "ExecutionDependency");
+	seq = new Sequence;
+	seq.add("WebServer");
+	mixinMapping.put("WebServer", seq);
+	
+	seq = new Sequence;
+	seq.add("WebApplication");
+	mixinMapping.put("WebApplication", seq);
+	
+	seq = new Sequence;
+	seq.add("DBMS");
+	mixinMapping.put("DBMS", seq);
+	
+	seq = new Sequence;
+	seq.add("Database");
+	mixinMapping.put("Database", seq);
+	
+	seq = new Sequence;
+	seq.add("ApacheWebServer");
+	mixinMapping.put("ApacheWebServer", seq);
+	
+	seq = new Sequence;
+	seq.add("ApacheWebApplication");
+	mixinMapping.put("ApacheWebApplication", seq);
+	
+	seq = new Sequence;
+	seq.add("ApacheModule");
+	mixinMapping.put("ApacheModule", seq);
+	
+	seq = new Sequence;
+	seq.add("ApachePHPModule");
+	mixinMapping.put("ApachePHPModule", seq);
+	
+	seq = new Sequence;
+	seq.add("MySQL");
+	mixinMapping.put("MySQL", seq);
+	
+	seq = new Sequence;
+	seq.add("MySQLDatabase");
+	mixinMapping.put("MySQLDatabase", seq);
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
+	seq.add("SugarCRMDatabaseConnection");
+	mixinMapping.put("SugarCRMDatabaseConnection", seq);
 	//mixinMapping.put("RootRelationshipType", "link");
-	mixinMapping.put("HostedOn", "ExecutionDependency");
-	mixinMapping.put("DependsOn", "ExecutionDependency");
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
+	mixinMapping.put("HostedOn", seq);
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
+	mixinMapping.put("DependsOn", seq);
 	//mixinMapping.put("ConnectsTo", "NetworkInterface");
-	mixinMapping.put("MySQLDatabaseHostedOnMySQL", "ExecutionDependency");
-	mixinMapping.put("MySQLDatabaseConnection", "ExecutionDependency");
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("MySQLDatabaseHostedOnMySQL");
+	mixinMapping.put("MySQLDatabaseHostedOnMySQL", seq);
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("MySQLDatabaseConnection");
+	mixinMapping.put("MySQLDatabaseConnection", seq);
 	
 	return mixinMapping; 
 }

@@ -1,8 +1,5 @@
 import "./../operations/generalOperations.etl";
 
-//-----------------------------------------------//
-//--------NodeTemplate2Resource------------------//
-//-----------------------------------------------//
 @greedy
 rule NodeTemplate2Resource
 	transform nodeTemplate : TOSCA!TNodeTemplate
@@ -63,7 +60,7 @@ rule RelationshipTemplate2Link
 	
 	var targetNodeTemplate = target.econtainer.econtainer;
 	
-	if (targetNodeTemplate.isTypeOf(TOSCA!Server)){
+	if (targetNodeTemplate.isKindOf(TOSCA!Server)){
 		//"Found target of type Server.".println();
 		link.kind = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "placementlink");
 		var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
@@ -136,5 +133,6 @@ rule Server2FlavorMixin
 	} 
 	mixinBase.setMixin(mixin);
 	var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
-	resource.parts.add(mixinBase);
+	if (resource <> null)
+		resource.parts.add(mixinBase);
 }

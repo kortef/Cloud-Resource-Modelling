@@ -8,10 +8,10 @@ operation getTypeMapping() : Map {
 	configuration.put("SugarCRMDatabase", "component");
 	
 	/* OpenFOAM transformation configuration */
-	//configuration.put("CloudServer", "compute");
+	configuration.put("CloudServer", "compute");
 	//configuration.put("Volume", "volume");
-	//configuration.put("MPIWorker", "component");
-	//configuration.put("Gateway", "component");
+	configuration.put("MPIWorker", "component");
+	configuration.put("Gateway", "component");
 	
 	/* TOSCA Base Types and Specific Types transformation configuration */
 	//configuration.put("RootNodeType", "");
@@ -35,7 +35,7 @@ operation getTypeMapping() : Map {
 	configuration.put("RootRelationshipType", "link");
 	configuration.put("HostedOn", "componentlink");
 	configuration.put("DependsOn", "componentlink");
-	configuration.put("ConnectsTo", "networkinterface");
+	configuration.put("ConnectsTo", "componenlink");
 	configuration.put("MySQLDatabaseHostedOnMySQL", "componentlink");
 	configuration.put("MySQLDatabaseConnection", "componentlink");
 	
@@ -125,6 +125,14 @@ operation getMixinMapping(): Map {
 	seq.add("ExecutionDependency");
 	seq.add("MySQLDatabaseConnection");
 	mixinMapping.put("MySQLDatabaseConnection", seq);
+	
+	seq = new Sequence;
+	seq.add("Gateway");
+	mixinMapping.put("Gateway", seq);
+	
+	seq = new Sequence;
+	seq.add("MPIWorker");
+	mixinMapping.put("MPIWorker", seq);
 	
 	return mixinMapping; 
 }

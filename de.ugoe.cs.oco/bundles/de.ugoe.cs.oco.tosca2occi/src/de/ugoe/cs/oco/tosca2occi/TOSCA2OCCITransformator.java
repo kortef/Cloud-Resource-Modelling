@@ -23,6 +23,7 @@ import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.emf.InMemoryEmfModel;
 import org.eclipse.epsilon.eol.dom.Import;
+import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
@@ -54,6 +55,11 @@ public class TOSCA2OCCITransformator {
 		m.put("occic", new OCCIResourceFactoryImpl());
 		
 		EtlModule module = new EtlModule();
+		
+		// added for execution in Eclipse
+		module.getContext().getNativeTypeDelegates().
+		  add(new ExtensionPointToolNativeTypeDelegate());
+		
 		Object result = null;		
 		try {
 			module.parse(this.getClass().getClassLoader().getResource("model/TOSCA2OCCI.etl").toURI());

@@ -21,6 +21,82 @@ pre {
 	"Input model stats:".println();
 	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
 	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
+	("#TGroupTemplates to be transformed: " + TOSCA!TGroupTemplate.allOfKind.size).println();
+	var template = TOSCA!TTopologyTemplate.allInstances().get(0);	
+	
+	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+	var ecoreUtil = emfTool.ecoreUtil;
+	for (g in TOSCA!TGroupTemplate.allOfKind){
+		var properties = g.properties.any.get(0).getValue();
+		var scale = g.instances;
+		scale.println();
+		
+		scale = "2";
+	
+		for (i in Sequence {2 .. scale.asInteger()}) {
+			var clones = new Map();
+			for (member in g.member){
+	    		var clone = ecoreUtil.copy(member);
+	    		clone.eSet(clone.eClass().getEStructuralFeature("name"), 
+	    			member.eGet(member.eClass().getEStructuralFeature("name")) + i);
+	    		clone.eSet(clone.eClass().getEStructuralFeature("id"), 
+	    		    "urn:uuid:" + ecoreUtil.generateUUID());
+	    		template.nodeTemplate.add(clone);
+	    		clones.put(member, clone);		
+	  	    }
+	  	    
+	  	    var relations = TOSCA!TRelationshipTemplate.all.select(r | 
+	  	    		   g.member.includes(r.sourceElement.ref.eContainer.eContainer) or
+	  	    		   g.member.includes(r.targetElement.ref.eContainer.eContainer));
+		    
+		    for (relation in relations){
+		    		var relClone = ecoreUtil.copy(relation);
+		    		relClone.eSet(relClone.eClass().getEStructuralFeature("name"), 
+	    				relation.eGet(relation.eClass().getEStructuralFeature("name")) + i);
+	    			
+	    			relClone.eSet(relClone.eClass().getEStructuralFeature("id"), 
+	    		    	"urn:uuid:" + ecoreUtil.generateUUID());
+		    		
+		    		if (g.member.includes(relation.sourceElement.ref.eContainer.eContainer)){
+		    			var clonedNode = clones.get(relation.sourceElement.ref.eContainer.eContainer);
+		    			var reqName = relation.sourceElement.ref.name;
+		    			var clonedReqDef = clonedNode.eGet(clonedNode.eClass().getEStructuralFeature("requirements"));
+		    			var clonedReqs = clonedReqDef.eGet(clonedReqDef.eClass().getEStructuralFeature("requirement"));
+		    			for (req in clonedReqs){
+		    				req.eSet(req.eClass().getEStructuralFeature("id"), 
+	    		    			"urn:uuid:" + ecoreUtil.generateUUID());
+		    				if (req.eGet(req.eClass().getEStructuralFeature("name")) == reqName){
+		    					var clonedSourceElement = relClone.eGet(relClone.eClass().getEStructuralFeature("sourceElement"));
+		    					clonedSourceElement.eSet(clonedSourceElement.eClass.getEstructuralFeature("ref"), req);
+		    				}
+		    			}
+		    		}
+		    		if (g.member.includes(relation.targetElement.ref.eContainer.eContainer)){
+		    			var clonedNode = clones.get(relation.targetElement.ref.eContainer.eContainer);
+		    			var capName = relation.targetElement.ref.name;
+		    			var clonedCapDef = clonedNode.eGet(clonedNode.eClass().getEStructuralFeature("capabilities"));
+		    			var clonedCaps = clonedCapDef.eGet(clonedCapDef.eClass().getEStructuralFeature("capability"));
+		    			for (cap in clonedCaps){
+		    				cap.eSet(cap.eClass().getEStructuralFeature("id"), 
+	    		    			"urn:uuid:" + ecoreUtil.generateUUID());
+		    				if (cap.eGet(cap.eClass().getEStructuralFeature("name")) == capName){
+		    					var clonedTargetElement = relClone.eGet(relClone.eClass().getEStructuralFeature("targetElement"));
+		    					clonedTargetElement.eSet(clonedTargetElement.eClass.getEstructuralFeature("ref"), cap);
+		    				}
+		    			}
+		    		}
+		    		template.relationshipTemplate.add(relClone);
+		    }
+		}
+		
+	//	ecoreUtil.`delete`(g.member);
+	}
+	
+	"Input model stats:".println();
+	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
+	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
+	("#TGroupTemplates to be transformed: " + TOSCA!TGroupTemplate.allOfKind.size).println();
+	
 	
 	"".println;
 	"OCCI model stats:".println();

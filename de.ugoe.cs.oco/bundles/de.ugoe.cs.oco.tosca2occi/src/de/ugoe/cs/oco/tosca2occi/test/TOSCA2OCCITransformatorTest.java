@@ -29,8 +29,8 @@ public class TOSCA2OCCITransformatorTest {
 	 * 
 	 * @throws Exception 
 	 */
-	@Test
-	public void testTransform() throws Exception {
+	//@Test
+	public void testTransformSugarCRM() throws Exception {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
@@ -49,7 +49,7 @@ public class TOSCA2OCCITransformatorTest {
 		
 		for (org.eclipse.cmf.occi.core.Resource res: resources) {
 			if (res.getId().equals("VmApache")) {
-				assertEquals(2, res.getParts().size());
+				assertEquals(1, res.getParts().size());
 				assertEquals(3, res.getRlinks().size());
 			}
 			if (res.getId().equals("ApacheWebServer")) {
@@ -67,5 +67,29 @@ public class TOSCA2OCCITransformatorTest {
 		}
 		
 	}
+	
+	@Test
+	public void testTransform() throws Exception {
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		Map<String, Object> m = reg.getExtensionToFactoryMap();
+		m.put("tosca", new ToscaResourceFactoryImpl());
+		URI inputpath = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/openfoam/CSAR/Definitions/openfoamcluster.toscac");
+		URI outputpath = URI.createFileURI("/home/fkorte/de.ugoe.cs.oco.usecases/openfoam/CSAR/Definitions/openfoamcluster.occic");
+		
+		TestUtil.initializePackages();
+		TestUtil.registerFactories();
+		
+		new TOSCA2OCCITransformator().transform(inputpath, outputpath);
+		
+		m.put("occic", new OCCIResourceFactoryImpl());
+		ResourceSet set = new ResourceSetImpl();
+		Resource resource = set.getResource(outputpath, true);
+		
+		Configuration configuration = (Configuration) resource.getContents().get(0);
+		EList<org.eclipse.cmf.occi.core.Resource> resources = configuration.getResources();
+		assertEquals(8, resources.size());
+		
+	}
+
 
 }

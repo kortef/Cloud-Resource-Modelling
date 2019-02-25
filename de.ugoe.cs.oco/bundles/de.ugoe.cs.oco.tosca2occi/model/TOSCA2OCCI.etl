@@ -28,10 +28,7 @@ pre {
 	var ecoreUtil = emfTool.ecoreUtil;
 	for (g in TOSCA!TGroupTemplate.allOfKind){
 		var properties = g.properties.any.get(0).getValue();
-		var scale = g.instances;
-		scale.println();
-		
-		scale = "2";
+		var scale = properties.instances;
 	
 		for (i in Sequence {2 .. scale.asInteger()}) {
 			var clones = new Map();

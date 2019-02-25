@@ -9,29 +9,46 @@ import "./rules/rules.etl";
 
 
 pre {
-	"Starting ETL".println();
-	"Starting Transformation".println();
-	"\n".print();
-
 	var targetsToBeAdded = new Map; //Key = Target Resource id; Value = Link;
 	var sourcesToBeAdded = new Map; //Key = Sources Resource id; Value = Link;
 	var configuration = getTypeMapping();
 	var mixinMapping = getMixinMapping();
+
+
+	"Starting ETL".println();
+	"Starting Transformation".println();
+	"\n".print();
 	
-	"Input model stats:".println();
+	"Setting parameters ...".println();
+	if (TOSCA!PropertyMappingsType.allInstances.size() > 0){
+		var propertyMappingsType = TOSCA!PropertyMappingsType.allInstances.get(0);
+		var properties = propertyMappingsType.eContainer.any.get(0).getValue();
+		for (mapping in propertyMappingsType.propertyMapping){
+			var entityTemplate = mapping.targetObjectRef;
+			(mapping.serviceTemplatePropertyRef + " --> " + entityTemplate.name + ":" + mapping.targetPropertyRef).println();
+			var targetProperties = entityTemplate.properties.any.get(0).getValue();
+			var targetFeature = targetProperties.eClass.getEstructuralFeature(mapping.targetPropertyRef);
+			var sourceFeature = properties.eClass.getEstructuralFeature(mapping.serviceTemplatePropertyRef);
+			var value = properties.eGet(sourceFeature);
+			targetProperties.eSet(targetFeature, value);
+		}
+	}
+
+	
+	"".println();
+	"TOSCA model stats (before Group Resolution):".println();
 	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
 	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
 	("#TGroupTemplates to be transformed: " + TOSCA!TGroupTemplate.allOfKind.size).println();
 	var template = TOSCA!TTopologyTemplate.allInstances().get(0);	
 	
+	"".println();
+	"Inflating Groups ... ".println();
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var ecoreUtil = emfTool.ecoreUtil;
 	for (g in TOSCA!TGroupTemplate.allOfKind){
 		var properties = g.properties.any.get(0).getValue();
 		var scale = properties.instances;
-		scale.println();
-		
-		scale = "2";
 	
 		for (i in Sequence {2 .. scale.asInteger()}) {
 			var clones = new Map();
@@ -88,15 +105,11 @@ pre {
 		    		template.relationshipTemplate.add(relClone);
 		    }
 		}
-		
-	//	ecoreUtil.`delete`(g.member);
 	}
 	
-	"Input model stats:".println();
+	"TOSCA model stats (after Group Resolution):".println();
 	("#TNodeTemplates to be transformed: " + TOSCA!TNodeTemplate.allOfKind.size).println();
-	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();
-	("#TGroupTemplates to be transformed: " + TOSCA!TGroupTemplate.allOfKind.size).println();
-	
+	("#TRelationshipTemplates to be transformed: " + TOSCA!TRelationshipTemplate.allOfKind.size).println();	
 	
 	"".println;
 	"OCCI model stats:".println();
@@ -110,6 +123,9 @@ pre {
 		config.use.add(extension);
 	}
 	
+	"".println();
+	"Transforming model ... ".println();
+	"".println();	
 }
 post {
 	("#Resources in output model: " + OCCI!occi::Resource.allInstances.size).println();

@@ -63,7 +63,7 @@ public class ToscaExample {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.tosca"));
 				DocumentRoot documentRoot = ToscaFactory.eINSTANCE.createDocumentRoot();
 				DefinitionsType root = ToscaFactory.eINSTANCE.createDefinitionsType();
-				documentRoot.setDefinitions(root);
+				documentRoot.getDefinitions().add(root);
 				resource.getContents().add(documentRoot);
 				resource.save(System.out, null);
 			}

@@ -28,7 +28,7 @@ pre {
 	var ecoreUtil = emfTool.ecoreUtil;
 	for (g in TOSCA!TGroupTemplate.allOfKind){
 		var properties = g.properties.any.get(0).getValue();
-		var scale = g.instances;
+		var scale = properties.instances;
 		scale.println();
 		
 		scale = "2";

@@ -26,8 +26,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xsd;bundle-version="2.13.0",
  org.eclipse.epsilon.eol.dt,
  org.eclipse.epsilon.common.dt;bundle-version="1.5.1",
- org.modmacao.openstack.swe.runtime,
- org.modmacao.ansible
+ org.modmacao.ansible,
+ org.modmacao.openstack.runtime;bundle-version="1.0.0",
+ org.modmacao.openstack.swe.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: de.ugoe.cs.oco.tosca2occi,

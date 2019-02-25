@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.eclipse.cmf.occi.core.Extension;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
@@ -21,9 +19,9 @@ import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.modmacao.ansibleconfiguration.AnsibleconfigurationPackage;
 import org.modmacao.placement.PlacementPackage;
 
-import ossweruntime.OssweruntimePackage;
 import modmacao.ModmacaoPackage;
 import openstackruntime.OpenstackruntimePackage;
+import ossweruntime.OssweruntimePackage;
 
 
 

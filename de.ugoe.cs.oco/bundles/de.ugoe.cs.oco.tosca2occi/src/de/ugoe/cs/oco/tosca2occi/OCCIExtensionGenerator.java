@@ -2,7 +2,6 @@
  * 
  */
 package de.ugoe.cs.oco.tosca2occi;
-import java.io.File;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.Map.Entry;
 import org.eclipse.cmf.occi.core.OCCIPackage;
 import org.eclipse.cmf.occi.core.util.OCCIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;

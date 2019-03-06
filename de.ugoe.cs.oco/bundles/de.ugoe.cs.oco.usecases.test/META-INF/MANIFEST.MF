@@ -27,6 +27,8 @@ Require-Bundle: org.eclipse.cmf.occi.core,
  org.eclipse.epsilon.etl.dt;bundle-version="1.5.1",
  org.eclipse.epsilon.etl.engine;bundle-version="1.5.1",
  de.ugoe.cs.oco.tosca2occi;bundle-version="1.0.0",
- org.modmacao.sugarcrmtypes
+ org.modmacao.sugarcrmtypes,
+ org.modmacao.lamp,
+ org.modmacao.mongodb;bundle-version="1.0.0"
 Provide-Package: de.ugoe.cs.oco.usecases.test
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

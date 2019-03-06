@@ -1,6 +1,8 @@
 package de.ugoe.cs.oco.usecases.test;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +61,8 @@ public class TestUtil {
 	static String MANNETID = "urn:uuid:29d78078-fb4c-47aa-a9af-b8aaf3339590";
 	static String MANNETRUNTIMEID = "29d78078-fb4c-47aa-a9af-b8aaf3339590";
 	
+	static long lastLog = 0;
+	
 	protected static void loadAndRegisterOCCIExtensions(String basepath, ResourceSet set) {
 		if (basepath != null && set != null) {
 			List<File> occiExtFileList =  new LinkedList<File>();
@@ -72,6 +76,7 @@ public class TestUtil {
 				}
 
 				for (File file: occiExtFileList) {
+					System.out.println("Found extension file: " + file);
 					URI uri = URI.createFileURI(file.getAbsolutePath());
 					Resource resource = set.getResource(uri, true);
 					Extension extension = (Extension) resource.getContents().get(0);
@@ -116,7 +121,6 @@ public class TestUtil {
 		CachedResourceSet.getCache().clear();
 		OCCIPackage.eINSTANCE.eClass();
 		InfrastructurePackage.eINSTANCE.eClass();
-		OCCIPackage.eINSTANCE.eClass();
 		ModmacaoPackage.eINSTANCE.eClass();
 		OpenstackruntimePackage.eINSTANCE.eClass();
 		PlacementPackage.eINSTANCE.eClass();
@@ -137,4 +141,24 @@ public class TestUtil {
 	    m.put("*", new XMIResourceFactoryImpl());
 		
 	}
+	
+	private static long getTimestamp() {
+		return System.currentTimeMillis();
+	}
+	
+	protected static void log(BufferedWriter bw, String message) throws IOException {
+		long currentTime = getTimestamp();
+		long elapsedMiliSecs = currentTime - lastLog;
+		bw.write(elapsedMiliSecs + ":" + currentTime  + ": " + message);
+		bw.newLine();
+		
+		lastLog = currentTime;
+	}
+	
+	protected static void resetLogTimer() {
+		lastLog = getTimestamp();
+	}
+	
+
+	
 }

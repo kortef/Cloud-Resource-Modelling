@@ -11,7 +11,7 @@ rule NodeTemplate2Resource
 	resource.summary = nodeTemplate.getDescription();
 	resource.assignKind(nodeTemplate);
 	resource.setLinks(nodeTemplate);
-	OCCI!occi::Configuration.allInstances.first.resources.add(resource);
+	config.resources.add(resource);
 }
 
 @greedy
@@ -31,20 +31,6 @@ rule NodeTemplate2MixinAndAttributeStates
 	}
 }
 
-//@greedy
-//rule OperatingSystem2ImageMixin
-//	transform operatingSystem : TOSCA!OperatingSystem
-//	to mixinBase: OCCI!occi::MixinBase{
-//	mixinBase.setMixin(OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "Ubuntu_XenialXerus"));
-//	for (requirement in operatingSystem.requirements.requirement){
-//		var r = TOSCA!TRelationshipTemplate.allInstances.selectOne(r | r.sourceElement.ref == requirement);
-//		var c = r.targetElement.ref;
-//		c.println();
-//		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id = c.econtainer.econtainer.id);
-//		resource.parts.add(mixinBase);	
-//	}
-//}
-
 @greedy
 rule RelationshipTemplate2Link
 	transform relTemplate : TOSCA!TRelationshipTemplate
@@ -57,13 +43,12 @@ rule RelationshipTemplate2Link
 	
 	var target = relTemplate.targetElement.ref;
 	
-	
 	var targetNodeTemplate = target.econtainer.econtainer;
+	var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
 	
-	if (targetNodeTemplate.isKindOf(TOSCA!Server)){
+	if (targetNodeTemplate.isKindOf(TOSCA!Server) and relTemplate.typeRef.isKindOf(TOSCA!HostedOn)){
 		//"Found target of type Server.".println();
 		link.kind = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "placementlink");
-		var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
 		sourceNodeTemplate.createPlacementLinkForIncomings(target.econtainer.econtainer.id);
 	}
 	
@@ -136,3 +121,28 @@ rule Server2FlavorMixin
 	if (resource <> null)
 		resource.parts.add(mixinBase);
 }
+
+@greedy
+rule Volume2StorageSize
+   transform props : TOSCA!TVolumeProperties
+   to attributeState: OCCI!occi::AttributeState{
+   		attributeState.name = "occi.storage.size";
+   		attributeState.value = props.size.toString();
+   		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
+   		if (resource <> null)
+   			resource.attributes.add(attributeState);
+   }
+
+//@greedy
+//rule OperatingSystem2ImageMixin
+//	transform operatingSystem : TOSCA!OperatingSystem
+//	to mixinBase: OCCI!occi::MixinBase{
+//	mixinBase.setMixin(OCCIExtensions!occi::Mixin.allInstances.selectOne(m | m.name == "Ubuntu_XenialXerus"));
+//	for (requirement in operatingSystem.requirements.requirement){
+//		var r = TOSCA!TRelationshipTemplate.allInstances.selectOne(r | r.sourceElement.ref == requirement);
+//		var c = r.targetElement.ref;
+//		c.println();
+//		var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id = c.econtainer.econtainer.id);
+//		resource.parts.add(mixinBase);	
+//	}
+//}

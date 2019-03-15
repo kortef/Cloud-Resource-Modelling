@@ -12,6 +12,12 @@ operation getTypeMapping() : Map {
 	//configuration.put("Volume", "volume");
 	configuration.put("MPIWorker", "component");
 	configuration.put("Gateway", "component");
+	configuration.put("OpenFOAM", "component");
+	configuration.put("NFSClient", "component");
+	configuration.put("NFSServer", "component");
+	configuration.put("Volume", "storage");
+	configuration.put("StorageAttachesToServer", "storageLink");
+	
 	
 	/* TOSCA Base Types and Specific Types transformation configuration */
 	//configuration.put("RootNodeType", "");
@@ -118,11 +124,13 @@ operation getMixinMapping(): Map {
 	
 	seq = new Sequence;
 	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
 	seq.add("MySQLDatabaseHostedOnMySQL");
 	mixinMapping.put("MySQLDatabaseHostedOnMySQL", seq);
 	
 	seq = new Sequence;
 	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
 	seq.add("MySQLDatabaseConnection");
 	mixinMapping.put("MySQLDatabaseConnection", seq);
 	
@@ -133,6 +141,18 @@ operation getMixinMapping(): Map {
 	seq = new Sequence;
 	seq.add("MPIWorker");
 	mixinMapping.put("MPIWorker", seq);
+	
+	seq = new Sequence;
+	seq.add("OpenFOAM");
+	mixinMapping.put("OpenFOAM", seq);
+	
+	seq = new Sequence;
+	seq.add("NFSClient");
+	mixinMapping.put("NFSClient", seq);
+	
+	seq = new Sequence;
+	seq.add("NFSServer");
+	mixinMapping.put("NFSServer", seq);
 	
 	return mixinMapping; 
 }

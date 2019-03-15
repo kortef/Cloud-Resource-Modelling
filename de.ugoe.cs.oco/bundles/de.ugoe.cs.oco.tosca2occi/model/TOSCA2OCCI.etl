@@ -14,7 +14,6 @@ pre {
 	var configuration = getTypeMapping();
 	var mixinMapping = getMixinMapping();
 
-
 	"Starting ETL".println();
 	"Starting Transformation".println();
 	"\n".print();

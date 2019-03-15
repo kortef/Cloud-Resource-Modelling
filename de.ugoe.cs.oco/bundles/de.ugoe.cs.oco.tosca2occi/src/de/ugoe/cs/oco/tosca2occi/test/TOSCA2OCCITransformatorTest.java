@@ -69,7 +69,7 @@ public class TOSCA2OCCITransformatorTest {
 	}
 	
 	@Test
-	public void testTransform() throws Exception {
+	public void testOpenFoamTransform() throws Exception {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("tosca", new ToscaResourceFactoryImpl());
@@ -86,10 +86,7 @@ public class TOSCA2OCCITransformatorTest {
 		Resource resource = set.getResource(outputpath, true);
 		
 		Configuration configuration = (Configuration) resource.getContents().get(0);
-		EList<org.eclipse.cmf.occi.core.Resource> resources = configuration.getResources();
-		assertEquals(8, resources.size());
-		
+		EList<org.eclipse.cmf.occi.core.Resource> resources = configuration.getResources();		
 	}
-
 
 }

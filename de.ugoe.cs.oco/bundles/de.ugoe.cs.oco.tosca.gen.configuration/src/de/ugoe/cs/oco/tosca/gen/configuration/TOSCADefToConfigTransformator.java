@@ -2,6 +2,7 @@ package de.ugoe.cs.oco.tosca.gen.configuration;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -11,6 +12,7 @@ import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl.SimpleFeatureMapEntry;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
@@ -26,6 +28,7 @@ import de.ugoe.cs.oco.tosca.TRelationshipTemplate;
 import de.ugoe.cs.oco.tosca.TRequirement;
 import de.ugoe.cs.oco.tosca.TTopologyTemplate;
 import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.impl.TNodeTemplateImpl;
 import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 
 
@@ -46,7 +49,7 @@ public class TOSCADefToConfigTransformator {
 		DocumentRoot root = loadToscaRoot(toscaDef, resourceSet);
 		
 		Resource resource = resourceSet.createResource(toscaConfig);
-		resource.getContents().add(root);
+		resource.getContents().add(EcoreUtil.copy(root));
 		
 		root.getXMLNSPrefixMap().put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 		
@@ -74,15 +77,13 @@ public class TOSCADefToConfigTransformator {
 		for (TGroupTemplate group: template.getGroupTemplate()) {
 			addXSIType(group);
 		}
-		
-		
-		
+			
 		try {
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
 	
 	private static DocumentRoot loadToscaRoot(URI toscaURI, ResourceSet resourceSet) {

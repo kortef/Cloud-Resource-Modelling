@@ -46,7 +46,7 @@ rule RelationshipTemplate2Link
 	var targetNodeTemplate = target.econtainer.econtainer;
 	var sourceNodeTemplate = relTemplate.sourceElement.ref.econtainer.econtainer;
 	
-	if (targetNodeTemplate.isKindOf(TOSCA!Server) and relTemplate.typeRef.isKindOf(TOSCA!HostedOn)){
+	if (targetNodeTemplate.isKindOf(TOSCA!Server) and relTemplate.isKindOf(TOSCA!HostedOn)){
 		//"Found target of type Server.".println();
 		link.kind = OCCI!occi::Kind.allInstances.selectOne(k | k.term == "placementlink");
 		sourceNodeTemplate.createPlacementLinkForIncomings(target.econtainer.econtainer.id);

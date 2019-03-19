@@ -16,7 +16,7 @@ operation getTypeMapping() : Map {
 	configuration.put("NFSClient", "component");
 	configuration.put("NFSServer", "component");
 	configuration.put("Volume", "storage");
-	configuration.put("StorageAttachesToServer", "storageLink");
+	configuration.put("StorageAttachesToServer", "storagelink");
 	
 	
 	/* TOSCA Base Types and Specific Types transformation configuration */

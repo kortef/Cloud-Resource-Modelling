@@ -37,7 +37,7 @@ import openstackruntime.OpenstackruntimePackage;
 import ossweruntime.OssweruntimePackage;
 
 public class TestUtil {
-	/*static String USERDATA = "I2Nsb3VkLWNvbmZpZwoKIyBVcGdyYWRlIHRoZSBpbnN0YW5jZSBvbiBmaXJzdCBib290CiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpC"
+	static String UBUNTU_USERDATA = "I2Nsb3VkLWNvbmZpZwoKIyBVcGdyYWRlIHRoZSBpbnN0YW5jZSBvbiBmaXJzdCBib290CiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpC"
 			+ "iMKIyBEZWZhdWx0OiBmYWxzZQojIEFsaWFzZXM6IGFwdF91cGdyYWRlCnBhY2thZ2VfdXBncmFkZTogdHJ1ZQoKcGFja2FnZXM6CiAtIHB5dGhvbgoKd3Jpd"
 			+ "GVfZmlsZXM6CiAgLSBwYXRoOiAvZXRjL25ldHdvcmsvaW50ZXJmYWNlcy5kLzUwLWNsb3VkLWluaXQuY2ZnCiAgICBjb250ZW50OiB8CiAgICAgIGF1dG8gb"
 			+ "G8KICAgICAgaWZhY2UgbG8gaW5ldCBsb29wYmFjawogICAgICAKICAgICAgYXV0byBlbnMwCiAgICAgIGFsbG93LWhvdHBsdWcgZW5zMAogICAgICBpZmFjZ"
@@ -50,10 +50,10 @@ public class TestUtil {
 			+ "AogICAgICAKICAgICAgYXV0byBlbnM4CiAgICAgIGFsbG93LWhvdHBsdWcgZW5zOAogICAgICBpZmFjZSBlbnM4IGluZXQgZGhjcAogICAgICAKICAgICAgY"
 			+ "XV0byBlbnM5CiAgICAgIGFsbG93LWhvdHBsdWcgZW5zOQogICAgICBpZmFjZSBlbnM5IGluZXQgZGhjcAogICAgICAKICAgICAgYXV0byBlbnMxMAogICAgI"
 			+ "CBhbGxvdy1ob3RwbHVnIGVuczEwCiAgICAgIGlmYWNlIGVuczEwIGluZXQgZGhjcAoKIyMj"; // Ubuntu userdata
-	*/
-	static String USERDATA = "IyEvYmluL2Jhc2gKCmNwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgwIC9ldGMvc3lzY29uZmlnL25ldHdvc"
+	
+	static String CENTOS_USERDATA = "IyEvYmluL2Jhc2gKCmNwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgwIC9ldGMvc3lzY29uZmlnL25ldHdvc"
 			+ "mstc2NyaXB0cy9pZmNmZy1ldGgxCnN1ZG8gc2VkIC1pICdzL2V0aDAvZXRoMS9nJyAvZXRjL3N5c2NvbmZpZy9uZXR3b3JrLXNjcmlwdHMvaWZjZmctZXRoM"
-			+ "QppZnVwIGV0aDEKCgoK"; // Centos userdata	
+			+ "QppZnVwIGV0aDEKCgoK"; // Centos userdata	*/
 	static String PUBLICKEY = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3y+/DnTyhETdDGREFT9PzqA3DWY3h5O5l0cgRu37NiWSyHJUD8RgdRXd/GtJ4iNQq"
 			+ "udvvABNYR65304o6ayO9nZKsyL4Q0o789eCiqk6oU/gY7t8LotJYpvk5Hn+bEznaykmZmOJ/56vSigntUKjke0TMCOrnzof765mapePZkT4Vqj1gD6owpLce"
 			+ "Gd3iLK8kd+iKISyp9Ca4Q1D6hXmLdw0aB4t8eJr+rulPvjU1WoqE/miU76+Qj5/foMNwiEJN2GpNSUdTv9+FBpi4AESGpeOukVlOsZQshmKzeQqUnjb/R8ZS"

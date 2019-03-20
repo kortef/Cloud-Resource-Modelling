@@ -34,7 +34,7 @@ import sugarcrm.SugarcrmPackage;
  *
  */
 class TestProvisioningAndDeployment {
-	private static Connector conn = new MartConnector("192.168.35.22", 8080, "ubuntu", 
+	private static Connector conn = new MartConnector("192.168.35.34", 8080, "ubuntu", 
 			"/home/fkorte/autoscale/mongoscale-key.pem");
 	private static MartDeployer deployer = new MartDeployer(conn);
 	protected static String basedir = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions";
@@ -73,7 +73,7 @@ class TestProvisioningAndDeployment {
 		TestUtil.log(logWriter, "Starting Deployment");
 		
 		ResourceSet set = new ResourceSetImpl();
-		TestUtil.loadAndRegisterOCCIExtensions("basedir", set);
+		TestUtil.loadAndRegisterOCCIExtensions(basedir, set);
 
 		MartDeployer deployer = new MartDeployer(conn, 20000);
 
@@ -91,7 +91,7 @@ class TestProvisioningAndDeployment {
 		OCCI2OPENSTACKTransformator trans2 = OCCI2OPENSTACKTransformator.getInstance();
 		Path sourceOcci = Paths.get(cut);
 		trans2.setTransformationProperties(TestUtil.MANNETRUNTIMEID, TestUtil.PUBLICKEY, 
-				"", TestUtil.MANNETID);
+			"", TestUtil.MANNETID);
 		trans2.transform(sourceOcci, sourceOcci);
 		
 		TestUtil.log(logWriter, "Starting Provisioning");
@@ -111,6 +111,7 @@ class TestProvisioningAndDeployment {
 	public static void tearDown() throws IOException {
 		logWriter.close();
 	}
+	
 	
 
 	

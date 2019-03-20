@@ -118,7 +118,7 @@ rule Server2FlavorMixin
 	} 
 	mixinBase.setMixin(mixin);
 	var resource = OCCI!occi::Resource.allInstances.selectOne(r | r.id =  props.econtainer.econtainer.id);
-	if (resource <> null)
+	if (resource <> null and mixin <> null)
 		resource.parts.add(mixinBase);
 }
 

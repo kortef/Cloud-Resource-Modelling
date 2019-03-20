@@ -162,4 +162,14 @@ post {
 	for (link in sourcesToBeAdded.values().flatten()){
 		delete link;
 	}
+	
+	// switch direction of storage link
+	for (storagelink in OCCI!occi::Link.allInstances.select(l | l.kind <> null and l.kind.term == "storagelink")){
+		var source = storagelink.source;
+		var target = storagelink.target;
+		source.links.remove(storagelink);
+		target.links.add(storagelink);
+		storagelink.source = target;
+		storagelink.target = source;
+	}
 }

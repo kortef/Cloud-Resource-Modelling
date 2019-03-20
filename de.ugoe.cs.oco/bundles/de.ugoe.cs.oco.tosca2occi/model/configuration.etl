@@ -41,9 +41,10 @@ operation getTypeMapping() : Map {
 	configuration.put("RootRelationshipType", "link");
 	configuration.put("HostedOn", "componentlink");
 	configuration.put("DependsOn", "componentlink");
-	configuration.put("ConnectsTo", "componenlink");
+	configuration.put("ConnectsTo", "componentlink");
 	configuration.put("MySQLDatabaseHostedOnMySQL", "componentlink");
 	configuration.put("MySQLDatabaseConnection", "componentlink");
+	configuration.put("ConnectsToNFSServer", "componentlink");
 	
 	
 	return configuration;
@@ -120,7 +121,17 @@ operation getMixinMapping(): Map {
 	seq.add("ExecutionDependency");
 	seq.add("InstallationDependency");
 	mixinMapping.put("DependsOn", seq);
-	//mixinMapping.put("ConnectsTo", "NetworkInterface");
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
+	mixinMapping.put("ConnectsTo", seq);
+	
+		seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("InstallationDependency");
+	seq.add("ConnectsToNFSServer");
+	mixinMapping.put("ConnectsToNFSServer", seq);
 	
 	seq = new Sequence;
 	seq.add("ExecutionDependency");

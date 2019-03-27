@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import de.ugoe.cs.oco.tosca.DocumentRoot;
 import de.ugoe.cs.oco.tosca.PropertiesDefinitionType;
@@ -69,6 +70,13 @@ public class DesignServices {
 	public void setUUID(TEntityTemplate entity) {
 		UUID uuid = UUID.randomUUID();
 		entity.setId("uuid-" + uuid.toString());
+	}
+	
+	public String printAttribute(EStructuralFeature feature, EObject object) {
+		if (object instanceof AnyType) {
+			 	return "";
+		}
+		return feature.getName() + " = " + object.eGet(feature).toString();
 	}
 
 }

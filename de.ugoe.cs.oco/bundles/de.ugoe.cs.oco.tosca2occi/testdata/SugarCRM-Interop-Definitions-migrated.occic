@@ -6,14 +6,11 @@
   <use href="http://schemas.modmacao.org/modmacao#/"/>
   <use href="http://schemas.ogf.org/occi/core#/"/>
   <use href="http://schemas.modmacao.org/occi/platform#/"/>
-  <use href="http://schemas.modmacao.org/ToscaSpecificTypes#/"/>
-  <use href="http://schemas.modmacao.org/ToscaBaseTypes#/"/>
-  <use href="http://schemas.modmacao.org/ToscaSpecificTypes#/"/>
+  <use href="http://schemas.modmacao.org/toscaspecifictypes#/"/>
+  <use href="http://schemas.modmacao.org/toscabasetypes#/"/>
+  <use href="http://schemas.modmacao.org/sugarcrm#/"/>
   <resources id="VmApache" title="VM for Apache" rlinks="//@resources.1/@links.0 //@resources.2/@links.0 //@resources.3/@links.0">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
-    <parts>
-      <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='ubuntu_xenialxerus']"/>
-    </parts>
     <parts>
       <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='swe_small']"/>
     </parts>
@@ -24,7 +21,7 @@
     <attributes name="occi.core.title" value="Apache Web Server"/>
     <attributes name="httpdport" value="80"/>
     <parts>
-      <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='apachewebserver']"/>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='apachewebserver']"/>
     </parts>
     <links id="ApacheWebServer_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
@@ -33,7 +30,7 @@
   <resources id="PhpModule" title="PHP Module" rlinks="//@resources.3/@links.2 //@resources.7/@links.1">
     <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='component']"/>
     <parts>
-      <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='apachephpmodule']"/>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='apachephpmodule']"/>
     </parts>
     <links id="PhpModule_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
@@ -42,6 +39,9 @@
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
       <parts>
         <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
       </parts>
     </links>
   </resources>
@@ -54,7 +54,7 @@
     <attributes name="siteName" value="My CRM"/>
     <attributes name="sitePath" value="sugarcrm"/>
     <parts>
-      <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='sugarcrmapplication']"/>
+      <mixin href="http://schemas.modmacao.org/sugarcrm#//@mixins[term='sugarcrmapplication']"/>
     </parts>
     <links id="SugarCrmApp_placedOn_VmApache" target="//@resources.0">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
@@ -64,11 +64,17 @@
       <parts>
         <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
       </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
     </links>
     <links id="SugarCrmApp_DependsOn_PhpModule" title="depends on" target="//@resources.2">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
       <parts>
         <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
       </parts>
     </links>
     <links id="SugarCrmApp_ConnectsTo_SugarCrmDb" title="connects to" target="//@resources.6">
@@ -76,13 +82,16 @@
       <parts>
         <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
       </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/sugarcrm#//@mixins[term='sugarcrmdatabaseconnection']"/>
+      </parts>
     </links>
   </resources>
   <resources id="VmMySql" title="VM for MySQL" rlinks="//@resources.5/@links.0 //@resources.6/@links.0">
     <kind href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
-    <parts>
-      <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='ubuntu_xenialxerus']"/>
-    </parts>
     <parts>
       <mixin href="http://schemas.modmacao.org/openstack/swe#//@mixins[term='swe_small']"/>
     </parts>
@@ -93,7 +102,7 @@
     <attributes name="occi.core.title" value="MySQL"/>
     <attributes name="rootPassword" value="password"/>
     <parts>
-      <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='mysql']"/>
+      <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='mysql']"/>
     </parts>
     <links id="MySql_placedOn_VmMySql" target="//@resources.4">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
@@ -108,7 +117,7 @@
     <attributes name="dBPassword" value="crmadmin"/>
     <attributes name="dBPort" value="3306"/>
     <parts>
-      <mixin href="http://schemas.modmacao.org/ToscaSpecificTypes#//@mixins[term='sugarcrmdatabase']"/>
+      <mixin href="http://schemas.modmacao.org/sugarcrm#//@mixins[term='sugarcrmdatabase']"/>
     </parts>
     <links id="SugarCrmDb_placedOn_VmMySql" target="//@resources.4">
       <kind href="http://schemas.modmacao.org/placement#//@kinds[term='placementlink']"/>
@@ -118,23 +127,29 @@
       <parts>
         <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='executiondependency']"/>
       </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/modmacao#//@mixins[term='installationdependency']"/>
+      </parts>
+      <parts>
+        <mixin href="http://schemas.modmacao.org/toscaspecifictypes#//@mixins[term='mysqldatabasehostedonmysql']"/>
+      </parts>
     </links>
   </resources>
-  <resources id="urn:uuid:fd0ece9d-f9f7-4911-944d-9f0a9aa035b1" title="User application">
+  <resources id="urn:uuid:c0531c9f-4765-48ff-816c-323c664d96dc" title="User application">
     <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='application']"/>
-    <links id="urn:uuid:af57bd90-4c56-43f5-b9ac-c61bc2f7c035" title="application_to_Apache Web Server" target="//@resources.1">
+    <links id="urn:uuid:7c67b188-548b-43ed-84b7-530f7216c152" title="application_to_Apache Web Server" target="//@resources.1">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
     </links>
-    <links id="urn:uuid:68a0345a-9600-4889-94f8-787dbf29fecd" title="application_to_PHP Module" target="//@resources.2">
+    <links id="urn:uuid:ef8170a5-c09e-4127-b641-7b4366f98e2d" title="application_to_PHP Module" target="//@resources.2">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
     </links>
-    <links id="urn:uuid:e3ee0245-5f04-480d-b651-f89b8b0f9669" title="application_to_SugarCRM App" target="//@resources.3">
+    <links id="urn:uuid:c81c54fe-9c50-43cc-a884-a3b6c457b1b5" title="application_to_SugarCRM App" target="//@resources.3">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
     </links>
-    <links id="urn:uuid:f10cdc69-0f6b-411c-af91-0b5618a10b36" title="application_to_MySQL" target="//@resources.5">
+    <links id="urn:uuid:668dd3fd-5b3d-49d2-9062-7e047f8ecf68" title="application_to_MySQL" target="//@resources.5">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
     </links>
-    <links id="urn:uuid:f28fe82d-92bf-4513-aa47-593d72050e17" title="application_to_SugarCRM DB" target="//@resources.6">
+    <links id="urn:uuid:bff27536-c07c-4861-9c49-58b0a64a0aa6" title="application_to_SugarCRM DB" target="//@resources.6">
       <kind href="http://schemas.modmacao.org/occi/platform#//@kinds[term='componentlink']"/>
     </links>
   </resources>

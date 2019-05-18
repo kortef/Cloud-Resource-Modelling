@@ -1,58 +1,34 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ToscaSpecificTypes" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="toscaspecifictypes" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
   <import href="http://schemas.modmacao.org/modmacao#/"/>
-  <mixins name="ApacheWebServer" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+  <mixins name="ApacheWebServer" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
     <attributes name="httpdport" default="80" description="Apache HTTP Port (default 80)">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="ApacheWebApplication" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+  <mixins name="ApacheWebApplication" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="ApacheModule" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+  <mixins name="ApacheModule" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="ApachePHPModule" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+  <mixins name="ApachePHPModule" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="MySQL" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <attributes name="RootPassword" description="Root Password">
+  <mixins name="MySQL" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
+    <attributes name="rootPassword" description="Root Password">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="MySQLDatabase" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+  <mixins name="MySQLDatabase" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="RootNodeType" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  <mixins name="MySQLDatabaseHostedOnMySQL" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='dependency']"/>
   </mixins>
-  <mixins name="Tier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="SingleNodeTier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="ScalableTier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="Server" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="OperatingSystem" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="WebServer" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="WebApplication" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="DBMS" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="Database" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  <mixins name="MySQLDatabaseConnection" scheme="http://schemas.modmacao.org/toscaspecifictypes#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='dependency']"/>
   </mixins>
 </occi:Extension>

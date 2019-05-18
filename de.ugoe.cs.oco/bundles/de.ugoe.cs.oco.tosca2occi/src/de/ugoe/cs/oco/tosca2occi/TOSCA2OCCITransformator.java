@@ -43,25 +43,24 @@ public class TOSCA2OCCITransformator {
 	 */
 	public String transform(URI toscaModelURI, URI occiModelURI) throws Exception{
 		//EcorePlugin.ExtensionProcessor.process(null);
-					
+
 		ResourceSet occiSet = new ResourceSetImpl();
 		ResourceSet toscaSet = new ResourceSetImpl();
-		
+
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("toscac", new ToscaResourceFactoryImpl());
 		m.put("occic", new OCCIResourceFactoryImpl());
-		
+
 		EtlModule module = new EtlModule();
-		
+
 		// added for execution in Eclipse
-		module.getContext().getNativeTypeDelegates().
-		  add(new ExtensionPointToolNativeTypeDelegate());
-		
+		//module.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
+
 		Object result = null;		
 		try {
 			module.parse(this.getClass().getClassLoader().getResource("model/TOSCA2OCCI.etl").toURI());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -72,70 +71,65 @@ public class TOSCA2OCCITransformator {
 			}   
 		}
 
-		try {
-			HashMap<String, String> extensionMap = new HashMap<String, String>();
-			extensionMap.put("http://schemas.ogf.org/occi/core", "Core");
-			extensionMap.put("http://schemas.ogf.org/occi/infrastructure", "Infrastructure");
-			extensionMap.put("http://schemas.modmacao.org/placement", "Placement");
-			extensionMap.put("http://schemas.modmacao.org/modmacao", "Modmacao");
-			extensionMap.put("http://schemas.modmacao.org/occi/platform", "Platform");
-			extensionMap.put("http://schemas.modmacao.org/openstack/swe", "Sweruntime");
-			
-			
-			for (Entry<String, String> entry: extensionMap.entrySet()) {
-				Resource resource = occiSet.getResource(URI.createURI(entry.getKey(), true), true);
-				IModel model = new InMemoryEmfModel(resource);
-				model.setName(entry.getValue());
-				module.getContext().getModelRepository().addModel(model);
-				model.getAliases().add("OCCIExtensions");
-			}
-			
-			List<Resource> externalOCCIExt = new OCCIExtensionLoader().searchAndLoadOCCIExtensions(
-					occiModelURI.trimSegments(1), occiSet);
-			
-			for (Resource externalResource: externalOCCIExt) {
-				Extension externalExtension = (Extension) externalResource.getContents().get(0);
-				InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
-				model.setName(externalExtension.getName());
-				module.getContext().getModelRepository().addModel(model);
-				model.getAliases().add("OCCIExtensions");
-			}
-				
-			Resource resource = null;
-			
-			List<Resource> externalEcoreModels = new EcoreModelLoader().searchAndLoadEcoreModels(
-					toscaModelURI.trimSegments(1), toscaSet);
-		
-			for (Resource externalResource: externalEcoreModels) {
-				EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
-				InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
-				model.setName(externalPackage.getName());
-				module.getContext().getModelRepository().addModel(model);
-			}
-			
-			EPackage toscaPackage = getTOSCAPackage(toscaSet);
-			toscaSet.getPackageRegistry().put(toscaPackage.getNsURI(), toscaPackage);
-			EPackage xmlTypePackage = EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
-			toscaSet.getPackageRegistry().put(xmlTypePackage.getNsURI(), xmlTypePackage);
-			
-			resource = toscaSet.getResource(toscaModelURI, true);
-			InMemoryEmfModel toscaModel = new InMemoryEmfModel(resource);
-			toscaModel.setName("TOSCA");
-			
-			resource = occiSet.createResource(occiModelURI);
-			InMemoryEmfModel occiModel = new InMemoryEmfModel(resource);
-			occiModel.setName("OCCI");
-						
-			module.getContext().getModelRepository().addModel(toscaModel);
-			module.getContext().getModelRepository().addModel(occiModel);
-			
-			
-			result = module.execute();
-			occiModel.getResource().save(null);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+		HashMap<String, String> extensionMap = new HashMap<String, String>();
+		extensionMap.put("http://schemas.ogf.org/occi/core", "Core");
+		extensionMap.put("http://schemas.ogf.org/occi/infrastructure", "Infrastructure");
+		extensionMap.put("http://schemas.modmacao.org/placement", "Placement");
+		extensionMap.put("http://schemas.modmacao.org/modmacao", "Modmacao");
+		extensionMap.put("http://schemas.modmacao.org/occi/platform", "Platform");
+		extensionMap.put("http://schemas.modmacao.org/openstack/swe", "Sweruntime");
+
+
+		for (Entry<String, String> entry: extensionMap.entrySet()) {
+			Resource resource = occiSet.getResource(URI.createURI(entry.getKey(), true), true);
+			IModel model = new InMemoryEmfModel(resource);
+			model.setName(entry.getValue());
+			module.getContext().getModelRepository().addModel(model);
+			model.getAliases().add("OCCIExtensions");
 		}
+
+		List<Resource> externalOCCIExt = new OCCIExtensionLoader().searchAndLoadOCCIExtensions(
+				occiModelURI.trimSegments(1), occiSet);
+
+		for (Resource externalResource: externalOCCIExt) {
+			Extension externalExtension = (Extension) externalResource.getContents().get(0);
+			InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
+			model.setName(externalExtension.getName());
+			module.getContext().getModelRepository().addModel(model);
+			model.getAliases().add("OCCIExtensions");
+		}
+
+		Resource resource = null;
+
+		List<Resource> externalEcoreModels = new EcoreModelLoader().searchAndLoadEcoreModels(
+				toscaModelURI.trimSegments(1), toscaSet);
+
+		for (Resource externalResource: externalEcoreModels) {
+			EPackage externalPackage = (EPackage) externalResource.getContents().get(0);
+			InMemoryEmfModel model = new InMemoryEmfModel(externalResource);
+			model.setName(externalPackage.getName());
+			module.getContext().getModelRepository().addModel(model);
+		}
+
+		EPackage toscaPackage = getTOSCAPackage(toscaSet);
+		toscaSet.getPackageRegistry().put(toscaPackage.getNsURI(), toscaPackage);
+		EPackage xmlTypePackage = EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		toscaSet.getPackageRegistry().put(xmlTypePackage.getNsURI(), xmlTypePackage);
+
+		resource = toscaSet.getResource(toscaModelURI, true);
+		InMemoryEmfModel toscaModel = new InMemoryEmfModel(resource);
+		toscaModel.setName("TOSCA");
+
+		resource = occiSet.createResource(occiModelURI);
+		InMemoryEmfModel occiModel = new InMemoryEmfModel(resource);
+		occiModel.setName("OCCI");
+
+		module.getContext().getModelRepository().addModel(toscaModel);
+		module.getContext().getModelRepository().addModel(occiModel);
+
+		result = module.execute();
+		occiModel.getResource().save(null);
+
 		return result.toString();
 	}
 	

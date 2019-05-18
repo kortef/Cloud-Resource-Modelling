@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: de.ugoe.cs.as.mappingdsl.model.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingEditorPlugin$Implementation
+Bundle-Activator: de.ugoe.cs.as.mappingdsl.model.mapping.presentation.MappingEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: de.ugoe.cs.oco.mappingdsl.model.mapping.presentation
+Export-Package: de.ugoe.cs.as.mappingdsl.model.mapping.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  de.ugoe.cs.as.mappingdsl.model.edit;visibility:=reexport,

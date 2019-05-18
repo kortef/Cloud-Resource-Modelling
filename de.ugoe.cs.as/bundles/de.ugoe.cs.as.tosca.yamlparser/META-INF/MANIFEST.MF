@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Yamlparser
 Bundle-SymbolicName: de.ugoe.cs.as.tosca.yamlparser
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.tosca.yamlparser.Activator
+Bundle-Activator: de.ugoe.cs.as.tosca.yamlparser.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",
@@ -14,5 +14,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xsd
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: de.ugoe.cs.oco.tosca.yamlparser
+Export-Package: de.ugoe.cs.as.tosca.yamlparser
 Import-Package: org.eclipse.xsd

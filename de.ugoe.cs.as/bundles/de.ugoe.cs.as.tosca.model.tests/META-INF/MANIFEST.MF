@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.ugoe.cs.oco.tosca.tests
+Export-Package: de.ugoe.cs.as.tosca.tests
 Require-Bundle: org.eclipse.core.runtime,
  de.ugoe.cs.as.tosca.model;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,

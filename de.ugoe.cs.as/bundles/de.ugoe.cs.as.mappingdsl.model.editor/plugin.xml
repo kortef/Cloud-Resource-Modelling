@@ -14,7 +14,7 @@
       <wizard
             id="de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingModelWizardID"
             name="%_UI_MappingModelWizard_label"
-            class="de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingModelWizard"
+            class="de.ugoe.cs.as.mappingdsl.model.mapping.presentation.MappingModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/MappingModelFile.gif">
          <description>%_UI_MappingModelWizard_description</description>
@@ -29,8 +29,8 @@
             name="%_UI_MappingEditor_label"
             icon="icons/full/obj16/MappingModelFile.gif"
             extensions="mapping"
-            class="de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingEditor"
-            contributorClass="de.ugoe.cs.oco.mappingdsl.model.mapping.presentation.MappingActionBarContributor">
+            class="de.ugoe.cs.as.mappingdsl.model.mapping.presentation.MappingEditor"
+            contributorClass="de.ugoe.cs.as.mappingdsl.model.mapping.presentation.MappingActionBarContributor">
       </editor>
    </extension>
 

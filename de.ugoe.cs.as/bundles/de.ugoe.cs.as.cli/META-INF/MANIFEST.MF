@@ -4,7 +4,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Cli
 Bundle-SymbolicName: de.ugoe.cs.as.cli
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.cli.Activator
+Bundle-Activator: de.ugoe.cs.as.cli.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.ugoe.cs.as.thirdparty;bundle-version="1.0.0",

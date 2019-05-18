@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: de.ugoe.cs.oco.mappingdsl.model.mapping.tests
+Export-Package: de.ugoe.cs.as.mappingdsl.model.mapping.tests
 Require-Bundle: org.eclipse.core.runtime,
  de.ugoe.cs.as.mappingdsl.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

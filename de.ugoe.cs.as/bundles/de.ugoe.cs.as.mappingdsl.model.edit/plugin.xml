@@ -10,7 +10,7 @@
       <!-- @generated mapping -->
       <factory
             uri="http://www.example.org/mapping"
-            class="de.ugoe.cs.oco.mappingdsl.model.mapping.provider.MappingItemProviderAdapterFactory"
+            class="de.ugoe.cs.as.mappingdsl.model.mapping.provider.MappingItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

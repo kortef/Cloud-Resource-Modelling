@@ -3,9 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Utils
 Bundle-SymbolicName: de.ugoe.cs.as.utils
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.utils.Activator
+Bundle-Activator: de.ugoe.cs.as.utils.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: de.ugoe.cs.oco.utils
+Export-Package: de.ugoe.cs.as.utils

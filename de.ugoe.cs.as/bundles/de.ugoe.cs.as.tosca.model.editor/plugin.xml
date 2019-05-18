@@ -14,7 +14,7 @@
       <wizard
             id="de.ugoe.cs.oco.tosca.presentation.ToscaModelWizardID"
             name="%_UI_ToscaModelWizard_label"
-            class="de.ugoe.cs.oco.tosca.presentation.ToscaModelWizard"
+            class="de.ugoe.cs.as.tosca.presentation.ToscaModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/ToscaModelFile.gif">
          <description>%_UI_ToscaModelWizard_description</description>
@@ -29,8 +29,8 @@
             name="%_UI_ToscaEditor_label"
             icon="icons/full/obj16/ToscaModelFile.gif"
             extensions="tosca"
-            class="de.ugoe.cs.oco.tosca.presentation.ToscaEditor"
-            contributorClass="de.ugoe.cs.oco.tosca.presentation.ToscaActionBarContributor">
+            class="de.ugoe.cs.as.tosca.presentation.ToscaEditor"
+            contributorClass="de.ugoe.cs.as.tosca.presentation.ToscaActionBarContributor">
       </editor>
    </extension>
 

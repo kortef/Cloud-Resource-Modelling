@@ -13,5 +13,5 @@ Require-Bundle: org.eclipse.ui,
  de.ugoe.cs.as.tosca.gen.configuration;bundle-version="1.0.0"
 Automatic-Module-Name: de.ugoe.cs.oco.tosca.model.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.ugoe.cs.oco.tosca.model.ui.popup.actions
+Export-Package: de.ugoe.cs.as.tosca.model.ui.popup.actions
 Import-Package: org.eclipse.emf.common.util

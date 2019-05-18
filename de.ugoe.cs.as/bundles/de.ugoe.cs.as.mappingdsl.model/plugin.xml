@@ -10,7 +10,7 @@
       <!-- @generated mapping -->
       <package
             uri="http://www.example.org/mapping"
-            class="de.ugoe.cs.oco.mappingdsl.model.mapping.MappingPackage"
+            class="de.ugoe.cs.as.mappingdsl.model.mapping.MappingPackage"
             genModel="model/mapping.genmodel"/>
    </extension>
 

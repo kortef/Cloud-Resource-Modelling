@@ -10,7 +10,7 @@
       <!-- @generated PropertyTypes -->
       <package
             uri="http://swe.simpaas.tosca.de/PropertyTypes"
-            class="de.ugoe.cs.oco.tosca.types.TypesPackage"
+            class="de.ugoe.cs.as.tosca.types.TypesPackage"
             genModel="model/PropertyTypes.genmodel"/>
    </extension>
 
@@ -18,7 +18,7 @@
       <!-- @generated PropertyTypes -->
       <parser
             type="toscaext"
-            class="de.ugoe.cs.oco.tosca.types.util.TypesResourceFactoryImpl"/>
+            class="de.ugoe.cs.as.tosca.types.util.TypesResourceFactoryImpl"/>
    </extension>
 
 </plugin>

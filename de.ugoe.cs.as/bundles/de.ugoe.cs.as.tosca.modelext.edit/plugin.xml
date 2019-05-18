@@ -10,7 +10,7 @@
       <!-- @generated PropertyTypes -->
       <factory
             uri="http://swe.simpaas.tosca.de/PropertyTypes"
-            class="de.ugoe.cs.oco.tosca.types.provider.TypesItemProviderAdapterFactory"
+            class="de.ugoe.cs.as.tosca.types.provider.TypesItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -23,7 +23,7 @@
       <!-- @generated PropertyTypes -->
       <extender
             uri="http://oco.cs.ugoe.de/tosca"
-            class="de.ugoe.cs.oco.tosca.types.provider.TypesItemProviderAdapterFactory$ToscaChildCreationExtender"/>
+            class="de.ugoe.cs.as.tosca.types.provider.TypesItemProviderAdapterFactory$ToscaChildCreationExtender"/>
    </extension>
 
 </plugin>

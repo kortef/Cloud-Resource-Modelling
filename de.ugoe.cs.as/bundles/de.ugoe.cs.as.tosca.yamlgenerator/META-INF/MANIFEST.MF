@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Yamlgenerator
 Bundle-SymbolicName: de.ugoe.cs.as.tosca.yamlgenerator
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.tosca.yamlgenerator.Activator
+Bundle-Activator: de.ugoe.cs.as.tosca.yamlgenerator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",

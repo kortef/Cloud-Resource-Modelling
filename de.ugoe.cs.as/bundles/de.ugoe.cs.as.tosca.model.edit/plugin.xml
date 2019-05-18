@@ -10,7 +10,7 @@
       <!-- @generated tosca -->
       <factory
             uri="http://oco.cs.ugoe.de/tosca"
-            class="de.ugoe.cs.oco.tosca.provider.ToscaItemProviderAdapterFactory"
+            class="de.ugoe.cs.as.tosca.provider.ToscaItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

@@ -18,28 +18,28 @@
          </menu>
          <action
                label="Convert to Ecore model"
-               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToEcoreAction"
+               class="de.ugoe.cs.as.tosca.model.ui.popup.actions.ConvertToEcoreAction"
                menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.ConvertToEcoreAction">
          </action>
          <action
                label="Convert to OCCI Configuration"
-               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToOCCIConfigurationAction"
+               class="de.ugoe.cs.as.tosca.model.ui.popup.actions.ConvertToOCCIConfigurationAction"
                menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.ConvertToOCCIAction">
          </action>
           <action
                label="Convert to TOSCA Configuration"
-               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.ConvertToTOSCAConfigurationAction"
+               class="de.ugoe.cs.as.tosca.model.ui.popup.actions.ConvertToTOSCAConfigurationAction"
                menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.ConvertToTOSCAConfigurationAction">
          </action>
            <action
                label="Generate OCCI Extension"
-               class="de.ugoe.cs.oco.tosca.model.ui.popup.actions.GenerateOCCIExtensionAction"
+               class="de.ugoe.cs.as.tosca.model.ui.popup.actions.GenerateOCCIExtensionAction"
                menubarPath="de.ugoe.cs.oco.tosca.model.ui.menu/group"
                enablesFor="1"
                id="de.ugoe.cs.oco.tosca.model.ui.GenerateOCCIExtensionAction">

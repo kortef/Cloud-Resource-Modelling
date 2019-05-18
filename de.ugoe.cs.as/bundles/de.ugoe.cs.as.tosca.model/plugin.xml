@@ -10,7 +10,7 @@
       <!-- @generated TOSCA-v1.0 -->
       <package
             uri="http://oco.cs.ugoe.de/tosca"
-            class="de.ugoe.cs.oco.tosca.ToscaPackage"
+            class="de.ugoe.cs.as.tosca.ToscaPackage"
             genModel="model/tosca.genmodel"/>
    </extension>
 
@@ -18,14 +18,14 @@
       <!-- @generated TOSCA-v1.0 -->
       <parser
             type="tosca"
-            class="de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl"/>
+            class="de.ugoe.cs.as.tosca.util.ToscaResourceFactoryImpl"/>
    </extension>
    
    <!-- Register the factory of this connector. -->
    <extension point="org.eclipse.emf.ecore.factory_override">
       <factory
             uri="http://oco.cs.ugoe.de/tosca"
-            class="de.ugoe.cs.oco.tosca.util.ExtendedToscaFactoryImpl"/>
+            class="de.ugoe.cs.as.tosca.util.ExtendedToscaFactoryImpl"/>
    </extension>
 
 </plugin>

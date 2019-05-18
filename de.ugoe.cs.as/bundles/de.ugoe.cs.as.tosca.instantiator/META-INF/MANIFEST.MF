@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Instantiator
 Bundle-SymbolicName: de.ugoe.cs.as.tosca.instantiator
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.tosca.instantiator.Activator
+Bundle-Activator: de.ugoe.cs.as.tosca.instantiator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.common;bundle-version="2.11.1",

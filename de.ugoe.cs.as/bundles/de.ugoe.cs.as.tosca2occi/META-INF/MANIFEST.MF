@@ -10,7 +10,7 @@ Bundle-ClassPath: .,
  libs/log4j-1.2.17.jar,
  libs/org.slf4j.api_1.7.2.v20121108-1250.jar
 Bundle-Vendor: %providerName
-Bundle-Activator: de.ugoe.cs.oco.tosca2occi.Activator
+Bundle-Activator: de.ugoe.cs.as.tosca2occi.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.epsilon.common;bundle-version="1.3.0",
@@ -36,8 +36,8 @@ Require-Bundle: org.eclipse.ui,
  org.modmacao.openstack.swe.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: de.ugoe.cs.oco.tosca2occi,
- de.ugoe.cs.oco.tosca2occi.commands,
- de.ugoe.cs.oco.tosca2occi.test
+Export-Package: de.ugoe.cs.as.tosca2occi,
+ de.ugoe.cs.as.tosca2occi.commands,
+ de.ugoe.cs.as.tosca2occi.test
 Automatic-Module-Name: de.ugoe.cs.oco.tosca2occi
 Import-Package: org.eclipse.core.resources

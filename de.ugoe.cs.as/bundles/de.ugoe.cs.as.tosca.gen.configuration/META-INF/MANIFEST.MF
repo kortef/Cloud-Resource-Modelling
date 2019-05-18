@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Configuration
 Bundle-SymbolicName: de.ugoe.cs.as.tosca.gen.configuration;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Export-Package: de.ugoe.cs.oco.tosca.gen.configuration
+Export-Package: de.ugoe.cs.as.tosca.gen.configuration
 Require-Bundle: org.slf4j.api;bundle-version="1.7.2",
  de.ugoe.cs.as.tosca.model,
  org.junit,

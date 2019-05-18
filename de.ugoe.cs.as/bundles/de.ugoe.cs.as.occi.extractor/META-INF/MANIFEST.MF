@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Extractor
 Bundle-SymbolicName: de.ugoe.cs.as.occi.extractor
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.ugoe.cs.oco.occi.extractor.Activator
+Bundle-Activator: de.ugoe.cs.as.occi.extractor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.ugoe.cs.as.thirdparty;bundle-version="1.0.0",
@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.cmf.occi.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: de.ugoe.cs.oco.occi.extractor,
- de.ugoe.cs.oco.occi.serializer
+Export-Package: de.ugoe.cs.as.occi.extractor,
+ de.ugoe.cs.as.occi.serializer

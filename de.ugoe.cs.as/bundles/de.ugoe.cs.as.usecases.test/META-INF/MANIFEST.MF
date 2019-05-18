@@ -34,5 +34,5 @@ Require-Bundle: org.eclipse.cmf.occi.core,
  org.modmacao.toscabasetypes,
  de.ugoe.cs.as.tosca.gen.configuration;bundle-version="1.0.0",
  de.ugoe.cs.as.tosca.model;bundle-version="1.0.0"
-Provide-Package: de.ugoe.cs.oco.usecases.test
+Provide-Package: de.ugoe.cs.as.usecases.test
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

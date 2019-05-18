@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: de.ugoe.cs.oco.mappingdsl.model.edit;singleton:=true
+Bundle-SymbolicName: de.ugoe.cs.as.mappingdsl.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: de.ugoe.cs.oco.mappingdsl.model.mapping.provider.MappingEditPlugin$Implementation
@@ -10,6 +10,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: de.ugoe.cs.oco.mappingdsl.model.mapping.provider
 Require-Bundle: org.eclipse.core.runtime,
- de.ugoe.cs.oco.mappingdsl.model;visibility:=reexport,
+ de.ugoe.cs.as.mappingdsl.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -2,18 +2,18 @@ Manifest-Version: 1.0
 Main-Class: de.ugoe.cs.oco.cli.Runner
 Bundle-ManifestVersion: 2
 Bundle-Name: Cli
-Bundle-SymbolicName: de.ugoe.cs.oco.cli
+Bundle-SymbolicName: de.ugoe.cs.as.cli
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.ugoe.cs.oco.cli.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- de.ugoe.cs.oco.thirdparty;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca2occi;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.yamlgenerator;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.yamlparser;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.instantiator;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.preprocessor;bundle-version="1.0.0"
+ de.ugoe.cs.as.thirdparty;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca2occi;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.yamlgenerator;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.yamlparser;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.instantiator;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.preprocessor;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: de.ugoe.cs.oco.cli

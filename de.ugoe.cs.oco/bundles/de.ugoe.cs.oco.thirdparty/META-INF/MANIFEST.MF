@@ -4,7 +4,7 @@ Build-Jdk: 1.8.0_91
 Built-By: fglaser
 Bundle-ManifestVersion: 2
 Bundle-Name: de.ugoe.cs.oco.thirdparty
-Bundle-SymbolicName: de.ugoe.cs.oco.thirdparty
+Bundle-SymbolicName: de.ugoe.cs.as.thirdparty
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 

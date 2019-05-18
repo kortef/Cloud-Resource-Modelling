@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Utils
-Bundle-SymbolicName: de.ugoe.cs.oco.utils
+Bundle-SymbolicName: de.ugoe.cs.as.utils
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.ugoe.cs.oco.utils.Activator
 Require-Bundle: org.eclipse.ui,

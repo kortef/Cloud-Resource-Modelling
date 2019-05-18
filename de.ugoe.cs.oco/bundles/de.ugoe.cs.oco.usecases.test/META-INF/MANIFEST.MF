@@ -6,7 +6,7 @@ Bundle-ClassPath: .,
  libs/pcg-1.0.0.jar,
  libs/pog-1.0.0.jar,
  libs/slf4j-log4j12-1.7.25.jar
-Bundle-SymbolicName: de.ugoe.cs.oco.usecases.test
+Bundle-SymbolicName: de.ugoe.cs.as.usecases.test
 Bundle-Version: 1.0.0
 Bundle-Name: de.ugoe.cs.oco.usecases.test
 Require-Bundle: org.eclipse.cmf.occi.core,
@@ -26,13 +26,13 @@ Require-Bundle: org.eclipse.cmf.occi.core,
  org.eclipse.epsilon.eol.engine;bundle-version="1.5.1",
  org.eclipse.epsilon.etl.dt;bundle-version="1.5.1",
  org.eclipse.epsilon.etl.engine;bundle-version="1.5.1",
- de.ugoe.cs.oco.tosca2occi;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca2occi;bundle-version="1.0.0",
  org.modmacao.sugarcrmtypes,
  org.modmacao.lamp,
  org.modmacao.mongodb;bundle-version="1.0.0",
  org.modmacao.openfoamtypes;bundle-version="1.0.0",
  org.modmacao.toscabasetypes,
- de.ugoe.cs.oco.tosca.gen.configuration;bundle-version="1.0.0",
- de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0"
+ de.ugoe.cs.as.tosca.gen.configuration;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.model;bundle-version="1.0.0"
 Provide-Package: de.ugoe.cs.oco.usecases.test
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

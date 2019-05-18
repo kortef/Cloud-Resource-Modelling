@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: de.ugoe.cs.oco.tosca.designer;singleton:=true
+Bundle-SymbolicName: de.ugoe.cs.as.tosca.designer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.ugoe.cs.oco.tosca.designer.Activator
 Bundle-Localization: plugin
@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ui,
  org.eclipse.sirius.common.acceleo.aql,
  org.eclipse.sirius.ui.properties,
- de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",
  org.eclipse.emf.ecore,
  org.eclipse.sirius.common.acceleo.mtl,
  org.eclipse.emf.common,

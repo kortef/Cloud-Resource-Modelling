@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Evaluator
-Bundle-SymbolicName: de.ugoe.cs.oco.evaluator
+Bundle-SymbolicName: de.ugoe.cs.as.evaluator
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.ugoe.cs.oco.evaluator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf;bundle-version="2.6.0",
- de.ugoe.cs.oco.mappingdsl.model;bundle-version="1.0.0",
+ de.ugoe.cs.as.mappingdsl.model;bundle-version="1.0.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.11.1",
  org.junit;bundle-version="4.12.0",
- de.ugoe.cs.oco.tosca.model;bundle-version="1.0.0"
+ de.ugoe.cs.as.tosca.model;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: de.ugoe.cs.oco.evaluator

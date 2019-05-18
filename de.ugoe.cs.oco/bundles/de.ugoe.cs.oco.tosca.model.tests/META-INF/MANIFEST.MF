@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: de.ugoe.cs.oco.tosca.model.tests;singleton:=true
+Bundle-SymbolicName: de.ugoe.cs.as.tosca.model.tests;singleton:=true
 Automatic-Module-Name: de.ugoe.cs.oco.tosca.model.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
@@ -10,7 +10,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.ugoe.cs.oco.tosca.tests
 Require-Bundle: org.eclipse.core.runtime,
- de.ugoe.cs.oco.tosca.model;visibility:=reexport,
+ de.ugoe.cs.as.tosca.model;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xsd;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

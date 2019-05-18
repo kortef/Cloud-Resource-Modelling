@@ -1,0 +1,9 @@
+0:1557150604100: Starting Setup
+9:1557150604109: Transform TOSCA Definition to TOSCA Configuration
+243:1557150604352: Transform TOSCA to OCCI
+986:1557150605338: Starting OCCI to OCCI Transformation
+119:1557150605457: Starting OCCI to OCCI-OpenStack Transformation
+94:1557150605551: Starting Provisioning
+128987:1557150734538: Cooling down...
+30001:1557150764539: Starting Deployment
+8239851:1557159004390: Finished Test.

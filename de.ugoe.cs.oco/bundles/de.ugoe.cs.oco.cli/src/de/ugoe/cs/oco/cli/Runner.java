@@ -2,6 +2,8 @@ package de.ugoe.cs.oco.cli;
 
 import java.util.logging.Level;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import de.ugoe.cs.util.console.CommandExecuter;
 import de.ugoe.cs.util.console.TextConsole;
 
@@ -14,7 +16,8 @@ public class Runner {
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.tosca.yamlgenerator.commands");
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.tosca.yamlparser.commands");
 		CommandExecuter.getInstance().addCommandPackage("de.ugoe.cs.oco.tosca2occi.commands");
-		CommandExecuter.getInstance().addCommandPackage("de.swz.dist.batch.commands");
+		
+		EcorePlugin.ExtensionProcessor.process(null);
 	
 		TextConsole console = new TextConsole(Level.ALL);
 		console.run();

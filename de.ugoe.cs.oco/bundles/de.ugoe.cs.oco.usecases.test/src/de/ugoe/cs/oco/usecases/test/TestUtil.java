@@ -22,7 +22,11 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.modmacao.ansibleconfiguration.AnsibleconfigurationPackage;
 import org.modmacao.placement.PlacementPackage;
+import org.modmacao.toscabasetypes.ToscabasetypesPackage;
+import org.modmacao.toscaspecifictypes.ToscaspecifictypesPackage;
 
+import de.ugoe.cs.oco.tosca.ToscaPackage;
+import de.ugoe.cs.oco.tosca.util.ToscaResourceFactoryImpl;
 import de.ugoe.cs.rwm.cocci.Comparator;
 import de.ugoe.cs.rwm.docci.Deployer;
 import de.ugoe.cs.rwm.docci.appdeployer.MartAppDeployerMaster;
@@ -37,7 +41,7 @@ import openstackruntime.OpenstackruntimePackage;
 import ossweruntime.OssweruntimePackage;
 
 public class TestUtil {
-	static String UBUNTU_USERDATA = "I2Nsb3VkLWNvbmZpZwoKIyBVcGdyYWRlIHRoZSBpbnN0YW5jZSBvbiBmaXJzdCBib290CiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpC"
+	/*static String UBUNTU_USERDATA = "I2Nsb3VkLWNvbmZpZwoKIyBVcGdyYWRlIHRoZSBpbnN0YW5jZSBvbiBmaXJzdCBib290CiMgKGllIHJ1biBhcHQtZ2V0IHVwZ3JhZGUpC"
 			+ "iMKIyBEZWZhdWx0OiBmYWxzZQojIEFsaWFzZXM6IGFwdF91cGdyYWRlCnBhY2thZ2VfdXBncmFkZTogdHJ1ZQoKcGFja2FnZXM6CiAtIHB5dGhvbgoKd3Jpd"
 			+ "GVfZmlsZXM6CiAgLSBwYXRoOiAvZXRjL25ldHdvcmsvaW50ZXJmYWNlcy5kLzUwLWNsb3VkLWluaXQuY2ZnCiAgICBjb250ZW50OiB8CiAgICAgIGF1dG8gb"
 			+ "G8KICAgICAgaWZhY2UgbG8gaW5ldCBsb29wYmFjawogICAgICAKICAgICAgYXV0byBlbnMwCiAgICAgIGFsbG93LWhvdHBsdWcgZW5zMAogICAgICBpZmFjZ"
@@ -49,7 +53,10 @@ public class TestUtil {
 			+ "SBlbnM2IGluZXQgZGhjcAogICAgICAKICAgICAgYXV0byBlbnM3CiAgICAgIGFsbG93LWhvdHBsdWcgZW5zNwogICAgICBpZmFjZSBlbnM3IGluZXQgZGhjc"
 			+ "AogICAgICAKICAgICAgYXV0byBlbnM4CiAgICAgIGFsbG93LWhvdHBsdWcgZW5zOAogICAgICBpZmFjZSBlbnM4IGluZXQgZGhjcAogICAgICAKICAgICAgY"
 			+ "XV0byBlbnM5CiAgICAgIGFsbG93LWhvdHBsdWcgZW5zOQogICAgICBpZmFjZSBlbnM5IGluZXQgZGhjcAogICAgICAKICAgICAgYXV0byBlbnMxMAogICAgI"
-			+ "CBhbGxvdy1ob3RwbHVnIGVuczEwCiAgICAgIGlmYWNlIGVuczEwIGluZXQgZGhjcAoKIyMj"; // Ubuntu userdata
+			+ "CBhbGxvdy1ob3RwbHVnIGVuczEwCiAgICAgIGlmYWNlIGVuczEwIGluZXQgZGhjcAoKIyMj"; // Ubuntu userdata*/
+	
+	static String UBUNTU_USERDATA = "IyEvYmluL2Jhc2gKCnN5c3RlbWN0bCBzdG9wIGFwdC1kYWlseS5zZXJ2aWNlCnN5c3RlbWN0bCBraWxsIC0ta2lsbC13aG89YW"
+			+ "xsIGFwdC1kYWlseS5zZXJ2aWNlCgoK";
 	
 	static String CENTOS_USERDATA = "IyEvYmluL2Jhc2gKCmNwIC9ldGMvc3lzY29uZmlnL25ldHdvcmstc2NyaXB0cy9pZmNmZy1ldGgwIC9ldGMvc3lzY29uZmlnL25ldHdvc"
 			+ "mstc2NyaXB0cy9pZmNmZy1ldGgxCnN1ZG8gc2VkIC1pICdzL2V0aDAvZXRoMS9nJyAvZXRjL3N5c2NvbmZpZy9uZXR3b3JrLXNjcmlwdHMvaWZjZmctZXRoM"
@@ -119,6 +126,10 @@ public class TestUtil {
 	
 	protected static void initializePackages() {
 		CachedResourceSet.getCache().clear();
+		ToscaPackage.eINSTANCE.eClass();
+		ToscabasetypesPackage.eINSTANCE.eClass();
+		ToscaspecifictypesPackage.eINSTANCE.eClass();
+		
 		OCCIPackage.eINSTANCE.eClass();
 		InfrastructurePackage.eINSTANCE.eClass();
 		ModmacaoPackage.eINSTANCE.eClass();
@@ -136,6 +147,8 @@ public class TestUtil {
 	protected static void registerFactories() {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 	    Map<String, Object> m = reg.getExtensionToFactoryMap();
+	    m.put("tosca", new ToscaResourceFactoryImpl());
+	    m.put("toscac", new ToscaResourceFactoryImpl());
 	    m.put("occie", new OCCIResourceFactoryImpl());
 	    m.put("occic", new OCCIResourceFactoryImpl());
 	    m.put("*", new XMIResourceFactoryImpl());

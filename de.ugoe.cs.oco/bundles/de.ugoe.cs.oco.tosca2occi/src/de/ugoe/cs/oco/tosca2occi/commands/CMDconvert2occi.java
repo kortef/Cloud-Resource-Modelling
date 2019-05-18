@@ -23,8 +23,8 @@ public class CMDconvert2occi implements Command {
 		
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("tosca", new ToscaResourceFactoryImpl());
-		m.put("occie", new OCCIResourceFactoryImpl());
+		m.put("toscac", new ToscaResourceFactoryImpl());
+		m.put("occic", new OCCIResourceFactoryImpl());
 				
 		try {
 			filePath = Paths.get((String) parameters.get(0));
@@ -53,7 +53,7 @@ public class CMDconvert2occi implements Command {
 		String fileNameWithoutExtn = fileName.substring(0, fileName.lastIndexOf('.'));
 		Path output = Paths.get(outputPath.toString() 
 				+ fileSeparator 
-				+ fileNameWithoutExtn + ".occie");
+				+ fileNameWithoutExtn + ".occic");
 		
 		
 		try{

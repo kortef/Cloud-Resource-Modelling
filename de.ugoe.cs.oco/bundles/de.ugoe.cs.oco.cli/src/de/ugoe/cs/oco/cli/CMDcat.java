@@ -30,6 +30,7 @@ public class CMDcat implements Command {
 			while ((line = in.readLine()) != null){
 				Console.println(line);
 			}
+			in.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e){

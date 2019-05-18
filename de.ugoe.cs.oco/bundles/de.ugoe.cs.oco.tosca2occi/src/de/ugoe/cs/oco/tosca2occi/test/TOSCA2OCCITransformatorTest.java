@@ -29,7 +29,7 @@ public class TOSCA2OCCITransformatorTest {
 	 * 
 	 * @throws Exception 
 	 */
-	//@Test
+	@Test
 	public void testTransformSugarCRM() throws Exception {
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();

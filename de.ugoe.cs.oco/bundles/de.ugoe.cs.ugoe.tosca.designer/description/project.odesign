@@ -67,14 +67,22 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 </style>
               </borderedNodeMappings>
-              <subContainerMappings name="NodeTemplateAttributes" semanticCandidatesExpression="aql:self" domainClass="tosca::TNodeTemplate" childrenPresentation="List">
-                <subNodeMappings name="Properties" semanticCandidatesExpression="aql:self.properties.propertiesElement" domainClass="EObject">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="-1" showIcon="false" labelExpression="Properties" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+              <subContainerMappings name="NodeTemplateAttributes" semanticCandidatesExpression="aql:self" domainClass="tosca::TNodeTemplate" childrenPresentation="HorizontalStack">
+                <subContainerMappings name="PropertiesList" preconditionExpression="aql:not self.oclIsTypeOf(type::AnyType)" semanticCandidatesExpression="aql:self.properties.propertiesElement" domainClass="EObject" childrenPresentation="List">
+                  <subNodeMappings name="Property" semanticCandidatesExpression="aql:self.eClass().oclAsType(ecore::EClass).eStructuralFeatures" domainClass="EStructuralFeature">
+                    <style xsi:type="style:SquareDescription" borderSizeComputationExpression="-1" showIcon="false" labelExpression="aql: self.printAttribute(view.eContainer().target)" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    </style>
+                  </subNodeMappings>
+                  <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Properties" hideLabelByDefault="true">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                   </style>
-                </subNodeMappings>
+                </subContainerMappings>
                 <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:'type: ' + self.typeRef.name" roundedCorner="true">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -121,14 +129,22 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 </style>
               </borderedNodeMappings>
-              <subContainerMappings name="GroupTemplateAttributes" semanticCandidatesExpression="aql:self" domainClass="tosca::TGroupTemplate" childrenPresentation="List">
-                <subNodeMappings name="Properties" semanticCandidatesExpression="aql:self.properties.propertiesElement" domainClass="EObject">
-                  <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="Properties" labelPosition="node" resizeKind="NSEW">
+              <subContainerMappings name="GroupTemplateAttributes" semanticCandidatesExpression="aql:self" domainClass="tosca::TGroupTemplate" childrenPresentation="HorizontalStack">
+                <subContainerMappings name="PropertiesList" preconditionExpression="aql:not self.oclIsTypeOf(type::AnyType)" semanticCandidatesExpression="aql:self.properties.propertiesElement" domainClass="EObject" childrenPresentation="List">
+                  <subNodeMappings name="Property" semanticCandidatesExpression="aql:self.eClass().oclAsType(ecore::EClass).eStructuralFeatures" domainClass="EStructuralFeature">
+                    <style xsi:type="style:SquareDescription" borderSizeComputationExpression="-1" showIcon="false" labelExpression="aql: self.printAttribute(view.eContainer().target)" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    </style>
+                  </subNodeMappings>
+                  <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Properties" hideLabelByDefault="true">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                   </style>
-                </subNodeMappings>
+                </subContainerMappings>
                 <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:'type: ' + self.typeRef.name" roundedCorner="true">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

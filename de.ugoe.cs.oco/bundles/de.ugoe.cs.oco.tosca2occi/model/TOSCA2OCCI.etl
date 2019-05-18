@@ -24,12 +24,14 @@ pre {
 		var properties = propertyMappingsType.eContainer.any.get(0).getValue();
 		for (mapping in propertyMappingsType.propertyMapping){
 			var entityTemplate = mapping.targetObjectRef;
-			(mapping.serviceTemplatePropertyRef + " --> " + entityTemplate.name + ":" + mapping.targetPropertyRef).println();
-			var targetProperties = entityTemplate.properties.any.get(0).getValue();
-			var targetFeature = targetProperties.eClass.getEstructuralFeature(mapping.targetPropertyRef);
-			var sourceFeature = properties.eClass.getEstructuralFeature(mapping.serviceTemplatePropertyRef);
-			var value = properties.eGet(sourceFeature);
-			targetProperties.eSet(targetFeature, value);
+			if (entityTemplate <> null){
+				(mapping.serviceTemplatePropertyRef + " --> " + entityTemplate.name + ":" + mapping.targetPropertyRef).println();
+				var targetProperties = entityTemplate.properties.any.get(0).getValue();
+				var targetFeature = targetProperties.eClass.getEstructuralFeature(mapping.targetPropertyRef);
+				var sourceFeature = properties.eClass.getEstructuralFeature(mapping.serviceTemplatePropertyRef);
+				var value = properties.eGet(sourceFeature);
+				targetProperties.eSet(targetFeature, value);
+			}
 		}
 	}
 
@@ -48,7 +50,8 @@ pre {
 	for (g in TOSCA!TGroupTemplate.allOfKind){
 		var properties = g.properties.any.get(0).getValue();
 		var scale = properties.instances;
-	
+		
+		if (scale.asInteger() > 1){
 		for (i in Sequence {2 .. scale.asInteger()}) {
 			var clones = new Map();
 			for (member in g.member){
@@ -103,6 +106,7 @@ pre {
 		    		}
 		    		template.relationshipTemplate.add(relClone);
 		    }
+		}
 		}
 	}
 	

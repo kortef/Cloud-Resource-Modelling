@@ -1,88 +1,37 @@
 <?xml version="1.0" encoding="ASCII"?>
-<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="ToscaSpecificTypes" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
+<occi:Extension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:occi="http://schemas.ogf.org/occi/core/ecore" name="sugarcrm" scheme="http://schemas.modmacao.org/sugarcrm#">
   <import href="http://schemas.modmacao.org/modmacao#/"/>
-  <mixins name="SugarCRMApplication" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <attributes name="AdminUser" default="admin" description="Administrator">
+  <mixins name="SugarCRMApplication" scheme="http://schemas.modmacao.org/sugarcrm#">
+    <attributes name="adminUser" default="admin" description="Administrator">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="AdminPassword" default="admin" description="Administrator Password">
+    <attributes name="adminPassword" default="admin" description="Administrator Password">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="SiteName" default="SugarCRM" description="Site Name">
+    <attributes name="siteName" default="SugarCRM" description="Site Name">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="SitePath" default="sugarcrm" description="Site Path">
+    <attributes name="sitePath" default="sugarcrm" description="Site Path">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="SugarCRMDatabase" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <attributes name="DBName" default="sugarcrm" description="Database Name">
+  <mixins name="SugarCRMDatabase" scheme="http://schemas.modmacao.org/sugarcrm#">
+    <attributes name="dBName" default="sugarcrm" description="Database Name">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="DBUser" default="sugarcrm" description="Database User">
+    <attributes name="dBUser" default="sugarcrm" description="Database User">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="DBPassword" default="sugarcrm" description="Database User Password">
+    <attributes name="dBPassword" default="sugarcrm" description="Database User Password">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="DBPort" default="3306" description="Database Port (default 3306)">
+    <attributes name="dBPort" default="3306" description="Database Port (default 3306)">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
     <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
   </mixins>
-  <mixins name="ApacheWebServer" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <attributes name="httpdport" default="80" description="Apache HTTP Port (default 80)">
-      <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
-    </attributes>
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="ApacheWebApplication" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="ApacheModule" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="ApachePHPModule" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="MySQL" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <attributes name="RootPassword" description="Root Password">
-      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
-    </attributes>
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="MySQLDatabase" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="RootNodeType" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="Tier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="SingleNodeTier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="ScalableTier" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="Server" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="OperatingSystem" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="WebServer" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="WebApplication" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="DBMS" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
-  </mixins>
-  <mixins name="Database" scheme="http://schemas.modmacao.org/ToscaSpecificTypes#">
-    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='component']"/>
+  <mixins name="SugarCRMDatabaseConnection" scheme="http://schemas.modmacao.org/sugarcrm#">
+    <depends href="http://schemas.modmacao.org/modmacao#//@mixins[term='dependency']"/>
   </mixins>
 </occi:Extension>

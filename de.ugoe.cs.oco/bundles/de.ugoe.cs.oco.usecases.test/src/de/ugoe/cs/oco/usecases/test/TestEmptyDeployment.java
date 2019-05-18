@@ -29,6 +29,7 @@ class TestEmptyDeployment {
 	private static String basedir = "/home/fkorte/MoDMaCAO/plugins/org.modmacao.lamp/model/";
 	private static String sugarcrmbase = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions";
 	private static String openfoambase = "/home/fkorte/de.ugoe.cs.oco.usecases/openfoam/CSAR/Definitions";
+	private static String mongodbase = "/home/fkorte/MoDMaCAO/plugins/org.modmacao.mongodb/model";
 	
 	
 	@Test
@@ -44,6 +45,7 @@ class TestEmptyDeployment {
 		TestUtil.loadAndRegisterOCCIExtensions(basedir, set);
 		TestUtil.loadAndRegisterOCCIExtensions(sugarcrmbase, set);
 		TestUtil.loadAndRegisterOCCIExtensions(openfoambase, set);
+		TestUtil.loadAndRegisterOCCIExtensions(mongodbase, set);
 
 
 		Resource resource = set.getResource(URI.createFileURI("occi/empty.occic"), true);

@@ -9,7 +9,7 @@ operation getTypeMapping() : Map {
 	
 	/* OpenFOAM transformation configuration */
 	configuration.put("CloudServer", "compute");
-	//configuration.put("Volume", "volume");
+
 	configuration.put("MPIWorker", "component");
 	configuration.put("Gateway", "component");
 	configuration.put("OpenFOAM", "component");
@@ -17,6 +17,10 @@ operation getTypeMapping() : Map {
 	configuration.put("NFSServer", "component");
 	configuration.put("Volume", "storage");
 	configuration.put("StorageAttachesToServer", "storagelink");
+	configuration.put("ConnectsToNFSServer", "componentlink");
+    configuration.put("SubmitsToMPIWorker", "componentlink");
+	
+	
 	
 	
 	/* TOSCA Base Types and Specific Types transformation configuration */
@@ -44,7 +48,6 @@ operation getTypeMapping() : Map {
 	configuration.put("ConnectsTo", "componentlink");
 	configuration.put("MySQLDatabaseHostedOnMySQL", "componentlink");
 	configuration.put("MySQLDatabaseConnection", "componentlink");
-	configuration.put("ConnectsToNFSServer", "componentlink");
 	
 	
 	return configuration;
@@ -127,11 +130,16 @@ operation getMixinMapping(): Map {
 	seq.add("InstallationDependency");
 	mixinMapping.put("ConnectsTo", seq);
 	
-		seq = new Sequence;
+	seq = new Sequence;
 	seq.add("ExecutionDependency");
 	seq.add("InstallationDependency");
 	seq.add("ConnectsToNFSServer");
 	mixinMapping.put("ConnectsToNFSServer", seq);
+	
+	seq = new Sequence;
+	seq.add("ExecutionDependency");
+	seq.add("SubmitsToMPIWorker");
+	mixinMapping.put("SubmitsToMPIWorker", seq);
 	
 	seq = new Sequence;
 	seq.add("ExecutionDependency");

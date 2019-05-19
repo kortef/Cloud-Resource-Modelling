@@ -8,8 +8,8 @@ class TestSugarCRMDeployment extends TestProvisioningAndDeployment {
 	
 	@BeforeAll
 	protected static void setup() throws FileNotFoundException{
-		basedir = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions";
-		cut = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.tosca";
+		basedir = "home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions";
+		cut = "/home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.tosca";
 		testname = "sugarcrm-test";
 		userdata = TestUtil.CENTOS_USERDATA;
 		

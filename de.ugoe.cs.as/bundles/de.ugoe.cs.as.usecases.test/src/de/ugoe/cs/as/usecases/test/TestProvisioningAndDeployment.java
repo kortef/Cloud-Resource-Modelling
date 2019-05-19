@@ -43,8 +43,8 @@ class TestProvisioningAndDeployment {
 	private static Connector conn = new MartConnector("192.168.35.34", 8080, "ubuntu", 
 			"/home/fkorte/autoscale/mongoscale-key.pem");
 	private static MartDeployer deployer = new MartDeployer(conn);
-	protected static String basedir = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions";
-	protected static String cut = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.occic";
+	protected static String basedir = "/home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions";
+	protected static String cut = "/home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.occic";
 	protected static String testname = "testname";
 	protected static String userdata = TestUtil.UBUNTU_USERDATA;
 	

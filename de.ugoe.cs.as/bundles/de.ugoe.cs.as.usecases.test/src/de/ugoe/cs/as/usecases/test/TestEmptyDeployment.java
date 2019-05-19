@@ -26,10 +26,10 @@ class TestEmptyDeployment {
 	private static Connector conn = new MartConnector("192.168.35.34", 8080, "ubuntu", 
 			"/home/fkorte/autoscale/mongoscale-key.pem");
 	private static MartDeployer deployer = new MartDeployer(conn);
-	private static String basedir = "/home/fkorte/MoDMaCAO/plugins/org.modmacao.lamp/model/";
-	private static String sugarcrmbase = "/home/fkorte/de.ugoe.cs.oco.usecases/sugarcrm/CSAR/Definitions";
-	private static String openfoambase = "/home/fkorte/de.ugoe.cs.oco.usecases/openfoam/CSAR/Definitions";
-	private static String mongodbase = "/home/fkorte/MoDMaCAO/plugins/org.modmacao.mongodb/model";
+	private static String basedir = "/home/fkorte/git/MoDMaCAO/plugins/org.modmacao.lamp/model/";
+	private static String sugarcrmbase = "/home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions";
+	private static String openfoambase = "/home/fkorte/git/Case-Studies/openfoam/CSAR/Definitions";
+	private static String mongodbase = "/home/fkorte/git/MoDMaCAO/plugins/org.modmacao.mongodb/model";
 	
 	
 	@Test

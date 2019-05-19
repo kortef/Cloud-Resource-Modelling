@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="de.ugoe.cs.oco.tosca"
+      id="de.ugoe.cs.as.tosca"
       label="TOSCA modelling"
       version="1.0.0.qualifier"
       provider-name="University of Goettingen">
@@ -103,28 +103,28 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.model.editor"
+         id="de.ugoe.cs.as.tosca.model"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.model"
+         id="de.ugoe.cs.as.tosca.designer"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.model.edit"
+         id="de.ugoe.cs.as.tosca.model.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.designer"
+         id="de.ugoe.cs.as.tosca.model.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -13,10 +13,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -76,7 +76,8 @@ class TestProvisioningAndDeployment {
 
 
 	@Test
-	void testProvisioningAndDeployment() throws Exception {
+	public void testProvisioningAndDeployment() throws Exception {
+		EcorePlugin.ExtensionProcessor.process(null);
 		
 		String toscaConfigPath = cut.substring(0, cut.lastIndexOf('.')) + ".toscac";
 		String occiConfigPath = cut.substring(0, cut.lastIndexOf('.')) + ".occic";
@@ -122,14 +123,9 @@ class TestProvisioningAndDeployment {
 
 	}
 	
+	
 	@AfterAll
 	public static void tearDown() throws IOException {
 		logWriter.close();
-	}
-	
-	
-
-	
-	
-	
+	}	
 }

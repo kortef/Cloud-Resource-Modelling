@@ -22,7 +22,7 @@ import de.ugoe.cs.rwm.docci.connector.MartConnector;
  * @author fkorte
  *
  */
-class TestEmptyDeployment {
+public class TestEmptyDeployment {
 	private static Connector conn = new MartConnector("192.168.35.34", 8080, "ubuntu", 
 			"/home/fkorte/autoscale/mongoscale-key.pem");
 	private static MartDeployer deployer = new MartDeployer(conn);

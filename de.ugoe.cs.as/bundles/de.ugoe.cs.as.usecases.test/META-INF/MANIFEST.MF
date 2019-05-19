@@ -28,11 +28,12 @@ Require-Bundle: org.eclipse.cmf.occi.core,
  org.eclipse.epsilon.etl.engine;bundle-version="1.5.1",
  de.ugoe.cs.as.tosca2occi;bundle-version="1.0.0",
  org.modmacao.sugarcrmtypes,
- org.modmacao.lamp,
  org.modmacao.mongodb;bundle-version="1.0.0",
  org.modmacao.openfoamtypes;bundle-version="1.0.0",
  org.modmacao.toscabasetypes,
  de.ugoe.cs.as.tosca.gen.configuration;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca.model;bundle-version="1.0.0"
+ de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",
+ org.junit
 Provide-Package: de.ugoe.cs.as.usecases.test
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.junit.jupiter.api

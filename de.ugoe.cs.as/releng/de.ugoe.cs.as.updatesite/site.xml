@@ -3,15 +3,15 @@
    <description name="AutoSCALE modelling" url="http://141.5.109.125/">
       TOSCA model, TOSCA normative types, MoDMaCAO
    </description>
-   <feature url="features/de.ugoe.cs.oco.tosca_1.0.0.201901251549.jar" id="de.ugoe.cs.oco.tosca" version="1.0.0.201901251549">
-      <category name="toscaandocci"/>
-   </feature>
-   <feature url="features/org.modmacao_1.0.0.201901251549.jar" id="org.modmacao" version="1.0.0.201901251549">
+   <feature url="features/org.modmacao_1.0.0.201905191718.jar" id="org.modmacao" version="1.0.0.201905191718">
       <category name="modmacao"/>
    </feature>
-   <feature url="features/de.ugoe.cs.oco.tosca2occi.feature_1.0.0.201901251549.jar" id="de.ugoe.cs.oco.tosca2occi.feature" version="1.0.0.201901251549">
-      <category name="toscaandocci"/>
+   <feature url="features/de.ugoe.cs.as.tosca2occi.feature_1.0.0.201905191718.jar" id="de.ugoe.cs.as.tosca2occi.feature" version="1.0.0.201905191718">
+      <category name="TOSCAandOCCI"/>
    </feature>
-   <category-def name="toscaandocci" label="TOSCA and OCCI modelling"/>
+   <feature url="features/de.ugoe.cs.as.tosca_1.0.0.201905191718.jar" id="de.ugoe.cs.as.tosca" version="1.0.0.201905191718">
+      <category name="TOSCAandOCCI"/>
+   </feature>
    <category-def name="modmacao" label="MoDMaCAO"/>
+   <category-def name="TOSCAandOCCI" label="TOSCA and OCCI"/>
 </site>

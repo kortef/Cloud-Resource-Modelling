@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="de.ugoe.cs.oco.tosca2occi.feature"
+      id="de.ugoe.cs.as.tosca2occi.feature"
       label="TOSCA to OCCI"
       version="1.0.0.qualifier">
 
@@ -98,28 +98,28 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.gen.configuration"
+         id="de.ugoe.cs.as.tosca.gen.configuration"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.gen.extension"
+         id="de.ugoe.cs.as.tosca.gen.extension"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca2occi"
+         id="de.ugoe.cs.as.tosca2occi"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.oco.tosca.model.ui"
+         id="de.ugoe.cs.as.tosca.model.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

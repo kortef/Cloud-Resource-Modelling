@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/de.ugoe.cs.as.thirdparty/libs/java-utils-0.1.3-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/fkorte/de.ugoe.cs.oco.usecases/autoscale_lib/java-utils-0.1.3-20150413.120509-3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

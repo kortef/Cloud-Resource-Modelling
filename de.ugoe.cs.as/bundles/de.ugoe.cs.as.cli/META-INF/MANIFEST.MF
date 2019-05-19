@@ -7,13 +7,10 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.ugoe.cs.as.cli.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- de.ugoe.cs.as.thirdparty;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca2occi;bundle-version="1.0.0",
  de.ugoe.cs.as.tosca.model;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca.yamlgenerator;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca.yamlparser;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca.instantiator;bundle-version="1.0.0",
- de.ugoe.cs.as.tosca.preprocessor;bundle-version="1.0.0"
+ org.modmacao.core;bundle-version="1.0.0",
+ de.ugoe.cs.as.tosca2occi;bundle-version="1.0.0",
+ de.ugoe.cs.as.usecases.test;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: de.ugoe.cs.oco.cli

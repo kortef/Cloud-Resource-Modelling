@@ -2,7 +2,6 @@ package de.ugoe.cs.as.tosca.gen.configuration;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -28,7 +27,6 @@ import de.ugoe.cs.as.tosca.TRelationshipTemplate;
 import de.ugoe.cs.as.tosca.TRequirement;
 import de.ugoe.cs.as.tosca.TTopologyTemplate;
 import de.ugoe.cs.as.tosca.ToscaPackage;
-import de.ugoe.cs.as.tosca.impl.TNodeTemplateImpl;
 import de.ugoe.cs.as.tosca.util.ToscaResourceFactoryImpl;
 
 
@@ -49,12 +47,13 @@ public class TOSCADefToConfigTransformator {
 		DocumentRoot root = loadToscaRoot(toscaDef, resourceSet);
 		
 		Resource resource = resourceSet.createResource(toscaConfig);
-		resource.getContents().add(EcoreUtil.copy(root));
+		DocumentRoot copy = EcoreUtil.copy(root);
+		resource.getContents().add(copy);
 		
 		root.getXMLNSPrefixMap().put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 		
 		// We assume one definition per file with one service template per definition
-		TTopologyTemplate template = root.getDefinitions().get(0).getServiceTemplate().get(0).getTopologyTemplate();		
+		TTopologyTemplate template = copy.getDefinitions().get(0).getServiceTemplate().get(0).getTopologyTemplate();		
 		
 		for (TNodeTemplate node: template.getNodeTemplate()) {
 			addXSIType(node);

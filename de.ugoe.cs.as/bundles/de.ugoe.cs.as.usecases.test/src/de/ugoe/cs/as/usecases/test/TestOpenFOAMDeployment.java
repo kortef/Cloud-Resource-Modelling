@@ -11,6 +11,8 @@ public class TestOpenFOAMDeployment extends TestProvisioningAndDeployment {
 		basedir = "/home/fkorte/git/Case-Studies/openfoam/CSAR/Definitions";
 		cut = "/home/fkorte/git/Case-Studies/openfoam/CSAR/Definitions/openfoamcluster.tosca";
 		testname = "openfoam-test";
+		image = "e02f6965-0c9e-45e0-9a54-e2730bd05749";
+		remoteuser = "ubuntu";
 		
 		deprovisionEverything();
 	}

@@ -47,6 +47,8 @@ class TestProvisioningAndDeployment {
 	protected static String cut = "/home/fkorte/git/Case-Studies/sugarcrm/CSAR/Definitions/SugarCRM-Interop-Definitions.occic";
 	protected static String testname = "testname";
 	protected static String userdata = TestUtil.UBUNTU_USERDATA;
+	protected static String image = "e02f6965-0c9e-45e0-9a54-e2730bd05749 ";
+	protected static String remoteuser ="ubuntu";
 	
 	private static BufferedWriter logWriter;
 		
@@ -85,6 +87,8 @@ class TestProvisioningAndDeployment {
 		TestUtil.resetLogTimer();
 		TestUtil.log(logWriter, "Starting Setup");
 		
+		logWriter.flush();
+		
 		ResourceSet set = new ResourceSetImpl();
 		TestUtil.loadAndRegisterOCCIExtensions(basedir, set);
 
@@ -106,8 +110,11 @@ class TestProvisioningAndDeployment {
 		TestUtil.log(logWriter, "Starting OCCI to OCCI-OpenStack Transformation");
 		OCCI2OPENSTACKTransformator trans2 = new OCCI2OPENSTACKTransformator();
 		Path sourceOcci = Paths.get(occiConfigPath);
+		// Will work with tocci 1.0.1
+		//trans2.setTransformationProperties(TestUtil.MANNETRUNTIMEID, TestUtil.PUBLICKEY, 
+		//	userdata, TestUtil.MANNETID, null, image, remoteuser);
 		trans2.setTransformationProperties(TestUtil.MANNETRUNTIMEID, TestUtil.PUBLICKEY, 
-			userdata, TestUtil.MANNETID);
+				userdata, TestUtil.MANNETID);
 		trans2.transform(sourceOcci, sourceOcci);
 		
 		TestUtil.log(logWriter, "Starting Provisioning");
@@ -120,6 +127,7 @@ class TestProvisioningAndDeployment {
 		deployer.deploy(Paths.get(occiConfigPath));
 		
 		TestUtil.log(logWriter, "Finished Test.");
+		logWriter.flush();
 
 	}
 	

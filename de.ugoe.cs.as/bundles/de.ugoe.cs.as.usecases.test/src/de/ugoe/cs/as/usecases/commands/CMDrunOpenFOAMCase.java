@@ -13,6 +13,7 @@ public class CMDrunOpenFOAMCase implements Command {
 		try {
 			TestOpenFOAMDeployment.setup();
 			test.testProvisioningAndDeployment();
+			TestOpenFOAMDeployment.tearDown();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

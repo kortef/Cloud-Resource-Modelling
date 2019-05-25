@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: de.ugoe.cs.as.mappingdsl.model.tests;singleton:=true
+Bundle-SymbolicName: de.ugoe.cs.as.mspec.model.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: de.ugoe.cs.as.mappingdsl.model.mapping.tests
+Export-Package: de.ugoe.cs.as.mspec.model.mapping.tests
 Require-Bundle: org.eclipse.core.runtime,
- de.ugoe.cs.as.mappingdsl.model;visibility:=reexport,
+ de.ugoe.cs.as.mspec.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -9,8 +9,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated mapping -->
       <package
-            uri="http://www.example.org/mapping"
-            class="de.ugoe.cs.as.mappingdsl.model.mapping.MappingPackage"
+            uri="http://autoscale.cs.ugoe.de/mSpec"
+            class="de.ugoe.cs.as.mspec.model.mapping.MappingPackage"
             genModel="model/mapping.genmodel"/>
    </extension>
 

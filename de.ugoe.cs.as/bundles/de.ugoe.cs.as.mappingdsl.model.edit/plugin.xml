@@ -9,8 +9,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated mapping -->
       <factory
-            uri="http://www.example.org/mapping"
-            class="de.ugoe.cs.as.mappingdsl.model.mapping.provider.MappingItemProviderAdapterFactory"
+            uri="http://autoscale.cs.ugoe.de/mSpec"
+            class="de.ugoe.cs.as.mspec.model.mapping.provider.MappingItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

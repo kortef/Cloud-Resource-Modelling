@@ -24,31 +24,28 @@
          unpack="false"/>
 
    <plugin
-         id="de.ugoe.cs.as.mappingdsl.model.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="de.ugoe.cs.as.mappingdsl.model.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="de.ugoe.cs.as.mappingdsl.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="de.ugoe.cs.as.tosca.instantiator"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="de.ugoe.cs.as.mspec.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="de.ugoe.cs.as.mspec.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="de.ugoe.cs.as.mspec.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

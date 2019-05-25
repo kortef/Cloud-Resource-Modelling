@@ -4,9 +4,6 @@
 package de.ugoe.cs.as.tosca.designer.services;
 
 
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.UUID;
 
 import javax.xml.namespace.QName;

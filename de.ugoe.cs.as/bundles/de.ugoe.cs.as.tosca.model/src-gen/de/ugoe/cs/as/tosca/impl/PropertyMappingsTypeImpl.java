@@ -69,7 +69,7 @@ public class PropertyMappingsTypeImpl extends MinimalEObjectImpl.Container imple
 	public EList<TPropertyMapping> getPropertyMapping() {
 		if (propertyMapping == null) {
 			propertyMapping = new EObjectContainmentEList<TPropertyMapping>(TPropertyMapping.class, this, ToscaPackage.PROPERTY_MAPPINGS_TYPE__PROPERTY_MAPPING);
-			propertyMapping.add(ToscaFactory.eINSTANCE.createTPropertyMapping());
+	//		propertyMapping.add(ToscaFactory.eINSTANCE.createTPropertyMapping());
 		}
 		return propertyMapping;
 	}

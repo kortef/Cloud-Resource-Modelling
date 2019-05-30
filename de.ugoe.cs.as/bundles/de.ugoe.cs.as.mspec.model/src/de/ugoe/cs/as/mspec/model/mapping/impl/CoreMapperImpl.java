@@ -80,23 +80,17 @@ public class CoreMapperImpl extends ExpressionImpl implements CoreMapper {
 		Parameter output = MappingFactory.eINSTANCE.createSourceParameter();
 		output.setName("cores");
 		switch (flavorParam.getValue()){
-		case "1":
-			output.setValue("Standard_A1");
+		case "ce8c33af-0cd5-4aac-b6f3-fcde58c4b262":
+			output.setValue("4");
 			break;
-		case "2":
-			output.setValue("Standard_A2");
+		case "9ed5ac24-d1e7-4665-9c22-318561733f42":
+			output.setValue("2");
 			break;
-		case "3":
-			output.setValue("Standard_A3");
-			break;
-		case "4":
-			output.setValue("Standard_A4");
-			break;
-		case "5":
-			output.setValue("Standard_A6");
+		case "a6d239e1-4082-4044-9de9-474bee2152bb":
+			output.setValue("1");
 			break;
 		default:
-			output.setValue("Standard_A1");
+			output.setValue("4");
 		}
 		
 		return output;

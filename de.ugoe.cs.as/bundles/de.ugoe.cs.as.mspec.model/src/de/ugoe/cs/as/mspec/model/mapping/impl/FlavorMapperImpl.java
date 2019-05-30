@@ -80,35 +80,36 @@ public class FlavorMapperImpl extends ExpressionImpl implements FlavorMapper {
 		Parameter output = MappingFactory.eINSTANCE.createSourceParameter();
 		
 		output.setName("flavor");
-		/* used for taking cores as input parameter
 		int cores = Integer.parseInt(param.getValue());
 		
 		if (cores < 2){
-			output.setValue("Standard_A1_v2");
+			output.setValue("a6d239e1-4082-4044-9de9-474bee2152bb");
 		} else if (cores == 2){
-			output.setValue("Standard_A2_v2");	
+			output.setValue("9ed5ac24-d1e7-4665-9c22-318561733f42");	
+		} else if (cores <= 4){
+			output.setValue("ce8c33af-0cd5-4aac-b6f3-fcde58c4b262");
 		} else {
-			output.setValue("Standard_A3_v2");
+			output.setValue("ce8c33af-0cd5-4aac-b6f3-fcde58c4b262");
 		}
 		return output;
-		*/
+	
 		
-		// used for taking memory as input parameter
-		int memory = Integer.parseInt(param.getValue());
-		if (memory <= 1024){
-			output.setValue("41598b12-2d7d-4ffe-b3c1-0f52e68fa1ea");
-		} else if (memory <= 2048){
-			output.setValue("2a665c12-e4c5-41fe-b16e-2aec31c799eb");
-		} else if (memory <= 4096){
-			output.setValue("32ef77d0-5d26-46f5-9ea3-f805a7a05af6");
-		} else if (memory <= 6144){
-			output.setValue("d1f5a7a6-0fbe-4146-87fe-1e9441462833");
-		} else if (memory <= 8192){
-			output.setValue("cc5d21d7-fc0e-451d-884b-aba0efac9c33");
-		} else if (memory <= 10240){
-			output.setValue("9961ccdf-2ee2-42d1-ac6d-b45318212cad");
-		}
-		return output;
+//		// used for taking memory as input parameter
+//		int memory = Integer.parseInt(param.getValue());
+//		if (memory <= 1024){
+//			output.setValue("41598b12-2d7d-4ffe-b3c1-0f52e68fa1ea");
+//		} else if (memory <= 2048){
+//			output.setValue("2a665c12-e4c5-41fe-b16e-2aec31c799eb");
+//		} else if (memory <= 4096){
+//			output.setValue("32ef77d0-5d26-46f5-9ea3-f805a7a05af6");
+//		} else if (memory <= 6144){
+//			output.setValue("d1f5a7a6-0fbe-4146-87fe-1e9441462833");
+//		} else if (memory <= 8192){
+//			output.setValue("cc5d21d7-fc0e-451d-884b-aba0efac9c33");
+//		} else if (memory <= 10240){
+//			output.setValue("9961ccdf-2ee2-42d1-ac6d-b45318212cad");
+//		}
+//		return output;
 	}
 
 	/**

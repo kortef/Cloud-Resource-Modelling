@@ -10,20 +10,21 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.ugoe.cs.as.evaluator.Evaluator;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Parameter;
+import de.ugoe.cs.as.mspec.model.mapping.Parameter;
 import de.ugoe.cs.as.tosca.DocumentRoot;
 import de.ugoe.cs.as.tosca.ToscaPackage;
 import de.ugoe.cs.as.tosca.instantiator.TOSCAInstantiator;
 import de.ugoe.cs.as.tosca.util.ToscaResourceFactoryImpl;
+import de.ugoe.cs.as.tosca2occi.EcoreModelLoader;
 import de.ugoe.cs.util.console.Command;
 
 public class CMDinstantiateModel implements Command {
 
 	@Override
 	public void run(List<Object> parameters) {
-		String result = null;		
 		Path outputPath = Paths.get(System.getProperty("user.dir"));
 		Path modelPath = null;
 		Path domainModelPath = null;
@@ -52,17 +53,6 @@ public class CMDinstantiateModel implements Command {
 		
 		fileName = modelPath.getFileName().toString();
 		
-		try{
-			Evaluator evaluator = new Evaluator();
-			evaluator.load(mappingPath.toString());
-			List<Parameter> domainModelPars = evaluator.evaluate(domainModelPath.toString());
-			TOSCAInstantiator instantiator = new TOSCAInstantiator();
-			documentRoot = instantiator.instantiate(modelPath, domainModelPars);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		String fileNameWithoutExtn = fileName.substring(0, fileName.lastIndexOf('.'));
 		Path output = Paths.get(outputPath.toString() 
 				+ fileSeparator 
@@ -75,10 +65,23 @@ public class CMDinstantiateModel implements Command {
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
-		Resource outputResource = resSet.createResource(URI.createURI(output.toString()));
-		outputResource.getContents().add(documentRoot);
-		 
+		new EcoreModelLoader().searchAndLoadEcoreModels(
+				URI.createFileURI(modelPath.toString()).trimSegments(1), resSet);
+		
+		Resource outputResource = resSet.createResource(URI.createFileURI(output.toString()));
+		Resource inputResource = resSet.getResource(URI.createFileURI(modelPath.toString()), true);
+		
+		documentRoot = (DocumentRoot) inputResource.getContents().get(0);
+		
+		DocumentRoot copy = EcoreUtil.copy(documentRoot);
+		outputResource.getContents().add(copy);
+		
 		try {
+			Evaluator evaluator = new Evaluator();
+			evaluator.load(mappingPath.toString());
+			List<Parameter> domainModelPars = evaluator.evaluate(domainModelPath.toString());
+			TOSCAInstantiator instantiator = new TOSCAInstantiator();
+			copy = instantiator.instantiate(copy, domainModelPars);
 			outputResource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
 			e.printStackTrace();

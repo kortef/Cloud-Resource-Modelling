@@ -1,24 +1,21 @@
 package de.ugoe.cs.as.tosca.instantiator;
 
-import java.nio.file.Path;
+import java.math.BigInteger;
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import de.ugoe.cs.as.mappingdsl.model.mapping.Parameter;
+import de.ugoe.cs.as.mspec.model.mapping.Parameter;
+import de.ugoe.cs.as.mspec.model.mapping.ParameterValueType;
 import de.ugoe.cs.as.tosca.DocumentRoot;
 import de.ugoe.cs.as.tosca.PropertiesType1;
 import de.ugoe.cs.as.tosca.TBoundaryDefinitions;
 import de.ugoe.cs.as.tosca.TServiceTemplate;
-import de.ugoe.cs.as.tosca.ToscaPackage;
-import de.ugoe.cs.as.tosca.util.ToscaResourceFactoryImpl;
 
 public class TOSCAInstantiator {
+	protected final static Logger LOGGER = Logger.getLogger(TOSCAInstantiator.class.getName());
 	
 	private boolean isConsistent(TBoundaryDefinitions boundary, 
 			List<Parameter> domainModelPars){
@@ -26,9 +23,10 @@ public class TOSCAInstantiator {
 			String name = domainModelPar.getName();
 			PropertiesType1 properties = boundary.getProperties();
 			EObject propertiesObject = (EObject) properties.getAny().get(0).getValue();
-			
+			LOGGER.info("Looking for parameter: " + name);
 			EStructuralFeature feature = propertiesObject.eClass().getEStructuralFeature(name);
 			if (feature == null) {
+				LOGGER.warning("Parameter " + name + " not found in aPDM.");
 				return false;
 			}
 		}
@@ -45,14 +43,22 @@ public class TOSCAInstantiator {
 		for (Parameter domainModelPar: domainModelPars){
 			String value = domainModelPar.getValue();
 			String name = domainModelPar.getName();
-			
 			PropertiesType1 properties = boundary.getProperties();
 			EObject propertiesObject = (EObject) properties.getAny().get(0).getValue();
 			
+			LOGGER.info("Looking for parameter: " + name);
 			EStructuralFeature feature = propertiesObject.eClass().getEStructuralFeature(name);
+			
 			if (feature != null) {
-				propertiesObject.eSet(feature, value);
+				if (domainModelPar.getType() == ParameterValueType.FLOAT){
+					propertiesObject.eSet(feature, Float.parseFloat(value));
+				}
+				if (domainModelPar.getType() == ParameterValueType.INTEGER) {
+					propertiesObject.eSet(feature, BigInteger.valueOf(Integer.parseInt(value)));
+				}
+				
 			} else {
+				LOGGER.warning("Parameter " + name + " not found in aPDM.");
 				return false;
 			}
 		}
@@ -66,19 +72,13 @@ public class TOSCAInstantiator {
 	}
 
 	
-	public DocumentRoot instantiate(Path modelPath, List<Parameter> domainModelPars) {
-		ToscaPackage.eINSTANCE.eClass();
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		reg.getExtensionToFactoryMap().put("tosca", new ToscaResourceFactoryImpl());
-		
-		ResourceSet resSet = new ResourceSetImpl();
-		
-		Resource inputResource = resSet.getResource(URI.createURI(modelPath.toString()), true);
-		
-		DocumentRoot documentRoot = (DocumentRoot) inputResource.getContents().get(0);
-		
+	public DocumentRoot instantiate(DocumentRoot documentRoot, List<Parameter> domainModelPars) {						
 		TBoundaryDefinitions boundary = getBoundaryDefinitions(documentRoot);
-		initializeToscaPars(boundary, domainModelPars);
+		boolean result = initializeToscaPars(boundary, domainModelPars);
+		
+		if (result == false) {
+			LOGGER.warning("Provided parameters are inconsistent with aPDM parameters. Nothing changed...");
+		}
 		
 		return documentRoot;		
 	}

@@ -11,20 +11,20 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import de.ugoe.cs.as.mappingdsl.model.mapping.BinaryExpression;
-import de.ugoe.cs.as.mappingdsl.model.mapping.BinaryExpressionOperatorType;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Expression;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Extractor;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Mapper;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Mapping;
-import de.ugoe.cs.as.mappingdsl.model.mapping.MappingFactory;
-import de.ugoe.cs.as.mappingdsl.model.mapping.MappingModel;
-import de.ugoe.cs.as.mappingdsl.model.mapping.MappingPackage;
-import de.ugoe.cs.as.mappingdsl.model.mapping.Parameter;
-import de.ugoe.cs.as.mappingdsl.model.mapping.ParameterValueType;
-import de.ugoe.cs.as.mappingdsl.model.mapping.SourceParameter;
-import de.ugoe.cs.as.mappingdsl.model.mapping.TargetParameter;
-import de.ugoe.cs.as.mappingdsl.model.mapping.UnaryExpression;
+import de.ugoe.cs.as.mspec.model.mapping.BinaryExpression;
+import de.ugoe.cs.as.mspec.model.mapping.BinaryExpressionOperatorType;
+import de.ugoe.cs.as.mspec.model.mapping.Expression;
+import de.ugoe.cs.as.mspec.model.mapping.Extractor;
+import de.ugoe.cs.as.mspec.model.mapping.Mapper;
+import de.ugoe.cs.as.mspec.model.mapping.Mapping;
+import de.ugoe.cs.as.mspec.model.mapping.MappingFactory;
+import de.ugoe.cs.as.mspec.model.mapping.MappingModel;
+import de.ugoe.cs.as.mspec.model.mapping.MappingPackage;
+import de.ugoe.cs.as.mspec.model.mapping.Parameter;
+import de.ugoe.cs.as.mspec.model.mapping.ParameterValueType;
+import de.ugoe.cs.as.mspec.model.mapping.SourceParameter;
+import de.ugoe.cs.as.mspec.model.mapping.TargetParameter;
+import de.ugoe.cs.as.mspec.model.mapping.UnaryExpression;
 
 
 public class Evaluator {
